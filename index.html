@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 
-<body class="bg-black text-gray-900">
+<body class="bg-white text-gray-900">
 
 <!-- AUFBAU-HINWEIS -->
 <div class="bg-white text-gray-700 text-center px-4 py-3 text-sm border-b border-gray-200">
@@ -26,23 +26,22 @@
 <nav class="w-full bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 shadow-lg">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <div class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-3">
       <div class="h-10 w-10 rounded-full bg-black text-white flex items-center justify-center font-bold">
         TK
       </div>
       <span class="text-xl font-semibold tracking-tight text-gray-900">
         Theophil Kroller
       </span>
-    </div>
+    </a>
 
     <ul class="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-      <li><a href="#" class="hover:text-black transition">Start</a></li>
+      <li><a href="#start" class="hover:text-black transition">Start</a></li>
       <li><a href="#angebot" class="hover:text-black transition">Angebot</a></li>
       <li><a href="#arbeitsweise" class="hover:text-black transition">Arbeitsweise</a></li>
       <li><a href="#polyamorie" class="hover:text-black transition">Polyamorie</a></li>
-      <li><a href="#about" class="hover:text-black transition">Über mich</a></li>
-      <li><a href="#kontakt" class="hover:text-black transition">Kontakt</a></li>
       <li><a href="about.html" class="hover:text-black transition">Qualifikationen</a></li>
+      <li><a href="#kontakt" class="hover:text-black transition">Kontakt</a></li>
     </ul>
 
     <a href="https://app.cal.eu/theophil-kroller"
@@ -52,7 +51,7 @@
       Erstgespräch anfragen
     </a>
 
-    <button id="menu-btn" class="md:hidden flex flex-col gap-1.5">
+    <button id="menu-btn" class="md:hidden flex flex-col gap-1.5" aria-label="Menü öffnen">
       <span class="block w-6 h-0.5 bg-gray-900"></span>
       <span class="block w-6 h-0.5 bg-gray-900"></span>
       <span class="block w-6 h-0.5 bg-gray-900"></span>
@@ -61,18 +60,26 @@
 
   <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 bg-white/95 backdrop-blur-md border-t border-gray-100">
     <ul class="flex flex-col gap-4 text-gray-800 font-medium py-4">
-      <li><a href="#" class="block w-full hover:text-black">Start</a></li>
+      <li><a href="#start" class="block w-full hover:text-black">Start</a></li>
       <li><a href="#angebot" class="block w-full hover:text-black">Angebot</a></li>
       <li><a href="#arbeitsweise" class="block w-full hover:text-black">Arbeitsweise</a></li>
       <li><a href="#polyamorie" class="block w-full hover:text-black">Polyamorie</a></li>
-      <li><a href="#about" class="block w-full hover:text-black">Über mich</a></li>
+      <li><a href="about.html" class="block w-full hover:text-black">Qualifikationen</a></li>
       <li><a href="#kontakt" class="block w-full hover:text-black">Kontakt</a></li>
+      <li>
+        <a href="https://app.cal.eu/theophil-kroller"
+           target="_blank"
+           rel="noopener"
+           class="inline-block bg-black text-white px-6 py-3 rounded-xl font-semibold">
+          Erstgespräch anfragen
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="relative w-full min-h-[90vh] flex flex-col md:flex-row items-stretch overflow-hidden">
+<section id="start" class="relative w-full min-h-[92vh] flex flex-col md:flex-row items-stretch overflow-hidden bg-black">
 
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-black/75 z-0"></div>
@@ -86,17 +93,17 @@
     </p>
 
     <h1 class="text-5xl md:text-7xl font-bold leading-tight text-white">
-      Wenn Beziehung nicht mehr leicht ist
+      Beziehung ist lernbar.
     </h1>
 
     <p class="mt-6 text-gray-200 text-lg md:text-xl max-w-xl leading-relaxed">
-      Ich begleite Einzelpersonen, Paare und Menschen in vielfältigen Beziehungsformen,
-      wenn Gespräche im Kreis laufen, Nähe verloren geht oder wichtige Entscheidungen anstehen.
+      Auch dann, wenn Gespräche festfahren, Nähe verloren geht oder Sie nicht mehr wissen,
+      ob Sie bleiben, gehen oder etwas neu verhandeln sollen.
     </p>
 
     <p class="mt-5 text-gray-300 text-base md:text-lg max-w-xl leading-relaxed">
-      Nicht mit schnellen Ratschlägen. Sondern mit einem ruhigen Blick auf das, was zwischen Ihnen passiert —
-      ehrlich, respektvoll und ohne Beschämung.
+      Ich begleite Einzelpersonen, Paare und Menschen in vielfältigen Beziehungsformen dabei,
+      Muster sichtbar zu machen, ehrlicher zu sprechen und wieder handlungsfähiger zu werden.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 mt-8">
@@ -125,60 +132,129 @@
       </h2>
 
       <div class="space-y-4 text-gray-700 text-lg">
-        <p>✔ Wir streiten immer wieder über dasselbe.</p>
+        <p>✔ Wir geraten immer wieder in denselben Streit.</p>
         <p>✔ Ich ziehe mich zurück oder greife an, obwohl ich Nähe will.</p>
-        <p>✔ Ich weiß nicht, ob ich bleiben, gehen oder etwas neu verhandeln soll.</p>
+        <p>✔ Ich weiß nicht, ob ich bleiben, gehen oder neu beginnen soll.</p>
         <p>✔ Unsere Beziehung passt nicht in klassische Schubladen.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PAIN / RECOGNITION -->
+<!-- TRUST STRIP -->
+<section class="bg-white py-10 px-6 border-b border-gray-100">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+
+    <div>
+      <p class="text-2xl font-bold text-gray-900">Einzelpersonen</p>
+      <p class="text-gray-500 text-sm mt-1">Klärung, Grenzen, Beziehungsmuster</p>
+    </div>
+
+    <div>
+      <p class="text-2xl font-bold text-gray-900">Paare</p>
+      <p class="text-gray-500 text-sm mt-1">Kommunikation, Nähe, Konflikte</p>
+    </div>
+
+    <div>
+      <p class="text-2xl font-bold text-gray-900">Vielfältige Beziehungen</p>
+      <p class="text-gray-500 text-sm mt-1">offen, polyamor, queer, unbenannt</p>
+    </div>
+
+    <div>
+      <p class="text-2xl font-bold text-gray-900">Online möglich</p>
+      <p class="text-gray-500 text-sm mt-1">Erstgespräch unkompliziert anfragen</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FIT SECTION -->
+<section class="w-full bg-gray-50 py-24 px-6 md:px-16">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="text-gray-500 uppercase tracking-wide mb-3">
+        Diese Beratung kann passend sein, wenn …
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 max-w-4xl mx-auto">
+        Sie nicht nur reden wollen, sondern verstehen möchten, was zwischen Ihnen passiert.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4">Sie geraten immer wieder in dasselbe Muster.</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Eine Person drängt, eine zieht sich zurück. Eine erklärt, eine macht dicht.
+          Beide wollen eigentlich Kontakt — und landen doch wieder im alten Kreislauf.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4">Sie wollen Klarheit ohne vorschnelle Entscheidung.</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Bleiben, gehen, öffnen, schließen, neu beginnen:
+          Manchmal braucht es einen Raum, in dem Ambivalenz erlaubt ist,
+          bevor eine Richtung sichtbar wird.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4">Sie möchten ehrlicher sprechen, ohne zu verletzen.</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Schwierige Wahrheiten brauchen eine Form.
+          Wir arbeiten daran, klarer zu sagen, was los ist —
+          und zugleich respektvoll in Verbindung zu bleiben.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4">Ihre Beziehung passt nicht in klassische Schubladen.</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Monogam, offen, polyamor, queer oder noch unbenannt:
+          Ihre Beziehungsform muss hier nicht zuerst gerechtfertigt werden.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EMOTIONAL FRAMING -->
 <section class="w-full bg-white py-24 px-6 md:px-16">
-  <div class="max-w-6xl mx-auto text-center">
+  <div class="max-w-5xl mx-auto text-center">
 
     <p class="text-gray-500 uppercase tracking-wide mb-3">
-      Beziehungskrisen sind oft keine Frage von Liebe allein
+      Beziehung ist Abenteuer. Arbeit. Und ein Spiegel.
     </p>
 
     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
       Manchmal lieben sich Menschen — und verletzen sich trotzdem.
     </h2>
 
-    <p class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-12">
-      Viele Paare und Einzelpersonen kommen nicht, weil alles schon verloren ist.
-      Sie kommen, weil sie merken: Unsere alten Strategien helfen nicht mehr.
-      Rechthaben, Schweigen, Erklären, Rückzug, Druck, Anpassung — irgendwann wird daraus ein Muster.
-    </p>
+    <div class="space-y-6 text-gray-600 text-lg md:text-xl leading-relaxed text-left md:text-center">
+      <p>
+        Beziehung wird oft vorausgesetzt, als könnten wir sie einfach:
+        aus Intuition, aus Erfahrung, aus Liebe. Aber Nähe, Konflikt, Wiedergutmachung,
+        Grenzen und Vertrauen sind Fähigkeiten, die wachsen dürfen.
+      </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+      <p>
+        Viele Menschen kommen nicht in Beratung, weil alles schon verloren ist.
+        Sie kommen, weil sie merken: Unsere alten Strategien helfen nicht mehr.
+        Rechthaben, Schweigen, Erklären, Rückzug, Druck, Anpassung —
+        irgendwann wird daraus ein Muster.
+      </p>
 
-      <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
-        <h3 class="text-2xl font-bold mb-4">Wenn Gespräche kippen</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Aus einem Anliegen wird ein Streit. Aus Kritik wird Verteidigung.
-          Aus Sehnsucht nach Nähe wird Druck oder Rückzug.
-        </p>
-      </div>
-
-      <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
-        <h3 class="text-2xl font-bold mb-4">Wenn Distanz entsteht</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Man funktioniert miteinander, aber fühlt sich innerlich allein.
-          Vieles wird nicht mehr gesagt, weil es ohnehin „nichts bringt“.
-        </p>
-      </div>
-
-      <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
-        <h3 class="text-2xl font-bold mb-4">Wenn Klarheit fehlt</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Bleiben, gehen, öffnen, schließen, neu beginnen, Grenzen setzen:
-          Manchmal braucht es einen Raum, in dem Gedanken und Gefühle sortierbar werden.
-        </p>
-      </div>
-
+      <p>
+        Beratung kann helfen, dieses Muster zu verlangsamen und sichtbar zu machen:
+        Was passiert gerade? Was wird geschützt? Was wird vermieden?
+        Und was wäre ein nächster Schritt, der ehrlicher und zugleich verbindender ist?
+      </p>
     </div>
+
   </div>
 </section>
 
@@ -186,11 +262,17 @@
 <section class="w-full bg-black py-24 px-6 md:px-16" id="angebot">
 
   <div class="text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-extrabold text-white">
+    <p class="text-gray-400 uppercase tracking-wide mb-3">
       Mein Angebot
+    </p>
+
+    <h2 class="text-4xl md:text-5xl font-extrabold text-white">
+      Beratung für Beziehung, Klärung und neue Handlungsmöglichkeiten
     </h2>
-    <p class="text-gray-300 text-lg mt-4 max-w-2xl mx-auto">
-      Beratung für Menschen, die Beziehung nicht einfach „reparieren“, sondern besser verstehen und bewusster gestalten möchten.
+
+    <p class="text-gray-300 text-lg mt-4 max-w-3xl mx-auto">
+      Nicht als fertiger Fahrplan. Sondern als gemeinsamer Raum, in dem sichtbar werden kann,
+      was für Sie, Ihre Beziehung und Ihre Lebenssituation stimmig ist.
     </p>
   </div>
 
@@ -202,9 +284,9 @@
       </div>
       <h3 class="text-2xl font-bold text-white mb-3">Einzelberatung</h3>
       <p class="text-gray-400 leading-relaxed mb-6">
-        Für Menschen, die ihre Beziehungssituation klären möchten:
-        Ambivalenz, Trennungsgedanken, emotionale Abhängigkeit, Bindungsmuster, Grenzen oder die Frage:
-        Was ist eigentlich mein Anteil?
+        Für Menschen, die ihre Beziehungssituation sortieren möchten:
+        Ambivalenz, Trennungsgedanken, Bindungsmuster, Grenzen, Sehnsucht,
+        Wut, Scham oder die Frage: Was ist eigentlich mein Anteil?
       </p>
       <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener"
          class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md transition">
@@ -219,7 +301,8 @@
       <h3 class="text-2xl font-bold text-white mb-3">Paarberatung</h3>
       <p class="text-gray-400 leading-relaxed mb-6">
         Für Paare, die wieder miteinander sprechen wollen, ohne sich zu verlieren:
-        Konflikte, Verletzungen, Nähe und Distanz, Vertrauen, Entscheidungssituationen und neue Vereinbarungen.
+        Konflikte, Verletzungen, Vertrauen, Nähe und Distanz, Entscheidungssituationen
+        und neue Vereinbarungen.
       </p>
       <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener"
          class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md transition">
@@ -231,10 +314,10 @@
       <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-white text-3xl font-bold">
         3
       </div>
-      <h3 class="text-2xl font-bold text-white mb-3">Offene Beziehungen & Polyamorie</h3>
+      <h3 class="text-2xl font-bold text-white mb-3">Beziehungsvielfalt</h3>
       <p class="text-gray-400 leading-relaxed mb-6">
-        Für Menschen, die Beziehungsvielfalt bewusst leben oder erkunden:
-        Kommunikation, Eifersucht, Vereinbarungen, Grenzen, Verantwortung, Coming-out-Fragen und emotionale Sicherheit.
+        Für Menschen in offenen, polyamoren, queeren oder nicht eindeutig benannten Beziehungen.
+        Einzel-, Paar- und Mehrpersonensettings sind nach Vereinbarung möglich.
       </p>
       <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener"
          class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md transition">
@@ -261,17 +344,18 @@
       <p class="text-gray-600 text-lg leading-relaxed mb-6">
         In der Beratung geht es nicht darum, eine Person zur Schuldigen zu machen.
         Es geht darum, das gemeinsame Muster zu verstehen:
-        Was passiert zwischen uns? Was löst es in mir aus? Und was tue ich dann, das die Situation vielleicht weiter verschärft?
+        Was passiert zwischen uns? Was löst es in mir aus?
+        Und was tue ich dann, das die Situation vielleicht weiter verschärft?
       </p>
 
       <p class="text-gray-600 text-lg leading-relaxed mb-6">
-        Ich arbeite mit einem direkten, respektvollen Blick auf Beziehung.
-        Das heißt: schwierige Dinge dürfen ausgesprochen werden — aber nicht, um zu verletzen,
-        sondern um wieder handlungsfähig zu werden.
+        Ich arbeite direkt, respektvoll und beziehungsorientiert.
+        Schwierige Dinge dürfen ausgesprochen werden — nicht, um zu verletzen,
+        sondern um wieder in Kontakt mit sich selbst und miteinander zu kommen.
       </p>
 
       <p class="text-gray-600 text-lg leading-relaxed">
-        Besonders wichtig sind mir Selbstachtung, Grenzen und Verbindung:
+        Wichtig sind mir Selbstachtung, Grenzen und Verbindung:
         für sich einstehen, ohne den anderen abzuwerten;
         Verantwortung übernehmen, ohne in Scham zu versinken;
         Nähe suchen, ohne Druck zu machen.
@@ -284,7 +368,7 @@
         <div class="text-3xl mb-4">💬</div>
         <h3 class="text-xl font-bold mb-2">Direkt & respektvoll</h3>
         <p class="text-gray-600">
-          Wir reden über das, was wirklich passiert — ohne Beschämung, ohne moralischen Zeigefinger.
+          Wir reden über das, was wirklich passiert — ohne Beschämung und ohne moralischen Zeigefinger.
         </p>
       </div>
 
@@ -292,7 +376,8 @@
         <div class="text-3xl mb-4">🧭</div>
         <h3 class="text-xl font-bold mb-2">Muster statt Schuld</h3>
         <p class="text-gray-600">
-          Oft ist nicht eine Person „das Problem“, sondern ein wiederkehrender Tanz aus Angriff, Rückzug, Anpassung oder Kontrolle.
+          Oft ist nicht eine Person „das Problem“, sondern ein wiederkehrender Tanz aus Angriff,
+          Rückzug, Anpassung oder Kontrolle.
         </p>
       </div>
 
@@ -306,9 +391,10 @@
 
       <div class="bg-gray-50 rounded-3xl p-7 shadow-lg border border-gray-100">
         <div class="text-3xl mb-4">🌱</div>
-        <h3 class="text-xl font-bold mb-2">Konkrete nächste Schritte</h3>
+        <h3 class="text-xl font-bold mb-2">Konkrete Schritte</h3>
         <p class="text-gray-600">
-          Beratung soll nicht nur Einsicht bringen, sondern neue Gespräche, neue Vereinbarungen und neue Handlungsmöglichkeiten.
+          Beratung soll nicht nur Einsicht bringen, sondern neue Gespräche,
+          neue Vereinbarungen und neue Handlungsmöglichkeiten.
         </p>
       </div>
 
@@ -318,56 +404,95 @@
 
 <!-- POLYAMORIE -->
 <section class="w-full bg-gray-50 py-24 px-6 md:px-16" id="polyamorie">
-  <div class="max-w-5xl mx-auto text-center">
+  <div class="max-w-6xl mx-auto">
 
-    <p class="text-gray-500 uppercase tracking-wide mb-3">
-      Beziehung jenseits klassischer Modelle
-    </p>
+    <div class="text-center mb-16">
+      <p class="text-gray-500 uppercase tracking-wide mb-3">
+        Polyamorie, offene Beziehungen & Beziehungsvielfalt
+      </p>
 
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-      Monogam, offen, polyamor, queer oder noch nicht benannt:
-      Ihre Beziehung muss hier nicht in eine Norm passen.
-    </h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-5xl mx-auto">
+        Ihre Beziehungsform muss hier nicht zuerst erklärt oder verteidigt werden.
+      </h2>
 
-    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8">
-      In meiner Masterarbeit habe ich mich mit Beratung im Kontext von Polyamorie beschäftigt.
-      Dabei wurde deutlich: Viele Menschen wünschen sich professionelle Unterstützung,
-      haben aber Sorge, bewertet, missverstanden oder pathologisiert zu werden.
-    </p>
+      <p class="text-gray-600 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+        Manche Menschen kommen in Beratung, weil sie eine offene oder polyamore Beziehung leben.
+        Andere, weil sie darüber nachdenken. Wieder andere, weil eine Beziehung gerade an der Frage
+        von Freiheit, Verbindlichkeit, Eifersucht, Sexualität oder Ehrlichkeit an ihre Grenzen kommt.
+      </p>
+    </div>
 
-    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12">
-      Mein Anspruch ist ein Raum, in dem Beziehungsvielfalt nicht zuerst erklärt oder verteidigt werden muss.
-      Wir können über Eifersucht, Grenzen, Vereinbarungen, Sexualität, Zeit, Unsicherheit und Verantwortung sprechen —
-      ohne Ihre Beziehungsform vorschnell zum Problem zu machen.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-16">
 
       <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-        <h3 class="text-2xl font-bold mb-4">Nicht pathologisierend</h3>
+        <h3 class="text-2xl font-bold mb-4">Konsens & Vereinbarungen</h3>
         <p class="text-gray-600 leading-relaxed">
-          Polyamorie oder offene Beziehungen sind nicht automatisch das Problem.
-          Entscheidend ist, was in Ihrer konkreten Beziehungssituation passiert.
+          Offene und polyamore Beziehungen brauchen nicht weniger Verbindlichkeit,
+          sondern oft bewusstere Vereinbarungen: Was gilt? Was verändert sich?
+          Was braucht Sicherheit, Transparenz und gegenseitige Zustimmung?
         </p>
       </div>
 
       <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-        <h3 class="text-2xl font-bold mb-4">Informiert & lernbereit</h3>
+        <h3 class="text-2xl font-bold mb-4">Eifersucht & emotionale Sicherheit</h3>
         <p class="text-gray-600 leading-relaxed">
-          Sie müssen nicht bei null anfangen und erst erklären, dass vielfältige Beziehungsformen existieren.
-          Gleichzeitig bleibe ich neugierig auf Ihre eigene Definition von Beziehung.
+          Eifersucht, Angst, Scham oder Unsicherheit sind nicht automatisch Zeichen,
+          dass etwas „falsch“ ist. Sie können Hinweise darauf sein, wo Bedürfnisse,
+          Grenzen, Bindung und Selbstachtung genauer angeschaut werden wollen.
         </p>
       </div>
 
       <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-        <h3 class="text-2xl font-bold mb-4">Praktisch & emotional</h3>
+        <h3 class="text-2xl font-bold mb-4">Mehrpersonensettings</h3>
         <p class="text-gray-600 leading-relaxed">
-          Es geht um Gefühle und um konkrete Absprachen:
-          Grenzen, Bedürfnisse, Kommunikation, Zeit, Transparenz und Sicherheit.
+          Je nach Anliegen kann Beratung als Einzel-, Paar- oder Mehrpersonensetting sinnvoll sein.
+          Im Erstgespräch klären wir gemeinsam, welcher Rahmen für Ihre Situation passend ist.
         </p>
       </div>
 
     </div>
+
+    <div class="bg-black text-white rounded-3xl p-8 md:p-12 shadow-2xl grid md:grid-cols-2 gap-10 items-center">
+
+      <div>
+        <p class="text-gray-300 uppercase tracking-wide mb-3">
+          Mein Hintergrund
+        </p>
+
+        <h3 class="text-3xl md:text-4xl font-bold mb-6">
+          Wissenschaftlich mit Polyamorie beschäftigt — praktisch an Ihrer Beziehung orientiert.
+        </h3>
+
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+          In meiner Masterarbeit habe ich mich mit Beratung im Kontext von Polyamorie beschäftigt:
+          mit emotionalen Dynamiken, gesellschaftlichen Vorurteilen, Beratungsbarrieren und der Frage,
+          was professionelle Begleitung wissen muss, um nicht zu pathologisieren.
+        </p>
+
+        <p class="text-gray-300 text-lg leading-relaxed">
+          Mein Ziel ist kein fertiges Beziehungsmodell. Mein Ziel ist ein Raum,
+          in dem Sie klarer sehen können, was für Sie und Ihre Beziehung(en) stimmig,
+          verantwortungsvoll und lebbar ist.
+        </p>
+      </div>
+
+      <div class="bg-white/10 rounded-3xl p-8 border border-white/10">
+        <h4 class="text-2xl font-bold mb-6">
+          Themen, mit denen Sie kommen können
+        </h4>
+
+        <ul class="space-y-4 text-gray-300 text-lg">
+          <li>✔ Öffnung einer bestehenden Beziehung</li>
+          <li>✔ Eifersucht, Unsicherheit und Verlustangst</li>
+          <li>✔ Grenzen, Regeln, Vereinbarungen und Konsens</li>
+          <li>✔ Coming-out, Familie, Umfeld und Minderheitenstress</li>
+          <li>✔ Unterschiedliche Bedürfnisse nach Freiheit und Verbindlichkeit</li>
+          <li>✔ Konflikte in Dreiecken, Netzwerken oder Mehrpersonenkonstellationen</li>
+        </ul>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -375,13 +500,18 @@
 <section class="w-full bg-white py-24 px-6 md:px-16" id="ablauf">
   <div class="max-w-6xl mx-auto text-center">
 
+    <p class="text-gray-500 uppercase tracking-wide mb-3">
+      Der Einstieg
+    </p>
+
     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
-      Wie der Einstieg abläuft
+      Wie der Beratungsprozess beginnen kann
     </h2>
 
-    <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-16">
+    <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-16">
       Das Erstgespräch ist kein Commitment für einen langen Prozess.
-      Es ist ein gemeinsames Sortieren: Was ist los, was brauchen Sie, und kann mein Angebot dafür passend sein?
+      Es ist ein gemeinsames Sortieren: Was ist los, was brauchen Sie,
+      und kann mein Angebot dafür passend sein?
     </p>
 
     <div class="grid md:grid-cols-4 gap-8 text-left">
@@ -430,7 +560,7 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT TEASER -->
 <section class="w-full bg-gray-50 py-24 px-8 md:px-16" id="about">
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
 
@@ -467,41 +597,38 @@
         Deshalb ist mir wichtig, vielfältige Beziehungsformen offen, informiert und nicht-pathologisierend zu begleiten.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="about.html"
+           class="inline-block bg-black text-white px-8 py-3 rounded-3xl shadow-xl hover:bg-black/80 transition font-semibold">
+          Mehr über meinen Hintergrund
+        </a>
 
-        <div class="flex flex-col items-center md:items-start text-center md:text-left">
-          <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">✓</div>
-          <p class="mt-3 font-semibold text-gray-900">Psychosozial</p>
-          <p class="text-gray-500 text-sm">Klärung und Begleitung</p>
-        </div>
-
-        <div class="flex flex-col items-center md:items-start text-center md:text-left">
-          <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">✓</div>
-          <p class="mt-3 font-semibold text-gray-900">Beziehungsorientiert</p>
-          <p class="text-gray-500 text-sm">Muster, Konflikte, Kommunikation</p>
-        </div>
-
-        <div class="flex flex-col items-center md:items-start text-center md:text-left">
-          <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">✓</div>
-          <p class="mt-3 font-semibold text-gray-900">Vielfaltssensibel</p>
-          <p class="text-gray-500 text-sm">Auch Polyamorie und offene Beziehungen</p>
-        </div>
-
+        <a href="https://app.cal.eu/theophil-kroller"
+           target="_blank"
+           rel="noopener"
+           class="inline-block bg-white border border-gray-300 text-black px-8 py-3 rounded-3xl shadow-xl hover:bg-gray-50 transition font-semibold">
+          Erstgespräch anfragen
+        </a>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- RAHMEN -->
+<!-- RAHMENBEDINGUNGEN -->
 <section class="py-24 bg-white" id="rahmen">
   <div class="max-w-6xl mx-auto px-6 text-center">
 
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+    <p class="text-gray-500 uppercase tracking-wide mb-3">
       Rahmenbedingungen
+    </p>
+
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+      Klarer Rahmen. Vertraulicher Raum.
     </h2>
 
     <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-16">
-      Beratung braucht einen klaren und sicheren Rahmen. Details klären wir im Erstgespräch.
+      Beratung braucht Orientierung. Details klären wir im Erstgespräch.
     </p>
 
     <div class="grid md:grid-cols-3 gap-10 text-left">
@@ -511,8 +638,8 @@
         <ul class="space-y-4 text-gray-700">
           <li>✔ Einzelberatung</li>
           <li>✔ Paarberatung</li>
+          <li>✔ Mehrpersonensetting nach Vereinbarung</li>
           <li>✔ Online oder nach Vereinbarung vor Ort</li>
-          <li>✔ Erstgespräch zur Orientierung</li>
         </ul>
       </div>
 
@@ -522,7 +649,7 @@
           <li>✔ Streit, Rückzug und Kommunikationsmuster</li>
           <li>✔ Nähe, Distanz, Vertrauen und Verletzungen</li>
           <li>✔ Trennung, Ambivalenz und Neubeginn</li>
-          <li>✔ Offene Beziehungen, Polyamorie, Eifersucht und Vereinbarungen</li>
+          <li>✔ Offene Beziehungen, Polyamorie und Vereinbarungen</li>
         </ul>
       </div>
 
@@ -544,6 +671,10 @@
 <section class="relative w-full bg-black py-28 px-6 md:px-16 overflow-hidden" id="kontakt">
 
   <div class="relative max-w-3xl mx-auto text-center">
+
+    <p class="text-gray-400 uppercase tracking-wide mb-3">
+      Kennenlernen
+    </p>
 
     <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">
       Wenn Sie sich wieder besser verstehen möchten, kann ein erstes Gespräch ein Anfang sein.
@@ -594,11 +725,11 @@
     <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
       <h4 class="text-lg font-semibold mb-4">Navigation</h4>
       <ul class="space-y-3 text-gray-300">
-        <li><a href="#" class="hover:text-white transition">Start</a></li>
+        <li><a href="#start" class="hover:text-white transition">Start</a></li>
         <li><a href="#angebot" class="hover:text-white transition">Angebot</a></li>
         <li><a href="#arbeitsweise" class="hover:text-white transition">Arbeitsweise</a></li>
         <li><a href="#polyamorie" class="hover:text-white transition">Polyamorie</a></li>
-        <li><a href="#about" class="hover:text-white transition">Über mich</a></li>
+        <li><a href="about.html" class="hover:text-white transition">Qualifikationen</a></li>
       </ul>
     </div>
 
@@ -625,6 +756,16 @@
   </div>
 </footer>
 
-<script src="./src/script.js"></script>
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
+
 </body>
 </html>
