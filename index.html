@@ -1,44 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./dist/output.css" rel="stylesheet">
-  <title>Coach Funnel</title>
+  <title>Beziehungsberatung | Theophil Kroller</title>
+  <meta name="description" content="Psychosoziale Beziehungsberatung für Einzelpersonen und Paare. Unterstützung bei Beziehungskrisen, Kommunikation, Konflikten, Trennung, Neuorientierung und vielfältigen Beziehungsformen.">
+
   <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
-<body class="bg-black">
+
+<body class="bg-black text-gray-900">
 
 <!-- NAVBAR -->
 <nav class="w-full bg-white/100 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 shadow-lg">
-  <div class="max-w-7.2xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
     <!-- LOGO -->
-    <div class="flex items-center gap-2">
-      <img src="https://cdn-icons-png.flaticon.com/128/4287/4287537.png" alt="Logo" class="h-10 w-auto">
-      <span class="text-xl font-semibold tracking-tight text-gray-900">The Jane Method</span>
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-full bg-black text-white flex items-center justify-center font-bold">
+        TK
+      </div>
+      <span class="text-xl font-semibold tracking-tight text-gray-900">
+        Theophil Kroller
+      </span>
     </div>
 
-    <!-- NAV LINKS (Desktop Only) -->
-    <ul class="hidden md:flex items-center gap-10 text-white-700 font-medium">
-      <li><a href="#" class="hover:text-gray-900 transition">Home</a></li>
-      <li><a href="#about" class="hover:text-gray-900 transition">About</a></li>
-      <li><a href="#programs" class="hover:text-gray-900 transition">Programs</a></li>
-      <li><a href="#testimonials" class="hover:text-gray-900 transition">Testimonials</a></li>
-      <li><a href="#pricing" class="hover:text-gray-900 transition">Pricing</a></li>
-      <li><a href="#contact" class="hover:text-gray-900 transition">Contact</a></li>
+    <!-- NAV LINKS -->
+    <ul class="hidden md:flex items-center gap-8 text-gray-700 font-medium">
+      <li><a href="#" class="hover:text-black transition">Start</a></li>
+      <li><a href="#angebot" class="hover:text-black transition">Angebot</a></li>
+      <li><a href="#arbeitsweise" class="hover:text-black transition">Arbeitsweise</a></li>
+      <li><a href="#ablauf" class="hover:text-black transition">Ablauf</a></li>
+      <li><a href="#about" class="hover:text-black transition">Über mich</a></li>
+      <li><a href="#kontakt" class="hover:text-black transition">Kontakt</a></li>
     </ul>
 
-  <!-- CTA BUTTON (Desktop Only) -->
-    <a href="https://x.com/WebSync360o"
-      target="_blank"
-      class="hidden md:inline-block bg-black text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:bg-black/80 transition">
-      Book Session
+    <!-- CTA BUTTON -->
+    <a href="https://app.cal.eu/theophil-kroller"
+       target="_blank"
+       rel="noopener"
+       class="hidden md:inline-block bg-black text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:bg-black/80 transition">
+      Erstgespräch anfragen
     </a>
 
-    <!-- HAMBURGER MENU (Mobile Only) -->
+    <!-- HAMBURGER MENU -->
     <button id="menu-btn" class="md:hidden flex flex-col gap-1.5">
       <span class="block w-6 h-0.5 bg-gray-900"></span>
       <span class="block w-6 h-0.5 bg-gray-900"></span>
@@ -46,458 +54,515 @@
     </button>
   </div>
 
-  <!-- MOBILE DROPDOWN MENU -->
+  <!-- MOBILE MENU -->
   <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 animate-slideDown origin-top bg-white/90 backdrop-blur-md border-t border-gray-100">
     <ul class="flex flex-col gap-4 text-gray-800 font-medium py-4">
-      <li><a href="#" class="block w-full hover:text-indigo-600">Home</a></li>
-      <li><a href="#about" class="block w-full hover:text-indigo-600">About</a></li>
-      <li><a href="#programs" class="block w-full hover:text-indigo-600">Programs</a></li>
-      <li><a href="#testimonials" class="block w-full hover:text-indigo-600">Testimonials</a></li>
-      <li><a href="#pricing" class="block w-full hover:text-indigo-600">Pricing</a></li>
-      <li><a href="#contact" class="block w-full hover:text-indigo-600">Contact</a></li>
+      <li><a href="#" class="block w-full hover:text-black">Start</a></li>
+      <li><a href="#angebot" class="block w-full hover:text-black">Angebot</a></li>
+      <li><a href="#arbeitsweise" class="block w-full hover:text-black">Arbeitsweise</a></li>
+      <li><a href="#ablauf" class="block w-full hover:text-black">Ablauf</a></li>
+      <li><a href="#about" class="block w-full hover:text-black">Über mich</a></li>
+      <li><a href="#kontakt" class="block w-full hover:text-black">Kontakt</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- HERO SECTION -->
-<section class="relative w-full h-[90vh] flex flex-col md:flex-row items-stretch overflow-hidden mt-[10px] md:mt-0">
+<section class="relative w-full min-h-[90vh] flex flex-col md:flex-row items-stretch overflow-hidden mt-[10px] md:mt-0">
 
-  <!-- BACKGROUND IMAGE & Overlay -->
+  <!-- BACKGROUND -->
   <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-black/50 z-0"></div>
+    <div class="absolute inset-0 bg-black/70 z-0"></div>
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-         style="background-image: url(''); background-blend-mode: overlay;"></div>
+         style="background-image: url('./public/image.png'); background-blend-mode: overlay;"></div>
   </div>
 
-<!-- LEFT PANEL: Text & CTA -->
-<div class="w-full md:w-1/3 flex flex-col justify-center items-center md:items-start px-8 md:px-26 z-10 mb-12 md:mb-0 text-center md:text-left">
-  <p class="text-xl text-gray-200 uppercase tracking-wide mb-2">Transform Your Life</p>
-  
- <h1 class="text-5xl md:text-7xl font-bold leading-tight break-words text-white">
-  Unlock Your <br> Full Potential
-</h1>
-  
-  <p class="mt-4 text-gray-200 text-lg md:text-xl max-w-md">
-    Personalized performance coaching to help you gain clarity, build discipline, and achieve lasting growth.
-  </p>
+  <!-- LEFT PANEL -->
+  <div class="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start px-8 md:px-20 z-10 py-20 text-center md:text-left">
+    <p class="text-lg text-gray-200 uppercase tracking-wide mb-3">
+      Psychosoziale Beratung
+    </p>
 
-  <a href="#programs"
-     class="mt-8 inline-block bg-white/100 backdrop-blur-md border border-white/10 text-black px-8 py-3 rounded-3xl shadow-2xl hover:scale-105 transition-transform font-semibold">
-    Start Your Transformation
-  </a>
-</div>
+    <h1 class="text-5xl md:text-7xl font-bold leading-tight break-words text-white">
+      Beziehungsberatung <br> für Menschen in Klärung
+    </h1>
 
+    <p class="mt-6 text-gray-200 text-lg md:text-xl max-w-xl leading-relaxed">
+      Wenn Gespräche im Kreis laufen, Nähe verloren geht oder eine Entscheidung schwerfällt:
+      Ich begleite Einzelpersonen und Paare bei Beziehungsthemen, Konflikten und Neuorientierung.
+    </p>
 
-<!-- MIDDLE PANEL: Coach Image -->
-<div class="w-full md:w-1/3 flex items-end justify-center relative z-10">
+    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+      <a href="https://app.cal.eu/theophil-kroller"
+         target="_blank"
+         rel="noopener"
+         class="inline-block bg-white text-black px-8 py-3 rounded-3xl shadow-2xl hover:scale-105 transition-transform font-semibold">
+        Erstgespräch anfragen
+      </a>
 
-  <div class="relative w-full max-w-lg md:max-w-full max-h-[100vh] flex items-end justify-center">
-
-    <!-- Bottom fade overlay -->
-    <div class="absolute bottom-0 left-0 w-full h-48 md:h-64 bg-gradient-to-t from-black/90 to-transparent rounded-b-3xl pointer-events-none z-10"></div>
-
-    <!-- Floating shadow for depth -->
-    <div class="absolute inset-0 -translate-y-2 blur-3xl bg-black/10 rounded-3xl z-10"></div>
-
-    <!-- Coach image -->
-    <img src="./public/image.png"
-         alt="Coach Jane"
-         class="relative w-full h-auto object-cover rounded-3xl shadow-2xl opacity-100 transition-transform duration-500 hover:scale-105 -translate-y-1 z-0">
-
+      <a href="#angebot"
+         class="inline-block bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-3 rounded-3xl shadow-2xl hover:bg-white/20 transition font-semibold">
+        Mehr erfahren
+      </a>
+    </div>
   </div>
 
-</div>
+  <!-- RIGHT PANEL -->
+  <div class="w-full md:w-1/2 relative flex flex-col justify-center px-8 md:px-16 z-10 py-20">
 
-  <!-- RIGHT PANEL: Premium Highlights -->
-  <div class="w-full md:w-1/3 relative flex flex-col justify-start px-8 md:px-12 z-10">
-    <!-- Geometric accents -->
-    <div class="absolute -top-4 -right-8 w-24 h-24 bg-gradient-to-tr from-pink-500 to-purple-500 opacity-20 rounded-lg transform rotate-12"></div>
-    <div class="absolute top-16 -right-6 w-32 h-16 bg-gradient-to-br from-indigo-500 to-blue-500 opacity-15 rounded-full transform -rotate-6"></div>
+    <div class="bg-white/95 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-2xl max-w-xl mx-auto md:ml-auto">
+      <p class="text-sm uppercase tracking-wide text-gray-500 mb-3">
+        Wobei ich unterstütze
+      </p>
 
-    <!-- Vertical Stats Strip -->
-    <div class="hidden md:flex flex-col gap-6 w-full max-w-[220px] mt-12 ml-auto">
-  <div class="bg-white/100 backdrop-blur-md rounded-3xl px-6 py-5 shadow-2xl border border-white/10 text-right hover:scale-105 transition-transform">
-    <div class="block text-3xl md:text-4xl font-bold text-black">12k+</div>
-    <div class="block text-sm md:text-base text-black-300 mt-1">Clients</div>
-  </div>
-  <div class="bg-black/70 backdrop-blur-md rounded-3xl px-6 py-5 shadow-2xl border border-white/10 text-right hover:scale-105 transition-transform">
-    <div class="block text-3xl md:text-4xl font-bold text-white">17k+</div>
-    <div class="block text-sm md:text-base text-gray-300 mt-1">Sessions</div>
-  </div>
-  <div class="bg-black/70 backdrop-blur-md rounded-3xl px-6 py-5 shadow-2xl border border-white/10 text-right hover:scale-105 transition-transform">
-    <div class="block text-3xl md:text-4xl font-bold text-white">95%</div>
-    <div class="block text-sm md:text-base text-gray-300 mt-1">Success Rate</div>
-  </div>
-  <div class="bg-white/100 backdrop-blur-md rounded-3xl px-6 py-5 shadow-2xl border border-white/10 text-right hover:scale-105 transition-transform">
-    <div class="block text-3xl md:text-4xl font-bold text-black">5+</div>
-    <div class="block text-sm md:text-base text-black-300 mt-1">Awards</div>
-  </div>
-</div>
-  </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        Beziehung verstehen, Konflikte klären, nächste Schritte finden.
+      </h2>
 
+      <div class="space-y-4 text-gray-700 text-lg">
+        <p>✔ Kommunikation, Streit und wiederkehrende Muster</p>
+        <p>✔ Nähe, Distanz, Vertrauen und Verletzungen</p>
+        <p>✔ Entscheidungssituationen, Trennung oder Neubeginn</p>
+        <p>✔ Paarbeziehungen, offene Beziehungen und Polyamorie</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- UNDER HERO HORIZONTAL INFO CARDS -->
-<section class="w-full flex flex-wrap justify-center gap-8 py-16 px-6">
+<!-- RECOGNITION SECTION -->
+<section class="w-full bg-white py-20 px-6 md:px-16">
+  <div class="max-w-6xl mx-auto text-center">
 
-  <!-- Cards -->
-  <div class="flex flex-col items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl px-8 py-6 shadow-xl border border-white/20 hover:scale-105 transition-transform min-w-[140px]">
-    <span class="text-2xl md:text-3xl font-bold text-white">12k+</span>
-    <span class="text-sm md:text-base text-gray-300 tracking-wide mt-1">Clients</span>
-  </div>
-  <div class="flex flex-col items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl px-8 py-6 shadow-xl border border-white/20 hover:scale-105 transition-transform min-w-[140px]">
-    <span class="text-2xl md:text-3xl font-bold text-white">17k+</span>
-    <span class="text-sm md:text-base text-gray-300 tracking-wide mt-1">Sessions</span>
-  </div>
-  <div class="flex flex-col items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl px-8 py-6 shadow-xl border border-white/20 hover:scale-105 transition-transform min-w-[140px]">
-    <span class="text-2xl md:text-3xl font-bold text-white">95%</span>
-    <span class="text-sm md:text-base text-gray-300 tracking-wide mt-1">Success Rate</span>
-  </div>
-  <div class="flex flex-col items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl px-8 py-6 shadow-xl border border-white/20 hover:scale-105 transition-transform min-w-[140px]">
-    <span class="text-2xl md:text-3xl font-bold text-white">1k+</span>
-    <span class="text-sm md:text-base text-gray-300 tracking-wide mt-1">Happy Clients</span>
-  </div>
-  <div class="flex flex-col items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl px-8 py-6 shadow-xl border border-white/20 hover:scale-105 transition-transform min-w-[140px]">
-    <span class="text-2xl md:text-3xl font-bold text-white">50+</span>
-    <span class="text-sm md:text-base text-gray-300 tracking-wide mt-1">Programs</span>
-  </div>
-  <div class="flex flex-col items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl px-8 py-6 shadow-xl border border-white/20 hover:scale-105 transition-transform min-w-[140px]">
-    <span class="text-2xl md:text-3xl font-bold text-white">30+</span>
-    <span class="text-sm md:text-base text-gray-300 tracking-wide mt-1">Cities</span>
-  </div>
-  <div class="flex flex-col items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl px-8 py-6 shadow-xl border border-white/20 hover:scale-105 transition-transform min-w-[140px]">
-    <span class="text-2xl md:text-3xl font-bold text-white">5+</span>
-    <span class="text-sm md:text-base text-gray-300 tracking-wide mt-1">Awards</span>
-  </div>
+    <p class="text-gray-500 uppercase tracking-wide mb-3">
+      Vielleicht kennen Sie das
+    </p>
 
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+      Beziehung kann belasten, auch wenn noch viel da ist.
+    </h2>
+
+    <p class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-12">
+      Viele Menschen kommen nicht erst dann in Beratung, wenn alles vorbei ist.
+      Oft geht es um den Wunsch, besser zu verstehen, was gerade passiert:
+      zwischen Nähe und Rückzug, Hoffnung und Erschöpfung, Bindung und Freiheit.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+
+      <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4">Konflikte</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Gespräche eskalieren, alte Themen kommen immer wieder hoch,
+          und irgendwann geht es nicht mehr nur um den Anlass, sondern um das Muster dahinter.
+        </p>
+      </div>
+
+      <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4">Unsicherheit</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Bleiben, gehen, neu verhandeln, Abstand nehmen, wieder annähern:
+          Manchmal braucht es einen geschützten Raum, um die eigene Position klarer zu bekommen.
+        </p>
+      </div>
+
+      <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4">Vielfalt</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Beziehungen sind unterschiedlich. Monogam, offen, polyamor, queer, klassisch oder ganz eigen:
+          Entscheidend ist, was für die beteiligten Menschen stimmig und verantwortungsvoll ist.
+        </p>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<!-- ABOUT THE COACH SECTION -->
-<section class="w-full bg-white py-20 px-8 md:px-16">
-  
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<!-- ANGEBOT SECTION -->
+<section class="w-full bg-black py-24 px-6 md:px-16" id="angebot">
 
-    <!-- Coach Image -->
-    <div class="w-full md:w-1/2 flex justify-center">
-      <img 
-        src="./public/image.png" 
-        alt="Coach Portrait"
-        class="w-full max-w-sm rounded-3xl shadow-xl object-cover"
-      >
-    </div>
-<!-- Text Content -->
-<div class="w-full md:w-1/2 flex flex-col items-center text-center">
-
-  <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-    Meet Your Coach
-  </h2>
-
-  <p class="text-gray-600 text-lx leading-relaxed mb-8 max-w-xl">
-    With years of experience helping individuals unlock clarity, discipline, 
-    and high-performance habits, your coach brings a results-driven approach 
-    that blends mindset mastery with practical action.  
-    You’re not just getting guidance, you’re gaining a partner dedicated 
-    to your transformation.
-  </p>
-
-  <!-- Credibility Icons / Points -->
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
-
-    <!-- Point 1 -->
-    <div class="flex flex-col items-center text-center">
-      <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
-        ⭐
-      </div>
-      <p class="mt-3 font-semibold text-gray-900">Certified Coach</p>
-      <p class="text-gray-500 text-sm">Internationally recognized</p>
-    </div>
-
-    <!-- Point 2 -->
-    <div class="flex flex-col items-center text-center">
-      <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
-        ⭐
-      </div>
-      <p class="mt-3 font-semibold text-gray-900">100+ Clients</p>
-      <p class="text-gray-500 text-sm">Lives transformed</p>
-    </div>
-
-    <!-- Point 3 -->
-    <div class="flex flex-col items-center text-center">
-      <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
-        ⭐
-      </div>
-      <p class="mt-3 font-semibold text-gray-900">Proven Results</p>
-      <p class="text-gray-500 text-sm">Growth-focused systems</p>
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="w-full bg-black py-24 px-6 md:px-16">
-
-  <!-- Section Header -->
   <div class="text-center mb-16">
     <h2 class="text-4xl md:text-5xl font-extrabold text-white">
-      Transformative Coaching Programs
+      Mein Angebot
     </h2>
-    <p class="text-gray-300 text-lg mt-3 max-w-2xl mx-auto">
-      Choose the program designed to elevate your mindset, strengthen your discipline, 
-      and unlock your highest potential.
+    <p class="text-gray-300 text-lg mt-4 max-w-2xl mx-auto">
+      Beratung als Raum für Klärung, Perspektivwechsel und konkrete nächste Schritte.
     </p>
   </div>
 
-  <!-- 3 Cards Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
 
     <!-- Card 1 -->
     <div class="group bg-gradient-to-b from-gray-900 to-black p-8 rounded-3xl border border-white/10 shadow-xl hover:border-white/20 hover:-translate-y-2 transition-all">
-      
       <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 text-white text-3xl font-bold group-hover:bg-white/20 transition">
-        ✦
+        1
       </div>
 
-      <h3 class="text-2xl font-bold text-white mb-3">Clarity & Purpose Coaching</h3>
+      <h3 class="text-2xl font-bold text-white mb-3">
+        Einzelberatung
+      </h3>
 
       <p class="text-gray-400 text-base leading-relaxed mb-6">
-        Gain laser-sharp clarity, eliminate confusion, and realign your goals with 
-        a personalized strategy built for long-term success.
+        Für Menschen, die ihre Beziehungssituation sortieren möchten:
+        bei Ambivalenz, Trennungsgedanken, Konflikten, Bindungsmustern oder persönlicher Neuorientierung.
       </p>
 
-      <a href="#" class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md group-hover:shadow-lg transition">
-        Learn More
+      <a href="https://app.cal.eu/theophil-kroller"
+         target="_blank"
+         rel="noopener"
+         class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md group-hover:shadow-lg transition">
+        Erstgespräch anfragen
       </a>
     </div>
 
     <!-- Card 2 -->
     <div class="group bg-gradient-to-b from-gray-900 to-black p-8 rounded-3xl border border-white/10 shadow-xl hover:border-white/20 hover:-translate-y-2 transition-all">
-
       <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 text-white text-3xl font-bold group-hover:bg-white/20 transition">
-        ✦
+        2
       </div>
 
-      <h3 class="text-2xl font-bold text-white mb-3">Discipline & Habit Mastery</h3>
+      <h3 class="text-2xl font-bold text-white mb-3">
+        Paarberatung
+      </h3>
 
       <p class="text-gray-400 text-base leading-relaxed mb-6">
-        Build unstoppable habits, strengthen your discipline, and create systems 
-        that guarantee your daily growth and long-term success.
+        Für Paare, die Kommunikation, Konflikte, Nähe, Vertrauen oder gemeinsame Entscheidungen klären möchten —
+        ohne vorschnelle Schuldzuweisungen.
       </p>
 
-      <a href="#" class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md group-hover:shadow-lg transition">
-        Learn More
+      <a href="https://app.cal.eu/theophil-kroller"
+         target="_blank"
+         rel="noopener"
+         class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md group-hover:shadow-lg transition">
+        Erstgespräch anfragen
       </a>
     </div>
 
     <!-- Card 3 -->
     <div class="group bg-gradient-to-b from-gray-900 to-black p-8 rounded-3xl border border-white/10 shadow-xl hover:border-white/20 hover:-translate-y-2 transition-all">
-
       <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 text-white text-3xl font-bold group-hover:bg-white/20 transition">
-        ✦
+        3
       </div>
 
-      <h3 class="text-2xl font-bold text-white mb-3">High-Performance Accelerator</h3>
+      <h3 class="text-2xl font-bold text-white mb-3">
+        Polyamorie & offene Beziehungen
+      </h3>
 
       <p class="text-gray-400 text-base leading-relaxed mb-6">
-        Upgrade your mindset, increase productivity, and perform at your highest 
-        level with elite coaching and proven frameworks.
+        Für Menschen, die Beziehungsvielfalt bewusst gestalten möchten:
+        mit Blick auf Kommunikation, Grenzen, Eifersucht, Verantwortung, Vereinbarungen und Selbstklärung.
       </p>
 
-      <a href="#" class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md group-hover:shadow-lg transition">
-        Learn More
+      <a href="https://app.cal.eu/theophil-kroller"
+         target="_blank"
+         rel="noopener"
+         class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-2xl shadow-md group-hover:shadow-lg transition">
+        Erstgespräch anfragen
       </a>
     </div>
 
   </div>
 </section>
 
-<section class="w-full bg-white py-24 px-6 md:px-16">
+<!-- ARBEITSWEISE SECTION -->
+<section class="w-full bg-white py-24 px-6 md:px-16" id="arbeitsweise">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
 
-  <!-- Header -->
-  <div class="text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
-      What Clients Are Saying
-    </h2>
-    <p class="text-gray-600 text-lg mt-3 max-w-2xl mx-auto">
-      Real stories from people who transformed their lives through powerful coaching.
-    </p>
-  </div>
+    <div class="w-full md:w-1/2">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        Wie ich arbeite
+      </h2>
 
-  <!-- Testimonials Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-    <!-- Card 1 -->
-    <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all">
-      <p class="text-gray-700 text-lg leading-relaxed italic">
-        "Before working with him, I struggled with discipline.  
-        Now, my routines are rock-solid and my confidence is on another level."
+      <p class="text-gray-600 text-lg leading-relaxed mb-6">
+        Meine Beratung ist psychosozial, klärungsorientiert und beziehungsbezogen.
+        Im Mittelpunkt steht nicht die schnelle Lösung von außen, sondern ein gemeinsamer Prozess:
+        Was passiert gerade? Was wird gebraucht? Was ist der nächste verantwortliche Schritt?
       </p>
-      <div class="mt-6 font-bold text-gray-900 text-xl">Sarah M.</div>
-      <p class="text-gray-500 text-sm">Entrepreneur</p>
+
+      <p class="text-gray-600 text-lg leading-relaxed mb-6">
+        Mich interessiert besonders, wie Menschen in Beziehung treten:
+        mit sich selbst, mit Partner:innen, mit Erwartungen, Grenzen, Bedürfnissen und alten Mustern.
+      </p>
+
+      <p class="text-gray-600 text-lg leading-relaxed">
+        Der Ansatz der Relational Life Therapy interessiert mich besonders, weil er Beziehung nicht nur als privates Gefühl,
+        sondern als konkretes Zusammenspiel von Verbindung, Verantwortung, Wahrheit und gegenseitiger Anerkennung versteht.
+        Ich bin aktuell dabei, mich in diese Methode weiter einzuarbeiten.
+      </p>
     </div>
 
-    <!-- Card 2 -->
-    <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all">
-      <p class="text-gray-700 text-lg leading-relaxed italic">
-        "His coaching helped me break mental barriers I didn’t even know I had.
-        I finally feel in control of my life."
-      </p>
-      <div class="mt-6 font-bold text-gray-900 text-xl">Daniel K.</div>
-      <p class="text-gray-500 text-sm">Financial Analyst</p>
-    </div>
+    <div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-    <!-- Card 3 -->
-    <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all">
-      <p class="text-gray-700 text-lg leading-relaxed italic">
-        "I gained clarity, discipline, and results.  
-        This coaching experience has been a life-changing investment."
-      </p>
-      <div class="mt-6 font-bold text-gray-900 text-xl">Monica L.</div>
-      <p class="text-gray-500 text-sm">Tech Specialist</p>
-    </div>
-
-  </div>
-
-</section>
-
-<section class="relative w-full bg-black py-28 px-6 md:px-16 overflow-hidden">
-
-  <!-- Subtle glow behind -->
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.15),transparent_0%)]"></div>
-
-  <!-- Content -->
-  <div class="relative max-w-3xl mx-auto text-center">
-
-    <!-- Luxury Heading -->
-    <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">
-      Become the Best Version of Yourself
-    </h2>
-
-    <p class="text-gray-300 text-lg md:text-xl mb-12">
-      Get exclusive coaching insights, elite performance frameworks, and powerful clarity tools  
-      delivered straight to your inbox every week.
-    </p>
-
-    <!-- Glass Email Box -->
-    <form class="flex flex-col md:flex-row items-center justify-center gap-4">
-
-      <div class="w-full md:w-2/3">
-        <input 
-          type="email" 
-          placeholder="Enter your email"
-          class="w-full px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-md 
-                 text-white placeholder-gray-400 border border-white/20 
-                 focus:outline-none focus:border-gold-500 transition shadow-xl"
-        >
+      <div class="bg-gray-50 rounded-3xl p-7 shadow-lg border border-gray-100">
+        <div class="text-3xl mb-4">💬</div>
+        <h3 class="text-xl font-bold mb-2">Wertschätzend</h3>
+        <p class="text-gray-600">
+          Auch schwierige Themen brauchen einen Rahmen, in dem Menschen nicht beschämt werden.
+        </p>
       </div>
 
-      <!-- Gold Button -->
-      <button 
-        class="px-10 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 
-               text-black font-extrabold tracking-wide rounded-2xl shadow-[0_0_20px_rgba(255,215,0,0.55)]
-               hover:scale-105 hover:shadow-[0_0_35px_rgba(255,215,0,0.8)] transition">
-        Join Now
-      </button>
+      <div class="bg-gray-50 rounded-3xl p-7 shadow-lg border border-gray-100">
+        <div class="text-3xl mb-4">🧭</div>
+        <h3 class="text-xl font-bold mb-2">Klärend</h3>
+        <p class="text-gray-600">
+          Wir sortieren Anliegen, Dynamiken und Handlungsoptionen, statt vorschnell zu bewerten.
+        </p>
+      </div>
 
-    </form>
+      <div class="bg-gray-50 rounded-3xl p-7 shadow-lg border border-gray-100">
+        <div class="text-3xl mb-4">🤝</div>
+        <h3 class="text-xl font-bold mb-2">Beziehungsorientiert</h3>
+        <p class="text-gray-600">
+          Beziehungsmuster, Kommunikation und emotionale Logiken werden gemeinsam sichtbar gemacht.
+        </p>
+      </div>
+
+      <div class="bg-gray-50 rounded-3xl p-7 shadow-lg border border-gray-100">
+        <div class="text-3xl mb-4">🌈</div>
+        <h3 class="text-xl font-bold mb-2">Offen für Vielfalt</h3>
+        <p class="text-gray-600">
+          Unterschiedliche Beziehungsformen werden respektvoll und nicht-pathologisierend betrachtet.
+        </p>
+      </div>
+
+    </div>
 
   </div>
-
 </section>
 
-<!-- PRICING SECTION -->
-<section class="py-24 bg-gray-50" id="pricing">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    
+<!-- ABLAUF SECTION -->
+<section class="w-full bg-gray-50 py-24 px-6 md:px-16" id="ablauf">
+  <div class="max-w-6xl mx-auto text-center">
+
     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
-      Choose Your Transformation Plan
+      Ablauf
     </h2>
 
     <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-16">
-      Select the coaching experience that matches your goals.  
-      Every package is built to accelerate your clarity, discipline, and performance.
+      Der Einstieg ist bewusst einfach gehalten. Im Erstgespräch klären wir, worum es geht,
+      ob mein Angebot passend ist und welche Form der Begleitung sinnvoll sein könnte.
     </p>
 
-    <!-- Pricing Grid -->
-    <div class="grid md:grid-cols-3 gap-10">
+    <div class="grid md:grid-cols-4 gap-8 text-left">
 
-      <!-- Basic -->
-      <div class="bg-white shadow-xl rounded-2xl p-10 border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition">
-        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Basic</h3>
-        <p class="text-gray-500 mb-6">For beginners who want a fresh start.</p>
-        <p class="text-4xl font-bold text-gray-900 mb-6">$149</p>
-
-        <ul class="space-y-4 text-gray-700 mb-10">
-          <li>✔︎ 1 Strategy Session</li>
-          <li>✔︎ Personalized Goal Mapping</li>
-          <li>✔︎ Weekly Check ins (Email)</li>
-        </ul>
-
-        <a href="#" class="block bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-black transition">
-          Get Started
-        </a>
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-gray-100">
+        <p class="text-4xl font-bold text-gray-900 mb-4">01</p>
+        <h3 class="text-xl font-bold mb-3">Anfrage</h3>
+        <p class="text-gray-600">
+          Sie fragen ein Erstgespräch über Cal.eu oder per E-Mail an.
+        </p>
       </div>
 
-      <!-- Standard -->
-      <div class="bg-black text-white shadow-2xl rounded-2xl p-10 border border-gray-800 hover:-translate-y-1 transition relative overflow-hidden">
-
-        <!-- Luxe glow -->
-        <div class="absolute inset-0 bg-gradient-to-br from-white-400/20 to-yellow-700/10 pointer-events-none"></div>
-
-        <h3 class="text-2xl font-semibold mb-2 relative">Standard</h3>
-        <p class="text-gray-300 mb-6 relative">Most popular, deeper transformation.</p>
-        <p class="text-4xl font-bold mb-6 relative">$499</p>
-
-        <ul class="space-y-4 text-gray-200 mb-10 relative">
-          <li>✔︎ 4 Private Coaching Sessions</li>
-          <li>✔︎ Accountability System Setup</li>
-          <li>✔︎ WhatsApp Support (Business Hours)</li>
-          <li>✔︎ Habit & Mindset Blueprint</li>
-        </ul>
-
-        <a href="#" class="block bg-yellow-500 text-black py-3 rounded-xl font-semibold hover:bg-yellow-400 transition relative">
-          Upgrade Experience
-        </a>
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-gray-100">
+        <p class="text-4xl font-bold text-gray-900 mb-4">02</p>
+        <h3 class="text-xl font-bold mb-3">Erstgespräch</h3>
+        <p class="text-gray-600">
+          Wir klären Ihr Anliegen, Ihre Situation und mögliche nächste Schritte.
+        </p>
       </div>
 
-      <!-- Premium -->
-      <div class="bg-white shadow-xl rounded-2xl p-10 border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition">
-        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Premium</h3>
-        <p class="text-gray-500 mb-6">Full transformation. Maximum results.</p>
-        <p class="text-4xl font-bold text-gray-900 mb-6">$999</p>
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-gray-100">
+        <p class="text-4xl font-bold text-gray-900 mb-4">03</p>
+        <h3 class="text-xl font-bold mb-3">Rahmen</h3>
+        <p class="text-gray-600">
+          Bei Bedarf vereinbaren wir weitere Termine, Dauer, Rhythmus und Zielrichtung.
+        </p>
+      </div>
 
-        <ul class="space-y-4 text-gray-700 mb-10">
-          <li>✔︎ 8 Deep-Dive Coaching Sessions</li>
-          <li>✔︎ Full Performance System Build</li>
-          <li>✔︎ Daily Accountability & Tracking</li>
-          <li>✔︎ Priority WhatsApp + Voice Notes</li>
-          <li>✔︎ Personalized Life Strategy Plan</li>
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-gray-100">
+        <p class="text-4xl font-bold text-gray-900 mb-4">04</p>
+        <h3 class="text-xl font-bold mb-3">Beratung</h3>
+        <p class="text-gray-600">
+          Die Beratung orientiert sich an Ihrer konkreten Lebens- und Beziehungssituation.
+        </p>
+      </div>
+
+    </div>
+
+    <a href="https://app.cal.eu/theophil-kroller"
+       target="_blank"
+       rel="noopener"
+       class="inline-block mt-12 bg-black text-white px-8 py-3 rounded-3xl shadow-xl hover:bg-black/80 transition font-semibold">
+      Erstgespräch anfragen
+    </a>
+
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="w-full bg-white py-24 px-8 md:px-16" id="about">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+
+    <!-- Portrait -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img
+        src="./public/image.png"
+        alt="Portrait Theophil Kroller"
+        class="w-full max-w-sm rounded-3xl shadow-xl object-cover"
+      >
+    </div>
+
+    <!-- Text -->
+    <div class="w-full md:w-1/2 flex flex-col text-center md:text-left">
+
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        Über mich
+      </h2>
+
+      <p class="text-gray-600 text-lg leading-relaxed mb-6">
+        Ich bin Theophil Kroller. Mein Hintergrund verbindet psychosoziale Beratung,
+        wissenschaftliches Arbeiten und langjährige Erfahrung in Bildungs- und Reflexionsräumen.
+      </p>
+
+      <p class="text-gray-600 text-lg leading-relaxed mb-6">
+        Beziehungsthemen interessieren mich besonders dort, wo Menschen nicht einfach „funktionieren“,
+        sondern verstehen wollen: Was passiert zwischen uns? Was passiert in mir?
+        Und wie kann ein nächster Schritt aussehen, der ehrlich und verantwortungsvoll ist?
+      </p>
+
+      <p class="text-gray-600 text-lg leading-relaxed mb-8">
+        In meiner Masterarbeit habe ich mich mit Beratung im Kontext von Polyamorie beschäftigt.
+        Deshalb ist es mir wichtig, Beziehungsformen offen, differenziert und ohne vorschnelle Normvorstellungen zu betrachten.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
+
+        <div class="flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
+            ✓
+          </div>
+          <p class="mt-3 font-semibold text-gray-900">Psychosozial</p>
+          <p class="text-gray-500 text-sm">Beratung und Klärung</p>
+        </div>
+
+        <div class="flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
+            ✓
+          </div>
+          <p class="mt-3 font-semibold text-gray-900">Beziehungsbezogen</p>
+          <p class="text-gray-500 text-sm">Kommunikation und Dynamiken</p>
+        </div>
+
+        <div class="flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="bg-black text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
+            ✓
+          </div>
+          <p class="mt-3 font-semibold text-gray-900">Vielfaltssensibel</p>
+          <p class="text-gray-500 text-sm">Auch Polyamorie und offene Beziehungen</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- RAHMENBEDINGUNGEN -->
+<section class="py-24 bg-gray-50" id="rahmen">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+      Rahmenbedingungen
+    </h2>
+
+    <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-16">
+      Beratung braucht einen klaren Rahmen. Details klären wir gerne im Erstgespräch.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-10 text-left">
+
+      <div class="bg-white shadow-xl rounded-2xl p-10 border border-gray-100">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+          Setting
+        </h3>
+        <ul class="space-y-4 text-gray-700">
+          <li>✔ Einzelberatung</li>
+          <li>✔ Paarberatung</li>
+          <li>✔ Online oder nach Vereinbarung vor Ort</li>
+          <li>✔ Erstgespräch zur Orientierung</li>
         </ul>
+      </div>
 
-        <a href="#" class="block bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-black transition">
-          Join Premium
-        </a>
+      <div class="bg-black text-white shadow-2xl rounded-2xl p-10 border border-gray-800">
+        <h3 class="text-2xl font-semibold mb-4">
+          Themen
+        </h3>
+        <ul class="space-y-4 text-gray-200">
+          <li>✔ Kommunikation und Konflikte</li>
+          <li>✔ Trennung, Ambivalenz, Neubeginn</li>
+          <li>✔ Vertrauen, Nähe und Distanz</li>
+          <li>✔ Polyamorie und offene Beziehungen</li>
+        </ul>
+      </div>
+
+      <div class="bg-white shadow-xl rounded-2xl p-10 border border-gray-100">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+          Abgrenzung
+        </h3>
+        <ul class="space-y-4 text-gray-700">
+          <li>✔ Psychosoziale Beratung</li>
+          <li>✔ Keine akute Krisen- oder Notfallversorgung</li>
+          <li>✔ Keine Psychotherapie oder medizinische Behandlung</li>
+          <li>✔ Vertraulichkeit und respektvoller Rahmen</li>
+        </ul>
       </div>
 
     </div>
   </div>
 </section>
 
+<!-- CONTACT CTA SECTION -->
+<section class="relative w-full bg-black py-28 px-6 md:px-16 overflow-hidden" id="kontakt">
+
+  <div class="relative max-w-3xl mx-auto text-center">
+
+    <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+      Ein erstes Gespräch kann helfen, die Situation zu sortieren.
+    </h2>
+
+    <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">
+      Im Erstgespräch geht es nicht darum, sofort alles zu lösen.
+      Es geht darum, Ihr Anliegen zu verstehen und gemeinsam zu prüfen,
+      ob und wie Beratung hilfreich sein kann.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+      <a href="https://app.cal.eu/theophil-kroller"
+         target="_blank"
+         rel="noopener"
+         class="px-10 py-4 bg-white text-black font-bold tracking-wide rounded-2xl shadow-xl hover:scale-105 transition">
+        Erstgespräch über Cal.eu anfragen
+      </a>
+
+      <a href="mailto:deine.email@example.at"
+         class="px-10 py-4 bg-white/10 border border-white/30 text-white font-bold tracking-wide rounded-2xl hover:bg-white/20 transition">
+        E-Mail schreiben
+      </a>
+
+    </div>
+
+    <p class="text-gray-500 text-sm mt-8">
+      Hinweis: Bitte ersetzen Sie die E-Mail-Adresse noch durch Ihre tatsächliche Kontaktadresse.
+    </p>
+
+  </div>
+
+</section>
+
 <!-- FOOTER -->
-<footer class="bg-black text-white py-16">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row flex-wrap md:items-center md:justify-between gap-10">
+<footer class="bg-black text-white py-16 border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row flex-wrap md:items-start md:justify-between gap-10">
 
     <!-- Logo -->
     <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
       <h3 class="text-2xl font-bold tracking-wide mb-4">
-        Jane Atelier Coaching
+        Theophil Kroller
       </h3>
-      <p class="text-gray-400 text-sm leading-relaxed">
-        Transforming discipline, clarity, mindset, and performance through 
-        expert coaching built for serious growth.
+      <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+        Psychosoziale Beziehungsberatung für Einzelpersonen und Paare.
+        Offen für unterschiedliche Lebens- und Beziehungsformen.
       </p>
     </div>
 
@@ -505,48 +570,36 @@
     <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
       <h4 class="text-lg font-semibold mb-4">Navigation</h4>
       <ul class="space-y-3 text-gray-300">
-        <li><a href="#" class="hover:text-white transition">Home</a></li>
-        <li><a href="#" class="hover:text-white transition">About</a></li>
-        <li><a href="#" class="hover:text-white transition">Programs</a></li>
-        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+        <li><a href="#" class="hover:text-white transition">Start</a></li>
+        <li><a href="#angebot" class="hover:text-white transition">Angebot</a></li>
+        <li><a href="#arbeitsweise" class="hover:text-white transition">Arbeitsweise</a></li>
+        <li><a href="#ablauf" class="hover:text-white transition">Ablauf</a></li>
+        <li><a href="#about" class="hover:text-white transition">Über mich</a></li>
       </ul>
     </div>
 
-    <!-- Quick -->
+    <!-- Rechtliches -->
     <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
-      <h4 class="text-lg font-semibold mb-4">Support</h4>
+      <h4 class="text-lg font-semibold mb-4">Rechtliches</h4>
       <ul class="space-y-3 text-gray-300">
-        <li><a href="#" class="hover:text-white transition">FAQs</a></li>
-        <li><a href="#" class="hover:text-white transition">Contact</a></li>
-        <li><a href="#" class="hover:text-white transition">Terms</a></li>
-        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+        <li><a href="impressum.html" class="hover:text-white transition">Impressum</a></li>
+        <li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz</a></li>
       </ul>
     </div>
 
-    <!-- Social -->
+    <!-- Kontakt -->
     <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
-      <h4 class="text-lg font-semibold mb-4">Follow</h4>
-      <div class="flex space-x-4">
-        <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </div>
+      <h4 class="text-lg font-semibold mb-4">Kontakt</h4>
+      <ul class="space-y-3 text-gray-300">
+        <li><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hover:text-white transition">Erstgespräch anfragen</a></li>
+        <li><a href="mailto:deine.email@example.at" class="hover:text-white transition">deine.email@example.at</a></li>
+      </ul>
     </div>
 
   </div>
-</footer>
 
   <div class="border-t border-white/10 mt-12 pt-6 text-center text-gray-400 text-sm">
-    © 2025 WebSync360. All rights reserved.
+    © 2026 Theophil Kroller. Alle Rechte vorbehalten.
   </div>
 </footer>
 
