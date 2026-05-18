@@ -13,6 +13,62 @@
   <meta name="description" content="Impressum der Website von Theophil Kroller.">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  .nav-link {
+    position: relative;
+    color: #5F504A;
+    transition: color 0.25s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #C96B4B;
+    border-radius: 999px;
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover {
+    color: #A9543B;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link-active {
+    position: relative;
+    color: #C96B4B;
+    font-weight: 600;
+  }
+
+  .nav-link-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #C96B4B;
+    border-radius: 999px;
+  }
+
+  .cta-nav {
+    background: #C96B4B;
+    color: white;
+    transition: all 0.25s ease;
+  }
+
+  .cta-nav:hover {
+    background: #A9543B;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(201, 107, 75, 0.28);
+  }
+</style>
 </head>
 
 <body class="bg-[#FFF7ED] text-[#2F2623]">
@@ -35,20 +91,22 @@
       </span>
     </a>
 
-    <ul class="hidden md:flex items-center gap-8 text-[#5F504A] font-medium">
-      <li><a href="index.html" class="hover:text-[#C96B4B] transition">Start</a></li>
-      <li><a href="index.html#angebot" class="hover:text-[#C96B4B] transition">Angebot</a></li>
-      <li><a href="index.html#polyamorie" class="hover:text-[#C96B4B] transition">Polyamorie</a></li>
-      <li><a href="about.html" class="hover:text-[#C96B4B] transition">Über mich</a></li>
-      <li><a href="index.html#kontakt" class="hover:text-[#C96B4B] transition">Kontakt</a></li>
-    </ul>
+   <ul class="hidden lg:flex items-center gap-7 text-[#5F504A] font-medium">
+  <li><a href="index.html" class="nav-link">Start</a></li>
+  <li><a href="index.html#angebot" class="nav-link">Angebot</a></li>
+  <li><a href="index.html#arbeitsweise" class="nav-link">Arbeitsweise</a></li>
+  <li><a href="index.html#polyamorie" class="nav-link">Polyamorie</a></li>
+  <li><a href="about.html" class="nav-link">Über mich</a></li>
+  <li><a href="about.html#qualifikationen" class="nav-link">Qualifikationen</a></li>
+  <li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
+</ul>
 
-    <a href="https://app.cal.eu/theophil-kroller"
-       target="_blank"
-       rel="noopener"
-       class="hidden md:inline-block bg-[#C96B4B] text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:bg-[#A9543B] transition">
-      Erstgespräch anfragen
-    </a>
+<a href="https://app.cal.eu/theophil-kroller"
+   target="_blank"
+   rel="noopener"
+   class="hidden md:inline-block cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">
+  Erstgespräch anfragen
+</a>
 
   </div>
 </nav>
