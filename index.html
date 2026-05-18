@@ -35,12 +35,13 @@
       </span>
     </a>
 
-    <ul class="hidden md:flex items-center gap-8 text-[#5F504A] font-medium">
+    <ul class="hidden lg:flex items-center gap-7 text-[#5F504A] font-medium">
       <li><a href="#start" class="hover:text-[#C96B4B] transition">Start</a></li>
       <li><a href="#angebot" class="hover:text-[#C96B4B] transition">Angebot</a></li>
       <li><a href="#arbeitsweise" class="hover:text-[#C96B4B] transition">Arbeitsweise</a></li>
       <li><a href="#polyamorie" class="hover:text-[#C96B4B] transition">Polyamorie</a></li>
       <li><a href="about.html" class="hover:text-[#C96B4B] transition">Über mich</a></li>
+      <li><a href="about.html#qualifikationen" class="hover:text-[#C96B4B] transition">Qualifikationen</a></li>
       <li><a href="#kontakt" class="hover:text-[#C96B4B] transition">Kontakt</a></li>
     </ul>
 
@@ -51,20 +52,21 @@
       Erstgespräch anfragen
     </a>
 
-    <button id="menu-btn" class="md:hidden flex flex-col gap-1.5" aria-label="Menü öffnen">
+    <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5" aria-label="Menü öffnen">
       <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
       <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
       <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
     </button>
   </div>
 
-  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 bg-[#FFF7ED]/95 backdrop-blur-md border-t border-[#E8D2BE]">
+  <div id="mobile-menu" class="lg:hidden hidden px-6 pb-4 bg-[#FFF7ED]/95 backdrop-blur-md border-t border-[#E8D2BE]">
     <ul class="flex flex-col gap-4 text-[#5F504A] font-medium py-4">
       <li><a href="#start" class="block w-full hover:text-[#C96B4B]">Start</a></li>
       <li><a href="#angebot" class="block w-full hover:text-[#C96B4B]">Angebot</a></li>
       <li><a href="#arbeitsweise" class="block w-full hover:text-[#C96B4B]">Arbeitsweise</a></li>
       <li><a href="#polyamorie" class="block w-full hover:text-[#C96B4B]">Polyamorie</a></li>
       <li><a href="about.html" class="block w-full hover:text-[#C96B4B]">Über mich</a></li>
+      <li><a href="about.html#qualifikationen" class="block w-full hover:text-[#C96B4B]">Qualifikationen</a></li>
       <li><a href="#kontakt" class="block w-full hover:text-[#C96B4B]">Kontakt</a></li>
       <li>
         <a href="https://app.cal.eu/theophil-kroller"
@@ -118,30 +120,36 @@
           Wobei ich unterstütze
         </a>
       </div>
+
+      <div class="mt-10 bg-white rounded-3xl p-6 shadow-xl border border-[#E8D2BE] max-w-xl mx-auto md:mx-0 text-left">
+        <p class="text-sm uppercase tracking-wide text-[#C96B4B] mb-2 font-semibold">
+          Für Menschen, die spüren:
+        </p>
+
+        <h2 class="text-2xl font-bold text-[#2F2623] mb-4">
+          So wie bisher geht es nicht weiter. Aber wie dann?
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-3 text-[#5F504A]">
+          <p>✔ Wiederkehrende Konflikte</p>
+          <p>✔ Rückzug oder Druck</p>
+          <p>✔ Ambivalenz oder Neubeginn</p>
+          <p>✔ Beziehung jenseits klassischer Modelle</p>
+        </div>
+      </div>
     </div>
 
     <div class="relative">
       <div class="bg-white rounded-[2rem] p-4 shadow-2xl border border-[#E8D2BE]">
         <img
-          src="./public/theophil-kroller.jpg"
-          alt="Portrait Theophil Kroller"
-          class="w-full max-h-[560px] object-cover rounded-[1.5rem]"
+          src="./public/image.png"
+          alt="Einladender Beratungsraum mit mehreren Sitzplätzen für unterschiedliche Beziehungskonstellationen"
+          class="w-full max-h-[620px] object-cover rounded-[1.5rem]"
         >
       </div>
 
-      <div class="absolute -bottom-8 -left-4 md:-left-10 bg-white rounded-3xl p-6 shadow-xl border border-[#E8D2BE] max-w-sm">
-        <p class="text-sm uppercase tracking-wide text-[#C96B4B] mb-2 font-semibold">
-          Für Menschen, die spüren:
-        </p>
-        <h2 class="text-2xl font-bold text-[#2F2623] mb-4">
-          So wie bisher geht es nicht weiter. Aber wie dann?
-        </h2>
-        <div class="space-y-2 text-[#5F504A]">
-          <p>✔ Wiederkehrende Konflikte</p>
-          <p>✔ Rückzug, Druck oder Sprachlosigkeit</p>
-          <p>✔ Ambivalenz, Trennung oder Neubeginn</p>
-          <p>✔ Beziehung jenseits klassischer Modelle</p>
-        </div>
+      <div class="mt-6 text-center text-[#5F504A] text-sm leading-relaxed max-w-xl mx-auto">
+        Ein Raum für Klärung, Beziehung und unterschiedliche Perspektiven.
       </div>
     </div>
 
@@ -607,14 +615,12 @@
       <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
         <a href="about.html"
            class="inline-block bg-[#C96B4B] text-white px-8 py-3 rounded-3xl shadow-xl hover:bg-[#A9543B] transition font-semibold">
-          Mehr über meinen Hintergrund
+          Mehr über mich
         </a>
 
-        <a href="https://app.cal.eu/theophil-kroller"
-           target="_blank"
-           rel="noopener"
+        <a href="about.html#qualifikationen"
            class="inline-block bg-white border border-[#E8D2BE] text-[#2F2623] px-8 py-3 rounded-3xl shadow-sm hover:bg-[#F5E6D3] transition font-semibold">
-          Erstgespräch anfragen
+          Qualifikationen ansehen
         </a>
       </div>
 
@@ -737,6 +743,7 @@
         <li><a href="#arbeitsweise" class="hover:text-white transition">Arbeitsweise</a></li>
         <li><a href="#polyamorie" class="hover:text-white transition">Polyamorie</a></li>
         <li><a href="about.html" class="hover:text-white transition">Über mich</a></li>
+        <li><a href="about.html#qualifikationen" class="hover:text-white transition">Qualifikationen</a></li>
       </ul>
     </div>
 
