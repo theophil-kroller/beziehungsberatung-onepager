@@ -68,6 +68,13 @@
     transform: translateY(-1px);
     box-shadow: 0 10px 22px rgba(201, 107, 75, 0.28);
   }
+    details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary {
+    list-style: none;
+  }
 </style>
 
 </head>
@@ -530,45 +537,58 @@
   </a>
 </div>
 
-      <!-- Psychosozialer Berater -->
-      <div class="bg-[#FFF7ED] rounded-3xl p-8 shadow-xl border border-[#E8D2BE]">
-        <p class="text-sm uppercase tracking-wide text-[#C96B4B] mb-2 font-semibold">
-          Beratungsausbildung
-        </p>
+<!-- Psychosozialer Berater -->
+<div class="bg-[#FFF7ED] rounded-3xl p-8 shadow-xl border border-[#E8D2BE]">
+  <p class="text-sm uppercase tracking-wide text-[#C96B4B] mb-2 font-semibold">
+    Beratungsausbildung
+  </p>
 
-        <h3 class="text-2xl font-bold text-[#2F2623] mb-4">
-          Akademisch geprüfter Psychosozialer Berater
-        </h3>
+  <h3 class="text-2xl font-bold text-[#2F2623] mb-4">
+    Akademisch geprüfter Psychosozialer Berater
+  </h3>
 
-        <p class="text-[#5F504A] leading-relaxed mb-4">
-          Die Ausbildung an der Universität Graz war breit angelegt:
-          humanistische Grundhaltung, systemische Perspektiven, psychodynamisches Verstehen,
-          kognitiv-behaviorale Strategien, Gesprächsführung, Selbsterfahrung, Krisenintervention,
-          Ethik, Recht und facheinschlägige Praxis.
-        </p>
+  <p class="text-[#5F504A] leading-relaxed mb-4">
+    Universitäre Ausbildung in psychosozialer Beratung mit breitem methodischem Fundament.
+  </p>
 
-        <p class="text-[#5F504A] leading-relaxed mb-6">
-          Gerade diese Vielfalt ist mir wichtig. Wir haben nicht nur „eine Schule“ kennengelernt,
-          sondern unterschiedliche Landkarten für menschliches Erleben, Beziehung, Konflikt und Veränderung.
-          In meiner Arbeit bedeutet das: Ich schaue nicht dogmatisch auf Dich oder Euch,
-          sondern frage, welche Perspektive gerade hilft, mehr Klarheit, Verantwortung und Handlungsspielraum zu gewinnen.
-        </p>
+  <details class="group mb-6">
+    <summary class="cursor-pointer list-none inline-flex items-center gap-2 text-[#C96B4B] font-semibold hover:text-[#A9543B] transition">
+      Mehr erfahren
+      <span class="transition-transform group-open:rotate-180">⌄</span>
+    </summary>
 
-        <div class="bg-white rounded-2xl p-4 mb-6 border border-[#E8D2BE]">
-          <img
-            src="./public/certificates/psychosozialer-berater.jpg"
-            alt="Vorschau Urkunde Akademisch geprüfter Psychosozialer Berater"
-            class="rounded-xl w-full object-cover"
-          >
-        </div>
+    <div class="mt-4 space-y-4 text-[#5F504A] leading-relaxed">
+      <p>
+        Die Ausbildung an der Universität Graz war breit angelegt:
+        humanistische Grundhaltung, systemische Perspektiven, psychodynamisches Verstehen,
+        kognitiv-behaviorale Strategien, Gesprächsführung, Selbsterfahrung, Krisenintervention,
+        Ethik, Recht und facheinschlägige Praxis.
+      </p>
 
-        <a href="./public/certificates/psychosozialer-berater.jpg"
-           target="_blank"
-           rel="noopener"
-           class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-2xl font-semibold hover:bg-[#A9543B] transition">
-          Urkunde ansehen
-        </a>
-      </div>
+      <p>
+        Gerade diese Vielfalt ist mir wichtig. Wir haben nicht nur „eine Schule“ kennengelernt,
+        sondern unterschiedliche Landkarten für menschliches Erleben, Beziehung, Konflikt und Veränderung.
+        In meiner Arbeit bedeutet das: Ich schaue nicht dogmatisch auf Dich oder Euch,
+        sondern frage, welche Perspektive gerade hilft, mehr Klarheit, Verantwortung und Handlungsspielraum zu gewinnen.
+      </p>
+    </div>
+  </details>
+
+  <div class="bg-white rounded-2xl p-4 mb-6 border border-[#E8D2BE]">
+    <img
+      src="./public/certificates/psychosozialer-berater.jpg"
+      alt="Vorschau Urkunde Akademisch geprüfter Psychosozialer Berater"
+      class="rounded-xl w-full object-cover"
+    >
+  </div>
+
+  <a href="./public/certificates/psychosozialer-berater.jpg"
+     target="_blank"
+     rel="noopener"
+     class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-2xl font-semibold hover:bg-[#A9543B] transition">
+    Urkunde ansehen
+  </a>
+</div>
 
     </div>
   </div>
@@ -660,16 +680,29 @@
         </h3>
 
         <p class="text-[#5F504A] leading-relaxed mb-4">
-          Die Gottman-Methode richtet den Blick auf konkrete Muster in Paarbeziehungen:
-          Wie sprechen Menschen miteinander? Wie eskalieren Konflikte?
-          Was stärkt Freundschaft, Vertrauen und emotionale Verbindung?
+          Fortbildung zu Paarbeziehungen, Konfliktdynamiken und emotionaler Verbindung.
         </p>
 
-        <p class="text-[#5F504A] leading-relaxed mb-6">
-          Für meine Arbeit ist daran besonders wertvoll, dass Beziehung nicht nur abstrakt verstanden wird.
-          Es geht auch um beobachtbare Kommunikation, wiederkehrende Konfliktdynamiken und kleine,
-          konkrete Schritte, die im Alltag einen Unterschied machen können.
-        </p>
+        <details class="group mb-6">
+          <summary class="cursor-pointer list-none inline-flex items-center gap-2 text-[#C96B4B] font-semibold hover:text-[#A9543B] transition">
+            Mehr erfahren
+            <span class="transition-transform group-open:rotate-180">⌄</span>
+          </summary>
+
+          <div class="mt-4 space-y-4 text-[#5F504A] leading-relaxed">
+            <p>
+              Die Gottman-Methode richtet den Blick auf konkrete Muster in Paarbeziehungen:
+              Wie sprechen Menschen miteinander? Wie eskalieren Konflikte?
+              Was stärkt Freundschaft, Vertrauen und emotionale Verbindung?
+            </p>
+
+            <p>
+              Für meine Arbeit ist daran besonders wertvoll, dass Beziehung nicht nur abstrakt verstanden wird.
+              Es geht auch um beobachtbare Kommunikation, wiederkehrende Konfliktdynamiken und kleine,
+              konkrete Schritte, die im Alltag einen Unterschied machen können.
+            </p>
+          </div>
+        </details>
 
         <div class="bg-[#FFF7ED] rounded-2xl p-4 mb-6 border border-[#E8D2BE]">
           <img
@@ -694,17 +727,30 @@
         </h3>
 
         <p class="text-[#5F504A] leading-relaxed mb-4">
-          Das Relational Life Therapy Level 1 Training hat meinen Blick auf klare,
-          beziehungsorientierte Arbeit vertieft: Muster sichtbar machen,
-          Verantwortung übernehmen, Grenzen achten und Verbindung wieder möglich machen.
+          Fortbildung in klarer, direkter und beziehungsorientierter Arbeit mit Paardynamiken.
         </p>
 
-        <p class="text-[#5F504A] leading-relaxed mb-6">
-          Ich werbe nicht mit einer Methode als fertigem Versprechen.
-          Was ich aber aus dieser Fortbildung mitnehme, ist eine Haltung:
-          freundlich genug, damit Menschen offen bleiben können —
-          und klar genug, damit Veränderung nicht im Ungefähren stecken bleibt.
-        </p>
+        <details class="group mb-6">
+          <summary class="cursor-pointer list-none inline-flex items-center gap-2 text-[#C96B4B] font-semibold hover:text-[#A9543B] transition">
+            Mehr erfahren
+            <span class="transition-transform group-open:rotate-180">⌄</span>
+          </summary>
+
+          <div class="mt-4 space-y-4 text-[#5F504A] leading-relaxed">
+            <p>
+              Das Relational Life Therapy Level 1 Training hat meinen Blick auf klare,
+              beziehungsorientierte Arbeit vertieft: Muster sichtbar machen,
+              Verantwortung übernehmen, Grenzen achten und Verbindung wieder möglich machen.
+            </p>
+
+            <p>
+              Ich werbe nicht mit einer Methode als fertigem Versprechen.
+              Was ich aber aus dieser Fortbildung mitnehme, ist eine Haltung:
+              freundlich genug, damit Menschen offen bleiben können —
+              und klar genug, damit Veränderung nicht im Ungefähren stecken bleibt.
+            </p>
+          </div>
+        </details>
 
         <div class="bg-[#FFF7ED] rounded-2xl p-4 mb-6 border border-[#E8D2BE]">
           <img
