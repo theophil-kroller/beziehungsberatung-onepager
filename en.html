@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- During setup: remove this when the page should appear on Google -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>Relationship Counseling | Theophil Kroller</title>
+  <meta name="description" content="Psychosocial relationship counseling for individuals, couples and people in diverse relationship forms. Support with conflict, communication, closeness, distance, polyamory and reorientation.">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    .nav-link {
+      position: relative;
+      color: #5F504A;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #C96B4B;
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: #A9543B;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .cta-nav {
+      background: #C96B4B;
+      color: white;
+      transition: all 0.25s ease;
+    }
+
+    .cta-nav:hover {
+      background: #A9543B;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(201, 107, 75, 0.28);
+    }
+  </style>
+</head>
+
+<body class="bg-[#FFF7ED] text-[#2F2623]">
+
+<!-- AUFBAU-HINWEIS -->
+<div class="bg-[#F5E6D3] text-[#2F2623] text-center px-4 py-3 text-sm border-b border-[#E8D2BE]">
+  This website is currently under development. The psychosocial relationship counseling offer will launch soon.
+</div>
+
+<!-- NAVBAR -->
+<nav class="w-full bg-[#FFF7ED]/95 backdrop-blur-md border-b border-[#E8D2BE] sticky top-0 z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-full bg-[#C96B4B] text-white flex items-center justify-center font-bold">
+        TK
+      </div>
+      <span class="text-xl font-semibold tracking-tight text-[#2F2623]">
+        Theophil Kroller
+      </span>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-7 text-[#5F504A] font-medium">
+      <li><a href="#start" class="nav-link">Start</a></li>
+      <li><a href="#angebot" class="nav-link">Services</a></li>
+      <li><a href="#arbeitsweise" class="nav-link">Approach</a></li>
+      <li><a href="#polyamorie" class="nav-link">Polyamory</a></li>
+      <li><a href="#ablauf" class="nav-link">Process</a></li>
+      <li><a href="about.html" class="nav-link">About me</a></li>
+      <li><a href="about.html#qualifikationen" class="nav-link">Qualifications</a></li>
+      <li><a href="#kontakt" class="nav-link">Contact</a></li>
+    </ul>
+
+    <a id="lang-switch"
+       href="index.html"
+       class="hidden md:inline-block border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3] transition">
+      DE
+    </a>
+
+    <a href="https://app.cal.eu/theophil-kroller"
+       target="_blank"
+       rel="noopener"
+       class="hidden md:inline-block cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">
+      Request an introductory call
+    </a>
+
+    <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5" aria-label="Open menu">
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden hidden px-6 pb-4 bg-[#FFF7ED]/95 backdrop-blur-md border-t border-[#E8D2BE]">
+    <ul class="flex flex-col gap-4 text-[#5F504A] font-medium py-4">
+      <li><a href="#start" class="block w-full hover:text-[#C96B4B]">Start</a></li>
+      <li><a href="#angebot" class="block w-full hover:text-[#C96B4B]">Services</a></li>
+      <li><a href="#arbeitsweise" class="block w-full hover:text-[#C96B4B]">Approach</a></li>
+      <li><a href="#polyamorie" class="block w-full hover:text-[#C96B4B]">Polyamory</a></li>
+      <li><a href="#ablauf" class="block w-full hover:text-[#C96B4B]">Process</a></li>
+      <li><a href="about.html" class="block w-full hover:text-[#C96B4B]">About me</a></li>
+      <li><a href="about.html#qualifikationen" class="block w-full hover:text-[#C96B4B]">Qualifications</a></li>
+      <li><a href="#kontakt" class="block w-full hover:text-[#C96B4B]">Contact</a></li>
+      <li><a id="mobile-lang-switch" href="index.html" class="block w-full hover:text-[#C96B4B]">Deutsche Version</a></li>
+      <li>
+        <a href="https://app.cal.eu/theophil-kroller"
+           target="_blank"
+           rel="noopener"
+           class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-xl font-semibold">
+          Request an introductory call
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="start" class="relative w-full bg-[#FFF7ED] pt-28 pb-20 px-6 md:px-16 overflow-hidden">
+
+  <div class="absolute top-0 right-0 w-72 h-72 bg-[#F5E6D3] rounded-full blur-3xl opacity-80 -translate-y-20 translate-x-20"></div>
+  <div class="absolute bottom-0 left-0 w-72 h-72 bg-[#E8D2BE] rounded-full blur-3xl opacity-60 translate-y-20 -translate-x-20"></div>
+
+  <div class="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center min-h-[78vh]">
+
+    <div class="text-center md:text-left">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        Psychosocial relationship counseling
+      </p>
+
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight text-[#2F2623]">
+        Step out of the old cycle.
+      </h1>
+
+      <p class="mt-6 text-[#5F504A] text-lg md:text-xl max-w-xl leading-relaxed mx-auto md:mx-0">
+        When conversations get stuck, closeness is lost, or you keep ending up in the same place,
+        counseling can help you see more clearly what is happening between you.
+      </p>
+
+      <p class="mt-5 text-[#5F504A] text-base md:text-lg max-w-xl leading-relaxed mx-auto md:mx-0">
+        I support individuals, couples and people in diverse relationship forms in making patterns visible,
+        speaking more honestly and finding new possibilities for action.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
+        <a href="https://app.cal.eu/theophil-kroller"
+           target="_blank"
+           rel="noopener"
+           class="inline-block bg-[#C96B4B] text-white px-8 py-3 rounded-3xl shadow-lg hover:bg-[#A9543B] transition font-semibold">
+          Request an introductory call
+        </a>
+
+        <a href="#ablauf"
+           class="inline-block bg-white border border-[#E8D2BE] text-[#2F2623] px-8 py-3 rounded-3xl shadow-sm hover:bg-[#F5E6D3] transition font-semibold">
+          How getting started works
+        </a>
+      </div>
+
+      <div class="mt-10 bg-white rounded-3xl p-6 shadow-xl border border-[#E8D2BE] max-w-xl mx-auto md:mx-0 text-left">
+        <p class="text-sm uppercase tracking-wide text-[#C96B4B] mb-2 font-semibold">
+          Maybe this feels familiar:
+        </p>
+
+        <h2 class="text-2xl font-bold text-[#2F2623] mb-4">
+          You talk a lot — and still do not really get any further.
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-3 text-[#5F504A]">
+          <p>✔ One person seeks contact</p>
+          <p>✔ One person withdraws</p>
+          <p>✔ Old hurts come back up</p>
+          <p>✔ A decision is in the air</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div class="rounded-[2rem] overflow-hidden shadow-xl">
+        <img
+          src="./public/image.png"
+          alt="Inviting counseling room with several seats for different relationship constellations"
+          class="w-full max-h-[620px] object-cover"
+        >
+      </div>
+
+      <div class="mt-6 text-center text-[#5F504A] text-sm leading-relaxed max-w-xl mx-auto">
+        A space for clarity, relationship and different perspectives.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="bg-white py-10 px-6 border-y border-[#E8D2BE]">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+
+    <div>
+      <p class="text-2xl font-bold text-[#2F2623]">Individuals</p>
+      <p class="text-[#5F504A] text-sm mt-1">Clarity, boundaries, relationship patterns</p>
+    </div>
+
+    <div>
+      <p class="text-2xl font-bold text-[#2F2623]">Couples</p>
+      <p class="text-[#5F504A] text-sm mt-1">Communication, closeness, conflict</p>
+    </div>
+
+    <div>
+      <p class="text-2xl font-bold text-[#2F2623]">Diverse relationships</p>
+      <p class="text-[#5F504A] text-sm mt-1">open, polyamorous, queer, unnamed</p>
+    </div>
+
+    <div>
+      <p class="text-2xl font-bold text-[#2F2623]">Online possible</p>
+      <p class="text-[#5F504A] text-sm mt-1">Request an introductory call easily</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROBLEM RECOGNITION -->
+<section class="w-full bg-[#F5E6D3] py-24 px-6 md:px-16">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        When relationships get stuck
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] max-w-4xl mx-auto">
+        Often love has not disappeared. But the old way of relating no longer works.
+      </h2>
+
+      <p class="text-[#5F504A] text-lg mt-5 max-w-3xl mx-auto leading-relaxed">
+        Counseling may be helpful when you do not just want to “communicate better” again,
+        but want to understand the cycle that keeps bringing you back to the same situation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#E8D2BE]">
+        <h3 class="text-2xl font-bold mb-4 text-[#2F2623]">You keep falling into the same pattern.</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          One person pushes, one withdraws. One explains, one shuts down.
+          Both actually want contact — and yet end up back in the old cycle.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#E8D2BE]">
+        <h3 class="text-2xl font-bold mb-4 text-[#2F2623]">You want clarity without rushing into a decision.</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Stay, leave, open up, close, begin again:
+          Sometimes it takes a space where ambivalence is allowed
+          before a direction becomes visible.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#E8D2BE]">
+        <h3 class="text-2xl font-bold mb-4 text-[#2F2623]">You want to speak more honestly without causing harm.</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Difficult truths need a form.
+          We work on saying more clearly what is going on —
+          while staying respectful and connected.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#E8D2BE]">
+        <h3 class="text-2xl font-bold mb-4 text-[#2F2623]">Your relationship does not fit into conventional categories.</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Monogamous, open, polyamorous, queer or still unnamed:
+          Come as you are. This is not primarily about right or wrong,
+          but about what feels coherent, safe and responsible for you or for all of you.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EMOTIONAL FRAMING -->
+<section class="w-full bg-white py-24 px-6 md:px-16">
+  <div class="max-w-5xl mx-auto text-center">
+
+    <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+      Relationship is adventure. Work. And a mirror.
+    </p>
+
+    <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-8">
+      Sometimes people love each other — and still hurt each other.
+    </h2>
+
+    <div class="space-y-6 text-[#5F504A] text-lg md:text-xl leading-relaxed text-left md:text-center">
+      <p>
+        Relationship is often taken for granted, as if we simply knew how to do it:
+        through intuition, experience or love. But closeness, conflict, repair,
+        boundaries and trust are skills that are allowed to grow.
+      </p>
+
+      <p>
+        Many people do not come to counseling because everything is already lost.
+        They come because they notice: our old strategies no longer help.
+        Being right, silence, explaining, withdrawal, pressure, adaptation —
+        at some point these become a pattern.
+      </p>
+
+      <p>
+        Counseling can help slow this pattern down and make it visible:
+        What is happening right now? What is being protected? What is being avoided?
+        And what could be a next step that is more honest and at the same time more connecting?
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO INTRO -->
+<section class="bg-white py-20 px-6 md:px-16">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+
+    <div>
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        A first impression
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-6">
+        Before we talk
+      </h2>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed mb-6">
+        In this short video I share how I look at relationships, conflicts and counseling —
+        and what you can expect when working with me.
+      </p>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed">
+        Maybe this first impression helps you sense
+        whether my approach could fit your concern.
+      </p>
+
+      <p class="text-[#5F504A] text-sm leading-relaxed mt-5">
+        Note: The embedded video is currently still a test version.
+      </p>
+    </div>
+
+    <div class="flex justify-center md:justify-end">
+      <div class="bg-[#2F2623] rounded-[2.25rem] p-3 shadow-2xl max-w-[285px] border border-[#E8D2BE]">
+        <div class="rounded-[1.75rem] overflow-hidden bg-black">
+          <div class="aspect-[9/16]">
+            <iframe
+              src="https://www.youtube.com/embed/gx22Ghs3uMY"
+              title="What to expect in my counseling"
+              class="w-full h-full"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FIRST SESSION CLARITY -->
+<section class="bg-[#FFF7ED] py-24 px-6 md:px-16" id="ablauf">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        Getting started
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] max-w-4xl mx-auto">
+        The introductory call is not a commitment to a long process.
+      </h2>
+
+      <p class="text-[#5F504A] text-lg mt-5 max-w-3xl mx-auto leading-relaxed">
+        It is a joint sorting process: What is going on, what do you need,
+        what setting would make sense — and does my approach fit your concern?
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-8 text-left">
+
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-[#E8D2BE]">
+        <p class="text-4xl font-bold text-[#C96B4B] mb-4">01</p>
+        <h3 class="text-xl font-bold mb-3 text-[#2F2623]">First, sort things out</h3>
+        <p class="text-[#5F504A]">
+          We look at what is really going on right now — not only the trigger,
+          but the pattern behind it.
+        </p>
+      </div>
+
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-[#E8D2BE]">
+        <p class="text-4xl font-bold text-[#C96B4B] mb-4">02</p>
+        <h3 class="text-xl font-bold mb-3 text-[#2F2623]">Understand the pattern</h3>
+        <p class="text-[#5F504A]">
+          Who seeks contact? Who protects themselves through withdrawal?
+          Where does the conversation tip over?
+        </p>
+      </div>
+
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-[#E8D2BE]">
+        <p class="text-4xl font-bold text-[#C96B4B] mb-4">03</p>
+        <h3 class="text-xl font-bold mb-3 text-[#2F2623]">Find the right setting</h3>
+        <p class="text-[#5F504A]">
+          We clarify whether individual counseling, couples counseling or a multi-person setting
+          fits your situation.
+        </p>
+      </div>
+
+      <div class="bg-white shadow-xl rounded-3xl p-8 border border-[#E8D2BE]">
+        <p class="text-4xl font-bold text-[#C96B4B] mb-4">04</p>
+        <h3 class="text-xl font-bold mb-3 text-[#2F2623]">Next steps</h3>
+        <p class="text-[#5F504A]">
+          If it fits, we continue working together. If not, you at least leave
+          with more orientation for your next step.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="https://app.cal.eu/theophil-kroller"
+         target="_blank"
+         rel="noopener"
+         class="inline-block bg-[#C96B4B] text-white px-8 py-3 rounded-3xl shadow-xl hover:bg-[#A9543B] transition font-semibold">
+        Request an introductory call
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ANGEBOT -->
+<section class="w-full bg-white py-24 px-6 md:px-16" id="angebot">
+
+  <div class="text-center mb-16">
+    <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+      My services
+    </p>
+
+    <h2 class="text-4xl md:text-5xl font-extrabold text-[#2F2623] max-w-4xl mx-auto">
+      Counseling for relationship, clarity and new possibilities for action
+    </h2>
+
+    <p class="text-[#5F504A] text-lg mt-4 max-w-3xl mx-auto">
+      Not as a ready-made roadmap. Rather as a shared space in which it can become visible
+      what feels coherent for you, your relationship and your life situation.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+    <div class="group bg-[#FFF7ED] p-8 rounded-3xl border border-[#E8D2BE] shadow-xl hover:-translate-y-2 transition-all">
+      <div class="w-16 h-16 bg-[#F5E6D3] rounded-2xl flex items-center justify-center mb-6 text-[#C96B4B] text-3xl font-bold">
+        1
+      </div>
+      <h3 class="text-2xl font-bold text-[#2F2623] mb-3">Individual counseling</h3>
+      <p class="text-[#5F504A] leading-relaxed mb-6">
+        For people who want to sort out their relationship situation:
+        ambivalence, thoughts of separation, attachment patterns, boundaries, longing,
+        anger, shame or the question: what is actually my part in this?
+      </p>
+      <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener"
+         class="inline-block bg-[#C96B4B] text-white font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-[#A9543B] transition">
+        Request an introductory call
+      </a>
+    </div>
+
+    <div class="group bg-[#2F2623] p-8 rounded-3xl border border-[#2F2623] shadow-xl hover:-translate-y-2 transition-all">
+      <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-white text-3xl font-bold">
+        2
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-3">Couples counseling</h3>
+      <p class="text-white/75 leading-relaxed mb-6">
+        For couples who want to speak with each other again without losing themselves:
+        conflicts, hurts, trust, closeness and distance, decision situations
+        and new agreements.
+      </p>
+      <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener"
+         class="inline-block bg-white text-[#2F2623] font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-[#FFF7ED] transition">
+        Request an introductory call
+      </a>
+    </div>
+
+    <div class="group bg-[#FFF7ED] p-8 rounded-3xl border border-[#E8D2BE] shadow-xl hover:-translate-y-2 transition-all">
+      <div class="w-16 h-16 bg-[#F5E6D3] rounded-2xl flex items-center justify-center mb-6 text-[#C96B4B] text-3xl font-bold">
+        3
+      </div>
+      <h3 class="text-2xl font-bold text-[#2F2623] mb-3">Relationship diversity</h3>
+      <p class="text-[#5F504A] leading-relaxed mb-6">
+        For people in open, polyamorous, queer or not clearly named relationships.
+        Individual, couple and multi-person settings are possible by arrangement.
+      </p>
+      <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener"
+         class="inline-block bg-[#C96B4B] text-white font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-[#A9543B] transition">
+        Request an introductory call
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ARBEITSWEISE -->
+<section class="w-full bg-white py-24 px-6 md:px-16" id="arbeitsweise">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+
+    <div class="w-full md:w-1/2">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        My approach
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-6">
+        Clear enough to be honest. Safe enough to stay open.
+      </h2>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed mb-6">
+        Counseling is not about making one person the guilty one.
+        It is about understanding the shared pattern:
+        What happens between you? What does it trigger in you?
+        And what do you then do that may further intensify the situation?
+      </p>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed mb-6">
+        I work directly, respectfully and with a focus on relationship.
+        Difficult things may be spoken — not in order to hurt,
+        but to come back into contact with yourself and with each other.
+      </p>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed">
+        Self-respect, boundaries and connection matter to me:
+        standing up for yourself without devaluing others;
+        taking responsibility without sinking into shame;
+        seeking closeness without creating pressure.
+      </p>
+    </div>
+
+    <div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      <div class="bg-[#FFF7ED] rounded-3xl p-7 shadow-lg border border-[#E8D2BE]">
+        <div class="text-3xl mb-4">💬</div>
+        <h3 class="text-xl font-bold mb-2 text-[#2F2623]">Direct & respectful</h3>
+        <p class="text-[#5F504A]">
+          We talk about what is really happening — without shaming and without moralizing.
+        </p>
+      </div>
+
+      <div class="bg-[#FFF7ED] rounded-3xl p-7 shadow-lg border border-[#E8D2BE]">
+        <div class="text-3xl mb-4">🧭</div>
+        <h3 class="text-xl font-bold mb-2 text-[#2F2623]">Patterns instead of blame</h3>
+        <p class="text-[#5F504A]">
+          Often one person is not “the problem”; rather, there is a recurring dance of attack,
+          withdrawal, adaptation or control.
+        </p>
+      </div>
+
+      <div class="bg-[#FFF7ED] rounded-3xl p-7 shadow-lg border border-[#E8D2BE]">
+        <div class="text-3xl mb-4">🤝</div>
+        <h3 class="text-xl font-bold mb-2 text-[#2F2623]">Connection & boundary</h3>
+        <p class="text-[#5F504A]">
+          Good relationship needs both: contact and autonomy, closeness and a clear no.
+        </p>
+      </div>
+
+      <div class="bg-[#FFF7ED] rounded-3xl p-7 shadow-lg border border-[#E8D2BE]">
+        <div class="text-3xl mb-4">🌱</div>
+        <h3 class="text-xl font-bold mb-2 text-[#2F2623]">Concrete steps</h3>
+        <p class="text-[#5F504A]">
+          Counseling should not only bring insight, but also new conversations,
+          new agreements and new possibilities for action.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- POLYAMORIE -->
+<section class="w-full bg-[#F5E6D3] py-24 px-6 md:px-16" id="polyamorie">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        Polyamory, open relationships & relationship diversity
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-8 max-w-5xl mx-auto">
+        Come as you are. There is no simple right or wrong.
+      </h2>
+
+      <p class="text-[#5F504A] text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+        Some people come to counseling because they live in an open or polyamorous relationship.
+        Others because they are thinking about it. Others again because a relationship is reaching its limits
+        around questions of freedom, commitment, jealousy, sexuality or honesty.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-16">
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#E8D2BE]">
+        <h3 class="text-2xl font-bold mb-4 text-[#2F2623]">Consent & agreements</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Open and polyamorous relationships do not need less commitment,
+          but often more conscious agreements: What applies? What is changing?
+          What needs safety, transparency and mutual consent?
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#E8D2BE]">
+        <h3 class="text-2xl font-bold mb-4 text-[#2F2623]">Jealousy & emotional safety</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Jealousy, fear, shame or insecurity are not automatically signs
+          that something is “wrong”. They can point to places where needs,
+          boundaries, attachment and self-respect want to be looked at more closely.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#E8D2BE]">
+        <h3 class="text-2xl font-bold mb-4 text-[#2F2623]">Multi-person settings</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Depending on the concern, counseling can make sense as an individual, couple or multi-person setting.
+          In the introductory call we clarify together which frame fits your situation.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="bg-[#2F2623] text-white rounded-3xl p-8 md:p-12 shadow-2xl grid md:grid-cols-2 gap-10 items-center">
+
+  <div>
+    <p class="text-[#E8D2BE] uppercase tracking-wide mb-3 font-semibold">
+      My background
+    </p>
+
+<h3 class="text-3xl md:text-4xl font-bold mb-6">
+  Relationship can be diverse — and still needs clarity, safety and good agreements.
+</h3>
+
+    <p class="text-white/75 text-lg leading-relaxed mb-6">
+      In my master’s thesis, I worked on counseling in the context of polyamory:
+      emotional dynamics, societal expectations, uncertainties in counseling situations
+      and the question of what professional support needs so that people do not have to explain or justify themselves.
+    </p>
+
+    <p class="text-white/75 text-lg leading-relaxed">
+      My aim is not to tell you the “right” way to do relationship.
+      We look together at what is coherent, responsible and livable for you and your relationship(s) —
+      and what might enable more clarity, safety or connection right now.
+    </p>
+  </div>
+
+  <div class="bg-white/10 rounded-3xl p-8 border border-white/10">
+    <h4 class="text-2xl font-bold mb-6">
+      Topics you might come with
+    </h4>
+
+    <ul class="space-y-4 text-white/75 text-lg">
+      <li>✔ Opening an existing relationship</li>
+      <li>✔ Jealousy, insecurity and fear of loss</li>
+      <li>✔ Boundaries, rules, agreements and consent</li>
+      <li>✔ Coming out, family, friends or professional environment</li>
+      <li>✔ Different needs for freedom and commitment</li>
+      <li>✔ Conflicts in triangles, networks or multi-person constellations</li>
+    </ul>
+  </div>
+
+</div>
+
+  </div>
+</section>
+
+<!-- ABOUT TEASER -->
+<section class="w-full bg-[#FFF7ED] py-24 px-8 md:px-16" id="about">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img
+        src="./public/theophil-kroller.jpg"
+        alt="Portrait Theophil Kroller"
+        class="w-full max-w-md rounded-[2rem] shadow-xl object-cover border-8 border-white"
+      >
+    </div>
+
+    <div class="w-full md:w-1/2 text-center md:text-left">
+
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        About me
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-6">
+        I am interested in relationship where it is allowed to become honest.
+      </h2>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed mb-6">
+        My name is Theophil Kroller. In my work, I aim to create a space
+        where there is room for what otherwise often remains unspoken:
+        uncertainty, longing, anger, shame, withdrawal, hope.
+      </p>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed mb-6">
+        I have been shaped by psychosocial counseling, my master’s thesis on polyamory
+        and my time in China and Japan. These experiences sharpened my awareness of
+        how differently people can understand closeness, responsibility, boundaries and belonging.
+      </p>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed mb-8">
+        You decide how you want to live relationship. Whether classically monogamous, polyamorous, queer
+        or somewhere in between — I accompany you openly, respectfully and without quick judgment.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="about.html"
+           class="inline-block bg-[#C96B4B] text-white px-8 py-3 rounded-3xl shadow-xl hover:bg-[#A9543B] transition font-semibold">
+          More about me
+        </a>
+
+        <a href="about.html#qualifikationen"
+           class="inline-block bg-white border border-[#E8D2BE] text-[#2F2623] px-8 py-3 rounded-3xl shadow-sm hover:bg-[#F5E6D3] transition font-semibold">
+          View qualifications
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RAHMENBEDINGUNGEN -->
+<section class="py-24 bg-white" id="rahmen">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+
+    <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+      Conditions
+    </p>
+
+    <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-5">
+      Clear frame. Confidential space.
+    </h2>
+
+    <p class="text-[#5F504A] text-lg max-w-2xl mx-auto mb-16">
+      Counseling needs orientation. We clarify details in the introductory call.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-10 text-left">
+
+      <div class="bg-[#FFF7ED] shadow-xl rounded-2xl p-10 border border-[#E8D2BE]">
+        <h3 class="text-2xl font-semibold text-[#2F2623] mb-4">Setting</h3>
+        <ul class="space-y-4 text-[#5F504A]">
+          <li>✔ Individual counseling</li>
+          <li>✔ Couples counseling</li>
+          <li>✔ Multi-person setting by arrangement</li>
+          <li>✔ Online or on site by arrangement</li>
+        </ul>
+      </div>
+
+      <div class="bg-[#2F2623] text-white shadow-2xl rounded-2xl p-10 border border-[#2F2623]">
+        <h3 class="text-2xl font-semibold mb-4">Typical topics</h3>
+        <ul class="space-y-4 text-white/75">
+          <li>✔ Arguments, withdrawal and communication patterns</li>
+          <li>✔ Closeness, distance, trust and hurts</li>
+          <li>✔ Separation, ambivalence and new beginnings</li>
+          <li>✔ Open relationships, polyamory and agreements</li>
+        </ul>
+      </div>
+
+      <div class="bg-[#FFF7ED] shadow-xl rounded-2xl p-10 border border-[#E8D2BE]">
+        <h3 class="text-2xl font-semibold text-[#2F2623] mb-4">Boundaries of the offer</h3>
+        <ul class="space-y-4 text-[#5F504A]">
+          <li><span class="text-[#7E6BC4] font-bold">✔</span> Psychosocial counseling</li>
+          <li><span class="text-[#C94B4B] font-bold">✘</span> Psychotherapy or medical treatment</li>
+          <li><span class="text-[#C94B4B] font-bold">✘</span> Acute crisis or emergency care</li>
+          <li><span class="text-[#7E6BC4] font-bold">✔</span> Confidentiality and a respectful frame</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-[#FFF7ED] py-24 px-6 md:px-16" id="faq">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        Frequently asked questions
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623]">
+        What you can know beforehand
+      </h2>
+    </div>
+
+    <div class="space-y-5">
+
+      <div class="bg-white rounded-2xl p-6 shadow border border-[#E8D2BE]">
+        <h3 class="text-xl font-bold text-[#2F2623] mb-2">Does my partner have to come with me?</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          No. You can also start alone. Sometimes individual counseling is a useful first step
+          to see your own situation, boundaries and possibilities for action more clearly.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow border border-[#E8D2BE]">
+        <h3 class="text-xl font-bold text-[#2F2623] mb-2">Is counseling also suitable for open or polyamorous relationships?</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Yes. Open, polyamorous, queer or not clearly named relationship forms are explicitly welcome.
+          We look at your concrete situation — not at a predefined ideal.
+        </p>
+      </div>
+
+<div class="bg-white rounded-2xl p-6 shadow border border-[#E8D2BE]">
+  <h3 class="text-xl font-bold text-[#2F2623] mb-2">Is this psychotherapy?</h3>
+  <p class="text-[#5F504A] leading-relaxed">
+    No. My offer is psychosocial counseling. It does not replace psychotherapy,
+    medical treatment or acute crisis or emergency care.
+    Counseling starts where you want to regain more orientation, clarity and room for action —
+    for example in relationship patterns, communication, boundaries, decisions and next steps.
+  </p>
+</div>
+
+      <div class="bg-white rounded-2xl p-6 shadow border border-[#E8D2BE]">
+        <h3 class="text-xl font-bold text-[#2F2623] mb-2">What happens in the introductory call?</h3>
+        <p class="text-[#5F504A] leading-relaxed">
+          Together we sort out your concern, discuss the appropriate setting
+          and see whether my approach fits your situation.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="relative w-full bg-[#C96B4B] py-28 px-6 md:px-16 overflow-hidden" id="kontakt">
+
+  <div class="relative max-w-3xl mx-auto text-center text-white">
+
+    <p class="text-white/80 uppercase tracking-wide mb-3 font-semibold">
+      Getting to know each other
+    </p>
+
+    <h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight">
+      Book your non-binding introductory call.
+    </h2>
+
+    <p class="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">
+      In the introductory call, we look together at what is currently going on for you or for all of you,
+      which setting might make sense — and whether my approach fits your concern.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+      <a href="https://app.cal.eu/theophil-kroller"
+         target="_blank"
+         rel="noopener"
+         class="px-10 py-4 bg-white text-[#2F2623] font-bold tracking-wide rounded-2xl shadow-xl hover:bg-[#FFF7ED] transition">
+        Book introductory call
+      </a>
+
+      <a href="mailto:theophil.kroller@gmail.com"
+         class="px-10 py-4 bg-white/10 border border-white/40 text-white font-bold tracking-wide rounded-2xl hover:bg-white/20 transition">
+        Write an email first
+      </a>
+
+    </div>
+
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#2F2623] text-white py-16">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row flex-wrap md:items-start md:justify-between gap-10">
+
+    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+      <h3 class="text-2xl font-bold tracking-wide mb-4">
+        Theophil Kroller
+      </h3>
+      <p class="text-white/70 text-sm leading-relaxed max-w-sm">
+        Psychosocial relationship counseling for individuals, couples and people in diverse relationship forms.
+      </p>
+    </div>
+
+    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+      <h4 class="text-lg font-semibold mb-4">Navigation</h4>
+      <ul class="space-y-3 text-white/70">
+        <li><a href="#start" class="hover:text-white transition">Start</a></li>
+        <li><a href="#angebot" class="hover:text-white transition">Services</a></li>
+        <li><a href="#arbeitsweise" class="hover:text-white transition">Approach</a></li>
+        <li><a href="#polyamorie" class="hover:text-white transition">Polyamory</a></li>
+        <li><a href="#ablauf" class="hover:text-white transition">Process</a></li>
+        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+        <li><a href="about.html" class="hover:text-white transition">About me</a></li>
+        <li><a href="about.html#qualifikationen" class="hover:text-white transition">Qualifications</a></li>
+      </ul>
+    </div>
+
+    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+      <h4 class="text-lg font-semibold mb-4">Legal</h4>
+      <ul class="space-y-3 text-white/70">
+        <li><a href="impressum.html" class="hover:text-white transition">Imprint</a></li>
+        <li><a href="datenschutz.html" class="hover:text-white transition">Privacy policy</a></li>
+      </ul>
+    </div>
+
+    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+      <h4 class="text-lg font-semibold mb-4">Contact</h4>
+      <ul class="space-y-3 text-white/70">
+        <li><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hover:text-white transition">Request an introductory call</a></li>
+        <li><a href="mailto:theophil.kroller@gmail.com" class="hover:text-white transition">theophil.kroller@gmail.com</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="border-t border-white/10 mt-12 pt-6 text-center text-white/50 text-sm">
+    © 2026 Theophil Kroller. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  const langSwitch = document.getElementById('lang-switch');
+  const mobileLangSwitch = document.getElementById('mobile-lang-switch');
+
+  function switchToGerman(event) {
+    event.preventDefault();
+    window.location.href = 'index.html' + window.location.hash;
+  }
+
+  if (langSwitch) {
+    langSwitch.addEventListener('click', switchToGerman);
+  }
+
+  if (mobileLangSwitch) {
+    mobileLangSwitch.addEventListener('click', switchToGerman);
+  }
+</script>
+
+</body>
+</html>
