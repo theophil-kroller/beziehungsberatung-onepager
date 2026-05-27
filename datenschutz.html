@@ -9,8 +9,8 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <title>Datenschutzerklärung | Theophil Kroller</title>
-  <meta name="description" content="Datenschutzerklärung der Website von Theophil Kroller.">
+  <title>Datenschutzerklärung / Privacy Policy | Theophil Kroller</title>
+  <meta name="description" content="Datenschutzerklärung / Privacy Policy der Website von Theophil Kroller.">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <style>
@@ -68,6 +68,14 @@
     transform: translateY(-1px);
     box-shadow: 0 10px 22px rgba(201, 107, 75, 0.28);
   }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary {
+    list-style: none;
+  }
 </style>
 </head>
 
@@ -101,13 +109,47 @@
   <li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
 </ul>
 
-<a href="https://app.cal.eu/theophil-kroller"
-   target="_blank"
-   rel="noopener"
-   class="hidden md:inline-block cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">
-  Erstgespräch anfragen
-</a>
+<div class="hidden md:flex items-center gap-3">
+  <a href="#english"
+     class="inline-block border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3] transition">
+    EN
+  </a>
 
+  <a href="https://app.cal.eu/theophil-kroller"
+     target="_blank"
+     rel="noopener"
+     class="inline-block cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">
+    Erstgespräch anfragen
+  </a>
+</div>
+
+    <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5" aria-label="Menü öffnen">
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+    </button>
+
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden hidden px-6 pb-4 bg-[#FFF7ED]/95 backdrop-blur-md border-t border-[#E8D2BE]">
+    <ul class="flex flex-col gap-4 text-[#5F504A] font-medium py-4">
+      <li><a href="index.html" class="block w-full hover:text-[#C96B4B]">Start</a></li>
+      <li><a href="index.html#angebot" class="block w-full hover:text-[#C96B4B]">Angebot</a></li>
+      <li><a href="index.html#arbeitsweise" class="block w-full hover:text-[#C96B4B]">Arbeitsweise</a></li>
+      <li><a href="index.html#polyamorie" class="block w-full hover:text-[#C96B4B]">Polyamorie</a></li>
+      <li><a href="about.html" class="block w-full hover:text-[#C96B4B]">Über mich</a></li>
+      <li><a href="about.html#qualifikationen" class="block w-full hover:text-[#C96B4B]">Qualifikationen</a></li>
+      <li><a href="index.html#kontakt" class="block w-full hover:text-[#C96B4B]">Kontakt</a></li>
+      <li><a href="#english" class="block w-full hover:text-[#C96B4B]">English version</a></li>
+      <li>
+        <a href="https://app.cal.eu/theophil-kroller"
+           target="_blank"
+           rel="noopener"
+           class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-xl font-semibold">
+          Erstgespräch anfragen
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
 
@@ -125,12 +167,23 @@
     <p class="text-[#5F504A] text-lg md:text-xl leading-relaxed">
       Informationen darüber, welche personenbezogenen Daten beim Besuch dieser Website und bei Kontaktaufnahme verarbeitet werden.
     </p>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#deutsch"
+         class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-2xl shadow-md hover:bg-[#A9543B] transition font-semibold">
+        Deutsche Fassung
+      </a>
+      <a href="#english"
+         class="inline-block bg-white border border-[#E8D2BE] text-[#2F2623] px-6 py-3 rounded-2xl shadow-sm hover:bg-[#F5E6D3] transition font-semibold">
+        English translation
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- CONTENT -->
 <main class="pb-24 px-6 md:px-16">
-  <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-[#E8D2BE] p-8 md:p-12">
+  <div id="deutsch" class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-[#E8D2BE] p-8 md:p-12">
 
     <section class="mb-12">
       <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
@@ -479,6 +532,372 @@
     </section>
 
   </div>
+
+  <div id="english" lang="en" class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-[#E8D2BE] p-8 md:p-12 mt-16">
+
+    <div class="mb-12 border-b border-[#E8D2BE] pb-8">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        Privacy Policy
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-6">
+        English translation
+      </h2>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed">
+        This English translation is provided for convenience. In case of discrepancies,
+        the German version shall prevail.
+      </p>
+    </div>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        1. Controller
+      </h2>
+
+      <div class="space-y-2 text-[#5F504A] text-lg leading-relaxed">
+        <p><strong class="text-[#2F2623]">Theophil Kroller</strong></p>
+        <p>[Street and house number to be added]</p>
+        <p>[Postal code and city to be added]</p>
+        <p>Austria</p>
+        <p>Email: <a href="mailto:theophil.kroller@gmail.com" class="text-[#C96B4B] font-semibold hover:underline">theophil.kroller@gmail.com</a></p>
+        <p>Phone: [Phone number to be added]</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        2. General information on data processing
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          I process personal data only insofar as this is necessary to provide this website, respond to enquiries, arrange appointments or fulfil legal obligations.
+        </p>
+
+        <p>
+          Personal data means any information relating to an identified or identifiable natural person, such as name, email address, telephone number, IP address or the content of a message.
+        </p>
+
+        <p>
+          Processing is carried out on the basis of the General Data Protection Regulation (GDPR), the Austrian Data Protection Act (DSG) and other applicable legal provisions.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        3. Visiting the website / server log files
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This website is provided via GitHub Pages. When the website is accessed, technically necessary data is processed so that the website can be delivered and operated securely.
+        </p>
+
+        <p>
+          This data may include in particular:
+        </p>
+
+        <ul class="list-disc pl-6 space-y-2">
+          <li>IP address</li>
+          <li>date and time of access</li>
+          <li>pages and files accessed</li>
+          <li>amount of data transferred</li>
+          <li>browser type and browser version</li>
+          <li>operating system</li>
+          <li>referrer URL</li>
+        </ul>
+
+        <p>
+          The purpose of the processing is the technical provision, stability and security of the website.
+          The legal basis is Art. 6(1)(f) GDPR, meaning my legitimate interest in a secure and functioning website.
+        </p>
+
+        <p>
+          The provider is GitHub, Inc. or GitHub B.V. Further information can be found in GitHub’s privacy statement:
+          <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener" class="text-[#C96B4B] font-semibold hover:underline">GitHub Privacy Statement</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        4. Contact by email or telephone
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          If you contact me by email or telephone, I process the data you provide, such as your name, email address, telephone number, the content of your enquiry and the time of contact.
+        </p>
+
+        <p>
+          The purpose of processing is to handle your enquiry, communicate with you and, where applicable, prepare or carry out a counselling relationship.
+        </p>
+
+        <p>
+          Depending on the content of the enquiry, the legal basis is Art. 6(1)(b) GDPR, where processing is necessary for pre-contractual measures or for the performance of a contract, or Art. 6(1)(f) GDPR based on my legitimate interest in handling enquiries.
+        </p>
+
+        <p>
+          Please note that email communication can generally involve security risks. Therefore, only send particularly sensitive information if this is necessary and you agree to this communication channel.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        5. Appointment booking via Cal.eu / Cal.com
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This website links to an external appointment booking page by Cal.eu or Cal.com. If you click the appointment booking link, you leave this website and are redirected to the Cal.eu / Cal.com service.
+        </p>
+
+        <p>
+          When booking an appointment, personal data may be processed, such as name, email address, selected appointment, time zone, information about your concern and technical access data.
+        </p>
+
+        <p>
+          The purpose of processing is the scheduling and organisation of introductory calls or counselling appointments.
+          The legal basis is Art. 6(1)(b) GDPR, where processing is necessary for pre-contractual measures or a counselling relationship.
+        </p>
+
+        <p>
+          Cal.eu is described by Cal.com as a European-hosted version with a focus on European data hosting. Further information can be found at Cal.com:
+          <a href="https://cal.com/europe" target="_blank" rel="noopener" class="text-[#C96B4B] font-semibold hover:underline">information on Cal.eu</a>
+          and in the
+          <a href="https://cal.com/privacy" target="_blank" rel="noopener" class="text-[#C96B4B] font-semibold hover:underline">Cal.com privacy policy</a>.
+        </p>
+
+        <p>
+          Please note that the privacy provisions of this provider also apply to data processing on the Cal.eu / Cal.com page.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        6. External font and icon services
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This website currently uses Tailwind CSS via a content delivery network (CDN) and Font Awesome for icons. When these services are loaded, your browser may establish a connection to external servers. Technical data such as IP address, browser information and time of access may be processed.
+        </p>
+
+        <p>
+          The purpose of processing is the consistent, functional and visually appealing presentation of the website.
+          The legal basis is Art. 6(1)(f) GDPR, my legitimate interest in a technically functioning and visually consistent website.
+        </p>
+
+        <p>
+          In the future, this website may be adapted so that fonts and CSS files are provided locally in order to further reduce external connections.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        7. No analytics or marketing cookies
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This website currently does not use web analytics services such as Google Analytics, marketing cookies, Facebook Pixel or comparable tracking.
+        </p>
+
+        <p>
+          If this changes in the future, this privacy policy will be updated accordingly and — where required — consent will be obtained.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        8. Contact form and newsletter
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This website currently does not use a contact form or newsletter.
+        </p>
+
+        <p>
+          Contact currently takes place by email, telephone or external appointment booking via Cal.eu / Cal.com.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        9. Processing of special categories of personal data
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          In the context of a counselling enquiry, particularly sensitive information may also be provided voluntarily, for example information about health, sexuality, relationship situation, family situation or personal stress.
+        </p>
+
+        <p>
+          Please only share via email or appointment booking the information that is necessary for initial contact or appointment scheduling. Detailed personal content can be discussed in the protected setting of a counselling conversation.
+        </p>
+
+        <p>
+          Where special categories of personal data are processed, this is done only insofar as it is necessary to handle your enquiry or conduct counselling and is based on an appropriate legal basis, in particular your explicit consent or necessity in the counselling context.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        10. Storage period
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          Personal data is stored only for as long as necessary for the respective purposes or as long as statutory retention obligations exist.
+        </p>
+
+        <p>
+          Data from enquiries is deleted once the enquiry has been fully processed and there are no statutory retention obligations or legitimate interests in further storage.
+        </p>
+
+        <p>
+          Data relating to a counselling relationship may be stored for longer due to statutory documentation, evidence or retention obligations.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        11. Recipients of data
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          Personal data is not sold and is not passed on to third parties without a legal basis.
+        </p>
+
+        <p>
+          Disclosure may occur if this is necessary for the technical provision of the website, appointment scheduling, communication, fulfilment of legal obligations or protection of legitimate interests.
+        </p>
+
+        <p>
+          Possible recipients or service providers include in particular:
+        </p>
+
+        <ul class="list-disc pl-6 space-y-2">
+          <li>GitHub Pages as the hosting provider of this website</li>
+          <li>Cal.eu / Cal.com for appointment bookings</li>
+          <li>email providers for communication</li>
+          <li>where applicable, tax advisors, legal advisors or authorities, insofar as legally required</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        12. Transfers to third countries
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          When using external services, in particular GitHub Pages, Tailwind CDN, Font Awesome CDN or Cal.eu / Cal.com, processing of personal data outside the European Union or the European Economic Area cannot be ruled out.
+        </p>
+
+        <p>
+          Where data is transferred to third countries, this is done in accordance with the legal requirements of the GDPR, in particular on the basis of appropriate safeguards such as standard contractual clauses or an adequacy decision, where required.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        13. Your rights
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          Under the GDPR, you have in particular the following rights:
+        </p>
+
+        <ul class="list-disc pl-6 space-y-2">
+          <li>right of access to the personal data processed</li>
+          <li>right to rectification of inaccurate data</li>
+          <li>right to erasure</li>
+          <li>right to restriction of processing</li>
+          <li>right to data portability</li>
+          <li>right to object to processing based on legitimate interests</li>
+          <li>right to withdraw consent with effect for the future</li>
+        </ul>
+
+        <p>
+          To exercise your rights, you can contact me at any time:
+          <a href="mailto:theophil.kroller@gmail.com" class="text-[#C96B4B] font-semibold hover:underline">theophil.kroller@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        14. Right to lodge a complaint
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          If you believe that the processing of your personal data violates data protection law, you have the right to lodge a complaint with a supervisory authority.
+        </p>
+
+        <p>
+          The competent authority in Austria is the Austrian Data Protection Authority:
+        </p>
+
+        <p>
+          Austrian Data Protection Authority<br>
+          Barichgasse 40–42<br>
+          1030 Vienna<br>
+          Website:
+          <a href="https://www.dsb.gv.at/" target="_blank" rel="noopener" class="text-[#C96B4B] font-semibold hover:underline">www.dsb.gv.at</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        15. Data security
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          I take appropriate technical and organisational measures to protect personal data against loss, misuse, unauthorised access or unauthorised disclosure.
+        </p>
+
+        <p>
+          Please note that data transmission on the internet may have security vulnerabilities. Complete protection against access by third parties is not possible.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        16. Validity and changes to this privacy policy
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This privacy policy is currently valid as of: [Date to be added].
+        </p>
+
+        <p>
+          Due to further development of the website or changes in legal requirements, it may become necessary to update this privacy policy.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
 </main>
 
 <!-- FOOTER -->
@@ -508,8 +927,8 @@
     <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
       <h4 class="text-lg font-semibold mb-4">Rechtliches</h4>
       <ul class="space-y-3 text-white/70">
-        <li><a href="impressum.html" class="hover:text-white transition">Impressum</a></li>
-        <li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz</a></li>
+        <li><a href="impressum.html" class="hover:text-white transition">Impressum / Legal Notice</a></li>
+        <li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz / Privacy Policy</a></li>
       </ul>
     </div>
 
@@ -527,3 +946,17 @@
     © 2026 Theophil Kroller. Alle Rechte vorbehalten.
   </div>
 </footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
+
+</body>
+</html>

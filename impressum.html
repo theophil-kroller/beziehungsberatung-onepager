@@ -9,8 +9,8 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <title>Impressum | Theophil Kroller</title>
-  <meta name="description" content="Impressum der Website von Theophil Kroller.">
+  <title>Impressum / Legal Notice | Theophil Kroller</title>
+  <meta name="description" content="Impressum / Legal Notice der Website von Theophil Kroller.">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <style>
@@ -68,6 +68,14 @@
     transform: translateY(-1px);
     box-shadow: 0 10px 22px rgba(201, 107, 75, 0.28);
   }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary {
+    list-style: none;
+  }
 </style>
 </head>
 
@@ -101,13 +109,47 @@
   <li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
 </ul>
 
-<a href="https://app.cal.eu/theophil-kroller"
-   target="_blank"
-   rel="noopener"
-   class="hidden md:inline-block cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">
-  Erstgespräch anfragen
-</a>
+<div class="hidden md:flex items-center gap-3">
+  <a href="#english"
+     class="inline-block border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3] transition">
+    EN
+  </a>
 
+  <a href="https://app.cal.eu/theophil-kroller"
+     target="_blank"
+     rel="noopener"
+     class="inline-block cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">
+    Erstgespräch anfragen
+  </a>
+</div>
+
+    <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5" aria-label="Menü öffnen">
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
+    </button>
+
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden hidden px-6 pb-4 bg-[#FFF7ED]/95 backdrop-blur-md border-t border-[#E8D2BE]">
+    <ul class="flex flex-col gap-4 text-[#5F504A] font-medium py-4">
+      <li><a href="index.html" class="block w-full hover:text-[#C96B4B]">Start</a></li>
+      <li><a href="index.html#angebot" class="block w-full hover:text-[#C96B4B]">Angebot</a></li>
+      <li><a href="index.html#arbeitsweise" class="block w-full hover:text-[#C96B4B]">Arbeitsweise</a></li>
+      <li><a href="index.html#polyamorie" class="block w-full hover:text-[#C96B4B]">Polyamorie</a></li>
+      <li><a href="about.html" class="block w-full hover:text-[#C96B4B]">Über mich</a></li>
+      <li><a href="about.html#qualifikationen" class="block w-full hover:text-[#C96B4B]">Qualifikationen</a></li>
+      <li><a href="index.html#kontakt" class="block w-full hover:text-[#C96B4B]">Kontakt</a></li>
+      <li><a href="#english" class="block w-full hover:text-[#C96B4B]">English version</a></li>
+      <li>
+        <a href="https://app.cal.eu/theophil-kroller"
+           target="_blank"
+           rel="noopener"
+           class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-xl font-semibold">
+          Erstgespräch anfragen
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
 
@@ -125,12 +167,23 @@
     <p class="text-[#5F504A] text-lg md:text-xl leading-relaxed">
       Angaben gemäß österreichischem E-Commerce-Gesetz, Mediengesetz und sonstigen einschlägigen Informationspflichten.
     </p>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#deutsch"
+         class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-2xl shadow-md hover:bg-[#A9543B] transition font-semibold">
+        Deutsche Fassung
+      </a>
+      <a href="#english"
+         class="inline-block bg-white border border-[#E8D2BE] text-[#2F2623] px-6 py-3 rounded-2xl shadow-sm hover:bg-[#F5E6D3] transition font-semibold">
+        English translation
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- CONTENT -->
 <main class="pb-24 px-6 md:px-16">
-  <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-[#E8D2BE] p-8 md:p-12">
+  <div id="deutsch" class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-[#E8D2BE] p-8 md:p-12">
 
     <section class="mb-12">
       <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
@@ -309,6 +362,202 @@
     </section>
 
   </div>
+
+  <div id="english" lang="en" class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-[#E8D2BE] p-8 md:p-12 mt-16">
+
+    <div class="mb-12 border-b border-[#E8D2BE] pb-8">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">
+        Legal Notice
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#2F2623] mb-6">
+        English translation
+      </h2>
+
+      <p class="text-[#5F504A] text-lg leading-relaxed">
+        This English translation is provided for convenience. In case of discrepancies,
+        the German version shall prevail.
+      </p>
+    </div>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Operator of this website
+      </h2>
+
+      <div class="space-y-2 text-[#5F504A] text-lg leading-relaxed">
+        <p><strong class="text-[#2F2623]">Theophil Kroller</strong></p>
+        <p>Psychosocial counselling / relationship counselling</p>
+        <p>[Street and house number to be added]</p>
+        <p>[Postal code and city to be added]</p>
+        <p>Austria</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Contact
+      </h2>
+
+      <div class="space-y-2 text-[#5F504A] text-lg leading-relaxed">
+        <p>Email: <a href="mailto:theophil.kroller@gmail.com" class="text-[#C96B4B] font-semibold hover:underline">theophil.kroller@gmail.com</a></p>
+        <p>Phone: [Phone number to be added]</p>
+        <p>Website: <a href="https://theophil-kroller.github.io/beziehungsberatung-onepager/" class="text-[#C96B4B] font-semibold hover:underline">theophil-kroller.github.io/beziehungsberatung-onepager</a></p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Professional title and field of activity
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          Field of activity: psychosocial counselling, relationship counselling, couples counselling and counselling in the context of diverse relationship forms.
+        </p>
+
+        <p>
+          Professional title: [e.g. University-certified Psychosocial Counsellor / life and social counsellor in training under supervision / life and social counsellor — please check and add exact wording]
+        </p>
+
+        <p>
+          Country of award: Austria
+        </p>
+
+        <p>
+          Competent supervisory authority / trade authority: [e.g. City of Graz municipal authority / district authority to be added]
+        </p>
+
+        <p>
+          Chamber affiliation: Austrian Federal Economic Chamber / competent regional chamber [add if applicable]
+        </p>
+
+        <p>
+          Applicable legal provisions: Austrian Trade Regulation Act 1994, available at
+          <a href="https://www.ris.bka.gv.at/" target="_blank" rel="noopener" class="text-[#C96B4B] font-semibold hover:underline">www.ris.bka.gv.at</a>
+        </p>
+
+        <p>
+          Trade register number / GISA number: [add if available]
+        </p>
+
+        <p>
+          VAT identification number: [add if available / otherwise remove]
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Memberships / professional information
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          [Add memberships if applicable, e.g. professional group for personal counselling and care, professional association, supervision association, etc.]
+        </p>
+
+        <p>
+          The counselling offered is psychosocial counselling. It does not replace psychotherapy, medical treatment, psychiatric treatment or acute crisis or emergency care.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Media owner and publisher
+      </h2>
+
+      <div class="space-y-2 text-[#5F504A] text-lg leading-relaxed">
+        <p><strong class="text-[#2F2623]">Theophil Kroller</strong></p>
+        <p>[Address to be added]</p>
+        <p>[Postal code and city to be added], Austria</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Business purpose / editorial policy
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This website provides information about Theophil Kroller’s counselling services in the field of psychosocial relationship counselling, couples counselling, individual counselling and counselling in the context of diverse relationship forms.
+        </p>
+
+        <p>
+          The purpose of the website is to provide factual information about counselling services, professional focus areas, qualifications and contact options.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Liability for content
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          The content of this website has been created with the greatest possible care. However, no guarantee is given for the accuracy, completeness or timeliness of the content.
+        </p>
+
+        <p>
+          The information on this website is for general information only and does not replace individual counselling, psychotherapy, medical advice or legal advice.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Liability for links
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          This website may contain links to external third-party websites. I have no influence over their content. The respective provider or operator is always responsible for the content of linked pages.
+        </p>
+
+        <p>
+          If unlawful content becomes known, such links will be removed promptly.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Copyright
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          The content, texts, images and graphic elements created on this website are subject to copyright. Any use, reproduction or distribution beyond the limits of copyright law requires prior written consent.
+        </p>
+
+        <p>
+          Where content on this website was not created by me, the copyrights of third parties are respected.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-[#2F2623] mb-6">
+        Notice on online dispute resolution
+      </h2>
+
+      <div class="space-y-4 text-[#5F504A] text-lg leading-relaxed">
+        <p>
+          Consumers have the option of submitting complaints to the European Commission’s online dispute resolution platform:
+          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" class="text-[#C96B4B] font-semibold hover:underline">https://ec.europa.eu/consumers/odr</a>
+        </p>
+
+        <p>
+          I am neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration board.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
 </main>
 
 <!-- FOOTER -->
@@ -338,8 +587,8 @@
     <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
       <h4 class="text-lg font-semibold mb-4">Rechtliches</h4>
       <ul class="space-y-3 text-white/70">
-        <li><a href="impressum.html" class="hover:text-white transition">Impressum</a></li>
-        <li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz</a></li>
+        <li><a href="impressum.html" class="hover:text-white transition">Impressum / Legal Notice</a></li>
+        <li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz / Privacy Policy</a></li>
       </ul>
     </div>
 
@@ -347,7 +596,7 @@
       <h4 class="text-lg font-semibold mb-4">Kontakt</h4>
       <ul class="space-y-3 text-white/70">
         <li><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hover:text-white transition">Erstgespräch anfragen</a></li>
-        <li><a href="mailto:deine.email@example.at" class="hover:text-white transition">deine.email@example.at</a></li>
+        <li><a href="mailto:theophil.kroller@gmail.com" class="hover:text-white transition">theophil.kroller@gmail.com</a></li>
       </ul>
     </div>
 
@@ -357,6 +606,18 @@
     © 2026 Theophil Kroller. Alle Rechte vorbehalten.
   </div>
 </footer>
+
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
 
 </body>
 </html>
