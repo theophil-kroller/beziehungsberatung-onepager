@@ -9,7 +9,7 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <title>Datenschutzerklärung / Privacy Policy | Theophil Kroller</title>
+  <title>Datenschutzerklärung / Privacy Policy | Beziehungsdynamiken</title>
   <meta name="description" content="Datenschutzerklärung / Privacy Policy der Website von Theophil Kroller.">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -76,7 +76,28 @@
   details summary {
     list-style: none;
   }
-</style>
+
+
+  .nav-link-active {
+    position: relative;
+    color: #C96B4B;
+    font-weight: 700;
+  }
+  .nav-link-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #C96B4B;
+    border-radius: 999px;
+  }
+  .nav-scroll { scrollbar-width: thin; }
+  .nav-scroll::-webkit-scrollbar { height: 6px; }
+  .nav-scroll::-webkit-scrollbar-thumb { background: #E8D2BE; border-radius: 999px; }
+
+  </style>
 </head>
 
 <body class="bg-[#FFF7ED] text-[#2F2623]">
@@ -88,67 +109,32 @@
 
 <!-- NAVBAR -->
 <nav class="w-full bg-[#FFF7ED]/95 backdrop-blur-md border-b border-[#E8D2BE] sticky top-0 z-50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
-    <a href="index.html" class="flex items-center gap-3">
-      <div class="h-10 w-10 rounded-full bg-[#C96B4B] text-white flex items-center justify-center font-bold">
-        TK
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <div class="h-11 w-11 rounded-full bg-[#C96B4B] text-white flex items-center justify-center font-bold">BD</div>
+      <div class="leading-tight">
+        <span class="block text-xl md:text-2xl font-semibold tracking-tight text-[#2F2623]">Beziehungsdynamiken</span>
+        <span class="block text-xs md:text-sm font-medium text-[#5F504A]">mit Theophil Kroller</span>
       </div>
-      <span class="text-xl font-semibold tracking-tight text-[#2F2623]">
-        Theophil Kroller
-      </span>
     </a>
 
-<ul class="hidden lg:flex items-center gap-7 text-[#5F504A] font-medium">
-  <li><a href="index.html" class="nav-link">Start</a></li>
-  <li><a href="index.html#angebot" class="nav-link">Angebot</a></li>
-  <li><a href="index.html#arbeitsweise" class="nav-link">Arbeitsweise</a></li>
-  <li><a href="index.html#polyamorie" class="nav-link">Polyamorie</a></li>
-  <li><a href="about.html" class="nav-link">Über mich</a></li>
-  <li><a href="about.html#qualifikationen" class="nav-link">Qualifikationen</a></li>
-  <li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
-</ul>
-
-<div class="hidden md:flex items-center gap-3">
-  <a href="#english"
-     class="inline-block border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3] transition">
-    EN
-  </a>
-
-  <a href="https://app.cal.eu/theophil-kroller"
-     target="_blank"
-     rel="noopener"
-     class="inline-block cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">
-    Erstgespräch anfragen
-  </a>
-</div>
-
-    <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5" aria-label="Menü öffnen">
-      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
-      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
-      <span class="block w-6 h-0.5 bg-[#2F2623]"></span>
-    </button>
-
+    <div class="flex items-center gap-3 shrink-0">
+      <a href="#english" class="inline-block border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3] transition">EN</a>
+      <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hidden sm:inline-block cta-nav px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm">Erstgespräch anfragen</a>
+    </div>
   </div>
 
-  <div id="mobile-menu" class="lg:hidden hidden px-6 pb-4 bg-[#FFF7ED]/95 backdrop-blur-md border-t border-[#E8D2BE]">
-    <ul class="flex flex-col gap-4 text-[#5F504A] font-medium py-4">
-      <li><a href="index.html" class="block w-full hover:text-[#C96B4B]">Start</a></li>
-      <li><a href="index.html#angebot" class="block w-full hover:text-[#C96B4B]">Angebot</a></li>
-      <li><a href="index.html#arbeitsweise" class="block w-full hover:text-[#C96B4B]">Arbeitsweise</a></li>
-      <li><a href="index.html#polyamorie" class="block w-full hover:text-[#C96B4B]">Polyamorie</a></li>
-      <li><a href="about.html" class="block w-full hover:text-[#C96B4B]">Über mich</a></li>
-      <li><a href="about.html#qualifikationen" class="block w-full hover:text-[#C96B4B]">Qualifikationen</a></li>
-      <li><a href="index.html#kontakt" class="block w-full hover:text-[#C96B4B]">Kontakt</a></li>
-      <li><a href="#english" class="block w-full hover:text-[#C96B4B]">English version</a></li>
-      <li>
-        <a href="https://app.cal.eu/theophil-kroller"
-           target="_blank"
-           rel="noopener"
-           class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-xl font-semibold">
-          Erstgespräch anfragen
-        </a>
-      </li>
+  <div class="border-t border-[#E8D2BE]/70 bg-[#FFF7ED]/95 overflow-x-auto nav-scroll">
+    <ul class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-6 text-sm md:text-base text-[#5F504A] font-medium whitespace-nowrap">
+        <li class="shrink-0"><a href="index.html" class="nav-link">Start</a></li>
+        <li class="shrink-0"><a href="index.html#angebot" class="nav-link">Angebot</a></li>
+        <li class="shrink-0"><a href="index.html#ablauf" class="nav-link">Ablauf</a></li>
+        <li class="shrink-0"><a href="arbeitsweise.html" class="nav-link">Arbeitsweise</a></li>
+        <li class="shrink-0"><a href="beziehungsvielfalt.html" class="nav-link">Beziehungsvielfalt</a></li>
+        <li class="shrink-0"><a href="about.html" class="nav-link">Über mich</a></li>
+        <li class="shrink-0"><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
+        <li class="shrink-0"><a href="impressum.html" class="nav-link">Impressum</a></li>
+        <li class="shrink-0"><a href="datenschutz.html" class="nav-link-active">Datenschutz</a></li>
     </ul>
   </div>
 </nav>
@@ -902,61 +888,30 @@
 
 <!-- FOOTER -->
 <footer class="bg-[#2F2623] text-white py-16">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row flex-wrap md:items-start md:justify-between gap-10">
-
-    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
-      <h3 class="text-2xl font-bold tracking-wide mb-4">
-        Theophil Kroller
-      </h3>
-      <p class="text-white/70 text-sm leading-relaxed max-w-sm">
-        Psychosoziale Beziehungsberatung für Einzelpersonen, Paare und Menschen in vielfältigen Beziehungsformen.
-      </p>
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+    <div>
+      <h3 class="text-2xl font-bold tracking-wide mb-2">Beziehungsdynamiken</h3>
+      <p class="text-white/60 text-sm mb-4">mit Theophil Kroller</p>
+      <p class="text-white/70 text-sm leading-relaxed max-w-sm">Psychosoziale Beziehungsberatung für Einzelpersonen, Paare und Menschen in vielfältigen Beziehungsformen.</p>
     </div>
-
-    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+    <div>
       <h4 class="text-lg font-semibold mb-4">Navigation</h4>
-      <ul class="space-y-3 text-white/70">
-        <li><a href="index.html" class="hover:text-white transition">Start</a></li>
-        <li><a href="index.html#angebot" class="hover:text-white transition">Angebot</a></li>
-        <li><a href="index.html#arbeitsweise" class="hover:text-white transition">Arbeitsweise</a></li>
-        <li><a href="index.html#polyamorie" class="hover:text-white transition">Polyamorie</a></li>
-        <li><a href="about.html" class="hover:text-white transition">Über mich</a></li>
-      </ul>
+      <ul class="space-y-3 text-white/70"><li><a href="index.html" class="hover:text-white transition">Start</a></li><li><a href="index.html#angebot" class="hover:text-white transition">Angebot</a></li><li><a href="index.html#ablauf" class="hover:text-white transition">Ablauf</a></li><li><a href="arbeitsweise.html" class="hover:text-white transition">Arbeitsweise</a></li><li><a href="beziehungsvielfalt.html" class="hover:text-white transition">Beziehungsvielfalt</a></li><li><a href="about.html" class="hover:text-white transition">Über mich</a></li></ul>
     </div>
-
-    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+    <div>
       <h4 class="text-lg font-semibold mb-4">Rechtliches</h4>
-      <ul class="space-y-3 text-white/70">
-        <li><a href="impressum.html" class="hover:text-white transition">Impressum / Legal Notice</a></li>
-        <li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz / Privacy Policy</a></li>
-      </ul>
+      <ul class="space-y-3 text-white/70"><li><a href="impressum.html" class="hover:text-white transition">Impressum</a></li><li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz</a></li></ul>
     </div>
-
-    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+    <div>
       <h4 class="text-lg font-semibold mb-4">Kontakt</h4>
       <ul class="space-y-3 text-white/70">
         <li><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hover:text-white transition">Erstgespräch anfragen</a></li>
         <li><a href="mailto:theophil.kroller@gmail.com" class="hover:text-white transition">theophil.kroller@gmail.com</a></li>
       </ul>
     </div>
-
   </div>
-
-  <div class="border-t border-white/10 mt-12 pt-6 text-center text-white/50 text-sm">
-    © 2026 Theophil Kroller. Alle Rechte vorbehalten.
-  </div>
+  <div class="border-t border-white/10 mt-12 pt-6 text-center text-white/50 text-sm">© 2026 Beziehungsdynamiken / Theophil Kroller. Alle Rechte vorbehalten.</div>
 </footer>
-
-<script>
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-</script>
 
 </body>
 </html>

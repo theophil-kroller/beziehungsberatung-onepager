@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Beziehungsvielfalt | Theophil Kroller</title>
+  <title>Beziehungsvielfalt | Beziehungsdynamiken</title>
   <meta name="description" content="Beratung für offene, polyamore, queere und vielfältige Beziehungskonstellationen." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
@@ -16,52 +16,89 @@
     .cta-nav { background:#C96B4B; color:white; transition:all .25s ease; }
     .cta-nav:hover { background:#A9543B; transform:translateY(-1px); box-shadow:0 10px 22px rgba(201,107,75,.28); }
     details summary::-webkit-details-marker { display:none; }
+  
+  .nav-link-active {
+    position: relative;
+    color: #C96B4B;
+    font-weight: 700;
+  }
+  .nav-link-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #C96B4B;
+    border-radius: 999px;
+  }
+  .nav-scroll { scrollbar-width: thin; }
+  .nav-scroll::-webkit-scrollbar { height: 6px; }
+  .nav-scroll::-webkit-scrollbar-thumb { background: #E8D2BE; border-radius: 999px; }
+
   </style>
 </head>
 <body class="bg-[#FFF7ED] text-[#2F2623]">
 <div class="bg-[#F5E6D3] text-[#2F2623] text-center px-4 py-3 text-sm border-b border-[#E8D2BE]">Diese Website befindet sich derzeit im Aufbau. Das Angebot für psychosoziale Beziehungsberatung startet demnächst.</div>
+<!-- NAVBAR -->
 <nav class="w-full bg-[#FFF7ED]/95 backdrop-blur-md border-b border-[#E8D2BE] sticky top-0 z-50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
     <a href="index.html" class="flex items-center gap-3 shrink-0">
       <div class="h-11 w-11 rounded-full bg-[#C96B4B] text-white flex items-center justify-center font-bold">BD</div>
       <div class="leading-tight">
-        <span class="block text-xl font-semibold tracking-tight text-[#2F2623]">Beziehungsdynamiken</span>
-        <span class="block text-xs font-medium text-[#5F504A]">mit Theophil Kroller</span>
+        <span class="block text-xl md:text-2xl font-semibold tracking-tight text-[#2F2623]">Beziehungsdynamiken</span>
+        <span class="block text-xs md:text-sm font-medium text-[#5F504A]">mit Theophil Kroller</span>
       </div>
     </a>
-    <ul class="hidden xl:flex items-center gap-7 text-[#5F504A] font-medium"><li><a href="index.html" class="nav-link">Start</a></li>
-<li><a href="index.html#angebot" class="nav-link">Angebot</a></li>
-<li><a href="index.html#ablauf" class="nav-link">Ablauf</a></li>
-<li><a href="arbeitsweise.html" class="nav-link">Arbeitsweise</a></li>
-<li><a href="beziehungsvielfalt.html" class="nav-link">Beziehungsvielfalt</a></li>
-<li><a href="about.html" class="nav-link">Über mich</a></li>
-<li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li></ul>
-    <div class="hidden md:flex items-center gap-3"><a href="relationship-diversity.html" class="border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3] transition">EN</a><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="cta-nav px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm">Erstgespräch anfragen</a></div>
-    <button id="menu-btn" class="xl:hidden flex flex-col gap-1.5" aria-label="Menü öffnen"><span class="block w-6 h-0.5 bg-[#2F2623]"></span><span class="block w-6 h-0.5 bg-[#2F2623]"></span><span class="block w-6 h-0.5 bg-[#2F2623]"></span></button>
+
+    <div class="flex items-center gap-3 shrink-0">
+      <a href="relationship-diversity.html" class="inline-block border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3] transition">EN</a>
+      <a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hidden sm:inline-block cta-nav px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm">Erstgespräch anfragen</a>
+    </div>
   </div>
-  <div id="mobile-menu" class="xl:hidden hidden px-6 pb-4 bg-[#FFF7ED]/95 backdrop-blur-md border-t border-[#E8D2BE]"><ul class="flex flex-col gap-4 text-[#5F504A] font-medium py-4"><li><a href="index.html" class="block w-full hover:text-[#C96B4B]">Start</a></li>
-<li><a href="index.html#angebot" class="block w-full hover:text-[#C96B4B]">Angebot</a></li>
-<li><a href="index.html#ablauf" class="block w-full hover:text-[#C96B4B]">Ablauf</a></li>
-<li><a href="arbeitsweise.html" class="block w-full hover:text-[#C96B4B]">Arbeitsweise</a></li>
-<li><a href="beziehungsvielfalt.html" class="block w-full hover:text-[#C96B4B]">Beziehungsvielfalt</a></li>
-<li><a href="about.html" class="block w-full hover:text-[#C96B4B]">Über mich</a></li>
-<li><a href="index.html#kontakt" class="block w-full hover:text-[#C96B4B]">Kontakt</a></li><li><a href="relationship-diversity.html" class="block w-full hover:text-[#C96B4B]">EN</a></li><li><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="inline-block bg-[#C96B4B] text-white px-6 py-3 rounded-xl font-semibold">Erstgespräch anfragen</a></li></ul></div>
+
+  <div class="border-t border-[#E8D2BE]/70 bg-[#FFF7ED]/95 overflow-x-auto nav-scroll">
+    <ul class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-6 text-sm md:text-base text-[#5F504A] font-medium whitespace-nowrap">
+        <li class="shrink-0"><a href="index.html" class="nav-link">Start</a></li>
+        <li class="shrink-0"><a href="index.html#angebot" class="nav-link">Angebot</a></li>
+        <li class="shrink-0"><a href="index.html#ablauf" class="nav-link">Ablauf</a></li>
+        <li class="shrink-0"><a href="arbeitsweise.html" class="nav-link">Arbeitsweise</a></li>
+        <li class="shrink-0"><a href="beziehungsvielfalt.html" class="nav-link-active">Beziehungsvielfalt</a></li>
+        <li class="shrink-0"><a href="about.html" class="nav-link">Über mich</a></li>
+        <li class="shrink-0"><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
+        <li class="shrink-0"><a href="impressum.html" class="nav-link">Impressum</a></li>
+        <li class="shrink-0"><a href="datenschutz.html" class="nav-link">Datenschutz</a></li>
+    </ul>
+  </div>
 </nav>
 <section class="py-24 px-6 md:px-16 bg-[#FFF7ED]"><div class="max-w-5xl mx-auto"><p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">Polyamorie, offene Beziehungen & Beziehungsvielfalt</p><h1 class="text-5xl md:text-6xl font-bold text-[#2F2623] mb-8">Komm so, wie du bist. Es gibt kein einfaches Richtig oder Falsch.</h1><p class="text-[#5F504A] text-xl leading-relaxed max-w-3xl">Manche Menschen kommen in Beratung, weil sie eine offene oder polyamore Beziehung leben. Andere, weil sie darüber nachdenken. Wieder andere, weil Fragen von Freiheit, Verbindlichkeit, Eifersucht, Sexualität oder Ehrlichkeit gerade an Grenzen führen.</p></div></section>
 <section class="py-24 px-6 md:px-16 bg-white"><div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8"><div class="bg-white rounded-3xl p-7 shadow-lg border border-[#E8D2BE]"><div class="text-3xl mb-4">✔</div><h3 class="text-xl font-bold mb-2 text-[#2F2623]">Konsens & Vereinbarungen</h3><p class="text-[#5F504A]">Was gilt? Was verändert sich? Was braucht Sicherheit, Transparenz und gegenseitige Zustimmung?</p></div><div class="bg-white rounded-3xl p-7 shadow-lg border border-[#E8D2BE]"><div class="text-3xl mb-4">♥</div><h3 class="text-xl font-bold mb-2 text-[#2F2623]">Eifersucht & Sicherheit</h3><p class="text-[#5F504A]">Eifersucht, Angst oder Scham sind nicht automatisch Zeichen, dass etwas falsch ist. Sie können Hinweise auf Bedürfnisse und Grenzen sein.</p></div><div class="bg-white rounded-3xl p-7 shadow-lg border border-[#E8D2BE]"><div class="text-3xl mb-4">☷</div><h3 class="text-xl font-bold mb-2 text-[#2F2623]">Mehrpersonensettings</h3><p class="text-[#5F504A]">Je nach Anliegen kann Beratung als Einzel-, Paar- oder Mehrpersonensetting sinnvoll sein.</p></div></div></section>
 <section class="py-24 px-6 md:px-16 bg-[#2F2623] text-white"><div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12"><div><p class="text-[#E8D2BE] uppercase tracking-wide mb-3 font-semibold">Mein Hintergrund</p><h2 class="text-4xl font-bold mb-6">Beziehung darf vielfältig sein — und trotzdem braucht sie Klarheit, Sicherheit und gute Vereinbarungen.</h2><p class="text-white/75 text-lg leading-relaxed">In meiner Masterarbeit habe ich mich mit Beratung im Kontext von Polyamorie beschäftigt: mit emotionalen Dynamiken, gesellschaftlichen Erwartungen, Unsicherheiten in Beratungssituationen und der Frage, was professionelle Begleitung braucht, damit Menschen sich nicht erklären oder rechtfertigen müssen.</p></div><div class="bg-white/10 rounded-3xl p-8 border border-white/10"><h3 class="text-2xl font-bold mb-6">Themen, mit denen du kommen kannst</h3><ul class="space-y-4 text-white/75 text-lg"><li>✔ Öffnung einer bestehenden Beziehung</li><li>✔ Eifersucht, Unsicherheit und Verlustangst</li><li>✔ Grenzen, Regeln, Vereinbarungen und Konsens</li><li>✔ Coming-out, Familie, Freundeskreis oder berufliches Umfeld</li><li>✔ Unterschiedliche Bedürfnisse nach Freiheit und Verbindlichkeit</li><li>✔ Konflikte in Dreiecken, Netzwerken oder Mehrpersonenkonstellationen</li></ul></div></div></section><section class="relative w-full bg-[#C96B4B] py-28 px-6 md:px-16 overflow-hidden" id="kontakt"><div class="relative max-w-3xl mx-auto text-center text-white"><p class="text-white/80 uppercase tracking-wide mb-3 font-semibold">Kennenlernen</p><h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight">Du musst noch nicht wissen, wie es weitergeht.</h2><p class="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">Im Erstgespräch sortieren wir gemeinsam, was gerade los ist und welcher nächste Schritt sinnvoll sein könnte.</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4"><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="px-10 py-4 bg-white text-[#2F2623] font-bold tracking-wide rounded-2xl shadow-xl hover:bg-[#FFF7ED] transition">Unverbindliches Erstgespräch anfragen</a><a href="mailto:theophil.kroller@gmail.com" class="px-10 py-4 bg-white/10 border border-white/40 text-white font-bold tracking-wide rounded-2xl hover:bg-white/20 transition">Erst per E-Mail schreiben</a></div></div></section>
+<!-- FOOTER -->
 <footer class="bg-[#2F2623] text-white py-16">
   <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-10">
-    <div><h3 class="text-2xl font-bold tracking-wide mb-4">Beziehungsdynamiken</h3><p class="text-white/70 text-sm leading-relaxed max-w-sm">Psychosoziale Beziehungsberatung für Einzelpersonen, Paare und Menschen in vielfältigen Beziehungsformen.</p></div>
-    <div><h4 class="text-lg font-semibold mb-4">Navigation</h4><ul class="space-y-3 text-white/70"><li><a href="index.html" class="hover:text-white transition">Start</a></li><li><a href="index.html#angebot" class="hover:text-white transition">Angebot</a></li><li><a href="index.html#ablauf" class="hover:text-white transition">Ablauf</a></li><li><a href="arbeitsweise.html" class="hover:text-white transition">Arbeitsweise</a></li><li><a href="beziehungsvielfalt.html" class="hover:text-white transition">Beziehungsvielfalt</a></li><li><a href="about.html" class="hover:text-white transition">Über mich</a></li></ul></div>
-    <div><h4 class="text-lg font-semibold mb-4">Rechtliches</h4><ul class="space-y-3 text-white/70"><li><a href="impressum.html" class="hover:text-white transition">Impressum</a></li><li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz</a></li></ul></div>
-    <div><h4 class="text-lg font-semibold mb-4">Kontakt</h4><ul class="space-y-3 text-white/70"><li><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hover:text-white transition">Erstgespräch anfragen</a></li><li><a href="mailto:theophil.kroller@gmail.com" class="hover:text-white transition">theophil.kroller@gmail.com</a></li></ul></div>
+    <div>
+      <h3 class="text-2xl font-bold tracking-wide mb-2">Beziehungsdynamiken</h3>
+      <p class="text-white/60 text-sm mb-4">mit Theophil Kroller</p>
+      <p class="text-white/70 text-sm leading-relaxed max-w-sm">Psychosoziale Beziehungsberatung für Einzelpersonen, Paare und Menschen in vielfältigen Beziehungsformen.</p>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Navigation</h4>
+      <ul class="space-y-3 text-white/70"><li><a href="index.html" class="hover:text-white transition">Start</a></li><li><a href="index.html#angebot" class="hover:text-white transition">Angebot</a></li><li><a href="index.html#ablauf" class="hover:text-white transition">Ablauf</a></li><li><a href="arbeitsweise.html" class="hover:text-white transition">Arbeitsweise</a></li><li><a href="beziehungsvielfalt.html" class="hover:text-white transition">Beziehungsvielfalt</a></li><li><a href="about.html" class="hover:text-white transition">Über mich</a></li></ul>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Rechtliches</h4>
+      <ul class="space-y-3 text-white/70"><li><a href="impressum.html" class="hover:text-white transition">Impressum</a></li><li><a href="datenschutz.html" class="hover:text-white transition">Datenschutz</a></li></ul>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Kontakt</h4>
+      <ul class="space-y-3 text-white/70">
+        <li><a href="https://app.cal.eu/theophil-kroller" target="_blank" rel="noopener" class="hover:text-white transition">Erstgespräch anfragen</a></li>
+        <li><a href="mailto:theophil.kroller@gmail.com" class="hover:text-white transition">theophil.kroller@gmail.com</a></li>
+      </ul>
+    </div>
   </div>
   <div class="border-t border-white/10 mt-12 pt-6 text-center text-white/50 text-sm">© 2026 Beziehungsdynamiken / Theophil Kroller. Alle Rechte vorbehalten.</div>
 </footer>
-<script>
-  const menuBtn=document.getElementById('menu-btn'); const mobileMenu=document.getElementById('mobile-menu');
-  if(menuBtn&&mobileMenu){menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('hidden'));}
-</script>
 </body>
 </html>
