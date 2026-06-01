@@ -28,6 +28,8 @@
     details summary { list-style:none; }
     .image-soft { box-shadow: 0 18px 45px rgba(47,38,35,.08); }
     .video-frame { aspect-ratio: 9 / 16; width: min(100%, 360px); margin-left: auto; margin-right: auto; }
+    .waitlist-iframe { height: 940px; }
+    @media (max-width: 768px) { .waitlist-iframe { height: 980px; } }
   </style>
 </head>
 <body class="bg-[#FFF7ED] text-[#2F2623]">
@@ -471,8 +473,34 @@
     </div>
     <p class="text-[#2F2623] text-xl md:text-2xl font-bold mt-8">… und vieles mehr: Eifersucht regulieren, Scham entmachten, Groll lösen, Vertrauen neu denken und Beziehungsgespräche führen, die nicht sofort wieder kippen.</p>
     <div class="mt-8 flex flex-col sm:flex-row gap-4">
-      <a href="mailto:theophil.kroller@gmail.com?subject=Interesse%20am%20Kurs%20Emotionsarbeit%20%26%20Kommunikation" class="inline-block bg-[#C96B4B] text-white px-8 py-3 rounded-3xl shadow-lg hover:bg-[#A9543B] transition font-semibold text-center">Interesse am Kurs vormerken</a>
+      <a href="#warteliste" class="inline-block bg-[#C96B4B] text-white px-8 py-3 rounded-3xl shadow-lg hover:bg-[#A9543B] transition font-semibold text-center">Kostenlos für den Kurs vormerken</a>
       <a href="https://www.youtube.com/@Beziehungsdynamiken" target="_blank" rel="noopener" class="inline-block bg-white border border-[#E8D2BE] text-[#2F2623] px-8 py-3 rounded-3xl shadow-sm hover:bg-[#FFF7ED] transition font-semibold text-center">Bis dahin: YouTube ansehen</a>
+    </div>
+  </div>
+
+  <div id="warteliste" class="max-w-5xl mx-auto mt-16 scroll-mt-28">
+    <div class="bg-white rounded-[2rem] border border-[#E8D2BE] p-6 md:p-10 shadow-xl text-center">
+      <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">Warteliste</p>
+      <h3 class="text-3xl md:text-5xl font-bold text-[#2F2623] mb-5">Kostenlos für den Kurs vormerken</h3>
+      <p class="text-[#5F504A] text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+        Trage dich ein und erfahre als Erste:r, wenn der Kurs „Emotionsarbeit & Kommunikation in Beziehungen“ startet.
+      </p>
+
+      <div class="w-full rounded-[1.5rem] overflow-hidden border border-[#E8D2BE] bg-[#FFF7ED] shadow-sm">
+        <iframe
+          class="waitlist-iframe w-full block"
+          src="https://theophil-kroller.systeme.io/course_waitinglist"
+          title="Warteliste zum Kurs Emotionsarbeit und Kommunikation in Beziehungen"
+          loading="lazy"
+          style="border:0;"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+      <p class="text-sm text-[#7A6A62] mt-5 max-w-2xl mx-auto">
+        Falls das Formular nicht angezeigt wird, kannst du die Warteliste auch direkt öffnen:
+        <a href="https://theophil-kroller.systeme.io/course_waitinglist" target="_blank" rel="noopener" class="text-[#A9543B] font-semibold underline underline-offset-4">Warteliste öffnen</a>.
+      </p>
     </div>
   </div>
 </section>
