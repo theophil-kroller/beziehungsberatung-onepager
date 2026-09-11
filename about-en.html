@@ -99,11 +99,158 @@
   .nav-scroll::-webkit-scrollbar { height: 6px; }
   .nav-scroll::-webkit-scrollbar-thumb { background: #E8D2BE; border-radius: 999px; }
 
+
+  /* --- Torn paper / editorial About aesthetic --- */
+  :root {
+    --paper-cream: #FFF7ED;
+    --paper-warm: #F6E8D7;
+    --paper-edge: #E6D1BC;
+    --ink: #2F2623;
+    --terracotta: #C96B4B;
+  }
+
+  body.paper-about {
+    position: relative;
+    background:
+      radial-gradient(circle at 18% 9%, rgba(201,107,75,.045), transparent 30%),
+      radial-gradient(circle at 82% 28%, rgba(120,92,76,.035), transparent 27%),
+      #FFF7ED;
+  }
+
+  body.paper-about::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: .16;
+    mix-blend-mode: multiply;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(83,67,58,.018) 0 1px, transparent 1px 4px),
+      repeating-linear-gradient(90deg, rgba(83,67,58,.012) 0 1px, transparent 1px 6px);
+  }
+
+  .about-hero-paper {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(120deg, rgba(255,247,237,.98), rgba(247,232,215,.72) 62%, rgba(255,247,237,.96));
+  }
+
+  .about-hero-paper::after {
+    content: "";
+    position: absolute;
+    width: 36rem;
+    height: 15rem;
+    right: -8rem;
+    bottom: -9rem;
+    background: rgba(201,107,75,.045);
+    transform: rotate(-7deg);
+    clip-path: polygon(0 12%, 7% 4%, 16% 10%, 26% 2%, 38% 8%, 50% 1%, 61% 7%, 74% 2%, 86% 9%, 100% 4%, 97% 89%, 88% 95%, 73% 90%, 59% 97%, 45% 91%, 30% 98%, 15% 92%, 2% 96%);
+  }
+
+  .torn-photo {
+    position: relative;
+    width: min(100%, 28rem);
+    padding: 13px 12px 15px;
+    background:
+      linear-gradient(145deg, #fffaf3 0%, #f6eadb 72%, #f1e2d1 100%);
+    clip-path: polygon(
+      2% 3%, 8% 1.4%, 14% 2.4%, 20% .7%, 27% 1.8%, 34% .5%, 41% 1.5%, 48% .4%,
+      55% 1.7%, 62% .7%, 69% 2%, 76% .6%, 83% 2.1%, 90% 1%, 97% 2.7%, 99% 8%,
+      98.2% 16%, 99.3% 24%, 98.4% 33%, 99.2% 42%, 98.1% 51%, 99.1% 61%, 98.4% 70%,
+      99.1% 80%, 97.6% 90%, 98.5% 97%, 91% 98.3%, 83% 97.4%, 75% 99%, 67% 97.9%,
+      59% 99%, 51% 97.8%, 43% 98.8%, 35% 97.5%, 27% 98.7%, 19% 97.4%, 11% 98.4%,
+      3% 96.7%, 1% 90%, 1.8% 81%, .8% 72%, 1.7% 63%, .8% 54%, 1.6% 45%, .7% 36%,
+      1.7% 27%, .8% 18%, 1.8% 10%
+    );
+    filter: drop-shadow(0 16px 20px rgba(47,38,35,.13));
+    transform: rotate(-.55deg);
+  }
+
+  .torn-photo::before {
+    content: "";
+    position: absolute;
+    inset: 6px -7px -8px 7px;
+    z-index: -1;
+    background: #d9c2ad;
+    opacity: .34;
+    transform: rotate(1.3deg);
+    clip-path: polygon(2% 3%, 15% 1%, 26% 2%, 39% .5%, 52% 2%, 65% 1%, 78% 2.5%, 91% 1%, 99% 5%, 98% 28%, 99% 53%, 97% 77%, 99% 96%, 85% 98%, 69% 97%, 53% 99%, 37% 97%, 21% 99%, 3% 97%, 1% 76%, 2% 54%, .5% 31%);
+  }
+
+  .torn-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    clip-path: polygon(
+      1.2% 2%, 9% .8%, 17% 1.7%, 25% .5%, 34% 1.4%, 43% .4%, 52% 1.5%, 61% .6%,
+      70% 1.8%, 79% .5%, 88% 1.4%, 98.5% 1%, 99.2% 12%, 98.3% 23%, 99.2% 35%,
+      98.5% 47%, 99.3% 60%, 98.2% 72%, 99.1% 84%, 98.1% 98%, 88% 99%, 77% 98.1%,
+      66% 99%, 55% 98%, 44% 99%, 33% 98%, 22% 99%, 11% 98%, 1% 98.8%, .7% 86%,
+      1.4% 74%, .6% 62%, 1.5% 50%, .6% 38%, 1.3% 26%, .5% 14%
+    );
+  }
+
+  .torn-photo-small {
+    width: min(100%, 22rem);
+    transform: rotate(1.15deg);
+    padding: 10px 10px 13px;
+  }
+
+  .torn-photo-small::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 7rem;
+    height: 1.65rem;
+    transform: translateX(-50%) rotate(-2deg);
+    background: rgba(225,202,173,.58);
+    box-shadow: 0 1px 0 rgba(120,92,76,.08);
+    clip-path: polygon(3% 10%, 15% 4%, 31% 8%, 48% 1%, 65% 7%, 81% 2%, 98% 10%, 95% 91%, 78% 96%, 61% 91%, 43% 98%, 24% 92%, 4% 96%);
+  }
+
+  .paper-about .shadow-2xl,
+  .paper-about .shadow-xl,
+  .paper-about .shadow-lg {
+    box-shadow: 0 12px 32px rgba(47,38,35,.09) !important;
+  }
+
+  .paper-about .about-paper-section {
+    position: relative;
+  }
+
+  .paper-about .about-paper-section::before {
+    content: "";
+    position: absolute;
+    width: 8.5rem;
+    height: 1px;
+    background: #C96B4B;
+    opacity: .36;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%) rotate(-1.5deg);
+  }
+
+  @media (max-width: 767px) {
+    .torn-photo,
+    .torn-photo-small {
+      width: min(92vw, 26rem);
+      transform: rotate(-.25deg);
+    }
+
+    .torn-photo-small { width: min(84vw, 21rem); }
+  }
+
   </style>
 
 </head>
 
-<body class="bg-[#FFF7ED] text-[#2F2623]">
+<body class="paper-about bg-[#FFF7ED] text-[#2F2623]">
 
 <!-- SETUP NOTICE -->
 <div class="bg-[#F5E6D3] text-[#2F2623] text-center px-4 py-3 text-sm border-b border-[#E8D2BE]">
@@ -143,7 +290,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="bg-[#FFF7ED] pt-28 pb-20 px-6 md:px-16">
+<section class="about-hero-paper bg-[#FFF7ED] pt-28 pb-20 px-6 md:px-16">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
     <div>
@@ -185,19 +332,21 @@
       </div>
     </div>
 
-    <div class="flex justify-center md:justify-end">
-      <img
-        src="./public/portrait-860.jpg"
-        alt="Portrait of Theophil Kroller"
-        class="w-full max-w-md rounded-[2rem] shadow-2xl object-cover border-8 border-white"
-      >
+    <div class="flex justify-center md:justify-end relative z-10">
+      <figure class="torn-photo" aria-label="Portrait of Theophil Kroller">
+        <img
+          src="./public/portrait-860.jpg"
+          alt="Portrait of Theophil Kroller"
+          class="w-full object-cover"
+        >
+      </figure>
     </div>
 
   </div>
 </section>
 
 <!-- ATTITUDE -->
-<section class="bg-white py-24 px-6 md:px-16">
+<section class="about-paper-section bg-white py-24 px-6 md:px-16">
   <div class="max-w-5xl mx-auto">
 
     <p class="text-[#C96B4B] uppercase tracking-wide mb-3 text-center font-semibold">
@@ -377,11 +526,13 @@
     </div>
 
     <div class="flex justify-center md:justify-end">
-      <img
-        src="./public/portrait-222.jpg"
-        alt="Theophil Kroller"
-        class="w-full max-w-sm aspect-[4/5] rounded-[2rem] shadow-xl object-cover object-[center_38%]"
-      >
+      <figure class="torn-photo torn-photo-small">
+        <img
+          src="./public/portrait-222.jpg"
+          alt="Theophil Kroller"
+          class="w-full aspect-[4/5] object-cover object-[center_38%]"
+        >
+      </figure>
     </div>
 
   </div>
