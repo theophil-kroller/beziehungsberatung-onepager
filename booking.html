@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Termin buchen | Beziehungsdynamiken</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--terr2:#A9543B;--brown:#2F2623;--muted:#5F504A;--line:#E8D2BE}
+*{box-sizing:border-box}body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cream);color:var(--brown)}
+a{color:inherit}.top{background:var(--brown);color:var(--cream);font-size:12px;letter-spacing:.08em;text-align:center;padding:10px 16px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,247,237,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.navin{max-width:1100px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:800;text-decoration:none;font-size:20px}.brand small{display:block;font-weight:500;color:var(--muted);font-size:12px;margin-top:2px}
+.back{border:1px solid var(--line);padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;color:var(--muted)}
+main{max-width:1050px;margin:0 auto;padding:56px 20px 80px}.eyebrow{color:var(--terr);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:13px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,7vw,68px);line-height:1.02;margin:12px 0 16px;max-width:780px}
+.lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px;margin-bottom:34px}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 18px 55px rgba(47,38,35,.06)}
+.step{display:none}.step.active{display:block}.stephead{display:flex;gap:12px;align-items:center;margin-bottom:20px}.num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--sand);color:var(--terr2);font-weight:800}
+h2{font-size:26px;margin:0}.choices{display:grid;gap:12px}.choice{border:1px solid var(--line);border-radius:18px;padding:16px 18px;background:var(--cream);cursor:pointer;text-align:left;font:inherit;color:inherit;transition:.2s}
+.choice:hover,.choice.selected{border-color:var(--terr);background:#fff}.choice strong{display:block;font-size:17px}.choice span{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.days{display:flex;gap:9px;overflow-x:auto;padding-bottom:5px}.day{min-width:94px;border:1px solid var(--line);background:var(--cream);border-radius:16px;padding:11px;cursor:pointer}.day.selected{border-color:var(--terr);background:#fff}.day b,.day span{display:block}.day span{font-size:12px;color:var(--muted);margin-top:3px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.slot{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;cursor:pointer;font-weight:700}.slot.selected{background:var(--brown);color:#fff;border-color:var(--brown)}
+.form{display:grid;gap:14px}.field label{font-size:13px;font-weight:800;display:block;margin-bottom:6px}.field input{width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:13px 14px;font:inherit}.check{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--muted);line-height:1.45}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;cursor:pointer;font-size:15px}.primary{background:var(--terr);color:#fff}.primary:hover{background:var(--terr2)}.secondary{background:var(--sand);color:var(--brown)}
+.summary{background:var(--brown);color:#fff;border-radius:28px;padding:28px;align-self:start;position:sticky;top:105px}.summary h3{font-size:22px;margin:0 0 18px}.sumrow{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}.sumrow span{display:block;color:rgba(255,255,255,.62);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}.sumrow b{font-size:16px}.hint{margin-top:20px;color:rgba(255,255,255,.64);font-size:13px;line-height:1.55}
+.notice{border-radius:14px;padding:12px 14px;margin:14px 0;font-size:14px}.demo{background:#fff1d6;border:1px solid #edd4a0;color:#6c5121}.ok{background:#eaf8ef;border:1px solid #bfe2ca;color:#244b31}.err{background:#fff0ef;border:1px solid #e9c1bd;color:#7b2f28}
+.loading{opacity:.6;pointer-events:none}.done{text-align:center;padding:22px 4px}.done .tick{font-size:42px}.ics{display:inline-block;margin-top:14px;color:var(--terr2);font-weight:800;text-decoration:none}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;border-top:1px solid var(--line)}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.summary{position:static}.slots{grid-template-columns:repeat(2,1fr)}main{padding-top:36px}.card,.summary{padding:22px;border-radius:22px}}
+</style>
+</head>
+<body>
+<div class="top">Psychosoziale Beziehungsberatung · Graz & online</div>
+<nav><div class="navin">
+<a class="brand" href="index.html">Beziehungsdynamiken<small>mit Theophil Kroller</small></a>
+<a class="back" href="index.html">← Zur Website</a>
+</div></nav>
+<main>
+<div class="eyebrow">Termin buchen</div>
+<h1>Finde einen Termin, der für dich oder euch passt.</h1>
+<p class="lead">Wähle zuerst den Rahmen. Danach siehst du freie Zeiten. Ich frage hier bewusst nur die organisatorischen Angaben ab – nicht, worum es in der Beratung geht.</p>
+<div class="grid">
+<section class="card">
+<div id="demoNotice" class="notice demo" style="display:block">Demo-Modus: Die Zeiten sind Testdaten. Noch wird nichts in deinem Kalender eingetragen.</div>
+
+<div class="step active" id="step1"><div class="stephead"><div class="num">1</div><h2>Welche Beratung?</h2></div>
+<div class="choices">
+<button class="choice" data-type="individual"><strong>Einzelberatung</strong><span>60 Minuten</span></button>
+<button class="choice" data-type="couple"><strong>Paarberatung</strong><span>90 Minuten</span></button>
+</div></div>
+
+<div class="step" id="step2"><div class="stephead"><div class="num">2</div><h2>Wo möchtest du den Termin?</h2></div>
+<div class="choices">
+<button class="choice" data-location="online"><strong>Online</strong><span>Videotermin</span></button>
+<button class="choice" data-location="graz"><strong>Graz</strong><span>Vor Ort</span></button>
+</div><div class="actions"><button class="btn secondary" id="back2">Zurück</button></div></div>
+
+<div class="step" id="step3"><div class="stephead"><div class="num">3</div><h2>Zeit auswählen</h2></div>
+<div class="days" id="days"></div><p id="slotMsg" style="color:#5F504A;font-size:14px;margin:16px 0 0"></p><div class="slots" id="slots"></div>
+<div class="actions"><button class="btn secondary" id="back3">Zurück</button><button class="btn primary" id="continue3" disabled>Weiter</button></div></div>
+
+<div class="step" id="step4"><div class="stephead"><div class="num">4</div><h2>Deine Kontaktdaten</h2></div>
+<form id="bookingForm" class="form">
+<div class="field"><label>Name</label><input name="name" autocomplete="name" required></div>
+<div class="field"><label>E-Mail</label><input name="email" type="email" autocomplete="email" required></div>
+<label class="check"><input type="checkbox" required><span>Ich stimme zu, dass meine Angaben zur Terminorganisation verarbeitet werden. Es werden hier keine Beratungsinhalte abgefragt.</span></label>
+<div id="formMsg"></div>
+<div class="actions"><button type="button" class="btn secondary" id="back4">Zurück</button><button class="btn primary" id="submitBtn" type="submit">Termin verbindlich buchen</button></div>
+</form></div>
+</section>
+<aside class="summary">
+<h3>Dein Termin</h3>
+<div class="sumrow"><span>Beratung</span><b id="sType">—</b></div>
+<div class="sumrow"><span>Ort</span><b id="sLoc">—</b></div>
+<div class="sumrow"><span>Datum</span><b id="sDate">—</b></div>
+<div class="sumrow"><span>Uhrzeit</span><b id="sTime">—</b></div>
+<p class="hint">Für die spätere Live-Version werden nur tatsächlich von dir freigegebene Zeiten angezeigt. Bereits belegte Termine im Google Kalender werden automatisch ausgeschlossen.</p>
+</aside>
+</div>
+</main>
+<footer>© 2026 Beziehungsdynamiken / Theophil Kroller</footer>
+<script src="booking-config.js"></script>
+<script>
+const C = window.BD_BOOKING_CONFIG;
+const L = document.documentElement.lang === "en" ? "en" : "de";
+const txt = L==="de" ? {
+  individual:"Einzelberatung",couple:"Paarberatung",online:"Online",graz:"Graz",
+  mins:"Min.",selectDate:"Bitte zuerst einen Tag auswählen.",
+  noSlots:"An diesem Tag sind keine freien Zeiten verfügbar.",
+  error:"Die Verfügbarkeit konnte gerade nicht geladen werden.",
+  bookingError:"Die Buchung konnte nicht abgeschlossen werden. Bitte versuche es noch einmal.",
+  demo:"Demo-Modus: Die Zeiten sind Testdaten. Noch wird nichts in deinem Kalender eingetragen.",
+  success:"Dein Termin ist reserviert.", calendar:"Zum Kalender hinzufügen"
+} : {
+  individual:"Individual counselling",couple:"Couples counselling",online:"Online",graz:"Graz",
+  mins:"min",selectDate:"Please select a day first.",
+  noSlots:"No available times on this day.",
+  error:"Availability could not be loaded right now.",
+  bookingError:"Booking could not be completed. Please try again.",
+  demo:"Demo mode: these are test times. Nothing is written to your calendar yet.",
+  success:"Your appointment is reserved.", calendar:"Add to calendar"
+};
+
+let state={type:null,location:null,date:null,start:null,end:null,slots:[]};
+const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+const typeData=()=>C.appointmentTypes[state.type];
+const fmtDate=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"short",day:"2-digit",month:"2-digit"}).format(new Date(iso+"T12:00:00"));
+const fmtLong=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(new Date(iso+"T12:00:00"));
+function next(n){qa(".step").forEach(x=>x.classList.remove("active"));q(`#step${n}`).classList.add("active");}
+function summary(){
+  q("#sType").textContent=state.type?(L==="de"?typeData().labelDe:typeData().labelEn)+" · "+typeData().durationMinutes+" "+txt.mins:"—";
+  q("#sLoc").textContent=state.location?(L==="de"?C.locations[state.location].labelDe:C.locations[state.location].labelEn):"—";
+  q("#sDate").textContent=state.date?fmtLong(state.date):"—";
+  q("#sTime").textContent=state.start?state.start.substring(11,16):"—";
+}
+qa("[data-type]").forEach(b=>b.onclick=()=>{state.type=b.dataset.type;qa("[data-type]").forEach(x=>x.classList.toggle("selected",x===b));summary();next(2)});
+qa("[data-location]").forEach(b=>b.onclick=()=>{state.location=b.dataset.location;qa("[data-location]").forEach(x=>x.classList.toggle("selected",x===b));summary();buildDays();next(3)});
+q("#back2").onclick=()=>next(1);q("#back3").onclick=()=>next(2);q("#back4").onclick=()=>next(3);
+
+function ymd(d){return d.toISOString().slice(0,10)}
+function buildDays(){
+  const wrap=q("#days");wrap.innerHTML="";
+  let d=new Date();d.setHours(12,0,0,0);
+  for(let i=0;i<14;i++){
+    const x=new Date(d);x.setDate(d.getDate()+i);
+    if([0,6].includes(x.getDay())) continue;
+    const iso=ymd(x), b=document.createElement("button");b.className="day";
+    const weekday=new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"short"}).format(x);
+    const dd=new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{day:"2-digit",month:"2-digit"}).format(x);
+    b.innerHTML=`<b>${weekday}</b><span>${dd}</span>`;
+    b.onclick=()=>selectDay(iso,b);wrap.appendChild(b);
+  }
+}
+async function selectDay(iso,b){
+  state.date=iso;state.start=null;state.end=null;qa(".day").forEach(x=>x.classList.toggle("selected",x===b));summary();
+  q("#slots").innerHTML="";q("#slotMsg").textContent=L==="de"?"Lade freie Zeiten …":"Loading available times …";
+  try{
+    let slots;
+    if(C.demoMode || !C.apiBaseUrl){
+      await new Promise(r=>setTimeout(r,250));
+      const times=["09:00","10:30","14:00","15:30","17:00"];
+      slots=times.map(t=>({start:`${iso}T${t}:00`,end:null}));
+    }else{
+      const u=new URL(C.apiBaseUrl.replace(/\/$/,"")+"/availability");
+      u.searchParams.set("type",state.type);u.searchParams.set("date",iso);
+      const r=await fetch(u);if(!r.ok)throw new Error();
+      slots=(await r.json()).slots||[];
+    }
+    state.slots=slots;q("#slotMsg").textContent=slots.length?"":txt.noSlots;
+    slots.forEach(s=>{
+      const bt=document.createElement("button");bt.className="slot";bt.textContent=s.start.substring(11,16);
+      bt.onclick=()=>{state.start=s.start;state.end=s.end;qa(".slot").forEach(x=>x.classList.toggle("selected",x===bt));summary();q("#continue3").disabled=false};
+      q("#slots").appendChild(bt);
+    });
+  }catch(e){q("#slotMsg").textContent=txt.error}
+}
+q("#continue3").onclick=()=>next(4);
+
+q("#bookingForm").onsubmit=async(e)=>{
+  e.preventDefault();
+  const f=new FormData(e.currentTarget);
+  const payload={name:f.get("name"),email:f.get("email"),type:state.type,location:state.location,start:state.start,end:state.end};
+  q("#submitBtn").disabled=true;q("#submitBtn").textContent=L==="de"?"Buche …":"Booking …";
+  try{
+    let result;
+    if(C.demoMode || !C.apiBaseUrl){
+      await new Promise(r=>setTimeout(r,400));
+      result={ok:true,start:state.start,end:state.end};
+    }else{
+      const r=await fetch(C.apiBaseUrl.replace(/\/$/,"")+"/book",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+      result=await r.json();if(!r.ok||!result.ok)throw new Error(result.error||"booking failed");
+      state.start=result.start||state.start;state.end=result.end||state.end;
+    }
+    q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>${txt.success}</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${state.start.substring(11,16)} · ${q("#sType").textContent}</p><a id="icsLink" class="ics" href="#">${txt.calendar} →</a></div>`;
+    makeIcs(payload);
+  }catch(err){
+    q("#formMsg").className="notice err";q("#formMsg").textContent=txt.bookingError;
+    q("#submitBtn").disabled=false;q("#submitBtn").textContent=L==="de"?"Termin verbindlich buchen":"Book appointment";
+  }
+}
+function makeIcs(p){
+  const duration=typeData().durationMinutes;
+  const start=new Date(p.start);
+  const end=p.end?new Date(p.end):new Date(start.getTime()+duration*60000);
+  const z=d=>d.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z");
+  const title=L==="de"?"Termin mit Theophil Kroller":"Appointment with Theophil Kroller";
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Beziehungsdynamiken//Booking//EN","BEGIN:VEVENT",
+    `UID:${Date.now()}@beziehungsdynamiken.at`,`DTSTAMP:${z(new Date())}`,`DTSTART:${z(start)}`,`DTEND:${z(end)}`,
+    `SUMMARY:${title}`,`DESCRIPTION:${q("#sType").textContent} · ${q("#sLoc").textContent}`,"END:VEVENT","END:VCALENDAR"].join("\r\n");
+  const blob=new Blob([ics],{type:"text/calendar"});const a=q("#icsLink");a.href=URL.createObjectURL(blob);a.download="beziehungsdynamiken-termin.ics";
+}
+summary();
+</script>
+</body></html>
