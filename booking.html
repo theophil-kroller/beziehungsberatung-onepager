@@ -168,7 +168,8 @@ const bookingParams=new URLSearchParams(location.search);
 const requestedType=bookingParams.get("type");
 const packageProduct=bookingParams.get("product")||"";
 const packageCreditId=bookingParams.get("credit_id")||"";
-const packageBooking=!!bookingParams.get("package_token");
+const packageToken=bookingParams.get("package_token")||"";
+const packageBooking=!!packageToken;
 
 const PACKAGE_COPY={
   "poly-starter":{
@@ -357,7 +358,6 @@ function selectCalendarDay(iso,b,slots){
 function buildDays(){ resetCalendar(); }
 q("#continue3").onclick=()=>next(4);
 
-const packageToken=new URLSearchParams(location.search).get("package_token")||"";
 q("#bookingForm").onsubmit=async(e)=>{
   e.preventDefault();
   const f=new FormData(e.currentTarget);
