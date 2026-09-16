@@ -6,7 +6,7 @@ window.BD_BOOKING_CONFIG = {
 
   timezone: "Europe/Vienna",
   minNoticeHours: 24,
-  maxDaysAhead: 42,
+  maxDaysAhead: 60,
   bufferMinutes: 15,
 
   appointmentTypes: {
@@ -16,8 +16,8 @@ window.BD_BOOKING_CONFIG = {
       durationMinutes: 60
     },
     couple: {
-      labelDe: "Paarberatung",
-      labelEn: "Couples counselling",
+      labelDe: "Paar- & Beziehungsberatung",
+      labelEn: "Couples & relationship counselling",
       durationMinutes: 90
     }
   },

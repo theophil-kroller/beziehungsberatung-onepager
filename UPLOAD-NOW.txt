@@ -1,18 +1,34 @@
-LIVE BOOKING VERSION
+PHASE 3
 
-Upload/replace in repository root:
-- index.html
-- en.html
-- booking.html
-- booking-en.html
-- booking-config.js
+Neu:
+- Verfügbarkeit kommt aus deinem Google-Unterkalender
+- Jedes normale Event dort gilt als freigegebenes Zeitfenster
+- Maximal 60 Tage im Voraus buchbar
+- 24h-Reminder per E-Mail
+- Sicherer Link zum Verschieben/Absagen
+- Paar- & Beziehungsberatung inkl. vielfältiger Beziehungskonstellationen
 
-Replace in /public:
-- angebot-paarberatung.jpg
+GitHub ROOT:
+index.html
+en.html
+booking.html
+booking-en.html
+booking-config.js
+termin.html
 
-Your booking frontend is already connected to:
-https://beziehungsdynamiken-booking.theophil-kroller.workers.dev
+Cloudflare:
+cloudflare-worker/worker.js ersetzen und neue Version auf 100 % deployen.
 
-demoMode is already false.
+Zusätzlich brauchst du einen KV Namespace:
+Name z.B. beziehungsdynamiken-bookings
+Worker Binding Variable name EXAKT: BOOKINGS
 
-The cloudflare-worker folder is included only as backup; your Worker is already deployed.
+Cron Trigger:
+0 * * * *
+(einmal pro Stunde)
+
+Optional Plaintext Variable:
+AVAILABILITY_CALENDAR_ID =
+39b1b852ba56270ff0b3e7b8fa34b12bc97d57f99c70968c30f2d9475b3230f5@group.calendar.google.com
+
+Die vorhandenen Secrets GOOGLE_..., RESEND_API_KEY und MAIL_FROM bleiben unverändert.
