@@ -80,7 +80,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <ul><li>• Poly Starter guide</li><li>• Checklist: what should we clarify first?</li><li>• Boundaries-vs.-rules worksheet</li><li>• Jealousy compass</li><li>• Check-in template</li><li>• Short regulation audio</li></ul>
   <label for="advisor-3">Choose counsellor</label>
   <select id="advisor-3"><option>Theophil Kroller</option></select>
-  <div class="price-box"><span class="price-old">Booked separately: 3 × €165 = €495</span><span class="price-now">Package price €465</span><span class="price-save">Save €30</span></div><button class="btn dark" type="button" data-add-package="poly-starter">Add to cart</button>
+  <div class="price-box"><span class="price-old">3 × €165 = €495 · Materials: reference value €30</span><span class="price-now">Package price €465</span><span class="price-save">Package advantage €60</span></div><button class="btn dark" type="button" data-add-package="poly-starter">Add to cart</button>
 </article>
 <article class="card package">
   <div class="tag">Package</div>
@@ -104,7 +104,7 @@ document.querySelectorAll("[data-add-package]").forEach(btn=>{
     const advisor=card.querySelector("select")?.value || "Theophil Kroller";
     const products={
       "process-5":{id:"process-5",name:'Process support',description:'5 × 60 min individual counselling',price:null,advisorCode:"01",unique:true},
-      "poly-starter":{id:"poly-starter",name:'Polyamory Starter Package',description:'3 × 90 min + guide, checklist and exercises',price:465,regularPrice:495,advisorCode:"01",unique:true},
+      "poly-starter":{id:"poly-starter",name:'Polyamory Starter Package',description:'3 × 90 min + guide, checklist and exercises',price:465,regularPrice:525,advisorCode:"01",unique:true},
       "trust-restart":{id:"trust-restart",name:'Restart after a breach of trust',description:'5 × 90 min + guide, exercises and audio',price:null}
     };
     const product=products[id];

@@ -80,7 +80,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <ul><li>• Poly-Starter Guide</li><li>• Checkliste „Was sollten wir vorher klären?“</li><li>• Grenzen-vs.-Regeln Worksheet</li><li>• Eifersuchts-Kompass</li><li>• Check-in-Vorlage</li><li>• kurze Audioübung zur Regulation</li></ul>
   <label for="advisor-3">Berater wählen</label>
   <select id="advisor-3"><option>Theophil Kroller</option></select>
-  <div class="price-box"><span class="price-old">Einzelbuchung: 3 × €165 = €495</span><span class="price-now">Paketpreis €465</span><span class="price-save">Du sparst €30</span></div><button class="btn dark" type="button" data-add-package="poly-starter">In den Warenkorb</button>
+  <div class="price-box"><span class="price-old">3 × €165 = €495 · Materialien: Referenzwert €30</span><span class="price-now">Paketpreis €465</span><span class="price-save">Paketvorteil €60</span></div><button class="btn dark" type="button" data-add-package="poly-starter">In den Warenkorb</button>
 </article>
 <article class="card package">
   <div class="tag">Package</div>
@@ -104,7 +104,7 @@ document.querySelectorAll("[data-add-package]").forEach(btn=>{
     const advisor=card.querySelector("select")?.value || "Theophil Kroller";
     const products={
       "process-5":{id:"process-5",name:'Prozessbegleitung',description:'5 × 60 Min. Einzelberatung',price:null,advisorCode:"01",unique:true},
-      "poly-starter":{id:"poly-starter",name:'Polyamorie Starter-Paket',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:465,regularPrice:495,advisorCode:"01",unique:true},
+      "poly-starter":{id:"poly-starter",name:'Polyamorie Starter-Paket',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:465,regularPrice:525,advisorCode:"01",unique:true},
       "trust-restart":{id:"trust-restart",name:'Neustart nach Vertrauensbruch',description:'5 × 90 Min. + Guide, Übungen und Audio',price:null}
     };
     const product=products[id];

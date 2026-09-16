@@ -1,0 +1,50 @@
+PHASE 13 – PREMIUM INVOICE + LEGAL + ORIENTATION
+
+Changes:
+1. Worker invoice PDF redesigned in the selected Editorial Premium style:
+   - terracotta hairline, more whitespace, serif hierarchy for "Rechnung"/totals
+   - package comparison shown as information, not as separate billable invoice lines
+   - Polyamorie Starter-Paket:
+       3 × 90 Min at €165 = €495
+       digital support materials: reference value €30
+       comparison value €525
+       package price €465
+       package advantage €60
+   - payment QR remains unchanged
+
+2. Offers/cart aligned with the same €525 reference value and €60 package advantage.
+
+3. orientierung.html:
+   - removed the old Cal.eu/Calendly-style links
+   - all appointment CTAs now point to booking.html
+   - current header + cart icon added
+
+4. impressum.html:
+   - current address: Schröttergasse 1/38, 8010 Graz
+   - current domain/email
+   - no invented GISA/chamber details; clear development-phase note instead
+
+5. datenschutz.html:
+   - rewritten around the actual stack: GitHub Pages, Cloudflare Worker/D1/R2,
+     Google Calendar/Meet, Resend, invoice checkout, bank transfer,
+     personal area, localStorage/sessionStorage, WhatsApp and withdrawal form.
+   - no analytics/advertising tracking claimed.
+
+Deploy:
+- cloudflare-worker/worker.js -> Cloudflare Worker
+- GitHub replace/upload:
+  angebote.html
+  offers.html
+  cart.html
+  cart-en.html
+  cart.js
+  orientierung.html
+  impressum.html
+  datenschutz.html
+
+No D1 migration is required.
+
+Important before commercial launch:
+- Final trade-law details (GISA, competent authority, chamber/professional group)
+  still need to be added after registration.
+- The €30 materials reference value should remain a real, defensible value if displayed.
