@@ -163,24 +163,23 @@ function summary(){
   q("#sTime").textContent=state.start?fmtTime(state.start):"—";
 }
 qa("[data-type]").forEach(b=>b.onclick=()=>{state.type=b.dataset.type;qa("[data-type]").forEach(x=>x.classList.toggle("selected",x===b));summary();next(2)});
-// Phase 9c: honor the booking type passed from the package access page.
-// Package bookings are locked to the session type stored for that package.
+// Phase 9d: package bookings are locked to the package session type.
 const bookingParams=new URLSearchParams(location.search);
 const requestedType=bookingParams.get("type");
 const packageBooking=!!bookingParams.get("package_token");
 if(requestedType && C.appointmentTypes[requestedType]){
   state.type=requestedType;
-  qa("[data-type]").forEach(x=>{
-    const selected=x.dataset.type===requestedType;
-    x.classList.toggle("selected",selected);
-    if(packageBooking) x.disabled=!selected;
-  });
+  qa("[data-type]").forEach(x=>x.classList.toggle("selected",x.dataset.type===requestedType));
   summary();
-  if(packageBooking) next(2);
+  if(packageBooking){
+    // Do not show a choice between individual/couple for a package credit.
+    q("#step1").style.display="none";
+    next(2);
+  }
 }
 
 qa("[data-location]").forEach(b=>b.onclick=()=>{state.location=b.dataset.location;qa("[data-location]").forEach(x=>x.classList.toggle("selected",x===b));summary();buildDays();next(3)});
-q("#back2").onclick=()=>next(1);q("#back3").onclick=()=>next(2);q("#back4").onclick=()=>next(3);
+q("#back2").onclick=()=>{if(packageBooking) location.href="zugang.html?token="+encodeURIComponent(packageToken); else next(1)};q("#back3").onclick=()=>next(2);q("#back4").onclick=()=>next(3);
 q("#prevMonth").onclick=()=>{
   if(!calendarMonth)return;
   calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()-1,1);
@@ -327,8 +326,13 @@ q("#bookingForm").onsubmit=async(e)=>{
       result=await r.json();if(!r.ok||!result.ok)throw new Error(result.error||"booking failed");
       state.start=result.start||state.start;state.end=result.end||state.end;
     }
-    q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>${txt.success}</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${fmtTime(state.start)} · ${q("#sType").textContent}</p><a id="icsLink" class="ics" href="#">${txt.calendar} →</a></div>`;
-    makeIcs(payload);
+    if(packageToken){
+      q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>Dein Termin ist gebucht.</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${fmtTime(state.start)} · ${q("#sType").textContent}</p><p style="color:#5F504A">Dein Guthaben wurde aktualisiert. Du kommst gleich zurück zu deinem Zugang.</p><a class="ics" href="zugang.html?token=${encodeURIComponent(packageToken)}">Zurück zu meinem Zugang →</a></div>`;
+      setTimeout(()=>{location.href="zugang.html?token="+encodeURIComponent(packageToken)},1800);
+    }else{
+      q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>${txt.success}</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${fmtTime(state.start)} · ${q("#sType").textContent}</p><a id="icsLink" class="ics" href="#">${txt.calendar} →</a></div>`;
+      makeIcs(payload);
+    }
   }catch(err){
     q("#formMsg").className="notice err";q("#formMsg").textContent=txt.bookingError;
     q("#submitBtn").disabled=false;q("#submitBtn").textContent=L==="de"?"Termin buchen":"Book appointment";

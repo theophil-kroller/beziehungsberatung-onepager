@@ -19,7 +19,8 @@ async function load(){
  d.credits.forEach(c=>{
    const row=document.createElement("div");row.className="credit";
    const name=c.name_de;
-   row.innerHTML=`<div><strong>${esc(name)}</strong><div class="muted">${c.session_minutes} Min.</div></div><div style="text-align:right"><div class="big">${c.remaining} / ${c.total}</div><a class="btn" href="booking.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}">Sitzung aus Guthaben buchen</a></div>`;
+   const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
+   row.innerHTML=`<div><strong>${esc(name)}</strong><div class="muted">${c.session_minutes} Min.${ref?` · Package-Nr. ${esc(ref)}`:""}</div></div><div style="text-align:right"><div class="big">${c.remaining} / ${c.total}</div><div class="muted" style="margin-bottom:8px">Sitzungen verfügbar</div><a class="btn" href="booking.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}">Sitzung aus Guthaben buchen</a></div>`;
    cw.appendChild(row);
  });
  const mw=document.getElementById("materials");mw.innerHTML="";

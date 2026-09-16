@@ -1,0 +1,32 @@
+PHASE 9D – COMPLETE PACKAGE FLOW
+
+Fixes:
+1. After a package-credit booking, the user automatically returns to the personal access page.
+   The updated balance (e.g. 2/3) is loaded there immediately.
+2. Package booking no longer shows a choice between Individual and Couple counselling.
+   The package's stored session type is fixed for that booking.
+3. €0 test checkout now sends a separate package confirmation email through Resend.
+   It contains:
+   - Package name
+   - Package reference, e.g. BD-P000001
+   - number of sessions
+   - validity
+   - personal access link
+   - €0 test-purchase indication
+4. The access page also displays the package reference.
+
+Deploy:
+GitHub replace:
+- booking.html
+- booking-en.html
+- zugang.html
+- access.html
+
+Cloudflare Worker replace/deploy:
+- cloudflare-worker/worker.js
+
+No D1 schema change and no R2 change required.
+
+Important:
+Existing test purchases made before this version will NOT retroactively receive the purchase email.
+Create a new €0 Poly Starter test purchase to test the email.

@@ -1,0 +1,19 @@
+PHASE 9C – PACKAGE BOOKING TYPE FIX
+
+Problem:
+The access page correctly linked Poly Starter to booking.html?type=couple&package_token=...
+but booking.html ignored the `type` query parameter.
+This allowed an Individual counselling booking (60 min) to be selected for a Poly Starter credit
+that is stored as a 90-minute relationship-counselling credit. The Worker therefore rejected it.
+
+Fix:
+- booking.html and booking-en.html now honor ?type=...
+- when package_token is present, the package session type is preselected
+- the other session type is disabled for that package booking
+- the flow starts directly at the location step
+
+GitHub: replace only
+- booking.html
+- booking-en.html
+
+No Cloudflare change required.

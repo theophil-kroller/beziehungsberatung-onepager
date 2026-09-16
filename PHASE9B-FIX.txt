@@ -1,0 +1,15 @@
+PHASE 9B – TEST CHECKOUT FIX
+
+Fix:
+- Poly Starter was shown as €0.00, but JavaScript still stored price:null.
+- That kept the checkout button disabled.
+- Offers now add Poly Starter with price:0.
+- Cart pages also migrate any already saved Poly Starter item from price:null to price:0.
+
+For this fix replace on GitHub:
+- angebote.html
+- offers.html
+- cart.html
+- cart-en.html
+
+No Cloudflare change is needed for this specific fix.
