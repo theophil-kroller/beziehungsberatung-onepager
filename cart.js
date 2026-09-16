@@ -5,7 +5,11 @@
   function getCart(){
     try{
       const value = JSON.parse(localStorage.getItem(KEY) || "[]");
-      return Array.isArray(value) ? value : [];
+      if(!Array.isArray(value)) return [];
+      return value.filter(item=>{
+        const price=Number(item?.price);
+        return item?.price!==null && item?.price!==undefined && item?.price!=="" && Number.isFinite(price) && price>=0;
+      });
     }catch(e){ return []; }
   }
 

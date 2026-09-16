@@ -19,7 +19,7 @@ main{max-width:1180px;margin:auto;padding:64px 22px 96px}.eyebrow{color:var(--te
 .card.package{background:var(--sand)}.tag{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--terr);font-weight:800;margin-bottom:12px}h2{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.08;margin:0 0 13px}.desc{color:var(--muted);line-height:1.65;margin:0 0 14px}.meta{color:var(--terr2);font-weight:800;font-size:14px;margin-bottom:16px}
 ul{list-style:none;padding:0;margin:0 0 20px;color:var(--muted);line-height:1.7;font-size:14px}
 label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--cream);padding:12px 13px;font:inherit;color:var(--brown);margin-bottom:16px}
-.price{font-size:14px;font-weight:800;color:var(--terr2);margin:2px 0 16px}.btn{margin-top:auto;display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:12px;padding:13px 17px;text-decoration:none;font:inherit;font-weight:800;cursor:pointer}.primary{background:var(--terr);color:white}.dark{background:var(--brown);color:white}.btn:hover{opacity:.9}
+.price{font-size:14px;font-weight:800;color:var(--terr2);margin:2px 0 16px}.btn{margin-top:auto;display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:12px;padding:13px 17px;text-decoration:none;font:inherit;font-weight:800;cursor:pointer}.primary{background:var(--terr);color:white}.dark{background:var(--brown);color:white}.btn:hover{opacity:.9}.btn[disabled]{opacity:.48;cursor:not-allowed;transform:none;box-shadow:none}.price-unavailable{color:#7B6961}.price-box{margin:3px 0 16px;display:flex;flex-wrap:wrap;gap:7px 11px;align-items:baseline}.price-old{font-size:13px;color:#7B6961;text-decoration:line-through}.price-now{font-size:15px;font-weight:900;color:var(--terr2)}.price-save{font-size:12px;font-weight:850;color:#466044;background:#EEF4ED;border-radius:999px;padding:4px 8px}
 .note{margin-top:24px;color:#7A6A63;font-size:13px}
 .cart-toast{position:fixed;right:22px;bottom:22px;z-index:60;max-width:390px;background:var(--brown);color:#fff;border-radius:16px;padding:15px 17px;box-shadow:0 18px 50px rgba(47,38,35,.24);display:flex;gap:14px;align-items:center;transform:translateY(20px);opacity:0;pointer-events:none;transition:.22s ease}.cart-toast.show{transform:none;opacity:1;pointer-events:auto}.cart-toast span{line-height:1.4;font-size:14px}.cart-toast a{white-space:nowrap;color:#F2B49D;font-weight:800;text-decoration:none}@media(max-width:600px){.cart-toast{left:14px;right:14px;bottom:14px}}
 @media(max-width:900px){.grid-three{grid-template-columns:1fr 1fr}}
@@ -70,17 +70,17 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <ul><li>• 5 × Einzelberatung à 60 Min.</li><li>• flexibel innerhalb von 6 Monaten</li><li>• Terminbuchung aus deinem Guthaben</li></ul>
   <label for="advisor-2">Berater wählen</label>
   <select id="advisor-2"><option>Theophil Kroller</option></select>
-  <div class="price">Preis folgt</div><button class="btn dark" type="button" data-add-package="process-5">In den Warenkorb</button>
+  <div class="price price-unavailable">Preis folgt · derzeit nicht buchbar</div><button class="btn dark" type="button" disabled aria-disabled="true">Derzeit nicht buchbar</button>
 </article>
 <article class="card package">
   <div class="tag">Package</div>
   <h2>Polyamorie Starter-Paket</h2>
-  <p class="desc">Für Menschen, die ihre Beziehung öffnen möchten oder gerade erste Erfahrungen mit offenen bzw. polyamoren Beziehungskonzepten machen und dabei nicht alles allein herausfinden wollen.</p>
+  <p class="desc">Für Menschen, die ihre Beziehung öffnen möchten oder gerade erste Erfahrungen mit offenen bzw. polyamoren Beziehungskonzepten machen und sich dabei professionell begleiten lassen möchten.</p>
   <div class="meta">3 × 90 Min. + Materialien</div>
   <ul><li>• Poly-Starter Guide</li><li>• Checkliste „Was sollten wir vorher klären?“</li><li>• Grenzen-vs.-Regeln Worksheet</li><li>• Eifersuchts-Kompass</li><li>• Check-in-Vorlage</li><li>• kurze Audioübung zur Regulation</li></ul>
   <label for="advisor-3">Berater wählen</label>
   <select id="advisor-3"><option>Theophil Kroller</option></select>
-  <div class="price">€465,00</div><button class="btn dark" type="button" data-add-package="poly-starter">In den Warenkorb</button>
+  <div class="price-box"><span class="price-old">Einzelbuchung: 3 × €165 = €495</span><span class="price-now">Paketpreis €465</span><span class="price-save">Du sparst €30</span></div><button class="btn dark" type="button" data-add-package="poly-starter">In den Warenkorb</button>
 </article>
 <article class="card package">
   <div class="tag">Package</div>
@@ -90,7 +90,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <ul><li>• Guide für die ersten Wochen</li><li>• Übung „Was muss verstanden werden?“</li><li>• Gesprächsleitfaden</li><li>• Reflexionsblätter für beide Seiten</li><li>• Audio zur emotionalen Regulation</li><li>• Check-in für zwischen den Sitzungen</li></ul>
   <label for="advisor-4">Berater wählen</label>
   <select id="advisor-4"><option>Theophil Kroller</option></select>
-  <div class="price">Preis folgt</div><button class="btn dark" type="button" data-add-package="trust-restart">In den Warenkorb</button>
+  <div class="price price-unavailable">Preis folgt · derzeit nicht buchbar</div><button class="btn dark" type="button" disabled aria-disabled="true">Derzeit nicht buchbar</button>
 </article></div>
 
 <p class="note">Die Package-Inhalte und Preise können vor dem Verkaufsstart noch angepasst werden.</p>
@@ -104,13 +104,15 @@ document.querySelectorAll("[data-add-package]").forEach(btn=>{
     const advisor=card.querySelector("select")?.value || "Theophil Kroller";
     const products={
       "process-5":{id:"process-5",name:'Prozessbegleitung',description:'5 × 60 Min. Einzelberatung',price:null,advisorCode:"01",unique:true},
-      "poly-starter":{id:"poly-starter",name:'Polyamorie Starter-Paket',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:465,advisorCode:"01",unique:true},
+      "poly-starter":{id:"poly-starter",name:'Polyamorie Starter-Paket',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:465,regularPrice:495,advisorCode:"01",unique:true},
       "trust-restart":{id:"trust-restart",name:'Neustart nach Vertrauensbruch',description:'5 × 90 Min. + Guide, Übungen und Audio',price:null}
     };
-    BDCart.add({...products[id],advisor});
+    const product=products[id];
+    if(!product || product.price===null || product.price===undefined || !Number.isFinite(Number(product.price))) return;
+    BDCart.add({...product,advisor});
     const old=btn.textContent;btn.textContent="✓ Im Warenkorb";setTimeout(()=>btn.textContent=old,1300);
     const toast=document.getElementById("cartToast"),toastText=document.getElementById("cartToastText");
-    toastText.textContent=products[id].name+" wurde zum Warenkorb hinzugefügt.";
+    toastText.textContent=product.name+" wurde zum Warenkorb hinzugefügt.";
     toast.classList.add("show");clearTimeout(window.__bdToastTimer);window.__bdToastTimer=setTimeout(()=>toast.classList.remove("show"),3500);
   });
 });

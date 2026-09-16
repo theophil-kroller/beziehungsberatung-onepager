@@ -1,0 +1,19 @@
+PHASE 12C - COPY CLEANUP
+
+Changed:
+- booking.html / booking-en.html:
+  removed the Google Calendar availability explanation.
+- about.html / about-en.html:
+  removed the final 'never quite finished / common thread' sentence;
+  travel now focuses on entering other ways of life and seeing familiar things with fresh eyes;
+  scuba now focuses on the elemental connection to life and the sea;
+  dance & Bujinkan now focus on presence, playfulness, creativity, spontaneity,
+  emotion, powerful experiences and human encounters.
+
+Replace only:
+- booking.html
+- booking-en.html
+- about.html
+- about-en.html
+
+No Worker, D1 or R2 changes required.

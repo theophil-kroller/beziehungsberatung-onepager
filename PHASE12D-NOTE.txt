@@ -1,0 +1,8 @@
+PHASE 12D
+- Unpriced packages are no longer addable and show as currently unavailable.
+- Old unpriced cart entries are ignored so checkout is never blocked by them.
+- Polyamorie Starter-Paket now shows 3 × €165 = €495, package price €465, saving €30.
+- Same comparison is shown in the cart.
+- Poly Starter description updated to professional-support wording.
+- No Worker/D1/R2 changes needed.
+Replace: angebote.html, offers.html, cart.html, cart-en.html, cart.js.
