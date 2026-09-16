@@ -1,0 +1,26 @@
+PHASE 4 – WARENKORB-GRUNDLAGE
+
+Neu:
+- Warenkorb-Symbol im Header der deutschen und englischen Startseite
+- Warenkorb-Symbol auch auf der Booking-Seite
+- Badge mit Anzahl der Artikel
+- cart.html / cart-en.html
+- cart.js als kleine localStorage-Warenkorb-Basis
+- Warenkorb zeigt Produkte, Preise, Summe und Entfernen
+- Checkout-Button ist bewusst noch ein Platzhalter; Mollie kommt im nächsten Schritt
+
+Wichtig:
+Diese Version verändert den funktionierenden Cloudflare Booking-Worker NICHT.
+
+Auf GitHub neu/ersetzen:
+- index.html
+- en.html
+- booking.html
+- booking-en.html
+- cart.html
+- cart-en.html
+- cart.js
+
+Die restlichen Dateien bleiben wie im letzten funktionierenden Build.
+
+Später können Package-Kacheln einfach BDCart.add({...}) aufrufen.

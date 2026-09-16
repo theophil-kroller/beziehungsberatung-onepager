@@ -55,13 +55,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
   .slot{flex:1 1 calc(33.333% - 10px);min-width:72px}
 }
 
+
+.cart-link{position:relative;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted);background:#fff}
+.cart-link:hover{background:var(--sand);color:var(--brown)}
+.cart-count{position:absolute;right:-5px;top:-6px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--terr);color:#fff;font-size:11px;font-weight:800;line-height:19px;text-align:center}
+.nav-actions{display:flex;align-items:center;gap:10px}
+
 </style>
 </head>
 <body>
 <div class="top">Relationship counselling · Graz & online</div>
 <nav><div class="navin">
 <a class="brand" href="en.html">Beziehungsdynamiken<small>mit Theophil Kroller</small></a>
-<a class="back" href="en.html">← Back to website</a>
+<div class="nav-actions"><a class="cart-link" href="cart-en.html" aria-label="Cart" title="Cart"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"></circle><circle cx="19" cy="20" r="1"></circle><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 7H6"></path></svg><span class="cart-count" data-cart-count hidden>0</span></a><a class="back" href="en.html">← Back to website</a></div>
 </div></nav>
 <main>
 <div class="eyebrow">Book an appointment</div>
@@ -321,4 +327,4 @@ function makeIcs(p){
 }
 summary();
 </script>
-</body></html>
+<script src="./cart.js"></script></body></html>
