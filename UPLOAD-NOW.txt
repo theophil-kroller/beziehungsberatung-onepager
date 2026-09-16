@@ -1,0 +1,18 @@
+LIVE BOOKING VERSION
+
+Upload/replace in repository root:
+- index.html
+- en.html
+- booking.html
+- booking-en.html
+- booking-config.js
+
+Replace in /public:
+- angebot-paarberatung.jpg
+
+Your booking frontend is already connected to:
+https://beziehungsdynamiken-booking.theophil-kroller.workers.dev
+
+demoMode is already false.
+
+The cloudflare-worker folder is included only as backup; your Worker is already deployed.

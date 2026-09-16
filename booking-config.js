@@ -1,8 +1,8 @@
 window.BD_BOOKING_CONFIG = {
   // Leave empty + demoMode:true to test without Cloudflare.
   // Later replace with e.g. "https://beziehungsdynamiken-booking.YOUR-SUBDOMAIN.workers.dev"
-apiBaseUrl: "https://beziehungsdynamiken-booking.theophil-kroller.workers.dev",
-demoMode: false,
+  apiBaseUrl: "https://beziehungsdynamiken-booking.theophil-kroller.workers.dev",
+  demoMode: false,
 
   timezone: "Europe/Vienna",
   minNoticeHours: 24,

@@ -107,12 +107,13 @@ const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
 const typeData=()=>C.appointmentTypes[state.type];
 const fmtDate=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"short",day:"2-digit",month:"2-digit"}).format(new Date(iso+"T12:00:00"));
 const fmtLong=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(new Date(iso+"T12:00:00"));
+const fmtTime=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:C.timezone}).format(new Date(iso));
 function next(n){qa(".step").forEach(x=>x.classList.remove("active"));q(`#step${n}`).classList.add("active");}
 function summary(){
   q("#sType").textContent=state.type?(L==="de"?typeData().labelDe:typeData().labelEn)+" · "+typeData().durationMinutes+" "+txt.mins:"—";
   q("#sLoc").textContent=state.location?(L==="de"?C.locations[state.location].labelDe:C.locations[state.location].labelEn):"—";
   q("#sDate").textContent=state.date?fmtLong(state.date):"—";
-  q("#sTime").textContent=state.start?state.start.substring(11,16):"—";
+  q("#sTime").textContent=state.start?fmtTime(state.start):"—";
 }
 qa("[data-type]").forEach(b=>b.onclick=()=>{state.type=b.dataset.type;qa("[data-type]").forEach(x=>x.classList.toggle("selected",x===b));summary();next(2)});
 qa("[data-location]").forEach(b=>b.onclick=()=>{state.location=b.dataset.location;qa("[data-location]").forEach(x=>x.classList.toggle("selected",x===b));summary();buildDays();next(3)});
@@ -149,7 +150,7 @@ async function selectDay(iso,b){
     }
     state.slots=slots;q("#slotMsg").textContent=slots.length?"":txt.noSlots;
     slots.forEach(s=>{
-      const bt=document.createElement("button");bt.className="slot";bt.textContent=s.start.substring(11,16);
+      const bt=document.createElement("button");bt.className="slot";bt.textContent=fmtTime(s.start);
       bt.onclick=()=>{state.start=s.start;state.end=s.end;qa(".slot").forEach(x=>x.classList.toggle("selected",x===bt));summary();q("#continue3").disabled=false};
       q("#slots").appendChild(bt);
     });
@@ -172,7 +173,7 @@ q("#bookingForm").onsubmit=async(e)=>{
       result=await r.json();if(!r.ok||!result.ok)throw new Error(result.error||"booking failed");
       state.start=result.start||state.start;state.end=result.end||state.end;
     }
-    q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>${txt.success}</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${state.start.substring(11,16)} · ${q("#sType").textContent}</p><a id="icsLink" class="ics" href="#">${txt.calendar} →</a></div>`;
+    q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>${txt.success}</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${fmtTime(state.start)} · ${q("#sType").textContent}</p><a id="icsLink" class="ics" href="#">${txt.calendar} →</a></div>`;
     makeIcs(payload);
   }catch(err){
     q("#formMsg").className="notice err";q("#formMsg").textContent=txt.bookingError;
