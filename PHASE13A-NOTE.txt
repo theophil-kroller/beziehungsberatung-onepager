@@ -1,0 +1,19 @@
+PHASE 13A – INVOICE LAYOUT MATCH
+
+This fixes the visual mismatch between the approved Editorial Premium mock-up
+and the Cloudflare Worker-generated invoice.
+
+Changes in cloudflare-worker/worker.js:
+- payment section moved lower on the page
+- QR code moved into the payment cluster and reduced slightly
+- QR is now aligned beside the bank details instead of floating alone near the footer
+- Poly Starter package uses the approved line-item layout:
+    3 × 90 min counselling at €165 = €495
+    digital support materials = included
+    package price advantage = -€30
+- materials show a transparent reference value of €30
+- total benefit shown as €60 incl. materials
+- total, tax note, payment data and footer spacing aligned to the approved mock-up
+
+No D1 migration is required.
+Deploy only cloudflare-worker/worker.js if Phase 13 is already installed.
