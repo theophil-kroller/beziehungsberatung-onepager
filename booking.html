@@ -294,10 +294,11 @@ function selectCalendarDay(iso,b,slots){
 function buildDays(){ resetCalendar(); }
 q("#continue3").onclick=()=>next(4);
 
+const packageToken=new URLSearchParams(location.search).get("package_token")||"";
 q("#bookingForm").onsubmit=async(e)=>{
   e.preventDefault();
   const f=new FormData(e.currentTarget);
-  const payload={name:f.get("name"),email:f.get("email"),type:state.type,location:state.location,start:state.start,end:state.end};
+  const payload={name:f.get("name"),email:f.get("email"),type:state.type,location:state.location,start:state.start,end:state.end,packageToken:packageToken||undefined};
   q("#submitBtn").disabled=true;q("#submitBtn").textContent=L==="de"?"Buche …":"Booking …";
   try{
     let result;

@@ -1,0 +1,2 @@
+Phase 8 prepares package credits and protected materials without requiring Mollie yet.
+Actual PDFs/audio are intentionally not included.

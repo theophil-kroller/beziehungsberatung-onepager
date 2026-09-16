@@ -1,0 +1,74 @@
+PHASE 8 – D1 CREDITS + PRIVATE R2 MATERIALS
+
+This ZIP adds the platform layer BEFORE Mollie.
+
+What is included:
+- D1 schema for customers, purchases, credits, credit ledger, access tokens, products and materials
+- Product seeds for:
+  process-5
+  poly-starter
+  trust-restart
+- Private material access through R2
+- Personal access pages:
+  zugang.html
+  access.html
+- Optional package token support in booking.html / booking-en.html
+- Booking can consume 1 credit after a successful Google Calendar booking
+- Cancellation refunds the consumed credit
+- Rescheduling does not consume another credit
+- Existing normal bookings continue working without D1/R2
+
+Cloudflare setup still required:
+
+1) D1
+Create database e.g.:
+beziehungsdynamiken-db
+
+Run:
+database/schema.sql
+
+Bind it to the Worker as:
+DB
+
+2) R2
+Create a PRIVATE bucket e.g.:
+beziehungsdynamiken-materials
+
+Bind it to the Worker as:
+MATERIALS
+
+Do not enable public access.
+
+3) Worker
+Replace cloudflare-worker/worker.js and deploy/promote as usual.
+The Worker is written so normal booking remains functional even if package features are not used.
+
+4) GitHub
+Upload/replace:
+booking.html
+booking-en.html
+zugang.html
+access.html
+
+5) Materials later
+Upload PDFs/audio to R2 and add rows to D1 `materials`.
+No actual content is included in this ZIP.
+
+6) Before Mollie
+For manual testing only, database/seed-demo.template.sql shows how to create a test customer/credit.
+Use a long random raw access token, store only its SHA-256 hash in D1.
+The raw token is used in:
+https://www.beziehungsdynamiken.at/zugang.html?token=RAW_TOKEN
+
+7) Mollie later
+Successful Mollie payment will eventually:
+- create/find customer
+- create paid purchase
+- issue credit
+- create access token
+- email the personal access link through Resend
+
+SECURITY
+- Do not put R2 files in GitHub/public.
+- Do not make R2 bucket public.
+- Access tokens are hashed in D1.

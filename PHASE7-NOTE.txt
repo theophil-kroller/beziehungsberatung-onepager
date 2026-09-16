@@ -1,0 +1,26 @@
+PHASE 7 – FINAL MVP OFFER ARCHITECTURE
+
+Dedicated offers page now contains 5 cards:
+
+Single sessions
+1. Individual counselling – 1 x 60 min
+2. Couples & relationship counselling – 1 x 90 min
+
+Support over several sessions
+3. Process support – 5 x 60 min individual counselling
+4. Poly Starter – 3 x 90 min + materials
+5. Restart after a breach of trust – 5 x 90 min + materials
+
+Added:
+- One-sentence explanation under every card explaining who it is for.
+- Counsellor dropdown on all cards, currently Theophil Kroller.
+- Single sessions go directly to the booking flow.
+- Multi-session offers go to the cart.
+- Prices are still intentionally left open.
+- Existing booking, calendar, email, reminder and cancel/reschedule logic remains unchanged.
+
+Upload/replace:
+angebote.html
+offers.html
+
+No Cloudflare change required.
