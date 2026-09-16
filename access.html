@@ -1,36 +1,104 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your access | Beziehungsdynamiken</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your personal area | Beziehungsdynamiken</title>
+<meta name="robots" content="noindex">
 <style>
-:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--brown:#2F2623;--muted:#5F504A;--line:#E8D2BE}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--brown);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-nav{border-bottom:1px solid var(--line);background:rgba(255,247,237,.97)}.navin{max-width:960px;margin:auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}.brand{display:flex;gap:11px;align-items:center;text-decoration:none;font-weight:800}.brand img{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;padding:4px}.brand small{display:block;color:var(--muted);font-size:12px;font-weight:500}
-main{max-width:900px;margin:auto;padding:56px 20px 90px}h1{font-family:Georgia,serif;font-size:48px;margin:0 0 10px}.lead{color:var(--muted);line-height:1.6;margin-bottom:30px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;margin-bottom:18px}.credit{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid var(--line);padding:17px 0}.credit:first-child{border-top:0}.big{font-size:28px;font-weight:850}.muted{color:var(--muted)}.btn{display:inline-block;background:var(--terr);color:white;text-decoration:none;padding:11px 15px;border-radius:12px;font-weight:800}.material{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px solid var(--line)}.material:first-child{border-top:0}.material a{color:#A9543B;font-weight:800;text-decoration:none}.err{background:#fff0ef;border:1px solid #e9c1bd;padding:15px;border-radius:14px;color:#7b2f28}
-</style></head><body>
-<nav><div class="navin"><a class="brand" href="en.html"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><span>Beziehungsdynamiken<small>mit Theophil Kroller</small></span></a></div></nav>
-<main><h1>Your access</h1><p class="lead">Your packages, remaining sessions and materials in one place.</p><div id="status">Lade …</div><div id="content" hidden><div class="card"><h2>Available sessions</h2><div id="credits"></div></div><div class="card"><h2>Materials</h2><div id="materials"></div></div></div></main>
-<script src="./booking-config.js"></script><script>
+:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--terr-dark:#A9543B;--brown:#2F2623;--muted:#75645C;--line:#E7D2BE;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--brown);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit}nav{background:rgba(255,247,237,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
+.navin{max-width:1120px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:850;font-size:20px}.brand img{width:48px;height:48px;border-radius:50%;object-fit:contain;border:1px solid var(--line);padding:4px}.brand small{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:4px}
+main{max-width:1060px;margin:auto;padding:72px 24px 110px}.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--terr-dark);font-weight:850;margin-bottom:14px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);line-height:1.03;margin:0 0 18px;letter-spacing:-.02em}.lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.7;margin:0 0 44px}
+.section{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:28px;padding:32px;margin-top:22px;box-shadow:0 18px 55px rgba(47,38,35,.045)}
+.section h2{font-family:Georgia,"Times New Roman",serif;font-size:31px;margin:0 0 7px}.section-intro{margin:0 0 24px;color:var(--muted);line-height:1.55;max-width:650px}
+.package{border-top:1px solid var(--line);padding:26px 0;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}.package:first-child{border-top:0;padding-top:6px}
+.pkg-name{font-size:21px;font-weight:850;margin-bottom:8px}.pkg-meta{color:var(--muted);line-height:1.65;font-size:14px}.pkg-ref{display:inline-flex;margin-top:10px;border:1px solid var(--line);background:var(--cream);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:750;color:var(--terr-dark)}
+.balance{text-align:right;min-width:270px}.balance-num{font-family:Georgia,"Times New Roman",serif;font-size:42px;font-weight:700;line-height:1}.balance-label{color:var(--muted);font-size:14px;margin:7px 0 15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--terr);color:#fff;text-decoration:none;border-radius:13px;padding:13px 18px;font-weight:850;transition:.15s}.btn:hover{background:var(--terr-dark);transform:translateY(-1px)}
+.material{border-top:1px solid var(--line);padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:18px}.material:first-child{border-top:0;padding-top:5px}.material-title{font-weight:780}.material-type{color:var(--muted);font-size:13px;margin-top:4px}.material a{text-decoration:none;color:var(--terr-dark);font-weight:850}
+.status{padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;color:var(--muted)}.err{background:#fff0ef;border-color:#e8beb8;color:#7a3129}
+.footer-note{margin-top:30px;color:var(--muted);font-size:13px;line-height:1.6}.footer-note a{color:var(--terr-dark);text-decoration:none;font-weight:750}
+@media(max-width:720px){main{padding-top:48px}.section{padding:23px}.package{grid-template-columns:1fr}.balance{text-align:left;min-width:0}}
+</style>
+</head>
+<body>
+<nav><div class="navin">
+<a class="brand" href="en.html"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><span>Beziehungsdynamiken<small>mit Theophil Kroller</small></span></a>
+</div></nav>
+<main>
+<div class="eyebrow">BEZIEHUNGSDYNAMIKEN · MEMBER AREA</div>
+<h1>Your personal area</h1>
+<p class="lead">Here you’ll find your booked support packages, remaining session credit and all related resources.</p>
+
+<div id="status" class="status">Loading your area …</div>
+<div id="content" hidden>
+<section class="section">
+  <h2>Your current support</h2>
+  <p class="section-intro">Here you’ll find your active packages and see at a glance how many sessions remain in each one.</p>
+  <div id="credits"></div>
+</section>
+<section class="section" id="archiveSection" hidden>
+  <h2>Your archive</h2>
+  <p class="section-intro">Completed or expired packages remain visible here so you can always see which support you purchased.</p>
+  <div id="archive"></div>
+</section>
+<section class="section">
+  <h2>Your resources</h2>
+  <p class="section-intro">Here you’ll find the materials included with your package – guides, exercises and additional resources.</p>
+  <div id="materials"></div>
+</section>
+<p class="footer-note">Your personal access link is intended for you only. Questions about your package? Email me at <a href="mailto:hallo@beziehungsdynamiken.at">hallo@beziehungsdynamiken.at</a>.</p>
+</div>
+</main>
+<script src="./booking-config.js"></script>
+<script>
 const API=(window.BOOKING_CONFIG||{}).apiBaseUrl||"https://beziehungsdynamiken-booking.theophil-kroller.workers.dev";
 const token=new URLSearchParams(location.search).get("token")||"";
 const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const fmtDate=x=>x?new Intl.DateTimeFormat("en-GB",{day:"2-digit",month:"2-digit",year:"numeric"}).format(new Date(x)):"";
+const premiumName=c=>c.product_id==="poly-starter"?"Poly Starter Package":(c.name_en);
+const typeLabel=t=>t==="audio"?"Audio":t==="pdf"?"PDF":"Resource";
 async function load(){
- if(!token){document.getElementById("status").innerHTML='<div class="err">This access link is invalid or has expired.</div>';return}
- const r=await fetch(API.replace(/\/$/,"")+"/package-access?token="+encodeURIComponent(token));const d=await r.json();
- if(!r.ok||!d.ok){document.getElementById("status").innerHTML='<div class="err">This access link is invalid or has expired.</div>';return}
+ if(!token){document.getElementById("status").className="status err";document.getElementById("status").textContent="This access link is invalid or has expired.";return}
+ const r=await fetch(API.replace(/\/$/,"")+"/package-access?token="+encodeURIComponent(token));
+ const d=await r.json();
+ if(!r.ok||!d.ok){document.getElementById("status").className="status err";document.getElementById("status").textContent="This access link is invalid or has expired.";return}
  document.getElementById("status").hidden=true;document.getElementById("content").hidden=false;
  const cw=document.getElementById("credits");cw.innerHTML="";
- d.credits.forEach(c=>{
-   const row=document.createElement("div");row.className="credit";
-   const name=c.name_en;
+ const aw=document.getElementById("archive");aw.innerHTML="";
+ const now=Date.now();
+ const active=d.credits.filter(c=>c.remaining>0 && (!c.expires_at || new Date(c.expires_at).getTime()>now));
+ const archived=d.credits.filter(c=>!active.includes(c));
+ if(!active.length) cw.innerHTML='<p style="color:var(--muted)">You currently have no active package with sessions remaining.</p>';
+ active.forEach(c=>{
    const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
-   row.innerHTML=`<div><strong>${esc(name)}</strong><div class="muted">${c.session_minutes} min${ref?` · Package no. ${esc(ref)}`:""}</div></div><div style="text-align:right"><div class="big">${c.remaining} / ${c.total}</div><div class="muted" style="margin-bottom:8px">sessions available</div><a class="btn" href="booking-en.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}">Book a session from credit</a></div>`;
+   const row=document.createElement("div");row.className="package";
+   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · Valid until ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">sessions available</div><a class="btn" href="booking-en.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Book your next session</a></div>`;
    cw.appendChild(row);
  });
+ if(archived.length){
+   document.getElementById("archiveSection").hidden=false;
+   archived.forEach(c=>{
+     const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
+     const expired=c.expires_at && new Date(c.expires_at).getTime()<=now;
+     const status=c.remaining===0?"Completed":expired?"Expired":"Archived";
+     const row=document.createElement("div");row.className="package";
+     row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · ${status}${c.expires_at?` · ${esc(fmtDate(c.expires_at))}`:""}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">${status}</div></div>`;
+     aw.appendChild(row);
+   });
+ }
  const mw=document.getElementById("materials");mw.innerHTML="";
- if(!d.materials.length) mw.innerHTML='<p class="muted">No materials have been added yet.</p>';
+ if(!d.materials.length) mw.innerHTML='<p style="color:var(--muted)">No materials have been added yet.</p>';
  d.materials.forEach(m=>{
    const row=document.createElement("div");row.className="material";
    const title=m.title_en;
-   row.innerHTML=`<span>${esc(title)}</span><a href="${API.replace(/\/$/,"")}/material?token=${encodeURIComponent(token)}&id=${m.id}" target="_blank" rel="noopener">Öffnen →</a>`;
+   row.innerHTML=`<div><div class="material-title">${esc(title)}</div><div class="material-type">${esc(typeLabel(m.material_type))}</div></div><a href="${API.replace(/\/$/,"")}/material?token=${encodeURIComponent(token)}&id=${m.id}" target="_blank" rel="noopener">Open →</a>`;
    mw.appendChild(row);
  });
 }
 load();
-</script></body></html>
+</script>
+</body></html>

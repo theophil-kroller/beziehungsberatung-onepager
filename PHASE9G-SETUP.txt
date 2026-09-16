@@ -1,0 +1,13 @@
+PHASE 9G – PACKAGE CUSTOMER PREFILL
+
+When booking from the personal package area:
+- name and email are loaded from the existing secure package access token
+- both fields are prefilled automatically
+- no name/email is exposed in the URL
+- manual entry still remains possible if loading fails
+
+GitHub replace:
+- booking.html
+- booking-en.html
+
+No Cloudflare, D1 or R2 change required.

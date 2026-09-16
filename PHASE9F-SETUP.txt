@@ -1,0 +1,18 @@
+PHASE 9F – CONTEXTUAL PACKAGE BOOKING
+
+Changes:
+- The personal area now passes the package product ID into the booking flow.
+- Package booking pages no longer show the generic website booking introduction.
+- Poly Starter Package gets its own contextual booking copy:
+  "Buche deinen nächsten Termin."
+  "Dieser Termin ist Teil deines Poly Starter Packages..."
+- Process support and trust-restart packages also have tailored copy.
+- Normal single-session bookings retain the generic introduction.
+
+GitHub replace:
+- zugang.html
+- access.html
+- booking.html
+- booking-en.html
+
+No Cloudflare Worker, D1 or R2 change required for this phase.

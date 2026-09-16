@@ -73,7 +73,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
 </article>
 <article class="card package">
   <div class="tag">Package</div>
-  <h2>Poly Starter</h2>
+  <h2>Poly Starter Package</h2>
   <p class="desc">For people opening their relationship or taking their first steps with open or polyamorous relationships and who do not want to figure everything out alone.</p>
   <div class="meta">3 × 90 min + materials</div>
   <ul><li>• Poly Starter guide</li><li>• Checklist: what should we clarify first?</li><li>• Boundaries-vs.-rules worksheet</li><li>• Jealousy compass</li><li>• Check-in template</li><li>• Short regulation audio</li></ul>
@@ -102,7 +102,7 @@ document.querySelectorAll("[data-add-package]").forEach(btn=>{
     const advisor=card.querySelector("select")?.value || "Theophil Kroller";
     const products={
       "process-5":{id:"process-5",name:'Process support – 5 sessions',description:'5 × 60 min individual counselling',price:null},
-      "poly-starter":{id:"poly-starter",name:'Poly Starter',description:'3 × 90 min + guide, checklist and exercises',price:0,testCheckout:true},
+      "poly-starter":{id:"poly-starter",name:'Poly Starter Package',description:'3 × 90 min + guide, checklist and exercises',price:0,testCheckout:true},
       "trust-restart":{id:"trust-restart",name:'Restart after a breach of trust',description:'5 × 90 min + guide, exercises and audio',price:null}
     };
     BDCart.add({...products[id],advisor});

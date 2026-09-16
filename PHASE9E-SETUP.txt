@@ -1,0 +1,28 @@
+PHASE 9E – PREMIUM MEMBER AREA
+
+Änderungen:
+- "Poly Starter" wird sichtbar zu "Poly Starter Package"
+- Premium-Redesign von zugang.html / access.html
+- Überschrift: "Dein persönlicher Bereich"
+- "Deine Begleitung" statt "Verfügbare Sitzungen"
+- "Deine Ressourcen" statt "Materialien"
+- kurze Erklärtexte bei beiden Bereichen
+- Package-Nummer, Gültigkeit und Sitzungsguthaben hochwertiger dargestellt
+- Kaufmail nennt "Poly Starter Package"
+- Mailabschluss:
+  Liebe Grüße
+  Theophil
+
+  www.beziehungsdynamiken.at
+  als klickbarer Link
+
+GitHub ersetzen:
+- angebote.html
+- offers.html
+- zugang.html
+- access.html
+
+Cloudflare Worker ersetzen/deployen:
+- cloudflare-worker/worker.js
+
+Keine Änderungen an D1 oder R2 nötig.

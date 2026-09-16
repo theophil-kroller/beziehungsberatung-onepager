@@ -73,9 +73,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <div class="nav-actions"><a class="cart-link" href="cart-en.html" aria-label="Cart" title="Cart"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"></circle><circle cx="19" cy="20" r="1"></circle><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 7H6"></path></svg><span class="cart-count" data-cart-count hidden>0</span></a><a class="back" href="en.html">← Back to website</a></div>
 </div></nav>
 <main>
-<div class="eyebrow">Book an appointment</div>
-<h1>Find a time that works for you.</h1>
-<p class="lead">Choose the format first. Individuals, couples and people in diverse relationship constellations are welcome. Then pick an available time. I deliberately ask only for organisational details here, not what you want to discuss in counselling.</p>
+<div class="eyebrow" id="bookingEyebrow">Book an appointment</div>
+<h1 id="bookingTitle">Find a time that works for you.</h1>
+<p class="lead" id="bookingLead">Choose the format first. Individuals, couples and people in diverse relationship constellations are welcome. Then pick an available time. I deliberately ask only for organisational details here, not what you want to discuss in counselling.</p>
 <div class="grid">
 <section class="card">
 <div class="step active" id="step1"><div class="stephead"><div class="num">1</div><h2>Which format?</h2></div>
@@ -109,8 +109,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 
 <div class="step" id="step4"><div class="stephead"><div class="num">4</div><h2>Your contact details</h2></div>
 <form id="bookingForm" class="form">
-<div class="field"><label>Name</label><input name="name" autocomplete="name" required></div>
-<div class="field"><label>E-Mail</label><input name="email" type="email" autocomplete="email" required></div>
+<div class="field"><label>Name</label><input id="customerName" name="name" autocomplete="name" required></div>
+<div class="field"><label>E-Mail</label><input id="customerEmail" name="email" type="email" autocomplete="email" required></div>
 <label class="check"><input type="checkbox" required><span>I agree that my details are processed for appointment administration. No counselling content is requested here.</span></label>
 <div id="formMsg"></div>
 <div class="actions"><button type="button" class="btn secondary" id="back4">Back</button><button class="btn primary" id="submitBtn" type="submit">Book appointment</button></div>
@@ -166,7 +166,55 @@ qa("[data-type]").forEach(b=>b.onclick=()=>{state.type=b.dataset.type;qa("[data-
 // Phase 9d: package bookings are locked to the package session type.
 const bookingParams=new URLSearchParams(location.search);
 const requestedType=bookingParams.get("type");
+const packageProduct=bookingParams.get("product")||"";
+const packageCreditId=bookingParams.get("credit_id")||"";
 const packageBooking=!!bookingParams.get("package_token");
+
+const PACKAGE_COPY={
+  "poly-starter":{
+    eyebrow:"POLY STARTER PACKAGE",
+    title:"Book your next session.",
+    lead:"This session is part of your Poly Starter Package. Your package includes a 90-minute couples & relationship counselling session – simply choose the location and time."
+  },
+  "trust-restart":{
+    eyebrow:"RESTART AFTER A BREACH OF TRUST",
+    title:"Book the next step in your support.",
+    lead:"This session belongs to your booked support package. The session format is already set – simply choose the location and time."
+  },
+  "process-5":{
+    eyebrow:"PROCESS SUPPORT",
+    title:"Book your next session.",
+    lead:"This session will be booked from your package credit. The session format is already set – simply choose the location and time."
+  }
+};
+if(packageBooking){
+  const copy=PACKAGE_COPY[packageProduct]||{
+    eyebrow:"YOUR SUPPORT PACKAGE",
+    title:"Book your next session.",
+    lead:"This session will be used from your booked package. Simply choose the location and time."
+  };
+  q("#bookingEyebrow").textContent=copy.eyebrow;
+  q("#bookingTitle").textContent=copy.title;
+  q("#bookingLead").textContent=copy.lead;
+}
+
+async function prefillPackageCustomer(){
+  if(!packageBooking || !packageToken || !C.apiBaseUrl) return;
+  try{
+    const url=C.apiBaseUrl.replace(/\/$/,"")+"/package-access?token="+encodeURIComponent(packageToken);
+    const r=await fetch(url);
+    const d=await r.json();
+    if(!r.ok || !d.ok || !d.customer) return;
+    const name=q("#customerName");
+    const email=q("#customerEmail");
+    if(name && !name.value) name.value=d.customer.name||"";
+    if(email && !email.value) email.value=d.customer.email||"";
+  }catch(e){
+    // Keep manual booking usable if automatic prefill fails.
+  }
+}
+if(packageBooking) prefillPackageCustomer();
+
 if(requestedType && C.appointmentTypes[requestedType]){
   state.type=requestedType;
   qa("[data-type]").forEach(x=>x.classList.toggle("selected",x.dataset.type===requestedType));
@@ -313,7 +361,7 @@ const packageToken=new URLSearchParams(location.search).get("package_token")||""
 q("#bookingForm").onsubmit=async(e)=>{
   e.preventDefault();
   const f=new FormData(e.currentTarget);
-  const payload={name:f.get("name"),email:f.get("email"),type:state.type,location:state.location,start:state.start,end:state.end,packageToken:packageToken||undefined};
+  const payload={name:f.get("name"),email:f.get("email"),type:state.type,location:state.location,start:state.start,end:state.end,packageToken:packageToken||undefined,packageCreditId:packageCreditId||undefined};
   q("#submitBtn").disabled=true;q("#submitBtn").textContent=L==="de"?"Buche …":"Booking …";
   try{
     let result;

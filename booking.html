@@ -73,9 +73,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <div class="nav-actions"><a class="cart-link" href="cart.html" aria-label="Warenkorb" title="Warenkorb"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"></circle><circle cx="19" cy="20" r="1"></circle><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 7H6"></path></svg><span class="cart-count" data-cart-count hidden>0</span></a><a class="back" href="index.html">← Zur Website</a></div>
 </div></nav>
 <main>
-<div class="eyebrow">Termin buchen</div>
-<h1>Finde einen Termin, der für dich oder euch passt.</h1>
-<p class="lead">Wähle zuerst den Rahmen. Einzelpersonen, Paare und Menschen in vielfältigen Beziehungskonstellationen sind willkommen. Danach siehst du freie Zeiten. Ich frage hier bewusst nur die organisatorischen Angaben ab – nicht, worum es in der Beratung geht.</p>
+<div class="eyebrow" id="bookingEyebrow">Termin buchen</div>
+<h1 id="bookingTitle">Finde einen Termin, der für dich oder euch passt.</h1>
+<p class="lead" id="bookingLead">Wähle zuerst den Rahmen. Einzelpersonen, Paare und Menschen in vielfältigen Beziehungskonstellationen sind willkommen. Danach siehst du freie Zeiten. Ich frage hier bewusst nur die organisatorischen Angaben ab – nicht, worum es in der Beratung geht.</p>
 <div class="grid">
 <section class="card">
 <div class="step active" id="step1"><div class="stephead"><div class="num">1</div><h2>Welche Beratung?</h2></div>
@@ -109,8 +109,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 
 <div class="step" id="step4"><div class="stephead"><div class="num">4</div><h2>Deine Kontaktdaten</h2></div>
 <form id="bookingForm" class="form">
-<div class="field"><label>Name</label><input name="name" autocomplete="name" required></div>
-<div class="field"><label>E-Mail</label><input name="email" type="email" autocomplete="email" required></div>
+<div class="field"><label>Name</label><input id="customerName" name="name" autocomplete="name" required></div>
+<div class="field"><label>E-Mail</label><input id="customerEmail" name="email" type="email" autocomplete="email" required></div>
 <label class="check"><input type="checkbox" required><span>Ich stimme zu, dass meine Angaben zur Terminorganisation verarbeitet werden. Es werden hier keine Beratungsinhalte abgefragt.</span></label>
 <div id="formMsg"></div>
 <div class="actions"><button type="button" class="btn secondary" id="back4">Zurück</button><button class="btn primary" id="submitBtn" type="submit">Termin buchen</button></div>
@@ -166,7 +166,55 @@ qa("[data-type]").forEach(b=>b.onclick=()=>{state.type=b.dataset.type;qa("[data-
 // Phase 9d: package bookings are locked to the package session type.
 const bookingParams=new URLSearchParams(location.search);
 const requestedType=bookingParams.get("type");
+const packageProduct=bookingParams.get("product")||"";
+const packageCreditId=bookingParams.get("credit_id")||"";
 const packageBooking=!!bookingParams.get("package_token");
+
+const PACKAGE_COPY={
+  "poly-starter":{
+    eyebrow:"POLY STARTER PACKAGE",
+    title:"Buche deinen nächsten Termin.",
+    lead:"Dieser Termin ist Teil deines Poly Starter Packages. Für dein Package ist eine 90-minütige Paar- & Beziehungsberatung vorgesehen – wähle jetzt nur noch Ort und Zeitpunkt."
+  },
+  "trust-restart":{
+    eyebrow:"NEUSTART NACH VERTRAUENSBRUCH",
+    title:"Buche den nächsten Schritt eurer Begleitung.",
+    lead:"Dieser Termin gehört zu eurem gebuchten Begleitpaket. Die Sitzungsart ist bereits festgelegt – wähle jetzt nur noch Ort und Zeitpunkt."
+  },
+  "process-5":{
+    eyebrow:"PROZESSBEGLEITUNG",
+    title:"Buche deinen nächsten Termin.",
+    lead:"Dieser Termin wird aus deinem Sitzungsguthaben gebucht. Die Sitzungsart ist bereits festgelegt – wähle jetzt nur noch Ort und Zeitpunkt."
+  }
+};
+if(packageBooking){
+  const copy=PACKAGE_COPY[packageProduct]||{
+    eyebrow:"DEIN BEGLEITPAKET",
+    title:"Buche deinen nächsten Termin.",
+    lead:"Dieser Termin wird aus deinem gebuchten Package verwendet. Wähle jetzt nur noch Ort und Zeitpunkt."
+  };
+  q("#bookingEyebrow").textContent=copy.eyebrow;
+  q("#bookingTitle").textContent=copy.title;
+  q("#bookingLead").textContent=copy.lead;
+}
+
+async function prefillPackageCustomer(){
+  if(!packageBooking || !packageToken || !C.apiBaseUrl) return;
+  try{
+    const url=C.apiBaseUrl.replace(/\/$/,"")+"/package-access?token="+encodeURIComponent(packageToken);
+    const r=await fetch(url);
+    const d=await r.json();
+    if(!r.ok || !d.ok || !d.customer) return;
+    const name=q("#customerName");
+    const email=q("#customerEmail");
+    if(name && !name.value) name.value=d.customer.name||"";
+    if(email && !email.value) email.value=d.customer.email||"";
+  }catch(e){
+    // Keep manual booking usable if automatic prefill fails.
+  }
+}
+if(packageBooking) prefillPackageCustomer();
+
 if(requestedType && C.appointmentTypes[requestedType]){
   state.type=requestedType;
   qa("[data-type]").forEach(x=>x.classList.toggle("selected",x.dataset.type===requestedType));
@@ -313,7 +361,7 @@ const packageToken=new URLSearchParams(location.search).get("package_token")||""
 q("#bookingForm").onsubmit=async(e)=>{
   e.preventDefault();
   const f=new FormData(e.currentTarget);
-  const payload={name:f.get("name"),email:f.get("email"),type:state.type,location:state.location,start:state.start,end:state.end,packageToken:packageToken||undefined};
+  const payload={name:f.get("name"),email:f.get("email"),type:state.type,location:state.location,start:state.start,end:state.end,packageToken:packageToken||undefined,packageCreditId:packageCreditId||undefined};
   q("#submitBtn").disabled=true;q("#submitBtn").textContent=L==="de"?"Buche …":"Booking …";
   try{
     let result;

@@ -1,0 +1,29 @@
+PHASE 10B – PACKAGE IDENTITÄT, RESTGUTHABEN & ARCHIV
+
+Behoben:
+- Bei mehreren gleichartigen Packages wird jetzt exakt das Package belastet, dessen Button geklickt wurde.
+- Die Terminbestätigung nennt bei Package-Buchungen das Package (z.B. "Poly Starter Package") statt nur "Paar- & Beziehungsberatung".
+- Die Terminbestätigung zeigt zusätzlich, wie viele Termine in genau diesem Package noch offen sind.
+- Die Mail enthält einen Link zurück zum persönlichen Bereich.
+- Der persönliche Bereich trennt jetzt:
+  * Deine aktuelle Begleitung
+  * Dein Archiv
+  * Deine Ressourcen
+- Aufgebrauchte oder abgelaufene Packages bleiben im Archiv sichtbar.
+- Gekaufte Materialien bleiben im persönlichen Bereich verfügbar.
+- Neue persönliche Zugangslinks laufen 2 Jahre statt nur bis zum Ende des Packages.
+
+WICHTIG – einmalig D1:
+In der D1-Konsole database/migration_phase10b.sql ausführen.
+Damit werden auch bestehende persönliche Links auf 2 Jahre verlängert.
+
+GitHub ersetzen:
+- zugang.html
+- access.html
+- booking.html
+- booking-en.html
+
+Cloudflare Worker ersetzen/deployen:
+- cloudflare-worker/worker.js
+
+R2 bleibt unverändert.

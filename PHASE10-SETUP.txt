@@ -1,0 +1,28 @@
+PHASE 10 – PACKAGE IDENTITY FIX
+
+Main bug fixed:
+When one customer owned multiple packages of the same session type, the Worker picked the first eligible credit row.
+That is why booking from Package BD-P000002 could reduce BD-P000001.
+
+Now:
+- each package card passes its exact credit_id into the booking flow
+- the Worker validates and consumes only that exact package credit
+- two Poly Starter packages with 3 sessions each will correctly become 2/3 and 2/3 after one booking from each
+
+GitHub replace:
+- zugang.html
+- access.html
+- booking.html
+- booking-en.html
+
+Cloudflare Worker replace/deploy:
+- cloudflare-worker/worker.js
+
+ARCHIVE:
+Credits are already retained in D1 when they reach 0; they are not deleted.
+The current access query still filters out expired credits only, not zero-credit ones, so exhausted but still-valid packages remain visible.
+A dedicated premium archive section can be added next, separating active packages from completed/expired packages.
+
+EMAIL:
+The booking confirmation currently still uses the counselling type label.
+A follow-up patch should make package bookings say e.g. “Poly Starter Package – Termin bestätigt” instead of only “Paar- & Beziehungsberatung”.

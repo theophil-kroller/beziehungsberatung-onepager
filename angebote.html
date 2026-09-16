@@ -73,7 +73,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
 </article>
 <article class="card package">
   <div class="tag">Package</div>
-  <h2>Poly Starter</h2>
+  <h2>Poly Starter Package</h2>
   <p class="desc">Für Menschen, die ihre Beziehung öffnen möchten oder gerade erste Erfahrungen mit offenen bzw. polyamoren Beziehungskonzepten machen und dabei nicht alles allein herausfinden wollen.</p>
   <div class="meta">3 × 90 Min. + Materialien</div>
   <ul><li>• Poly-Starter Guide</li><li>• Checkliste „Was sollten wir vorher klären?“</li><li>• Grenzen-vs.-Regeln Worksheet</li><li>• Eifersuchts-Kompass</li><li>• Check-in-Vorlage</li><li>• kurze Audioübung zur Regulation</li></ul>
@@ -102,7 +102,7 @@ document.querySelectorAll("[data-add-package]").forEach(btn=>{
     const advisor=card.querySelector("select")?.value || "Theophil Kroller";
     const products={
       "process-5":{id:"process-5",name:'Prozessbegleitung – 5 Sitzungen',description:'5 × 60 Min. Einzelberatung',price:null},
-      "poly-starter":{id:"poly-starter",name:'Poly Starter',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:0,testCheckout:true},
+      "poly-starter":{id:"poly-starter",name:'Poly Starter Package',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:0,testCheckout:true},
       "trust-restart":{id:"trust-restart",name:'Neustart nach Vertrauensbruch',description:'5 × 90 Min. + Guide, Übungen und Audio',price:null}
     };
     BDCart.add({...products[id],advisor});
