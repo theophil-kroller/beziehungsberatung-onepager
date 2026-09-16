@@ -1,0 +1,7 @@
+PHASE 13C – HERO HEADLINE
+
+Homepage hero headline updated in both languages:
+DE: Beziehungen verstehen. Verbindung gestalten.
+EN: Understand relationships. Shape connection.
+
+No Worker or database change required beyond the Phase 13B contents already included in this ZIP.
