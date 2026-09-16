@@ -1,0 +1,5 @@
+Frontend-Fix:
+- Samstag und Sonntag werden nicht mehr ausgefiltert.
+- Es werden bis zu 60 Tage angezeigt.
+- Ob an einem Tag buchbare Slots existieren, entscheidet ausschließlich der Google-Verfügbarkeitskalender.
+- Cloudflare Worker muss für diesen Fix NICHT erneut geändert werden.

@@ -121,9 +121,9 @@ function ymd(d){return d.toISOString().slice(0,10)}
 function buildDays(){
   const wrap=q("#days");wrap.innerHTML="";
   let d=new Date();d.setHours(12,0,0,0);
-  for(let i=0;i<14;i++){
+  for(let i=0;i<60;i++){
     const x=new Date(d);x.setDate(d.getDate()+i);
-    if([0,6].includes(x.getDay())) continue;
+    
     const iso=ymd(x), b=document.createElement("button");b.className="day";
     const weekday=new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"short"}).format(x);
     const dd=new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{day:"2-digit",month:"2-digit"}).format(x);
