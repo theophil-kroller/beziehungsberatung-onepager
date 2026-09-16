@@ -28,6 +28,32 @@ h2{font-size:26px;margin:0}.choices{display:grid;gap:12px}.choice{border:1px sol
 .loading{opacity:.6;pointer-events:none}.done{text-align:center;padding:22px 4px}.done .tick{font-size:42px}.ics{display:inline-block;margin-top:14px;color:var(--terr2);font-weight:800;text-decoration:none}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;border-top:1px solid var(--line)}
 @media(max-width:800px){.grid{grid-template-columns:1fr}.summary{position:static}.slots{grid-template-columns:repeat(2,1fr)}main{padding-top:36px}.card,.summary{padding:22px;border-radius:22px}}
+
+    .calendar-shell{max-width:760px;margin:18px auto 0}
+    .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+    .calendar-title{font-weight:800;font-size:18px}
+    .month-nav{display:flex;gap:8px}
+    .month-nav button{width:38px;height:38px;border-radius:12px;border:1px solid var(--line,#E8D2BE);background:#fff;cursor:pointer;font-size:20px;color:var(--brown,#2F2623)}
+    .month-nav button:disabled{opacity:.35;cursor:not-allowed}
+    .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+    .weekday{font-size:12px;text-align:center;color:var(--muted,#6f625d);font-weight:700;padding:2px 0 5px}
+    .cal-day{aspect-ratio:1/1;min-height:48px;border-radius:14px;border:1px solid transparent;background:transparent;display:flex;align-items:center;justify-content:center;font-weight:700;color:#b7aaa4;cursor:default}
+    .cal-day.available{background:#fff;border-color:var(--line,#E8D2BE);color:var(--brown,#2F2623);cursor:pointer}
+    .cal-day.available:hover{border-color:var(--terr,#C96B4B)}
+    .cal-day.selected{background:var(--terr,#C96B4B);color:#fff;border-color:var(--terr,#C96B4B)}
+    .cal-day.today{box-shadow:inset 0 0 0 1px var(--terr,#C96B4B)}
+    .cal-day.outside{visibility:hidden}
+    .slot-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .slot-list button{min-width:88px;padding:11px 16px;border:1px solid var(--line,#E8D2BE);border-radius:12px;background:#fff;color:var(--brown,#2F2623);font-weight:800;cursor:pointer}
+    .slot-list button:hover{border-color:var(--terr,#C96B4B)}
+    .availability-hint{margin-top:12px;color:var(--muted,#6f625d);font-size:14px}
+    @media(max-width:620px){
+      .calendar-grid{gap:6px}
+      .cal-day{min-height:42px;border-radius:11px;font-size:14px}
+      .calendar-title{font-size:17px}
+      .slot-list button{min-width:78px;flex:1 1 calc(33.333% - 10px)}
+    }
+    
 </style>
 </head>
 <body>
@@ -52,7 +78,25 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <div class="choices">
 <button class="choice" data-location="online"><strong>Online</strong><span>Videotermin</span></button>
 <button class="choice" data-location="graz"><strong>Graz</strong><span>Vor Ort</span></button>
-</div><div class="actions"><button class="btn secondary" id="back2">Zurück</button></div></div>
+</div><div class="actions">
+        <div class="calendar-shell">
+          <div class="calendar-head">
+            <div class="calendar-title" id="calendarTitle"></div>
+            <div class="month-nav">
+              <button type="button" id="prevMonth" aria-label="Vorheriger Monat">‹</button>
+              <button type="button" id="nextMonth" aria-label="Nächster Monat">›</button>
+            </div>
+          </div>
+          <div class="calendar-grid" id="weekdayRow">
+            <div class="weekday">Mo</div><div class="weekday">Di</div><div class="weekday">Mi</div><div class="weekday">Do</div><div class="weekday">Fr</div><div class="weekday">Sa</div><div class="weekday">So</div>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+          <div class="availability-hint">Nur Tage mit tatsächlich freien Terminen sind auswählbar.</div>
+          <div class="slot-list" id="slotList"></div>
+          <div id="slotMessage" class="availability-hint"></div>
+        </div>
+        
+<button class="btn secondary" id="back2">Zurück</button></div></div>
 
 <div class="step" id="step3"><div class="stephead"><div class="num">3</div><h2>Zeit auswählen</h2></div>
 <div class="days" id="days"></div><p id="slotMsg" style="color:#5F504A;font-size:14px;margin:16px 0 0"></p><div class="slots" id="slots"></div>
@@ -78,7 +122,112 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 </div>
 </main>
 <footer>© 2026 Beziehungsdynamiken / Theophil Kroller</footer>
-<script src="booking-config.js?v=20260916-live2"></script>
+<script src="booking-config.js?v=20260916-live2">
+// --- UX calendar: month view with disabled unavailable days ---
+const UX_LOCALE = "de-AT";
+const UX_MAX_DAYS = 60;
+let uxMonth = new Date();
+uxMonth = new Date(uxMonth.getFullYear(), uxMonth.getMonth(), 1);
+let uxAvailabilityCache = {};
+let uxSelectedDate = null;
+
+function uxYmdLocal(d){
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+function uxMonthKey(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;}
+function uxGetType(){
+  return (typeof state!=="undefined" && state.type) || window.selectedType || document.querySelector('[name="type"]:checked')?.value || "individual";
+}
+async function uxFetchDay(date){
+  const key=uxGetType()+"|"+date;
+  if(uxAvailabilityCache[key]) return uxAvailabilityCache[key];
+  try{
+    const r=await fetch(`${BOOKING_CONFIG.apiBase}/availability?type=${encodeURIComponent(uxGetType())}&date=${date}`);
+    const d=await r.json();
+    uxAvailabilityCache[key]=Array.isArray(d.slots)?d.slots:[];
+  }catch(e){uxAvailabilityCache[key]=[]}
+  return uxAvailabilityCache[key];
+}
+async function uxRenderMonth(){
+  const grid=document.getElementById("calendarGrid");
+  const title=document.getElementById("calendarTitle");
+  const prev=document.getElementById("prevMonth"), next=document.getElementById("nextMonth");
+  if(!grid||!title) return;
+  grid.innerHTML="";
+  title.textContent=new Intl.DateTimeFormat(UX_LOCALE,{month:"long",year:"numeric"}).format(uxMonth);
+
+  const today=new Date(); today.setHours(0,0,0,0);
+  const maxDate=new Date(today); maxDate.setDate(maxDate.getDate()+UX_MAX_DAYS);
+  const minMonth=new Date(today.getFullYear(),today.getMonth(),1);
+  const maxMonth=new Date(maxDate.getFullYear(),maxDate.getMonth(),1);
+  if(prev) prev.disabled=uxMonth<=minMonth;
+  if(next) next.disabled=uxMonth>=maxMonth;
+
+  let firstDow=(new Date(uxMonth.getFullYear(),uxMonth.getMonth(),1).getDay()+6)%7;
+  for(let i=0;i<firstDow;i++){const e=document.createElement("div");e.className="cal-day outside";grid.appendChild(e)}
+  const daysInMonth=new Date(uxMonth.getFullYear(),uxMonth.getMonth()+1,0).getDate();
+
+  const jobs=[];
+  for(let day=1;day<=daysInMonth;day++){
+    const d=new Date(uxMonth.getFullYear(),uxMonth.getMonth(),day);
+    d.setHours(0,0,0,0);
+    const btn=document.createElement("button"); btn.type="button"; btn.className="cal-day"; btn.textContent=day;
+    if(d.getTime()===today.getTime()) btn.classList.add("today");
+    if(uxSelectedDate===uxYmdLocal(d)) btn.classList.add("selected");
+    grid.appendChild(btn);
+
+    if(d<today || d>maxDate) continue;
+    const date=uxYmdLocal(d);
+    jobs.push((async()=>{
+      const slots=await uxFetchDay(date);
+      if(slots.length){
+        btn.classList.add("available");
+        btn.disabled=false;
+        btn.onclick=()=>uxSelectDate(date,btn,slots);
+      } else {
+        btn.disabled=true;
+        btn.setAttribute("aria-disabled","true");
+      }
+    })());
+  }
+  await Promise.all(jobs);
+}
+function uxRenderSlots(slots){
+  const wrap=document.getElementById("slotList"), msg=document.getElementById("slotMessage");
+  if(!wrap) return;
+  wrap.innerHTML="";
+  if(msg) msg.textContent=slots.length ? "Freie Zeiten:" : "An diesem Tag gibt es keine freien Zeiten.";
+  slots.forEach(s=>{
+    const b=document.createElement("button"); b.type="button";
+    b.textContent=new Intl.DateTimeFormat(UX_LOCALE,{timeZone:"Europe/Vienna",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(s.start));
+    b.onclick=()=>{
+      if(typeof chooseSlot==="function") chooseSlot(s);
+      else if(typeof selectSlot==="function") selectSlot(s);
+      else {
+        window.selectedStart=s.start;
+        document.dispatchEvent(new CustomEvent("booking-slot-selected",{detail:s}));
+      }
+    };
+    wrap.appendChild(b);
+  });
+}
+function uxSelectDate(date,btn,slots){
+  uxSelectedDate=date;
+  document.querySelectorAll(".cal-day.selected").forEach(x=>x.classList.remove("selected"));
+  btn.classList.add("selected");
+  uxRenderSlots(slots);
+}
+document.getElementById("prevMonth")?.addEventListener("click",()=>{uxMonth=new Date(uxMonth.getFullYear(),uxMonth.getMonth()-1,1);uxRenderMonth();});
+document.getElementById("nextMonth")?.addEventListener("click",()=>{uxMonth=new Date(uxMonth.getFullYear(),uxMonth.getMonth()+1,1);uxRenderMonth();});
+
+const uxObserver=new MutationObserver(()=>{
+  if(document.getElementById("calendarGrid") && document.getElementById("calendarGrid").children.length===0) uxRenderMonth();
+});
+uxObserver.observe(document.body,{subtree:true,childList:true,attributes:true});
+window.addEventListener("load",()=>setTimeout(uxRenderMonth,150));
+
+</script>
 <script>
 const C = window.BD_BOOKING_CONFIG;
 const L = document.documentElement.lang === "en" ? "en" : "de";

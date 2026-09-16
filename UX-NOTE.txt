@@ -1,0 +1,10 @@
+Neue Termin-Auswahl:
+- Monatskalender statt langer 60-Tage-Leiste
+- Nicht verfügbare Tage sind grau und nicht anklickbar
+- Nur Tage mit echten freien Slots aus dem Google-Verfügbarkeitskalender sind aktiv
+- Monat vor/zurück
+- Maximal 60 Tage im Voraus
+- Uhrzeiten erscheinen kompakt unter dem Kalender
+
+Für diesen UI-Fix muss der Cloudflare Worker nicht erneut geändert werden.
+Auf GitHub booking.html und booking-en.html ersetzen.
