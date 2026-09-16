@@ -163,6 +163,22 @@ function summary(){
   q("#sTime").textContent=state.start?fmtTime(state.start):"—";
 }
 qa("[data-type]").forEach(b=>b.onclick=()=>{state.type=b.dataset.type;qa("[data-type]").forEach(x=>x.classList.toggle("selected",x===b));summary();next(2)});
+// Phase 9c: honor the booking type passed from the package access page.
+// Package bookings are locked to the session type stored for that package.
+const bookingParams=new URLSearchParams(location.search);
+const requestedType=bookingParams.get("type");
+const packageBooking=!!bookingParams.get("package_token");
+if(requestedType && C.appointmentTypes[requestedType]){
+  state.type=requestedType;
+  qa("[data-type]").forEach(x=>{
+    const selected=x.dataset.type===requestedType;
+    x.classList.toggle("selected",selected);
+    if(packageBooking) x.disabled=!selected;
+  });
+  summary();
+  if(packageBooking) next(2);
+}
+
 qa("[data-location]").forEach(b=>b.onclick=()=>{state.location=b.dataset.location;qa("[data-location]").forEach(x=>x.classList.toggle("selected",x===b));summary();buildDays();next(3)});
 q("#back2").onclick=()=>next(1);q("#back3").onclick=()=>next(2);q("#back4").onclick=()=>next(3);
 q("#prevMonth").onclick=()=>{
