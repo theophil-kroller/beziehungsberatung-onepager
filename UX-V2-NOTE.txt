@@ -1,0 +1,19 @@
+UX v2 – corrected rebuild
+
+This version was rebuilt from the last known-good Phase 3 FIXED files.
+The previous experimental UX ZIP should NOT be used.
+
+Changes:
+- Proper month calendar inside step 3 only
+- No duplicated controls in header / step 2
+- Unavailable days are grey and disabled
+- Only days with real free slots are clickable
+- Compact time buttons
+- Maximum 60 days ahead
+- German and English versions updated
+
+Upload to GitHub:
+- booking.html
+- booking-en.html
+
+Cloudflare Worker does not need another change for this UI correction.
