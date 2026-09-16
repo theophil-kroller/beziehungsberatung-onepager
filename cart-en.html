@@ -21,6 +21,11 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,7vw,68px);ma
 .summary{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;align-items:center}.sum-label{color:var(--muted)}.sum-price{font-size:24px;font-weight:850}
 .checkout-row{margin-top:18px;display:flex;justify-content:flex-end}.note{margin-top:14px;color:var(--muted);font-size:13px;text-align:right}
 @media(max-width:600px){.item{grid-template-columns:1fr}.price{justify-self:start}.summary{align-items:flex-end}}
+
+.checkout-box{margin-top:22px;padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--cream)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fields label{display:block;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:6px}
+.fields input{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit}
+.checkout-msg{margin-top:12px;font-size:14px}.checkout-msg.err{color:#7b2f28}@media(max-width:600px){.fields{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -36,7 +41,12 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,7vw,68px);ma
   <div id="filled" hidden>
     <div id="items"></div>
     <div class="summary"><span class="sum-label">Subtotal</span><span class="sum-price" id="subtotal">€0,00</span></div>
-    <div class="checkout-row"><button class="btn primary" id="checkout" type="button">Checkout</button></div>
+    <div class="checkout-box" id="testCheckoutBox" hidden>
+<h3>Test checkout · €0,00</h3>
+<p class="meta">No payment will be charged.</p>
+<div class="fields"><div><label>Name</label><input id="checkoutName"></div><div><label>Email</label><input id="checkoutEmail" type="email"></div></div>
+<div class="checkout-msg" id="checkoutMsg"></div></div>
+<div class="checkout-row"><button class="btn primary" id="checkout" type="button">Complete test purchase – €0.00</button></div>
     <div class="note">Mollie checkout will be connected in the next step.</div>
   </div>
 </div>
@@ -58,14 +68,22 @@ function renderCart(){
  });
  document.getElementById("subtotal").textContent=money(subtotal);
  const missingPrice=items.some(item=>item.price===null || item.price===undefined || item.price==="");
+ const testEligible=items.length===1 && items[0].id==="poly-starter" && Number(items[0].price)===0;
  const checkout=document.getElementById("checkout");
- checkout.disabled=missingPrice;
- checkout.style.opacity=missingPrice?".45":"1";
- checkout.style.cursor=missingPrice?"not-allowed":"pointer";
+ checkout.disabled=missingPrice || !testEligible;
+ const box=document.getElementById("testCheckoutBox"); if(box) box.hidden=!testEligible;
+ checkout.style.opacity=(missingPrice||!testEligible)?".45":"1";
+ checkout.style.cursor=(missingPrice||!testEligible)?"not-allowed":"pointer";
  checkout.title=missingPrice?"Checkout will be activated once prices are set and Mollie is connected.":"";
 }
 function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
-document.getElementById("checkout").onclick=()=>alert('Mollie checkout will be connected in the next step.');
+document.getElementById("checkout").onclick=async()=>{
+ const items=BDCart.get(),msg=document.getElementById("checkoutMsg"),name=document.getElementById("checkoutName")?.value.trim(),email=document.getElementById("checkoutEmail")?.value.trim();
+ if(!(items.length===1&&items[0].id==="poly-starter"&&Number(items[0].price)===0))return;
+ if(!name||!email){msg.className="checkout-msg err";msg.textContent='Please enter name and email.';return;}
+ try{const r=await fetch("https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/test-checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,productId:"poly-starter"})});const x=await r.json();if(!r.ok||!x.ok)throw new Error(x.error||"failed");BDCart.clear();location.href="access.html?token="+encodeURIComponent(x.accessToken);}
+ catch(e){msg.className="checkout-msg err";msg.textContent=e.message;}
+};
 window.addEventListener("bd-cart-updated",renderCart);renderCart();
 </script>
 </body></html>

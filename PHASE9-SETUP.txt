@@ -1,0 +1,29 @@
+PHASE 9 – TESTKAUF + DUMMY-MATERIALIEN
+
+Wichtig: D1 und R2 sind bei dir noch NICHT eingerichtet. Deshalb funktioniert der Testkauf erst nach diesen Schritten.
+
+1. Cloudflare D1 erstellen: beziehungsdynamiken-db
+   database/schema.sql ausführen
+   Worker Binding: DB
+
+2. Cloudflare R2 privaten Bucket erstellen: beziehungsdynamiken-materials
+   Worker Binding: MATERIALS
+   NICHT öffentlich machen.
+
+3. Aus diesem ZIP die drei Dateien aus r2-materials/poly-starter/ mit exakt diesen Keys in R2 hochladen:
+   poly-starter/poly-starter-guide.txt
+   poly-starter/checkliste-vor-dem-oeffnen.txt
+   poly-starter/eifersuchts-kompass.txt
+
+4. Worker Variable:
+   ENABLE_TEST_CHECKOUT = true
+
+5. cloudflare-worker/worker.js deployen/promoten.
+
+6. GitHub aktualisieren:
+   angebote.html, offers.html, cart.html, cart-en.html, booking.html, booking-en.html, zugang.html, access.html
+
+Danach:
+Poly Starter (€0) -> Warenkorb -> Name/E-Mail -> Testkauf -> persönlicher Zugang -> 3/3 Guthaben + Dummy-Materialien -> Sitzung buchen -> 2/3 -> stornieren -> 3/3.
+
+Vor Livegang ENABLE_TEST_CHECKOUT entfernen oder auf false setzen.
