@@ -1,0 +1,28 @@
+PHASE 6 – DEDICATED OFFERS PAGE
+
+What changed:
+- Large package/shop section removed from homepage.
+- Homepage "Angebot / Services" remains focused on counselling and booking.
+- A small quiet teaser under that section links to the dedicated offers page.
+- New DE page: angebote.html
+- New EN page: offers.html
+- Offers are presented as clean tiles:
+  Individual counselling
+  Couples & relationship counselling
+  Poly Starter
+  Restart after a breach of trust
+- Counsellor dropdown remains on every tile (currently Theophil Kroller).
+- Package tiles can be added to cart.
+- Empty-cart "Back to offers" now goes to the dedicated offers page.
+- Booking/Cloudflare logic is unchanged.
+
+Upload/replace on GitHub:
+index.html
+en.html
+angebote.html
+offers.html
+cart.html
+cart-en.html
+cart.js
+
+No Cloudflare deployment needed.
