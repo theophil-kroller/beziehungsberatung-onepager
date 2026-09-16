@@ -102,7 +102,7 @@ document.querySelectorAll("[data-add-package]").forEach(btn=>{
     const advisor=card.querySelector("select")?.value || "Theophil Kroller";
     const products={
       "process-5":{id:"process-5",name:'Process support – 5 sessions',description:'5 × 60 min individual counselling',price:null},
-      "poly-starter":{id:"poly-starter",name:'Poly Starter',description:'3 × 90 min + guide, checklist and exercises',price:null},
+      "poly-starter":{id:"poly-starter",name:'Poly Starter',description:'3 × 90 min + guide, checklist and exercises',price:0,testCheckout:true},
       "trust-restart":{id:"trust-restart",name:'Restart after a breach of trust',description:'5 × 90 min + guide, exercises and audio',price:null}
     };
     BDCart.add({...products[id],advisor});

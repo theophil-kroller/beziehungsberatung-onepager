@@ -55,7 +55,17 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,7vw,68px);ma
 <script>
 const money = n => new Intl.NumberFormat("en-AT",{style:"currency",currency:"EUR"}).format(Number(n||0));
 function renderCart(){
- const items=BDCart.get(), empty=document.getElementById("empty"), filled=document.getElementById("filled"), wrap=document.getElementById("items");
+ let items=BDCart.get();
+ let migrated=false;
+ items=items.map(item=>{
+   if(item.id==="poly-starter" && (item.price===null || item.price===undefined || item.price==="")){
+     migrated=true;
+     return {...item,price:0,testCheckout:true};
+   }
+   return item;
+ });
+ if(migrated) localStorage.setItem("bd_cart_v1",JSON.stringify(items));
+ const empty=document.getElementById("empty"), filled=document.getElementById("filled"), wrap=document.getElementById("items");
  empty.hidden=items.length>0; filled.hidden=items.length===0; wrap.innerHTML="";
  let subtotal=0;
  items.forEach(item=>{
