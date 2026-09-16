@@ -1,0 +1,23 @@
+PHASE 10D – ROBUSTES PREFILL + SPRACHE
+
+Behoben:
+- Name und E-Mail werden beim Wechsel aus dem persönlichen Bereich jetzt zusätzlich in sessionStorage zwischengespeichert.
+- booking.html liest diese Daten sofort aus und nutzt /package-access nur noch als Fallback.
+- Dadurch funktioniert das Prefill auch dann zuverlässig, wenn ein API-Request verzögert oder geblockt wird.
+- Es werden weiterhin keine persönlichen Daten in der URL übertragen.
+
+Sprachlich geändert:
+- "Sitzungsguthaben" -> "noch verfügbare Termine"
+- "Sitzungen verfügbar" -> "Termine verfügbar"
+- Package-Kommunikation in der Kaufmail verwendet ebenfalls "Termine".
+
+GitHub ersetzen:
+- zugang.html
+- access.html
+- booking.html
+- booking-en.html
+
+Cloudflare Worker ersetzen/deployen:
+- cloudflare-worker/worker.js
+
+D1 und R2 bleiben unverändert.

@@ -1,0 +1,20 @@
+PHASE 10E – COPY POLISH
+
+German homepage:
+- Hero copy shortened and made more direct
+- Worksheet paragraph no longer begins with "Manchmal"
+- Relationship diversity copy simplified
+- "Klar, ohne zu verurteilen" replaced with "Klar hinschauen. Offen sprechen."
+- Removed the defensive "wer recht hat / nach dem Mund reden" wording
+
+German About page:
+- "Mein Leben ist auch keine gerade Linie." replaced
+- Removed the apologetic "schnurgerader Lebenslauf / Kurven / Umwege" framing
+- "Unterschiedliche Lebenswelten machen mich neugierig." replaced with a more personal formulation
+- Neugier paragraph rewritten accordingly
+
+Upload to GitHub:
+- index.html
+- about.html
+
+All Phase 10D booking/package files remain included unchanged.

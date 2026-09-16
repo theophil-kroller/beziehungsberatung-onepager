@@ -200,18 +200,32 @@ if(packageBooking){
 }
 
 async function prefillPackageCustomer(){
-  if(!packageBooking || !packageToken || !C.apiBaseUrl) return;
+  if(!packageBooking) return;
+  const name=q("#customerName");
+  const email=q("#customerEmail");
+
+  // Fast path: data cached when the user came from the personal area.
+  try{
+    const cached=JSON.parse(sessionStorage.getItem("bd_package_customer")||"null");
+    if(cached){
+      if(name && !name.value) name.value=cached.name||"";
+      if(email && !email.value) email.value=cached.email||"";
+      if((name?.value||"") && (email?.value||"")) return;
+    }
+  }catch(e){}
+
+  // Fallback: securely load customer data from the package token.
+  if(!packageToken || !C.apiBaseUrl) return;
   try{
     const url=C.apiBaseUrl.replace(/\/$/,"")+"/package-access?token="+encodeURIComponent(packageToken);
     const r=await fetch(url);
     const d=await r.json();
     if(!r.ok || !d.ok || !d.customer) return;
-    const name=q("#customerName");
-    const email=q("#customerEmail");
     if(name && !name.value) name.value=d.customer.name||"";
     if(email && !email.value) email.value=d.customer.email||"";
+    try{ sessionStorage.setItem("bd_package_customer",JSON.stringify(d.customer)); }catch(e){}
   }catch(e){
-    // Keep manual booking usable if automatic prefill fails.
+    // Manual entry remains possible if automatic prefill is unavailable.
   }
 }
 if(packageBooking) prefillPackageCustomer();

@@ -31,7 +31,7 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);li
 <main>
 <div class="eyebrow">BEZIEHUNGSDYNAMIKEN · MEMBER AREA</div>
 <h1>Dein persönlicher Bereich</h1>
-<p class="lead">Hier findest du deine gebuchten Begleitpakete, dein verbleibendes Sitzungsguthaben und alle dazugehörigen Ressourcen.</p>
+<p class="lead">Hier findest du deine gebuchten Begleitpakete, deine noch verfügbaren Termine und alle dazugehörigen Ressourcen.</p>
 
 <div id="status" class="status">Dein Bereich wird geladen …</div>
 <div id="content" hidden>
@@ -67,6 +67,9 @@ async function load(){
  const d=await r.json();
  if(!r.ok||!d.ok){document.getElementById("status").className="status err";document.getElementById("status").textContent="Dieser Zugangslink ist ungültig oder abgelaufen.";return}
  document.getElementById("status").hidden=true;document.getElementById("content").hidden=false;
+ try{
+   if(d.customer) sessionStorage.setItem("bd_package_customer",JSON.stringify(d.customer));
+ }catch(e){}
  const cw=document.getElementById("credits");cw.innerHTML="";
  const aw=document.getElementById("archive");aw.innerHTML="";
  const now=Date.now();

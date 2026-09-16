@@ -1,0 +1,22 @@
+PHASE 10F – BILINGUAL COPY POLISH
+
+This version keeps all Phase 10E German edits and adds matching English edits.
+
+English homepage:
+- removed "Sometimes..." openings
+- simplified relationship-diversity copy
+- "Clear, without judging." -> "Look closely. Speak openly."
+- removed defensive judge/right/wrong wording
+
+English About:
+- removed "straight line" framing
+- rewrote life-path paragraph without apologetic CV language
+- reframed the perspective section around curiosity about people and their worlds
+
+For these copy changes, upload/replace:
+- index.html
+- en.html
+- about.html
+- about-en.html
+
+All Phase 10D/10E booking, package and member-area files remain included.

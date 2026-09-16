@@ -1,0 +1,16 @@
+PHASE 10C – PACKAGE CONTACT PREFILL FIX
+
+Cause:
+The package customer prefill function was executed before `packageToken` had been initialized.
+Because `packageToken` was declared later with `const`, JavaScript stopped the prefill with a ReferenceError.
+
+Fix:
+- packageToken is now initialized together with the other URL parameters
+- the duplicate later declaration was removed
+- package bookings now prefill name and email from the existing package access token
+
+GitHub replace only:
+- booking.html
+- booking-en.html
+
+No Cloudflare Worker, D1 or R2 change required.

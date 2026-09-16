@@ -31,7 +31,7 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);li
 <main>
 <div class="eyebrow">BEZIEHUNGSDYNAMIKEN · MEMBER AREA</div>
 <h1>Your personal area</h1>
-<p class="lead">Here you’ll find your booked support packages, remaining session credit and all related resources.</p>
+<p class="lead">Here you’ll find your booked support packages, your remaining appointments and all related resources.</p>
 
 <div id="status" class="status">Loading your area …</div>
 <div id="content" hidden>
@@ -67,6 +67,9 @@ async function load(){
  const d=await r.json();
  if(!r.ok||!d.ok){document.getElementById("status").className="status err";document.getElementById("status").textContent="This access link is invalid or has expired.";return}
  document.getElementById("status").hidden=true;document.getElementById("content").hidden=false;
+ try{
+   if(d.customer) sessionStorage.setItem("bd_package_customer",JSON.stringify(d.customer));
+ }catch(e){}
  const cw=document.getElementById("credits");cw.innerHTML="";
  const aw=document.getElementById("archive");aw.innerHTML="";
  const now=Date.now();
@@ -76,7 +79,7 @@ async function load(){
  active.forEach(c=>{
    const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
    const row=document.createElement("div");row.className="package";
-   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · Valid until ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">sessions available</div><a class="btn" href="booking-en.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Book your next session</a></div>`;
+   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · Valid until ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">appointments available</div><a class="btn" href="booking-en.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Book your next session</a></div>`;
    cw.appendChild(row);
  });
  if(archived.length){
