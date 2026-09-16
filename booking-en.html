@@ -42,8 +42,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <p class="lead">Choose the format first, then pick an available time. I deliberately ask only for organisational details here, not what you want to discuss in counselling.</p>
 <div class="grid">
 <section class="card">
-<div id="demoNotice" class="notice demo" style="display:block">Demo mode: these are test times. Nothing is written to your calendar yet.</div>
-
 <div class="step active" id="step1"><div class="stephead"><div class="num">1</div><h2>Which format?</h2></div>
 <div class="choices">
 <button class="choice" data-type="individual"><strong>Individual counselling</strong><span>60 minutes</span></button>
@@ -75,12 +73,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <div class="sumrow"><span>Location</span><b id="sLoc">—</b></div>
 <div class="sumrow"><span>Date</span><b id="sDate">—</b></div>
 <div class="sumrow"><span>Time</span><b id="sTime">—</b></div>
-<p class="hint">In the live version, only times you have released will be shown. Existing busy events in Google Calendar are automatically excluded.</p>
+<p class="hint">Only currently available times are shown. Existing busy events in my Google Calendar are automatically excluded.</p>
 </aside>
 </div>
 </main>
 <footer>© 2026 Beziehungsdynamiken / Theophil Kroller</footer>
-<script src="booking-config.js"></script>
+<script src="booking-config.js?v=20260916-live2"></script>
 <script>
 const C = window.BD_BOOKING_CONFIG;
 const L = document.documentElement.lang === "en" ? "en" : "de";
@@ -138,11 +136,12 @@ async function selectDay(iso,b){
   q("#slots").innerHTML="";q("#slotMsg").textContent=L==="de"?"Lade freie Zeiten …":"Loading available times …";
   try{
     let slots;
-    if(C.demoMode || !C.apiBaseUrl){
+    if(C.demoMode){
       await new Promise(r=>setTimeout(r,250));
       const times=["09:00","10:30","14:00","15:30","17:00"];
       slots=times.map(t=>({start:`${iso}T${t}:00`,end:null}));
     }else{
+      if(!C.apiBaseUrl) throw new Error("Booking backend not configured");
       const u=new URL(C.apiBaseUrl.replace(/\/$/,"")+"/availability");
       u.searchParams.set("type",state.type);u.searchParams.set("date",iso);
       const r=await fetch(u);if(!r.ok)throw new Error();
@@ -165,10 +164,11 @@ q("#bookingForm").onsubmit=async(e)=>{
   q("#submitBtn").disabled=true;q("#submitBtn").textContent=L==="de"?"Buche …":"Booking …";
   try{
     let result;
-    if(C.demoMode || !C.apiBaseUrl){
+    if(C.demoMode){
       await new Promise(r=>setTimeout(r,400));
       result={ok:true,start:state.start,end:state.end};
     }else{
+      if(!C.apiBaseUrl) throw new Error("Booking backend not configured");
       const r=await fetch(C.apiBaseUrl.replace(/\/$/,"")+"/book",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
       result=await r.json();if(!r.ok||!result.ok)throw new Error(result.error||"booking failed");
       state.start=result.start||state.start;state.end=result.end||state.end;
