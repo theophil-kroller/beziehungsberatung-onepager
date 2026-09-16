@@ -1,0 +1,13 @@
+Fix:
+- cart.html and cart-en.html contained a JavaScript syntax error.
+- Because that script failed before renderCart(), both the empty-cart message and filled-cart content remained hidden.
+- This version fixes the error.
+- If no package has been added, the cart now clearly shows that it is empty.
+- After adding Poly Starter or Neustart/Restart from the homepage, the item appears in the cart.
+- Checkout remains intentionally disabled until prices and Mollie are configured.
+
+Upload/replace on GitHub:
+- cart.html
+- cart-en.html
+
+No Cloudflare change is needed.

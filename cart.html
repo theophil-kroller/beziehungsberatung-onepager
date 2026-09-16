@@ -65,7 +65,7 @@ function renderCart(){
  checkout.title=missingPrice?"Der Checkout wird aktiv, sobald die Preise festgelegt und Mollie angebunden ist.":"";
 }
 function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
-document.getElementById("checkout").onclick=()=>alert(JSON.stringify('Der Mollie-Checkout wird im nächsten Schritt angebunden.' if de else 'Mollie checkout will be connected in the next step.'));
+document.getElementById("checkout").onclick=()=>alert('Der Mollie-Checkout wird im nächsten Schritt angebunden.');
 window.addEventListener("bd-cart-updated",renderCart);renderCart();
 </script>
 </body></html>
