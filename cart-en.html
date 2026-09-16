@@ -9,7 +9,7 @@
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--brown);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 nav{position:sticky;top:0;background:rgba(255,247,237,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:20}
 .navin{max-width:1050px;margin:auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px}
-.brand{font-weight:800;text-decoration:none;font-size:20px}.brand small{display:block;font-weight:500;color:var(--muted);font-size:12px;margin-top:2px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;text-decoration:none;font-size:20px;color:var(--brown)}.brand:visited{color:var(--brown)}.brand img{width:46px;height:46px;border-radius:50%;object-fit:contain;background:var(--cream);border:1px solid var(--line);padding:4px}.brand-copy{line-height:1.08}.brand small{display:block;font-weight:500;color:var(--muted);font-size:12px;margin-top:5px}
 .lang{border:1px solid var(--line);border-radius:11px;padding:9px 12px;text-decoration:none;color:var(--muted);font-weight:700}
 main{max-width:900px;margin:auto;padding:62px 20px 90px}
 .eyebrow{color:var(--terr);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:13px}
@@ -24,7 +24,7 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,7vw,68px);ma
 </style>
 </head>
 <body>
-<nav><div class="navin"><a class="brand" href="en.html">Beziehungsdynamiken<small>mit Theophil Kroller</small></a><a class="lang" href="cart.html">DE</a></div></nav>
+<nav><div class="navin"><a class="brand" href="en.html"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><span class="brand-copy">Beziehungsdynamiken<small>mit Theophil Kroller</small></span></a><a class="lang" href="cart.html">DE</a></div></nav>
 <main>
 <div class="eyebrow">Your selection</div><h1>Cart</h1>
 <div class="card">
@@ -49,14 +49,20 @@ function renderCart(){
  empty.hidden=items.length>0; filled.hidden=items.length===0; wrap.innerHTML="";
  let subtotal=0;
  items.forEach(item=>{
-   const qty=Math.max(1,Number(item.qty||1)), price=Number(item.price||0); subtotal+=qty*price;
+   const qty=Math.max(1,Number(item.qty||1)), hasPrice=item.price!==null && item.price!==undefined && item.price!=="" && !Number.isNaN(Number(item.price)), price=hasPrice?Number(item.price):0; if(hasPrice) subtotal+=qty*price;
    const key=item.id||item.sku||item.name;
    const row=document.createElement("div"); row.className="item";
-   row.innerHTML=`<div><h3>${escapeHtml(item.name||"Package")}</h3><div class="meta">${escapeHtml(item.description||"")}${qty>1?` · ×${qty}`:""}</div><button class="remove" type="button">Remove</button></div><div class="price">${money(qty*price)}</div>`;
+   row.innerHTML=`<div><h3>${escapeHtml(item.name||"Package")}</h3><div class="meta">${escapeHtml(item.description||"")}${item.advisor?` · Counsellor: ${escapeHtml(item.advisor)}`:""}${qty>1?` · ×${qty}`:""}</div><button class="remove" type="button">Remove</button></div><div class="price">${hasPrice?money(qty*price):"Price to follow"}</div>`;
    row.querySelector(".remove").onclick=()=>{BDCart.remove(key);renderCart();};
    wrap.appendChild(row);
  });
  document.getElementById("subtotal").textContent=money(subtotal);
+ const missingPrice=items.some(item=>item.price===null || item.price===undefined || item.price==="");
+ const checkout=document.getElementById("checkout");
+ checkout.disabled=missingPrice;
+ checkout.style.opacity=missingPrice?".45":"1";
+ checkout.style.cursor=missingPrice?"not-allowed":"pointer";
+ checkout.title=missingPrice?"Checkout will be activated once prices are set and Mollie is connected.":"";
 }
 function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
 document.getElementById("checkout").onclick=()=>alert(JSON.stringify('Der Mollie-Checkout wird im nächsten Schritt angebunden.' if de else 'Mollie checkout will be connected in the next step.'));

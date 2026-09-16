@@ -1,0 +1,27 @@
+PHASE 5 – HEADER + FIRST OFFER/PACKAGE CARDS
+
+Changed:
+- Booking pages now use the same Beziehungsdynamiken logo lockup as the homepage.
+- Cart pages now use the same logo lockup and neutral brand color.
+- New homepage section with 4 cards:
+  1) Individual counselling
+  2) Couples & relationship counselling
+  3) Poly Starter
+  4) Restart after a breach of trust
+- Each card contains a counsellor dropdown. Currently: Theophil Kroller.
+- Single sessions continue directly to the existing booking flow.
+- The two themed packages can already be added to the cart.
+- Package prices are deliberately NOT invented. They display "Preis folgt / Price to follow".
+- Cart supports products without a final price; checkout stays disabled until pricing/Mollie are configured.
+- Existing booking Worker / Google Calendar / reminders / cancel-reschedule flow are unchanged.
+
+Upload/replace on GitHub:
+index.html
+en.html
+booking.html
+booking-en.html
+cart.html
+cart-en.html
+cart.js
+
+No Cloudflare Worker deployment is needed for this iteration.
