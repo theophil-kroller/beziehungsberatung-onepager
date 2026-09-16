@@ -33,11 +33,12 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);li
 <h1>Your personal area</h1>
 <p class="lead">Here you’ll find your booked support packages, your remaining appointments and all related resources.</p>
 
+<div id="notice" class="status" hidden style="margin-bottom:14px"></div>
 <div id="status" class="status">Loading your area …</div>
 <div id="content" hidden>
 <section class="section">
   <h2>Your current support</h2>
-  <p class="section-intro">Here you’ll find your active packages and see at a glance how many sessions remain in each one.</p>
+  <p class="section-intro">Here you’ll find your active packages and see at a glance how many appointments remain in each one.</p>
   <div id="credits"></div>
 </section>
 <section class="section" id="archiveSection" hidden>
@@ -50,16 +51,17 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);li
   <p class="section-intro">Here you’ll find the materials included with your package – guides, exercises and additional resources.</p>
   <div id="materials"></div>
 </section>
-<p class="footer-note">Your personal access link is intended for you only. Questions about your package? Email me at <a href="mailto:hallo@beziehungsdynamiken.at">hallo@beziehungsdynamiken.at</a>.</p>
+<p class="footer-note">Your personal access link is intended for you only. Questions about your package? Email me at <a href="mailto:hallo@beziehungsdynamiken.at">hallo@beziehungsdynamiken.at</a>.<br><a href="withdrawal.html">Withdraw from a contract →</a></p>
 </div>
 </main>
 <script src="./booking-config.js"></script>
 <script>
 const API=(window.BOOKING_CONFIG||{}).apiBaseUrl||"https://beziehungsdynamiken-booking.theophil-kroller.workers.dev";
 const token=new URLSearchParams(location.search).get("token")||"";
+try{const w=sessionStorage.getItem("bd_invoice_email_warning");if(w){const n=document.getElementById("notice");if(n){n.hidden=false;n.textContent=w;}sessionStorage.removeItem("bd_invoice_email_warning");}}catch(e){}
 const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 const fmtDate=x=>x?new Intl.DateTimeFormat("en-GB",{day:"2-digit",month:"2-digit",year:"numeric"}).format(new Date(x)):"";
-const premiumName=c=>c.product_id==="poly-starter"?"Poly Starter Package":(c.name_en);
+const premiumName=c=>c.product_id==="poly-starter"?"Polyamory Starter Package":(c.name_en);
 const typeLabel=t=>t==="audio"?"Audio":t==="pdf"?"PDF":"Resource";
 async function load(){
  if(!token){document.getElementById("status").className="status err";document.getElementById("status").textContent="This access link is invalid or has expired.";return}
@@ -75,21 +77,21 @@ async function load(){
  const now=Date.now();
  const active=d.credits.filter(c=>c.remaining>0 && (!c.expires_at || new Date(c.expires_at).getTime()>now));
  const archived=d.credits.filter(c=>!active.includes(c));
- if(!active.length) cw.innerHTML='<p style="color:var(--muted)">You currently have no active package with sessions remaining.</p>';
+ if(!active.length) cw.innerHTML='<p style="color:var(--muted)">You currently have no active package with appointments remaining.</p>';
  active.forEach(c=>{
-   const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
+   const ref=c.purchase_reference||(c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"");
    const row=document.createElement("div");row.className="package";
-   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · Valid until ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">appointments available</div><a class="btn" href="booking-en.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Book your next session</a></div>`;
+   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · Valid until ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Download test invoice":"Download invoice"} ${esc(c.invoice_number||"")} →</a></div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">appointments available</div><a class="btn" href="booking-en.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Book your next appointment</a></div>`;
    cw.appendChild(row);
  });
  if(archived.length){
    document.getElementById("archiveSection").hidden=false;
    archived.forEach(c=>{
-     const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
+     const ref=c.purchase_reference||(c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"");
      const expired=c.expires_at && new Date(c.expires_at).getTime()<=now;
      const status=c.remaining===0?"Completed":expired?"Expired":"Archived";
      const row=document.createElement("div");row.className="package";
-     row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · ${status}${c.expires_at?` · ${esc(fmtDate(c.expires_at))}`:""}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">${status}</div></div>`;
+     row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} min · ${status}${c.expires_at?` · ${esc(fmtDate(c.expires_at))}`:""}</div>${ref?`<div class="pkg-ref">Package no. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Download test invoice":"Download invoice"} ${esc(c.invoice_number||"")} →</a></div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">${status}</div></div>`;
      aw.appendChild(row);
    });
  }

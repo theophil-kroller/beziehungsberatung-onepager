@@ -34,8 +34,10 @@
       const items = getCart();
       const key = item.id || item.sku || item.name;
       const existing = items.find(x => (x.id || x.sku || x.name) === key);
-      if(existing) existing.qty = Number(existing.qty || 1) + Number(item.qty || 1);
-      else items.push({...item, qty:Number(item.qty || 1)});
+      if(existing){
+        if(item.unique || existing.unique) existing.qty = 1;
+        else existing.qty = Number(existing.qty || 1) + Number(item.qty || 1);
+      }else items.push({...item, qty:Number(item.qty || 1)});
       saveCart(items);
     },
     remove(key){

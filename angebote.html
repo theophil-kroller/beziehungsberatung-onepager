@@ -21,6 +21,7 @@ ul{list-style:none;padding:0;margin:0 0 20px;color:var(--muted);line-height:1.7;
 label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--cream);padding:12px 13px;font:inherit;color:var(--brown);margin-bottom:16px}
 .price{font-size:14px;font-weight:800;color:var(--terr2);margin:2px 0 16px}.btn{margin-top:auto;display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:12px;padding:13px 17px;text-decoration:none;font:inherit;font-weight:800;cursor:pointer}.primary{background:var(--terr);color:white}.dark{background:var(--brown);color:white}.btn:hover{opacity:.9}
 .note{margin-top:24px;color:#7A6A63;font-size:13px}
+.cart-toast{position:fixed;right:22px;bottom:22px;z-index:60;max-width:390px;background:var(--brown);color:#fff;border-radius:16px;padding:15px 17px;box-shadow:0 18px 50px rgba(47,38,35,.24);display:flex;gap:14px;align-items:center;transform:translateY(20px);opacity:0;pointer-events:none;transition:.22s ease}.cart-toast.show{transform:none;opacity:1;pointer-events:auto}.cart-toast span{line-height:1.4;font-size:14px}.cart-toast a{white-space:nowrap;color:#F2B49D;font-weight:800;text-decoration:none}@media(max-width:600px){.cart-toast{left:14px;right:14px;bottom:14px}}
 @media(max-width:900px){.grid-three{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.grid-two,.grid-three{grid-template-columns:1fr}.back{display:none}main{padding-top:44px}}
 </style>
@@ -44,7 +45,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <p class="desc">Für alle, die erst einmal schauen möchten, ob die Beratung für sie passt, oder ein konkretes Thema in einem einzelnen Gespräch sortieren wollen.</p>
   <div class="meta">60 Minuten · Online oder Graz</div>
   
-  <label for="advisor-0">Berater</label>
+  <label for="advisor-0">Berater wählen</label>
   <select id="advisor-0"><option>Theophil Kroller</option></select>
   <a class="btn primary" href="booking.html?type=individual">Termin buchen</a>
 </article>
@@ -54,7 +55,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <p class="desc">Für Paare und andere Beziehungskonstellationen, die ein aktuelles Thema gemeinsam anschauen möchten – auch wenn noch nicht klar ist, ob daraus ein längerer Prozess wird.</p>
   <div class="meta">90 Minuten · Online oder Graz</div>
   
-  <label for="advisor-1">Berater</label>
+  <label for="advisor-1">Berater wählen</label>
   <select id="advisor-1"><option>Theophil Kroller</option></select>
   <a class="btn primary" href="booking.html?type=couple">Termin buchen</a>
 </article></div>
@@ -63,23 +64,23 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
 <div class="grid-three">
 <article class="card package">
   <div class="tag">Package</div>
-  <h2>Prozessbegleitung – 5 Sitzungen</h2>
+  <h2>Prozessbegleitung</h2>
   <p class="desc">Für Themen, die nicht in einem Gespräch erledigt sind und bei denen Kontinuität über mehrere Wochen hilfreich ist.</p>
   <div class="meta">5 × 60 Min. · flexibel innerhalb von 6 Monaten buchbar</div>
   <ul><li>• 5 × Einzelberatung à 60 Min.</li><li>• flexibel innerhalb von 6 Monaten</li><li>• Terminbuchung aus deinem Guthaben</li></ul>
-  <label for="advisor-2">Berater</label>
+  <label for="advisor-2">Berater wählen</label>
   <select id="advisor-2"><option>Theophil Kroller</option></select>
   <div class="price">Preis folgt</div><button class="btn dark" type="button" data-add-package="process-5">In den Warenkorb</button>
 </article>
 <article class="card package">
   <div class="tag">Package</div>
-  <h2>Poly Starter Package</h2>
+  <h2>Polyamorie Starter-Paket</h2>
   <p class="desc">Für Menschen, die ihre Beziehung öffnen möchten oder gerade erste Erfahrungen mit offenen bzw. polyamoren Beziehungskonzepten machen und dabei nicht alles allein herausfinden wollen.</p>
   <div class="meta">3 × 90 Min. + Materialien</div>
   <ul><li>• Poly-Starter Guide</li><li>• Checkliste „Was sollten wir vorher klären?“</li><li>• Grenzen-vs.-Regeln Worksheet</li><li>• Eifersuchts-Kompass</li><li>• Check-in-Vorlage</li><li>• kurze Audioübung zur Regulation</li></ul>
-  <label for="advisor-3">Berater</label>
+  <label for="advisor-3">Berater wählen</label>
   <select id="advisor-3"><option>Theophil Kroller</option></select>
-  <div class="price">Testpreis: €0,00</div><button class="btn dark" type="button" data-add-package="poly-starter">In den Warenkorb</button>
+  <div class="price">€465,00</div><button class="btn dark" type="button" data-add-package="poly-starter">In den Warenkorb</button>
 </article>
 <article class="card package">
   <div class="tag">Package</div>
@@ -87,13 +88,14 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <p class="desc">Für Paare, die nach Untreue, Geheimnissen oder anderen Vertrauensverletzungen nicht einfach „weitermachen“, sondern Schritt für Schritt klären möchten, was passiert ist und wie es weitergehen kann.</p>
   <div class="meta">5 × 90 Min. + Materialien</div>
   <ul><li>• Guide für die ersten Wochen</li><li>• Übung „Was muss verstanden werden?“</li><li>• Gesprächsleitfaden</li><li>• Reflexionsblätter für beide Seiten</li><li>• Audio zur emotionalen Regulation</li><li>• Check-in für zwischen den Sitzungen</li></ul>
-  <label for="advisor-4">Berater</label>
+  <label for="advisor-4">Berater wählen</label>
   <select id="advisor-4"><option>Theophil Kroller</option></select>
   <div class="price">Preis folgt</div><button class="btn dark" type="button" data-add-package="trust-restart">In den Warenkorb</button>
 </article></div>
 
 <p class="note">Die Package-Inhalte und Preise können vor dem Verkaufsstart noch angepasst werden.</p>
 </main>
+<div class="cart-toast" id="cartToast" role="status" aria-live="polite"><span id="cartToastText"></span><a href="cart.html">Zum Warenkorb →</a></div>
 <script src="./cart.js"></script>
 <script>
 document.querySelectorAll("[data-add-package]").forEach(btn=>{
@@ -101,12 +103,15 @@ document.querySelectorAll("[data-add-package]").forEach(btn=>{
     const id=btn.dataset.addPackage, card=btn.closest(".card");
     const advisor=card.querySelector("select")?.value || "Theophil Kroller";
     const products={
-      "process-5":{id:"process-5",name:'Prozessbegleitung – 5 Sitzungen',description:'5 × 60 Min. Einzelberatung',price:null},
-      "poly-starter":{id:"poly-starter",name:'Poly Starter Package',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:0,testCheckout:true},
+      "process-5":{id:"process-5",name:'Prozessbegleitung',description:'5 × 60 Min. Einzelberatung',price:null,advisorCode:"01",unique:true},
+      "poly-starter":{id:"poly-starter",name:'Polyamorie Starter-Paket',description:'3 × 90 Min. + Guide, Checkliste und Übungen',price:465,advisorCode:"01",unique:true},
       "trust-restart":{id:"trust-restart",name:'Neustart nach Vertrauensbruch',description:'5 × 90 Min. + Guide, Übungen und Audio',price:null}
     };
     BDCart.add({...products[id],advisor});
     const old=btn.textContent;btn.textContent="✓ Im Warenkorb";setTimeout(()=>btn.textContent=old,1300);
+    const toast=document.getElementById("cartToast"),toastText=document.getElementById("cartToastText");
+    toastText.textContent=products[id].name+" wurde zum Warenkorb hinzugefügt.";
+    toast.classList.add("show");clearTimeout(window.__bdToastTimer);window.__bdToastTimer=setTimeout(()=>toast.classList.remove("show"),3500);
   });
 });
 </script>

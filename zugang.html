@@ -33,6 +33,7 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);li
 <h1>Dein persönlicher Bereich</h1>
 <p class="lead">Hier findest du deine gebuchten Begleitpakete, deine noch verfügbaren Termine und alle dazugehörigen Ressourcen.</p>
 
+<div id="notice" class="status" hidden style="margin-bottom:14px"></div>
 <div id="status" class="status">Dein Bereich wird geladen …</div>
 <div id="content" hidden>
 <section class="section">
@@ -50,16 +51,17 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);li
   <p class="section-intro">Hier findest du die Materialien, die zu deinem gebuchten Paket gehören – Guides, Übungen und weitere Inhalte.</p>
   <div id="materials"></div>
 </section>
-<p class="footer-note">Dein persönlicher Zugangslink ist nur für dich bestimmt. Fragen zu deinem Paket? Schreib mir an <a href="mailto:hallo@beziehungsdynamiken.at">hallo@beziehungsdynamiken.at</a>.</p>
+<p class="footer-note">Dein persönlicher Zugangslink ist nur für dich bestimmt. Fragen zu deinem Paket? Schreib mir an <a href="mailto:hallo@beziehungsdynamiken.at">hallo@beziehungsdynamiken.at</a>.<br><a href="widerruf.html">Vertrag widerrufen →</a></p>
 </div>
 </main>
 <script src="./booking-config.js"></script>
 <script>
 const API=(window.BOOKING_CONFIG||{}).apiBaseUrl||"https://beziehungsdynamiken-booking.theophil-kroller.workers.dev";
 const token=new URLSearchParams(location.search).get("token")||"";
+try{const w=sessionStorage.getItem("bd_invoice_email_warning");if(w){const n=document.getElementById("notice");if(n){n.hidden=false;n.textContent=w;}sessionStorage.removeItem("bd_invoice_email_warning");}}catch(e){}
 const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 const fmtDate=x=>x?new Intl.DateTimeFormat("de-AT",{day:"2-digit",month:"2-digit",year:"numeric"}).format(new Date(x)):"";
-const premiumName=c=>c.product_id==="poly-starter"?"Poly Starter Package":(c.name_de);
+const premiumName=c=>c.product_id==="poly-starter"?"Polyamorie Starter-Paket":(c.name_de);
 const typeLabel=t=>t==="audio"?"Audio":t==="pdf"?"PDF":"Material";
 async function load(){
  if(!token){document.getElementById("status").className="status err";document.getElementById("status").textContent="Dieser Zugangslink ist ungültig oder abgelaufen.";return}
@@ -77,19 +79,19 @@ async function load(){
  const archived=d.credits.filter(c=>!active.includes(c));
  if(!active.length) cw.innerHTML='<p style="color:var(--muted)">Aktuell ist kein Package mit offenen Terminen aktiv.</p>';
  active.forEach(c=>{
-   const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
+   const ref=c.purchase_reference||(c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"");
    const row=document.createElement("div");row.className="package";
-   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min. · Gültig bis ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">Termine verfügbar</div><a class="btn" href="booking.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Nächsten Termin buchen</a></div>`;
+   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min. · Gültig bis ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Testrechnung":"Rechnung"} ${esc(c.invoice_number||"")} herunterladen →</a></div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">Termine verfügbar</div><a class="btn" href="booking.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Nächsten Termin buchen</a></div>`;
    cw.appendChild(row);
  });
  if(archived.length){
    document.getElementById("archiveSection").hidden=false;
    archived.forEach(c=>{
-     const ref=c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"";
+     const ref=c.purchase_reference||(c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"");
      const expired=c.expires_at && new Date(c.expires_at).getTime()<=now;
      const status=c.remaining===0?"Abgeschlossen":expired?"Abgelaufen":"Archiviert";
      const row=document.createElement("div");row.className="package";
-     row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min. · ${status}${c.expires_at?` · ${esc(fmtDate(c.expires_at))}`:""}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">${status}</div></div>`;
+     row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min. · ${status}${c.expires_at?` · ${esc(fmtDate(c.expires_at))}`:""}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Testrechnung":"Rechnung"} ${esc(c.invoice_number||"")} herunterladen →</a></div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">${status}</div></div>`;
      aw.appendChild(row);
    });
  }

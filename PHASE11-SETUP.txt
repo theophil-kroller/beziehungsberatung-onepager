@@ -1,0 +1,69 @@
+PHASE 11 - Invoice checkout / bank transfer / PDF invoice
+
+WHAT IS NEW
+- Polyamorie Starter-Paket / Polyamory Starter Package: EUR 465
+- "Berater wählen" / "Choose counsellor" labels for future multi-counsellor support
+- toast after adding a package to the cart
+- professional invoice checkout with billing address
+- clear "Zahlungspflichtig bestellen" button
+- immediate personal access after ordering
+- PDF invoice attached via Resend
+- invoice contains logo, invoice number, date/time, due date, small-business VAT note, bank details and SEPA/EPC payment QR
+- invoice can also be downloaded again from the personal area
+- order consents for early service start and immediate digital resources are stored in D1
+- online withdrawal form records requests in D1 and sends an immediate email confirmation
+- new package references do not expose a simple running purchase count
+
+1) RUN D1 MIGRATION ONCE
+Open Cloudflare D1 -> beziehungsdynamiken-db -> Console and execute database/migration_phase11.sql.
+Do not run the ALTER TABLE statements twice.
+
+2) WORKER VARIABLES / SECRETS
+Add these to the Cloudflare Worker (use your actual invoice/bank data).
+For the first test run use:
+ENABLE_INVOICE_CHECKOUT = true
+INVOICE_TEST_MODE = true   (PDF is marked as SAMPLE/MUSTER and uses TEST invoice numbers)
+INVOICE_BUSINESS_NAME = your invoice name incl. academic titles if desired
+INVOICE_BUSINESS_STREET = your current business address line
+INVOICE_BUSINESS_POSTAL_CITY = postal code + city
+INVOICE_ACCOUNT_HOLDER = exact bank account holder name
+INVOICE_BANK_NAME = bank name
+INVOICE_IBAN = your IBAN
+INVOICE_BIC = your BIC
+WITHDRAWAL_TO = email address that should receive withdrawal notifications (optional; defaults to hallo@beziehungsdynamiken.at)
+
+Do NOT put private address or bank details into the public GitHub frontend. They belong only in Worker variables/secrets.
+
+After testing, set ENABLE_INVOICE_CHECKOUT = false again until the commercial checkout is meant to be active.
+For the later live launch:
+- set INVOICE_TEST_MODE = false
+- set ENABLE_INVOICE_CHECKOUT = true
+
+3) DEPLOY WORKER
+Replace/deploy cloudflare-worker/worker.js.
+
+4) GITHUB FILES TO REPLACE
+- angebote.html
+- offers.html
+- cart.html
+- cart-en.html
+- cart.js
+- zugang.html
+- access.html
+- widerruf.html
+- withdrawal.html
+
+5) TEST
+- Add Polyamorie Starter-Paket to cart: toast should appear.
+- Checkout with test billing data.
+- Verify access opens immediately.
+- Verify email arrives with PDF attachment. In test mode it must say SAMPLE/MUSTER and the number must start with TEST-.
+- Scan the QR on the invoice with a banking app: payee, IBAN, EUR 465 and invoice number should be prefilled.
+- Download the invoice again from the personal area.
+- Submit a test withdrawal via widerruf.html and verify both the D1 entry and confirmation email.
+
+IMPORTANT
+The software can be tested before launch. Only activate a real paid commercial checkout once your business/trade and tax setup permits you to offer the service commercially.
+
+LEGAL NOTE
+The checkout includes technical support for consent logging and online withdrawal. Before commercial launch, have the final consumer-law wording and your tax/business setup reviewed for your concrete offer and target countries.
