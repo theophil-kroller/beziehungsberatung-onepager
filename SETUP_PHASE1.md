@@ -87,3 +87,28 @@ Dann fragt die Buchungsseite echte freie Zeiten ab und trägt echte Termine ein.
 
 Google Calendar API + OAuth-Zugang einrichten und den Worker in deinem bereits
 angelegten Cloudflare-Account deployen. Erst danach schalten wir `demoMode` aus.
+
+
+## Phase 2 Ergänzungen
+
+Diese Version enthält zusätzlich:
+
+- CTA auf der Website: **Termin vereinbaren**
+- Englisch: **Book an appointment**
+- bessere Google-Kalendertitel:
+  - Einzelberatung – Theophil Kroller
+  - Paarberatung – Theophil Kroller
+- bei Online-Terminen automatische Google-Meet-Erstellung
+- eigene Bestätigungsmail über Resend
+- Signatur: **Liebe Grüße, Theophil**
+- Mail-Absender steuerbar über Cloudflare Variable `MAIL_FROM`
+
+### Zusätzliche Cloudflare-Secrets/Variablen
+
+Secret:
+- `RESEND_API_KEY`
+
+Normale Variable:
+- `MAIL_FROM` z. B. `Beziehungsdynamiken <hallo@beziehungsdynamiken.at>`
+
+Vor Nutzung der Mailfunktion muss `beziehungsdynamiken.at` in Resend verifiziert sein.

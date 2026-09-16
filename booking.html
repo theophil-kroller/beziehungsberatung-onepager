@@ -64,7 +64,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <div class="field"><label>E-Mail</label><input name="email" type="email" autocomplete="email" required></div>
 <label class="check"><input type="checkbox" required><span>Ich stimme zu, dass meine Angaben zur Terminorganisation verarbeitet werden. Es werden hier keine Beratungsinhalte abgefragt.</span></label>
 <div id="formMsg"></div>
-<div class="actions"><button type="button" class="btn secondary" id="back4">Zurück</button><button class="btn primary" id="submitBtn" type="submit">Termin verbindlich buchen</button></div>
+<div class="actions"><button type="button" class="btn secondary" id="back4">Zurück</button><button class="btn primary" id="submitBtn" type="submit">Termin buchen</button></div>
 </form></div>
 </section>
 <aside class="summary">
@@ -177,7 +177,7 @@ q("#bookingForm").onsubmit=async(e)=>{
     makeIcs(payload);
   }catch(err){
     q("#formMsg").className="notice err";q("#formMsg").textContent=txt.bookingError;
-    q("#submitBtn").disabled=false;q("#submitBtn").textContent=L==="de"?"Termin verbindlich buchen":"Book appointment";
+    q("#submitBtn").disabled=false;q("#submitBtn").textContent=L==="de"?"Termin buchen":"Book appointment";
   }
 }
 function makeIcs(p){
