@@ -17,7 +17,7 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,7vw,72px);li
 .package{border-top:1px solid var(--line);padding:26px 0;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}.package:first-child{border-top:0;padding-top:6px}
 .pkg-name{font-size:21px;font-weight:850;margin-bottom:8px}.pkg-meta{color:var(--muted);line-height:1.65;font-size:14px}.pkg-ref{display:inline-flex;margin-top:10px;border:1px solid var(--line);background:var(--cream);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:750;color:var(--terr-dark)}
 .balance{text-align:right;min-width:270px}.balance-num{font-family:Georgia,"Times New Roman",serif;font-size:42px;font-weight:700;line-height:1}.balance-label{color:var(--muted);font-size:14px;margin:7px 0 15px}
-.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--terr);color:#fff;text-decoration:none;border-radius:13px;padding:13px 18px;font-weight:850;transition:.15s}.btn:hover{background:var(--terr-dark);transform:translateY(-1px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--terr);color:#fff;text-decoration:none;border-radius:13px;padding:13px 18px;font-weight:850;transition:.15s}.btn:hover{background:var(--terr-dark);transform:translateY(-1px)}.btn.disabled{background:#D9C9BD;color:#6F625C;cursor:not-allowed;pointer-events:none}.availability-note{margin-top:10px;color:var(--muted);font-size:12.5px;line-height:1.5}
 .material{border-top:1px solid var(--line);padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:18px}.material:first-child{border-top:0;padding-top:5px}.material-title{font-weight:780}.material-type{color:var(--muted);font-size:13px;margin-top:4px}.material a{text-decoration:none;color:var(--terr-dark);font-weight:850}
 .status{padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;color:var(--muted)}.err{background:#fff0ef;border-color:#e8beb8;color:#7a3129}
 .footer-note{margin-top:30px;color:var(--muted);font-size:13px;line-height:1.6}.footer-note a{color:var(--terr-dark);text-decoration:none;font-weight:750}
@@ -60,7 +60,7 @@ const API=(window.BOOKING_CONFIG||{}).apiBaseUrl||"https://beziehungsdynamiken-b
 const token=new URLSearchParams(location.search).get("token")||"";
 try{const w=sessionStorage.getItem("bd_invoice_email_warning");if(w){const n=document.getElementById("notice");if(n){n.hidden=false;n.textContent=w;}sessionStorage.removeItem("bd_invoice_email_warning");}}catch(e){}
 const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
-const fmtDate=x=>x?new Intl.DateTimeFormat("de-AT",{day:"2-digit",month:"2-digit",year:"numeric"}).format(new Date(x)):"";
+const fmtDate=x=>x?new Intl.DateTimeFormat("de-AT",{day:"2-digit",month:"2-digit",year:"numeric"}).format(new Date(String(x).length===10?x+"T12:00:00":String(x).replace(" ","T")+(String(x).includes("Z")?"":"Z"))):"";
 const premiumName=c=>c.product_id==="poly-starter"?"Polyamorie Starter-Paket":(c.name_de);
 const typeLabel=t=>t==="audio"?"Audio":t==="pdf"?"PDF":"Material";
 async function load(){
@@ -81,7 +81,7 @@ async function load(){
  active.forEach(c=>{
    const ref=c.purchase_reference||(c.purchase_id?"BD-P"+String(c.purchase_id).padStart(6,"0"):"");
    const row=document.createElement("div");row.className="package";
-   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min. · Gültig bis ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Testrechnung":"Rechnung"} ${esc(c.invoice_number||"")} herunterladen →</a></div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">Termine verfügbar</div><a class="btn" href="booking.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Nächsten Termin buchen</a></div>`;
+   row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min.${c.purchased_at?` · Gekauft am ${esc(fmtDate(c.purchased_at))}`:""} · Gültig bis ${esc(fmtDate(c.expires_at))}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Testrechnung":"Rechnung"} ${esc(c.invoice_number||"")} herunterladen →</a></div>`:""}${!c.digital_available_now&&c.available_from?`<div class="availability-note">Digitale Ressourcen werden ab ${esc(fmtDate(c.available_from))} freigeschaltet.</div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">Termine verfügbar</div>${c.service_available_now?`<a class="btn" href="booking.html?type=${encodeURIComponent(c.session_type)}&package_token=${encodeURIComponent(token)}&product=${encodeURIComponent(c.product_id)}&credit_id=${encodeURIComponent(c.id)}">Nächsten Termin buchen</a>`:`<span class="btn disabled">Terminbuchung ab ${esc(fmtDate(c.available_from))}</span>`}</div>`;
    cw.appendChild(row);
  });
  if(archived.length){
@@ -91,12 +91,12 @@ async function load(){
      const expired=c.expires_at && new Date(c.expires_at).getTime()<=now;
      const status=c.remaining===0?"Abgeschlossen":expired?"Abgelaufen":"Archiviert";
      const row=document.createElement("div");row.className="package";
-     row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min. · ${status}${c.expires_at?` · ${esc(fmtDate(c.expires_at))}`:""}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Testrechnung":"Rechnung"} ${esc(c.invoice_number||"")} herunterladen →</a></div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">${status}</div></div>`;
+     row.innerHTML=`<div><div class="pkg-name">${esc(premiumName(c))}</div><div class="pkg-meta">${c.session_minutes} Min.${c.purchased_at?` · Gekauft am ${esc(fmtDate(c.purchased_at))}`:""} · ${status}${c.expires_at?` · ${esc(fmtDate(c.expires_at))}`:""}</div>${ref?`<div class="pkg-ref">Package-Nr. ${esc(ref)}</div>`:""}${c.invoice_id?`<div class="pkg-ref"><a href="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev/invoice-pdf?token=${encodeURIComponent(token)}&id=${encodeURIComponent(c.invoice_id)}">${c.invoice_status==="test"?"Testrechnung":"Rechnung"} ${esc(c.invoice_number||"")} herunterladen →</a></div>`:""}</div><div class="balance"><div class="balance-num">${c.remaining} / ${c.total}</div><div class="balance-label">${status}</div></div>`;
      aw.appendChild(row);
    });
  }
  const mw=document.getElementById("materials");mw.innerHTML="";
- if(!d.materials.length) mw.innerHTML='<p style="color:var(--muted)">Noch keine Materialien hinterlegt.</p>';
+ if(!d.materials.length){const locked=d.credits.filter(c=>!c.digital_available_now&&c.available_from);mw.innerHTML=locked.length?`<p style="color:var(--muted)">Deine digitalen Ressourcen werden ab ${esc(fmtDate(locked[0].available_from))} freigeschaltet.</p>`:'<p style="color:var(--muted)">Noch keine Materialien hinterlegt.</p>';}
  d.materials.forEach(m=>{
    const row=document.createElement("div");row.className="material";
    const title=m.title_de;

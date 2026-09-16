@@ -1,0 +1,39 @@
+PHASE 12 - Header, countries, optional early start, invoice numbering, email, purchase date
+
+CHANGES
+- Current index-style header (dark info strip + cart icon + internal booking link) on Arbeitsweise / Beziehungsvielfalt and both English equivalents.
+- Country dropdown: AT, DE, CH, LI first; HU, SI, IT, CZ, SK next; disabled separator; then all countries worldwide.
+- Required fields marked with *. Only the binding order is mandatory among the three checkout checkboxes.
+- Early counselling and immediate digital materials are optional. If not selected, the portal is still created immediately, but the respective function unlocks after the 14-day withdrawal period.
+- Test invoice numbering starts at 1047 as well. Optional variable INVOICE_START_NUMBER can change the start.
+- Existing TEST invoices can be renumbered by migration_phase12.sql; real invoices are untouched.
+- Purchase email now begins with a thank-you, tells the client what is available now, and prominently says not to delete the email because it contains the portal link.
+- Member area shows purchase date.
+- About page: more mature personal section on travel, scuba diving, Brazilian Zouk/Kizomba/Ballroom, Bujinkan Budo Taijutsu and languages; Australia added.
+- About page header also carries the cart icon for consistency.
+
+DEPLOY
+1. D1: execute database/migration_phase12.sql ONCE.
+2. Cloudflare Worker: deploy cloudflare-worker/worker.js.
+3. Optional Worker variable: INVOICE_START_NUMBER=1047 (default is already 1047).
+4. GitHub replace/upload:
+   cart.html
+   cart-en.html
+   zugang.html
+   access.html
+   arbeitsweise.html
+   beziehungsvielfalt.html
+   approach.html
+   relationship-diversity.html
+   about.html
+   about-en.html
+   cart.js (unchanged, included for completeness)
+
+TEST
+- Country dropdown and required stars.
+- Checkout with only required fields + first checkbox succeeds.
+- With optional boxes unchecked: booking/materials are visibly locked until the post-withdrawal date.
+- With optional boxes checked: booking/materials are immediately available.
+- New test invoice number starts at 1047/next sequence.
+- Email contains thank-you + highlighted keep-this-email note.
+- Member area displays purchase date.
