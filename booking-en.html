@@ -422,7 +422,11 @@ q("#bookingForm").onsubmit=async(e)=>{
       q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>Your appointment is booked.</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${fmtTime(state.start)} · ${q("#sType").textContent}</p><p style="color:#5F504A">Your credit has been updated. You’ll return to your access page now.</p><a class="ics" href="access.html?token=${encodeURIComponent(packageToken)}">Back to my access →</a></div>`;
       setTimeout(()=>{location.href="access.html?token="+encodeURIComponent(packageToken)},1800);
     }else{
-      q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>${txt.success}</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${fmtTime(state.start)} · ${q("#sType").textContent}</p><a id="icsLink" class="ics" href="#">${txt.calendar} →</a></div>`;
+      const mailNote=result.confirmationEmailSent
+        ? `<p style="color:#5F504A;line-height:1.65">A confirmation has just been sent to <strong>${payload.email}</strong>.</p>`
+        : `<p style="color:#7B532E;line-height:1.65">Your appointment is saved. The confirmation email could not be sent right now.</p>`;
+      const manageLink=result.manageToken?`<a class="ics" href="termin.html?token=${encodeURIComponent(result.manageToken)}">Manage appointment →</a>`:"";
+      q("#step4").innerHTML=`<div class="done"><div class="tick">✓</div><h2>Thank you, your appointment is reserved.</h2><p style="color:#5F504A;line-height:1.6">${fmtLong(state.date)} · ${fmtTime(state.start)} · ${q("#sType").textContent}</p>${mailNote}<a id="icsLink" class="ics" href="#">${txt.calendar} →</a><br>${manageLink}</div>`;
       makeIcs(payload);
     }
   }catch(err){

@@ -5,9 +5,9 @@
 main{max-width:760px;margin:auto;padding:56px 20px}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 18px 55px rgba(47,38,35,.06)}
 h1{font-family:Georgia,serif;font-size:42px;margin:0 0 14px}.muted{color:var(--muted);line-height:1.6}.info{background:var(--sand);border-radius:16px;padding:16px 18px;margin:22px 0;line-height:1.6}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;cursor:pointer}.primary{background:var(--terr);color:#fff}.danger{background:#fff0ef;color:#7b2f28;border:1px solid #e9c1bd}
-.days{display:flex;gap:9px;overflow-x:auto;margin:20px 0}.day{min-width:94px;border:1px solid var(--sage-line);background:var(--sage);color:var(--sage-dark);border-radius:16px;padding:11px;cursor:pointer}.day.selected{border-color:var(--terr);background:var(--terr);color:#fff}
+.days{display:flex;gap:9px;overflow-x:auto;margin:20px 0}.day{min-width:94px;border:1px solid var(--line);background:#FAF7F4;color:#A79C97;border-radius:16px;padding:11px;cursor:default;transition:.18s}.day.available{border-color:var(--sage-line);background:var(--sage);color:var(--sage-dark);cursor:pointer}.day.available:hover{background:#DFEBDD;border-color:#718E70}.day.selected{border-color:var(--terr);background:var(--terr);color:#fff}.day:disabled{opacity:.78}.day.loading{opacity:.55}
 .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.slot{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;cursor:pointer;font-weight:700}
-.notice{border-radius:14px;padding:12px 14px;margin:14px 0;font-size:14px}.ok{background:#eaf8ef;border:1px solid #bfe2ca;color:#244b31}.err{background:#fff0ef;border:1px solid #e9c1bd;color:#7b2f28}
+.notice{border-radius:14px;padding:12px 14px;margin:14px 0;font-size:14px}.ok{background:#eaf8ef;border:1px solid #bfe2ca;color:#244b31}.err{background:#fff0ef;border:1px solid #e9c1bd;color:#7b2f28}.change-result{border:1px solid #bfe2ca;background:#f1f8f2;border-radius:18px;padding:18px;margin:18px 0;line-height:1.6}.change-result .old{color:#8B7A72}.change-result .new{color:#244b31;font-weight:800;margin-top:8px}.day-status{color:var(--muted);font-size:14px;margin:-4px 0 12px}
 @media(max-width:650px){.slots{grid-template-columns:repeat(2,1fr)}h1{font-size:34px}.card{padding:22px}}
 </style><script>
 (function(){
@@ -24,8 +24,8 @@ h1{font-family:Georgia,serif;font-size:42px;margin:0 0 14px}.muted{color:var(--m
 })();
 </script>
 </head><body><main><div class="card"><h1>Deinen Termin verwalten</h1><p class="muted">Hier kannst du deinen Termin verschieben oder absagen. Je nach Zeitpunkt können gemäß deiner Buchungsbedingungen Kosten entstehen.</p>
-<div id="status">Lade Termin …</div><div id="content" hidden><div class="info" id="info"></div><div class="info" id="policyInfo"></div><div class="actions"><button class="btn primary" id="rescheduleBtn">Termin verschieben</button><button class="btn danger" id="cancelBtn">Termin absagen</button></div>
-<div id="reschedule" hidden><h2 style="margin-top:30px">Neuen Termin wählen</h2><div class="days" id="days"></div><div class="slots" id="slots"></div><div id="msg"></div></div></div></div></main>
+<div id="status">Lade Termin …</div><div id="content" hidden><div id="resultBox"></div><div class="info" id="info"></div><div class="info" id="policyInfo"></div><div class="actions"><button class="btn primary" id="rescheduleBtn">Termin verschieben</button><button class="btn danger" id="cancelBtn">Termin absagen</button></div>
+<div id="reschedule" hidden><h2 style="margin-top:30px">Neuen Termin wählen</h2><p class="day-status" id="dayStatus">Freie Tage werden geprüft …</p><div class="days" id="days"></div><div class="slots" id="slots"></div><div id="msg"></div></div></div></div></main>
 <script>
 const API="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev",TZ="Europe/Vienna";
 const token=new URLSearchParams(location.search).get("token");let booking=null;
@@ -42,23 +42,64 @@ const r=await fetch(API+"/manage?token="+encodeURIComponent(token)),d=await r.js
 booking=d.booking;$("#status").hidden=true;$("#content").hidden=false;render()}
 $("#cancelBtn").onclick=async()=>{
 const pct=Number(booking.chargePercent||0);
+const oldStart=booking.start,oldEnd=booking.end;
 const question=pct===0?"Möchtest du diesen Termin wirklich absagen?":`Bei einer Absage jetzt werden gemäß Buchungsbedingungen ${pct} % des Honorars verrechnet. Trotzdem absagen?`;
 if(!confirm(question))return;
 const r=await fetch(API+"/cancel",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,acceptLateFee:true})}),d=await r.json();
-if(r.ok&&d.ok)$("#content").innerHTML=`<div class="notice ok">Der Termin wurde abgesagt.${Number(d.chargePercent||0)>0?" Für die kurzfristige Absage gelten "+d.chargePercent+" % des Honorars.":""}</div>`;
-else $("#content").insertAdjacentHTML("beforeend",'<div class="notice err">Der Termin konnte nicht online abgesagt werden. Bitte melde dich direkt bei mir.</div>')
+if(r.ok&&d.ok){
+  const mail=d.cancellationEmailSent?`Eine Bestätigung wurde an <strong>${booking.email}</strong> geschickt.`:`Die Absage ist gespeichert; die Bestätigungs-E-Mail konnte gerade nicht versendet werden.`;
+  $("#content").innerHTML=`<div class="change-result"><strong>Dein Termin wurde abgesagt.</strong><div class="old"><s>${fmtDate(oldStart)} · ${fmtTime(oldStart)}–${fmtTime(oldEnd)} Uhr</s></div><p>${mail}</p><p>Der Google-Kalendereintrag wurde storniert.</p>${Number(d.chargePercent||0)>0?`<p><strong>Ausfallhonorar gemäß Buchungsbedingungen: ${d.chargePercent} %.</strong></p>`:""}</div>`;
+}else $("#content").insertAdjacentHTML("beforeend",'<div class="notice err">Der Termin konnte nicht online abgesagt werden. Bitte melde dich direkt bei mir.</div>')
 }
 $("#rescheduleBtn").onclick=()=>{$("#reschedule").hidden=false;buildDays()}
 function ymd(d){return d.toISOString().slice(0,10)}
-function buildDays(){const w=$("#days");w.innerHTML="";let d=new Date();d.setHours(12,0,0,0);for(let i=0;i<60;i++){const x=new Date(d);x.setDate(d.getDate()+i);const iso=ymd(x),b=document.createElement("button");b.className="day";b.innerHTML=`<b>${new Intl.DateTimeFormat("de-AT",{weekday:"short"}).format(x)}</b><br><span>${new Intl.DateTimeFormat("de-AT",{day:"2-digit",month:"2-digit"}).format(x)}</span>`;b.onclick=()=>loadSlots(iso,b);w.appendChild(b)}}
-async function loadSlots(date,b){[...document.querySelectorAll(".day")].forEach(x=>x.classList.toggle("selected",x===b));$("#slots").innerHTML="";$("#msg").textContent="Lade freie Zeiten …";const r=await fetch(`${API}/availability?type=${booking.type}&date=${date}`),d=await r.json();$("#msg").textContent="";if(!r.ok||!d.slots?.length){$("#msg").textContent="An diesem Tag gibt es keine freien Zeiten.";return}d.slots.forEach(s=>{const x=document.createElement("button");x.className="slot";x.textContent=fmtTime(s.start);x.onclick=()=>move(s.start);$("#slots").appendChild(x)})}
+const availabilityCache={};
+async function buildDays(){
+  const w=$("#days");w.innerHTML="";$("#slots").innerHTML="";$("#msg").innerHTML="";$("#dayStatus").textContent="Freie Tage werden geprüft …";
+  let d=new Date();d.setHours(12,0,0,0);
+  const items=[];
+  for(let i=0;i<60;i++){
+    const x=new Date(d);x.setDate(d.getDate()+i);
+    const iso=ymd(x),b=document.createElement("button");
+    b.className="day loading";b.disabled=true;
+    b.innerHTML=`<b>${new Intl.DateTimeFormat("de-AT",{weekday:"short"}).format(x)}</b><br><span>${new Intl.DateTimeFormat("de-AT",{day:"2-digit",month:"2-digit"}).format(x)}</span>`;
+    w.appendChild(b);items.push({iso,b});
+  }
+  // Check availability in small batches so the Calendar API is not hit with 60 requests at once.
+  for(let i=0;i<items.length;i+=6){
+    await Promise.all(items.slice(i,i+6).map(async({iso,b})=>{
+      try{
+        const r=await fetch(`${API}/availability?type=${booking.type}&date=${iso}`),data=await r.json();
+        b.classList.remove("loading");
+        if(r.ok&&data.slots?.length){
+          availabilityCache[iso]=data.slots;
+          b.disabled=false;b.classList.add("available");
+          b.onclick=()=>showSlots(iso,b);
+        }
+      }catch(e){b.classList.remove("loading")}
+    }));
+  }
+  $("#dayStatus").textContent="Grün markierte Tage haben mindestens einen freien Termin.";
+}
+function showSlots(date,b){
+  [...document.querySelectorAll(".day")].forEach(x=>x.classList.toggle("selected",x===b));
+  $("#slots").innerHTML="";$("#msg").textContent="";
+  const slots=availabilityCache[date]||[];
+  if(!slots.length){$("#msg").textContent="An diesem Tag gibt es keine freien Zeiten.";return}
+  slots.forEach(s=>{const x=document.createElement("button");x.className="slot";x.textContent=fmtTime(s.start);x.onclick=()=>move(s.start);$("#slots").appendChild(x)})
+}
 async function move(start){
-const pct=Number(booking.chargePercent||0);
+const pct=Number(booking.chargePercent||0),oldStart=booking.start,oldEnd=booking.end;
 const question=pct===0?"Termin auf "+fmtDate(start)+", "+fmtTime(start)+" Uhr verschieben?":`Für eine Umbuchung jetzt gelten gemäß Buchungsbedingungen ${pct} % des Honorars. Trotzdem auf ${fmtDate(start)}, ${fmtTime(start)} Uhr verschieben?`;
 if(!confirm(question))return;
 const r=await fetch(API+"/reschedule",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,start,acceptLateFee:true})}),d=await r.json();
-if(r.ok&&d.ok){booking.start=d.start;booking.end=d.end;booking.chargePercent=0;render();$("#reschedule").hidden=true}
-else $("#msg").innerHTML='<div class="notice err">Der Termin konnte nicht verschoben werden.</div>'
+if(r.ok&&d.ok){
+  booking.start=d.start;booking.end=d.end;booking.chargePercent=Number(d.newChargePercent||0);
+  render();$("#reschedule").hidden=true;$("#slots").innerHTML="";
+  const mail=d.rescheduleEmailSent?`Eine Änderungsbestätigung wurde an <strong>${booking.email}</strong> geschickt.`:`Die Änderung ist gespeichert; die Bestätigungs-E-Mail konnte gerade nicht versendet werden.`;
+  $("#resultBox").innerHTML=`<div class="change-result"><strong>Dein Termin wurde geändert.</strong><div class="old">Alter Termin: <s>${fmtDate(oldStart)} · ${fmtTime(oldStart)}–${fmtTime(oldEnd)} Uhr</s></div><div class="new">Neuer Termin: ${fmtDate(d.start)} · ${fmtTime(d.start)}–${fmtTime(d.end)} Uhr</div><p>${mail}</p><p>Der bestehende Google-Kalendereintrag wurde auf den neuen Zeitpunkt aktualisiert.</p>${Number(d.chargePercent||0)>0?`<p><strong>Für diese kurzfristige Umbuchung gelten ${d.chargePercent} % des Honorars.</strong></p>`:""}</div>`;
+  window.scrollTo({top:0,behavior:"smooth"});
+}else $("#msg").innerHTML='<div class="notice err">Der Termin konnte nicht verschoben werden.</div>'
 }
 load();
 </script></body></html>

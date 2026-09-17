@@ -1,0 +1,110 @@
+BUILD 4 – Booking-Feedback, E-Mails, Kalender-Sync und Doppelwelle
+=====================================================================
+
+Basis:
+Build 3c, der wiederum direkt aus deiner getesteten LIVE-ZIP phase13f erzeugt wurde.
+
+NEU AUF DER STARTSEITE
+----------------------
+Der beige Orientierungsbereich ist jetzt als zusammenhängender organischer Block gestaltet:
+- sanfte Welle oben: Weiß → Beige
+- sanfte Welle unten: Beige → Weiß
+- die beiden Kurven sind absichtlich nicht spiegelgleich
+- die Beispiele bleiben kompakt in der Orientierungssektion integriert
+
+NEU NACH EINER BUCHUNG
+-----------------------
+Nach erfolgreicher Buchung sieht die Person:
+- "Danke, dein Termin ist reserviert."
+- Datum / Uhrzeit / Beratungsart
+- Hinweis, ob die Bestätigungs-E-Mail erfolgreich versendet wurde
+- Kalenderdatei
+- persönlichen Link "Termin verwalten"
+
+Der Worker gibt dafür jetzt `confirmationEmailSent` zurück.
+
+UMBuchen – UX
+-------------
+Die Terminverwaltungsseite wurde überarbeitet:
+- NICHT mehr automatisch alle Tage grün
+- zunächst werden die Tage neutral dargestellt
+- nur Tage mit mindestens einem tatsächlich freien Slot werden grün
+- die Verfügbarkeit wird in kleinen Batches geprüft, um den Calendar-API-Zugriff zu begrenzen
+
+Nach erfolgreicher Umbuchung sieht die Person sofort:
+- "Dein Termin wurde geändert."
+- Alter Termin: durchgestrichen
+- Neuer Termin: deutlich hervorgehoben
+- Hinweis, ob eine Änderungs-E-Mail verschickt wurde
+- Bestätigung, dass der bestehende Google-Kalendereintrag aktualisiert wurde
+
+UMBuchen – E-Mail
+-----------------
+Neue eigene Bestätigungsmail über Resend:
+Betreff: "Dein Termin bei Beziehungsdynamiken wurde geändert"
+
+Die Mail enthält:
+- alten Termin durchgestrichen
+- neuen Termin
+- Ort / Online
+- ggf. Meet-Link
+- Link zur Terminverwaltung
+- ggf. Ausfallhonorar gemäß 48/24-Regel
+- Hinweis, dass der bestehende Google-Kalendereintrag aktualisiert wurde
+
+GOOGLE CALENDAR BEIM UMBUCHEN
+-----------------------------
+Der bestehende Google-Kalendertermin wird per PATCH geändert.
+Die Event-ID bleibt gleich, bestehende Meet-Daten bleiben erhalten.
+`sendUpdates=all` bleibt aktiv, sodass Google die Änderung auch an den Teilnehmer weitergibt.
+
+ABSAGEN – UX + E-Mail
+---------------------
+Nach erfolgreicher Absage sieht die Person:
+- "Dein Termin wurde abgesagt."
+- den abgesagten Termin durchgestrichen
+- Hinweis auf die Bestätigungs-E-Mail
+- Hinweis auf die Stornierung im Google Kalender
+- ggf. Ausfallhonorar
+
+Neue eigene Bestätigungsmail über Resend:
+Betreff: "Dein Termin bei Beziehungsdynamiken wurde abgesagt"
+
+GOOGLE CALENDAR BEIM ABSAGEN
+----------------------------
+Der bestehende Event wird weiterhin über die Calendar API gelöscht,
+mit `sendUpdates=all`. Google kann dadurch zusätzlich eine
+Kalender-Stornierungsnachricht versenden.
+
+48/24-STUNDEN-REGEL
+-------------------
+> 48 Stunden: kostenfrei
+24–48 Stunden: 50 %
+< 24 Stunden bzw. Nichterscheinen: 100 %
+
+Die automatische finanzielle Abbuchung ist weiterhin NICHT implementiert.
+Der Worker berechnet und dokumentiert die Stufe; die tatsächliche automatische
+Verrechnung kommt später mit dem Payment-/Mollie-Schritt.
+
+WICHTIG FÜR DEN TEST
+--------------------
+Für die neuen E-Mails und die Kalender-Synchronisation reicht es NICHT,
+nur die HTML-Dateien auf GitHub zu ersetzen.
+
+Auch der aktualisierte
+    cloudflare-worker/worker.js
+muss in Cloudflare deployed werden.
+
+Die vorhandenen Cloudflare-Secrets `RESEND_API_KEY` und `MAIL_FROM`
+werden weiterhin verwendet.
+
+BEIBEHALTEN
+-----------
+- Packages
+- persönlicher Zugang
+- Warenkorb
+- Rechnungslogik / Invoice-Checkout
+- R2-Struktur
+- bestehende BOOKING-KV-Logik
+- GitHub-Bildfallback für lokale Vorschau
+- grüne Verfügbarkeitsdarstellung im normalen Buchungskalender
