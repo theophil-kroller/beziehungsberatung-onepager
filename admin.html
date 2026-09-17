@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Praxisverwaltung | Beziehungsdynamiken</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--terr2:#A9543B;--brown:#2F2623;--muted:#75645C;--line:#E7D2BE;--white:#fff;--green:#547154;--green-bg:#EAF2E8;--orange:#9A641F;--orange-bg:#FFF0D9;--red:#A23D36;--red-bg:#FBE7E4;--grey:#6F6966;--grey-bg:#F2EFEC}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--brown);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}a{color:inherit}
+.top{background:var(--brown);color:var(--cream);padding:10px 20px;text-align:center;font-size:12px;letter-spacing:.08em}
+nav{background:rgba(255,247,237,.97);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;backdrop-filter:blur(8px)}
+.navin{max-width:1260px;margin:auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:850;font-size:20px}.brand img{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;padding:4px;object-fit:contain}.brand small{display:block;font-weight:500;color:var(--muted);font-size:12px;margin-top:4px}
+.navright{display:flex;align-items:center;gap:10px}.quiet{color:var(--muted);font-size:13px}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.btn:disabled{opacity:.5;cursor:default}.primary{background:var(--terr);color:#fff}.secondary{background:var(--sand);color:var(--brown)}.ghost{background:#fff;border:1px solid var(--line);color:var(--brown)}.danger{background:var(--red-bg);border:1px solid #E9BBB6;color:var(--red)}
+main{max-width:1260px;margin:auto;padding:42px 22px 90px}.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--terr2);font-weight:850}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(40px,6vw,62px);line-height:1.03;margin:8px 0 10px}.hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:760px}
+.login-wrap{max-width:620px;margin:70px auto}.login-card,.panel{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:0 18px 55px rgba(47,38,35,.05)}.login-card h1{font-family:Georgia,serif;font-size:42px;margin:8px 0 12px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:7px}.field input{width:100%;border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:#fff;font-size:16px}.login-actions{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}.notice{margin-top:15px;border-radius:13px;padding:12px 14px;font-size:14px;line-height:1.5}.ok{background:var(--green-bg);color:#355237;border:1px solid #BDD2BA}.err{background:var(--red-bg);color:#7B302A;border:1px solid #E9BBB6}
+.hidden{display:none!important}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:30px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;min-width:0}.stat span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.09em}.stat strong{display:block;font-family:Georgia,serif;font-size:31px;margin-top:6px}.stat small{display:block;color:var(--muted);margin-top:3px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:750;cursor:pointer;color:var(--muted)}.tab.active{background:var(--brown);color:#fff;border-color:var(--brown)}
+.panel{padding:24px;margin-top:14px}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px;flex-wrap:wrap}.panel h2{font-family:Georgia,serif;font-size:30px;margin:0}.panel p.intro{margin:5px 0 0;color:var(--muted)}.tools{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.tools input,.tools select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;min-height:42px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}table{width:100%;border-collapse:collapse;min-width:760px;background:#fff}th,td{text-align:left;padding:13px 14px;border-bottom:1px solid #EEE2D7;vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:#FFFBF6;position:sticky;top:0}tbody tr:last-child td{border-bottom:0}.name{font-weight:800}.sub{font-size:12px;color:var(--muted);margin-top:3px}.badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;white-space:nowrap}.paid{background:var(--green-bg);color:var(--green)}.open{background:var(--orange-bg);color:var(--orange)}.overdue{background:var(--red-bg);color:var(--red)}.test,.neutral,.cancelled,.void,.refunded{background:var(--grey-bg);color:var(--grey)}.booked{background:var(--green-bg);color:var(--green)}
+.row-actions{display:flex;gap:7px;flex-wrap:wrap}.mini{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:800;cursor:pointer}.mini.remind{background:var(--red-bg);border-color:#E7B9B5;color:var(--red)}.mini.pay{background:var(--green-bg);border-color:#BDD2BA;color:var(--green)}
+.attention{display:grid;gap:9px}.attention-item{border-left:4px solid var(--terr);background:#FFF9F3;border-radius:12px;padding:13px 14px;display:flex;justify-content:space-between;gap:12px;align-items:center}.attention-item.red{border-left-color:var(--red);background:var(--red-bg)}.attention-item .txt{min-width:0}.attention-item strong{display:block}.attention-item span{font-size:13px;color:var(--muted)}
+.empty{color:var(--muted);padding:22px 4px;text-align:center}
+dialog{border:0;padding:0;border-radius:24px;max-width:760px;width:calc(100% - 30px);box-shadow:0 30px 90px rgba(47,38,35,.22);color:var(--brown)}dialog::backdrop{background:rgba(47,38,35,.38)}.dialog-in{padding:26px}.dialog-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.dialog-head h2{font-family:Georgia,serif;font-size:31px;margin:0}.close{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer}.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}.detail-card{background:var(--cream);border:1px solid var(--line);border-radius:15px;padding:14px}.detail-card h3{font-size:15px;margin:0 0 8px}.detail-card ul{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.55}
+.loading{opacity:.55;pointer-events:none}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-grid{grid-template-columns:1fr}}
+@media(max-width:600px){main{padding:28px 14px 70px}.navin{padding:12px 14px}.brand{font-size:17px}.brand img{width:40px;height:40px}.stats{grid-template-columns:1fr 1fr}.stat{padding:16px}.stat strong{font-size:25px}.panel{padding:17px;border-radius:20px}.quiet{display:none}.login-wrap{margin:36px auto}.login-card{padding:21px}.login-card h1{font-size:36px}}
+</style>
+<script>
+(function(){
+  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
+  document.addEventListener("error",function(ev){
+    const el=ev.target;
+    if(!el||el.tagName!=="IMG"||el.dataset.githubFallback==="1")return;
+    const src=el.getAttribute("src")||"";
+    if(src.startsWith("./public/")||src.startsWith("public/")){el.dataset.githubFallback="1";el.src=RAW+src.replace(/^\.\//,"");}
+  },true);
+})();
+</script>
+</head>
+<body>
+<div class="top">Interne Praxisverwaltung · geschützter Zugang</div>
+<nav><div class="navin">
+  <a class="brand" href="index.html"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><span>Beziehungsdynamiken<small>Praxisverwaltung</small></span></a>
+  <div class="navright"><span class="quiet" id="adminIdentity"></span><button class="btn ghost hidden" id="refreshBtn" type="button">Aktualisieren</button><button class="btn secondary hidden" id="logoutBtn" type="button">Abmelden</button></div>
+</div></nav>
+
+<main>
+<section id="loginView" class="login-wrap">
+  <div class="login-card">
+    <div class="eyebrow">Nur für die Praxisverwaltung</div>
+    <h1>Einloggen ohne Passwort.</h1>
+    <p style="color:var(--muted);line-height:1.65">Gib die für die Praxisverwaltung freigeschaltete E-Mail-Adresse ein. Du bekommst anschließend einen einmalig verwendbaren Login-Link per E-Mail.</p>
+    <form id="loginForm">
+      <div class="field"><label for="loginEmail">E-Mail</label><input id="loginEmail" name="email" type="email" autocomplete="email" placeholder="deine E-Mail-Adresse" required></div>
+      <div class="login-actions"><button class="btn primary" id="loginBtn" type="submit">Login-Link senden</button><span class="sub">15 Minuten gültig</span></div>
+    </form>
+    <div id="loginMsg"></div>
+  </div>
+</section>
+
+<section id="dashboardView" class="hidden">
+  <div class="hero"><div class="eyebrow">Praxis-Cockpit</div><h1>Was ist gerade los?</h1><p>Termine, Kund:innen, Packages und offene Rechnungen an einem Ort. Beratungsinhalte werden hier bewusst nicht gespeichert.</p></div>
+
+  <div class="stats">
+    <div class="stat"><span>Heute</span><strong id="statToday">—</strong><small>Termine</small></div>
+    <div class="stat"><span>Nächste 7 Tage</span><strong id="statWeek">—</strong><small>Termine</small></div>
+    <div class="stat"><span>Aktive Packages</span><strong id="statPackages">—</strong><small>mit offenen Einheiten</small></div>
+    <div class="stat"><span>Offene Forderungen</span><strong id="statOpen">—</strong><small id="statOverdue">—</small></div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="overview" type="button">Übersicht</button>
+    <button class="tab" data-tab="customers" type="button">Kund:innen</button>
+    <button class="tab" data-tab="bookings" type="button">Termine</button>
+    <button class="tab" data-tab="packages" type="button">Packages</button>
+    <button class="tab" data-tab="invoices" type="button">Rechnungen</button>
+  </div>
+
+  <section class="tabpane" id="tab-overview">
+    <div class="panel"><div class="panel-head"><div><h2>Aufmerksamkeit nötig</h2><p class="intro">Nur Dinge, bei denen du tatsächlich etwas tun solltest.</p></div></div><div id="attention" class="attention"></div></div>
+    <div class="panel"><div class="panel-head"><div><h2>Die nächsten Termine</h2><p class="intro">Kommende Buchungen aus deinem Buchungssystem.</p></div></div><div id="nextBookings"></div></div>
+  </section>
+
+  <section class="tabpane hidden" id="tab-customers">
+    <div class="panel"><div class="panel-head"><div><h2>Kund:innen</h2><p class="intro">Administrative Übersicht – keine Beratungsnotizen.</p></div><div class="tools"><input id="customerSearch" type="search" placeholder="Name oder E-Mail"></div></div><div id="customersTable"></div></div>
+  </section>
+
+  <section class="tabpane hidden" id="tab-bookings">
+    <div class="panel"><div class="panel-head"><div><h2>Termine</h2><p class="intro">Gebuchte, vergangene und abgesagte Termine.</p></div><div class="tools"><select id="bookingFilter"><option value="upcoming">Kommende</option><option value="all">Alle</option><option value="past">Vergangene</option><option value="cancelled">Abgesagte</option></select></div></div><div id="bookingsTable"></div></div>
+  </section>
+
+  <section class="tabpane hidden" id="tab-packages">
+    <div class="panel"><div class="panel-head"><div><h2>Packages</h2><p class="intro">Verkaufte Packages nach Kund:in und verbleibenden Einheiten.</p></div></div><div id="packagesTable"></div></div>
+  </section>
+
+  <section class="tabpane hidden" id="tab-invoices">
+    <div class="panel"><div class="panel-head"><div><h2>Rechnungen & Zahlungen</h2><p class="intro">Grün = bezahlt · Orange = offen · Rot = Zahlungsziel überschritten.</p></div><div class="tools"><select id="invoiceFilter"><option value="all">Alle</option><option value="overdue">Überfällig</option><option value="open">Offen</option><option value="paid">Bezahlt</option></select></div></div><div id="invoicesTable"></div></div>
+  </section>
+</section>
+</main>
+
+<dialog id="customerDialog"><div class="dialog-in"><div class="dialog-head"><div><div class="eyebrow">Kund:innenübersicht</div><h2 id="dialogName"></h2><div class="sub" id="dialogEmail"></div></div><button class="close" type="button" id="dialogClose">×</button></div><div class="detail-grid" id="dialogDetails"></div></div></dialog>
+
+<script src="booking-config.js"></script>
+<script>
+(function(){
+  const root=document;
+  const API=(window.BD_BOOKING_CONFIG?.apiBaseUrl||"").replace(/\/$/,"");
+  const SESSION_KEY="bd_admin_session_v1";
+  let session=sessionStorage.getItem(SESSION_KEY)||"";
+  let data=null;
+  const $=s=>root.querySelector(s), $$=s=>[...root.querySelectorAll(s)];
+  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const money=(cents,currency="EUR")=>new Intl.NumberFormat("de-AT",{style:"currency",currency:currency||"EUR"}).format(Number(cents||0)/100);
+  const dt=x=>x?new Intl.DateTimeFormat("de-AT",{timeZone:"Europe/Vienna",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}).format(new Date(x)):"—";
+  const d=x=>{if(!x)return"—";const s=String(x);if(/^\d{4}-\d{2}-\d{2}$/.test(s)){const [y,m,dd]=s.split("-");return `${dd}.${m}.${y}`;}return new Intl.DateTimeFormat("de-AT",{timeZone:"Europe/Vienna",day:"2-digit",month:"2-digit",year:"numeric"}).format(new Date(x));};
+  const now=()=>Date.now();
+
+  async function api(path,opts={}){
+    const headers={...(opts.headers||{})};
+    if(session) headers.Authorization="Bearer "+session;
+    const r=await fetch(API+path,{...opts,headers});
+    const type=r.headers.get("content-type")||"";
+    const body=type.includes("application/json")?await r.json():await r.text();
+    if(r.status===401){session="";sessionStorage.removeItem(SESSION_KEY);showLogin();throw new Error("Sitzung abgelaufen. Bitte erneut einloggen.")}
+    if(!r.ok||body?.ok===false) throw new Error(body?.error||"Die Anfrage konnte nicht verarbeitet werden.");
+    return body;
+  }
+
+  function message(el,text,kind="ok"){el.className="notice "+kind;el.textContent=text}
+  function showLogin(){$("#loginView").classList.remove("hidden");$("#dashboardView").classList.add("hidden");$("#logoutBtn").classList.add("hidden");$("#refreshBtn").classList.add("hidden");$("#adminIdentity").textContent=""}
+  function showDashboard(){$("#loginView").classList.add("hidden");$("#dashboardView").classList.remove("hidden");$("#logoutBtn").classList.remove("hidden");$("#refreshBtn").classList.remove("hidden")}
+
+  $("#loginForm").addEventListener("submit",async e=>{
+    e.preventDefault();const btn=$("#loginBtn"),email=$("#loginEmail").value.trim();btn.disabled=true;btn.textContent="Sende …";
+    try{const r=await fetch(API+"/admin/request-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email})});const x=await r.json();if(!r.ok)throw new Error(x.error||"Login-Link konnte nicht versendet werden.");message($("#loginMsg"),x.message||"Wenn diese Adresse freigeschaltet ist, wurde ein Login-Link versendet.")}catch(err){message($("#loginMsg"),err.message,"err")}finally{btn.disabled=false;btn.textContent="Login-Link senden"}
+  });
+
+  async function consumeMagicLink(){
+    const u=new URL(location.href),token=u.searchParams.get("login");if(!token)return false;
+    history.replaceState({},document.title,location.pathname);
+    try{const r=await fetch(API+"/admin/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});const x=await r.json();if(!r.ok||!x.ok)throw new Error(x.error||"Login-Link ungültig.");session=x.sessionToken;sessionStorage.setItem(SESSION_KEY,session);return true}catch(err){showLogin();message($("#loginMsg"),err.message,"err");return false}
+  }
+
+  $("#logoutBtn").addEventListener("click",async()=>{try{await api("/admin/logout",{method:"POST"})}catch(e){}session="";sessionStorage.removeItem(SESSION_KEY);showLogin()});
+  $("#refreshBtn").addEventListener("click",()=>load());
+  $$(".tab").forEach(btn=>btn.addEventListener("click",()=>{const t=btn.dataset.tab;$$(".tab").forEach(x=>x.classList.toggle("active",x===btn));$$(".tabpane").forEach(x=>x.classList.toggle("hidden",x.id!=="tab-"+t))}));
+
+  async function load(){
+    if(!session){showLogin();return}
+    $("#dashboardView").classList.add("loading");
+    try{data=await api("/admin/dashboard");showDashboard();$("#adminIdentity").textContent=data.admin?.email||"";renderAll()}catch(err){if(session)alert(err.message)}finally{$("#dashboardView").classList.remove("loading")}
+  }
+
+  function renderAll(){
+    const o=data.overview||{};
+    $("#statToday").textContent=o.todayBookings??0;$("#statWeek").textContent=o.next7Bookings??0;$("#statPackages").textContent=o.activePackages??0;
+    $("#statOpen").textContent=money(o.openInvoicesCents||0);$("#statOverdue").textContent=`davon ${money(o.overdueInvoicesCents||0)} überfällig`;
+    renderAttention();renderNext();renderCustomers();renderBookings();renderPackages();renderInvoices()
+  }
+
+  function renderAttention(){
+    const items=[];
+    (data.invoices||[]).filter(x=>x.status==="overdue").forEach(x=>items.push({kind:"red",title:`${x.invoiceNumber} · ${x.customerName}`,text:`${money(x.totalCents,x.currency)} · fällig seit ${d(x.dueDate)}`,action:`<button class="mini remind" data-remind="${x.id}">Erinnerung senden</button>`}));
+    (data.packages||[]).filter(x=>x.remaining===1&&(!x.expiresAt||new Date(x.expiresAt).getTime()>now())).forEach(x=>items.push({kind:"",title:`${x.customerName} · ${x.productName}`,text:"Nur noch 1 Sitzung offen",action:""}));
+    (data.bookings||[]).filter(x=>x.status==="booked"&&x.confirmationEmailSent===false).forEach(x=>items.push({kind:"red",title:`E-Mail nicht versendet · ${x.name}`,text:`Termin ${dt(x.start)}`,action:""}));
+    $("#attention").innerHTML=items.length?items.map(i=>`<div class="attention-item ${i.kind}"><div class="txt"><strong>${esc(i.title)}</strong><span>${esc(i.text)}</span></div>${i.action}</div>`).join(""):`<div class="empty">Aktuell nichts Dringendes. ✓</div>`;
+    bindInvoiceActions()
+  }
+
+  function table(headers,rows){return `<div class="table-wrap"><table><thead><tr>${headers.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`}
+
+  function renderNext(){
+    const rows=(data.bookings||[]).filter(x=>x.status==="booked"&&new Date(x.start).getTime()>=now()).sort((a,b)=>new Date(a.start)-new Date(b.start)).slice(0,8);
+    $("#nextBookings").innerHTML=rows.length?table(["Termin","Kund:in","Art","Ort"],rows.map(x=>`<tr><td><strong>${esc(dt(x.start))}</strong></td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.typeLabel)}</td><td>${esc(x.locationLabel)}</td></tr>`)):`<div class="empty">Keine kommenden Termine.</div>`
+  }
+
+  function customerUniverse(){
+    const map=new Map();
+    const add=(email,name,id=null)=>{const key=String(email||"").trim().toLowerCase();if(!key)return;const x=map.get(key)||{email:key,name:name||email,id};if(name&&!x.name)x.name=name;if(id&&!x.id)x.id=id;map.set(key,x)};
+    (data.customers||[]).forEach(x=>add(x.email,x.name,x.id));(data.bookings||[]).forEach(x=>add(x.email,x.name));(data.packages||[]).forEach(x=>add(x.customerEmail,x.customerName,x.customerId));(data.invoices||[]).forEach(x=>add(x.customerEmail,x.customerName,x.customerId));
+    return [...map.values()].sort((a,b)=>String(a.name).localeCompare(String(b.name),"de"))
+  }
+
+  function renderCustomers(){
+    const query=String($("#customerSearch")?.value||"").trim().toLowerCase(),customers=customerUniverse().filter(x=>!query||`${x.name} ${x.email}`.toLowerCase().includes(query));
+    const rows=customers.map(c=>{
+      const bookings=(data.bookings||[]).filter(x=>String(x.email).toLowerCase()===c.email&&x.status==="booked");
+      const pk=(data.packages||[]).filter(x=>String(x.customerEmail).toLowerCase()===c.email&&x.remaining>0);
+      const inv=(data.invoices||[]).filter(x=>String(x.customerEmail).toLowerCase()===c.email&&(x.status==="open"||x.status==="overdue"));
+      const open=inv.reduce((s,x)=>s+x.totalCents,0),next=bookings.filter(x=>new Date(x.start).getTime()>=now()).sort((a,b)=>new Date(a.start)-new Date(b.start))[0];
+      return `<tr><td><span class="name">${esc(c.name)}</span><div class="sub">${esc(c.email)}</div></td><td>${next?esc(dt(next.start)):"—"}</td><td>${pk.length?pk.map(x=>`${esc(x.productName)} · ${x.remaining}/${x.total}`).join("<br>"):"—"}</td><td>${open?money(open):"—"}</td><td><button class="mini" data-customer="${esc(c.email)}">Details</button></td></tr>`;
+    });
+    $("#customersTable").innerHTML=customers.length?table(["Kund:in","Nächster Termin","Aktive Packages","Offen",""],rows):`<div class="empty">Keine Kund:innen gefunden.</div>`;
+    $$("[data-customer]").forEach(b=>b.addEventListener("click",()=>openCustomer(b.dataset.customer)))
+  }
+  $("#customerSearch").addEventListener("input",()=>data&&renderCustomers());
+
+  function openCustomer(email){
+    const c=customerUniverse().find(x=>x.email===String(email).toLowerCase());if(!c)return;
+    $("#dialogName").textContent=c.name;$("#dialogEmail").textContent=c.email;
+    const bk=(data.bookings||[]).filter(x=>String(x.email).toLowerCase()===c.email).sort((a,b)=>String(b.start).localeCompare(String(a.start)));
+    const pk=(data.packages||[]).filter(x=>String(x.customerEmail).toLowerCase()===c.email);
+    const iv=(data.invoices||[]).filter(x=>String(x.customerEmail).toLowerCase()===c.email);
+    $("#dialogDetails").innerHTML=`
+      <div class="detail-card"><h3>Termine</h3>${bk.length?`<ul>${bk.slice(0,8).map(x=>`<li>${esc(dt(x.start))} · ${esc(x.typeLabel)} · ${x.status==="cancelled"?"abgesagt":"gebucht"}</li>`).join("")}</ul>`:`<div class="sub">Keine Termine</div>`}</div>
+      <div class="detail-card"><h3>Packages</h3>${pk.length?`<ul>${pk.map(x=>`<li>${esc(x.productName)} · ${x.remaining}/${x.total} offen</li>`).join("")}</ul>`:`<div class="sub">Keine Packages</div>`}</div>
+      <div class="detail-card"><h3>Rechnungen</h3>${iv.length?`<ul>${iv.map(x=>`<li>${esc(x.invoiceNumber)} · ${money(x.totalCents,x.currency)} · ${statusLabel(x.status)}</li>`).join("")}</ul>`:`<div class="sub">Keine Rechnungen</div>`}</div>
+      <div class="detail-card"><h3>Hinweis</h3><div class="sub">Dieser Bereich enthält nur organisatorische Daten. Beratungsnotizen gehören bewusst nicht in dieses CRM.</div></div>`;
+    $("#customerDialog").showModal()
+  }
+  $("#dialogClose").addEventListener("click",()=>$("#customerDialog").close());
+
+  function renderBookings(){
+    const filter=$("#bookingFilter").value,t=now();
+    let rows=(data.bookings||[]).slice();
+    if(filter==="upcoming")rows=rows.filter(x=>x.status==="booked"&&new Date(x.start).getTime()>=t);
+    if(filter==="past")rows=rows.filter(x=>x.status==="booked"&&new Date(x.start).getTime()<t);
+    if(filter==="cancelled")rows=rows.filter(x=>x.status==="cancelled");
+    rows.sort((a,b)=>filter==="upcoming"?new Date(a.start)-new Date(b.start):new Date(b.start)-new Date(a.start));
+    $("#bookingsTable").innerHTML=rows.length?table(["Termin","Kund:in","Beratung","Ort","Status"],rows.map(x=>`<tr><td>${esc(dt(x.start))}</td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.typeLabel)}${x.packageName?`<div class="sub">${esc(x.packageName)}</div>`:""}</td><td>${esc(x.locationLabel)}</td><td><span class="badge ${x.status==="cancelled"?"cancelled":"booked"}">${x.status==="cancelled"?"Abgesagt":new Date(x.start).getTime()<t?"Vergangen":"Gebucht"}</span>${x.lastRescheduledAt?`<div class="sub">umgebucht ${d(x.lastRescheduledAt)}</div>`:""}</td></tr>`)):`<div class="empty">Keine Termine in dieser Ansicht.</div>`
+  }
+  $("#bookingFilter").addEventListener("change",()=>data&&renderBookings());
+
+  function renderPackages(){
+    const rows=(data.packages||[]).map(x=>`<tr><td><span class="name">${esc(x.customerName)}</span><div class="sub">${esc(x.customerEmail)}</div></td><td><strong>${esc(x.productName)}</strong><div class="sub">${esc(x.reference||"")}</div></td><td><strong>${x.remaining}/${x.total}</strong></td><td>${x.expiresAt?d(x.expiresAt):"—"}</td><td>${x.purchaseAmountCents===null?"—":money(x.purchaseAmountCents,x.currency)}<div class="sub">${esc(x.purchaseStatus||"")}</div></td></tr>`);
+    $("#packagesTable").innerHTML=rows.length?table(["Kund:in","Package","Offen","Gültig bis","Kauf"],rows):`<div class="empty">Noch keine Packages.</div>`
+  }
+
+  function statusLabel(s){return ({paid:"Bezahlt",open:"Offen",overdue:"Überfällig",test:"Test",void:"Storniert",cancelled:"Storniert",refunded:"Erstattet"})[s]||s}
+  function renderInvoices(){
+    const filter=$("#invoiceFilter").value;let rows=(data.invoices||[]).filter(x=>filter==="all"||x.status===filter);
+    $("#invoicesTable").innerHTML=rows.length?table(["Rechnung","Kund:in","Betrag","Fällig","Status","Aktion"],rows.map(x=>{
+      let actions=`<button class="mini" data-pdf="${x.id}">PDF</button>`;
+      if(x.status==="open"||x.status==="overdue")actions+=`<button class="mini pay" data-paid="${x.id}">Bezahlt markieren</button>`;
+      if(x.status==="overdue")actions+=`<button class="mini remind" data-remind="${x.id}">Erinnerung senden</button>`;
+      if(x.status==="paid")actions+=`<button class="mini" data-open="${x.id}">Wieder öffnen</button>`;
+      const rem=x.reminderCount?`<div class="sub">${x.reminderCount} Erinnerung${x.reminderCount===1?"":"en"} · zuletzt ${dt(x.lastReminderAt)}</div>`:"";
+      return `<tr><td><span class="name">${esc(x.invoiceNumber||"—")}</span><div class="sub">${d(x.invoiceDate)}</div></td><td>${esc(x.customerName)}<div class="sub">${esc(x.customerEmail)}</div></td><td><strong>${money(x.totalCents,x.currency)}</strong></td><td>${d(x.dueDate)}</td><td><span class="badge ${esc(x.status)}">${esc(statusLabel(x.status))}</span>${x.paidAt?`<div class="sub">${dt(x.paidAt)}</div>`:""}${rem}</td><td><div class="row-actions">${actions}</div></td></tr>`
+    })):`<div class="empty">Keine Rechnungen in dieser Ansicht.</div>`;
+    bindInvoiceActions()
+  }
+  $("#invoiceFilter").addEventListener("change",()=>data&&renderInvoices());
+
+  function bindInvoiceActions(){
+    $$("[data-remind]").forEach(b=>{if(b.dataset.bound)return;b.dataset.bound="1";b.addEventListener("click",async()=>{if(!confirm("Zahlungserinnerung jetzt an die Kundin bzw. den Kunden senden?"))return;b.disabled=true;try{await api("/admin/invoice/remind",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({invoiceId:Number(b.dataset.remind)})});await load()}catch(e){alert(e.message)}finally{b.disabled=false}})});
+    $$("[data-paid]").forEach(b=>{if(b.dataset.bound)return;b.dataset.bound="1";b.addEventListener("click",async()=>{b.disabled=true;try{await api("/admin/invoice/mark-paid",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({invoiceId:Number(b.dataset.paid),paid:true})});await load()}catch(e){alert(e.message)}finally{b.disabled=false}})});
+    $$("[data-open]").forEach(b=>{if(b.dataset.bound)return;b.dataset.bound="1";b.addEventListener("click",async()=>{if(!confirm("Diese Rechnung wieder als offen markieren?"))return;b.disabled=true;try{await api("/admin/invoice/mark-paid",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({invoiceId:Number(b.dataset.open),paid:false})});await load()}catch(e){alert(e.message)}finally{b.disabled=false}})});
+    $$("[data-pdf]").forEach(b=>{if(b.dataset.bound)return;b.dataset.bound="1";b.addEventListener("click",async()=>{b.disabled=true;try{const r=await fetch(API+"/admin/invoice-pdf?id="+encodeURIComponent(b.dataset.pdf),{headers:{Authorization:"Bearer "+session}});if(!r.ok)throw new Error("PDF konnte nicht geladen werden.");const blob=await r.blob(),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Rechnung.pdf";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}catch(e){alert(e.message)}finally{b.disabled=false}})})
+  }
+
+  (async()=>{
+    if(!API){showLogin();message($("#loginMsg"),"Die API-Adresse ist noch nicht konfiguriert.","err");return}
+    const magic=await consumeMagicLink();
+    if(session||magic)await load();else showLogin()
+  })();
+})();
+</script>
+</body></html>

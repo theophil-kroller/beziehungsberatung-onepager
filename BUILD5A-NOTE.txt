@@ -1,0 +1,32 @@
+BUILD 5a – Admin-Link + Admin-Seite repariert
+================================================
+
+WICHTIGER FUND:
+Die aktuell auf GitHub main liegende Datei `admin.html` ist leer (0 Byte).
+Genau deshalb erscheint unter https://beziehungsdynamiken.at/admin.html nur eine weiße Seite.
+
+Dieser Build enthält wieder die vollständige Admin-/CRM-Seite aus Build 5.
+
+Neu:
+- kleiner, unauffälliger "Admin"-Link ganz unten im Footer von index.html
+- derselbe Link in en.html
+- Admin-Login zeigt sichtbar:
+  * E-Mail-Feld
+  * Button "Login-Link senden"
+  * Hinweis auf den passwortlosen Magic-Link
+- Admin-Seite bleibt nicht in der Hauptnavigation verlinkt
+
+Basis:
+`index.html` und `en.html` wurden gegen die aktuellen GitHub-main-Versionen geprüft
+und waren bytegenau identisch mit dem aktuellen Repository-Stand, bevor der Admin-Link
+eingefügt wurde.
+
+Für einen funktionierenden Login müssen außerdem die Build-5-Backend-Schritte aktiv sein:
+- aktualisierter Cloudflare Worker aus `cloudflare-worker/worker.js`
+- ADMIN_EMAIL in Cloudflare
+- D1-Migration `database/migrations/001_admin_crm.sql`
+- RESEND_API_KEY und MAIL_FROM
+
+Sicherheit:
+Der sichtbare Admin-Link ist kein Sicherheitsmechanismus. Die Zugriffskontrolle erfolgt
+serverseitig über die freigeschaltete Admin-E-Mail und den einmal verwendbaren Login-Link.

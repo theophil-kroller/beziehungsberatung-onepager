@@ -1,0 +1,163 @@
+BUILD 5 – Internes CRM / Praxisverwaltung
+==========================================
+
+Basis
+-----
+Build 4 (Booking-Feedback, E-Mails, Google-Calendar-Sync und Doppelwelle).
+
+Neu: /admin.html
+----------------
+Es gibt jetzt eine interne Praxisverwaltung unter:
+
+    https://www.beziehungsdynamiken.at/admin.html
+
+Sie ist bewusst NICHT in der öffentlichen Navigation verlinkt und hat
+noindex/nofollow gesetzt.
+
+Login
+-----
+Kein selbstgebautes Passwort.
+
+Ablauf:
+1. Auf admin.html die freigeschaltete Admin-E-Mail eingeben.
+2. Resend schickt einen einmalig verwendbaren Login-Link.
+3. Der Link ist 15 Minuten gültig.
+4. Danach entsteht eine 12-Stunden-Admin-Sitzung.
+5. Session-Token liegen nur im sessionStorage des Browsers und werden in D1
+   ausschließlich gehasht gespeichert.
+
+Cloudflare-Variable/Secret:
+    ADMIN_EMAIL = deine E-Mail für die Praxisverwaltung
+
+Optional:
+    SITE_URL = https://www.beziehungsdynamiken.at
+
+Die bestehenden Secrets RESEND_API_KEY und MAIL_FROM werden weiterverwendet.
+
+Dashboard
+---------
+Enthalten sind:
+
+ÜBERSICHT
+- Termine heute
+- Termine in den nächsten 7 Tagen
+- aktive Packages
+- Summe offener Forderungen
+- davon überfällige Forderungen
+- Bereich "Aufmerksamkeit nötig"
+
+KUND:INNEN
+- Name / E-Mail
+- nächster Termin
+- aktive Packages
+- offene Rechnungsbeträge
+- Detailansicht pro Kund:in mit Terminen, Packages und Rechnungen
+- ausdrücklich KEINE Beratungsnotizen
+
+TERMINE
+- kommende
+- vergangene
+- abgesagte
+- Kennzeichnung umgebuchter Termine
+- Daten kommen aus dem vorhandenen BOOKINGS-KV
+
+PACKAGES
+- Kund:in
+- Package
+- Package-Referenz
+- verbrauchte/offene Einheiten
+- Gültigkeit
+- Kaufbetrag / Kaufstatus
+
+RECHNUNGEN & ZAHLUNGEN
+Statusfarben:
+- GRÜN = bezahlt
+- ORANGE = offen, Zahlungsziel noch nicht überschritten
+- ROT = Zahlungsziel überschritten
+- GRAU = Test / storniert / sonstiger neutraler Status
+
+Das vorhandene Zahlungsziel der Rechnungslogik bleibt 14 Tage.
+
+Aktionen:
+- Rechnung als bezahlt markieren
+- bezahlte Rechnung wieder öffnen, falls versehentlich markiert
+- PDF direkt aus dem Admin-Dashboard herunterladen
+- bei überfälliger Rechnung: "Erinnerung senden"
+
+Zahlungserinnerung
+------------------
+Der Button erscheint nur bei überfälligen Rechnungen.
+
+Die E-Mail enthält:
+- Rechnungsnummer
+- Betrag
+- ursprüngliches Fälligkeitsdatum
+- Bankverbindung / Verwendungszweck, sofern in Cloudflare konfiguriert
+- Hinweis, dass die Nachricht ignoriert werden kann, wenn bereits bezahlt
+
+Nach erfolgreichem Versand speichert D1:
+- Zeitpunkt der letzten Erinnerung
+- Anzahl der Erinnerungen
+
+Zum Schutz vor versehentlichem Doppelversand ist serverseitig eine
+24-Stunden-Sperre zwischen zwei Erinnerungen für dieselbe Rechnung eingebaut.
+
+Zahlungsstatus
+--------------
+Noch gibt es keinen Bank- oder Mollie-Abgleich.
+
+Darum wird "bezahlt" in dieser Version manuell im Dashboard markiert.
+Später kann Mollie denselben Status automatisch setzen.
+
+Datenbank-Setup
+---------------
+Neu ist:
+
+    database/migrations/001_admin_crm.sql
+
+Dieses Skript ist idempotent und kann auf der bestehenden D1-Datenbank
+ausgeführt werden. Es legt nur neue Admin-Tabellen an und verändert keine
+bestehenden Rechnungs- oder Package-Daten.
+
+Neue Tabellen:
+- invoice_admin_meta
+- admin_login_links
+- admin_sessions
+- admin_audit_log
+
+database/schema.sql wurde ebenfalls für neue Installationen ergänzt.
+
+Worker
+------
+cloudflare-worker/worker.js enthält neue geschützte Endpunkte:
+
+POST /admin/request-login
+POST /admin/session
+POST /admin/logout
+GET  /admin/dashboard
+POST /admin/invoice/mark-paid
+POST /admin/invoice/remind
+GET  /admin/invoice-pdf
+
+Zusätzlich werden neue Buchungen im vorhandenen BOOKINGS-KV um einige
+administrative Statusinformationen ergänzt (z.B. createdAt und ob die
+Buchungsbestätigung erfolgreich versendet wurde).
+
+WICHTIG FÜR DIE INBETRIEBNAHME
+-------------------------------
+1. admin.html auf GitHub Pages hochladen.
+2. booking-config.js bleibt unverändert und zeigt weiterhin auf denselben Worker.
+3. database/migrations/001_admin_crm.sql auf der bestehenden D1-DB ausführen.
+4. ADMIN_EMAIL im Cloudflare Worker als Variable/Secret setzen.
+5. den aktualisierten cloudflare-worker/worker.js deployen.
+6. admin.html im Browser öffnen und Login-Link anfordern.
+
+Ohne Schritt 3–5 funktioniert der Admin-Bereich noch nicht.
+
+Datenschutz
+-----------
+Dieses CRM ist bewusst als ADMINISTRATIVES CRM gebaut:
+Termine, Kundendaten, Packages, Rechnungen, Zahlstatus und Erinnerungsstatus.
+
+Keine Gesprächsinhalte, Diagnosen, intime Notizen oder Beratungsprotokolle
+sollten hier gespeichert werden.
