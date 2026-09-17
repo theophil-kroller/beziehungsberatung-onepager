@@ -25,6 +25,20 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
 @media(max-width:900px){.grid-three{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.grid-two,.grid-three{grid-template-columns:1fr}.back{display:none}main{padding-top:44px}}
 </style>
+<script>
+(function(){
+  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
+  document.addEventListener("error",function(ev){
+    const el=ev.target;
+    if(!el || el.tagName!=="IMG" || el.dataset.githubFallback==="1") return;
+    const src=el.getAttribute("src")||"";
+    if(src.startsWith("./public/") || src.startsWith("public/")){
+      el.dataset.githubFallback="1";
+      el.src=RAW+src.replace(/^\.\//,"");
+    }
+  },true);
+})();
+</script>
 </head>
 <body>
 <nav><div class="navin">

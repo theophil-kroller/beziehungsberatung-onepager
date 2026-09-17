@@ -9,6 +9,12 @@ window.BD_BOOKING_CONFIG = {
   maxDaysAhead: 60,
   bufferMinutes: 15,
 
+
+  cancellationPolicy: {
+    freeUntilHours: 48,
+    halfFeeUntilHours: 24
+  },
+
   appointmentTypes: {
     individual: {
       labelDe: "Einzelberatung",

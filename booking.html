@@ -5,7 +5,7 @@
 <title>Termin buchen | Beziehungsdynamiken</title>
 <meta name="robots" content="noindex">
 <style>
-:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--terr2:#A9543B;--brown:#2F2623;--muted:#5F504A;--line:#E8D2BE}
+:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--terr2:#A9543B;--brown:#2F2623;--muted:#5F504A;--line:#E8D2BE;--sage:#EAF2E8;--sage-line:#8EA98B;--sage-dark:#4F6B50}
 *{box-sizing:border-box}body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cream);color:var(--brown)}
 a{color:inherit}.top{background:var(--brown);color:var(--cream);font-size:12px;letter-spacing:.08em;text-align:center;padding:10px 16px}
 nav{position:sticky;top:0;z-index:10;background:rgba(255,247,237,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -42,9 +42,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 .weekday{text-align:center;color:var(--muted);font-size:12px;font-weight:800;padding:3px 0 5px}
 .day{min-width:0;min-height:48px;aspect-ratio:1/1;border:1px solid transparent;background:transparent;border-radius:13px;padding:0;display:flex;align-items:center;justify-content:center;color:#b9ada7;font-weight:700;cursor:default}
 .day b,.day span{display:inline;margin:0;font-size:14px;color:inherit}
-.day.available{background:#fff;border-color:var(--line);color:var(--brown);cursor:pointer}
-.day.available:hover{border-color:var(--terr)}
-.day.selected{background:var(--terr);border-color:var(--terr);color:#fff}
+.day.available{background:var(--sage);border-color:var(--sage-line);color:var(--sage-dark);cursor:pointer;transition:.18s ease}
+.day.available:hover{background:#DFEBDD;border-color:#718E70;transform:translateY(-1px)}
+.day.selected{background:var(--terr);border-color:var(--terr);color:#fff;box-shadow:0 7px 16px rgba(201,107,75,.18)}
 .day.today{box-shadow:inset 0 0 0 1px var(--terr)}
 .day.blank{visibility:hidden}
 .slot-help{margin:12px 0 0;color:var(--muted);font-size:13px}
@@ -64,7 +64,30 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 .cart-count{position:absolute;right:-5px;top:-6px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--terr);color:#fff;font-size:11px;font-weight:800;line-height:19px;text-align:center}
 .nav-actions{display:flex;align-items:center;gap:10px}
 
+
+.booking-legend{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:12px 0 0;color:var(--muted);font-size:13px}
+.booking-legend span{display:flex;align-items:center;gap:7px}.legend-swatch{width:17px;height:17px;border-radius:6px;border:1px solid var(--line);background:#FAF7F4;display:inline-block}
+.legend-swatch.free{background:var(--sage);border-color:var(--sage-line)}.legend-swatch.chosen{background:var(--terr);border-color:var(--terr)}
+.booking-policy{margin-top:18px;border:1px solid #DFC9B9;background:#FFF9F4;border-radius:18px;padding:17px 18px;color:var(--muted);font-size:13px;line-height:1.58}
+.booking-policy strong{display:block;color:var(--brown);font-size:14px;margin-bottom:5px}.booking-policy ul{margin:6px 0 0;padding-left:19px}
+.booking-wave{height:46px;overflow:hidden;background:#fff}.booking-wave svg{display:block;width:100%;height:100%}
+.summary-policy{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;line-height:1.55;color:rgba(255,255,255,.67)}
+
 </style>
+<script>
+(function(){
+  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
+  document.addEventListener("error",function(ev){
+    const el=ev.target;
+    if(!el || el.tagName!=="IMG" || el.dataset.githubFallback==="1") return;
+    const src=el.getAttribute("src")||"";
+    if(src.startsWith("./public/") || src.startsWith("public/")){
+      el.dataset.githubFallback="1";
+      el.src=RAW+src.replace(/^\.\//,"");
+    }
+  },true);
+})();
+</script>
 </head>
 <body>
 <div class="top">Praxis für Beziehungsdynamiken · Graz & online</div>
@@ -102,7 +125,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
   <div class="weekday">Mo</div><div class="weekday">Di</div><div class="weekday">Mi</div><div class="weekday">Do</div><div class="weekday">Fr</div><div class="weekday">Sa</div><div class="weekday">So</div>
 </div>
 <div class="days" id="days"></div>
-<p class="slot-help">Ausgegraute Tage haben aktuell keinen freien Termin.</p>
+<div class="booking-legend" aria-label="Kalenderlegende"><span><i class="legend-swatch free"></i> frei</span><span><i class="legend-swatch"></i> nicht verfügbar</span><span><i class="legend-swatch chosen"></i> ausgewählt</span></div>
+<p class="slot-help">Grün markierte Tage haben mindestens einen buchbaren Termin.</p>
 <p id="slotMsg" style="color:#5F504A;font-size:14px;margin:16px 0 0"></p>
 <div class="slots" id="slots"></div>
 <div class="actions"><button class="btn secondary" id="back3">Zurück</button><button class="btn primary" id="continue3" disabled>Weiter</button></div></div>
@@ -111,7 +135,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <form id="bookingForm" class="form">
 <div class="field"><label>Name</label><input id="customerName" name="name" autocomplete="name" required></div>
 <div class="field"><label>E-Mail</label><input id="customerEmail" name="email" type="email" autocomplete="email" required></div>
-<label class="check"><input type="checkbox" required><span>Ich stimme zu, dass meine Angaben zur Terminorganisation verarbeitet werden. Es werden hier keine Beratungsinhalte abgefragt.</span></label>
+<div class="booking-policy">
+<strong>Absagen &amp; Umbuchen</strong>
+<ul><li>mehr als 48 Stunden vorher: kostenfrei</li><li>24–48 Stunden vorher: 50 % des Honorars</li><li>weniger als 24 Stunden vorher oder Nichterscheinen: 100 % des Honorars</li></ul>
+Die gleichen Fristen gelten für Umbuchungen.
+</div>
+<label class="check"><input type="checkbox" required><span>Ich stimme der Verarbeitung meiner Angaben zur Terminorganisation und den oben angeführten Absage- und Umbuchungsbedingungen zu. Es werden hier keine Beratungsinhalte abgefragt.</span></label>
 <div id="formMsg"></div>
 <div class="actions"><button type="button" class="btn secondary" id="back4">Zurück</button><button class="btn primary" id="submitBtn" type="submit">Termin buchen</button></div>
 </form></div>
@@ -122,12 +151,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <div class="sumrow"><span>Ort</span><b id="sLoc">—</b></div>
 <div class="sumrow"><span>Datum</span><b id="sDate">—</b></div>
 <div class="sumrow"><span>Uhrzeit</span><b id="sTime">—</b></div>
-<p class="hint"></p>
+<div class="summary-policy">Bis 48 Stunden vorher kostenfrei. 24–48 Stunden: 50 %. Unter 24 Stunden bzw. Nichterscheinen: 100 %.</div>
 </aside>
 </div>
 </main>
+<div class="booking-wave" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,27 C260,45 500,10 790,25 C1080,40 1250,42 1440,22 L1440,60 L0,60 Z" fill="#F8E7DE"></path></svg></div>
 <footer>© 2026 Beziehungsdynamiken / Theophil Kroller</footer>
-<script src="booking-config.js?v=20260916-live2"></script>
+<script src="booking-config.js?v=20260917-build3"></script>
 <script>
 const C = window.BD_BOOKING_CONFIG;
 const L = document.documentElement.lang === "en" ? "en" : "de";

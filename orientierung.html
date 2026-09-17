@@ -20,6 +20,20 @@ body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe
 .wa-premium{position:fixed;right:20px;bottom:20px;z-index:80;height:56px;width:56px;border-radius:18px;background:var(--brown);color:#fff;box-shadow:0 13px 34px rgba(47,38,35,.24);overflow:hidden;display:flex;align-items:center;transition:width .35s ease,background .25s ease}
 .wa-premium:hover{width:238px;background:var(--terr)}.wa-icon{width:56px;min-width:56px;height:56px;display:flex;align-items:center;justify-content:center}.wa-label{white-space:nowrap;font-weight:750;font-size:14px;padding-right:18px}
 </style>
+<script>
+(function(){
+  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
+  document.addEventListener("error",function(ev){
+    const el=ev.target;
+    if(!el || el.tagName!=="IMG" || el.dataset.githubFallback==="1") return;
+    const src=el.getAttribute("src")||"";
+    if(src.startsWith("./public/") || src.startsWith("public/")){
+      el.dataset.githubFallback="1";
+      el.src=RAW+src.replace(/^\.\//,"");
+    }
+  },true);
+})();
+</script>
 </head>
 <body>
 <div class="topbar bg-[#2F2623] text-[#FFF7ED] border-b border-white/10" role="note">

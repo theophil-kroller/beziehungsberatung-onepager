@@ -1,0 +1,62 @@
+BUILD 3 – Basis: LIVE-ZIP phase13f (00:30)
+=============================================
+
+Dieser Build wurde NICHT aus einer älteren Arbeits-ZIP erzeugt, sondern direkt aus der von dir
+hochgeladenen Live-Version:
+beziehungsdynamiken_phase13f_tested_invoice_header_fix(1).zip
+
+Dadurch bleiben die darin vorhandenen Phase-13f-Funktionen erhalten, u.a.:
+- aktuelle Startseite inkl. zwei Links bei Beziehungsvielfalt
+- Packages / persönlicher Zugang
+- Warenkorb / Invoice-Checkout
+- R2-Materialstruktur
+- bestehende Google-Calendar-Buchungslogik
+- bestehende BOOKING-KV-Verwaltungslinks
+- Invoice/Header-Fixes aus phase13f
+
+NEU IN BUILD 3
+--------------
+1. Startseite DE + EN
+   - Resonanzsektion "Vielleicht erkennst du dich wieder" vor dem Angebot
+   - sechs konkrete Beziehungssituationen
+   - zwei zurückhaltende organische/geschwungene Section-Divider
+
+2. Booking DE + EN
+   - buchbare Tage sanft grün hinterlegt
+   - ausgewählter Tag weiterhin Terracotta
+   - Legende frei / nicht verfügbar / ausgewählt
+   - geschwungener visueller Abschluss
+   - Storno-/Umbuchungsbedingungen sichtbar vor der Buchung
+   - Zustimmungstext um diese Bedingungen ergänzt
+
+3. Terminverwaltung
+   - vorhandene termin.html wurde weiterverwendet, nicht ersetzt durch ein Fremdsystem
+   - aktuelle Gebührenstufe wird angezeigt
+   - Umbuchen und Absagen bleiben über persönlichen Link möglich
+   - 48/24-Regel wird im UI berücksichtigt
+
+4. Worker
+   - basiert auf dem vollständigen phase13f-worker.js (ca. 82 KB), inklusive Package-/Invoice-Funktionen
+   - /manage liefert zusätzlich chargePercent
+   - /cancel und /reschedule unterstützen die Staffelung:
+       >48h: 0 %
+       24–48h: 50 %
+       <24h: 100 %
+   - bei kostenpflichtiger Änderung ist eine ausdrückliche Bestätigung nötig
+   - stornierte Buchungen werden 180 Tage als "cancelled:<token>" im vorhandenen BOOKINGS-KV
+     hinterlegt, damit die anzuwendende Stufe nicht verloren geht
+   - bei Package-Terminen wird ein Credit zurückgegeben; eine etwaige kurzfristige
+     Stornogebühr bleibt separat zu verrechnen
+   - Bestätigungsmail enthält die Storno-/Umbuchungsregel
+
+WICHTIG
+-------
+Die Logik berechnet und dokumentiert die Stornogebühr, zieht aber noch NICHT automatisch Geld ein.
+Das ist bewusst so. Automatische Verrechnung gehört später in den Payment-/Mollie-Schritt.
+
+Vor produktiver Nutzung der Gebührenregel sollte die endgültige Formulierung der
+Buchungsbedingungen/AGB für Österreich rechtlich geprüft werden.
+
+Das besprochene "Beziehungs-Momentaufnahme"-Quiz ist in Build 3 bewusst NICHT enthalten.
+Dafür sollten wir zuerst das eigene inhaltliche Modell (Dimensionen, Fragen, Ergebnislogik)
+entwickeln; es ist eher für den späteren Member-Bereich gedacht.

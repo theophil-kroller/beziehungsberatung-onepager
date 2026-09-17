@@ -1,0 +1,18 @@
+PHASE 13F - INVOICE LAYOUT + HEADER/LINK CLEANUP
+
+Verified changes:
+- Invoice logo moved upward and enlarged/aligned more cleanly.
+- Payment details are fixed in the lower-left area, horizontally aligned with the QR payment card on the right.
+- QR code is grouped inside a dedicated payment card rather than floating alone.
+- QR code was rendered and successfully decoded as a valid EPC/SEPA payment payload.
+- relationship-diversity.html uses booking-en.html for all booking CTAs.
+- No app.cal.eu / Calendly links remain in the HTML files included in this package.
+- Black practice header wording has been standardized:
+  DE: Praxis fuer Beziehungsdynamiken | Einzel · Paar · vielfaeltige Beziehungen | Graz & online
+  EN: Practice for Relationship Dynamics | Individual · couples · diverse relationships | Graz & online
+- booking-en.html restored and verified after the prior intermediate build issue.
+
+Deployment:
+1. Cloudflare: deploy cloudflare-worker/worker.js
+2. GitHub Pages: replace the HTML files from this package as needed (recommended: use the full package so header/link cleanup stays consistent).
+3. No new D1 migration is required for Phase 13F.

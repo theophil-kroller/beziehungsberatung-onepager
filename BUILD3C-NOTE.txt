@@ -1,0 +1,29 @@
+BUILD 3c – Wellenkante korrigiert
+====================================
+
+Basis: Build 3b.
+
+Änderung:
+Die subtile Welle zwischen dem beigefarbenen Orientierungsbereich und dem weißen
+Angebotsbereich wurde umgedreht.
+
+Vorher:
+- Weiß lag oberhalb der Kurve
+- Beige lag unterhalb der Kurve
+- dadurch wirkte die Welle wie ein separates Deko-Band
+
+Jetzt:
+- der beigefarbene Bereich läuft direkt in die Welle hinein
+- seine Unterkante endet organisch/geschwungen
+- unmittelbar darunter beginnt der weiße Angebotsbereich
+- kein separates beigefarbenes Band mehr
+
+Die Änderung wurde in index.html und en.html vorgenommen.
+
+Unverändert enthalten:
+- kompakte Resonanzbeispiele im Orientierungsbereich
+- grüne buchbare Tage
+- 48/24h Storno-/Umbuchungsregel
+- bestehende Umbuchungslogik in termin.html + Worker
+- Package-, Warenkorb- und Invoice-Funktionen
+- GitHub-Fallback für lokal fehlende Bilder

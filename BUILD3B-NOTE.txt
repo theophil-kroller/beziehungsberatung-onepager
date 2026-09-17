@@ -1,0 +1,26 @@
+BUILD 3b – kompakter + lokale Bild-Fallbacks
+===============================================
+
+Basis: Build 3 aus deiner Live-ZIP phase13f.
+
+Änderungen:
+- separate große Resonanzsektion entfernt
+- die 6 Beispiel-Situationen direkt in den bestehenden Orientierungsimpuls integriert
+- dadurch deutlich weniger Seitenhöhe und weniger kognitive Überladung
+- nur noch eine kleine, subtile geschwungene Linie zwischen Orientierung und Angebot
+- die dominante terracotta Welle vor dem Kontaktbereich entfernt
+- Booking-Welle auf 46 px reduziert und flacher gezeichnet
+- buchbare Tage bleiben sanft grün / Auswahl Terracotta
+- Storno-/Umbuchungslogik aus Build 3 bleibt erhalten
+
+Lokale Vorschau:
+Die hochgeladene Live-ZIP enthielt nur einen kleinen Teil der /public-Bilddateien.
+Darum haben die lokalen HTML-Dateien jetzt einen automatischen Fallback:
+Wenn ./public/<bild> lokal fehlt, wird dasselbe Asset von deinem öffentlichen GitHub-main
+über raw.githubusercontent.com geladen.
+
+Dadurch sollten Logo, Portraits, Wegweiser usw. bei lokaler Vorschau korrekt erscheinen,
+solange eine Internetverbindung besteht. Auf der Live-Seite werden weiterhin zuerst die
+normalen lokalen ./public/-Assets verwendet.
+
+Keine bestehende Startseitenfunktion (inkl. der zwei Links bei Beziehungsvielfalt) wurde entfernt.

@@ -40,6 +40,20 @@
   .nav-scroll::-webkit-scrollbar-thumb { background: #E8D2BE; border-radius: 999px; }
 
   </style>
+<script>
+(function(){
+  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
+  document.addEventListener("error",function(ev){
+    const el=ev.target;
+    if(!el || el.tagName!=="IMG" || el.dataset.githubFallback==="1") return;
+    const src=el.getAttribute("src")||"";
+    if(src.startsWith("./public/") || src.startsWith("public/")){
+      el.dataset.githubFallback="1";
+      el.src=RAW+src.replace(/^\.\//,"");
+    }
+  },true);
+})();
+</script>
 </head>
 <body class="bg-[#FFF7ED] text-[#2F2623]">
 <div aria-label="Practice information" class="bg-[#2F2623] text-[#FFF7ED] border-b border-white/10" role="note"><div class="max-w-7xl mx-auto px-5 h-9 flex items-center justify-center"><span class="sm:hidden text-[11px] font-medium tracking-[.08em]">Practice · Graz &amp; online</span><div class="hidden sm:flex items-center justify-center gap-3 whitespace-nowrap text-[11px] md:text-xs"><span class="uppercase tracking-[.18em] font-semibold text-[#F5E6D3]">Practice for Relationship Dynamics</span><span aria-hidden="true" class="w-5 h-px bg-[#C96B4B] -rotate-2"></span><span class="text-white/70 tracking-[.04em]">Individual · couples · diverse relationships</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-[#C96B4B]"></span><span class="uppercase tracking-[.16em] font-semibold text-[#F5E6D3]">Graz &amp; online</span></div></div></div>

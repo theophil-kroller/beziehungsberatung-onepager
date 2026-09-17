@@ -1,16 +1,30 @@
 <!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Termin verwalten | Beziehungsdynamiken</title>
 <style>
-:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--brown:#2F2623;--muted:#5F504A;--line:#E8D2BE}
+:root{--cream:#FFF7ED;--sand:#F5E6D3;--terr:#C96B4B;--brown:#2F2623;--muted:#5F504A;--line:#E8D2BE;--sage:#EAF2E8;--sage-line:#8EA98B;--sage-dark:#4F6B50}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--cream);color:var(--brown)}
 main{max-width:760px;margin:auto;padding:56px 20px}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 18px 55px rgba(47,38,35,.06)}
 h1{font-family:Georgia,serif;font-size:42px;margin:0 0 14px}.muted{color:var(--muted);line-height:1.6}.info{background:var(--sand);border-radius:16px;padding:16px 18px;margin:22px 0;line-height:1.6}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;cursor:pointer}.primary{background:var(--terr);color:#fff}.danger{background:#fff0ef;color:#7b2f28;border:1px solid #e9c1bd}
-.days{display:flex;gap:9px;overflow-x:auto;margin:20px 0}.day{min-width:94px;border:1px solid var(--line);background:var(--cream);border-radius:16px;padding:11px;cursor:pointer}.day.selected{border-color:var(--terr);background:#fff}
+.days{display:flex;gap:9px;overflow-x:auto;margin:20px 0}.day{min-width:94px;border:1px solid var(--sage-line);background:var(--sage);color:var(--sage-dark);border-radius:16px;padding:11px;cursor:pointer}.day.selected{border-color:var(--terr);background:var(--terr);color:#fff}
 .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.slot{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;cursor:pointer;font-weight:700}
 .notice{border-radius:14px;padding:12px 14px;margin:14px 0;font-size:14px}.ok{background:#eaf8ef;border:1px solid #bfe2ca;color:#244b31}.err{background:#fff0ef;border:1px solid #e9c1bd;color:#7b2f28}
 @media(max-width:650px){.slots{grid-template-columns:repeat(2,1fr)}h1{font-size:34px}.card{padding:22px}}
-</style></head><body><main><div class="card"><h1>Deinen Termin verwalten</h1><p class="muted">Hier kannst du deinen Termin bis 24 Stunden vorher verschieben oder absagen.</p>
-<div id="status">Lade Termin …</div><div id="content" hidden><div class="info" id="info"></div><div class="actions"><button class="btn primary" id="rescheduleBtn">Termin verschieben</button><button class="btn danger" id="cancelBtn">Termin absagen</button></div>
+</style><script>
+(function(){
+  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
+  document.addEventListener("error",function(ev){
+    const el=ev.target;
+    if(!el || el.tagName!=="IMG" || el.dataset.githubFallback==="1") return;
+    const src=el.getAttribute("src")||"";
+    if(src.startsWith("./public/") || src.startsWith("public/")){
+      el.dataset.githubFallback="1";
+      el.src=RAW+src.replace(/^\.\//,"");
+    }
+  },true);
+})();
+</script>
+</head><body><main><div class="card"><h1>Deinen Termin verwalten</h1><p class="muted">Hier kannst du deinen Termin verschieben oder absagen. Je nach Zeitpunkt können gemäß deiner Buchungsbedingungen Kosten entstehen.</p>
+<div id="status">Lade Termin …</div><div id="content" hidden><div class="info" id="info"></div><div class="info" id="policyInfo"></div><div class="actions"><button class="btn primary" id="rescheduleBtn">Termin verschieben</button><button class="btn danger" id="cancelBtn">Termin absagen</button></div>
 <div id="reschedule" hidden><h2 style="margin-top:30px">Neuen Termin wählen</h2><div class="days" id="days"></div><div class="slots" id="slots"></div><div id="msg"></div></div></div></div></main>
 <script>
 const API="https://beziehungsdynamiken-booking.theophil-kroller.workers.dev",TZ="Europe/Vienna";
@@ -18,15 +32,33 @@ const token=new URLSearchParams(location.search).get("token");let booking=null;
 const $=s=>document.querySelector(s);
 const fmtDate=iso=>new Intl.DateTimeFormat("de-AT",{timeZone:TZ,weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(new Date(iso));
 const fmtTime=iso=>new Intl.DateTimeFormat("de-AT",{timeZone:TZ,hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(iso));
-function render(){$("#info").innerHTML=`<strong>${booking.type==="individual"?"Einzelberatung":"Paar- & Beziehungsberatung"}</strong><br>${fmtDate(booking.start)}<br>${fmtTime(booking.start)}–${fmtTime(booking.end)} Uhr<br>${booking.location==="online"?"Online":"Graz"}`;}
+function render(){
+$("#info").innerHTML=`<strong>${booking.type==="individual"?"Einzelberatung":"Paar- & Beziehungsberatung"}</strong><br>${fmtDate(booking.start)}<br>${fmtTime(booking.start)}–${fmtTime(booking.end)} Uhr<br>${booking.location==="online"?"Online":"Graz"}`;
+const pct=Number(booking.chargePercent||0);
+$("#policyInfo").innerHTML=`<strong>Absagen & Umbuchen</strong><br>Mehr als 48 Stunden vorher kostenfrei · 24–48 Stunden vorher 50 % · unter 24 Stunden bzw. Nichterscheinen 100 %.<br><span style="display:inline-block;margin-top:6px"><strong>Für eine Änderung jetzt: ${pct===0?"kostenfrei":pct+" % des Honorars"}.</strong></span>`;
+}
 async function load(){if(!token){$("#status").innerHTML='<div class="notice err">Der Link ist unvollständig.</div>';return}
 const r=await fetch(API+"/manage?token="+encodeURIComponent(token)),d=await r.json();if(!r.ok||!d.ok){$("#status").innerHTML='<div class="notice err">Dieser Termin-Link ist nicht mehr gültig.</div>';return}
 booking=d.booking;$("#status").hidden=true;$("#content").hidden=false;render()}
-$("#cancelBtn").onclick=async()=>{if(!confirm("Möchtest du diesen Termin wirklich absagen?"))return;const r=await fetch(API+"/cancel",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})}),d=await r.json();if(r.ok&&d.ok)$("#content").innerHTML='<div class="notice ok">Der Termin wurde abgesagt.</div>';else $("#content").insertAdjacentHTML("beforeend",'<div class="notice err">Der Termin konnte nicht online abgesagt werden. Bitte melde dich direkt bei mir.</div>')}
+$("#cancelBtn").onclick=async()=>{
+const pct=Number(booking.chargePercent||0);
+const question=pct===0?"Möchtest du diesen Termin wirklich absagen?":`Bei einer Absage jetzt werden gemäß Buchungsbedingungen ${pct} % des Honorars verrechnet. Trotzdem absagen?`;
+if(!confirm(question))return;
+const r=await fetch(API+"/cancel",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,acceptLateFee:true})}),d=await r.json();
+if(r.ok&&d.ok)$("#content").innerHTML=`<div class="notice ok">Der Termin wurde abgesagt.${Number(d.chargePercent||0)>0?" Für die kurzfristige Absage gelten "+d.chargePercent+" % des Honorars.":""}</div>`;
+else $("#content").insertAdjacentHTML("beforeend",'<div class="notice err">Der Termin konnte nicht online abgesagt werden. Bitte melde dich direkt bei mir.</div>')
+}
 $("#rescheduleBtn").onclick=()=>{$("#reschedule").hidden=false;buildDays()}
 function ymd(d){return d.toISOString().slice(0,10)}
 function buildDays(){const w=$("#days");w.innerHTML="";let d=new Date();d.setHours(12,0,0,0);for(let i=0;i<60;i++){const x=new Date(d);x.setDate(d.getDate()+i);const iso=ymd(x),b=document.createElement("button");b.className="day";b.innerHTML=`<b>${new Intl.DateTimeFormat("de-AT",{weekday:"short"}).format(x)}</b><br><span>${new Intl.DateTimeFormat("de-AT",{day:"2-digit",month:"2-digit"}).format(x)}</span>`;b.onclick=()=>loadSlots(iso,b);w.appendChild(b)}}
 async function loadSlots(date,b){[...document.querySelectorAll(".day")].forEach(x=>x.classList.toggle("selected",x===b));$("#slots").innerHTML="";$("#msg").textContent="Lade freie Zeiten …";const r=await fetch(`${API}/availability?type=${booking.type}&date=${date}`),d=await r.json();$("#msg").textContent="";if(!r.ok||!d.slots?.length){$("#msg").textContent="An diesem Tag gibt es keine freien Zeiten.";return}d.slots.forEach(s=>{const x=document.createElement("button");x.className="slot";x.textContent=fmtTime(s.start);x.onclick=()=>move(s.start);$("#slots").appendChild(x)})}
-async function move(start){if(!confirm("Termin auf "+fmtDate(start)+", "+fmtTime(start)+" Uhr verschieben?"))return;const r=await fetch(API+"/reschedule",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,start})}),d=await r.json();if(r.ok&&d.ok){booking.start=d.start;booking.end=d.end;render();$("#reschedule").hidden=true}else $("#msg").innerHTML='<div class="notice err">Der Termin konnte nicht verschoben werden.</div>'}
+async function move(start){
+const pct=Number(booking.chargePercent||0);
+const question=pct===0?"Termin auf "+fmtDate(start)+", "+fmtTime(start)+" Uhr verschieben?":`Für eine Umbuchung jetzt gelten gemäß Buchungsbedingungen ${pct} % des Honorars. Trotzdem auf ${fmtDate(start)}, ${fmtTime(start)} Uhr verschieben?`;
+if(!confirm(question))return;
+const r=await fetch(API+"/reschedule",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,start,acceptLateFee:true})}),d=await r.json();
+if(r.ok&&d.ok){booking.start=d.start;booking.end=d.end;booking.chargePercent=0;render();$("#reschedule").hidden=true}
+else $("#msg").innerHTML='<div class="notice err">Der Termin konnte nicht verschoben werden.</div>'
+}
 load();
 </script></body></html>
