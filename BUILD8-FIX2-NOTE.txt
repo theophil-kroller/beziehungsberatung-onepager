@@ -1,0 +1,9 @@
+BUILD 8 FIX2
+============
+
+Fixes two Stripe checkout SQL placeholder-count defects discovered during sandbox testing:
+1) booking checkout order insert: 7 columns / 7 values
+2) package checkout order insert: 11 columns / 11 values
+
+No database migration changes are required compared with BUILD 8.
+If BUILD 8 / FIX1 is already installed, only cloudflare-worker/worker.js needs to be redeployed.

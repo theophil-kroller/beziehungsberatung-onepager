@@ -1,0 +1,38 @@
+BUILD 9 — SHORT TEST CHECKLIST
+
+1. D1
+- Run database/build9-sales-continuity.sql.
+- Verify 7 BUILD 9 tables.
+
+2. WORKER
+- Deploy cloudflare-worker/worker.js.
+- /health -> ok:true.
+- /public-config -> Stripe enabled + 9000/16500 appointment fees.
+
+3. WEBSITE
+- Upload root files listed in UPLOAD-README.txt.
+- Hard refresh.
+- Offers: Process support shows EUR 410 / EUR 40 saving.
+- Booking from an offer skips the redundant participant-format choice.
+
+4. CLIENT RECORD ORDER
+- Open client > Angebote & Buchungen.
+- Create EUR 410 Process package with Stripe link.
+- Confirm one invoice + one payment link.
+- Pay in Stripe Sandbox.
+- Confirm the same invoice becomes paid and 5 credits activate.
+
+5. BANK RECONCILIATION
+- Import a bank CSV or record a manual payment.
+- Confirm last CSV import timestamp appears on Invoices.
+- Confirm Dashboard warning appears only when open live invoices + stale bank import exist.
+
+6. CANCELLATION
+- Paid Stripe appointment >48h: test wallet and Stripe refund on separate test cases.
+- Paid Stripe appointment 24–48h: test partial refund.
+- Package appointment: session credit should be returned.
+- Unpaid invoice booking >48h: original invoice should be cancelled.
+- Unpaid invoice booking 24–48h: replacement 50% cancellation-fee invoice should be created.
+
+7. SECURE VAULT
+- Keep your existing local vault/data directory. No migration needed.

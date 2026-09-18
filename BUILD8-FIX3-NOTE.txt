@@ -1,0 +1,29 @@
+BUILD 8 FIX3 — Stripe single-session invoice recovery & paid invoice layout
+
+Fixes after the first successful Stripe appointment payment test:
+
+1. Single-session invoices no longer write invoice_items with purchase_id=NULL.
+   A proper purchase row is created for session-individual / session-couple and linked to the invoice item.
+
+2. Recovery from partial Stripe booking finalization.
+   If Google Calendar and the booking confirmation were already created but invoice creation failed,
+   the Worker now detects the existing booking by Stripe session ID, repairs/reuses the incomplete invoice,
+   and finalizes the checkout without duplicating the appointment or triggering a refund.
+
+3. /stripe/checkout-status retries paid Stripe sessions that previously ended in status=error,
+   enabling the existing failed return page to self-heal after deploying this fix.
+
+4. Paid invoice format improved:
+   - service name (e.g. Einzelberatung)
+   - quantity
+   - unit price
+   - amount
+   - 'Betrag dankend erhalten'
+   - payment method (e.g. Online-Zahlung über Stripe)
+   - payment date
+   - 'BEZAHLT AM' instead of a due date
+   - no bank details or payment QR on paid invoices
+
+5. Paid appointment invoice email now uses 'Zahlung erhalten' wording and attaches the paid invoice PDF.
+
+Deploy only cloudflare-worker/worker.js to apply the runtime fix. No new D1 migration is required for FIX3.

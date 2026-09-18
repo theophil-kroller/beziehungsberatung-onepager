@@ -1,121 +1,88 @@
-BEZIEHUNGSDYNAMIKEN BUILD 8 — INSTALLATION ORDER
-=================================================
+BEZIEHUNGSDYNAMIKEN BUILD 9 — INSTALLATION
 
-This ZIP contains only files that are new or changed for BUILD 8. Existing website files not contained here stay untouched.
+BUILD 9 is an incremental upgrade from BUILD 8 FIX5.
+Do NOT delete your existing D1 database, KV, R2 bucket, Worker bindings or Secure Vault data.
 
-A. BEFORE YOU START
--------------------
-1. Keep a copy of the currently deployed Cloudflare Worker. A rollback copy of the worker you supplied is included under:
-   _rollback/worker-build6-before-build8.js
-2. Back up the current D1 database in Cloudflare.
-3. Do not delete the existing KV namespace (BOOKINGS), D1 database, or R2 MATERIALS binding.
-
-B. DATABASE FIRST
------------------
-Run ONCE against the same D1 database used by the Worker:
-
-   database/build8-worker-crm-stripe.sql
-
-It adds CRM lifecycle tables, Stripe checkout bookkeeping, payment journal, bank-import rows and technical session products. It does not delete existing data.
-
-C. DEPLOY THE WORKER
---------------------
-Deploy this file as the Worker code:
-
-   cloudflare-worker/worker.js
-
-It is based on the current BUILD-6 worker supplied for this build and therefore retains Google Calendar, packages, invoice checkout, PDF invoices, admin magic-link login, emails and the existing CRM endpoints.
-
-Recommended/required Worker settings are documented in:
-
-   setup/CLOUDFLARE-STRIPE-SETUP.txt
-
-Default one-off fees in the code are already:
-- Individual counselling, 60 min: EUR 90
-- Couples & relationship counselling, 90 min: EUR 165
-
-They can later be overridden through Worker variables without changing code.
-
-D. UPLOAD THE WEBSITE FILES TO GITHUB
--------------------------------------
+A. GITHUB / WEBSITE FILES
 Upload/replace these files in the repository root:
+- admin.html
+- admin-build9.css            (new)
+- admin-build9.js             (new)
+- admin-vault.js              (unchanged Vault integration carried forward)
+- cart.js
+- termin.html
+- zugang.html
+- access.html
+- payment-success.html        (new)
 
-   admin.html
-   admin-build8.css
-   admin-build8.js
-   admin-vault.js
-   cart.js
+You may leave the old admin-build8.css/admin-build8.js in the repository; BUILD 9 admin.html no longer loads them.
 
-Upload these folders as well:
+B. D1 MIGRATION — DO THIS BEFORE THE BUILD 9 WORKER
+Open Cloudflare > D1 > your existing Beziehungsdynamiken database > Console.
+Run the complete contents of:
+  database/build9-sales-continuity.sql
 
-   cloudflare-worker/
-   database/
-   vault/
+The migration is additive/idempotent and may be run again if you are unsure whether it completed.
+It creates the BUILD 9 catalogue, sales-order, wallet, refund, CSV-batch and subscription tables and sets:
+- process-5 = EUR 410
+- continuation-3 = EUR 245 (internal)
+- continuity-monthly = EUR 79/month (internal)
 
-Important: cart.html, cart-en.html, booking.html, booking-en.html and the offers pages already load cart.js. BUILD 8 uses the new cart.js as the payment integration layer, so they do not need to be replaced solely for Stripe. The script also fixes the booking-page wave and displays the new one-off prices on the offers pages.
+Quick check after migration:
+SELECT name FROM sqlite_master WHERE type='table' AND name IN (
+ 'product_catalog','admin_sales_orders','customer_wallet_ledger','refund_records',
+ 'bank_import_batches','customer_subscriptions','subscription_cycles'
+) ORDER BY name;
+Expected: 7 rows.
 
-E. STRIPE
----------
-For real automatic reconciliation, configure BOTH:
-- STRIPE_SECRET_KEY
-- STRIPE_WEBHOOK_SECRET
+C. WORKER
+Replace the Worker code with:
+  cloudflare-worker/worker.js
+Deploy it.
 
-Webhook endpoint:
-   https://<YOUR-WORKER>/stripe/webhook
+Existing bindings/secrets stay in place (DB, BOOKINGS, MATERIALS, Google, Resend, invoice variables, Stripe secrets).
 
-Events:
-   checkout.session.completed
-   checkout.session.async_payment_succeeded
-   checkout.session.async_payment_failed
+Then verify:
+/health            -> {"ok":true}
+/public-config     -> stripeEnabled true, 9000 / 16500 appointment fees
 
-The success page can also verify a paid Checkout Session directly, but the webhook is essential so payments are finalized even when the customer closes the browser after paying.
+D. STRIPE WEBHOOK
+Open the existing Stripe Sandbox webhook destination and add the events listed in:
+  setup/BUILD9-STRIPE-WEBHOOK.txt
 
-F. SECURE PRACTICE VAULT
-------------------------
-On the computer where counselling documentation should be stored:
+E. TEST ORDER FROM CLIENT RECORD
+1. Open admin.html and log in.
+2. Open a client > Angebote & Buchungen.
+3. Choose Prozessbegleitung – 5 Sitzungen (EUR 410).
+4. Click "Bestellung anlegen".
+5. Complete billing address; optionally document early-service / digital-content consent.
+6. Keep Stripe payment link enabled and submit.
+7. Confirm the client receives one PDF invoice + Stripe payment link.
+8. Pay with a Stripe Sandbox card.
+9. Confirm the SAME invoice becomes paid and the 5-session credit becomes active.
+10. Confirm payment-success.html redirects to the member area automatically.
 
-Windows:
-1. Open vault/
-2. Double-click setup_vault.bat once
-3. Double-click start_vault.bat whenever you want to use documentation
-4. Open admin.html and choose Secure Vault / Documentation
-5. On first use choose a strong Vault password (minimum 12 characters)
+F. TEST BANK PAYMENT / CSV FRESHNESS
+- Create an invoice order without paying via Stripe.
+- Record payment manually or import a matching bank CSV.
+- Confirm package activates after payment.
+- Invoice page should show the last CSV import date and counts.
+- Dashboard attention should warn if live open invoices exist and bank reconciliation is stale.
 
-macOS/Linux:
-   cd vault
-   chmod +x setup_vault.sh start_vault.sh
-   ./setup_vault.sh
-   ./start_vault.sh
+G. TEST CANCELLATION
+For a paid Stripe appointment, use Termin verwalten or Admin > Termine > Stornieren.
+- >48h: full refundable amount -> choose wallet or Stripe refund.
+- 24–48h: 50% refundable amount -> choose wallet or partial Stripe refund.
+- <24h: policy fee applies; no confusing "Keine Erstattung" action is shown.
+Package appointments return their session unit.
 
-There is NO password recovery. Store the password in a password manager.
-The Vault listens only on 127.0.0.1:47831.
-Back up vault/data only while the Vault is locked. Keep the backup encrypted. Full-disk encryption (e.g. BitLocker/FileVault) is strongly recommended in addition to Vault encryption.
+H. SECURE PRACTICE VAULT
+No migration is required. Keep your existing local vault/data folder.
+Never upload vault/data to GitHub.
 
-G. PAYMENT WORKFLOW AFTER BUILD 8
----------------------------------
-Stripe:
-   customer pays -> Stripe confirms -> invoice/payment journal marked automatically -> CRM shows Stripe + payment date
+I. SUMUP
+BUILD 9 does NOT call the SumUp API yet. It already accepts "SumUp / Kartenzahlung" as a payment method in the unified payment journal. A direct terminal/API integration can be added later without changing the invoice model.
 
-Bank transfer:
-   invoice remains open -> export CSV from bank -> CRM "Bank-CSV importieren" -> exact/probable match -> you confirm -> paid status posted
-
-Cash:
-   open invoice -> "Zahlung erfassen" -> Barzahlung + actual date -> paid status posted
-
-Manual bank entry:
-   open invoice -> "Zahlung erfassen" -> Banküberweisung + actual date/reference -> paid status posted
-
-H. SAFE DEPLOYMENT TEST
------------------------
-Use Stripe Sandbox first.
-1. /health returns ok
-2. admin magic-link login works
-3. existing bookings/packages/invoices are visible
-4. appointment price shows EUR 90 / EUR 165
-5. test invoice booking creates calendar event + invoice
-6. Stripe test payment returns and appears in CRM
-7. cash payment can be entered with date
-8. sample bank CSV can be matched without posting until you confirm
-9. Vault can be initialized, locked/unlocked, and one test session saved/reloaded
-
-Only after these checks switch Stripe from sandbox to live keys.
+J. ROLLBACK
+The ZIP includes _rollback/worker-build8-fix5-before-build9.js.
+If a Worker issue occurs, you can redeploy that file. BUILD 9 D1 tables are additive and do not need to be removed for rollback.

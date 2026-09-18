@@ -55,6 +55,25 @@
       catch(err){const fm=document.getElementById('formMsg');fm.className='notice err';fm.textContent=err.message;submit.disabled=false;update()}}
   }
 
+  function improveBookingLanguageAndFlow(){
+    const form=document.getElementById('bookingForm');if(!form)return;const lang=getLang(),params=new URLSearchParams(location.search),requested=params.get('type'),packageToken=params.get('package_token');
+    const cfg=window.BD_BOOKING_CONFIG;if(cfg?.appointmentTypes){if(cfg.appointmentTypes.individual){cfg.appointmentTypes.individual.labelDe='Beratung für 1 Person';cfg.appointmentTypes.individual.labelEn='Counselling for 1 person'}if(cfg.appointmentTypes.couple){cfg.appointmentTypes.couple.labelDe='Gemeinsame Beziehungsberatung';cfg.appointmentTypes.couple.labelEn='Joint relationship counselling'}}
+    const first=document.querySelector('[data-type="individual"]'),joint=document.querySelector('[data-type="couple"]');
+    if(first)first.innerHTML=lang==='en'?'<strong>1 person</strong><span>60 minutes · regardless of relationship model</span>':'<strong>1 Person</strong><span>60 Minuten · unabhängig von der Beziehungsform</span>';
+    if(joint)joint.innerHTML=lang==='en'?'<strong>2–4 people together</strong><span>90 minutes · couples and other relationship constellations</span>':'<strong>2–4 Personen gemeinsam</strong><span>90 Minuten · Paare und andere Beziehungskonstellationen</span>';
+    const stepHead=document.querySelector('#step1 h2');if(stepHead)stepHead.textContent=lang==='en'?'How many people will attend?':'Mit wie vielen Personen möchtest du kommen?';
+    const title=document.getElementById('bookingTitle'),lead=document.getElementById('bookingLead');if(title&&!packageToken)title.textContent=lang==='en'?'Choose the format that fits your appointment.':'Wähle den Rahmen, der zu deinem Termin passt.';if(lead&&!packageToken)lead.textContent=lang==='en'?'The choice is based only on how many people attend — not on whether your relationship is monogamous, open or polyamorous.':'Entscheidend ist nur, wie viele Personen am Termin teilnehmen – nicht, ob du monogam, offen oder polyamor lebst.';
+    if(requested&&['individual','couple'].includes(requested)&&!packageToken){const step1=document.getElementById('step1'),step2=document.getElementById('step2');if(step1&&step2){step1.style.display='none';document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));step2.classList.add('active')}const back=document.getElementById('back2');if(back)back.onclick=()=>{location.href=lang==='en'?'offers.html':'angebote.html'};const s=document.getElementById('sType'),td=cfg?.appointmentTypes?.[requested];if(s&&td)s.textContent=(lang==='en'?td.labelEn:td.labelDe)+' · '+td.durationMinutes+' '+(lang==='en'?'min':'Min.');}
+  }
+
+  function enhanceOffers(){
+    const lang=getLang(),cards=[...document.querySelectorAll('.card')];if(!cards.length)return;
+    const individual=cards.find(c=>c.querySelector('a[href*="type=individual"]')),joint=cards.find(c=>c.querySelector('a[href*="type=couple"]'));
+    if(individual){const h=individual.querySelector('h2'),d=individual.querySelector('.desc'),m=individual.querySelector('.meta');if(h)h.textContent=lang==='en'?'Counselling for 1 person':'Beratung für 1 Person';if(d)d.textContent=lang==='en'?'For personal relationship topics — whether you are single, monogamous, in an open relationship or polyamorous.':'Für persönliche Beziehungsthemen – egal ob du single, monogam, offen oder polyamor lebst.';if(m)m.textContent=lang==='en'?'1 person · 60 minutes · Online or Graz':'1 Person · 60 Minuten · Online oder Graz'}
+    if(joint){const h=joint.querySelector('h2'),d=joint.querySelector('.desc'),m=joint.querySelector('.meta');if(h)h.textContent=lang==='en'?'Joint relationship counselling':'Gemeinsame Beziehungsberatung';if(d)d.textContent=lang==='en'?'For 2–4 people who want to work on a relationship issue together — couples as well as open or polyamorous constellations.':'Für 2–4 Personen, die gemeinsam an einem Beziehungsthema arbeiten möchten – Paare ebenso wie offene oder polyamore Beziehungskonstellationen.';if(m)m.textContent=lang==='en'?'2–4 people · 90 minutes · Online or Graz':'2–4 Personen · 90 Minuten · Online oder Graz'}
+    const process=cards.find(c=>/Prozessbegleitung|Process support/i.test(c.querySelector('h2')?.textContent||''));if(process){const old=process.querySelector('.price,.price-box'),btn=process.querySelector('button.btn');if(old){old.className='price-box';old.innerHTML=lang==='en'?'<span class="price-old">5 × €90 = €450</span><span class="price-now">Package €410</span><span class="price-save">Save €40 · 8.9%</span>':'<span class="price-old">5 × €90 = €450</span><span class="price-now">Package €410</span><span class="price-save">€40 Vorteil · 8,9 %</span>'}if(btn){btn.disabled=false;btn.removeAttribute('aria-disabled');btn.textContent=lang==='en'?'Add to cart':'In den Warenkorb';btn.onclick=()=>{const advisor=process.querySelector('select')?.value||'Theophil Kroller';window.BDCart.add({id:'process-5',name:lang==='en'?'Process support – 5 sessions':'Prozessbegleitung – 5 Sitzungen',description:lang==='en'?'5 × 60 min · flexible within 6 months':'5 × 60 Min. · flexibel innerhalb von 6 Monaten',price:410,regularPrice:450,advisorCode:'01',advisor,unique:true});const oldText=btn.textContent;btn.textContent=lang==='en'?'✓ Added':'✓ Im Warenkorb';setTimeout(()=>btn.textContent=oldText,1300)}}}
+  }
+
   async function injectSingleSessionPrices(){
     // Offers pages already load cart.js. Keep displayed single-session prices in sync
     // with the Worker's public payment configuration.
@@ -70,5 +89,5 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded",async()=>{updateBadges();bookingWaveFix();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
+  document.addEventListener("DOMContentLoaded",async()=>{updateBadges();bookingWaveFix();improveBookingLanguageAndFlow();enhanceOffers();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
 })();

@@ -1,0 +1,34 @@
+BEZIEHUNGSDYNAMIKEN — IDEAS FOR BUILD 10
+
+1. SESSION FLOW MANAGER
+Before a session:
+- Open the client record directly in a compact "session prep" view.
+- Show current goals, last sessions, agreements/homework, current focus and unfinished items.
+- Optional prompt such as "Continuation / package conversation planned today" when the CRM indicates a renewal opportunity.
+
+After a session:
+- Guided close-out flow instead of relying on memory.
+- Step through: what changed today, interventions, client response/development, agreements/homework, next focus, artifacts.
+- Optional operational steps only when relevant: book/change next appointment, add/package/order, send offer, billing action.
+- "Park for later" must be possible.
+- Parked documentation becomes a Dashboard attention item until completed.
+- Flow closes explicitly when documentation/admin follow-up is done.
+
+2. AI-ASSISTED PREP / DOCUMENTATION (RESEARCH BEFORE IMPLEMENTATION)
+- Explore privacy-preserving/local or EU-hosted AI processing for summaries and structured drafts.
+- Sensitive session content must remain within the Secure Practice Vault unless a legally/technically appropriate processing path is deliberately enabled.
+- No automatic external AI upload in Build 10 without a documented privacy/security decision.
+
+3. LOCKED RECORD EXPORT / PDF-A
+- Create a finalized, timestamped export of selected session documentation.
+- Consider PDF/A for long-term archival/interoperability.
+- Add cryptographic hash / audit record when a snapshot is finalized so later changes are detectable.
+- Keep editable working notes separate from finalized snapshots.
+- Legal evidentiary value / Austrian documentation requirements should be checked before describing an export as "court-proof" or legally immutable.
+
+4. STUDENT / SOCIAL RATE
+- Optional reduced-price offer with limited availability.
+- Possible eligibility: current valid enrollment/student ID and an age ceiling to be defined.
+- Better model: eligibility valid until a recorded date (e.g. semester end) rather than repeatedly collecting documents.
+- Minimize retained proof: ideally store verification status/date rather than a permanent copy of an ID unless there is a clear need.
+- Define which services/packages receive the reduced rate and how many reduced-rate slots are available.

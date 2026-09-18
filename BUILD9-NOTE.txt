@@ -1,0 +1,81 @@
+BEZIEHUNGSDYNAMIKEN — BUILD 9
+Sales Cockpit · Continuity · Cancellation & Refunds · Bank Reconciliation
+
+BUILD 9 is based on BUILD 8 FIX5 and keeps the Secure Practice Vault unchanged.
+
+WHAT IS NEW
+
+1. CLIENT RECORD AS OPERATIVE PRACTICE HUB
+- New record tab: Journey.
+- New record tab: Angebote & Buchungen.
+- Admin-visible product catalogue per client.
+- Offer email without invoice ("Angebot senden").
+- Admin-created package order with PDF invoice + optional Stripe payment link.
+- The same invoice can be paid by Stripe or bank transfer; no duplicate invoice.
+- Package credit is activated only after payment is recorded.
+- Existing billing address is prefilled where available.
+- Explicit checkboxes to document early service / immediate digital-material consent.
+
+2. PRICING / CONTINUITY
+- 1 person, 60 min: EUR 90.
+- Joint counselling for 2–4 people, 90 min: EUR 165.
+- Process support 5 x 60 min: EUR 410 instead of EUR 450 (EUR 40 / 8.9% package advantage).
+- Continuation add-on 3 x 60 min: EUR 245 instead of EUR 270 (EUR 25 / 9.3% advantage), internal only.
+- Continuity membership pilot: EUR 79/month, 1 x 60-min credit per paid month; each credit valid 60 days. Internal only.
+- Process support is now publicly purchasable; Continuation and membership stay internal.
+
+3. BOOKING LANGUAGE / FLOW
+- Visible choice is now based on attendance count, not relationship model:
+  "Beratung für 1 Person" and "Gemeinsame Beziehungsberatung (2–4 Personen)".
+- Polyamorous/open/monogamous relationship form does not determine the session type.
+- If the offers page already passes ?type=individual or ?type=couple, the redundant first booking step is skipped.
+
+4. BANK RECONCILIATION FRESHNESS
+- Each successful bank CSV import creates a batch record with file name, row count and matched/imported counts.
+- Invoice page shows the date/time and result of the last bank reconciliation.
+- Dashboard creates an attention item when live open invoices exist and the last CSV import is older than 5 days (configurable in D1 via bankImportStaleDays).
+
+5. CANCELLATION / SETTLEMENT
+- "Keine Erstattung" is not used as an action label.
+- Cancellation and financial treatment are separated.
+- Paid appointments: refundable amount follows the existing >48h / 24–48h / <24h policy.
+- If refundable, customer/admin can choose practice wallet credit or Stripe refund (when original payment was Stripe).
+- Package booking cancellations return the consumed package unit.
+- Wallet credit is visible in the personal area.
+- Refund records are stored separately and synced from Stripe refund webhooks.
+
+6. PAYMENT ARCHITECTURE
+- One invoice, multiple payment routes.
+- Stripe: automatic payment record + automatic package activation.
+- Bank: CSV/manual payment record + automatic package activation.
+- Cash: manual payment with date.
+- SumUp/card: manual provider option already included so a later terminal/API integration does not require redesigning the payment model.
+
+7. MEMBER AREA
+- Shows monetary practice credit/wallet.
+- Shows packages, invoices/orders, subscription state and materials.
+- Admin-created paid packages redirect into the same member area.
+
+NEW FILES / CHANGED FILES
+- admin.html
+- admin-build9.css
+- admin-build9.js
+- cart.js
+- termin.html
+- zugang.html
+- access.html
+- payment-success.html
+- cloudflare-worker/worker.js
+- database/build9-sales-continuity.sql
+- setup/BUILD9-STRIPE-WEBHOOK.txt
+- Secure Vault files are carried forward unchanged.
+
+IMPORTANT
+Run database/build9-sales-continuity.sql BEFORE deploying the BUILD 9 Worker because the new Worker queries product_catalog and the BUILD 9 sales/payment tables.
+
+8. UNPAID CANCELLATIONS (FINAL TEST CANDIDATE)
+- If a one-off appointment was booked on invoice and is cancelled before payment, the original open invoice is no longer left misleadingly unchanged.
+- >48h: original open invoice is cancelled; no amount remains due.
+- 24–48h: original invoice is cancelled and replaced by a 50% cancellation-fee invoice.
+- <24h / no-show window: original invoice is cancelled and replaced by a 100% cancellation-fee invoice.
+- The cancellation-fee PDF is emailed separately and the CRM retains the audit trail.

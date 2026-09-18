@@ -1,0 +1,14 @@
+BUILD 8 FIX5
+
+Fixes after Stripe end-to-end test:
+- Stripe success page now keeps polling automatically for up to 90 seconds while webhook/finalisation is still running.
+- If finalisation takes even longer, the page retries automatically; the customer is no longer told to manually reload.
+- Sandbox invoices with a recorded payment now display as BEZAHLT in the CRM, with a separate Sandbox/Test badge.
+- Sandbox totals still remain separated in dashboard accounting using the database status.
+- Paid PDF logic remains unchanged: paid invoices show service, quantity, unit price, 'Betrag dankend erhalten', payment method/date, and no bank QR.
+
+Files to deploy for this fix:
+1) cloudflare-worker/worker.js -> deploy Worker
+2) cart.js -> upload to website/GitHub
+3) admin-build8.js -> upload to website/GitHub
+4) admin.html -> upload to website/GitHub (cache-bust only)
