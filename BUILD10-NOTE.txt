@@ -1,0 +1,53 @@
+BEZIEHUNGSDYNAMIKEN — BUILD 10
+Session Flow Manager
+
+Basis: BUILD 9 Sales Flow (inkl. Stripe, Refunds, Guthaben, Bank-CSV, Secure Vault).
+
+NEU
+===
+1. Session Flow Manager im Admin-Dashboard
+   - neue Navigation „Session Flow“
+   - kommende Sitzungen: Vorbereitung offen / vorbereitet
+   - vergangene Sitzungen: Nachbereitung offen / geparkt / abgeschlossen
+   - Dashboard-Erinnerung für offene Nachdokumentation
+
+2. Vor der Sitzung
+   - administrativer Kontext: letzter Termin, aktives Package, offene Rechnungen
+   - lokaler Secure-Vault-Kurzüberblick: Beratungsziel, aktueller Fokus, Ziele,
+     letzte dokumentierte Sitzungen
+   - organisatorischer Hinweis / Fortsetzung / Angebot vorbereiten
+   - KEINE klinischen Inhalte werden für den Flow in D1 gespeichert
+
+3. Nach der Sitzung
+   - geführte strukturierte Dokumentation
+   - Fokus, Dynamik, Interventionen, Entwicklung, Vereinbarungen,
+     nächster Fokus, private Vorbereitung
+   - Inhalte werden direkt an den lokalen Secure Practice Vault geschrieben
+   - „Für später parken“ mit Dashboard-Erinnerung
+   - nach Abschluss: optionale nächste Aktion Termin / Angebot-Package / Rechnung
+
+4. Member Area
+   - kein riesiges „Hallo Name“ mehr
+   - „Member Area / Mitgliederbereich“ als Hauptüberschrift
+   - Name kleiner als „für <Name>“
+   - continuation-3 wird kundenseitig als „Fortsetzungs-Paket · 3 Sitzungen“
+     bzw. „Continuation Package · 3 sessions“ bezeichnet
+
+5. Website-Wording
+   - cart.js aktualisiert die Startseite DE/EN auf das neue Sitzungsmodell:
+     „Beratung für 1 Person“ vs. „Gemeinsame Beziehungsberatung“
+   - Links aus den Angebotskarten führen direkt mit ?type=individual/couple
+   - Booking überspringt bei vorausgewähltem Typ die redundante Typ-Auswahl
+   - Beziehungskonstellation wird nicht mehr mit Teilnehmerzahl vermischt
+
+6. Datenschutz-Architektur
+   - Cloudflare/D1 speichert beim Session Flow NUR Workflow-Metadaten
+   - Beratungsinhalte bleiben lokal im Secure Practice Vault
+   - KI-Zusammenfassung ist in BUILD 10 bewusst NICHT aktiviert
+
+NICHT IN BUILD 10
+=================
+- externe KI-Verarbeitung von Beratungsinhalten
+- PDF/A-Finalisierung / revisionssicherer Fallabschluss
+- Studierenden-/Sozialtarif
+Diese Punkte sind für den nächsten Ausbau dokumentiert.

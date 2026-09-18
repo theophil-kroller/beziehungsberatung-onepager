@@ -1,0 +1,44 @@
+BUILD 10 TEST-CHECKLIST
+=======================
+
+A. BASIS
+[ ] /health -> ok true
+[ ] Admin lädt ohne Fehlermeldung
+[ ] bestehende Termine/Packages/Rechnungen weiterhin vorhanden
+
+B. MEMBER AREA
+[ ] Überschrift „Mitgliederbereich“, Name kleiner darunter
+[ ] Fortsetzungs-Paket wird mit verständlichem Namen angezeigt
+[ ] Rechnungen/Packages/Materialien funktionieren weiterhin
+
+C. WEBSITE / BOOKING
+[ ] index.html zeigt „Beratung für 1 Person“ / „Gemeinsame Beziehungsberatung“
+[ ] en.html zeigt die englischen Entsprechungen
+[ ] Klick auf „1 Person“ führt zu booking?type=individual und direkt zu Ort
+[ ] Klick auf „gemeinsam“ führt zu booking?type=couple und direkt zu Ort
+[ ] direkter Aufruf booking.html ohne type zeigt die Teilnehmer-Auswahl
+
+D. SESSION FLOW — VORBEREITUNG
+[ ] neue Navigation „Session Flow“ sichtbar
+[ ] kommende Termine erscheinen
+[ ] Flow öffnen -> administrativer Kontext sichtbar
+[ ] bei entsperrtem Vault: Ziel/Fokus/letzte Sessions sichtbar
+[ ] Fortsetzungs-/Organisationshinweis speichern
+[ ] Status wechselt auf „Vorbereitet“
+
+E. SESSION FLOW — NACHBEREITUNG
+[ ] vergangener Termin wird als Nachbereitung offen gezeigt
+[ ] strukturierte Felder ausfüllen
+[ ] „Für später parken“ -> Reminder erscheint im Dashboard
+[ ] Flow erneut öffnen
+[ ] Notizen speichern -> im Secure Vault in der Klientenakte sichtbar
+[ ] Flow verschwindet aus „offen“ / Status abgeschlossen
+
+F. NÄCHSTE AKTION
+[ ] nach Dokumentation „Termin“ öffnet Klientenakte/Termine
+[ ] „Angebot / Package“ öffnet Angebote & Buchungen
+[ ] „Rechnung / Zahlung“ öffnet Rechnungen
+
+G. DATENSCHUTZ-CHECK
+[ ] Vault-Notizen erscheinen NICHT in D1/session_flows
+[ ] session_flows enthält nur Termin-/Workflow-Metadaten

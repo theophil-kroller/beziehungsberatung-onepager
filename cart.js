@@ -55,6 +55,46 @@
       catch(err){const fm=document.getElementById('formMsg');fm.className='notice err';fm.textContent=err.message;submit.disabled=false;update()}}
   }
 
+
+  function enhanceHomepageWording(){
+    const path=location.pathname.split('/').pop()||'index.html';
+    if(!['index.html','en.html',''].includes(path))return;
+    const lang=getLang();
+    // Top strapline
+    [...document.querySelectorAll('span')].forEach(el=>{
+      const t=(el.textContent||'').trim();
+      if(lang==='de'&&t==='Einzel · Paar · vielfältige Beziehungen')el.textContent='1 Person · gemeinsam · vielfältige Beziehungen';
+      if(lang==='en'&&/Individual · Couples · diverse relationships/i.test(t))el.textContent='1 person · together · diverse relationships';
+    });
+    // Offer cards on the homepage
+    const cards=[...document.querySelectorAll('.offer-card')];
+    if(cards.length>=2){
+      const one=cards[0],joint=cards[1];
+      const h1=one.querySelector('h3'),p1=one.querySelector('p'),a1=one.querySelector('a[href*="booking"]');
+      const h2=joint.querySelector('h3'),p2=joint.querySelector('p'),a2=joint.querySelector('a[href*="booking"]');
+      if(lang==='de'){
+        if(h1)h1.textContent='Beratung für 1 Person';
+        if(p1)p1.textContent='Für persönliche Beziehungsthemen – unabhängig davon, ob du single, monogam, offen oder polyamor lebst.';
+        if(a1){a1.href='booking.html?type=individual';a1.textContent='Termin für 1 Person →'}
+        if(h2)h2.textContent='Gemeinsame Beziehungsberatung';
+        if(p2)p2.textContent='Für 2–4 Personen, die gemeinsam an einem Beziehungsthema arbeiten möchten – Paare ebenso wie offene oder polyamore Konstellationen.';
+        if(a2){a2.href='booking.html?type=couple';a2.textContent='Gemeinsamen Termin vereinbaren →'}
+      }else{
+        if(h1)h1.textContent='Counselling for 1 person';
+        if(p1)p1.textContent='For personal relationship topics — whether you are single, monogamous, open or polyamorous.';
+        if(a1){a1.href='booking-en.html?type=individual';a1.textContent='Book for 1 person →'}
+        if(h2)h2.textContent='Joint relationship counselling';
+        if(p2)p2.textContent='For 2–4 people who want to work on a relationship issue together — couples and other relationship constellations.';
+        if(a2){a2.href='booking-en.html?type=couple';a2.textContent='Book a joint session →'}
+      }
+    }
+    // Replace wording that ties counselling format to relationship model.
+    [...document.querySelectorAll('p')].forEach(el=>{
+      const t=(el.textContent||'').trim();
+      if(lang==='de'&&t.includes('in Einzel-, Paar- oder Polyberatung'))el.textContent='Und wenn ihr merkt, dass ihr ein Thema lieber mit Unterstützung anschauen möchtet, bin ich gern für euch da – allein oder gemeinsam, unabhängig davon, ob eine Beziehung monogam, offen oder polyamor gelebt wird.';
+    });
+  }
+
   function improveBookingLanguageAndFlow(){
     const form=document.getElementById('bookingForm');if(!form)return;const lang=getLang(),params=new URLSearchParams(location.search),requested=params.get('type'),packageToken=params.get('package_token');
     const cfg=window.BD_BOOKING_CONFIG;if(cfg?.appointmentTypes){if(cfg.appointmentTypes.individual){cfg.appointmentTypes.individual.labelDe='Beratung für 1 Person';cfg.appointmentTypes.individual.labelEn='Counselling for 1 person'}if(cfg.appointmentTypes.couple){cfg.appointmentTypes.couple.labelDe='Gemeinsame Beziehungsberatung';cfg.appointmentTypes.couple.labelEn='Joint relationship counselling'}}
@@ -89,5 +129,5 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded",async()=>{updateBadges();bookingWaveFix();improveBookingLanguageAndFlow();enhanceOffers();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
+  document.addEventListener("DOMContentLoaded",async()=>{updateBadges();bookingWaveFix();enhanceHomepageWording();improveBookingLanguageAndFlow();enhanceOffers();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
 })();

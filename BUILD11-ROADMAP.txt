@@ -1,0 +1,26 @@
+ROADMAP NACH BUILD 10
+=====================
+
+1. KI-ASSISTENZ FÜR SESSION PREP / DOKUMENTATION
+- bevorzugt lokal oder mit explizit geeigneter datenschutzrechtlicher Architektur
+- keine Beratungsinhalte ungefragt an externe Dienste
+- mögliche Funktionen: Fallzusammenfassung, offene Themen, Ziele, letzter Fokus,
+  Entwurf für strukturierte Notizen
+
+2. FINALISIERTE DOKUMENTATION / PDF-A
+- Sitzung oder Fall als „finalisiert“ markieren
+- PDF/A-Export
+- kryptographischer Hash des finalisierten Dokuments
+- Zeitstempel + Audit Trail
+- Änderungen nach Finalisierung nur über nachvollziehbare Ergänzung/Korrektur
+
+3. STUDIERENDEN-/SOZIALTARIF
+- Berechtigung mit klaren Regeln (z.B. Altersgrenze + gültige Inskription)
+- möglichst nur „Berechtigung geprüft bis …“ speichern statt Ausweiskopie
+- eigener interner Preis / Coupon / Angebotsart
+- Nachweis- und Datenschutzprozess vor Launch festlegen
+
+4. OPTIONALE LOKALE KI
+- prüfen, ob ein lokales Modell auf dem Praxisrechner ausreichend gute
+  Zusammenfassungen erzeugen kann
+- sensible Daten verlassen den Rechner nicht
