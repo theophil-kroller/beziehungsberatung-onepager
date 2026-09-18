@@ -1,0 +1,36 @@
+BUILD 12 — Kurztest
+===================
+
+A. Vault
+[ ] start_vault.bat starten bzw. Windows-Autostart verwenden
+[ ] http://127.0.0.1:47831/health zeigt version 3.0
+[ ] Vault im CRM entsperren
+
+B. Hintergrund-KI
+[ ] Eine Test-Sitzung mit ein paar Feldern speichern
+[ ] Meldung: KI-Arbeitszusammenfassung läuft im Hintergrund
+[ ] Session Flow erneut öffnen
+[ ] Practice-Intelligence-Karte zeigt wartend/running/fertig
+[ ] Nach Fertigstellung erscheint eine KI-Arbeitszusammenfassung
+[ ] Danach erscheint eine bereits vorbereitete Session-Vorbereitung
+[ ] Original-Sitzungsnotiz ist unverändert
+
+C. Rechnung / Barzahlung
+[ ] Test-/Sandbox-Bestellung anlegen
+[ ] Rechnung erscheint als Offen oder Überfällig + Sandbox/Test
+[ ] Rechnungen → Zahlung erfassen → Barzahlung
+[ ] Datum/Uhrzeit/Notiz speichern
+[ ] Danach: Bezahlt + Sandbox/Test
+[ ] Klientenakte → Rechnungen zeigt ebenfalls Zahlung-erfassen-Button bei offen
+
+D. Session Flow Barzahlung
+[ ] Session Flow → Nachbereitung
+[ ] Barzahlung erfassen öffnen
+[ ] Offene Rechnung wird angeboten
+[ ] Verbuchung funktioniert
+
+E. Regression
+[ ] Stripe-Testzahlung bleibt Bezahlt + Sandbox/Test
+[ ] PDF-Rechnung weiterhin abrufbar
+[ ] Packages werden erst nach Zahlung aktiviert
+[ ] Bank-CSV matcht keine TEST-Rechnung

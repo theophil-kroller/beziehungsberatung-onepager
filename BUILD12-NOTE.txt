@@ -1,0 +1,81 @@
+BUILD 12 — Practice Intelligence Queue + Payment Lifecycle Fix
+===============================================================
+
+Ziel dieses Builds:
+Die lokale KI soll möglichst arbeiten, wenn niemand auf sie warten muss, und
+Rechnungs-/Zahlungsstatus sollen auch im Sandbox-Betrieb sauber funktionieren.
+
+1) Practice Intelligence Queue (lokal)
+-------------------------------------
+- Nach jedem Speichern einer inhaltlich befüllten Sitzung wird automatisch ein
+  lokaler KI-Hintergrundauftrag vorgemerkt.
+- Zuerst entsteht eine kurze KI-Arbeitszusammenfassung der Sitzung.
+- Danach wird automatisch eine neue Vorbereitung für die nächste Sitzung
+  vorab berechnet und lokal im Vault zwischengespeichert.
+- Die Originaldokumentation wird niemals überschrieben.
+- KI-Zusammenfassungen sind ausdrücklich Arbeitsentwürfe (review_status=ai_draft).
+- Die Queue wird in der lokalen Vault-SQLite-Datenbank gespeichert. Ein
+  Windows-Neustart verliert offene Aufträge nicht.
+- Ist Bionic / LM Studio offline, bleibt der Auftrag auf „Wartet auf lokale KI“
+  und wird beim nächsten entsperrten Vault-Kontakt erneut versucht.
+- Hintergrundaufträge bevorzugen Qwen3-4B-2507, wenn installiert; ansonsten
+  Fallback auf Qwen3-1.7B bzw. ein anderes lokales Chat-Modell.
+- Manuelle Sofort-KI im Session Flow bevorzugt weiterhin Qwen3-1.7B.
+- Für ältere Sitzungen kann die Vorbereitung vorhandene lokale KI-Summaries als
+  Verdichtung nutzen; die jüngste Sitzung bleibt als Originalkontext enthalten.
+
+2) Session Flow UX
+------------------
+- Neue Karte „Practice Intelligence · Hintergrund“.
+- Zeigt offene/running Hintergrundaufträge, letzte KI-Arbeitszusammenfassung
+  und bereits vorbereitete Session-Briefings inklusive Modell und Laufzeit.
+- Nach dem Speichern einer Session erscheint verständlich, dass die lokale KI
+  im Hintergrund weiterarbeitet.
+- Direkter Schnellweg „Barzahlung erfassen“ nach der Sitzung.
+
+3) Rechnungs-/Zahlungsstatus korrigiert
+---------------------------------------
+- Sandbox/Test ist ab BUILD 12 kein Zahlungsstatus mehr.
+- Eine neue unbezahlte Rechnung ist immer „Offen“ (bzw. später „Überfällig“),
+  auch wenn sie eine TEST-Rechnung ist.
+- Testkennzeichnung bleibt separat über TEST-... / „Sandbox/Test“ sichtbar.
+- Eine TEST-Rechnung kann im CRM testweise als bar, Überweisung, SumUp oder
+  sonstige Zahlung verbucht werden.
+- Nach Testzahlung: Status „Bezahlt“ + Kennzeichnung „Sandbox/Test“.
+- Alte Rechnungen mit DB-Status „test“ werden im Dashboard defensiv als
+  offen/überfällig behandelt, solange keine Zahlung vorliegt.
+- Bank-CSV-Abgleich ignoriert Sandbox/Test-Rechnungen weiterhin bewusst.
+
+4) Barzahlung leichter auffindbar
+---------------------------------
+- Zentrale Ansicht: Rechnungen → Zahlung erfassen → Barzahlung.
+- Neu auch direkt in Klientenakte → Rechnungen → Zahlung erfassen.
+- Neu im Session Flow: „Barzahlung erfassen“ mit Rechnung, Datum, Uhrzeit und
+  Referenz/Notiz.
+
+5) Autostart
+------------
+- Der funktionierende Autostart-Hotfix ohne PowerShell/COM ist jetzt im
+  vollständigen Build enthalten.
+
+Installation
+------------
+GitHub / statisches Frontend ersetzen:
+- admin.html
+- admin-build9.js
+- admin-build10.js
+- admin-vault.js
+- admin-build12.js   (neu)
+- admin-build12.css  (neu)
+
+Cloudflare Worker:
+- cloudflare-worker/worker.js ersetzen und Worker neu deployen.
+
+Lokaler Vault:
+- vault_server.py im bestehenden Vault-Ordner ersetzen.
+- data/ NICHT ersetzen oder löschen.
+- Vault neu starten. /health muss danach Version 3.0 anzeigen.
+
+Keine neue D1-Migration erforderlich.
+Die neuen KI-Queue-Tabellen werden ausschließlich lokal im Vault automatisch
+angelegt.
