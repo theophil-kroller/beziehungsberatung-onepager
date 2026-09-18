@@ -1,3 +1,24 @@
+BUILD 10.1 — UPDATE NACH BUILD 10
+
+Wenn BUILD 10 bereits läuft, ist KEINE neue D1-Migration nötig.
+
+1. Cloudflare Worker durch cloudflare-worker/worker.js ersetzen und deployen.
+2. Im GitHub-Root mindestens ersetzen:
+   - admin.html
+   - admin-build9.js
+   - admin-build10.js
+   - admin-build10.css
+   - cart.js
+3. Hard Refresh: Ctrl+F5.
+4. Testen:
+   - Dashboard Finanzkacheln
+   - Finanzcockpit
+   - Rechnung > Zahlung erfassen > Barzahlung mit Datum + Uhrzeit
+   - Session Flow: Vorbereitung → Buchung & Angebote → Nachbereitung
+   - Vault gesperrt: Direktlink zur Dokumentation
+   - cart.html: „Zum Angebot“
+   - index/en: Beziehungsvielfalt ohne redundanten Buchungslink
+
 BEZIEHUNGSDYNAMIKEN BUILD 10 — INSTALLATION
 ===========================================
 

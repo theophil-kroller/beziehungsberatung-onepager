@@ -1,0 +1,42 @@
+BUILD 10.1 — TEST-CHECKLIST
+
+1. Dashboard
+[ ] Einnahmen Monat wird angezeigt.
+[ ] Planbar 30 Tage wird angezeigt.
+[ ] Klick auf Offene Forderungen öffnet Finanzcockpit.
+[ ] Klick auf Einnahmen/Planbar öffnet Finanzcockpit.
+[ ] CSV-Hinweis erscheint weiterhin bei veraltetem Bankabgleich.
+
+2. Finanzcockpit
+[ ] Eingegangen diesen Monat plausibel.
+[ ] Zahlungswege Stripe / Überweisung / Bar / SumUp getrennt.
+[ ] Erwartet nächste 30 Tage zeigt offene Rechnungen + ggf. aktive Abos.
+[ ] Restwert aktiver Packages wird separat als bereits verkaufte Leistung erklärt.
+[ ] Bank-CSV Button öffnet CSV-Import.
+
+3. Barzahlung
+[ ] Offene Rechnung > Zahlung erfassen.
+[ ] Zahlungsart Barzahlung.
+[ ] Datum UND Uhrzeit werden angezeigt und gespeichert.
+[ ] Rechnung wird bezahlt.
+[ ] Finanzcockpit ordnet Betrag „Bar“ zu.
+[ ] CRM zeigt den exakten Zeitpunkt.
+
+4. Session Flow Manager
+[ ] Hellgrüne Oberfläche klar erkennbar.
+[ ] Prozesspfeile: 1 Vorbereitung → 2 Buchung & Angebote → 3 Nachbereitung.
+[ ] Vorbereitung zeigt letzten Termin, Package, Ablaufdatum und offene Rechnungen.
+[ ] Package mit 1 Einheit zeigt Fortsetzungs-Hinweis.
+[ ] Vault entsperrt: Ziele / Fokus / letzte Sitzungen sichtbar.
+[ ] Vault gesperrt: Button führt direkt zur Klientenakte > Dokumentation.
+[ ] Vorbereitung abschließen springt zu Schritt 2.
+[ ] Schritt 2 zeigt Termin + Package-Kacheln.
+[ ] Package-Kachel öffnet direkt Angebote & Buchungen der richtigen Person.
+[ ] Nachbereitung kann gespeichert oder geparkt werden.
+[ ] Geparkte Nachbereitung erscheint im Dashboard.
+
+5. Öffentliche Seiten
+[ ] cart.html: „Zum Angebot“ statt „Zurück zu Angeboten“.
+[ ] cart-en.html: „View offers“.
+[ ] Startseite: Beratung 1 Person / Gemeinsame Beratung.
+[ ] Beziehungsvielfalt hat keinen redundanten dritten Buchungslink mehr.

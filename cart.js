@@ -56,6 +56,18 @@
   }
 
 
+
+  function enhanceCartNavigation(){
+    const lang=getLang();
+    const path=location.pathname.split('/').pop()||'';
+    if(!['cart.html','cart-en.html'].includes(path))return;
+    document.querySelectorAll('a').forEach(a=>{
+      const t=(a.textContent||'').trim();
+      if(lang==='de' && /Zurück zu (den )?Angeboten/i.test(t)) a.textContent='Zum Angebot';
+      if(lang==='en' && /Back to offers/i.test(t)) a.textContent='View offers';
+    });
+  }
+
   function enhanceHomepageWording(){
     const path=location.pathname.split('/').pop()||'index.html';
     if(!['index.html','en.html',''].includes(path))return;
@@ -87,6 +99,15 @@
         if(p2)p2.textContent='For 2–4 people who want to work on a relationship issue together — couples and other relationship constellations.';
         if(a2){a2.href='booking-en.html?type=couple';a2.textContent='Book a joint session →'}
       }
+    }
+    // Relationship diversity remains an information path; booking is already
+    // covered by the 1-person and 2–4-person cards above.
+    if(cards.length>=3){
+      const diversity=cards[2];
+      const redundant=diversity.querySelector('a[href*="booking"]');
+      if(redundant) redundant.remove();
+      const more=diversity.querySelector('a[href*="beziehungsvielfalt"]');
+      if(more) more.textContent=lang==='en'?'Learn more →':'Mehr erfahren →';
     }
     // Replace wording that ties counselling format to relationship model.
     [...document.querySelectorAll('p')].forEach(el=>{
@@ -129,5 +150,5 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded",async()=>{updateBadges();bookingWaveFix();enhanceHomepageWording();improveBookingLanguageAndFlow();enhanceOffers();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
+  document.addEventListener("DOMContentLoaded",async()=>{updateBadges();bookingWaveFix();enhanceCartNavigation();enhanceHomepageWording();improveBookingLanguageAndFlow();enhanceOffers();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
 })();

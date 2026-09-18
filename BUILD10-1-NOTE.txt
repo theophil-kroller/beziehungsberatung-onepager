@@ -1,0 +1,20 @@
+BUILD 10.1 — Flow & Finance Cockpit
+=====================================
+
+Änderungen gegenüber BUILD 10:
+- Session Flow Manager visuell hellgrün und als 3-stufiger Prozess:
+  1 Vorbereitung → 2 Buchung & Angebote → 3 Nachbereitung.
+- Vorbereitung zeigt administrativen Kontext, Vault-Verlauf und Fortsetzungs-Hinweise.
+- Bei gesperrtem Vault führt ein direkter Button zur Klientenakte > Dokumentation.
+- Buchung & Angebote zeigt Termin-/Package-Kacheln und führt direkt in die Klientenakte.
+- Dashboard: Einnahmen im laufenden Monat und 30-Tage-Planwert.
+- Neues Finanzcockpit mit Zahlungsarten (Stripe/Überweisung/Bar/SumUp),
+  offenen Forderungen, 30-Tage-Projektion, Package-Restwert und CSV-Status.
+- Offene Forderungen / Finanz-Kacheln sind klickbar und öffnen das Finanzcockpit.
+- Barzahlungen können mit Datum UND Uhrzeit als „Betrag erhalten“ verbucht werden.
+- Warenkorb: „Zum Angebot“ statt „Zurück zu Angeboten“.
+- Startseite: Beziehungsvielfalt bleibt Informationspfad; der redundante dritte
+  Terminbuchungs-Link wird entfernt, da 1-Person / 2–4-Personen die Buchung abdecken.
+
+Keine neue D1-Migration erforderlich, wenn BUILD 10 bereits vollständig installiert ist.
+Der Worker muss erneut deployed werden, da exakte Zahlungszeitpunkte unterstützt werden.
