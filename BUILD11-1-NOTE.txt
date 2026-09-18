@@ -1,0 +1,48 @@
+BEZIEHUNGSDYNAMIKEN — BUILD 11.1
+Local AI Model Choice & Performance Pass
+
+Änderungen gegenüber BUILD 11
+
+1. Lokales KI-Modell direkt im Session Flow auswählbar.
+   - Das Auswahlfeld zeigt lokal verfügbare Chat-Modelle aus Bionic/LM Studio.
+   - Embedding-Modelle werden ausgeblendet.
+   - Die Auswahl bleibt im Browser gespeichert.
+
+2. Ressourcenschonende Voreinstellung
+   - Qwen3-1.7B wird automatisch bevorzugt, sobald das Modell lokal verfügbar ist.
+   - Danach folgen Qwen3-4B und Gemma als Fallbacks.
+
+3. Performance
+   - Bei Qwen3 wird /no_think verwendet, weil die Aufgabe kein tiefes Reasoning benötigt.
+   - Kürzere Ausgabegrenzen für Vorbereitung und Dokumentationsentwurf.
+   - Die tatsächliche Generierungszeit wird direkt im Ergebnis angezeigt.
+
+4. Vorbereitung mit wenig Daten verbessert
+   - Das im Vault gespeicherte Beratungsziel wird jetzt explizit als "beratungsziel" übergeben.
+   - Der Prompt weist das Modell ausdrücklich an, ein vorhandenes Beratungsziel nicht als fehlend zu bezeichnen.
+   - Leere Ergebnisbereiche werden im UI nicht mehr als sechs leere Kästen angezeigt.
+
+5. Datenschutzarchitektur unverändert
+   - Beratungsdaten: Browser -> Secure Practice Vault -> localhost:1234 -> Vault -> Browser.
+   - Remote-AI-Endpunkte bleiben standardmäßig blockiert.
+
+UPDATE VON BUILD 11
+Cloud/GitHub:
+- admin.html
+- admin-build11.js
+- admin-build11.css
+
+Lokal im Secure Practice Vault:
+- vault/vault_server.py ersetzen
+- data/ NICHT ersetzen oder löschen
+- laufenden Vault mit Ctrl+C beenden und start_vault.bat neu starten
+
+Keine D1-Migration.
+Kein Cloudflare-Worker-Update nötig.
+
+Prüfung:
+1. http://127.0.0.1:47831/health -> version 2.1
+2. http://127.0.0.1:47831/ai/status -> Qwen3-1.7B sollte als model erscheinen, sobald heruntergeladen
+3. Admin mit Ctrl+F5 neu laden
+4. Session Flow öffnen -> Dropdown "Lokales Modell"
+5. denselben Test einmal mit Qwen3-1.7B und Qwen3-4B ausführen; Zeit wird angezeigt
