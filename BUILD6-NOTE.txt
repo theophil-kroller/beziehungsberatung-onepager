@@ -1,0 +1,34 @@
+BUILD 6 – Admin Poweruser
+===========================
+
+Basis: Build 5a (Admin-CRM), mit Abgleich der aktuellen GitHub-main-Dateien vor dem Build.
+
+Neu:
+- große Überschrift „Was ist gerade los?“ entfernt
+- Satz über nicht gespeicherte Beratungsinhalte aus der Dashboard-Startansicht entfernt
+- Beratername in Übersicht, Terminliste, Packages und Rechnungen
+- derzeitige Zuordnung: Advisor 01 = Theophil Kroller; Struktur ist für weitere Berater vorbereitet
+- Admin kann Termine verschieben
+- Admin kann Termine löschen; Google Calendar wird mit `sendUpdates=all` aktualisiert
+- beim Löschen kann zusätzlich eine eigene E-Mail an den Kunden versendet werden
+- eigener Button „Kunde informieren“ für Termine
+- Package-Einheiten (z.B. 2/3), Gesamtanzahl und Gültigkeitsdatum administrativ änderbar
+- eigener Button „Kunde informieren“ für Packages
+- Zahlungsziel administrativ änderbar
+- eigener Button „Kunde informieren“ für Rechnungen
+- jede Admin-Änderung wird im bestehenden Audit-Log dokumentiert
+
+Warum bisher „Offene Forderungen 0 €“ erscheinen konnte:
+- Testkäufe/Rechnungen mit Status `test` werden bewusst NICHT als echte offene Forderung gerechnet.
+- Build 6 zeigt deshalb zusätzlich in derselben Kennzahl „Sandbox/Test: €…“.
+- So bleiben echte Forderungen und Testdaten sauber getrennt.
+
+Stripe:
+- Im verbundenen Stripe-Sandbox-Konto existiert bereits das Polyamorie Starter-Paket für €465.
+- Einzelberatung wurde noch NICHT mit einem Preis in Stripe angelegt, weil im aktuellen
+  Website-/Repo-Stand kein verbindlicher Preis für die 60-Minuten-Einzelsitzung hinterlegt ist.
+  Sobald der exakte Preis bestätigt ist, kann das Sandbox-Produkt und der Checkout ergänzt werden.
+
+Wichtig:
+Für die neuen Admin-Aktionen muss der Worker aus `cloudflare-worker/worker.js` erneut in
+Cloudflare deployed werden. Die HTML-Datei allein reicht nicht.

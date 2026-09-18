@@ -19,7 +19,7 @@ main{max-width:1260px;margin:auto;padding:42px 22px 90px}.eyebrow{font-size:12px
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:750;cursor:pointer;color:var(--muted)}.tab.active{background:var(--brown);color:#fff;border-color:var(--brown)}
 .panel{padding:24px;margin-top:14px}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px;flex-wrap:wrap}.panel h2{font-family:Georgia,serif;font-size:30px;margin:0}.panel p.intro{margin:5px 0 0;color:var(--muted)}.tools{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.tools input,.tools select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;min-height:42px}
 .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}table{width:100%;border-collapse:collapse;min-width:760px;background:#fff}th,td{text-align:left;padding:13px 14px;border-bottom:1px solid #EEE2D7;vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:#FFFBF6;position:sticky;top:0}tbody tr:last-child td{border-bottom:0}.name{font-weight:800}.sub{font-size:12px;color:var(--muted);margin-top:3px}.badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;white-space:nowrap}.paid{background:var(--green-bg);color:var(--green)}.open{background:var(--orange-bg);color:var(--orange)}.overdue{background:var(--red-bg);color:var(--red)}.test,.neutral,.cancelled,.void,.refunded{background:var(--grey-bg);color:var(--grey)}.booked{background:var(--green-bg);color:var(--green)}
-.row-actions{display:flex;gap:7px;flex-wrap:wrap}.mini{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:800;cursor:pointer}.mini.remind{background:var(--red-bg);border-color:#E7B9B5;color:var(--red)}.mini.pay{background:var(--green-bg);border-color:#BDD2BA;color:var(--green)}
+.row-actions{display:flex;gap:7px;flex-wrap:wrap}.mini{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:800;cursor:pointer}.mini.remind{background:var(--red-bg);border-color:#E7B9B5;color:var(--red)}.mini.pay{background:var(--green-bg);border-color:#BDD2BA;color:var(--green)}.mini.edit{background:#FFF8ED;border-color:#E8D2BE;color:#7B5425}.mini.notify{background:#F5E6D3;border-color:#DDBFA9;color:#704B38}
 .attention{display:grid;gap:9px}.attention-item{border-left:4px solid var(--terr);background:#FFF9F3;border-radius:12px;padding:13px 14px;display:flex;justify-content:space-between;gap:12px;align-items:center}.attention-item.red{border-left-color:var(--red);background:var(--red-bg)}.attention-item .txt{min-width:0}.attention-item strong{display:block}.attention-item span{font-size:13px;color:var(--muted)}
 .empty{color:var(--muted);padding:22px 4px;text-align:center}
 dialog{border:0;padding:0;border-radius:24px;max-width:760px;width:calc(100% - 30px);box-shadow:0 30px 90px rgba(47,38,35,.22);color:var(--brown)}dialog::backdrop{background:rgba(47,38,35,.38)}.dialog-in{padding:26px}.dialog-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.dialog-head h2{font-family:Georgia,serif;font-size:31px;margin:0}.close{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer}.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}.detail-card{background:var(--cream);border:1px solid var(--line);border-radius:15px;padding:14px}.detail-card h3{font-size:15px;margin:0 0 8px}.detail-card ul{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.55}
@@ -61,13 +61,13 @@ dialog{border:0;padding:0;border-radius:24px;max-width:760px;width:calc(100% - 3
 </section>
 
 <section id="dashboardView" class="hidden">
-  <div class="hero"><div class="eyebrow">Praxis-Cockpit</div><h1>Was ist gerade los?</h1><p>Termine, Kund:innen, Packages und offene Rechnungen an einem Ort. Beratungsinhalte werden hier bewusst nicht gespeichert.</p></div>
+  <div class="hero"><div class="eyebrow">Praxis-Cockpit</div></div>
 
   <div class="stats">
     <div class="stat"><span>Heute</span><strong id="statToday">—</strong><small>Termine</small></div>
     <div class="stat"><span>Nächste 7 Tage</span><strong id="statWeek">—</strong><small>Termine</small></div>
     <div class="stat"><span>Aktive Packages</span><strong id="statPackages">—</strong><small>mit offenen Einheiten</small></div>
-    <div class="stat"><span>Offene Forderungen</span><strong id="statOpen">—</strong><small id="statOverdue">—</small></div>
+    <div class="stat"><span>Offene Forderungen</span><strong id="statOpen">—</strong><small id="statOverdue">—</small><small id="statTest" style="margin-top:7px;color:#75645C">—</small></div>
   </div>
 
   <div class="tabs" role="tablist">
@@ -157,7 +157,7 @@ dialog{border:0;padding:0;border-radius:24px;max-width:760px;width:calc(100% - 3
   function renderAll(){
     const o=data.overview||{};
     $("#statToday").textContent=o.todayBookings??0;$("#statWeek").textContent=o.next7Bookings??0;$("#statPackages").textContent=o.activePackages??0;
-    $("#statOpen").textContent=money(o.openInvoicesCents||0);$("#statOverdue").textContent=`davon ${money(o.overdueInvoicesCents||0)} überfällig`;
+    $("#statOpen").textContent=money(o.openInvoicesCents||0);$("#statOverdue").textContent=`davon ${money(o.overdueInvoicesCents||0)} überfällig`;$("#statTest").textContent=`Sandbox/Test: ${money(o.testInvoicesCents||0)}`;
     renderAttention();renderNext();renderCustomers();renderBookings();renderPackages();renderInvoices()
   }
 
@@ -174,7 +174,7 @@ dialog{border:0;padding:0;border-radius:24px;max-width:760px;width:calc(100% - 3
 
   function renderNext(){
     const rows=(data.bookings||[]).filter(x=>x.status==="booked"&&new Date(x.start).getTime()>=now()).sort((a,b)=>new Date(a.start)-new Date(b.start)).slice(0,8);
-    $("#nextBookings").innerHTML=rows.length?table(["Termin","Kund:in","Art","Ort"],rows.map(x=>`<tr><td><strong>${esc(dt(x.start))}</strong></td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.typeLabel)}</td><td>${esc(x.locationLabel)}</td></tr>`)):`<div class="empty">Keine kommenden Termine.</div>`
+    $("#nextBookings").innerHTML=rows.length?table(["Termin","Kund:in","Berater","Art","Ort",""],rows.map(x=>`<tr><td><strong>${esc(dt(x.start))}</strong></td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.advisorName||"Theophil Kroller")}</td><td>${esc(x.typeLabel)}</td><td>${esc(x.locationLabel)}</td><td><div class="row-actions"><button class="mini edit" data-booking-edit="${esc(x.eventId)}">Bearbeiten</button><button class="mini notify" data-booking-notify="${esc(x.eventId)}">Kunde informieren</button></div></td></tr>`)):`<div class="empty">Keine kommenden Termine.</div>`;bindPowerActions()
   }
 
   function customerUniverse(){
@@ -207,8 +207,7 @@ dialog{border:0;padding:0;border-radius:24px;max-width:760px;width:calc(100% - 3
     $("#dialogDetails").innerHTML=`
       <div class="detail-card"><h3>Termine</h3>${bk.length?`<ul>${bk.slice(0,8).map(x=>`<li>${esc(dt(x.start))} · ${esc(x.typeLabel)} · ${x.status==="cancelled"?"abgesagt":"gebucht"}</li>`).join("")}</ul>`:`<div class="sub">Keine Termine</div>`}</div>
       <div class="detail-card"><h3>Packages</h3>${pk.length?`<ul>${pk.map(x=>`<li>${esc(x.productName)} · ${x.remaining}/${x.total} offen</li>`).join("")}</ul>`:`<div class="sub">Keine Packages</div>`}</div>
-      <div class="detail-card"><h3>Rechnungen</h3>${iv.length?`<ul>${iv.map(x=>`<li>${esc(x.invoiceNumber)} · ${money(x.totalCents,x.currency)} · ${statusLabel(x.status)}</li>`).join("")}</ul>`:`<div class="sub">Keine Rechnungen</div>`}</div>
-      <div class="detail-card"><h3>Hinweis</h3><div class="sub">Dieser Bereich enthält nur organisatorische Daten. Beratungsnotizen gehören bewusst nicht in dieses CRM.</div></div>`;
+      <div class="detail-card"><h3>Rechnungen</h3>${iv.length?`<ul>${iv.map(x=>`<li>${esc(x.invoiceNumber)} · ${money(x.totalCents,x.currency)} · ${statusLabel(x.status)}</li>`).join("")}</ul>`:`<div class="sub">Keine Rechnungen</div>`}</div>`;
     $("#customerDialog").showModal()
   }
   $("#dialogClose").addEventListener("click",()=>$("#customerDialog").close());
@@ -220,29 +219,79 @@ dialog{border:0;padding:0;border-radius:24px;max-width:760px;width:calc(100% - 3
     if(filter==="past")rows=rows.filter(x=>x.status==="booked"&&new Date(x.start).getTime()<t);
     if(filter==="cancelled")rows=rows.filter(x=>x.status==="cancelled");
     rows.sort((a,b)=>filter==="upcoming"?new Date(a.start)-new Date(b.start):new Date(b.start)-new Date(a.start));
-    $("#bookingsTable").innerHTML=rows.length?table(["Termin","Kund:in","Beratung","Ort","Status"],rows.map(x=>`<tr><td>${esc(dt(x.start))}</td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.typeLabel)}${x.packageName?`<div class="sub">${esc(x.packageName)}</div>`:""}</td><td>${esc(x.locationLabel)}</td><td><span class="badge ${x.status==="cancelled"?"cancelled":"booked"}">${x.status==="cancelled"?"Abgesagt":new Date(x.start).getTime()<t?"Vergangen":"Gebucht"}</span>${x.lastRescheduledAt?`<div class="sub">umgebucht ${d(x.lastRescheduledAt)}</div>`:""}</td></tr>`)):`<div class="empty">Keine Termine in dieser Ansicht.</div>`
+    $("#bookingsTable").innerHTML=rows.length?table(["Termin","Kund:in","Berater","Beratung","Ort","Status","Aktion"],rows.map(x=>`<tr><td>${esc(dt(x.start))}</td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.advisorName||"Theophil Kroller")}</td><td>${esc(x.typeLabel)}${x.packageName?`<div class="sub">${esc(x.packageName)}</div>`:""}</td><td>${esc(x.locationLabel)}</td><td><span class="badge ${x.status==="cancelled"?"cancelled":"booked"}">${x.status==="cancelled"?"Abgesagt":new Date(x.start).getTime()<t?"Vergangen":"Gebucht"}</span>${x.lastRescheduledAt?`<div class="sub">umgebucht ${d(x.lastRescheduledAt)}</div>`:""}</td><td>${x.status==="booked"?`<div class="row-actions"><button class="mini edit" data-booking-edit="${esc(x.eventId)}">Verschieben</button><button class="mini danger" data-booking-delete="${esc(x.eventId)}">Löschen</button><button class="mini notify" data-booking-notify="${esc(x.eventId)}">Kunde informieren</button></div>`:"—"}</td></tr>`)):`<div class="empty">Keine Termine in dieser Ansicht.</div>`;bindPowerActions()
   }
   $("#bookingFilter").addEventListener("change",()=>data&&renderBookings());
 
   function renderPackages(){
-    const rows=(data.packages||[]).map(x=>`<tr><td><span class="name">${esc(x.customerName)}</span><div class="sub">${esc(x.customerEmail)}</div></td><td><strong>${esc(x.productName)}</strong><div class="sub">${esc(x.reference||"")}</div></td><td><strong>${x.remaining}/${x.total}</strong></td><td>${x.expiresAt?d(x.expiresAt):"—"}</td><td>${x.purchaseAmountCents===null?"—":money(x.purchaseAmountCents,x.currency)}<div class="sub">${esc(x.purchaseStatus||"")}</div></td></tr>`);
-    $("#packagesTable").innerHTML=rows.length?table(["Kund:in","Package","Offen","Gültig bis","Kauf"],rows):`<div class="empty">Noch keine Packages.</div>`
+    const rows=(data.packages||[]).map(x=>`<tr><td><span class="name">${esc(x.customerName)}</span><div class="sub">${esc(x.customerEmail)}</div></td><td>${esc(x.advisorName||"Theophil Kroller")}</td><td><strong>${esc(x.productName)}</strong><div class="sub">${esc(x.reference||"")}</div></td><td><strong>${x.remaining}/${x.total}</strong></td><td>${x.expiresAt?d(x.expiresAt):"—"}</td><td>${x.purchaseAmountCents===null?"—":money(x.purchaseAmountCents,x.currency)}<div class="sub">${esc(x.purchaseStatus||"")}</div></td><td><div class="row-actions"><button class="mini edit" data-package-edit="${x.creditId}">Bearbeiten</button><button class="mini notify" data-package-notify="${x.creditId}">Kunde informieren</button></div></td></tr>`);
+    $("#packagesTable").innerHTML=rows.length?table(["Kund:in","Berater","Package","Offen","Gültig bis","Kauf","Aktion"],rows):`<div class="empty">Noch keine Packages.</div>`;bindPowerActions()
   }
 
   function statusLabel(s){return ({paid:"Bezahlt",open:"Offen",overdue:"Überfällig",test:"Test",void:"Storniert",cancelled:"Storniert",refunded:"Erstattet"})[s]||s}
   function renderInvoices(){
     const filter=$("#invoiceFilter").value;let rows=(data.invoices||[]).filter(x=>filter==="all"||x.status===filter);
-    $("#invoicesTable").innerHTML=rows.length?table(["Rechnung","Kund:in","Betrag","Fällig","Status","Aktion"],rows.map(x=>{
-      let actions=`<button class="mini" data-pdf="${x.id}">PDF</button>`;
+    $("#invoicesTable").innerHTML=rows.length?table(["Rechnung","Kund:in","Berater","Betrag","Fällig","Status","Aktion"],rows.map(x=>{
+      let actions=`<button class="mini" data-pdf="${x.id}">PDF</button><button class="mini edit" data-due-edit="${x.id}">Zahlungsziel ändern</button><button class="mini notify" data-invoice-notify="${x.id}">Kunde informieren</button>`;
       if(x.status==="open"||x.status==="overdue")actions+=`<button class="mini pay" data-paid="${x.id}">Bezahlt markieren</button>`;
       if(x.status==="overdue")actions+=`<button class="mini remind" data-remind="${x.id}">Erinnerung senden</button>`;
       if(x.status==="paid")actions+=`<button class="mini" data-open="${x.id}">Wieder öffnen</button>`;
       const rem=x.reminderCount?`<div class="sub">${x.reminderCount} Erinnerung${x.reminderCount===1?"":"en"} · zuletzt ${dt(x.lastReminderAt)}</div>`:"";
-      return `<tr><td><span class="name">${esc(x.invoiceNumber||"—")}</span><div class="sub">${d(x.invoiceDate)}</div></td><td>${esc(x.customerName)}<div class="sub">${esc(x.customerEmail)}</div></td><td><strong>${money(x.totalCents,x.currency)}</strong></td><td>${d(x.dueDate)}</td><td><span class="badge ${esc(x.status)}">${esc(statusLabel(x.status))}</span>${x.paidAt?`<div class="sub">${dt(x.paidAt)}</div>`:""}${rem}</td><td><div class="row-actions">${actions}</div></td></tr>`
+      return `<tr><td><span class="name">${esc(x.invoiceNumber||"—")}</span><div class="sub">${d(x.invoiceDate)}</div></td><td>${esc(x.customerName)}<div class="sub">${esc(x.customerEmail)}</div></td><td>${esc(x.advisorName||"Theophil Kroller")}</td><td><strong>${money(x.totalCents,x.currency)}</strong></td><td>${d(x.dueDate)}</td><td><span class="badge ${esc(x.status)}">${esc(statusLabel(x.status))}</span>${x.paidAt?`<div class="sub">${dt(x.paidAt)}</div>`:""}${rem}</td><td><div class="row-actions">${actions}</div></td></tr>`
     })):`<div class="empty">Keine Rechnungen in dieser Ansicht.</div>`;
     bindInvoiceActions()
   }
   $("#invoiceFilter").addEventListener("change",()=>data&&renderInvoices());
+
+
+  function findBooking(eventId){return (data.bookings||[]).find(x=>x.eventId===eventId&&x.status==="booked")}
+  function findPackage(creditId){return (data.packages||[]).find(x=>Number(x.creditId)===Number(creditId))}
+  function findInvoice(id){return (data.invoices||[]).find(x=>Number(x.id)===Number(id))}
+  function toLocalInput(iso){
+    if(!iso)return"";const x=new Date(iso),pad=n=>String(n).padStart(2,"0");
+    return `${x.getFullYear()}-${pad(x.getMonth()+1)}-${pad(x.getDate())}T${pad(x.getHours())}:${pad(x.getMinutes())}`;
+  }
+  async function post(path,body){return api(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})}
+
+  function bindPowerActions(){
+    $$("[data-booking-edit]").forEach(b=>{if(b.dataset.powerBound)return;b.dataset.powerBound="1";b.addEventListener("click",async()=>{
+      const x=findBooking(b.dataset.bookingEdit);if(!x)return;
+      const raw=prompt("Neuer Termin (Datum und Uhrzeit):",toLocalInput(x.start));if(!raw)return;
+      const parsed=new Date(raw);if(Number.isNaN(parsed.getTime())){alert("Ungültiges Datum.");return}
+      b.disabled=true;try{await post("/admin/booking/update",{eventId:x.eventId,start:parsed.toISOString()});await load();alert("Termin wurde im CRM und Google Kalender verschoben.")}catch(e){alert(e.message)}finally{b.disabled=false}
+    })});
+    $$("[data-booking-delete]").forEach(b=>{if(b.dataset.powerBound)return;b.dataset.powerBound="1";b.addEventListener("click",async()=>{
+      const x=findBooking(b.dataset.bookingDelete);if(!x)return;
+      if(!confirm(`Termin von ${x.name} am ${dt(x.start)} wirklich löschen?`))return;
+      const notify=confirm("Soll der Kunde zusätzlich per E-Mail über die Absage informiert werden?");
+      b.disabled=true;try{await post("/admin/booking/delete",{eventId:x.eventId,notifyCustomer:notify});await load()}catch(e){alert(e.message)}finally{b.disabled=false}
+    })});
+    $$("[data-booking-notify]").forEach(b=>{if(b.dataset.powerBound)return;b.dataset.powerBound="1";b.addEventListener("click",async()=>{
+      b.disabled=true;try{await post("/admin/booking/notify",{eventId:b.dataset.bookingNotify});alert("E-Mail wurde an den Kunden gesendet.")}catch(e){alert(e.message)}finally{b.disabled=false}
+    })});
+    $$("[data-package-edit]").forEach(b=>{if(b.dataset.powerBound)return;b.dataset.powerBound="1";b.addEventListener("click",async()=>{
+      const x=findPackage(b.dataset.packageEdit);if(!x)return;
+      const remainingRaw=prompt(`Offene Einheiten für ${x.productName}:`,String(x.remaining));if(remainingRaw===null)return;
+      const totalRaw=prompt("Gesamte Einheiten:",String(x.total));if(totalRaw===null)return;
+      const expiryDefault=x.expiresAt?String(x.expiresAt).slice(0,10):"";
+      const expiry=prompt("Gültig bis (JJJJ-MM-TT):",expiryDefault);if(expiry===null)return;
+      const remaining=Number(remainingRaw),total=Number(totalRaw);
+      if(!Number.isInteger(remaining)||!Number.isInteger(total)||total<0||remaining<0||remaining>total){alert("Bitte gültige ganze Zahlen eingeben; offen darf nicht größer als gesamt sein.");return}
+      b.disabled=true;try{await post("/admin/package/update",{creditId:x.creditId,remaining,total,expiresAt:expiry||null});await load();alert("Package wurde angepasst.")}catch(e){alert(e.message)}finally{b.disabled=false}
+    })});
+    $$("[data-package-notify]").forEach(b=>{if(b.dataset.powerBound)return;b.dataset.powerBound="1";b.addEventListener("click",async()=>{
+      b.disabled=true;try{await post("/admin/package/notify",{creditId:Number(b.dataset.packageNotify)});alert("E-Mail mit dem aktuellen Package-Stand wurde gesendet.")}catch(e){alert(e.message)}finally{b.disabled=false}
+    })});
+    $$("[data-due-edit]").forEach(b=>{if(b.dataset.powerBound)return;b.dataset.powerBound="1";b.addEventListener("click",async()=>{
+      const x=findInvoice(b.dataset.dueEdit);if(!x)return;
+      const due=prompt("Neues Zahlungsziel (JJJJ-MM-TT):",x.dueDate||"");if(!due)return;
+      if(!/^\d{4}-\d{2}-\d{2}$/.test(due)){alert("Bitte Datum als JJJJ-MM-TT eingeben.");return}
+      b.disabled=true;try{await post("/admin/invoice/update-due",{invoiceId:x.id,dueDate:due});await load();alert("Zahlungsziel wurde geändert.")}catch(e){alert(e.message)}finally{b.disabled=false}
+    })});
+    $$("[data-invoice-notify]").forEach(b=>{if(b.dataset.powerBound)return;b.dataset.powerBound="1";b.addEventListener("click",async()=>{
+      b.disabled=true;try{await post("/admin/invoice/notify",{invoiceId:Number(b.dataset.invoiceNotify)});alert("E-Mail mit dem aktuellen Rechnungsstatus wurde gesendet.")}catch(e){alert(e.message)}finally{b.disabled=false}
+    })});
+  }
 
   function bindInvoiceActions(){
     $$("[data-remind]").forEach(b=>{if(b.dataset.bound)return;b.dataset.bound="1";b.addEventListener("click",async()=>{if(!confirm("Zahlungserinnerung jetzt an die Kundin bzw. den Kunden senden?"))return;b.disabled=true;try{await api("/admin/invoice/remind",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({invoiceId:Number(b.dataset.remind)})});await load()}catch(e){alert(e.message)}finally{b.disabled=false}})});
