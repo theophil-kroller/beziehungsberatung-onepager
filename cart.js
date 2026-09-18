@@ -72,6 +72,49 @@
     const path=location.pathname.split('/').pop()||'index.html';
     if(!['index.html','en.html',''].includes(path))return;
     const lang=getLang();
+
+    // Generic appointment CTAs always open the neutral booking entry.
+    // Only the explicit format cards preselect 1 person or 2–4 people.
+    const neutralBooking=lang==='en'?'booking-en.html':'booking.html';
+    document.querySelectorAll('a').forEach(a=>{
+      const href=(a.getAttribute('href')||'').replace(/^\.\//,'');
+      if(href==='booking.html'||href==='booking-en.html')a.setAttribute('href',neutralBooking);
+    });
+
+    // Shared lightweight styles for homepage/booking package discovery.
+    if(!document.getElementById('bd-build102-public-style')){
+      const style=document.createElement('style');
+      style.id='bd-build102-public-style';
+      style.textContent=`
+        .bd-package-teaser{margin-top:12px;font-size:14px;line-height:1.5;color:#7B6961}
+        .bd-package-teaser a{color:#A9543B;font-weight:800;text-decoration:none}
+        .bd-package-teaser a:hover{text-decoration:underline}
+        .booking-package-hint{margin:16px 0 2px;border:1px solid #D8C6B6;background:#FFF9F3;border-radius:16px;padding:14px 15px;color:#5F504A;font-size:13px;line-height:1.55}
+        .booking-package-hint strong{display:block;color:#2F2623;margin-bottom:3px}
+        .booking-package-hint a{display:inline-block;margin-top:5px;color:#A9543B;font-weight:800;text-decoration:none}
+        .booking-package-hint a:hover{text-decoration:underline}
+      `;
+      document.head.appendChild(style);
+    }
+
+    // The first public booking CTA outside the navigation is the hero CTA.
+    // Add a quiet second path for visitors interested in multi-session offers.
+    const primaryBooking=[...document.querySelectorAll('a')].find(a=>{
+      const href=(a.getAttribute('href')||'').replace(/^\.\//,'');
+      return href===neutralBooking&&!a.closest('nav')&&!a.closest('.offer-card');
+    });
+    if(primaryBooking){
+      const row=primaryBooking.parentElement;
+      if(row&&!row.parentElement.querySelector('.bd-package-teaser')){
+        const teaser=document.createElement('p');
+        teaser.className='bd-package-teaser';
+        teaser.innerHTML=lang==='en'
+          ? `Planning more than one session? <a href="offers.html">Explore packages & savings →</a>`
+          : `Mehrere Sitzungen geplant? <a href="angebote.html">Packages & Preisvorteile entdecken →</a>`;
+        row.insertAdjacentElement('afterend',teaser);
+      }
+    }
+
     // Top strapline
     [...document.querySelectorAll('span')].forEach(el=>{
       const t=(el.textContent||'').trim();
@@ -118,6 +161,17 @@
 
   function improveBookingLanguageAndFlow(){
     const form=document.getElementById('bookingForm');if(!form)return;const lang=getLang(),params=new URLSearchParams(location.search),requested=params.get('type'),packageToken=params.get('package_token');
+    if(!document.getElementById('bd-build102-public-style')){
+      const style=document.createElement('style');
+      style.id='bd-build102-public-style';
+      style.textContent=`
+        .booking-package-hint{margin:16px 0 2px;border:1px solid #D8C6B6;background:#FFF9F3;border-radius:16px;padding:14px 15px;color:#5F504A;font-size:13px;line-height:1.55}
+        .booking-package-hint strong{display:block;color:#2F2623;margin-bottom:3px}
+        .booking-package-hint a{display:inline-block;margin-top:5px;color:#A9543B;font-weight:800;text-decoration:none}
+        .booking-package-hint a:hover{text-decoration:underline}
+      `;
+      document.head.appendChild(style);
+    }
     const cfg=window.BD_BOOKING_CONFIG;if(cfg?.appointmentTypes){if(cfg.appointmentTypes.individual){cfg.appointmentTypes.individual.labelDe='Beratung für 1 Person';cfg.appointmentTypes.individual.labelEn='Counselling for 1 person'}if(cfg.appointmentTypes.couple){cfg.appointmentTypes.couple.labelDe='Gemeinsame Beziehungsberatung';cfg.appointmentTypes.couple.labelEn='Joint relationship counselling'}}
     const first=document.querySelector('[data-type="individual"]'),joint=document.querySelector('[data-type="couple"]');
     if(first)first.innerHTML=lang==='en'?'<strong>1 person</strong><span>60 minutes · regardless of relationship model</span>':'<strong>1 Person</strong><span>60 Minuten · unabhängig von der Beziehungsform</span>';
@@ -125,6 +179,37 @@
     const stepHead=document.querySelector('#step1 h2');if(stepHead)stepHead.textContent=lang==='en'?'How many people will attend?':'Mit wie vielen Personen möchtest du kommen?';
     const title=document.getElementById('bookingTitle'),lead=document.getElementById('bookingLead');if(title&&!packageToken)title.textContent=lang==='en'?'Choose the format that fits your appointment.':'Wähle den Rahmen, der zu deinem Termin passt.';if(lead&&!packageToken)lead.textContent=lang==='en'?'The choice is based only on how many people attend — not on whether your relationship is monogamous, open or polyamorous.':'Entscheidend ist nur, wie viele Personen am Termin teilnehmen – nicht, ob du monogam, offen oder polyamor lebst.';
     if(requested&&['individual','couple'].includes(requested)&&!packageToken){const step1=document.getElementById('step1'),step2=document.getElementById('step2');if(step1&&step2){step1.style.display='none';document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));step2.classList.add('active')}const back=document.getElementById('back2');if(back)back.onclick=()=>{location.href=lang==='en'?'offers.html':'angebote.html'};const s=document.getElementById('sType'),td=cfg?.appointmentTypes?.[requested];if(s&&td)s.textContent=(lang==='en'?td.labelEn:td.labelDe)+' · '+td.durationMinutes+' '+(lang==='en'?'min':'Min.');}
+
+    // Package discovery remains visible without interrupting the booking flow.
+    if(!packageToken){
+      const step2=document.getElementById('step2'),choices=step2?.querySelector('.choices');
+      if(step2&&choices&&!document.getElementById('bookingPackageHint')){
+        const hint=document.createElement('div');
+        hint.id='bookingPackageHint';
+        hint.className='booking-package-hint';
+        choices.insertAdjacentElement('afterend',hint);
+      }
+      const updatePackageHint=()=>{
+        const hint=document.getElementById('bookingPackageHint');if(!hint)return;
+        const type=(typeof state!=='undefined'&&state?.type)||requested||'';
+        if(type==='individual'){
+          hint.innerHTML=lang==='en'
+            ? `<strong>Planning several sessions?</strong>Process Support: 5 × 60 min for €410 instead of €450. <a href="offers.html">Explore packages & savings →</a>`
+            : `<strong>Mehrere Termine geplant?</strong>Prozessbegleitung: 5 × 60 Min. für €410 statt €450. <a href="angebote.html">Packages & Preisvorteile entdecken →</a>`;
+        }else if(type==='couple'){
+          hint.innerHTML=lang==='en'
+            ? `<strong>Planning several joint sessions?</strong>Explore multi-session packages with a package saving. <a href="offers.html">View packages →</a>`
+            : `<strong>Mehrere gemeinsame Termine geplant?</strong>Entdecke Begleitpakete mit mehreren Sitzungen und Preisvorteil. <a href="angebote.html">Packages ansehen →</a>`;
+        }else{
+          hint.innerHTML=lang==='en'
+            ? `<strong>Planning more than one session?</strong><a href="offers.html">Explore packages & savings →</a>`
+            : `<strong>Mehrere Sitzungen geplant?</strong><a href="angebote.html">Packages & Preisvorteile entdecken →</a>`;
+        }
+      };
+      first?.addEventListener('click',()=>setTimeout(updatePackageHint,0));
+      joint?.addEventListener('click',()=>setTimeout(updatePackageHint,0));
+      updatePackageHint();
+    }
   }
 
   function enhanceOffers(){

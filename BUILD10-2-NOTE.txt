@@ -1,0 +1,18 @@
+Beziehungsdynamiken BUILD 10.2 — Packages + Dashboard Clarity
+
+Public pages
+- Generic appointment CTAs on index/en open the neutral booking entry.
+- Homepage hero includes a quiet link to packages & price advantages.
+- Booking shows a contextual package hint without interrupting appointment booking.
+
+Dashboard
+- "Einnahmen Monat" and "Planbar 30 Tage" are no longer separate cockpit cards.
+- Both now live inside the "Offene Forderungen" card as compact links.
+- Clicking the card or either value opens the detailed Finance Cockpit.
+- "Session Flow" in the left navigation is permanently highlighted pale green and dark green when active.
+
+Deployment from BUILD 10.1
+- No D1 migration.
+- No Worker redeploy.
+- Replace: admin-build10.js, admin-build10.css, cart.js
+- Hard refresh: Ctrl+F5

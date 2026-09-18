@@ -1,3 +1,11 @@
+BUILD 10.2 QUICK UPDATE
+If BUILD 10.1 is already running, no D1 migration and no Worker redeploy are required.
+Replace these root files:
+- admin-build10.js
+- admin-build10.css
+- cart.js
+Then use Ctrl+F5.
+
 BUILD 10.1 — UPDATE NACH BUILD 10
 
 Wenn BUILD 10 bereits läuft, ist KEINE neue D1-Migration nötig.
