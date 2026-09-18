@@ -1,0 +1,51 @@
+BEZIEHUNGSDYNAMIKEN — BUILD 8
+Professional CRM + Payment Automation + Secure Practice Vault
+18.09.2026
+
+WHAT IS NEW
+
+1) Professional CRM
+- Sidebar navigation and practice cockpit
+- Client Journey / Kanban: Anfrage -> Erstgespräch -> Wartet -> Aktiv -> Pausiert -> Abgeschlossen
+- Drag & drop between journey stages
+- Client status: Aktiv / Pausiert / Abgeschlossen / Interessent:in
+- One client record for appointments, packages, invoices, activities and local documentation
+- Persistent lifecycle/status/activity data in Cloudflare D1
+- Continuation opportunities when package credit is nearly used up
+- Prepared continuation offers with discount/bonus proposal and confirmed email send
+
+2) Better editing UX
+- No cryptic prompt() input for appointment/date changes
+- Real date/time form fields
+- Old -> new change summary before saving
+- Customer email is enabled only after a relevant change
+- Email preview and second confirmation before sending
+
+3) Payments
+- One-off default fees: EUR 90 individual counselling / 60 min; EUR 165 couples & relationship counselling / 90 min
+- Package checkout: Stripe online payment OR invoice/bank transfer
+- Appointment checkout: Stripe online payment OR invoice
+- Stripe payments are recorded automatically after confirmed payment
+- Manual cash payment: payment method + actual payment date + optional reference
+- Manual bank transfer: same workflow
+- Bank CSV import: amount/invoice-number/name matching, confidence level and explicit confirmation before posting
+- Payment journal preserves method, date, source and reference
+- Reopening an invoice voids the active payment entry instead of deleting audit history
+
+4) Secure Practice Vault — local only
+- Local Python service, bound to 127.0.0.1 only
+- SQLite metadata store
+- Sensitive counselling text encrypted with AES-256-GCM before it is written
+- Artifact/photo/PDF bytes encrypted with AES-256-GCM
+- Password-derived key stays in memory only while the Vault is unlocked
+- Automatic lock after 15 minutes inactivity by default
+- Client goals, current focus, structured session history, interventions, response, agreements, next focus, private preparation and artifacts
+- Local audit trail
+- Counselling documentation is not sent to Cloudflare
+
+IMPORTANT
+- The Vault code may live in the public GitHub repo; vault/data is ignored. NEVER upload the actual contents of vault/data.
+- BUILD 8 is based on the current BUILD-6 worker supplied directly by the user, not the older worker file that was in GitHub.
+- The D1 migration is additive. It does not delete existing clients, bookings, packages or invoices.
+- Run the migration BEFORE deploying the BUILD-8 worker.
+- Configure the Stripe webhook before treating online payments as production-ready.

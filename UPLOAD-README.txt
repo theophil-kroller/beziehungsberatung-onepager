@@ -1,34 +1,121 @@
-BEZIEHUNGSDYNAMIKEN – BUILD 7 UPLOAD
-====================================
+BEZIEHUNGSDYNAMIKEN BUILD 8 — INSTALLATION ORDER
+=================================================
 
-Upload the contents of this ZIP to the ROOT of your existing GitHub repository.
-Keep the folder structure for database/build7-crm-lifecycle.sql.
+This ZIP contains only files that are new or changed for BUILD 8. Existing website files not contained here stay untouched.
 
-Replace these existing files when GitHub asks:
-- admin.html
-- cart.js
+A. BEFORE YOU START
+-------------------
+1. Keep a copy of the currently deployed Cloudflare Worker. A rollback copy of the worker you supplied is included under:
+   _rollback/worker-build6-before-build8.js
+2. Back up the current D1 database in Cloudflare.
+3. Do not delete the existing KV namespace (BOOKINGS), D1 database, or R2 MATERIALS binding.
 
-Add these new files:
-- admin-build7.css
-- admin-build7.js
-- BUILD7-NOTE.txt
-- database/build7-crm-lifecycle.sql
-- UPLOAD-README.txt
+B. DATABASE FIRST
+-----------------
+Run ONCE against the same D1 database used by the Worker:
 
-IMPORTANT:
-Do NOT replace cloudflare-worker/worker.js with the old GitHub version.
-BUILD 7 intentionally contains no Worker replacement.
+   database/build8-worker-crm-stripe.sql
 
-After GitHub Pages has deployed, hard-refresh the browser (Ctrl+F5) and open:
-https://beziehungsdynamiken.at/admin.html
+It adds CRM lifecycle tables, Stripe checkout bookkeeping, payment journal, bank-import rows and technical session products. It does not delete existing data.
 
-Quick checks:
-1. Login via magic link.
-2. Dashboard opens with sidebar.
-3. Appointment -> Verschieben opens a date/time dialog.
-4. Invoice -> Zahlungsziel ändern opens a calendar field.
-5. Package -> Bearbeiten shows old/new values.
-6. Save & E-Mail vorbereiten requires a second explicit send confirmation.
-7. Client Journey supports drag & drop.
-8. Settings -> Statusdaten exportieren downloads a JSON backup.
-9. booking.html shows a continuous cream -> blush wave without the white wedge.
+C. DEPLOY THE WORKER
+--------------------
+Deploy this file as the Worker code:
+
+   cloudflare-worker/worker.js
+
+It is based on the current BUILD-6 worker supplied for this build and therefore retains Google Calendar, packages, invoice checkout, PDF invoices, admin magic-link login, emails and the existing CRM endpoints.
+
+Recommended/required Worker settings are documented in:
+
+   setup/CLOUDFLARE-STRIPE-SETUP.txt
+
+Default one-off fees in the code are already:
+- Individual counselling, 60 min: EUR 90
+- Couples & relationship counselling, 90 min: EUR 165
+
+They can later be overridden through Worker variables without changing code.
+
+D. UPLOAD THE WEBSITE FILES TO GITHUB
+-------------------------------------
+Upload/replace these files in the repository root:
+
+   admin.html
+   admin-build8.css
+   admin-build8.js
+   admin-vault.js
+   cart.js
+
+Upload these folders as well:
+
+   cloudflare-worker/
+   database/
+   vault/
+
+Important: cart.html, cart-en.html, booking.html, booking-en.html and the offers pages already load cart.js. BUILD 8 uses the new cart.js as the payment integration layer, so they do not need to be replaced solely for Stripe. The script also fixes the booking-page wave and displays the new one-off prices on the offers pages.
+
+E. STRIPE
+---------
+For real automatic reconciliation, configure BOTH:
+- STRIPE_SECRET_KEY
+- STRIPE_WEBHOOK_SECRET
+
+Webhook endpoint:
+   https://<YOUR-WORKER>/stripe/webhook
+
+Events:
+   checkout.session.completed
+   checkout.session.async_payment_succeeded
+   checkout.session.async_payment_failed
+
+The success page can also verify a paid Checkout Session directly, but the webhook is essential so payments are finalized even when the customer closes the browser after paying.
+
+F. SECURE PRACTICE VAULT
+------------------------
+On the computer where counselling documentation should be stored:
+
+Windows:
+1. Open vault/
+2. Double-click setup_vault.bat once
+3. Double-click start_vault.bat whenever you want to use documentation
+4. Open admin.html and choose Secure Vault / Documentation
+5. On first use choose a strong Vault password (minimum 12 characters)
+
+macOS/Linux:
+   cd vault
+   chmod +x setup_vault.sh start_vault.sh
+   ./setup_vault.sh
+   ./start_vault.sh
+
+There is NO password recovery. Store the password in a password manager.
+The Vault listens only on 127.0.0.1:47831.
+Back up vault/data only while the Vault is locked. Keep the backup encrypted. Full-disk encryption (e.g. BitLocker/FileVault) is strongly recommended in addition to Vault encryption.
+
+G. PAYMENT WORKFLOW AFTER BUILD 8
+---------------------------------
+Stripe:
+   customer pays -> Stripe confirms -> invoice/payment journal marked automatically -> CRM shows Stripe + payment date
+
+Bank transfer:
+   invoice remains open -> export CSV from bank -> CRM "Bank-CSV importieren" -> exact/probable match -> you confirm -> paid status posted
+
+Cash:
+   open invoice -> "Zahlung erfassen" -> Barzahlung + actual date -> paid status posted
+
+Manual bank entry:
+   open invoice -> "Zahlung erfassen" -> Banküberweisung + actual date/reference -> paid status posted
+
+H. SAFE DEPLOYMENT TEST
+-----------------------
+Use Stripe Sandbox first.
+1. /health returns ok
+2. admin magic-link login works
+3. existing bookings/packages/invoices are visible
+4. appointment price shows EUR 90 / EUR 165
+5. test invoice booking creates calendar event + invoice
+6. Stripe test payment returns and appears in CRM
+7. cash payment can be entered with date
+8. sample bank CSV can be matched without posting until you confirm
+9. Vault can be initialized, locked/unlocked, and one test session saved/reloaded
+
+Only after these checks switch Stripe from sandbox to live keys.
