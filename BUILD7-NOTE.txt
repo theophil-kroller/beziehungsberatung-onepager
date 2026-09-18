@@ -1,0 +1,83 @@
+BUILD 7 – Professional Practice CRM Dashboard
+===============================================
+Date: 18.09.2026
+
+WHAT IS NEW
+-----------
+1. Professional app layout
+   - left sidebar navigation instead of pill tabs
+   - Dashboard, Client Journey, Clients, Appointments, Packages, Invoices, Settings
+   - Beziehungsdynamiken colour system retained
+
+2. Visual Client Journey
+   - Kanban board: Enquiry -> First conversation -> Waiting -> Active -> Paused -> Completed
+   - Drag & drop between stages
+   - cards show next appointment, active package, renewal warning and overdue invoice
+   - manual enquiry capture without counselling content
+
+3. Client records with complete administrative context
+   - Overview, appointments, packages, invoices, forms placeholder and activity stream
+   - client lifecycle status: Active / Paused / Completed / Prospect
+   - current package, next appointment, last appointment and open invoices at a glance
+   - local activity trail for lifecycle changes, edits, reminders and renewal preparation
+
+4. Package continuation / renewal workflow
+   - Dashboard section "Continuation opportunities"
+   - configurable threshold (default: 1 remaining package unit)
+   - prepare continuation offer before the package ends
+   - optional discount percentage, calculated offer price and ready-to-use email draft
+   - email is opened in the user's email client only after explicit confirmation
+
+5. CRM editing UX
+   - no browser prompt() fields for appointment, package or due-date editing
+   - date picker and time picker
+   - old -> new change summary
+   - save/email buttons stay disabled until a value actually changes
+   - "Save & prepare email" saves first, then shows a second confirmation screen
+   - email is sent only after clicking "E-Mail jetzt senden"
+
+6. Booking page wave fix
+   - cart.js now conditionally fixes the booking-page transition
+   - removes the white wedge between the cream booking area and the blush footer wave
+   - works for German and English booking pages because both already load cart.js
+
+IMPORTANT BACKEND NOTE
+----------------------
+The Cloudflare Worker file currently stored in GitHub is older than the Worker version that
+must be running in production, because the live/admin frontend already calls routes such as
+/admin/dashboard, /invoice-checkout, package-access and the BUILD 6 admin actions that are
+not present in the GitHub Worker source.
+
+For that reason BUILD 7 deliberately DOES NOT overwrite cloudflare-worker/worker.js.
+Doing so could remove working production functionality.
+
+Until the deployed Worker source is synchronized back into GitHub:
+- existing appointments/packages/invoices still use the real backend
+- manual Client Journey/lifecycle changes and newly captured enquiries are stored in the
+  admin browser's localStorage (bd_crm_lifecycle_v1)
+- Settings includes Export/Import so these status records can be backed up and moved
+- database/build7-crm-lifecycle.sql documents the intended persistent server-side model
+
+STRIPE
+------
+The connected Stripe sandbox contains:
+- Polyamorie Starter-Paket
+- EUR 465.00 one-time price
+- site_product_id = poly-starter
+
+Stripe is not yet connected end-to-end to the website checkout. BUILD 7 does not fake a
+payment integration or overwrite the newer deployed Worker. The next backend step should be:
+Stripe Checkout Session -> webhook -> purchase/invoice paid -> package credit -> access token.
+
+FILES TO UPLOAD
+---------------
+admin.html
+admin-build7.css
+admin-build7.js
+cart.js
+BUILD7-NOTE.txt
+database/build7-crm-lifecycle.sql
+UPLOAD-README.txt
+
+No Cloudflare deployment is required for the frontend dashboard changes themselves.
+The existing backend endpoints used by BUILD 6 remain unchanged.
