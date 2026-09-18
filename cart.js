@@ -235,5 +235,64 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded",async()=>{updateBadges();bookingWaveFix();enhanceCartNavigation();enhanceHomepageWording();improveBookingLanguageAndFlow();enhanceOffers();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
+
+  function applyPublicPolish(){
+    const path=(location.pathname.split('/').pop()||'').toLowerCase();
+    const isOffers=/^(angebote|offers)\.html$/.test(path);
+    const isBooking=/^booking(-en)?\.html$/.test(path);
+    const isCart=/^cart(-en)?\.html$/.test(path);
+    if(!isOffers&&!isBooking&&!isCart)return;
+    document.body.classList.add('bd-public-polish',isOffers?'bd-polish-offers':isBooking?'bd-polish-booking':'bd-polish-cart');
+    if(!document.getElementById('bd-public-polish-style')){
+      const s=document.createElement('style');s.id='bd-public-polish-style';s.textContent=`
+        .bd-public-polish main{padding-top:46px}
+        .bd-public-polish .eyebrow{font-size:11px;letter-spacing:.18em;font-weight:850}
+        .bd-public-polish h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,5.1vw,56px);line-height:1.02;letter-spacing:-.025em;font-weight:600;margin-top:9px;text-wrap:balance}
+        .bd-public-polish .lead{font-size:16px;line-height:1.68;color:#695A53}
+        .bd-polish-offers main{max-width:1140px}
+        .bd-polish-offers h1{margin-bottom:13px}
+        .bd-polish-offers .lead{max-width:710px;margin-bottom:42px}
+        .bd-polish-offers .section-title{display:flex;align-items:center;gap:14px;margin:42px 0 18px;font-size:11px;letter-spacing:.16em;color:#9D513D}
+        .bd-polish-offers .section-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#DFC4AE,transparent)}
+        .bd-polish-offers .card{border-radius:22px;padding:25px;box-shadow:0 13px 38px rgba(47,38,35,.045);border-color:#E5CFBC}
+        .bd-polish-offers .card.package{background:linear-gradient(180deg,#F7E9D7 0%,#F3E2CC 100%)}
+        .bd-polish-offers .tag{font-size:10px;letter-spacing:.16em;margin-bottom:10px}
+        .bd-polish-offers h2{font-size:27px;letter-spacing:-.015em}
+        .bd-polish-offers .desc{font-size:14.5px;line-height:1.62}
+        .bd-polish-offers .grid-two,.bd-polish-offers .grid-three{gap:18px}
+        .bd-polish-offers .btn{border-radius:11px;min-height:44px}
+        .bd-polish-booking main{max-width:1010px;padding-top:44px}
+        .bd-polish-booking h1{font-size:clamp(38px,4.8vw,54px);max-width:650px;margin-bottom:14px}
+        .bd-polish-booking .lead{max-width:700px;margin-bottom:30px}
+        .bd-polish-booking .grid{gap:22px}
+        .bd-polish-booking .card,.bd-polish-booking .summary{border-radius:22px}
+        .bd-polish-booking .card{box-shadow:0 14px 42px rgba(47,38,35,.045);padding:25px}
+        .bd-polish-booking .summary{box-shadow:0 14px 42px rgba(47,38,35,.08)}
+        .bd-polish-booking .choice{border-radius:14px;background:#FFFCF8}
+        .bd-polish-booking .stephead h2{font-size:23px;letter-spacing:-.01em}
+        .bd-polish-cart main{max-width:840px;padding-top:48px}
+        .bd-polish-cart h1{display:flex;align-items:center;gap:12px;font-size:clamp(38px,4.8vw,52px);margin:8px 0 25px}
+        .bd-cart-title-icon{width:42px;height:42px;display:inline-grid;place-items:center;border-radius:50%;background:#F5E6D3;border:1px solid #E8D2BE;font-family:system-ui,sans-serif;font-size:20px;letter-spacing:0;box-shadow:0 7px 18px rgba(47,38,35,.045)}
+        .bd-polish-cart .card{border-radius:22px;box-shadow:0 14px 42px rgba(47,38,35,.045)}
+        .bd-polish-cart .empty{padding:38px 16px}
+        .bd-polish-cart .empty h2{font-size:26px;font-weight:600;letter-spacing:-.015em}
+        .bd-polish-cart .checkout-box{border-radius:18px;background:#FFFAF5}
+        @media(max-width:760px){
+          .bd-public-polish main{padding-top:36px}
+          .bd-public-polish h1{font-size:40px}
+          .bd-polish-offers .card{padding:22px}
+          .bd-polish-booking h1{font-size:40px}
+          .bd-polish-cart h1{font-size:40px}
+        }`;
+      document.head.appendChild(s);
+    }
+    if(isCart){
+      const h=document.querySelector('main h1');
+      if(h&&!h.querySelector('.bd-cart-title-icon')){
+        const icon=document.createElement('span');icon.className='bd-cart-title-icon';icon.setAttribute('aria-hidden','true');icon.textContent='🛒';h.prepend(icon);
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded",async()=>{applyPublicPolish();updateBadges();bookingWaveFix();enhanceCartNavigation();enhanceHomepageWording();improveBookingLanguageAndFlow();enhanceOffers();const handled=await handleStripeReturn();if(handled)return;await injectSingleSessionPrices();await setupCartCheckout();await setupBookingPayments()});
 })();

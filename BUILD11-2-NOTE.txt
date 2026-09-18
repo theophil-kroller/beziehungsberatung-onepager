@@ -1,0 +1,70 @@
+BUILD 11.2 — Local AI Stability + Vault Autostart + Public Polish
+
+Ziele dieses Builds
+==================
+1. Lokale KI darf bei langsamen Rechnern nicht mehr am Browser-Timeout scheitern.
+2. Dauer der lokalen Verarbeitung wird sichtbar.
+3. Qwen3-1.7B bleibt die ressourcenschonende Voreinstellung.
+4. LM Studio/Bionic Modelle werden – wenn die native Model-API verfügbar ist – gezielt mit 4096 Kontext geladen.
+   Andere geladene LLMs werden auf knappen Systemen vorher entladen, damit RAM frei wird.
+5. Secure Practice Vault kann automatisch mit Windows starten.
+6. Angebote-, Booking- und Warenkorb-Seite erhalten ein ruhigeres, edleres Erscheinungsbild.
+
+WICHTIG: keine D1-Migration und kein Cloudflare-Worker-Update erforderlich.
+
+Dateien für GitHub / Main Directory
+====================================
+- admin-build11.js
+- admin-build11.css
+- cart.js
+
+Die anderen Dateien können unverändert bleiben. Nach Upload: Ctrl+F5.
+
+Lokaler Vault
+=============
+Im bestehenden lokalen Vault-Ordner ersetzen:
+- vault_server.py
+
+Zusätzlich neu in denselben Vault-Ordner kopieren:
+- install_vault_autostart.bat
+- remove_vault_autostart.bat
+- start_vault_hidden.vbs
+
+Danach:
+1. laufenden Vault mit Ctrl+C beenden
+2. start_vault.bat starten
+3. http://127.0.0.1:47831/health prüfen -> version 2.2
+4. einmal install_vault_autostart.bat doppelklicken
+
+Der Autostart startet nur den lokalen Dienst. Der Vault bleibt verschlüsselt/gesperrt, bis er im Webinterface entsperrt wird.
+
+Lokale KI
+=========
+- Standard: Qwen3-1.7B, GGUF Q4_K_M
+- lokale API: http://127.0.0.1:1234
+- Build 11.2 nutzt für LM Studio/Bionic, falls verfügbar, /api/v1/models/load
+- Kontextlänge beim automatischen Laden: 4096
+- Qwen3 wird weiterhin mit /no_think für diese Strukturierungsaufgaben verwendet
+
+Timeout-Verhalten
+=================
+Die KI-Aufgabe läuft jetzt als lokaler Hintergrund-Job im Vault.
+Der Browser fragt nur den Status ab. Auch wenn die Generierung 2, 3 oder mehr Minuten dauert,
+wird sie nicht mehr durch den bisherigen Request-Timeout abgebrochen.
+
+Die Oberfläche zeigt live:
+- aktuellen Schritt (z. B. Modell wird geladen / KI verarbeitet Kontext)
+- laufende Zeit
+- nach Abschluss: Modell laden, KI-Verarbeitung und Gesamtzeit
+
+Public Design Polish
+====================
+cart.js verfeinert dynamisch:
+- Angebote: kleinere/elegantere Hauptüberschrift, feinere Abschnittstrenner, ruhigere Cards
+- Booking: kompaktere Headline, elegantere Cards und Abstände
+- Warenkorb: kompaktere Headline + dezentes 🛒-Icon, ruhigere Card/Checkout-Optik
+
+Datenschutz
+===========
+Die Beratungsinhalte bleiben im lokalen Vault und werden für diese Funktionen nur an localhost weitergegeben.
+Keine Beratungsinhalte werden durch die lokale KI-Funktion an Cloudflare gesendet.

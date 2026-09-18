@@ -1,0 +1,15 @@
+BUILD 11.2 — Kurztest
+
+[ ] Vault neu gestartet
+[ ] /health zeigt version 2.2
+[ ] admin.html mit Ctrl+F5 neu geladen
+[ ] Session Flow zeigt Vault entsperrt · lokal
+[ ] lokale KI zeigt Qwen3-1.7B als bevorzugtes Modell
+[ ] Vorbereitung starten: statt Browser-Popup erscheint Fortschritt direkt in der Maske
+[ ] Laufzeit zählt sichtbar hoch
+[ ] Ergebnis zeigt nach Abschluss Modell laden / KI-Verarbeitung / Gesamtzeit
+[ ] keine Timeout-Alertbox mehr
+[ ] Angebote: Hauptüberschrift kompakter, Cards ruhiger
+[ ] Booking: Headline kompakter
+[ ] Warenkorb: 🛒 neben Warenkorb-Titel
+[ ] install_vault_autostart.bat einmal ausgeführt
