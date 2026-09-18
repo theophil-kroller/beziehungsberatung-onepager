@@ -1,0 +1,60 @@
+BUILD 11 — TEST CHECKLIST
+=========================
+
+Before update
+-------------
+[ ] Back up vault/data while the Vault is stopped/locked.
+
+Install
+-------
+[ ] Upload/replace admin.html
+[ ] Upload/replace admin-vault.js
+[ ] Upload/replace admin-build10.js
+[ ] Upload admin-build11.js
+[ ] Upload admin-build11.css
+[ ] Replace vault/vault_server.py on the practice computer
+[ ] Restart vault/start_vault.bat
+[ ] No D1 migration needed
+[ ] No Cloudflare Worker deploy needed for BUILD 11 local-AI functions
+
+Vault
+-----
+[ ] http://127.0.0.1:47831/health -> ok true, version 2
+[ ] Open Session Flow with Vault locked
+[ ] "Vault hier entsperren" opens password dialog inside the flow
+[ ] Correct password reloads the client context without leaving the Flow Manager
+
+Local AI
+--------
+[ ] Start Bionic / LM Studio local model API on localhost:1234
+[ ] http://127.0.0.1:47831/ai/status -> online true
+[ ] Session Flow shows "Lokale KI bereit"
+[ ] Active model name is shown
+[ ] Stop local AI -> status changes to offline without breaking manual documentation
+
+Preparation
+-----------
+[ ] Client has overview/goals and at least 1 prior session in Vault
+[ ] Click "Mit lokaler KI vorbereiten"
+[ ] Result shows brief + themes + progress + open topics + agreements + focus + cautions
+[ ] Result is visibly labelled as a local AI working draft
+[ ] No AI text is automatically stored in Cloudflare or Vault
+
+Post-session draft
+------------------
+[ ] Enter rough notes
+[ ] Click "Mit lokaler KI strukturieren"
+[ ] Preview appears BEFORE form fields are changed
+[ ] Click "Verwerfen" -> existing documentation fields remain untouched
+[ ] Generate again and click "Entwurf in Felder übernehmen"
+[ ] Structured fields populate
+[ ] Existing field content triggers overwrite confirmation
+[ ] Manually review/edit
+[ ] Click normal "Notizen speichern & Flow abschließen"
+[ ] Structured note appears in Secure Practice Vault
+
+Privacy checks
+--------------
+[ ] AI base shown as localhost/localOnly in /ai/status
+[ ] No counselling content added to D1 tables
+[ ] No cloud AI selected in Bionic for this workflow

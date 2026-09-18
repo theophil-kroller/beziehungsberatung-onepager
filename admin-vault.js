@@ -103,5 +103,17 @@
   $('#vaultLockBtn')?.addEventListener('click',async()=>{try{await post('/lock',{})}catch(e){}token='';sessionStorage.removeItem(TOKEN_KEY);health.unlocked=false;updateStatus();toast('Vault wurde gesperrt.')});
   $('#vaultRefreshBtn')?.addEventListener('click',async()=>{await checkHealth();toast(health.ok?(health.unlocked?'Vault ist verbunden und entsperrt.':'Vault ist verbunden, aber gesperrt.'):'Vault-Dienst ist nicht erreichbar.',health.ok?'ok':'err')});
   $('#vaultBackupInfoBtn')?.addEventListener('click',async()=>{if(!await ensureUnlocked())return;try{const x=await request('/backup-info');$('#vaultBackupInfo').textContent=x.dataDirectory}catch(e){$('#vaultBackupInfo').textContent=e.message}});
+
+  // BUILD 11: expose a tiny local-only bridge so the Session Flow Manager can
+  // unlock the Vault in place and call local Vault/AI endpoints without
+  // duplicating password handling. No password is exposed to other scripts.
+  window.BDVault={
+    ensureUnlocked,
+    checkHealth,
+    request,
+    post,
+    status:()=>({...health}),
+    token:()=>token
+  };
   checkHealth();
 })();

@@ -152,5 +152,14 @@
   function mergeFlow(f){if(!f)return;const i=flows.findIndex(x=>String(x.bookingEventId)===String(f.bookingEventId));if(i>=0)flows[i]={...flows[i],...f};else flows.push(f)}
   function msg(text,kind='ok'){const el=$('#flowMsg');el.className='notice '+kind;el.textContent=text}
   function observeAdmin(){const target=$('#statToday');if(!target)return;const ob=new MutationObserver(()=>{clearTimeout(refreshTimer);refreshTimer=setTimeout(refresh,180)});ob.observe(target,{childList:true,characterData:true,subtree:true});setTimeout(refresh,500);setInterval(()=>{if(!document.hidden&&sessionStorage.getItem(SESSION_KEY))refresh()},60000)}
+
+  // BUILD 11 extension points for the local AI layer.
+  window.BDFlowManager={
+    loadVaultContext,
+    setFlowTab,
+    getCurrent:()=>current,
+    getVaultData:()=>vaultData,
+    refresh
+  };
   document.addEventListener('DOMContentLoaded',()=>{ensureUi();observeAdmin()});
 })();

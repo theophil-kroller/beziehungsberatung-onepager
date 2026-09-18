@@ -1,0 +1,55 @@
+BEZIEHUNGSDYNAMIKEN — BUILD 11
+LOCAL PRACTICE INTELLIGENCE
+==============================
+
+Basis: BUILD 10.2.
+
+New
+---
+1. Vault unlock directly inside Session Flow
+   - no detour to the client documentation tab
+   - existing Vault password dialog is reused
+   - flow context reloads immediately after unlock
+
+2. Local AI status in Session Flow
+   - checks the local model API via the Secure Practice Vault
+   - shows online/offline + active model
+   - local-only endpoint by default
+
+3. AI-assisted pre-session preparation
+   - uses client overview, current focus, active goals and up to five recent sessions
+   - returns a structured working brief:
+     key themes, progress, open topics, agreements to check, suggested focus, cautions
+   - result is transient and is NOT automatically stored
+
+4. AI-assisted post-session documentation
+   - raw bullet notes can be sent to the local model
+   - model returns a structured draft for existing Vault fields
+   - draft is shown first
+   - therapist must explicitly choose "Entwurf in Felder übernehmen"
+   - normal manual save is still required afterwards
+
+5. Privacy architecture
+   - counselling content does not go through Cloudflare/D1 for AI assistance
+   - Browser -> local Vault -> local AI -> local Vault/browser
+   - remote AI endpoint is blocked by default
+
+Technical
+---------
+- Vault health version bumped to 2
+- new local endpoints:
+    GET  /ai/status
+    POST /ai/prepare
+    POST /ai/structure
+- OpenAI-compatible /v1/models and /v1/chat/completions used locally
+- JSON Schema structured output used for stable form mapping
+- no new Python packages required
+- no new Cloudflare D1 migration required
+- no Worker change required for the AI features
+
+Not included yet
+----------------
+- PDF/A / immutable finalized export
+- local semantic search across artifacts
+- student/social tariff
+These remain candidates for BUILD 11.1 / 12 after the local model quality test.
