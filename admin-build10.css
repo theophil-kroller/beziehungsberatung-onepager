@@ -39,3 +39,7 @@
 .stat-finance-sub-link strong{display:block;margin-top:3px;font-family:Georgia,"Times New Roman",serif;font-size:15px}
 .stat-finance-more{display:block!important;margin-top:8px;color:#A9543B!important;font-weight:800}
 @media(max-width:760px){.stat-finance-links{grid-template-columns:1fr}}
+
+/* BUILD 13 — Sandbox finance visibility without polluting real cashflow */
+.finance-payment-test{opacity:.82;background:#fffaf3;border-radius:12px;padding:10px 12px}
+.finance-test-separator{margin:14px 0 8px;padding-top:12px;border-top:1px dashed var(--line);font-size:12px;color:var(--muted);font-weight:700}
