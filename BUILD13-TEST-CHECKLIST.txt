@@ -1,0 +1,63 @@
+BUILD 13 — INSTALLATION / REGRESSION CHECKLIST
+==============================================
+
+PRE-INSTALL
+[ ] Current site/admin is the restored working BUILD 12 state
+[ ] D1 backup/snapshot created
+[ ] Existing Vault data folder backed up separately (Vault itself is unchanged)
+
+MIGRATION
+[ ] database/build13-core-integrity.sql executed successfully
+[ ] No SQL error when querying customers/invoices after migration
+
+WORKER
+[ ] New cloudflare-worker/worker.js deployed
+[ ] /health returns {"ok":true,"build":"13",...}
+
+GITHUB
+[ ] admin.html replaced
+[ ] admin-build9.js replaced
+[ ] admin-build10.js replaced
+[ ] admin-build10.css replaced
+[ ] Files were checked to be non-empty before commit
+[ ] Ctrl+F5 after Pages deployment
+
+REGRESSION — BASIC
+[ ] Public booking page opens normally
+[ ] Booking still creates the expected Google Calendar event
+[ ] Admin magic-link login works
+[ ] Kund:innen list loads
+[ ] Packages load
+[ ] Rechnungen load
+[ ] Session Flow loads
+[ ] Secure Vault remains usable and unchanged
+
+IDENTITY
+[ ] Existing customer name is not silently changed by a different checkout name
+[ ] Same contact e-mail can coexist across separate Sandbox/Test profiles
+[ ] __bdtest__ / __bd13__ compatibility keys are not shown as contact e-mails
+[ ] Sandbox profile visibly carries Sandbox/Test label
+[ ] "Name korrigieren" changes only the selected customer_id
+
+PAYMENTS
+[ ] New unpaid invoice displays Offen
+[ ] Bar payment can be recorded
+[ ] Bank transfer can be recorded
+[ ] Paid invoice displays payment method/date
+[ ] Second active payment for same invoice is rejected
+[ ] "Wieder öffnen" voids payment and invoice becomes Offen/Überfällig
+[ ] A new payment can be recorded after reopening
+
+FINANCE
+[ ] Real Bar payment appears under Bar
+[ ] Real payment increases "Eingegangen diesen Monat" exactly once
+[ ] Sandbox cash payment is visible as Sandbox/Test
+[ ] Sandbox payment does not increase real monthly revenue
+[ ] Sandbox packages do not increase real package-value figure
+
+DO NOT PROCEED IF
+- Admin login fails
+- public booking fails
+- a file is 0 bytes
+- a real customer is silently renamed
+- one payment increases revenue twice

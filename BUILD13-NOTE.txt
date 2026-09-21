@@ -1,0 +1,122 @@
+BEZIEHUNGSDYNAMIKEN — BUILD 13
+Core Data Model & Payment Integrity
+==================================
+Date: 2026-09-21
+
+PURPOSE
+-------
+BUILD 13 is deliberately a foundation/stability build. It does not add a new
+large practice feature. It makes customer identity and payment bookkeeping
+predictable before later offline and multi-practitioner work.
+
+WHAT CHANGED
+------------
+1) Customer identity
+- customer_id is the canonical person/profile identity.
+- E-mail is contact data, not the identity key.
+- New tables:
+  * customer_identity_meta
+  * customer_contacts
+- Several profiles may share the same contact e-mail.
+- A later booking/order with the same e-mail but a different name can no longer
+  silently rename an existing live client.
+- Live checkout returns a clear identity conflict instead of overwriting data.
+- Sandbox/test checkout may create a separate test profile with the same contact
+  e-mail.
+- Internal compatibility keys (__bd13__:...) remain internal and are not shown
+  as the contact address in the CRM.
+- Legacy BUILD-12.1 __bdtest__: profiles are recognized as Sandbox/Test profiles
+  and their encoded contact address is recovered by the Worker at runtime.
+- Existing legacy/test profiles are NOT automatically deleted or merged. That is
+  intentional: automatic merging could attach packages, invoices or history to
+  the wrong person.
+- Client names are changed only through the explicit "Name korrigieren" action.
+
+2) Invoice vs payment
+- An invoice represents a claim/document.
+- invoice_payments is the source of truth for money actually received.
+- An invoice is shown as paid only when an active payment journal entry exists.
+- Legacy payment information from invoice_payment_meta is backfilled once into
+  invoice_payments when no active journal entry exists.
+- Duplicate active legacy payments are preserved as history but older duplicates
+  are voided rather than deleted.
+- A database unique index prevents more than one active payment per invoice.
+- Provider/payment IDs receive an additional duplicate guard.
+- Manual cash, bank transfer, SumUp/other and Stripe payments all appear through
+  the same payment-journal model in the admin dashboard.
+- Reopening an invoice voids the active payment rather than deleting history.
+- Partial payments are intentionally NOT supported in BUILD 13; the payment must
+  equal the invoice total.
+
+3) Finance cockpit
+- "Eingegangen diesen Monat" and payment-method totals are calculated from
+  invoice_payments, not from invoice status.
+- Sandbox/Test payments are visible in the recent-payment list but explicitly
+  labelled and excluded from real revenue totals.
+- A Sandbox/Test client flag also prevents legacy test profiles from polluting
+  real payment/package values even if an old invoice number was not prefixed
+  with TEST-.
+
+4) Practice foundation
+New additive tables prepare later builds without changing today's UI:
+- practices
+- practitioners
+- professional_roles
+- practitioner_roles
+
+The initial rows are Beziehungsdynamiken / Theophil Kroller /
+Psychosoziale Beratung.
+
+5) Preparation for BUILD 13.5 Offline Practice Mode
+- Stable customer_id remains the cloud-side identity.
+- customer_identity_meta.public_id provides an opaque stable identifier for later
+  local/offline mapping.
+- BUILD 13 does NOT implement offline synchronization yet. No counselling content
+  is moved to D1; the Secure Practice Vault remains local.
+
+INSTALLATION ORDER
+------------------
+IMPORTANT: start from the restored, working BUILD 12 state.
+
+1. Make a D1 backup/snapshot before applying the migration.
+2. Run database/build13-core-integrity.sql ONCE in the same D1 database used by
+   the booking Worker. The migration is written to be idempotent and was tested
+   twice locally, but treat database changes as a controlled migration.
+3. Replace the Cloudflare Worker with cloudflare-worker/worker.js and deploy it.
+4. Verify the Worker health endpoint returns build "13".
+5. Upload/replace these files in the GitHub repository root:
+   - admin.html
+   - admin-build9.js
+   - admin-build10.js
+   - admin-build10.css
+6. Wait for deployment and use Ctrl+F5 in the browser.
+7. Do NOT change the local Vault for BUILD 13.
+
+FIRST SMOKE TESTS
+-----------------
+- Admin login works.
+- Existing clients, bookings, packages and invoices are visible.
+- Legacy __bdtest__ key is not displayed as an e-mail address.
+- Create/inspect a Sandbox/Test profile using the same contact e-mail with a
+  different name: the existing profile must not be renamed.
+- Create an open test invoice, record a cash payment, verify:
+  * invoice = paid
+  * payment method = Bar
+  * test payment is visible in Finance Cockpit
+  * real monthly revenue does not increase
+- For a normal (non-test) invoice, record one cash payment and verify real monthly
+  revenue increases exactly once.
+- Attempt to record the same invoice again: the Worker must refuse a second
+  active payment unless the invoice is first reopened.
+- Reopen the invoice and verify the former payment remains as voided history.
+
+KNOWN LIMITATIONS
+-----------------
+- Existing duplicate legacy/test client profiles are classified and displayed
+  safely but are not auto-merged or deleted.
+- Partial payments are not supported.
+- Refunds continue to live in refund_records. BUILD 13 does not net refunds out
+  of the "Eingegangen diesen Monat" receipt total.
+- Live Stripe, Google Calendar and Resend transactions were not executed by the
+  local automated test; these require the configured Cloudflare environment.
+- Offline Practice Mode is reserved for BUILD 13.5.
