@@ -5,6 +5,7 @@
   let token=sessionStorage.getItem(TOKEN_KEY)||'';
   let health={ok:false,setup:false,unlocked:false};
   let current={email:'',name:'',payload:null};
+  let latestCloudSnapshot=null;
   const $=s=>document.querySelector(s);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=x=>x?new Intl.DateTimeFormat('de-AT',{dateStyle:'medium',timeStyle:'short'}).format(new Date(x)):'—';
@@ -50,7 +51,7 @@
       const dlg=$('#vaultAuthDialog');
       const form=$('#vaultAuthForm');
       const close=()=>{form.onsubmit=null;resolve(false)};dlg.addEventListener('close',close,{once:true});
-      form.onsubmit=async e=>{e.preventDefault();const password=$('#vaultPassword').value;if(setup&&password!==$('#vaultPassword2').value){toast('Die beiden Passwörter stimmen nicht überein.','err','#vaultAuthMsg');return}const btn=$('#vaultAuthSubmit');btn.disabled=true;btn.textContent='Bitte warten …';try{const x=await post(setup?'/setup':'/unlock',{password});token=x.token;sessionStorage.setItem(TOKEN_KEY,token);health.unlocked=true;health.setup=true;updateStatus();form.onsubmit=null;dlg.removeEventListener('close',close);dlg.close();resolve(true)}catch(err){toast(err.message,'err','#vaultAuthMsg')}finally{btn.disabled=false;btn.textContent=setup?'Vault einrichten':'Entsperren'}};
+      form.onsubmit=async e=>{e.preventDefault();const password=$('#vaultPassword').value;if(setup&&password!==$('#vaultPassword2').value){toast('Die beiden Passwörter stimmen nicht überein.','err','#vaultAuthMsg');return}const btn=$('#vaultAuthSubmit');btn.disabled=true;btn.textContent='Bitte warten …';try{const x=await post(setup?'/setup':'/unlock',{password});token=x.token;sessionStorage.setItem(TOKEN_KEY,token);health.unlocked=true;health.setup=true;updateStatus();await syncOfflineSnapshot();form.onsubmit=null;dlg.removeEventListener('close',close);dlg.close();resolve(true)}catch(err){toast(err.message,'err','#vaultAuthMsg')}finally{btn.disabled=false;btn.textContent=setup?'Vault einrichten':'Entsperren'}};
       dlg.showModal();setTimeout(()=>$('#vaultPassword').focus(),50);
     });
   }
@@ -99,10 +100,19 @@
   function renderAudit(){const wrap=$('#vaultAudit'),rows=(current.payload.audit||[]).slice(0,30);wrap.innerHTML=rows.length?`<div class="timeline">${rows.map(a=>`<div class="timeline-item"><div class="timeline-mark"></div><div class="timeline-copy"><strong>${esc({client_update:'Überblick aktualisiert',goal_create:'Ziel angelegt',goal_update:'Ziel geändert',goal_delete:'Ziel gelöscht',session_create:'Sitzung dokumentiert',session_update:'Sitzung geändert',session_delete:'Sitzung gelöscht',artifact_add:'Artefakt hinzugefügt',artifact_delete:'Artefakt gelöscht'}[a.action]||a.action)}</strong><span>${esc(fmt(a.createdAt))}${a.detail?' · '+esc(a.detail):''}</span></div></div>`).join('')}</div>`:'<div class="vault-empty">Noch keine lokalen Dokumentationsaktionen.</div>'}
 
   document.addEventListener('bd:vault-record',e=>{const {email,name}=e.detail||{};if(email)loadClient(email,name||email)});
+  document.addEventListener('bd:cloud-snapshot',e=>{latestCloudSnapshot=e.detail||null;if(health.unlocked)syncOfflineSnapshot()});
+  async function syncOfflineSnapshot(){
+    if(!latestCloudSnapshot||!health.unlocked||!token)return false;
+    const customers=(latestCloudSnapshot.customers||[]).filter(c=>c.publicId&&c.email).map(c=>({ref:c.email,publicId:c.publicId,customerId:c.id,name:c.name,contactEmail:c.contactEmail||'',isSandbox:!!c.isSandboxProfile}));
+    const known=new Set(customers.map(c=>String(c.ref)));
+    const bookings=(latestCloudSnapshot.bookings||[]).map(b=>({ref:b.customerIdentityEmail||b.email,eventId:b.eventId,start:b.start,end:b.end,typeLabel:b.typeLabel,locationLabel:b.locationLabel,status:b.status})).filter(b=>known.has(String(b.ref)));
+    try{const x=await post('/offline/snapshot',{clients:customers,bookings});const info=$('#vaultSnapshotInfo');if(info)info.textContent=`Zuletzt lokal aktualisiert: ${fmt(x.syncedAt)} · ${x.clientCount} Personen · ${x.bookingCount} Termine`;return true}catch(e){return false}
+  }
   $('#vaultUnlockBtn')?.addEventListener('click',async()=>{if(await openAuth())toast('Vault ist entsperrt.')});
   $('#vaultLockBtn')?.addEventListener('click',async()=>{try{await post('/lock',{})}catch(e){}token='';sessionStorage.removeItem(TOKEN_KEY);health.unlocked=false;updateStatus();toast('Vault wurde gesperrt.')});
   $('#vaultRefreshBtn')?.addEventListener('click',async()=>{await checkHealth();toast(health.ok?(health.unlocked?'Vault ist verbunden und entsperrt.':'Vault ist verbunden, aber gesperrt.'):'Vault-Dienst ist nicht erreichbar.',health.ok?'ok':'err')});
   $('#vaultBackupInfoBtn')?.addEventListener('click',async()=>{if(!await ensureUnlocked())return;try{const x=await request('/backup-info');$('#vaultBackupInfo').textContent=x.dataDirectory}catch(e){$('#vaultBackupInfo').textContent=e.message}});
+  $('#vaultOfflineBtn')?.addEventListener('click',async()=>{if(!await ensureUnlocked())return;await syncOfflineSnapshot();window.open(VAULT+'/offline','_blank','noopener')});
 
   // BUILD 11: expose a tiny local-only bridge so the Session Flow Manager can
   // unlock the Vault in place and call local Vault/AI endpoints without

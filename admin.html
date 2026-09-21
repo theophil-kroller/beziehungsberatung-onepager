@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="admin-build10.css?v=20260921-build13">
 <link rel="stylesheet" href="admin-build11.css?v=20260918-build11-1">
 <link rel="stylesheet" href="admin-build12.css?v=20260918-build12">
+<link rel="stylesheet" href="admin-build13-5.css?v=20260921-build13-5">
 <script>
 (function(){
   const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
@@ -61,6 +62,7 @@
       <button class="nav-item" data-view="clients"><svg><use href="#i-clients"/></svg><span>Kund:innen</span></button>
       <button class="nav-item" data-view="bookings"><svg><use href="#i-calendar"/></svg><span>Termine</span></button>
       <button class="nav-item" data-view="packages"><svg><use href="#i-package"/></svg><span>Packages</span></button>
+      <button class="nav-item" data-view="programs"><svg><use href="#i-journey"/></svg><span>Programme & Gruppen</span><em id="navProgramCount"></em></button>
       <button class="nav-item" data-view="invoices"><svg><use href="#i-invoice"/></svg><span>Rechnungen</span></button>
       <div class="nav-divider"></div>
       <button class="nav-item" data-view="vault"><svg><use href="#i-vault"/></svg><span>Secure Vault</span><em id="vaultNavState">lokal</em></button>
@@ -112,6 +114,10 @@
       <section class="panel"><div class="panel-head"><div><p class="eyebrow">Begleitpakete</p><h2>Packages</h2><p class="muted">Einheiten, Gültigkeit und Fortsetzung im Blick.</p></div></div><div id="packagesTable"></div></section>
     </section>
 
+    <section class="view" id="view-programs">
+      <div id="programsApp"><section class="panel"><p class="muted">Programme & Gruppen werden geladen …</p></section></div>
+    </section>
+
     <section class="view" id="view-invoices">
       <section class="panel"><div class="panel-head"><div><p class="eyebrow">Finanzen</p><h2>Rechnungen & Zahlungen</h2><p class="muted">Stripe wird automatisch verbucht. Bar- und Bankzahlungen kannst du mit Datum erfassen; Bank-CSV-Exporte lassen sich abgleichen.</p></div><div class="toolbar finance-toolbar"><div class="bank-sync"><label class="btn ghost file-btn">Bank-CSV importieren<input id="bankCsvInput" type="file" accept=".csv,text/csv,text/plain"></label><span id="bankLastImport" class="micro muted">Noch kein Bankabgleich protokolliert.</span></div><select id="invoiceFilter"><option value="all">Alle</option><option value="overdue">Überfällig</option><option value="open">Offen</option><option value="paid">Bezahlt</option></select></div></div><div id="invoicesTable"></div></section>
     </section>
@@ -123,7 +129,7 @@
         <div class="vault-status-card"><span id="vaultStatusDot" class="vault-dot"></span><div><strong id="vaultStatusText">Prüfe lokalen Vault …</strong><span id="vaultStatusDetail">127.0.0.1:47831</span></div></div>
       </div>
       <div class="settings-grid">
-        <section class="panel"><p class="eyebrow">Lokaler Dienst</p><h2>Vault verbinden</h2><p class="muted">Der Vault startet normalerweise automatisch mit Windows. Falls er einmal nicht läuft, kannst du ihn mit <code>vault/start_vault.bat</code> starten. Danach hier nur noch entsperren.</p><div class="stack-actions"><button class="btn primary" id="vaultUnlockBtn" type="button">Vault entsperren</button><button class="btn ghost" id="vaultLockBtn" type="button">Sperren</button><button class="btn secondary" id="vaultRefreshBtn" type="button">Status prüfen</button></div><div id="vaultViewMsg"></div></section>
+        <section class="panel"><p class="eyebrow">Lokaler Dienst</p><h2>Vault verbinden</h2><p class="muted">Der Vault startet normalerweise automatisch mit Windows. Falls er einmal nicht läuft, kannst du ihn mit <code>vault/start_vault.bat</code> starten. Danach hier nur noch entsperren.</p><div class="stack-actions"><button class="btn primary" id="vaultUnlockBtn" type="button">Vault entsperren</button><button class="btn secondary" id="vaultOfflineBtn" type="button">Offline-Praxis öffnen</button><button class="btn ghost" id="vaultLockBtn" type="button">Sperren</button><button class="btn ghost" id="vaultRefreshBtn" type="button">Status prüfen</button></div><p id="vaultSnapshotInfo" class="micro muted" style="margin-top:12px">Der organisatorische Offline-Snapshot wird bei entsperrtem Vault automatisch aktualisiert.</p><div id="vaultViewMsg"></div></section>
         <section class="panel"><p class="eyebrow">Sicherheitsmodell</p><h2>Local-first</h2><ul class="feature-list"><li><strong>AES-256-GCM</strong><span>Beratungstexte und Dateien werden vor dem Schreiben verschlüsselt.</span></li><li><strong>Passwortschlüssel nur im RAM</strong><span>Automatische Sperre nach 15 Minuten Inaktivität.</span></li><li><strong>Nur localhost</strong><span>Der lokale Dienst lauscht ausschließlich auf 127.0.0.1.</span></li><li><strong>Getrennt vom Cloud-CRM</strong><span>Rechnungen, Termine und Packages bleiben im Worker; Sitzungsinhalte bleiben lokal.</span></li></ul></section>
       </div>
       <section class="panel"><p class="eyebrow">Backup</p><h2>Verschlüsselte Datensicherung</h2><p class="muted">Sperre den Vault und sichere anschließend den gesamten Ordner <code>vault/data</code> auf einen verschlüsselten Datenträger bzw. in ein zusätzlich verschlüsseltes Backup. Ohne Vault-Passwort sind die Inhalte nicht lesbar.</p><button class="btn ghost" id="vaultBackupInfoBtn" type="button">Lokalen Speicherort anzeigen</button><div id="vaultBackupInfo" class="muted micro" style="margin-top:12px"></div></section>
@@ -160,5 +166,6 @@
 <script src="admin-build10.js?v=20260921-build13"></script>
 <script src="admin-build11.js?v=20260918-build11-1"></script>
 <script src="admin-build12.js?v=20260918-build12"></script>
+<script src="admin-build13-5.js?v=20260921-build13-5"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+BUILD 13.5 — ABNAHME-CHECKLISTE
+================================
+
+Datenbank
+[ ] D1-Backup vorhanden
+[ ] Migration ohne Fehler ausgeführt
+[ ] Migration bei versehentlicher Wiederholung weiterhin fehlerfrei
+
+Programme & Gruppen
+[ ] Entwurf mit Titel, Termin, Leitung und Preisstufe speicherbar
+[ ] Fachliche Qualifikation und Programmrolle getrennt sichtbar
+[ ] Vorschau korrekt
+[ ] „Speichern & veröffentlichen“ schaltet Angebot öffentlich
+[ ] Depublizieren entfernt Angebot öffentlich
+[ ] Dynamischer Navigationspunkt erscheint nur bei mindestens einem aktiven Angebot
+[ ] Einzel-, Kontingent- und Paarpreise zeigen den korrekten Gesamtpreis
+[ ] Stripe-Testzahlung bestätigt Teilnahme und Rechnung genau einmal
+[ ] Rechnung/Barzahlung reserviert und erzeugt eine Rechnung
+[ ] Zahlungseingang bestätigt die Teilnahme
+[ ] Storno gibt Kapazität und Tarifkontingent frei
+[ ] Ausgebuchtes Angebot nimmt Wartelisteneintrag an
+[ ] Platzangebot reserviert Kapazität für 48 Stunden
+[ ] Abgelaufenes Platzangebot kehrt auf die Warteliste zurück
+[ ] Neue Durchführung und Programmvorlage funktionieren
+
+Forderungen
+[ ] 1. Erinnerung wird in der Vorschau angezeigt
+[ ] Empfänger, Betreff und Text sind vor Versand editierbar
+[ ] Versand speichert Zeitpunkt, Inhalt, Empfänger und Status
+[ ] Nächste Vorschau wechselt zu 2. Erinnerung, danach Mahnung
+[ ] Bezahlte Rechnung kann nicht erinnert werden
+
+Offline-Praxis
+[ ] /health zeigt Version 3.5 und offlinePractice=true
+[ ] /offline ist lokal erreichbar
+[ ] Snapshot wird nach CRM-Laden bei entsperrtem Vault aktualisiert
+[ ] Snapshot ist im gesperrten Zustand nicht lesbar
+[ ] Personensuche, kommende Termine und lokale Akte funktionieren
+[ ] Neue Sitzung bleibt nach Neustart vorhanden
+[ ] vault/data wurde beim Update nicht ersetzt
+
+Regression
+[ ] Admin-Login und Dashboard funktionieren
+[ ] Einzeltermin-Buchung funktioniert
+[ ] Package-Kauf und vorhandene Materialien funktionieren
+[ ] Rechnungs-PDF und Zahlungsverbuchung funktionieren
+[ ] Deutsche und englische öffentliche Seiten laden ohne Konsolenfehler

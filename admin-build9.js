@@ -76,6 +76,7 @@
     clients:["Client Records","Kund:innen","Vollständiger administrativer Kontext pro Klient:in."],
     bookings:["Kalender","Termine","Buchungen verwalten, verschieben und nachvollziehen."],
     packages:["Begleitpakete","Packages","Einheiten, Gültigkeit und Fortsetzung im Blick."],
+    programs:["Programme & Gruppen","Programme & Gruppen","Gruppen, Workshops und mehrteilige Angebote ohne Codeänderung verwalten."],
     invoices:["Finanzen","Rechnungen","Zahlungsstatus und Fristen auf einen Blick."],
     vault:["Secure Practice Vault","Dokumentation","Lokale, verschlüsselte Beratungsdokumentation."],
     settings:["Praxis-CRM","Einstellungen","Lifecycle-Regeln und Datensicherung."]
@@ -89,7 +90,7 @@
 
   async function load(){
     if(!session){showLogin();return}$("#appShell").classList.add("loading");
-    try{data=await api("/admin/dashboard");hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.email||"Administrator";renderAll()}catch(err){if(session)alert(err.message)}finally{$("#appShell").classList.remove("loading")}
+    try{data=await api("/admin/dashboard");hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.email||"Administrator";renderAll();document.dispatchEvent(new CustomEvent('bd:cloud-snapshot',{detail:{customers:data.customers||[],bookings:data.bookings||[]}}))}catch(err){if(session)alert(err.message)}finally{$("#appShell").classList.remove("loading")}
   }
 
   function customerUniverse(){
@@ -201,7 +202,7 @@
     $$('[data-due-edit]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',()=>{const x=findInvoice(b.dataset.dueEdit);if(!x)return;openEditor({eyebrow:'Rechnung',title:'Zahlungsziel ändern',subtitle:`${x.invoiceNumber} · ${x.customerName}`,email:x.customerEmail,fields:[{key:'dueDate',label:'Neues Zahlungsziel',type:'date',value:x.dueDate||'',display:dateOnly}],save:v=>post('/admin/invoice/update-due',{invoiceId:x.id,dueDate:v.dueDate}),notify:()=>post('/admin/invoice/notify',{invoiceId:Number(x.id)})})})})
   }
   function bindInvoiceActions(){
-    $$('[data-remind]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',async()=>{if(!confirm('Zahlungserinnerung jetzt senden?'))return;const x=findInvoice(b.dataset.remind);b.disabled=true;try{await post('/admin/invoice/remind',{invoiceId:Number(b.dataset.remind)});if(x)logLocal(x.customerEmail,'email','Zahlungserinnerung gesendet',x.invoiceNumber);await load()}catch(e){alert(e.message)}finally{b.disabled=false}})});
+    $$('[data-remind]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('bd:receivable-open',{detail:{invoiceId:Number(b.dataset.remind)}})))});
     $$('[data-paid]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',()=>{const x=findInvoice(b.dataset.paid);if(!x)return;const vp=viennaParts(new Date().toISOString());openEditor({eyebrow:'Zahlung',title:'Betrag erhalten',subtitle:`${x.invoiceNumber} · ${x.customerName} · ${money(x.totalCents,x.currency)}`,email:x.customerEmail,allowNotify:false,actionMode:true,actionHeadline:'Zahlung kann jetzt verbucht werden',fields:[{key:'paymentMethod',label:'Zahlungsart',type:'select',value:'bank_transfer',options:[{value:'bank_transfer',label:'Banküberweisung'},{value:'cash',label:'Barzahlung'},{value:'sumup',label:'SumUp / Kartenzahlung'},{value:'other',label:'Sonstiges'}]},{key:'paymentDate',label:'Datum erhalten',type:'date',value:vp.date,display:dateOnly},{key:'paymentTime',label:'Uhrzeit erhalten',type:'time',value:vp.time,step:60},{key:'reference',label:'Referenz / Notiz',type:'text',value:'',full:true}],save:v=>post('/admin/invoice/payment',{invoiceId:x.id,paid:true,paymentMethod:v.paymentMethod,paymentDate:v.paymentDate,paymentDateTime:viennaIso(v.paymentDate,v.paymentTime||'12:00'),reference:v.reference})})})});
     $$('[data-open]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',async()=>{if(!confirm('Diese Rechnung wieder als offen markieren? Der aktuelle Zahlungseintrag wird im Audit-Verlauf storniert, nicht gelöscht.'))return;b.disabled=true;try{await post('/admin/invoice/payment',{invoiceId:Number(b.dataset.open),paid:false});await load()}catch(e){alert(e.message)}finally{b.disabled=false}})});
     $$('[data-pdf]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',async()=>{b.disabled=true;try{const r=await fetch(API+'/admin/invoice-pdf?id='+encodeURIComponent(b.dataset.pdf),{headers:{Authorization:'Bearer '+session}});if(!r.ok)throw new Error('PDF konnte nicht geladen werden.');const blob=await r.blob(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Rechnung.pdf';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}catch(e){alert(e.message)}finally{b.disabled=false}})})

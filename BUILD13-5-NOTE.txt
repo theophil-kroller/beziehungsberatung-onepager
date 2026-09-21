@@ -1,0 +1,50 @@
+BEZIEHUNGSDYNAMIKEN — BUILD 13.5
+================================
+Practice Continuity & Programs
+
+Ergebnis
+--------
+BUILD 13.5 ergänzt drei zusammenhängende Arbeitsbereiche:
+
+1. Offline-Praxis
+   - lokale Oberfläche unter http://127.0.0.1:47831/offline
+   - verschlüsselter organisatorischer Snapshot aus Personen und Terminen
+   - lokale Fallübersicht, Ziele, Sitzungen und Vorbereitung
+   - Beratungsinhalte bleiben lokal; keine Notiz-Synchronisation in die Cloud
+
+2. Forderungsmanagement
+   - freundliche 1. Erinnerung, 2. Erinnerung und Mahnung
+   - Vorschau und Bearbeitung von Empfänger, Betreff und Nachricht
+   - revisionsfähiger Verlauf mit Zeitpunkt, Inhalt, Status und Provider-ID
+   - bereits bezahlte Rechnungen werden nicht erinnert
+
+3. Programme & Gruppen
+   - eigener CRM-Bereich für Gruppen, Workshops, Seminare, Webinare und Kurse
+   - Entwurf, Vorschau, Direktveröffentlichung und Depublikation
+   - Termine, Ort, Sprache, Kapazität und Buchungsschluss
+   - getrennte Felder für fachliche Qualifikation und Rolle im Angebot
+   - frei kombinierbare Preisstufen, Kontingente und Paarpreise
+   - öffentliche Detail- und Buchungsansicht
+   - dynamischer Navigationspunkt nur bei aktiven Angeboten
+   - Stripe, Rechnung und Barzahlung
+   - Teilnehmer:innen, Kapazität, Warteliste und zeitlich begrenzte Platzangebote
+   - Vorlagen und duplizierbare Durchführungen
+
+Sicherheits- und Integritätsregeln
+---------------------------------
+- Stripe-Zahlungen werden nur über die explizite Enrollment-ID zugeordnet.
+- Stripe-Session und Betrag müssen exakt mit dem gespeicherten Datensatz übereinstimmen.
+- Kapazität und Tarifkontingent werden gemeinsam reserviert und bei Fehlern freigegeben.
+- Auslaufende Wartelisten-Angebote kehren automatisch auf die Warteliste zurück.
+- Das technische Rechnungsprodukt ist nicht öffentlich und erzeugt keine Sitzungscredits.
+- Der lokale Offline-Snapshot wird als vollständiger AES-256-GCM-verschlüsselter Block gespeichert.
+
+Ausblick: dynamisch erzeugte Packages
+-------------------------------------
+Die in BUILD 13.5 eingeführten generischen Angebote, Preisstufen und dynamischen
+Rechnungspositionen verbauen diesen Weg nicht. Ein späterer Build sollte Packages
+jedoch als eigene Produktdefinition mit Leistungsanspruch und Material-Manifest
+modellieren. Dateien sollten dabei nicht in der Definition selbst stecken, sondern
+über stabile Material-IDs bzw. private R2-Schlüssel referenziert werden. So können
+Package-Texte und Preise dynamisch entstehen, während Dateirechte, Versionen und
+bereits verkaufte Ansprüche stabil bleiben.

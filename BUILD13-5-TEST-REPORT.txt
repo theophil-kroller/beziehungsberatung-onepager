@@ -1,0 +1,36 @@
+BUILD 13.5 — AUTOMATISIERTER TESTBERICHT
+=========================================
+Datum: 2026-09-21
+Ergebnis: BESTANDEN
+
+Ausgeführt
+----------
+- JavaScript-Syntaxprüfung für Worker, Admin, öffentliche Programme und Offline-Praxis
+- Python-Kompilierung des lokalen Vault-Servers
+- vollständige SQLite-Migrationskette:
+  Basisschema → Admin CRM → BUILD 8 → BUILD 9 → BUILD 10 → BUILD 13 → BUILD 13.5
+- erneute Ausführung der BUILD-13.5-Migration zur Idempotenzprüfung
+- Prüfung aller zehn neuen Tabellen und des technischen Rechnungsprodukts
+- Worker-Laufzeittest mit echter SQLite-Ausführung der D1-SQL-Statements
+- Admin-Laufzeittest: speichern, veröffentlichen, auflisten, Vorlage und Durchführung duplizieren
+- öffentliche Programmliste und Rechnungsanmeldung
+- Paarpreis ohne Preisverdopplung bei zwei reservierten Plätzen
+- Kapazitätszähler: reserviert → bestätigt → storniert
+- Warteliste, Platzangebot und automatische Rückkehr nach Ablauf
+- Zahlungsverbuchung und Wiederöffnen einer Rechnung
+- Forderungsfolge: 1. Erinnerung → 2. Erinnerung → Mahnung
+- Bearbeitung und Speicherung von Empfänger, Betreff und Nachricht
+- lokaler Vault: Setup, Unlock, verschlüsselter Snapshot, Readback, Lock
+- Negativprüfung: Personenname ist nicht im Klartext in SQLite enthalten
+- statische Integration aller 13 öffentlichen Seiten und des Admin-Bereichs
+
+Nicht gegen externe Produktivdienste ausgeführt
+----------------------------------------------
+- echter Stripe-Testmodus-Checkout und Webhook
+- echte Resend-Zustellung
+- Deployment nach Cloudflare und GitHub
+- Browser-Abnahme auf realen Mobilgeräten
+
+Diese Punkte stehen in BUILD13-5-TEST-CHECKLIST.txt für die kontrollierte Abnahme
+nach dem Deployment. Für Resend wurde im Laufzeittest eine erfolgreiche Provider-
+Antwort simuliert; Speicherung und Eskalationslogik liefen dabei real gegen SQLite.

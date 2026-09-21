@@ -1,0 +1,26 @@
+BEZIEHUNGSDYNAMIKEN BUILD 13 — AUTOMATED TEST REPORT
+=====================================================
+Run: 2026-09-21T14:46:24.718888+00:00
+
+PASS  Legacy migration chain — BUILD 8 → 9 → 10 applied
+PASS  BUILD 13 migration — first run
+PASS  Migration idempotency — second run without schema/data error
+PASS  Practice / Practitioner / Role foundation
+PASS  Legacy identity classification — normal + __bdtest__ recognized
+PASS  Shared contact e-mail — two customer_ids can share one contact address
+PASS  Legacy payment backfill — invoice_payment_meta → invoice_payments
+PASS  Legacy duplicate payment cleanup — latest active retained; older voided
+PASS  One active payment per invoice — partial unique index rejects duplicate active payment
+PASS  Sandbox finance separation — real=55500 cents; test=16500 cents
+PASS  Critical file non-empty: admin.html — 22732 bytes
+PASS  Critical file non-empty: admin-build9.js — 67703 bytes
+PASS  Critical file non-empty: admin-build10.js — 34037 bytes
+PASS  Critical file non-empty: admin-build10.css — 10406 bytes
+PASS  Critical file non-empty: cloudflare-worker/worker.js — 271965 bytes
+PASS  Critical file non-empty: database/build13-core-integrity.sql — 7585 bytes
+PASS  Worker identity backfill guard initialized
+PASS  Worker ES-module import — complete Worker parsed as an ES module
+PASS  Worker /health runtime — returned HTTP 200 with build=13
+PASS  Worker /public-config runtime — returned HTTP 200
+PASS  Legacy __bdtest__ decoder — tested separately; encoded contact resolves to original e-mail
+PASS  Sandbox invoice classification — TEST invoice or Sandbox/Test customer is excluded from real finance totals
