@@ -127,11 +127,23 @@
   }
 
   function draftSection(label,value){return `<section><h5>${esc(label)}</h5><p>${esc(value||'—')}</p></section>`}
+  function groundingPanel(g){
+    if(!g)return '<div class="ai-grounding ai-grounding-warn"><strong>⚠ Keine technische Evidenzprüfung gemeldet</strong><span>Diesen Entwurf besonders sorgfältig prüfen.</span></div>';
+    const verified=[...(g.verifiedFields||[]),...(g.extractiveFallbackFields||[])],filtered=g.filteredFields||[],empty=g.emptyFields||[],labels={focus:'Fokus',dynamics:'Dynamik',interventions:'Interventionen',response:'Reaktion / Entwicklung',agreements:'Vereinbarungen',nextFocus:'Nächster Fokus',privatePrep:'Vorbereitung für mich',uncertainties:'Unklarheiten'};
+    const evidence=Object.entries(g.evidence||{}).filter(([,rows])=>Array.isArray(rows)&&rows.length).map(([field,rows])=>`<div><strong>${esc(labels[field]||field)}</strong>${rows.map(row=>`<q>${esc(row)}</q>`).join('')}</div>`).join('');
+    return `<div class="ai-grounding"><div class="ai-grounding-head"><span>🛡️</span><div><strong>Vault-Evidenzprüfung aktiv</strong><small>${verified.length} Feld${verified.length===1?'':'er'} belegt · ${filtered.length} unbelegte Zuordnung${filtered.length===1?'':'en'} entfernt</small></div></div>
+      ${(g.extractiveFallbackFields||[]).length?`<p><b>Sicherer Originaltext eingesetzt:</b> ${esc(g.extractiveFallbackFields.join(', '))}</p>`:''}
+      ${filtered.length?`<p><b>KI-Inhalte verworfen:</b> ${esc(filtered.join(', '))}</p>`:''}
+      ${empty.length?`<p><b>Ohne ausreichenden Beleg leer:</b> ${esc(empty.join(', '))}</p>`:''}
+      ${evidence?`<details><summary>Geprüfte Textbelege anzeigen</summary><div class="ai-grounding-evidence">${evidence}</div></details>`:''}
+      <small>Die Prüfung wurde lokal im Vault nach der KI-Ausgabe durchgeführt.</small></div>`
+  }
   function renderDraft(x){
     aiDraft=x?.result||null;const host=$('#flowAiDraft');if(!host||!aiDraft)return;
     const r=aiDraft;
     host.classList.remove('hidden');
     host.innerHTML=`<div class="ai-result-head"><div><span class="ai-local-pill">Entwurf</span><strong>Strukturierte Sitzungsdokumentation</strong><small>${esc(x.model||'lokales Modell')}${timingText(x)?` · ${esc(timingText(x))}`:''}</small></div></div>
+      ${groundingPanel(x.grounding)}
       <div class="ai-grid ai-draft-grid">
         ${draftSection('Fokus',r.focus)}${draftSection('Dynamik',r.dynamics)}
         <section><h5>Interventionen</h5>${list(r.interventions)}</section>
@@ -140,7 +152,7 @@
       </div>
       ${timingText(x)?`<div class="ai-timing">⏱ ${esc(timingText(x))}</div>`:''}
       <div class="dialog-actions ai-approve-actions"><button class="btn ghost" id="flowAiDraftDiscard" type="button">Verwerfen</button><button class="btn primary" id="flowAiDraftApply" type="button">Entwurf in Felder übernehmen</button></div>
-      <p class="ai-disclaimer">Die KI speichert nichts automatisch. Erst nach deiner Prüfung und dem normalen Speichern landet der Text im Vault.</p>`;
+      <p class="ai-disclaimer">Auch ein evidenzgeprüfter KI-Entwurf braucht deine fachliche Prüfung. Erst nach deiner Freigabe und dem normalen Speichern landet der Text in der Dokumentation.</p>`;
     $('#flowAiDraftDiscard').onclick=()=>{aiDraft=null;host.classList.add('hidden')};
     $('#flowAiDraftApply').onclick=applyDraft;
   }
@@ -158,7 +170,7 @@
     $('#flowNextFocus').value=aiDraft.nextFocus||'';
     $('#flowPrivatePrep').value=aiDraft.privatePrep||'';scheduleDraftSave();
     $('#flowAiDraft').classList.add('hidden');
-    $('#flowAiReviewNote').textContent='KI-Entwurf übernommen · bitte prüfen und bei Bedarf bearbeiten.';
+    $('#flowAiReviewNote').textContent='Evidenzgeprüfter KI-Entwurf übernommen · bitte fachlich prüfen und bei Bedarf bearbeiten.';
     aiDraft=null;
   }
 
