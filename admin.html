@@ -9,20 +9,8 @@
 <link rel="stylesheet" href="admin-build10.css?v=20260921-build13">
 <link rel="stylesheet" href="admin-build11.css?v=20260918-build11-1">
 <link rel="stylesheet" href="admin-build12.css?v=20260918-build12">
-<link rel="stylesheet" href="admin-build13-5.css?v=20260921-build13-5">
-<script>
-(function(){
-  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
-  document.addEventListener("error",function(ev){
-    const el=ev.target;
-    if(!el||el.tagName!=="IMG"||el.dataset.githubFallback==="1") return;
-    const src=el.getAttribute("src")||"";
-    if(src.startsWith("./public/")||src.startsWith("public/")){
-      el.dataset.githubFallback="1"; el.src=RAW+src.replace(/^\.\//,"");
-    }
-  },true);
-})();
-</script>
+<link rel="stylesheet" href="admin-build13-6.css?v=20260922-build13-6">
+<link rel="stylesheet" href="admin-build13-6-responsive.css?v=20260922-build13-6">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -31,6 +19,7 @@
   <symbol id="i-clients" viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-1a3 3 0 1 0 0-6m-8 9c-4 0-6 2-6 5v2h12v-2c0-3-2-5-6-5Zm8 0c3 0 5 1.7 5 4v3h-5"/></symbol>
   <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M5 3v3m14-3v3M3 9h18M5 5h14a2 2 0 0 1 2 2v13H3V7a2 2 0 0 1 2-2Zm3 8h3m3 0h3m-9 4h3"/></symbol>
   <symbol id="i-package" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4-9 4-9-4Zm0 0v10l9 4 9-4V7M12 11v10"/></symbol>
+  <symbol id="i-programs" viewBox="0 0 24 24"><path d="M4 4h16v12H4V4Zm3 4h6m-6 3h10M9 20l3-4 3 4M2 20h20"/></symbol>
   <symbol id="i-invoice" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6m-6 4h6"/></symbol>
   <symbol id="i-vault" viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3m-11 0h12a2 2 0 0 1 2 2v8H4v-8a2 2 0 0 1 2-2Zm6 4v3"/></symbol>
   <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm0-12 1 2.1 2.3.6 2-1.2 1.8 1.8-1.2 2 .6 2.3 2.1 1v2.6l-2.1 1-.6 2.3 1.2 2-1.8 1.8-2-1.2-2.3.6-1 2.1H9.4l-1-2.1-2.3-.6-2 1.2-1.8-1.8 1.2-2-.6-2.3-2.1-1v-2.6l2.1-1 .6-2.3-1.2-2L4.1 5l2 1.2 2.3-.6 1-2.1H12Z"/></symbol>
@@ -62,7 +51,7 @@
       <button class="nav-item" data-view="clients"><svg><use href="#i-clients"/></svg><span>Kund:innen</span></button>
       <button class="nav-item" data-view="bookings"><svg><use href="#i-calendar"/></svg><span>Termine</span></button>
       <button class="nav-item" data-view="packages"><svg><use href="#i-package"/></svg><span>Packages</span></button>
-      <button class="nav-item" data-view="programs"><svg><use href="#i-journey"/></svg><span>Programme & Gruppen</span><em id="navProgramCount"></em></button>
+      <button class="nav-item" data-view="programs"><svg><use href="#i-programs"/></svg><span>Programme & Gruppen</span><em id="navProgramCount"></em></button>
       <button class="nav-item" data-view="invoices"><svg><use href="#i-invoice"/></svg><span>Rechnungen</span></button>
       <div class="nav-divider"></div>
       <button class="nav-item" data-view="vault"><svg><use href="#i-vault"/></svg><span>Secure Vault</span><em id="vaultNavState">lokal</em></button>
@@ -111,7 +100,8 @@
     </section>
 
     <section class="view" id="view-packages">
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Begleitpakete</p><h2>Packages</h2><p class="muted">Einheiten, Gültigkeit und Fortsetzung im Blick.</p></div></div><div id="packagesTable"></div></section>
+      <div id="packageCatalogApp"></div>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Gebuchte Begleitpakete</p><h2>Packages bei Kund:innen</h2><p class="muted">Einheiten, Gültigkeit und Fortsetzung im Blick.</p></div></div><div id="packagesTable"></div></section>
     </section>
 
     <section class="view" id="view-programs">
@@ -149,7 +139,7 @@
 
 <dialog id="editDialog"><div class="dialog-shell compact"><button class="dialog-x" id="editClose" type="button">×</button><p class="eyebrow" id="editEyebrow">Änderung</p><h2 id="editTitle">Bearbeiten</h2><p class="muted" id="editSubtitle"></p><form id="editForm" class="edit-form"><div id="editFields" class="edit-grid"></div><div class="change-box"><strong id="changeHeadline">Keine Änderungen vorgenommen</strong><div id="changeList" class="change-list"></div></div><div id="emailPreview" class="email-preview"><p class="eyebrow">Vor dem Versand prüfen</p><h3>E-Mail-Vorschau</h3><div id="emailPreviewText"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="emailCancel">Nicht senden</button><button class="btn primary" type="button" id="emailConfirm">E-Mail jetzt senden</button></div></div><div class="dialog-actions main-actions"><span id="editState" class="muted micro"></span><button class="btn ghost" type="button" id="editCancel">Abbrechen</button><button class="btn secondary" type="submit" id="saveOnly" disabled>Änderungen speichern</button><button class="btn primary" type="button" id="saveNotify" disabled>Speichern & E-Mail vorbereiten</button></div></form></div></dialog>
 
-<dialog id="inquiryDialog"><div class="dialog-shell compact"><button class="dialog-x" id="inquiryClose" type="button">×</button><p class="eyebrow">Client Journey</p><h2>Neue Anfrage erfassen</h2><p class="muted">Nur organisatorische Angaben – keine Beratungsinhalte.</p><form id="inquiryForm" class="edit-form"><div class="edit-grid"><label class="edit-field">Name<input id="inqName" required></label><label class="edit-field">E-Mail<input id="inqEmail" type="email" required></label><label class="edit-field">Kontaktweg<select id="inqSource"><option>Website</option><option>E-Mail</option><option>WhatsApp</option><option>Empfehlung</option><option>Telefon</option><option>Sonstiges</option></select></label><label class="edit-field">Phase<select id="inqStage"><option value="inquiry">Anfrage</option><option value="consultation">Erstgespräch</option><option value="waiting">Wartet</option></select></label></div><div class="dialog-actions"><button class="btn ghost" type="button" id="inquiryCancel">Abbrechen</button><button class="btn primary" type="submit">Anfrage speichern</button></div></form></div></dialog>
+<dialog id="inquiryDialog"><div class="dialog-shell compact"><button class="dialog-x" id="inquiryClose" type="button">×</button><p class="eyebrow">Client Journey</p><h2>Neue Anfrage erfassen</h2><p class="muted">Nur organisatorische Angaben – keine Beratungsinhalte.</p><form id="inquiryForm" class="edit-form"><div class="edit-grid"><label class="edit-field">Name<input id="inqName" required></label><label class="edit-field">E-Mail<input id="inqEmail" type="email" required></label><label class="edit-field">Kontaktweg<select id="inqSource"><option>Website</option><option>E-Mail</option><option>WhatsApp</option><option>Empfehlung</option><option>Telefon</option><option>Sonstiges</option></select></label><label class="edit-field">Phase<select id="inqStage"><option value="inquiry">Anfrage</option><option value="consultation">Erstgespräch</option></select></label></div><div class="dialog-actions"><button class="btn ghost" type="button" id="inquiryCancel">Abbrechen</button><button class="btn primary" type="submit">Anfrage speichern</button></div></form></div></dialog>
 
 <dialog id="offerDialog"><div class="dialog-shell compact"><button class="dialog-x" id="offerClose" type="button">×</button><p class="eyebrow">Continuation</p><h2>Fortsetzungsangebot vorbereiten</h2><p class="muted" id="offerClient">—</p><div class="edit-form"><div class="edit-grid"><label class="edit-field">Angebot<select id="offerType"><option value="same">Gleiches Package fortsetzen</option><option value="three">3 weitere Sitzungen</option><option value="five">5er-Begleitung</option><option value="custom">Individuelles Angebot</option></select></label><label class="edit-field">Regulärer Preis (€)<input id="offerBasePrice" type="number" min="0" step="1"></label><label class="edit-field">Fortsetzungsbonus (%)<input id="offerDiscount" type="number" min="0" max="50" step="1"></label><label class="edit-field">Angebotspreis (€)<input id="offerFinalPrice" type="number" min="0" step="1"></label></div><div class="offer-preview"><p class="eyebrow">E-Mail-Entwurf</p><textarea id="offerEmailText" rows="10"></textarea></div><div class="dialog-actions"><button class="btn ghost" type="button" id="copyOfferBtn">Text kopieren</button><button class="btn primary" type="button" id="sendOfferBtn">E-Mail prüfen & senden</button></div><p class="micro muted">Der Text wird erst nach deiner Bestätigung über den Worker versendet und anschließend im Aktivitätsverlauf dokumentiert.</p></div></div></dialog>
 
@@ -166,6 +156,7 @@
 <script src="admin-build10.js?v=20260921-build13"></script>
 <script src="admin-build11.js?v=20260918-build11-1"></script>
 <script src="admin-build12.js?v=20260918-build12"></script>
-<script src="admin-build13-5.js?v=20260921-build13-5"></script>
+<script src="admin-build13-6.js?v=20260922-build13-6"></script>
+<script src="admin-build13-6-extras.js?v=20260922-build13-6"></script>
 </body>
 </html>

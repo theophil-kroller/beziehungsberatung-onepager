@@ -72,22 +72,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 .booking-policy strong{display:block;color:var(--brown);font-size:14px;margin-bottom:5px}.booking-policy ul{margin:6px 0 0;padding-left:19px}
 .booking-wave{height:46px;overflow:hidden;background:#fff}.booking-wave svg{display:block;width:100%;height:100%}
 .summary-policy{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;line-height:1.55;color:rgba(255,255,255,.67)}
+.booking-routes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:24px 0 26px}.booking-route{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:#fff;color:var(--muted);line-height:1.55;font-size:14px}.booking-route strong{display:block;color:var(--brown);margin-bottom:4px}.booking-route a{color:var(--terr2);font-weight:850;text-decoration:none}.booking-route a:hover{text-decoration:underline}.access-resend{display:flex;gap:7px;margin-top:11px}.access-resend input{min-width:0;flex:1;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit}.access-resend button{border:0;border-radius:10px;background:var(--brown);color:#fff;padding:10px 12px;font-weight:800;cursor:pointer}.access-resend button:disabled{opacity:.55}.access-resend-msg{font-size:12px;margin-top:7px;color:#35633d}@media(max-width:720px){.booking-routes{grid-template-columns:1fr}.access-resend{flex-direction:column}}
 
 </style>
-<script>
-(function(){
-  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
-  document.addEventListener("error",function(ev){
-    const el=ev.target;
-    if(!el || el.tagName!=="IMG" || el.dataset.githubFallback==="1") return;
-    const src=el.getAttribute("src")||"";
-    if(src.startsWith("./public/") || src.startsWith("public/")){
-      el.dataset.githubFallback="1";
-      el.src=RAW+src.replace(/^\.\//,"");
-    }
-  },true);
-})();
-</script>
 </head>
 <body>
 <div class="top">Praxis für Beziehungsdynamiken · Graz & online</div>
@@ -98,7 +85,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 <main>
 <div class="eyebrow" id="bookingEyebrow">Termin buchen</div>
 <h1 id="bookingTitle">Finde einen Termin, der für dich oder euch passt.</h1>
-<p class="lead" id="bookingLead">Wähle zuerst den Rahmen. Einzelpersonen, Paare und Menschen in vielfältigen Beziehungskonstellationen sind willkommen. Danach siehst du freie Zeiten. Ich frage hier bewusst nur die organisatorischen Angaben ab – nicht, worum es in der Beratung geht.</p>
+<p class="lead" id="bookingLead">Hier kannst du einen einzelnen Beratungstermin für dich oder euch buchen. Danach siehst du die aktuell freien Zeiten. Ich frage dabei bewusst nur organisatorische Angaben ab – nicht, worum es in der Beratung geht.</p>
+<div class="booking-routes"><div class="booking-route"><strong>Du suchst eine Gruppe, einen Workshop oder ein Package?</strong><a href="angebote.html">Alle Angebote ansehen →</a></div><div class="booking-route"><strong>Du hast bereits ein Package gebucht?</strong>Nutze den persönlichen Einstiegslink aus deiner E-Mail – oder fordere ihn hier erneut an.<div class="access-resend"><input id="packageAccessEmail" type="email" autocomplete="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse für Package-Zugang"><button id="packageAccessSend" type="button">Link senden</button></div><div id="packageAccessMsg" class="access-resend-msg" aria-live="polite"></div></div></div>
 <div class="grid">
 <section class="card">
 <div class="step active" id="step1"><div class="stephead"><div class="num">1</div><h2>Welche Beratung?</h2></div>
@@ -133,14 +121,15 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 20px;bor
 
 <div class="step" id="step4"><div class="stephead"><div class="num">4</div><h2>Deine Kontaktdaten</h2></div>
 <form id="bookingForm" class="form">
-<div class="field"><label>Name</label><input id="customerName" name="name" autocomplete="name" required></div>
-<div class="field"><label>E-Mail</label><input id="customerEmail" name="email" type="email" autocomplete="email" required></div>
+<div class="field"><label>Name <span style="color:#b42318;font-weight:900">*</span></label><input id="customerName" name="name" autocomplete="name" required></div>
+<div class="field"><label>E-Mail <span style="color:#b42318;font-weight:900">*</span></label><input id="customerEmail" name="email" type="email" autocomplete="email" required></div>
 <div class="booking-policy">
 <strong>Absagen &amp; Umbuchen</strong>
 <ul><li>mehr als 48 Stunden vorher: kostenfrei</li><li>24–48 Stunden vorher: 50 % des Honorars</li><li>weniger als 24 Stunden vorher oder Nichterscheinen: 100 % des Honorars</li></ul>
 Die gleichen Fristen gelten für Umbuchungen.
 </div>
-<label class="check"><input type="checkbox" required><span>Ich stimme der Verarbeitung meiner Angaben zur Terminorganisation und den oben angeführten Absage- und Umbuchungsbedingungen zu. Es werden hier keine Beratungsinhalte abgefragt.</span></label>
+<label class="check"><input type="checkbox" required><span>Ich stimme der Verarbeitung meiner Angaben zur Terminorganisation und den oben angeführten Absage- und Umbuchungsbedingungen zu. Es werden hier keine Beratungsinhalte abgefragt. <span style="color:#b42318;font-weight:900">*</span></span></label>
+<p class="muted" style="font-size:12px"><span style="color:#b42318;font-weight:900">*</span> Pflichtfeld</p>
 <div id="formMsg"></div>
 <div class="actions"><button type="button" class="btn secondary" id="back4">Zurück</button><button class="btn primary" id="submitBtn" type="submit">Termin buchen</button></div>
 </form></div>
@@ -182,6 +171,7 @@ const txt = L==="de" ? {
 let state={type:null,location:null,date:null,start:null,end:null,slots:[]};
 const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
 const typeData=()=>C.appointmentTypes[state.type];
+q("#packageAccessSend").onclick=async()=>{const email=q("#packageAccessEmail").value.trim(),button=q("#packageAccessSend"),message=q("#packageAccessMsg");if(!email||!q("#packageAccessEmail").checkValidity()){message.textContent="Bitte gib eine gültige E-Mail-Adresse ein.";return}button.disabled=true;message.textContent="Wird geprüft …";try{const r=await fetch(String(C.apiBaseUrl||"").replace(/\/$/,"")+"/package-access/request",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,lang:"de",website:""})}),x=await r.json();if(!r.ok||x.ok===false)throw new Error(x.error||"Anfrage fehlgeschlagen");message.textContent=x.message}catch(e){message.textContent="Der Link konnte gerade nicht angefordert werden. Bitte versuche es später erneut.";button.disabled=false}};
 const fmtDate=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"short",day:"2-digit",month:"2-digit"}).format(new Date(iso+"T12:00:00"));
 const fmtLong=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(new Date(iso+"T12:00:00"));
 const fmtTime=(iso)=>new Intl.DateTimeFormat(L==="de"?"de-AT":"en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:C.timezone}).format(new Date(iso));
@@ -219,6 +209,7 @@ const PACKAGE_COPY={
   }
 };
 if(packageBooking){
+  q(".booking-routes").hidden=true;
   const copy=PACKAGE_COPY[packageProduct]||{
     eyebrow:"DEIN BEGLEITPAKET",
     title:"Buche deinen nächsten Termin.",
@@ -447,4 +438,4 @@ function makeIcs(p){
 }
 summary();
 </script>
-<script src="./cart.js"></script><script src="./programs-public.js?v=20260921-build13-5"></script></body></html>
+<script src="./cart.js"></script><script src="./programs-public.js?v=20260922-build13-6"></script></body></html>

@@ -1,0 +1,33 @@
+.required-star{color:#b42318;font-weight:900}
+.required-note{font-size:12px;color:#6f625d;margin:12px 0 0}
+.datetime-upgraded{display:none!important}
+.dt-control,.dt-inline{display:grid;gap:6px;font-size:12px;font-weight:800;color:#514641}
+.dt-control>div,.dt-inline>div{display:grid;grid-template-columns:minmax(145px,1fr) minmax(105px,.65fr);gap:8px}
+.dt-control input,.dt-control select,.dt-inline input,.dt-inline select{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;padding:10px 11px;min-height:42px;font:inherit;color:var(--ink)}
+.repeat-row.session-row{grid-template-columns:minmax(300px,1fr) minmax(300px,1fr) minmax(180px,.75fr) auto;align-items:end}
+.publication-window{padding:8px 10px;background:#f7f2ed;border-radius:10px;margin:8px 0}
+.status-chip.archived{background:#f0ece8;color:#645b56}
+.package-catalog-panel{margin-bottom:20px;padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.package-admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.package-admin-card{display:flex;justify-content:space-between;gap:18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fffaf5}
+.package-admin-card h3{margin:8px 0 5px}.package-admin-card p,.package-admin-card small{color:var(--muted)}
+.package-admin-card .program-actions{justify-content:flex-end;align-content:flex-start;min-width:200px}
+.journey-board{grid-template-columns:repeat(5,minmax(230px,1fr))}
+#invoicesTable .table-wrap{overflow-x:auto;scrollbar-gutter:stable}
+#invoicesTable table{min-width:1180px;table-layout:auto}
+#invoicesTable th:first-child,#invoicesTable td:first-child{min-width:155px;white-space:nowrap}
+#invoicesTable th:last-child,#invoicesTable td:last-child{position:sticky;right:0;z-index:2;min-width:270px;background:#fff;box-shadow:-10px 0 18px rgba(47,38,35,.07)}
+#invoicesTable th:last-child{z-index:3;background:#fffbf6}
+#invoicesTable .row-actions{align-items:flex-start}
+#invoicesTable .payment-meta{max-width:360px;overflow-wrap:anywhere}
+@media(max-width:1280px){
+  .workspace{padding:24px 16px 60px}.panel{padding:18px}
+  #invoicesTable table{min-width:1060px}
+  #invoicesTable th:last-child,#invoicesTable td:last-child{min-width:225px}
+}
+@media(max-width:1050px){.journey-board{grid-template-columns:repeat(5,240px)}.repeat-row.session-row{grid-template-columns:1fr 1fr}.package-admin-grid{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .dt-control>div,.dt-inline>div,.repeat-row.session-row{grid-template-columns:1fr}
+  .package-admin-card{display:grid}.package-admin-card .program-actions{justify-content:flex-start;min-width:0}
+  #invoicesTable th:last-child,#invoicesTable td:last-child{position:static;box-shadow:none}
+}

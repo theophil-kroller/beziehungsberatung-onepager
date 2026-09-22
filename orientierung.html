@@ -20,20 +20,6 @@ body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe
 .wa-premium{position:fixed;right:20px;bottom:20px;z-index:80;height:56px;width:56px;border-radius:18px;background:var(--brown);color:#fff;box-shadow:0 13px 34px rgba(47,38,35,.24);overflow:hidden;display:flex;align-items:center;transition:width .35s ease,background .25s ease}
 .wa-premium:hover{width:238px;background:var(--terr)}.wa-icon{width:56px;min-width:56px;height:56px;display:flex;align-items:center;justify-content:center}.wa-label{white-space:nowrap;font-weight:750;font-size:14px;padding-right:18px}
 </style>
-<script>
-(function(){
-  const RAW="https://raw.githubusercontent.com/theophil-kroller/beziehungsberatung-onepager/main/";
-  document.addEventListener("error",function(ev){
-    const el=ev.target;
-    if(!el || el.tagName!=="IMG" || el.dataset.githubFallback==="1") return;
-    const src=el.getAttribute("src")||"";
-    if(src.startsWith("./public/") || src.startsWith("public/")){
-      el.dataset.githubFallback="1";
-      el.src=RAW+src.replace(/^\.\//,"");
-    }
-  },true);
-})();
-</script>
 </head>
 <body>
 <div class="topbar bg-[#2F2623] text-[#FFF7ED] border-b border-white/10" role="note">
@@ -65,7 +51,7 @@ body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe
   </div>
   <div class="border-t border-[#E8D2BE]/70 bg-[#FFF7ED]/95 overflow-x-auto nav-scroll">
     <ul class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-6 text-sm md:text-base text-[#5F504A] font-medium whitespace-nowrap">
-      <li><a href="index.html" class="nav-link">Start</a></li><li><a href="index.html#angebot" class="nav-link">Angebot</a></li><li><a href="index.html#ablauf" class="nav-link">Ablauf</a></li><li><a href="arbeitsweise.html" class="nav-link">Arbeitsweise</a></li><li><a href="beziehungsvielfalt.html" class="nav-link">Beziehungsvielfalt</a></li><li><a href="about.html" class="nav-link">Über mich</a></li><li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
+      <li><a href="index.html" class="nav-link">Start</a></li><li><a href="angebote.html" class="nav-link">Angebot</a></li><li><a href="index.html#ablauf" class="nav-link">Ablauf</a></li><li><a href="arbeitsweise.html" class="nav-link">Arbeitsweise</a></li><li><a href="beziehungsvielfalt.html" class="nav-link">Beziehungsvielfalt</a></li><li><a href="about.html" class="nav-link">Über mich</a></li><li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
     </ul>
   </div>
 </nav>
@@ -95,4 +81,4 @@ body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe
 <footer class="bg-[#2F2623] text-white py-12"><div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8"><div><div class="text-xl font-bold">Beziehungsdynamiken</div><div class="text-white/55 text-sm mt-1">mit Theophil Kroller</div><p class="text-white/65 text-sm mt-4 max-w-sm">Psychosoziale Beziehungsberatung für Einzelpersonen und Paare — monogam, offen, polyamor oder noch ungeklärt.</p></div><div class="text-sm text-white/65 space-y-2"><a class="block hover:text-white" href="arbeitsweise.html">Arbeitsweise</a><a class="block hover:text-white" href="beziehungsvielfalt.html">Beziehungsvielfalt</a><a class="block hover:text-white" href="about.html">Über mich</a><a class="block hover:text-white" href="orientierung.html">Arbeitsblatt zur Orientierung</a></div><div class="text-sm text-white/65 space-y-2"><a class="block hover:text-white" href="mailto:hallo@beziehungsdynamiken.at">hallo@beziehungsdynamiken.at</a><a class="block hover:text-white" href="impressum.html">Impressum</a><a class="block hover:text-white" href="datenschutz.html">Datenschutz</a></div></div><div class="max-w-6xl mx-auto px-6 border-t border-white/10 mt-10 pt-6 text-white/40 text-sm">© 2026 Beziehungsdynamiken / Theophil Kroller</div></footer>
 <a class="wa-premium" href="https://wa.me/4366473878530?text=Hallo%20Theophil%2C%20ich%20w%C3%BCrde%20gerne%20ein%20unverbindliches%20Erstgespr%C3%A4ch%20anfragen." target="_blank" rel="noopener"><span class="wa-icon">◉</span><span class="wa-label">Unsicher? Schreib mir kurz.</span></a>
 <script src="cart.js"></script>
-<script src="./programs-public.js?v=20260921-build13-5"></script></body></html>
+<script src="./programs-public.js?v=20260922-build13-6"></script></body></html>

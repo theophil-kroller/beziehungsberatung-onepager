@@ -107,14 +107,14 @@
     if(!client.backend){return {journeyStage:prospect?.stage||manual.journeyStage||"inquiry",clientStatus:"prospect",manual:true}}
     if(manual.clientStatus==="completed")return {...manual,journeyStage:"completed",clientStatus:"completed"};
     if(manual.clientStatus==="paused")return {...manual,journeyStage:"paused",clientStatus:"paused"};
-    if(["inquiry","consultation","waiting"].includes(manual.journeyStage))return {...manual,clientStatus:"prospect"};
+    if(["inquiry","consultation","waiting"].includes(manual.journeyStage))return {...manual,journeyStage:manual.journeyStage==="waiting"?"consultation":manual.journeyStage,clientStatus:"prospect"};
     const upcoming=cd.bookings.filter(x=>x.status==="booked"&&new Date(x.start).getTime()>=t);const past=cd.bookings.filter(x=>x.status==="booked"&&new Date(x.start).getTime()<t);const activePkg=cd.packages.some(x=>Number(x.remaining)>0&&(!x.expiresAt||new Date(x.expiresAt).getTime()>t));
     if(upcoming.length===1&&!past.length&&!activePkg)return {...manual,journeyStage:"consultation",clientStatus:"prospect"};
     if(upcoming.length||activePkg)return {...manual,journeyStage:"active",clientStatus:"active"};
     if(past.length||cd.packages.length)return {...manual,journeyStage:"paused",clientStatus:"paused"};
     return {...manual,journeyStage:"inquiry",clientStatus:"prospect"};
   }
-  function boardBucket(client){const l=lifecycleOf(client);if(l.clientStatus==="completed")return"completed";if(l.clientStatus==="paused")return"paused";return l.journeyStage||"inquiry"}
+  function boardBucket(client){const l=lifecycleOf(client);if(l.clientStatus==="completed")return"completed";if(l.clientStatus==="paused")return"paused";return l.journeyStage==="waiting"?"consultation":(l.journeyStage||"inquiry")}
 
   function renderAll(){renderStats();renderAttention();renderRenewals();renderNext();renderJourney();renderClients();renderBookings();renderPackages();renderInvoices();renderSettings()}
   function renderStats(){
@@ -141,7 +141,6 @@
   const stages={
     inquiry:{title:"Anfrage",copy:"Neu eingegangen, noch kein Erstgespräch.",dot:"stage-inquiry"},
     consultation:{title:"Erstgespräch",copy:"Erstkontakt bzw. erster Termin ist vereinbart.",dot:"stage-consultation"},
-    waiting:{title:"Wartet",copy:"Besprochen und wartet auf einen passenden Folgetermin.",dot:"stage-waiting"},
     active:{title:"Aktiv",copy:"Laufende Begleitung mit Termin oder aktivem Package.",dot:"stage-active"},
     paused:{title:"Pausiert",copy:"Aktuell keine regelmäßige Begleitung geplant.",dot:"stage-paused"},
     completed:{title:"Abgeschlossen",copy:"Begleitung bewusst abgeschlossen.",dot:"stage-completed"}
