@@ -1,0 +1,43 @@
+INSTALLATION BUILD 13.6.2
+========================
+
+Voraussetzung: BUILD 13.6.1 ist installiert. Falls du von einem älteren Build
+kommst, führe die im ZIP enthaltenen Migrationen in ihrer Nummernreihenfolge aus.
+
+EMPFOHLEN: Vorher ein D1-Backup erstellen.
+
+1. DATENBANK
+   In der Cloudflare-D1-Konsole den vollständigen Inhalt von
+   03_DATABASE/build13-6-2-practice-profiles-media.sql ausführen.
+   Die Migration ist idempotent und kann bei Unsicherheit erneut ausgeführt
+   werden.
+
+2. WORKER
+   Den vollständigen Inhalt von 02_CLOUDFLARE_WORKER/worker.js in den bisherigen
+   Worker kopieren und deployen. Vorhandene Bindings und Secrets beibehalten.
+   Besonders wichtig: Das vorhandene R2-Binding MATERIALS muss weiter gebunden
+   sein; es wird nun zusätzlich für Programmbilder verwendet.
+
+3. WEBSITE
+   Den INHALT von 01_WEBSITE_UPLOAD in den bestehenden Webroot hochladen und
+   vorhandene Dateien ersetzen. Bereits vorhandene Bilder nicht löschen.
+   Danach Browser mit Strg+F5 neu laden.
+
+4. KURZTEST
+   - Worker-Endpunkt /health zeigt Build 13.6.2.
+   - Admin > Einstellungen: Praxisprofil und Anbieterprofil werden angezeigt.
+   - Admin > Packages: Es erscheinen nur Packages, keine Einzeltermine.
+   - Package bearbeiten: Anbieter:in, Fachbereich und Sprache speichern.
+   - In der Package-Maske „Vorschau ansehen“ öffnen, anschließend mit
+     „Zurück zur Bearbeitung“ wieder in die Maske wechseln.
+   - Package veröffentlichen und auf Angebote kontrollieren.
+   - Admin > Programme & Gruppen: Testbild hochladen, Angebot speichern und die
+     öffentliche Karten- sowie Detaildarstellung prüfen.
+   - Dashboard: Karte „Offene Forderungen“ ist kompakt.
+   - Website: E-Mail- und WhatsApp-Links nach Änderung des Praxisprofils prüfen.
+
+ROLLBACK
+Website und Worker können aus dem letzten funktionierenden Build erneut
+eingespielt werden. Die neuen D1-Tabellen sind additiv und müssen für einen
+Rollback nicht gelöscht werden. Hochgeladene Programmbilder bleiben in R2 und
+sind ohne registrierten öffentlichen Datensatz nicht frei auflistbar.

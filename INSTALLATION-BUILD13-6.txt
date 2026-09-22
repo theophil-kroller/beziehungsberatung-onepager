@@ -1,0 +1,43 @@
+INSTALLATION BUILD 13.6
+======================
+
+Voraussetzung: BUILD 13.5 ist bereits installiert und dessen D1-Migration wurde
+ausgeführt.
+
+1. DATENBANK
+   In der Cloudflare-D1-Konsole den vollständigen Inhalt von
+   03_DATABASE/build13-6-program-publication.sql ausführen.
+   Die Datei ist idempotent und darf bei Unsicherheit erneut ausgeführt werden.
+
+2. WORKER
+   Den vollständigen Inhalt von 02_CLOUDFLARE_WORKER/worker.js in den bisherigen
+   Worker übernehmen und deployen. Die vorhandenen Bindings und Secrets bleiben
+   unverändert.
+
+3. WEBSITE
+   Nur den INHALT von 01_WEBSITE_UPLOAD in den bestehenden Webroot hochladen.
+   Vorhandene Bilddateien im Webroot nicht löschen. BUILD 13.6 ersetzt nur die
+   mitgelieferten Dateien und lässt übrige Assets bestehen.
+
+4. LOKALER VAULT
+   Nur falls der lokale Vault ebenfalls aktualisiert werden soll: den Inhalt von
+   04_LOCAL_VAULT in den bisherigen lokalen Vault-Ordner kopieren. Vorher den
+   Vault beenden und den Ordner vault/data sichern. Der data-Ordner darf nicht
+   überschrieben werden.
+
+5. KONTROLLE
+   Browser mit Strg+F5 hart neu laden. Danach kurz prüfen:
+   - Admin > Programme & Gruppen: Termin anlegen, automatische Endzeit prüfen.
+   - Sichtbar-ab/bis setzen, speichern und öffentliche Angebotsseite prüfen.
+   - Admin > Packages: Test-Package als nicht öffentlich speichern.
+   - Angebotsseite: Gruppen und öffentliche Packages sichtbar.
+   - Terminbuchung: keine Gruppenüberlagerung, Hinweiskarten sichtbar.
+   - Package-Zugang: eigene E-Mail eingeben und neuen Link empfangen.
+   - Rechnungen: bei normaler Größe und vergrößertem Browser prüfen.
+
+Rollback
+--------
+Website und Worker können aus dem letzten funktionierenden Build wieder
+eingespielt werden. Die neue D1-Tabelle ist additiv und muss für einen Rollback
+nicht entfernt werden. Vor produktiven Datenbankänderungen ist ein D1-Backup
+empfohlen.

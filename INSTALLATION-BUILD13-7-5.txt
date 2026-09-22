@@ -1,0 +1,42 @@
+INSTALLATION · BUILD 13.7.5
+===========================
+
+1. Lokalen Vault stoppen
+------------------------
+- Das Vault-Fenster schließen.
+- Der vorhandene Unterordner vault/data bleibt unangetastet.
+
+2. Dateien kopieren
+-------------------
+- Inhalt von 01_WEBSITE_UPLOAD in den Website-Root kopieren und ersetzen.
+- Inhalt von 02_LOCAL_VAULT in den lokalen Vault-Ordner kopieren und ersetzen.
+- vault/data niemals löschen, ersetzen oder hochladen.
+
+3. Whisper aktualisieren und Turbo vorbereiten
+----------------------------------------------
+- update_whisper.bat vollständig durchlaufen lassen.
+- Falls Whisper bereits aktuell ist, kann stattdessen
+  prepare_whisper_turbo.bat verwendet werden.
+- Danach check_whisper.bat ausführen. Erwartet:
+  [OK] Modell turbo wird unterstützt.
+  [OK] Turbo-Modell lokal vorbereitet.
+
+4. Neustart
+-----------
+- start_vault.bat starten.
+- http://127.0.0.1:47831/health öffnen. Erwartet: Version 3.7.5, Modell turbo.
+- CRM mit Strg+F5 vollständig neu laden.
+
+5. Kurztest
+-----------
+- Session Flow → Nachbereiten → Mikrofon neben Rohnotizen.
+- Bei einer neuen Aufnahme muss „Aufnahme 0:01, 0:02 …“ sichtbar laufen.
+- Bei einer alten Aufnahme muss „Gespeicherte Aufnahme gefunden“ erscheinen.
+- Nach „Transkribieren“ muss „Verarbeitung 0:01, 0:02 …“ laufen.
+- Transkript prüfen, als Rohnotizen übernehmen und lokal strukturieren.
+
+Keine Änderungen erforderlich
+------------------------------
+- Cloudflare Worker unverändert
+- D1-Datenbank unverändert
+- Secrets und Bindings unverändert
