@@ -84,12 +84,7 @@
       openCard.classList.add('finance-stat-link','finance-open-card');
       openCard.setAttribute('data-finance-open','');
       openCard.title='Finanzcockpit öffnen';
-      if(!openCard.querySelector('.stat-finance-links'))openCard.insertAdjacentHTML('beforeend',`
-        <div class="stat-finance-links">
-          <button class="stat-finance-sub-link" type="button"><span>Einnahmen Monat</span><strong id="statMonthIncome">—</strong></button>
-          <button class="stat-finance-sub-link" type="button"><span>Planbar 30 Tage</span><strong id="statExpected30">—</strong></button>
-        </div>
-        <small class="stat-finance-more">Finanzdetails öffnen →</small>`);
+      if(!openCard.querySelector('.stat-finance-more'))openCard.insertAdjacentHTML('beforeend','<small class="stat-finance-more">Finanzdetails öffnen →</small>');
     }
     const dashGrid=$('#view-dashboard .dash-grid');
     if(dashGrid)dashGrid.insertAdjacentHTML('afterend',`<section class="panel flow-dashboard-panel flow-dashboard-green"><div class="panel-head"><div><p class="eyebrow">Session Flow</p><h2>Vor- & Nachbereitung</h2><p class="muted">Was vor dem nächsten Termin wichtig ist und welche Dokumentation noch offen ist.</p></div><button class="text-button" id="flowOpenView" type="button">Flow Manager →</button></div><div id="flowDashList" class="flow-list"></div></section>`);

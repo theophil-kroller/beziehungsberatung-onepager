@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="admin-build10.css?v=20260921-build13">
 <link rel="stylesheet" href="admin-build11.css?v=20260918-build11-1">
 <link rel="stylesheet" href="admin-build12.css?v=20260918-build12">
-<link rel="stylesheet" href="admin-build13-6.css?v=20260922-build13-6-1">
-<link rel="stylesheet" href="admin-build13-6-responsive.css?v=20260922-build13-6-1">
+<link rel="stylesheet" href="admin-build13-6.css?v=20260922-build13-6-2">
+<link rel="stylesheet" href="admin-build13-6-responsive.css?v=20260922-build13-6-2">
+<link rel="stylesheet" href="admin-build13-6-2.css?v=20260922-build13-6-2">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -129,7 +130,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Bereit für den nächsten Schritt</h2><ul class="feature-list"><li><strong>Intake & Consent</strong><span>Formulare und Einwilligungen direkt in der Akte.</span></li><li><strong>Outcome Measures</strong><span>Später – gemeinsam mit einem sicheren Beratungsdaten-Konzept.</span></li><li><strong>Zahlungsarchitektur</strong><span>Stripe, Banküberweisung, Barzahlung und später SumUp laufen über denselben Rechnungs- und Zahlungsstatus.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 13.6.2</strong><br><span>Praxisprofile, Package-Zuordnung, Programmbilder und UX-Korrekturen.</span></p><ul class="feature-list roadmap-list"><li><strong>13.7</strong><span>Lokale Whisper-Diktierfunktion.</span></li><li><strong>13.8</strong><span>Strukturiertes Erstgespräch.</span></li><li><strong>13.9</strong><span>Timeline Core.</span></li><li><strong>14.0</strong><span>E-Mail-Anbindung.</span></li><li><strong>14.1</strong><span>WhatsApp Voice & Media.</span></li><li><strong>14.2</strong><span>AI Briefing.</span></li><li><strong>14.3</strong><span>Companion PWA.</span></li><li><strong>14.4</strong><span>Finanzen.</span></li><li><strong>14.5</strong><span>Revolut-/Bank-Import.</span></li><li><strong>14.6+</strong><span>Automatisierung, vollständiger Multi-Provider-Betrieb und Telefon-Metadaten.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -151,12 +152,13 @@
 <dialog id="bankImportDialog"><div class="dialog-shell wide"><button class="dialog-x" id="bankImportClose" type="button">×</button><p class="eyebrow">Zahlungsabgleich</p><h2>Bank-CSV prüfen</h2><p class="muted" id="bankImportSummary">—</p><div id="bankImportTable"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="bankImportCancel">Abbrechen</button><button class="btn primary" type="button" id="bankImportApply">Ausgewählte Zahlungen übernehmen</button></div></div></dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="admin-build9.js?v=20260922-build13-6-1"></script>
+<script src="admin-build9.js?v=20260922-build13-6-2"></script>
 <script src="admin-vault.js?v=20260918-build12"></script>
-<script src="admin-build10.js?v=20260921-build13"></script>
+<script src="admin-build10.js?v=20260922-build13-6-2"></script>
 <script src="admin-build11.js?v=20260918-build11-1"></script>
 <script src="admin-build12.js?v=20260918-build12"></script>
-<script src="admin-build13-6.js?v=20260922-build13-6-1"></script>
-<script src="admin-build13-6-extras.js?v=20260922-build13-6-1"></script>
+<script src="admin-build13-6.js?v=20260922-build13-6-2"></script>
+<script src="admin-build13-6-extras.js?v=20260922-build13-6-2"></script>
+<script src="admin-build13-6-2.js?v=20260922-build13-6-2"></script>
 </body>
 </html>
