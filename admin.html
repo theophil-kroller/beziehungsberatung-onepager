@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="admin-build10.css?v=20260921-build13">
 <link rel="stylesheet" href="admin-build11.css?v=20260918-build11-1">
 <link rel="stylesheet" href="admin-build12.css?v=20260918-build12">
-<link rel="stylesheet" href="admin-build13-6.css?v=20260922-build13-6">
-<link rel="stylesheet" href="admin-build13-6-responsive.css?v=20260922-build13-6">
+<link rel="stylesheet" href="admin-build13-6.css?v=20260922-build13-6-1">
+<link rel="stylesheet" href="admin-build13-6-responsive.css?v=20260922-build13-6-1">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -109,7 +109,7 @@
     </section>
 
     <section class="view" id="view-invoices">
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Finanzen</p><h2>Rechnungen & Zahlungen</h2><p class="muted">Stripe wird automatisch verbucht. Bar- und Bankzahlungen kannst du mit Datum erfassen; Bank-CSV-Exporte lassen sich abgleichen.</p></div><div class="toolbar finance-toolbar"><div class="bank-sync"><label class="btn ghost file-btn">Bank-CSV importieren<input id="bankCsvInput" type="file" accept=".csv,text/csv,text/plain"></label><span id="bankLastImport" class="micro muted">Noch kein Bankabgleich protokolliert.</span></div><select id="invoiceFilter"><option value="all">Alle</option><option value="overdue">Überfällig</option><option value="open">Offen</option><option value="paid">Bezahlt</option></select></div></div><div id="invoicesTable"></div></section>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Finanzen</p><h2>Rechnungen & Zahlungen</h2><p class="muted">Stripe wird automatisch verbucht. Bar- und Bankzahlungen kannst du mit Datum erfassen; Bank-CSV-Exporte lassen sich abgleichen.</p></div><div class="toolbar finance-toolbar"><div class="bank-sync"><label class="btn ghost file-btn">Bank-CSV importieren<input id="bankCsvInput" type="file" accept=".csv,text/csv,text/plain"></label><span id="bankLastImport" class="micro muted">Noch kein Bankabgleich protokolliert.</span></div><label class="filter-select">Status<select id="invoiceFilter"><option value="all">Alle</option><option value="overdue">Überfällig</option><option value="open">Offen</option><option value="paid">Bezahlt</option></select></label><label class="filter-select">Typ<select id="invoiceTypeFilter"><option value="all">Alle Typen</option><option value="group">Gruppe</option><option value="package">Package</option><option value="single">Einzelsession</option><option value="other">Sonstige</option></select></label></div></div><div id="invoicesTable"></div></section>
     </section>
 
 
@@ -151,12 +151,12 @@
 <dialog id="bankImportDialog"><div class="dialog-shell wide"><button class="dialog-x" id="bankImportClose" type="button">×</button><p class="eyebrow">Zahlungsabgleich</p><h2>Bank-CSV prüfen</h2><p class="muted" id="bankImportSummary">—</p><div id="bankImportTable"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="bankImportCancel">Abbrechen</button><button class="btn primary" type="button" id="bankImportApply">Ausgewählte Zahlungen übernehmen</button></div></div></dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="admin-build9.js?v=20260921-build13-contactfix"></script>
+<script src="admin-build9.js?v=20260922-build13-6-1"></script>
 <script src="admin-vault.js?v=20260918-build12"></script>
 <script src="admin-build10.js?v=20260921-build13"></script>
 <script src="admin-build11.js?v=20260918-build11-1"></script>
 <script src="admin-build12.js?v=20260918-build12"></script>
-<script src="admin-build13-6.js?v=20260922-build13-6"></script>
-<script src="admin-build13-6-extras.js?v=20260922-build13-6"></script>
+<script src="admin-build13-6.js?v=20260922-build13-6-1"></script>
+<script src="admin-build13-6-extras.js?v=20260922-build13-6-1"></script>
 </body>
 </html>
