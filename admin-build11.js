@@ -246,6 +246,7 @@
     dialogObserver.observe(dlg,{attributes:true,attributeFilter:['open']});
   }
 
+  window.BDFlowDictation={open:openFlowDictationInPlace};
   function init(){injectUi();installUnlockInterceptor();watchDialog();setTimeout(polishVaultState,120);const h=$('#flowVaultContext');if(h)new MutationObserver(()=>setTimeout(polishVaultState,0)).observe(h,{childList:true,subtree:true})}
-  document.addEventListener('DOMContentLoaded',()=>setTimeout(init,0));
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(init,0),{once:true});else setTimeout(init,0);
 })();

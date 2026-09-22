@@ -2,7 +2,7 @@
   'use strict';
   const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
   const SESSION_KEY='bd_admin_session_v1',VAULT='http://127.0.0.1:47831',VAULT_TOKEN_KEY='bd_vault_token_v1';
-  let session=sessionStorage.getItem(SESSION_KEY)||'',dashboard=null,flows=[],current=null,vaultData=null,refreshTimer=null;
+  let session=sessionStorage.getItem(SESSION_KEY)||'',dashboard=null,flows=[],current=null,vaultData=null,refreshTimer=null,booted=false;
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const norm=s=>String(s||'').trim().toLowerCase();
@@ -86,8 +86,8 @@
       if(!openCard.querySelector('.stat-finance-more'))openCard.insertAdjacentHTML('beforeend','<small class="stat-finance-more">Finanzdetails öffnen →</small>');
     }
     const dashGrid=$('#view-dashboard .dash-grid');
-    if(dashGrid)dashGrid.insertAdjacentHTML('afterend',`<section class="panel flow-dashboard-panel flow-dashboard-green"><div class="panel-head"><div><p class="eyebrow">Session Flow</p><h2>Vor- & Nachbereitung</h2><p class="muted">Was vor dem nächsten Termin wichtig ist und welche Dokumentation noch offen ist.</p></div><button class="text-button" id="flowOpenView" type="button">Flow Manager →</button></div><div id="flowDashList" class="flow-list"></div></section>`);
-    document.body.insertAdjacentHTML('beforeend',`<dialog id="flowDialog" class="flow-dialog"><div class="dialog-shell wide flow-green-shell"><button class="dialog-x" id="flowClose" type="button">×</button><p class="eyebrow">Session Flow Manager</p><h2 id="flowDialogTitle">Session vorbereiten</h2><p class="muted" id="flowDialogMeta">—</p>
+    if(dashGrid&&!$('#flowDashList'))dashGrid.insertAdjacentHTML('afterend',`<section class="panel flow-dashboard-panel flow-dashboard-green"><div class="panel-head"><div><p class="eyebrow">Session Flow</p><h2>Vor- & Nachbereitung</h2><p class="muted">Was vor dem nächsten Termin wichtig ist und welche Dokumentation noch offen ist.</p></div><button class="text-button" id="flowOpenView" type="button">Flow Manager →</button></div><div id="flowDashList" class="flow-list"></div></section>`);
+    if(!$('#flowDialog'))document.body.insertAdjacentHTML('beforeend',`<dialog id="flowDialog" class="flow-dialog"><div class="dialog-shell wide flow-green-shell"><button class="dialog-x" id="flowClose" type="button">×</button><p class="eyebrow">Session Flow Manager</p><h2 id="flowDialogTitle">Session vorbereiten</h2><p class="muted" id="flowDialogMeta">—</p>
       <div class="flow-process" aria-label="Session Flow">
         <button type="button" data-flow-tab="prep" class="active"><b>1</b><span>Vorbereitung</span></button><i>→</i>
         <button type="button" data-flow-tab="sales"><b>2</b><span>Buchung & Angebote</span></button><i>→</i>
@@ -104,7 +104,23 @@
     $('#flowPrepDone').onclick=savePrep;$('#flowPrepToSales').onclick=()=>setFlowTab('sales');$('#flowSalesSkip').onclick=()=>setFlowTab('post');$('#flowSalesToPost').onclick=()=>setFlowTab('post');$('#flowPark').onclick=parkFlow;$('#flowSaveNotes').onclick=saveNotes;$('#flowDictateNotes').onclick=()=>openFlowDictation(current);$$('[data-flow-next]').forEach(b=>b.onclick=()=>nextAction(b.dataset.flowNext));
   }
   function openFlowView(){ $$('.nav-item[data-view], [data-build10-flow-nav], [data-build10-finance-nav]').forEach(b=>b.classList.toggle('active',b.hasAttribute('data-build10-flow-nav')));$$('.view').forEach(v=>v.classList.toggle('active',v.id==='view-flow'));$('#viewEyebrow').textContent='Session Flow Manager';$('#viewTitle').textContent='Session Flow';$('#viewSubtitle').textContent='Vorbereitung, Nachbereitung und offene Dokumentation an einem Ort.';$('#newInquiryBtn').style.display='none';refresh() }
-  async function refresh(){if(!sessionStorage.getItem(SESSION_KEY))return;try{const [d,f]=await Promise.all([api('/admin/dashboard'),api('/admin/flows')]);dashboard=d;flows=f.flows||[];render();renderFinance()}catch(e){console.error('Build10 flow refresh',e)}}
+  async function refresh(){
+    if(!sessionStorage.getItem(SESSION_KEY))return false;
+    const host=$('#flowMainList');
+    try{
+      const d=await api('/admin/dashboard');
+      let f={flows:[]},flowWarning='';
+      try{f=await api('/admin/flows')}catch(e){flowWarning=e.message||'Flow-Status konnte nicht geladen werden.';console.error('Build10 flow states',e)}
+      dashboard=d;flows=f.flows||[];render();renderFinance();
+      if(flowWarning&&host)host.insertAdjacentHTML('afterbegin',`<div class="notice err">Flow-Zustände konnten nicht geladen werden: ${esc(flowWarning)}. Die Termine werden dennoch angezeigt.</div>`);
+      return true;
+    }catch(e){
+      console.error('Build10 flow refresh',e);
+      if(host)host.innerHTML=`<div class="notice err"><strong>Session Flow und Finanzcockpit konnten nicht geladen werden.</strong><br>${esc(e.message||'Unbekannter Ladefehler')}<br><button class="mini edit" id="flowRetryLoad" type="button">Erneut versuchen</button></div>`;
+      $('#flowRetryLoad')?.addEventListener('click',refresh,{once:true});
+      return false;
+    }
+  }
   function render(){const all=relevantBookings(),pending=pendingRows(),upcoming=upcomingRows();$('#flowNavCount').textContent=String(pending.length);$('#flowPrepCount').textContent=String(upcoming.filter(b=>derivedState(b,flowFor(b))==='planned').length);$('#flowPostCount').textContent=String(pending.filter(b=>derivedState(b,flowFor(b))!=='parked').length);$('#flowParkCount').textContent=String(pending.filter(b=>derivedState(b,flowFor(b))==='parked').length);const main=[...pending,...upcoming.filter(b=>!pending.includes(b))].slice(0,18);$('#flowMainList').innerHTML=main.length?main.map(flowRow).join(''):'<div class="empty">Aktuell keine offenen Session Flows.</div>';const dash=[...pending,...upcoming].filter((b,i,a)=>a.findIndex(x=>x.eventId===b.eventId)===i).slice(0,5);$('#flowDashList').innerHTML=dash.length?dash.map(b=>flowRow(b,true)).join(''):'<div class="empty">Alles erledigt. ✓</div>';bindFlowButtons();appendAttention(pending)}
   function flowRow(b,compact=false){const f=flowFor(b),s=derivedState(b,f),past=bookingEnd(b)<=now(),urgent=past&&s!=='completed';return `<article class="flow-row ${urgent?'urgent':''} ${s==='completed'?'done':''}"><div class="flow-person"><strong>${esc(b.name)}</strong><span>${esc(dt(b.start))} · ${esc(b.typeLabel||'Termin')} · ${esc(b.locationLabel||'')}</span>${f?.commercialPrompt?`<span>Hinweis: ${esc(f.commercialPrompt)}</span>`:''}</div>${compact?'':`<div><span class="flow-state ${s==='ready'?'ready':s==='parked'?'parked':s==='completed'?'completed':urgent?'open':''}">${esc(stateLabel(s))}</span>${f?.remindAt&&s==='parked'?`<span class="flow-meta">Erinnerung ${esc(dt(f.remindAt))}</span>`:''}</div>`}<div class="flow-actions"><button class="mini edit" data-flow-open="${esc(b.eventId)}">${past?'Nachbereiten':'Vorbereiten'}</button></div></article>`}
   function bindFlowButtons(){$$('[data-flow-open]').forEach(b=>b.onclick=()=>openFlow(b.dataset.flowOpen));$$('[data-flow-dictate]').forEach(b=>b.onclick=()=>openFlowDictation((dashboard?.bookings||[]).find(x=>String(x.eventId)===String(b.dataset.flowDictate))))}
@@ -170,8 +186,9 @@
     setFlowTab,
     getCurrent:()=>current,
     getVaultData:()=>vaultData,
-    refresh
+    refresh,
+    boot
   };
-  window.BDFlowDictation={open:openFlowDictationInPlace};
-  document.addEventListener('DOMContentLoaded',()=>{ensureUi();observeAdmin()});
+  function boot(){if(booted)return;booted=true;ensureUi();observeAdmin();refresh()}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
