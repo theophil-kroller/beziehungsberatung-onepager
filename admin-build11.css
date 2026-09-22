@@ -23,6 +23,3 @@
 .inline-mic.is-recording{background:#C96B4B;border-color:#C96B4B;color:#fff;animation:bd-mic-pulse 1.2s ease-in-out infinite}
 @keyframes bd-mic-pulse{50%{box-shadow:0 0 0 6px rgba(201,107,75,.16)}}
 @media(max-width:700px){.ai-notes-card>.flow-dictation-card{padding:12px}.flow-dictation-controls .btn{min-height:40px}.flow-dictation-timer{padding:7px 10px}}
-
-/* BUILD 13.7.6 — server-verified evidence report for local AI drafts */
-.ai-grounding{margin:0 0 14px;padding:12px 13px;border:1px solid #BCD8B8;border-radius:13px;background:#F2F8EF;color:#405A40;font-size:11.5px;line-height:1.45}.ai-grounding-head{display:flex;align-items:center;gap:9px}.ai-grounding-head>span{font-size:20px}.ai-grounding-head strong,.ai-grounding-head small{display:block}.ai-grounding-head small{margin-top:2px;color:#5C705A}.ai-grounding p{margin:8px 0 0}.ai-grounding>small{display:block;margin-top:9px;color:#687665}.ai-grounding details{margin-top:9px;border-top:1px solid #D4E4CF;padding-top:8px}.ai-grounding summary{cursor:pointer;font-weight:800}.ai-grounding-evidence{display:grid;gap:8px;margin-top:8px}.ai-grounding-evidence div{display:grid;gap:4px}.ai-grounding-evidence q{display:block;padding:6px 8px;border-radius:8px;background:#fff;color:#5B4F48;font-style:normal}.ai-grounding-warn{border-color:#E5C792;background:#FFF8E6;color:#765B27}
