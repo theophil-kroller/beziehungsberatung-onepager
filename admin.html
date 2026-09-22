@@ -19,6 +19,8 @@
   <symbol id="i-journey" viewBox="0 0 24 24"><path d="M5 4h4v4H5V4Zm10 6h4v4h-4v-4ZM5 16h4v4H5v-4Zm4-10h3a3 3 0 0 1 3 3v1m0 4v1a3 3 0 0 1-3 3H9"/></symbol>
   <symbol id="i-clients" viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-1a3 3 0 1 0 0-6m-8 9c-4 0-6 2-6 5v2h12v-2c0-3-2-5-6-5Zm8 0c3 0 5 1.7 5 4v3h-5"/></symbol>
   <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M5 3v3m14-3v3M3 9h18M5 5h14a2 2 0 0 1 2 2v13H3V7a2 2 0 0 1 2-2Zm3 8h3m3 0h3m-9 4h3"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><path d="M4 5h4v4H4V5Zm0 10h4v4H4v-4Zm12-5h4v4h-4v-4ZM8 7h3a3 3 0 0 1 3 3v1m0 2v1a3 3 0 0 1-3 3H8"/></symbol>
+  <symbol id="i-finance" viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V3M3 21h18"/></symbol>
   <symbol id="i-package" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4-9 4-9-4Zm0 0v10l9 4 9-4V7M12 11v10"/></symbol>
   <symbol id="i-programs" viewBox="0 0 24 24"><path d="M4 4h16v12H4V4Zm3 4h6m-6 3h10M9 20l3-4 3 4M2 20h20"/></symbol>
   <symbol id="i-invoice" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6m-6 4h6"/></symbol>
@@ -51,9 +53,11 @@
       <button class="nav-item" data-view="journey"><svg><use href="#i-journey"/></svg><span>Client Journey</span><em id="navJourneyCount"></em></button>
       <button class="nav-item" data-view="clients"><svg><use href="#i-clients"/></svg><span>Kund:innen</span></button>
       <button class="nav-item" data-view="bookings"><svg><use href="#i-calendar"/></svg><span>Termine</span></button>
+      <button class="nav-item flow-nav-special" data-view="flow" data-build10-flow-nav type="button"><svg><use href="#i-flow"/></svg><span>Session Flow</span><em class="flow-nav-badge" id="flowNavCount">0</em></button>
       <button class="nav-item" data-view="packages"><svg><use href="#i-package"/></svg><span>Packages</span></button>
       <button class="nav-item" data-view="programs"><svg><use href="#i-programs"/></svg><span>Programme & Gruppen</span><em id="navProgramCount"></em></button>
       <button class="nav-item" data-view="invoices"><svg><use href="#i-invoice"/></svg><span>Rechnungen</span></button>
+      <button class="nav-item" data-view="finance" data-build10-finance-nav type="button"><svg><use href="#i-finance"/></svg><span>Finanzcockpit</span></button>
       <div class="nav-divider"></div>
       <button class="nav-item" data-view="vault"><svg><use href="#i-vault"/></svg><span>Secure Vault</span><em id="vaultNavState">lokal</em></button>
       <button class="nav-item" data-view="settings"><svg><use href="#i-settings"/></svg><span>Einstellungen</span></button>
@@ -99,6 +103,10 @@
     <section class="view" id="view-bookings">
       <section class="panel"><div class="panel-head"><div><p class="eyebrow">Terminverwaltung</p><h2>Termine</h2><p class="muted">Verschieben mit Kalender und Uhrzeit – ohne kryptische Datumsformate.</p></div><div class="toolbar"><select id="bookingFilter"><option value="upcoming">Kommende</option><option value="all">Alle</option><option value="past">Vergangene</option><option value="cancelled">Abgesagte</option></select></div></div><div id="bookingsTable"></div></section>
     </section>
+
+    <section class="view flow-manager-view" id="view-flow"><section class="panel flow-manager-shell"><div class="panel-head"><div><p class="eyebrow">Session Flow Manager</p><h2>Ein klarer Ablauf rund um jede Sitzung.</h2><p class="muted">Vorbereiten → Buchung &amp; Angebote → Nachbereiten. Offene Schritte bleiben sichtbar.</p></div><button class="btn ghost" id="flowRefresh" type="button">Aktualisieren</button></div><div class="flow-summary-grid"><article class="flow-mini-stat"><span>Vorbereitung offen</span><strong id="flowPrepCount">0</strong></article><article class="flow-mini-stat"><span>Nachbereitung offen</span><strong id="flowPostCount">0</strong></article><article class="flow-mini-stat"><span>Geparkt</span><strong id="flowParkCount">0</strong></article></div><div class="flow-board" style="margin-top:18px"><section><div class="panel-head"><div><p class="eyebrow">Jetzt relevant</p><h3>Offene Session Flows</h3></div></div><div id="flowMainList" class="flow-list"><div class="empty">Session Flow wird geladen …</div></div></section></div></section></section>
+
+    <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Finanzcockpit</p><h2>Was bereits eingegangen ist – und was planbar ist.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Rechnungen öffnen</button></div><div class="finance-stat-grid"><article><span>Eingegangen diesen Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div><div class="finance-grid"><section class="finance-box"><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section></section></section>
 
     <section class="view" id="view-packages">
       <div id="packageCatalogApp"></div>
@@ -154,7 +162,7 @@
 <script src="booking-config.js?v=20260918-build8"></script>
 <script src="admin-build9.js?v=20260922-build13-7"></script>
 <script src="admin-vault.js?v=20260922-build13-7"></script>
-<script src="admin-build10.js?v=20260922-build13-7-3"></script>
+<script src="admin-build10.js?v=20260922-build13-7-3-menu-hotfix"></script>
 <script src="admin-build11.js?v=20260922-build13-7-3"></script>
 <script src="admin-build12.js?v=20260918-build12"></script>
 <script src="admin-build13-6.js?v=20260922-build13-7"></script>
