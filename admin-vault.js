@@ -30,7 +30,7 @@
     const whisperInfo=$('#vaultWhisperInfo');
     [dot,mini].forEach(x=>x&&x.classList.remove('connected','locked'));
     if(!health.ok){ if(text)text.textContent='Lokaler Vault nicht gestartet'; if(detail)detail.textContent='Starte vault/start_vault.bat'; if(nav)nav.textContent='offline';if(whisperInfo)whisperInfo.textContent='Whisper-Status kann erst bei laufendem Vault geprüft werden.'; return; }
-    if(whisperInfo){const w=health.whisper||{};whisperInfo.textContent=w.ready?`Whisper bereit · Modell ${w.model} · Verarbeitung ausschließlich lokal`:w.available?'Whisper wurde gefunden, aber FFmpeg fehlt oder ist nicht im PATH.':'Whisper wurde vom lokalen Vault noch nicht gefunden.'}
+    if(whisperInfo){const w=health.whisper||{};whisperInfo.textContent=w.ready?`Whisper bereit · Modell ${w.model}${w.version?' · Version '+w.version:''} · Verarbeitung ausschließlich lokal`:w.available?'Whisper wurde gefunden, aber FFmpeg fehlt oder ist nicht im PATH.':'Whisper wurde vom lokalen Vault noch nicht gefunden.'}
     if(!health.setup){dot?.classList.add('locked');mini?.classList.add('locked');if(text)text.textContent='Vault noch nicht eingerichtet';if(detail)detail.textContent='Einmalig ein starkes Passwort setzen';if(nav)nav.textContent='setup';return}
     if(!health.unlocked){dot?.classList.add('locked');mini?.classList.add('locked');if(text)text.textContent='Vault gesperrt';if(detail)detail.textContent='Lokal verbunden · Inhalte verschlüsselt';if(nav)nav.textContent='gesperrt';return}
     dot?.classList.add('connected');mini?.classList.add('connected');if(text)text.textContent='Vault entsperrt';if(detail)detail.textContent='Lokal · automatische Sperre nach 15 Min.';if(nav)nav.textContent='bereit';
