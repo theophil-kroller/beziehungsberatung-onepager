@@ -4,12 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Content & Knowledge Hub · Beziehungsdynamiken</title>
-  <link rel="stylesheet" href="hub.css?v=14.0.0">
+  <link rel="stylesheet" href="hub.css?v=14.0.1">
+  <link rel="stylesheet" href="hub-build14-0-1.css?v=14.0.1">
 </head>
 <body>
+  <div class="hub-security-strip"><span>Content &amp; Knowledge Hub · geschützter Zugang</span><nav><a href="wissen/" target="_blank" rel="noopener">Wissensseite ↗</a><a class="hub-back" href="admin.html">← Zum Praxis-CRM</a></nav></div>
   <header class="topbar">
-    <div><p class="eyebrow">BUILD 14.0 · CONTENT & KNOWLEDGE HUB</p><h1>Ideen werden zu Wissen.</h1></div>
-    <div class="top-actions"><span id="saveState" class="save-state">Bereit</span><a class="button ghost" href="admin.html">← Praxis-CRM</a><a class="button ghost" href="/wissen/" target="_blank" rel="noopener">Wissensseite ↗</a></div>
+    <div><p class="eyebrow">BUILD 14.0.1 · CONTENT &amp; KNOWLEDGE HUB</p><h1>Ideen werden zu Wissen.</h1></div>
+    <div class="top-actions"><span id="saveState" class="save-state">Bereit</span></div>
   </header>
 
   <div id="authNotice" class="notice error" hidden>Deine CRM-Sitzung fehlt oder ist abgelaufen. <a href="admin.html">Im CRM anmelden</a> und den Hub danach erneut öffnen.</div>
@@ -21,6 +23,7 @@
         <label for="quickIdea">Neue Idee</label>
         <textarea id="quickIdea" rows="3" placeholder="Ein Gedanke, eine Frage oder ein Thema …"></textarea>
         <button id="captureIdea" class="button primary full" type="button">Idee speichern</button>
+        <p id="hubActionMessage" class="action-message" aria-live="polite"></p>
       </section>
       <div class="library-tools">
         <input id="searchInput" type="search" placeholder="Inhalte suchen">
@@ -75,6 +78,6 @@
   <dialog id="previewDialog"><div class="preview-shell"><button id="closePreview" class="dialog-x" type="button">×</button><p class="eyebrow">Artikelvorschau</p><article id="previewContent"></article></div></dialog>
   <div id="toast" class="toast" role="status" hidden></div>
   <script src="booking-config.js"></script>
-  <script src="hub.js?v=14.0.0"></script>
+  <script src="hub.js?v=14.0.1"></script>
 </body>
 </html>
