@@ -1,0 +1,93 @@
+/* BUILD 14.3.4 — calmer client record and session-first documentation. */
+
+.record-tabs{gap:4px}
+.record-tabs .record-tab-secondary{opacity:.66}
+.record-tabs .record-tab-secondary:hover,.record-tabs .record-tab-secondary.active{opacity:1}
+
+.client-command-bar-focused{align-items:center;background:linear-gradient(135deg,#fffdfa,#faf5f0);border-color:#e8d9cf}
+.client-command-bar-focused>div:first-child{display:grid;gap:2px}
+.client-command-copy{font-size:11px;color:var(--muted);font-weight:500;margin-top:2px}
+.client-start-session{background:#5f875f!important;border-color:#5f875f!important;color:#fff!important}
+.client-start-session:hover{background:#527753!important;border-color:#527753!important}
+.client-core-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.client-core-card{border:1px solid #eadfd7;border-radius:14px;background:#fff;padding:13px 14px;min-width:0}
+.client-core-card>span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:850;color:#9b7b6d;margin-bottom:6px}
+.client-core-card>strong{display:block;font-size:13px;color:#3f332e;line-height:1.35;overflow-wrap:anywhere}
+.client-core-card>small{display:block;margin-top:5px;font-size:9px;color:#9a8980;line-height:1.35}
+.client-core-card.contact{background:#faf7f3}
+.client-overview-links{display:flex;gap:7px;flex-wrap:wrap;margin:11px 0 0}
+.client-overview-more{margin-top:14px;border-top:1px solid #ece2db;padding-top:10px}
+.client-overview-more>summary{cursor:pointer;color:#856d61;font-size:11px;font-weight:800;list-style:none}
+.client-overview-more>summary::-webkit-details-marker{display:none}
+.client-overview-more>summary:before{content:'＋';display:inline-block;margin-right:6px;color:#b86d54}
+.client-overview-more[open]>summary:before{content:'−'}
+.compact-context{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:10px}
+.client-recent-activity{margin-top:12px}
+
+/* Documentation: goals and sessions are primary; secondary material is folded away. */
+.vault-doc{gap:13px}
+.vault-session-summary-card{position:relative;padding:0!important;overflow:hidden;cursor:pointer;transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease}
+.vault-session-summary-card:hover{border-color:#d7b9aa;box-shadow:0 8px 22px rgba(70,49,39,.06);transform:translateY(-1px)}
+.vault-session-summary-card:focus-visible{outline:2px solid #c46f52;outline-offset:2px}
+.vault-session-summary-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 14px;border-bottom:1px solid #efe5de;background:#fffdfa}
+.vault-session-index{align-self:stretch;display:flex;align-items:center;justify-content:center;min-width:78px;padding:7px 10px;border-radius:9px;background:#e9f3ea;color:#4e7353;font-size:11px;font-weight:900;white-space:nowrap}
+.vault-session-index.initial{background:#f4eadc;color:#946b32}
+.vault-session-title{min-width:0}
+.vault-session-title strong{display:block;font-size:13px;color:#3e312c}
+.vault-session-title span{display:block;font-size:10px;color:#8b7970;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vault-session-overview{padding:12px 14px 14px 104px;background:#fff}
+.vault-session-overview>strong{display:block;font-size:12px;color:#443630;margin-bottom:4px}
+.vault-session-overview>p{margin:0;color:#66554d;font-size:11px;line-height:1.55}
+.vault-session-next{margin-top:9px;padding:8px 10px;border-radius:9px;background:#f3f7f2;border:1px solid #dce9dc}
+.vault-session-next span{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.08em;font-weight:850;color:#6a896d;margin-bottom:3px}
+.vault-session-next strong{display:block;font-size:10px;line-height:1.4;color:#4f6651}
+.b1434-session-helper{display:block;font-size:9px;color:#9a8980;margin-top:3px;font-weight:500}
+.b1434-session-focus{animation:b1434-session-focus 1.8s ease}
+@keyframes b1434-session-focus{0%,100%{box-shadow:none}20%,70%{box-shadow:0 0 0 4px rgba(95,135,95,.22);border-color:#7fa381}}
+
+.b1434-doc-secondary{border:0;margin:0;padding:0}
+.b1434-doc-secondary>summary{cursor:pointer;padding:11px 13px;border:1px solid #eadfd7;border-radius:12px;background:#faf7f4;color:#746157;font-size:11px;font-weight:850;list-style:none}
+.b1434-doc-secondary>summary::-webkit-details-marker{display:none}
+.b1434-doc-secondary>summary:before{content:'＋';display:inline-block;width:17px;color:#b86d54}
+.b1434-doc-secondary[open]>summary{border-radius:12px 12px 0 0}
+.b1434-doc-secondary[open]>summary:before{content:'−'}
+.b1434-doc-secondary>.vault-card{border-top:0;border-radius:0 0 12px 12px;margin:0}
+
+/* Full event stream is still available, but no longer visually dominates the case overview. */
+.b1434-timeline-disclosure{margin-top:12px}
+.b1434-timeline-disclosure>summary{cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;border:1px solid #e6dad1;border-radius:13px;background:#faf7f3;color:#58483f;font-weight:850;list-style:none}
+.b1434-timeline-disclosure>summary::-webkit-details-marker{display:none}
+.b1434-timeline-disclosure>summary:before{content:'＋';color:#b86d54;margin-right:4px}
+.b1434-timeline-disclosure>summary span{flex:1}
+.b1434-timeline-disclosure>summary small{font-size:9px;color:#9a8980;font-weight:600}
+.b1434-timeline-disclosure[open]>summary{border-radius:13px 13px 0 0}
+.b1434-timeline-disclosure[open]>summary:before{content:'−'}
+.b1434-timeline-disclosure>.b139-timeline-card{margin-top:0;border-top:0;border-radius:0 0 13px 13px}
+
+@media(max-width:980px){.client-core-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){
+  .client-core-grid,.compact-context{grid-template-columns:1fr}
+  .vault-session-summary-head{grid-template-columns:1fr;gap:8px}
+  .vault-session-index{justify-self:start;min-width:0;align-self:auto}
+  .vault-session-overview{padding:11px 13px}
+  .vault-session-summary-head .row-actions{justify-content:flex-start}
+}
+
+/* BUILD 14.3.4 — bookkeeping bottom row: recent payments + compact E/A summary. */
+.finance-bottom-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,1fr);gap:14px;margin-top:16px;align-items:start}
+.finance-bottom-grid .finance-box{margin-top:0!important;min-width:0}
+.finance-recent-box #financeRecent{max-height:330px;overflow:auto;padding-right:3px}
+.finance-ea-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.finance-period-tabs{display:flex;gap:5px;flex-wrap:wrap;margin:14px 0 16px}
+.finance-period-tabs button{border:1px solid #dfd3ca;background:#fffaf6;color:#746158;border-radius:999px;padding:6px 10px;font-size:10px;font-weight:800;cursor:pointer;transition:.15s ease}
+.finance-period-tabs button:hover{border-color:#c9a996;background:#fff}
+.finance-period-tabs button.active{background:#3f352f;border-color:#3f352f;color:#fff}
+.finance-ea-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.finance-ea-summary>div{border:1px solid #e6dbd2;border-radius:12px;background:#fffdfa;padding:12px 13px;min-width:0}
+.finance-ea-summary span{display:block;color:#8b776d;font-size:10px;font-weight:750;margin-bottom:5px}
+.finance-ea-summary strong{display:block;font-family:Georgia,serif;font-size:20px;color:#3b302b;white-space:nowrap}
+.finance-ea-summary>div:nth-child(1) strong{color:#577d60}.finance-ea-summary>div:nth-child(2) strong{color:#b96750}
+.finance-ea-summary .result{background:#f7f1eb}.finance-ea-summary .result strong.negative{color:#b24f3d}.finance-ea-summary .result strong.positive{color:#3f6f50}
+.finance-ea-box #financeEaCaption{margin:12px 2px 0;line-height:1.45}
+@media(max-width:1050px){.finance-bottom-grid{grid-template-columns:1fr}.finance-recent-box #financeRecent{max-height:none}}
+@media(max-width:650px){.finance-ea-summary{grid-template-columns:1fr}.finance-period-tabs button{flex:1 1 auto}.finance-ea-head{display:block}.finance-ea-head .finance-demo-badge{margin-top:8px}}
