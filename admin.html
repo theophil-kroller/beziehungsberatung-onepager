@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="admin-build13-6-2.css?v=20260922-build13-7">
 <link rel="stylesheet" href="admin-build13-8.css?v=20260923-build13-8-6">
 <link rel="stylesheet" href="admin-build13-9.css?v=20260923-build13-9">
+<link rel="stylesheet" href="admin-build14.css?v=20260923-build14-0">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -90,6 +91,11 @@
         <section class="panel"><div class="panel-head"><div><p class="eyebrow">Fortsetzung</p><h2>Continuation opportunities</h2><p class="muted">Packages rechtzeitig weiterdenken – bevor der letzte Termin vorbei ist.</p></div></div><div id="renewals" class="renewal-list"></div></section>
       </div>
 
+      <a class="panel knowledge-hub-card" href="hub.html" target="_blank" rel="noopener">
+        <div><p class="eyebrow">Content &amp; Knowledge Hub</p><h2>Ideen erfassen, Artikel entwickeln und veröffentlichen.</h2><p class="muted">Der redaktionelle Arbeitsplatz öffnet sich als eigene Oberfläche – getrennt von der Praxisverwaltung.</p></div>
+        <span class="knowledge-hub-action">Hub öffnen ↗</span>
+      </a>
+
       <section class="panel"><div class="panel-head"><div><p class="eyebrow">Kalender</p><h2>Die nächsten Termine</h2></div><button class="text-button" data-jump="bookings">Alle Termine →</button></div><div id="nextBookings"></div></section>
     </section>
 
@@ -140,7 +146,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 13.9</strong><br><span>Lokale Fallübersicht, chronologische Timeline und geprüftes KI-Fallbriefing für die Sitzungsvorbereitung.</span></p><ul class="feature-list roadmap-list"><li><strong>14.0</strong><span>Vollständige E-Mail-Anbindung und Postfach-Workflow.</span></li><li><strong>14.1</strong><span>WhatsApp Voice & Media.</span></li><li><strong>14.2</strong><span>Erweiterte Briefing- und Kommunikationsfunktionen.</span></li><li><strong>14.3</strong><span>Companion PWA ausbauen.</span></li><li><strong>14.4</strong><span>Finanzen.</span></li><li><strong>14.5</strong><span>Revolut-/Bank-Import.</span></li><li><strong>14.6+</strong><span>Automatisierung, vollständiger Multi-Provider-Betrieb und Telefon-Metadaten.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.0</strong><br><span>Separater Content &amp; Knowledge Hub: Ideen, Rich-Text-Artikel, Redaktionsplan sowie sofortige oder terminierte Veröffentlichung unter /wissen/.</span></p><ul class="feature-list roadmap-list"><li><strong>14.1</strong><span>Timeline + E-Mail MVP: relevante Praxis-E-Mails automatisch zuordnen und direkt im CRM beantworten.</span></li><li><strong>14.2</strong><span>WhatsApp &amp; Unified Communication: Text, Bild, Dokument und Voice auf derselben Timeline.</span></li><li><strong>Später</strong><span>Erweiterter Content-Kalender, Kampagnen, Newsletter, Trend Radar und Analytics.</span></li></ul></section>
       </div>
     </section>
   </main>

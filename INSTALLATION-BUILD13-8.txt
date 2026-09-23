@@ -1,0 +1,28 @@
+BUILD 13.8 – INSTALLATION
+=========================
+
+1. Vor dem Austausch den bestehenden Ordner und insbesondere vault/data sichern.
+2. Den vollständigen Inhalt dieses ZIPs über den bisherigen Website-/CRM-Ordner kopieren.
+   vault/data niemals löschen oder durch einen leeren Ordner ersetzen.
+3. Website-Dateien wie bisher deployen. Neu öffentlich erforderlich sind:
+   capture.html, capture.js, capture.css, capture-sw.js und capture-manifest.webmanifest.
+4. Den lokalen Vault beenden und mit vault/start_vault.bat neu starten. Beim Start wird die
+   zusätzliche Tabelle für strukturierte Erstgespräche automatisch und ohne Datenverlust angelegt.
+5. Browser-Cache für admin.html vollständig neu laden (Strg+F5).
+
+ERSTGESPRÄCH
+Im CRM Session Flow → Nachbereiten öffnen → „Strukturiertes Erstgespräch“ öffnen.
+Der Vault muss entsperrt sein. Änderungen werden verschlüsselt automatisch gespeichert.
+Jedes Textfeld kann über seinen Mikrofonknopf lokal diktiert werden. Erst nach Prüfung
+„Geprüft finalisieren“ wählen.
+
+BOOX / SAMSUNG
+Auf dem Gerät https://beziehungsdynamiken.at/capture.html öffnen und bei Bedarf als PWA
+installieren. Keine Klarnamen als Kürzel verwenden. Ein eigenes Transferpasswort wählen,
+erfassen und eine .bdcapture-Datei exportieren. Im Session Flow diese Datei mit demselben
+Transferpasswort entschlüsseln. Audio kann dort lokal mit Whisper Turbo transkribiert werden.
+
+SICHERHEIT
+Die Capture-Seite kennt weder Vault-Passwort noch Vault-Inhalte. Sie lädt nichts automatisch
+in eine Cloud. Die .bdcapture-Datei ist mit AES-GCM verschlüsselt; das Transferpasswort wird
+nicht gespeichert und nicht an den Server gesendet.

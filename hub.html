@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Content & Knowledge Hub · Beziehungsdynamiken</title>
+  <link rel="stylesheet" href="hub.css?v=14.0.0">
+</head>
+<body>
+  <header class="topbar">
+    <div><p class="eyebrow">BUILD 14.0 · CONTENT & KNOWLEDGE HUB</p><h1>Ideen werden zu Wissen.</h1></div>
+    <div class="top-actions"><span id="saveState" class="save-state">Bereit</span><a class="button ghost" href="admin.html">← Praxis-CRM</a><a class="button ghost" href="/wissen/" target="_blank" rel="noopener">Wissensseite ↗</a></div>
+  </header>
+
+  <div id="authNotice" class="notice error" hidden>Deine CRM-Sitzung fehlt oder ist abgelaufen. <a href="admin.html">Im CRM anmelden</a> und den Hub danach erneut öffnen.</div>
+
+  <main class="hub-layout">
+    <aside class="library">
+      <section class="idea-capture">
+        <p class="eyebrow">Schnell festhalten</p>
+        <label for="quickIdea">Neue Idee</label>
+        <textarea id="quickIdea" rows="3" placeholder="Ein Gedanke, eine Frage oder ein Thema …"></textarea>
+        <button id="captureIdea" class="button primary full" type="button">Idee speichern</button>
+      </section>
+      <div class="library-tools">
+        <input id="searchInput" type="search" placeholder="Inhalte suchen">
+        <select id="statusFilter" aria-label="Status filtern"><option value="all">Alle Inhalte</option><option value="idea">Ideen</option><option value="draft">Entwürfe</option><option value="scheduled">Geplant</option><option value="published">Veröffentlicht</option><option value="archived">Archiviert</option></select>
+        <button id="newArticle" class="button secondary full" type="button">+ Neuer Artikel</button>
+      </div>
+      <nav id="itemList" class="item-list" aria-label="Inhalte"><p class="empty">Inhalte werden geladen …</p></nav>
+    </aside>
+
+    <section class="workspace">
+      <div id="emptyEditor" class="empty-editor"><p class="eyebrow">Dein redaktioneller Arbeitsplatz</p><h2>Wähle eine Idee oder beginne einen neuen Artikel.</h2><p>Alles wird automatisch als Entwurf gespeichert. Veröffentlicht wird erst, wenn du es ausdrücklich bestätigst.</p></div>
+      <form id="editorForm" hidden>
+        <div class="editor-head">
+          <div><span id="itemBadge" class="badge">Entwurf</span><span id="updatedLabel" class="micro"></span></div>
+          <div class="editor-actions"><button id="previewBtn" class="button ghost" type="button">Vorschau</button><button id="articleAction" class="button secondary" type="button">Als Artikel entwickeln</button></div>
+        </div>
+        <input id="titleInput" class="title-input" placeholder="Titel" maxlength="240" required>
+        <input id="subtitleInput" class="subtitle-input" placeholder="Untertitel oder Leitgedanke" maxlength="360">
+        <div class="toolbar" role="toolbar" aria-label="Textformatierung">
+          <button type="button" data-command="formatBlock" data-value="p">Text</button><button type="button" data-command="formatBlock" data-value="h2">H2</button><button type="button" data-command="formatBlock" data-value="h3">H3</button><button type="button" data-command="bold"><strong>B</strong></button><button type="button" data-command="italic"><em>I</em></button><button type="button" data-command="insertUnorderedList">• Liste</button><button type="button" data-command="insertOrderedList">1. Liste</button><button type="button" data-command="formatBlock" data-value="blockquote">Zitat</button><button type="button" data-command="createLink">Link</button><button type="button" data-command="insertHorizontalRule">Linie</button><button type="button" data-command="undo">↶</button><button type="button" data-command="redo">↷</button>
+        </div>
+        <div id="contentEditor" class="content-editor" contenteditable="true" data-placeholder="Beginne hier zu schreiben …"></div>
+      </form>
+    </section>
+
+    <aside id="metaPanel" class="meta-panel" hidden>
+      <div class="meta-tabs"><button class="active" data-meta-tab="publish" type="button">Publizieren</button><button data-meta-tab="seo" type="button">SEO & GEO</button><button data-meta-tab="plan" type="button">Redaktionsplan</button></div>
+      <section data-meta-panel="publish">
+        <label>Status<input id="statusDisplay" readonly></label>
+        <label>Kategorie<input id="categoryInput" placeholder="z. B. Beziehung"></label>
+        <label>Tags<input id="tagsInput" placeholder="Nähe, Konflikt, Alltag"></label>
+        <label>Autor<input id="authorInput" value="Theophil Kroller"></label>
+        <label>URL-Pfad<div class="slug-row"><span>/wissen/</span><input id="slugInput" placeholder="artikel-titel"></div></label>
+        <label>Kurzbeschreibung<textarea id="excerptInput" rows="4" placeholder="Teaser für Übersicht und Suchmaschinen"></textarea></label>
+        <label>Veröffentlichung<select id="publishMode"><option value="now">Sofort veröffentlichen</option><option value="scheduled">Mit Datum planen</option></select></label>
+        <label id="publishDateWrap" hidden>Öffentlich ab<input id="publishDateInput" type="datetime-local"></label>
+        <label>Optional sichtbar bis<input id="visibleUntilInput" type="datetime-local"></label>
+        <div class="publish-actions"><button id="publishBtn" class="button primary full" type="button">Veröffentlichen</button><button id="unpublishBtn" class="button secondary full" type="button" hidden>Veröffentlichung zurückziehen</button><button id="archiveBtn" class="button ghost full" type="button">Archivieren</button><button id="deleteBtn" class="button danger full" type="button">Löschen</button></div>
+      </section>
+      <section data-meta-panel="seo" hidden>
+        <label>SEO-Titel<input id="seoTitleInput" maxlength="240" placeholder="Optional – sonst Artikeltitel"></label>
+        <label>Meta-Beschreibung<textarea id="seoDescriptionInput" rows="4" maxlength="420"></textarea></label>
+        <label>Quellen <small>Eine Zeile: Titel | URL</small><textarea id="sourcesInput" rows="6" placeholder="Studie oder Buch | https://…"></textarea></label>
+        <label>Interne Links <small>Eine Zeile: Titel | URL</small><textarea id="linksInput" rows="5" placeholder="Passender Artikel | /wissen/…"></textarea></label>
+        <label>FAQ <small>Eine Zeile: Frage | Antwort</small><textarea id="faqInput" rows="6"></textarea></label>
+        <div class="seo-preview"><strong>Suchvorschau</strong><span id="seoPreviewTitle">Artikeltitel</span><small id="seoPreviewUrl">beziehungsdynamiken.at/wissen/…</small><p id="seoPreviewDescription">Beschreibung des Artikels</p></div>
+      </section>
+      <section data-meta-panel="plan" hidden><p class="muted">Kompakte Übersicht der kommenden und veröffentlichten Beiträge.</p><div id="editorialPlan" class="editorial-plan"></div></section>
+    </aside>
+  </main>
+
+  <dialog id="previewDialog"><div class="preview-shell"><button id="closePreview" class="dialog-x" type="button">×</button><p class="eyebrow">Artikelvorschau</p><article id="previewContent"></article></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="booking-config.js"></script>
+  <script src="hub.js?v=14.0.0"></script>
+</body>
+</html>
