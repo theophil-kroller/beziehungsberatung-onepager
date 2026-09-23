@@ -1,0 +1,84 @@
+/* BUILD 14.3.5 — client-centric information architecture.
+   Primary mental model: Übersicht → Dokumentation → Briefing.
+   Existing bookings, offers, packages, invoices and journey remain available as contextual actions. */
+
+/* Only the three core record views are primary navigation. */
+.record-tabs [data-record-tab="bookings"],
+.record-tabs [data-record-tab="sales"],
+.record-tabs [data-record-tab="packages"],
+.record-tabs [data-record-tab="invoices"],
+.record-tabs [data-record-tab="activity"],
+.record-tabs [data-record-tab="journey"]{display:none!important}
+.record-tabs{gap:7px;align-items:center}
+.record-tabs button{min-width:0}
+.record-tabs [data-record-tab="overview"],
+.record-tabs [data-record-tab="documentation"],
+.record-tabs [data-record-tab="case-summary"]{padding-inline:16px}
+
+/* Overview: process first, operational context second. */
+.b1435-overview-path{margin:13px 0 2px}
+.b1435-overview-path .b1433-path-card{box-shadow:none;background:#fffdfa}
+.b1435-path-lock{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #e7dbd1;border-radius:14px;background:#fbf7f3;padding:13px 14px;color:#746259;font-size:11px}
+.b1435-path-lock strong{display:block;color:#493b35;font-size:12px;margin-bottom:2px}
+.b1435-step.attention .b1433-dot{background:#fff5df;border-color:#cf9d3f;color:#9c6b12}
+.b1435-step.attention .b1433-label{color:#8f681d}
+.b1435-step.attention:not(:last-child):after{background:#e4d8c2}
+
+.client-secondary-actions{margin-top:13px;border-top:1px solid #ece2db;padding-top:10px}
+.client-secondary-actions>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:#77655c;font-size:10px;font-weight:850}
+.client-secondary-actions>summary::-webkit-details-marker{display:none}
+.client-secondary-actions>summary:before{content:'⋯';font-size:16px;line-height:1;color:#aa7460}
+.client-secondary-actions[open]>summary{color:#503f37}
+.client-secondary-action-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.client-secondary-action-grid button{background:#f8f5f2;border:1px solid #e2d8d1;color:#68574f}
+.client-secondary-action-grid button.offer{opacity:.72}
+.client-overview-links{display:none!important}
+
+/* Documentation: make the professional record the dominant view. */
+.b1435-doc-intro{border:1px solid #eaded5;border-radius:14px;background:linear-gradient(135deg,#fffdfa,#faf6f2);padding:13px 15px;margin-bottom:12px}
+.b1435-doc-intro span{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:900;color:#a26c58;margin-bottom:4px}
+.b1435-doc-intro strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:18px;color:#3d302a}
+.b1435-doc-intro p{margin:5px 0 0;color:#89766c;font-size:10px;line-height:1.5}
+#vaultRecordMount .vault-top-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+#vaultRecordMount .vault-card h3{color:#42342f}
+#vaultRecordMount #vaultSessions{display:grid;gap:9px}
+
+/* Full event chronology belongs at the bottom of Documentation. */
+.b1435-full-timeline{margin-top:2px}
+.b1435-full-timeline>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 14px;border:1px solid #e5d9d0;border-radius:13px;background:#faf7f3;color:#55453e;font-weight:850}
+.b1435-full-timeline>summary::-webkit-details-marker{display:none}
+.b1435-full-timeline>summary:before{content:'＋';color:#b86d54;margin-right:3px}
+.b1435-full-timeline[open]>summary{border-radius:13px 13px 0 0}
+.b1435-full-timeline[open]>summary:before{content:'−'}
+.b1435-full-timeline>summary span{flex:1}
+.b1435-full-timeline>summary small{font-size:9px;color:#9a8980;font-weight:600}
+.b1435-timeline-body{border:1px solid #e5d9d0;border-top:0;border-radius:0 0 13px 13px;background:#fff;padding:10px 14px 14px}
+.b1435-timeline-row{display:grid;grid-template-columns:84px 12px minmax(0,1fr);gap:9px;position:relative;padding:8px 0}
+.b1435-timeline-row:not(:last-child):after{content:'';position:absolute;left:89px;top:26px;bottom:-8px;width:1px;background:#e8ddd6}
+.b1435-timeline-date{font-size:9px;color:#9b8980;padding-top:2px;text-align:right}
+.b1435-timeline-dot{width:9px;height:9px;border-radius:999px;margin-top:4px;background:#c4b4aa;position:relative;z-index:1;box-shadow:0 0 0 3px #fff}
+.b1435-timeline-row.session .b1435-timeline-dot{background:#668c69}
+.b1435-timeline-row.finance .b1435-timeline-dot{background:#c9984a}
+.b1435-timeline-row.contact .b1435-timeline-dot{background:#7890a8}
+.b1435-timeline-row.artifact .b1435-timeline-dot{background:#9e7ca8}
+.b1435-timeline-copy strong{display:block;font-size:11px;color:#443630}
+.b1435-timeline-copy p{margin:3px 0 0;font-size:10px;color:#7e6d64;line-height:1.45}
+.b1435-timeline-copy button{margin-top:5px;border:0;background:transparent;padding:0;color:#a05d47;font-size:9px;font-weight:850;cursor:pointer}
+.b1435-timeline-empty{padding:13px;color:#9a8980;font-size:10px}
+
+/* Briefing is now exactly that: AI summary + session preparation, not another general case screen. */
+body.b1435-briefing-mode .b139-intro h3{font-size:24px}
+body.b1435-briefing-mode .b141-state-grid,
+body.b1435-briefing-mode .b141-focus,
+body.b1435-briefing-mode .b1433-overview,
+body.b1435-briefing-mode .b1434-timeline-disclosure{display:none!important}
+body.b1435-briefing-mode .b139-warning{margin-top:0}
+body.b1435-briefing-mode .b139-brief{margin-top:12px}
+body.b1435-briefing-mode .b139-actions #b141AddEvent{opacity:.58}
+
+@media(max-width:720px){
+  .record-tabs [data-record-tab="overview"],.record-tabs [data-record-tab="documentation"],.record-tabs [data-record-tab="case-summary"]{padding-inline:10px}
+  #vaultRecordMount .vault-top-grid{grid-template-columns:1fr}
+  .b1435-timeline-row{grid-template-columns:68px 10px minmax(0,1fr)}
+  .b1435-timeline-row:not(:last-child):after{left:73px}
+}

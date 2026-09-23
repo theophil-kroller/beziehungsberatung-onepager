@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="admin-build14-3-2.css?v=20260923-build14-3-2">
 <link rel="stylesheet" href="admin-build14-3-3.css?v=20260923-build14-3-3">
 <link rel="stylesheet" href="admin-build14-3-4.css?v=20260923-build14-3-4">
+<link rel="stylesheet" href="admin-build14-3-5.css?v=20260923-build14-3-5">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -167,25 +168,7 @@
           <div class="finance-fixed-result"><span>Nach Fixkosten im aktuellen Monat</span><strong id="financeAfterFixed">—</strong></div>
         </section>
       </div>
-      <div class="finance-grid"><section class="finance-box finance-payment-mix"><div class="finance-visual-head"><div><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3></div><div id="financePaymentDonut" class="finance-donut" aria-label="Verteilung der Zahlungswege"><span>—</span></div></div><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><div class="finance-bottom-grid">
-        <section class="finance-box finance-recent-box"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section>
-        <section class="finance-box finance-ea-box">
-          <div class="finance-ea-head"><div><p class="eyebrow">Einnahmen-Ausgaben-Rechnung</p><h3>Ergebnis im gewählten Zeitraum</h3></div><span class="finance-demo-badge" id="financeEaMode">—</span></div>
-          <div class="finance-period-tabs" id="financeEaRange" role="group" aria-label="Zeitraum der Einnahmen-Ausgaben-Rechnung">
-            <button type="button" data-ea-range="month" class="active">Monat</button>
-            <button type="button" data-ea-range="3">3 Monate</button>
-            <button type="button" data-ea-range="6">6 Monate</button>
-            <button type="button" data-ea-range="12">1 Jahr</button>
-            <button type="button" data-ea-range="all">Seit Beginn</button>
-          </div>
-          <div class="finance-ea-summary">
-            <div><span>Einnahmen</span><strong id="financeEaIncome">—</strong></div>
-            <div><span>Ausgaben</span><strong id="financeEaExpenses">—</strong></div>
-            <div class="result"><span>Überschuss</span><strong id="financeEaResult">—</strong></div>
-          </div>
-          <p class="micro muted" id="financeEaCaption">Aktuell werden echte Zahlungseingänge und – wenn aktiviert – die hinterlegten monatlichen Fixkosten berücksichtigt.</p>
-        </section>
-      </div></section></section>
+      <div class="finance-grid"><section class="finance-box finance-payment-mix"><div class="finance-visual-head"><div><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3></div><div id="financePaymentDonut" class="finance-donut" aria-label="Verteilung der Zahlungswege"><span>—</span></div></div><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section></section></section>
 
     <section class="view" id="view-packages">
       <div id="packageCatalogApp"></div>
@@ -217,13 +200,13 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.4</strong><br><span>Klientenakte fokussiert: kompakter Dokumentationsverlauf, klickbare Sitzungen und Fallpfad als Navigator zur Dokumentation.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.5</strong><br><span>Klientenakte vereinfacht: Übersicht → Dokumentation → Briefing; Fallpfad als Prozessnavigator, Sitzungsverlauf als fachlicher Kern und vollständige Timeline als Detailchronik.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
 </div>
 
-<dialog id="clientDialog" class="record-dialog"><div class="dialog-shell"><button class="dialog-x" id="clientDialogClose" type="button">×</button><div class="record-head"><div><p class="eyebrow">Klientenakte</p><h2 id="recordName">—</h2><p class="muted" id="recordEmail">—</p></div><div class="record-status"><label>Status<select id="recordStatus"><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></label></div></div><div class="record-tabs"><button class="active" data-record-tab="overview">Übersicht</button><button data-record-tab="documentation">Dokumentation <span class="vault-mini-dot" id="recordVaultDot"></span></button><button data-record-tab="case-summary">Fallübersicht</button><button data-record-tab="bookings">Termine</button><button data-record-tab="sales">Angebote & Buchungen</button><button data-record-tab="packages">Packages</button><button data-record-tab="invoices">Honorarnoten</button><button data-record-tab="activity">Aktivität</button><button class="record-tab-secondary" data-record-tab="journey">Journey</button></div><div id="recordContent" class="record-content"></div></div></dialog>
+<dialog id="clientDialog" class="record-dialog"><div class="dialog-shell"><button class="dialog-x" id="clientDialogClose" type="button">×</button><div class="record-head"><div><p class="eyebrow">Klientenakte</p><h2 id="recordName">—</h2><p class="muted" id="recordEmail">—</p></div><div class="record-status"><label>Status<select id="recordStatus"><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></label></div></div><div class="record-tabs"><button class="active" data-record-tab="overview">Übersicht</button><button data-record-tab="documentation">Dokumentation <span class="vault-mini-dot" id="recordVaultDot"></span></button><button data-record-tab="case-summary">Briefing</button><button data-record-tab="bookings">Termine</button><button data-record-tab="sales">Angebote & Buchungen</button><button data-record-tab="packages">Packages</button><button data-record-tab="invoices">Honorarnoten</button><button data-record-tab="activity">Aktivität</button><button class="record-tab-secondary" data-record-tab="journey">Journey</button></div><div id="recordContent" class="record-content"></div></div></dialog>
 
 <dialog id="editDialog"><div class="dialog-shell compact"><button class="dialog-x" id="editClose" type="button">×</button><p class="eyebrow" id="editEyebrow">Änderung</p><h2 id="editTitle">Bearbeiten</h2><p class="muted" id="editSubtitle"></p><form id="editForm" class="edit-form"><div id="editFields" class="edit-grid"></div><div class="change-box"><strong id="changeHeadline">Keine Änderungen vorgenommen</strong><div id="changeList" class="change-list"></div></div><div id="emailPreview" class="email-preview"><p class="eyebrow">Vor dem Versand prüfen</p><h3>E-Mail-Vorschau</h3><div id="emailPreviewText"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="emailCancel">Nicht senden</button><button class="btn primary" type="button" id="emailConfirm">E-Mail jetzt senden</button></div></div><div class="dialog-actions main-actions"><span id="editState" class="muted micro"></span><button class="btn ghost" type="button" id="editCancel">Abbrechen</button><button class="btn secondary" type="submit" id="saveOnly" disabled>Änderungen speichern</button><button class="btn primary" type="button" id="saveNotify" disabled>Speichern & E-Mail vorbereiten</button></div></form></div></dialog>
 
@@ -254,5 +237,6 @@
 <script src="admin-build14-3-2.js?v=20260923-build14-3-2"></script>
 <script src="admin-build14-3-3.js?v=20260923-build14-3-3"></script>
 <script src="admin-build14-3-4.js?v=20260923-build14-3-4"></script>
+<script src="admin-build14-3-5.js?v=20260923-build14-3-5"></script>
 </body>
 </html>
