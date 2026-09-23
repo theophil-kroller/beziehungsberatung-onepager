@@ -1,0 +1,67 @@
+/* BUILD 14.3.5.4 — client record density, master data, initial consultation backfill, Google Calendar auth state */
+
+/* Use the available screen instead of leaving a large unused strip below the client record. */
+#clientDialog.record-dialog{
+  width:min(1380px,calc(100vw - 28px));
+  max-width:1380px;
+  height:min(92vh,1000px);
+  max-height:92vh;
+}
+#clientDialog.record-dialog>.dialog-shell{
+  height:100%;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+#clientDialog .record-head,#clientDialog .record-tabs{flex:0 0 auto}
+#clientDialog .record-content{flex:1 1 auto;min-height:0;overflow:auto;padding-right:6px;padding-bottom:28px}
+
+/* Compact master data summary on the client overview. */
+.b14354-master-summary{border:1px solid #e7d9cf;background:linear-gradient(145deg,#fffdfb,#faf6f2);border-radius:16px;padding:15px 17px;margin:0 0 14px}
+.b14354-master-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px}
+.b14354-master-head h4{margin:2px 0 0;font:700 20px Georgia,"Times New Roman",serif;color:#3f302b}
+.b14354-master-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px 14px}
+.b14354-master-grid>div{min-width:0;padding:8px 10px;border:1px solid #eee2da;border-radius:11px;background:rgba(255,255,255,.8)}
+.b14354-master-grid span{display:block;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:#a08375;margin-bottom:3px}
+.b14354-master-grid strong{display:block;font-size:11.5px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#473a34}
+
+/* Editable encrypted master data in Documentation. */
+.vault-master-card{background:linear-gradient(145deg,#fffdfb,#faf7f3)}
+.vault-master-card .vault-section-head .eyebrow{margin:0 0 3px}
+.vault-master-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}
+.vault-master-grid label{font-size:10px;font-weight:850;color:#826f65;text-transform:uppercase;letter-spacing:.05em}
+.vault-master-grid label.wide{grid-column:1/-1}
+.vault-master-grid input{display:block;width:100%;margin-top:5px;border:1px solid #e2d4ca;border-radius:10px;padding:10px 11px;background:#fff;color:#40342f;font:inherit;text-transform:none;letter-spacing:0}
+.vault-master-grid input:disabled{background:#f5f1ed;color:#817168}
+
+/* Missing / existing initial consultation becomes a first-class document block. */
+.vault-initial-card{border-color:#e1d2c6}
+.vault-initial-missing{display:grid;gap:8px;justify-items:start;text-align:left;background:#fffaf4}
+.vault-initial-missing strong{font-size:13px;color:#57443a}
+.vault-initial-missing span{font-size:11px;line-height:1.5;color:#88756b;max-width:720px}
+.vault-initial-entry{background:#fff}
+.b1435-step.attention{cursor:pointer}
+.b1435-step.attention .b1433-dot{background:#fff8e8!important;border-color:#c89537!important;color:#8b641f!important}
+.b1435-step.attention:hover{filter:brightness(.985)}
+
+/* Calendar auth failure should look like a system state, never like an empty availability week. */
+.bd-cal-connection-warning{display:flex;align-items:center;gap:10px;justify-content:space-between;margin:10px 0;padding:10px 12px;border:1px solid #e4c29d;border-radius:12px;background:#fff7ea;color:#674a2e}
+.bd-cal-connection-warning>div{display:grid;gap:2px;min-width:0}
+.bd-cal-connection-warning strong{font-size:10.5px}
+.bd-cal-connection-warning span{font-size:9.5px;line-height:1.4;color:#7c6553}
+.bd-cal-connection-warning.auth{border-color:#e6b8ae;background:#fff1ee;color:#7c3c33}
+.bd-cal-connection-warning.auth span{color:#8d5b52}
+.google-reconnect-steps{margin:16px 0;padding-left:20px;color:#66564e;font-size:12px;line-height:1.55}
+.google-reconnect-steps li+li{margin-top:7px}
+.google-reconnect-steps code{background:#f4eee9;border-radius:5px;padding:2px 5px}
+
+@media(max-width:900px){
+  #clientDialog.record-dialog{width:calc(100vw - 14px);height:94vh;max-height:94vh}
+  .b14354-master-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .b14354-master-grid,.vault-master-grid{grid-template-columns:1fr}
+  .vault-master-grid label.wide{grid-column:auto}
+  .bd-cal-connection-warning{align-items:stretch;flex-direction:column}
+}

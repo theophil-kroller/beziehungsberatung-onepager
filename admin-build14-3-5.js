@@ -15,7 +15,7 @@
   function clickTab(tab){document.querySelector(`[data-record-tab="${CSS.escape(tab)}"]`)?.click()}
 
   function step(label,state,target='',sub=''){
-    const icon=state==='done'?'✓':state==='current'?'●':state==='attention'?'!':state==='planned'?'•':'○';
+    const icon=state==='done'?'✓':state==='current'?'●':state==='attention'?'+':state==='planned'?'•':'○';
     return `<div class="b1433-step b1435-step ${state}"${target?` data-b1435-target="${esc(target)}" tabindex="0" role="button"`:''}><span class="b1433-dot">${icon}</span><span class="b1433-label">${esc(label)}${sub?`<small style="display:block;font-weight:650;margin-top:2px;opacity:.72">${esc(sub)}</small>`:''}</span></div>`;
   }
   function pathModel(v,c){
@@ -27,7 +27,7 @@
     const nodes=[];
     nodes.push({label:'Kontaktaufnahme',state:(contact||activities.length||consultations.length||sessions.length)?'done':'open',target:''});
     const ic=consultations[0];
-    nodes.push({label:ic?'Erstgespräch':'Erstgespräch fehlt',state:ic?'done':(sessions.length?'attention':'open'),target:ic?'consultation':'',sub:ic?fmt(ic.date||ic.updatedAt):''});
+    nodes.push({label:ic?'Erstgespräch':'Erstgespräch fehlt',state:ic?'done':'attention',target:ic?'consultation':'add-consultation',sub:ic?fmt(ic.date||ic.updatedAt):'nachtragen'});
     const n=sessions.length;
     if(n<=20)sessions.forEach((s,i)=>nodes.push({label:`Sitzung ${i+1}`,state:i===n-1&&!completed?'current':'done',target:`session:${s.id}`,sub:fmt(s.date)}));
     else{
@@ -39,17 +39,31 @@
     nodes.push({label:'Abschluss',state:completed?'done':'open'});
     return nodes;
   }
+  function masterSummaryHtml(v,c){
+    const md=v?.client?.masterData||{},address=[md.street,[md.postalCode,md.city].filter(Boolean).join(' '),md.country].filter(Boolean).join(', '),code=c?.client?.publicId||c?.client?.id||'—';
+    return `<section class="b14354-master-summary"><div class="b14354-master-head"><div><span class="b1433-card-kicker">Stammdaten</span><h4>Kontakt &amp; Basisdaten</h4></div><button class="mini" type="button" data-b14354-master-edit>Bearbeiten</button></div><div class="b14354-master-grid"><div><span>Name</span><strong>${esc(c?.name||'—')}</strong></div><div><span>Klientencode</span><strong>${esc(code)}</strong></div><div><span>E-Mail</span><strong>${esc(c?.email||'—')}</strong></div><div><span>Telefon</span><strong>${esc(md.phone||'—')}</strong></div><div><span>Geburtsdatum</span><strong>${esc(md.birthDate?fmt(md.birthDate):'—')}</strong></div><div><span>Adresse</span><strong>${esc(address||'—')}</strong></div></div></section>`;
+  }
+  function bindMasterSummary(host){host.querySelector('[data-b14354-master-edit]')?.addEventListener('click',()=>{clickTab('documentation');setTimeout(()=>document.querySelector('.vault-master-card')?.scrollIntoView({behavior:'smooth',block:'start'}),320)})}
+
   function pathHtml(v,c){
     const nodes=pathModel(v,c),n=(v.sessions||[]).length;
     return `<section class="b1435-overview-path"><div class="b1433-path-card"><div class="b1433-path-head"><div><span class="b1433-card-kicker">Prozess</span><h4>Fallpfad</h4><p>Wo steht die Begleitung gerade? Erledigte Schritte öffnen direkt die zugehörige Dokumentation.</p></div><span class="b1433-path-meta">${n} ${n===1?'Sitzung':'Sitzungen'}</span></div><div class="b1433-path-scroll"><div class="b1433-path">${nodes.map(x=>step(x.label,x.state,x.target,x.sub)).join('')}</div></div></div></section>`;
   }
   function focusDocumentation(target){
     clickTab('documentation');
-    setTimeout(()=>{
-      const selector=target==='consultation'?'.vault-initial-card':`#vaultSessions [data-session-card="${CSS.escape(String(target).replace('session:',''))}"]`;
-      const el=$(selector);if(!el)return;
-      el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('b1434-session-focus');setTimeout(()=>el.classList.remove('b1434-session-focus'),1800);
-    },240);
+    let tries=0;
+    const find=()=>{
+      tries++;
+      if(target==='add-consultation'){
+        const add=document.querySelector('[data-vault-add-consultation],#vaultAddInitial');
+        if(add){add.scrollIntoView({behavior:'smooth',block:'center'});add.click();return}
+      }else{
+        const selector=target==='consultation'?'.vault-initial-card':`#vaultSessions [data-session-card="${CSS.escape(String(target).replace('session:',''))}"]`;
+        const el=$(selector);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('b1434-session-focus');setTimeout(()=>el.classList.remove('b1434-session-focus'),1800);return}
+      }
+      if(tries<24)setTimeout(find,120);
+    };
+    setTimeout(find,120);
   }
   function bindPath(host){
     host.querySelectorAll('[data-b1435-target]').forEach(x=>{const go=()=>focusDocumentation(x.dataset.b1435Target);x.onclick=go;x.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}});
@@ -72,7 +86,7 @@
       $('[data-b1435-unlock]')?.addEventListener('click',async()=>{await window.BDVault?.ensureUnlocked?.();document.querySelector('.b1435-overview-path')?.remove();enhanceOverview()});return;
     }
     overviewBusy=true;
-    try{const v=await window.BDVault.request('/client?ref='+encodeURIComponent(c.email));anchor.insertAdjacentHTML('afterend',pathHtml(v,c));bindPath(content)}catch(_){/* overview stays operational without local clinical data */}finally{overviewBusy=false}
+    try{const v=await window.BDVault.request('/client?ref='+encodeURIComponent(c.email));anchor.insertAdjacentHTML('afterend',masterSummaryHtml(v,c)+pathHtml(v,c));bindPath(content);bindMasterSummary(content)}catch(_){/* overview stays operational without local clinical data */}finally{overviewBusy=false}
   }
 
   function classifyActivity(x){
@@ -144,6 +158,13 @@
   }
   document.addEventListener('click',e=>{if(e.target.closest?.('[data-record-tab],[data-client-tab]'))setTimeout(run,120)});
   const obs=new MutationObserver(()=>{clearTimeout(obs.t);obs.t=setTimeout(run,90)});
+
+  document.addEventListener('bd:initial-consultation-saved',()=>{
+    if(document.querySelector('.record-tabs [data-record-tab="overview"].active')){
+      document.querySelector('.b1435-overview-path')?.remove();enhanceOverview();
+    }
+  });
+
   function boot(){const r=$('#recordContent');if(r)obs.observe(r,{childList:true,subtree:true});coreTabs();run()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
