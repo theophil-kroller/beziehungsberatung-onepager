@@ -80,6 +80,8 @@
     if(/whatsapp/.test(t))return'whatsapp';
     if(/e-mail|email|mail /.test(t))return'email';
     if(/telefon|anruf/.test(t))return'phone';
+    if(/zahlungserinnerung|mahnung|erinnerung.*zahlung/.test(t))return'alert';
+    if(/zahlungsziel|fälligkeit|fällig/.test(t))return'invoice';
     if(/zahlung|betrag erhalten|bezahlt|stripe|barzahlung|überweisung/.test(t))return'payment';
     if(/rechnung|honorar/.test(t))return'invoice';
     if(/termin|buchung|storn/.test(t))return'booking';
@@ -87,8 +89,8 @@
     if(/anfrage|kontakt|website|nachricht/.test(t))return'contact';
     return'organization';
   }
-  function iconFor(type){return({session:'📝',booking:'📅',email:'✉️',whatsapp:'💬',phone:'📞',invoice:'💶',payment:'🏦',note:'✍️',artifact:'📎',goal:'🎯',package:'📦',contact:'👤',manual:'🧭',organization:'•'})[type]||'•'}
-  function iconLabel(type){return({session:'Sitzung',booking:'Termin',email:'E-Mail',whatsapp:'WhatsApp',phone:'Telefon',invoice:'Honorarnote',payment:'Zahlung',note:'Notiz',artifact:'Dokument',goal:'Ziel',package:'Package',contact:'Kontakt',manual:'Ereignis',organization:'Organisation'})[type]||'Ereignis'}
+  function iconFor(type){return({session:'📝',booking:'📅',email:'✉️',whatsapp:'💬',phone:'📞',invoice:'💶',payment:'🏦',alert:'❗',note:'✍️',artifact:'📎',goal:'🎯',package:'📦',contact:'👤',manual:'🧭',organization:'•'})[type]||'•'}
+  function iconLabel(type){return({session:'Sitzung',booking:'Termin',email:'E-Mail',whatsapp:'WhatsApp',phone:'Telefon',invoice:'Honorarnote',payment:'Zahlung',alert:'Zahlungserinnerung',note:'Notiz',artifact:'Dokument',goal:'Ziel',package:'Package',contact:'Kontakt',manual:'Ereignis',organization:'Organisation'})[type]||'Ereignis'}
   function timelineEvents(v,c){
     const ev=[];const add=(type,date,title,detail='',target='')=>date&&ev.push({type,date,title,detail,target});
     (v.initialConsultations||[]).forEach(x=>add('session',x.date||x.updatedAt,'Erstgespräch',x.topic||x.mainProblem||x.reason||'', 'consultation'));

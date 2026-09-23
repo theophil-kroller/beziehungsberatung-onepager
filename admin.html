@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="admin-build14-3-4.css?v=20260923-build14-3-4">
 <link rel="stylesheet" href="admin-build14-3-5.css?v=20260923-build14-3-5-1">
 <link rel="stylesheet" href="admin-build14-3-5-2.css?v=20260923-build14-3-5-2">
+<link rel="stylesheet" href="admin-build14-3-5-3.css?v=20260923-build14-3-5-3">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -149,7 +150,7 @@
     </section>
 
     <section class="view" id="view-bookings">
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Terminverwaltung</p><h2>Kalender</h2><p class="muted">Woche visuell planen; Details, Verschieben und Stornieren bleiben in der Listenansicht erhalten.</p></div></div><div id="bookingCalendar"></div><details class="booking-list-details"><summary>Listenansicht &amp; Verwaltungsdetails</summary><div class="toolbar booking-list-toolbar"><label class="filter-select">Status<select id="bookingFilter"><option value="upcoming">Kommende</option><option value="all">Alle</option><option value="past">Vergangene</option><option value="cancelled">Abgesagte</option></select></label></div><div id="bookingsTable"></div></details></section>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Terminverwaltung</p><h2>Kalender</h2><p class="muted">Woche visuell planen, freigegebene Praxiszeiten sehen und bei Bedarf direkt mit Google Calendar synchronisieren. Details, Verschieben und Stornieren bleiben in der Listenansicht erhalten.</p></div></div><div id="bookingCalendar"></div><details class="booking-list-details"><summary>Listenansicht &amp; Verwaltungsdetails</summary><div class="toolbar booking-list-toolbar"><label class="filter-select">Status<select id="bookingFilter"><option value="upcoming">Kommende</option><option value="all">Alle</option><option value="past">Vergangene</option><option value="cancelled">Abgesagte</option></select></label></div><div id="bookingsTable"></div></details></section>
     </section>
 
     <section class="view flow-manager-view" id="view-flow"><section class="panel flow-manager-shell"><div class="panel-head"><div><p class="eyebrow">Session Flow Manager</p><h2>Ein klarer Ablauf rund um jede Sitzung.</h2><p class="muted">Vorbereiten → Buchung &amp; Angebote → Nachbereiten. Offene Schritte bleiben sichtbar.</p></div><button class="btn ghost" id="flowRefresh" type="button">Aktualisieren</button></div><div class="flow-summary-grid"><article class="flow-mini-stat"><span>Vorbereitung offen</span><strong id="flowPrepCount">0</strong></article><article class="flow-mini-stat"><span>Nachbereitung offen</span><strong id="flowPostCount">0</strong></article><article class="flow-mini-stat"><span>Geparkt</span><strong id="flowParkCount">0</strong></article></div><div class="flow-board" style="margin-top:18px"><section><div class="panel-head"><div><p class="eyebrow">Jetzt relevant</p><h3>Offene Session Flows</h3></div></div><div id="flowMainList" class="flow-list"><div class="empty">Session Flow wird geladen …</div></div></section></div></section></section>
@@ -201,7 +202,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.5</strong><br><span>Klientenakte vereinfacht: Übersicht → Dokumentation → Briefing; Fallpfad als Prozessnavigator, Sitzungsverlauf als fachlicher Kern und vollständige Timeline als Detailchronik.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.5.3</strong><br><span>Klientenakte vereinfacht: Übersicht → Dokumentation → Briefing; Fallpfad als Prozessnavigator, Sitzungsverlauf als fachlicher Kern und vollständige Timeline als Detailchronik.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -222,8 +223,10 @@
 
 <dialog id="bankImportDialog"><div class="dialog-shell wide"><button class="dialog-x" id="bankImportClose" type="button">×</button><p class="eyebrow">Zahlungsabgleich</p><h2>Bank-CSV prüfen</h2><p class="muted" id="bankImportSummary">—</p><div id="bankImportTable"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="bankImportCancel">Abbrechen</button><button class="btn primary" type="button" id="bankImportApply">Ausgewählte Zahlungen übernehmen</button></div></div></dialog>
 
+<dialog id="availabilityDialog"><div class="dialog-shell compact"><button class="dialog-x" id="availabilityClose" type="button">×</button><p class="eyebrow">Google Calendar · Verfügbarkeit</p><h2 id="availabilityDialogTitle">Praxiszeit freigeben</h2><p class="muted">Diese Zeit wird in deinem separaten Verfügbarkeitskalender gespeichert und bildet die Grundlage für öffentlich buchbare Termine.</p><div class="edit-form"><div class="edit-grid"><label class="edit-field">Datum<input id="availabilityDate" type="date" required></label><label class="edit-field">Berater:in<input id="availabilityAdvisor" list="availabilityAdvisorOptions" value="Theophil Kroller" required><datalist id="availabilityAdvisorOptions"><option value="Theophil Kroller"></datalist></label><label class="edit-field">Von<input id="availabilityStart" type="time" step="900" required></label><label class="edit-field">Bis<input id="availabilityEnd" type="time" step="900" required></label></div><p class="micro muted availability-dialog-note">Tipp: Im Modus „Verfügbarkeit bearbeiten“ kannst du auch direkt auf eine freie Stelle im Wochenkalender klicken. Weitere Berater:innen können später einfach als eigene Verfügbarkeitsfarbe ergänzt werden.</p><div class="dialog-actions"><button class="btn danger" id="availabilityDelete" type="button" style="display:none">Praxiszeit löschen</button><span style="flex:1"></span><button class="btn ghost" id="availabilityCancel" type="button">Abbrechen</button><button class="btn primary" id="availabilitySave" type="button">In Google Calendar speichern</button></div></div></div></dialog>
+
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="admin-build9.js?v=20260923-build14-3-5-2"></script>
+<script src="admin-build9.js?v=20260923-build14-3-5-3"></script>
 <script src="admin-vault.js?v=20260923-build13-8-6"></script>
 <script src="admin-build10.js?v=20260922-build13-7-3-runtime-fix"></script>
 <script src="admin-build11.js?v=20260922-build13-7-5"></script>
@@ -238,6 +241,6 @@
 <script src="admin-build14-3-2.js?v=20260923-build14-3-2"></script>
 <script src="admin-build14-3-3.js?v=20260923-build14-3-3"></script>
 <script src="admin-build14-3-4.js?v=20260923-build14-3-4"></script>
-<script src="admin-build14-3-5.js?v=20260923-build14-3-5-2"></script>
+<script src="admin-build14-3-5.js?v=20260923-build14-3-5-3"></script>
 </body>
 </html>
