@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="admin-build14-3.css?v=20260923-build14-3">
 <link rel="stylesheet" href="admin-build14-3-1.css?v=20260923-build14-3-1">
 <link rel="stylesheet" href="admin-build14-3-2.css?v=20260923-build14-3-2">
+<link rel="stylesheet" href="admin-build14-3-3.css?v=20260923-build14-3-3">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -40,7 +41,7 @@
   <symbol id="i-offer" viewBox="0 0 24 24"><path d="M4 6h16v12H4V6Zm4 4h8m-8 4h5M7 3v3m10-3v3"/></symbol>
 </svg>
 
-<div class="security-strip">Interne Praxisverwaltung · geschützter Zugang</div>
+<div class="security-strip"><div class="security-brand"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><div><strong>Beziehungsdynamiken</strong><span>Praxis-Plattform</span></div></div><span class="security-strip-label">Interne Praxisverwaltung · geschützter Zugang</span></div>
 
 <section id="loginView" class="login-page">
   <div class="login-card">
@@ -197,7 +198,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.2</strong><br><span>Dashboard- und Buchhaltungs-Polish: 3-Tage-Wetter, visuelle Finanzübersicht, optionale Fixkosten sowie datensparsame Klientenliste.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.3</strong><br><span>Premium-UX: einheitliche Plattform-Shell sowie visueller Fallpfad mit Zielen und kompakter lokaler KI-Fallzusammenfassung.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -232,5 +233,6 @@
 <script src="admin-build14-3.js?v=20260923-build14-3"></script>
 <script src="admin-build14-3-1.js?v=20260923-build14-3-1"></script>
 <script src="admin-build14-3-2.js?v=20260923-build14-3-2"></script>
+<script src="admin-build14-3-3.js?v=20260923-build14-3-3"></script>
 </body>
 </html>

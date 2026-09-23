@@ -1,0 +1,126 @@
+/* BUILD 14.3.3 — shell consistency + visual case path.
+   Additive UX layer. No Vault schema, booking or billing logic changes. */
+
+:root{
+  --suite-top-h:52px;
+  --suite-side-w:248px;
+  --path-done:#c9785f;
+  --path-current:#5f875f;
+  --path-planned:#c7a25e;
+  --path-open:#e9e2dc;
+}
+
+/* --- One platform shell: admin top-left now matches Message Center / Knowledge Hub. --- */
+.security-strip{
+  height:var(--suite-top-h)!important;
+  min-height:var(--suite-top-h)!important;
+  display:grid!important;
+  grid-template-columns:var(--suite-side-w) minmax(0,1fr)!important;
+  align-items:stretch!important;
+  justify-content:stretch!important;
+  padding:0!important;
+  background:#403833!important;
+  color:#f7eee8!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  font-size:inherit!important;
+}
+.security-brand{
+  height:var(--suite-top-h);
+  display:flex;align-items:center;gap:10px;
+  padding:7px 14px;
+  color:#fff8f2;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.security-brand img{
+  width:36px;height:36px;border-radius:50%;object-fit:contain;
+  background:#fff;border:1px solid #e4d8cf;padding:5px;
+}
+.security-brand strong,.security-brand span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.security-brand strong{font-size:14px;line-height:1.15}
+.security-brand span{font-size:10px;color:#c9bbb2;margin-top:2px}
+.security-strip-label{
+  min-width:0;display:flex;align-items:center;justify-content:center;
+  padding:0 18px;
+  font-size:10px;font-weight:760;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,247,237,.82);
+}
+.app-shell{min-height:calc(100vh - var(--suite-top-h))!important}
+.sidebar{
+  height:calc(100vh - var(--suite-top-h))!important;
+  padding-top:18px!important;
+}
+.side-brand{display:none!important}
+
+/* --- Visual case path: overview first, full timeline remains untouched below. --- */
+.b1433-overview{
+  display:grid;gap:13px;margin:0 0 16px;
+}
+.b1433-path-card,.b1433-insight-card{
+  border:1px solid #e7dbd1;background:#fffefd;border-radius:16px;
+  box-shadow:0 10px 28px rgba(62,45,37,.035);
+}
+.b1433-path-card{padding:16px 16px 13px;overflow:hidden}
+.b1433-path-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:13px
+}
+.b1433-path-head h4,.b1433-insight-card h4{margin:2px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:19px;color:#352b27}
+.b1433-path-head p,.b1433-insight-card p{margin:4px 0 0;color:#8b796f;font-size:11px;line-height:1.45}
+.b1433-path-meta{font-size:10px;color:#8b796f;white-space:nowrap;padding-top:3px}
+.b1433-path-scroll{overflow-x:auto;padding:4px 2px 7px;scrollbar-width:thin}
+.b1433-path{
+  display:flex;align-items:flex-start;min-width:max-content;padding:0 2px;
+}
+.b1433-step{
+  position:relative;display:grid;grid-template-rows:28px auto;justify-items:center;
+  min-width:112px;max-width:142px;padding:0 8px;border:0;background:transparent;color:#74645c;
+  cursor:default;text-align:center;
+}
+.b1433-step:not(:last-child):after{
+  content:'';position:absolute;left:calc(50% + 15px);right:calc(-50% + 15px);top:13px;
+  height:2px;background:#ddd4cd;z-index:0
+}
+.b1433-step.done:not(:last-child):after{background:linear-gradient(90deg,#c9785f,#d7b19f)}
+.b1433-step.current:not(:last-child):after{background:linear-gradient(90deg,#5f875f,#a7bca6)}
+.b1433-dot{
+  position:relative;z-index:1;width:28px;height:28px;border-radius:999px;
+  display:grid;place-items:center;border:2px solid #ddd4cd;background:#f7f3f0;color:#9b8b82;
+  font-size:10px;font-weight:900;box-shadow:0 0 0 4px #fffefd;
+}
+.b1433-step.done .b1433-dot{background:#c9785f;border-color:#c9785f;color:#fff}
+.b1433-step.current .b1433-dot{background:#5f875f;border-color:#5f875f;color:#fff;box-shadow:0 0 0 4px #edf4ec}
+.b1433-step.planned .b1433-dot{background:#f5f1ee;border-color:#cfc5be;color:#8d817a}
+.b1433-label{display:block;margin-top:7px;font-size:10px;font-weight:830;line-height:1.25;color:#6b5b53;max-width:132px}
+.b1433-step.current .b1433-label{color:#426449}
+.b1433-step.open .b1433-label{color:#a1938b}
+.b1433-step[data-target]{cursor:pointer}
+.b1433-step[data-target]:hover .b1433-label{text-decoration:underline;text-underline-offset:2px}
+.b1433-step[data-target]:focus-visible{outline:2px solid #bd765d;outline-offset:4px;border-radius:8px}
+
+.b1433-insights{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:13px}
+.b1433-insight-card{padding:15px 16px}
+.b1433-card-kicker{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:#9b705d}
+.b1433-goals{display:grid;gap:8px;margin-top:11px}
+.b1433-goal{display:grid;grid-template-columns:9px 1fr;gap:8px;align-items:start;padding:8px 9px;border-radius:10px;background:#f7f4f0}
+.b1433-goal i{width:8px;height:8px;border-radius:999px;background:#6f9673;margin-top:4px}
+.b1433-goal strong{display:block;font-size:11px;color:#453833}.b1433-goal span{display:block;font-size:10px;color:#8a786e;margin-top:2px;line-height:1.35}
+.b1433-summary-body{margin-top:10px;font-size:12px;line-height:1.55;color:#4d403a}
+.b1433-summary-foot{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:11px;color:#8e7d73;font-size:9px}
+.b1433-review{display:inline-flex;align-items:center;border-radius:999px;padding:4px 7px;background:#f2ece7;color:#7d6b62;font-weight:850}
+.b1433-review.approved{background:#edf5ec;color:#537257}
+.b1433-empty{margin-top:10px;color:#97877e;font-size:11px;font-style:italic}
+
+/* Soft highlight when a path node jumps into the full timeline. */
+.b139-event.b1433-focus{animation:b1433-focus 1.7s ease}
+@keyframes b1433-focus{0%,100%{box-shadow:none}25%,70%{box-shadow:0 0 0 3px rgba(185,96,69,.22);background:#fff9f5}}
+
+@media(max-width:900px){
+  .security-strip{display:none!important}
+  .sidebar{height:auto!important;padding-top:9px!important}
+  .side-brand{display:none!important}
+  .b1433-insights{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .b1433-path-head{display:block}.b1433-path-meta{margin-top:6px}
+  .b1433-step{min-width:100px}
+}

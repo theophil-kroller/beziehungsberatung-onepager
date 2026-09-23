@@ -1,0 +1,7 @@
+/* BUILD 14.3.3 — exact shell alignment with the main Practice CRM. */
+:root{--suite-rail-width:248px;--suite-top-height:52px}
+.suite-rail{width:var(--suite-rail-width)!important}
+.suite-main{margin-left:var(--suite-rail-width)!important}
+.suite-brand{min-height:var(--suite-top-height)!important;height:var(--suite-top-height)!important;padding:7px 14px!important}
+.suite-message-page .mc-strip,.suite-knowledge-page .hub-security-strip{height:var(--suite-top-height)!important;min-height:var(--suite-top-height)!important}
+@media(max-width:900px){.suite-rail{width:auto!important}.suite-main{margin-left:0!important}}
