@@ -1,0 +1,79 @@
+/* BUILD 14.3.5.10 — premium hierarchy pass.
+   Icon-only global navigation, contextual master data, no briefing dead-space,
+   and dashboard ordered by immediate work relevance. */
+
+/* ---------- Global navigation: symbols first, labels via tooltip/context ---------- */
+@media (min-width:761px){
+  .app-shell{grid-template-columns:92px minmax(0,1fr)!important}
+  .sidebar{padding:14px 10px 16px!important}
+  .side-brand{justify-content:center!important;gap:0!important;padding:4px 0 17px!important}
+  .side-brand img{width:48px!important;height:48px!important;margin:0!important}
+  .side-brand>div{display:none!important}
+  .nav-section-label{display:none!important}
+  .side-nav{gap:7px!important}
+  .nav-item{
+    grid-template-columns:1fr!important;place-items:center!important;justify-items:center!important;
+    min-height:52px!important;padding:11px 8px!important;border-radius:14px!important;gap:0!important;
+  }
+  .nav-item>span:not(.nav-chevron),.nav-item em,.nav-workspace-link:after{display:none!important}
+  .nav-item svg{width:23px!important;height:23px!important;margin:0!important}
+  .nav-chevron{display:none!important}
+  .nav-divider{margin:12px 8px!important}
+  .nav-group.open{padding:4px 0!important;border-radius:14px!important}
+  .nav-subitems{margin:2px 0 0!important;padding:0!important;border-left:0!important;display:grid!important;gap:4px!important}
+  .nav-subitem{min-height:42px!important;padding:8px!important;border-radius:11px!important}
+  .nav-subitem svg{width:19px!important;height:19px!important}
+  .sidebar-bottom{padding:14px 0 0!important}
+  .admin-pill{justify-content:center!important;margin:0!important;padding:5px 0!important}
+  .admin-pill div,.side-link{display:none!important}
+  .admin-pill .avatar{width:40px!important;height:40px!important;border-radius:12px!important}
+  .workspace{padding-left:34px!important;padding-right:34px!important}
+}
+
+/* ---------- Client header: useful facts only; no editing chrome in the premium header ---------- */
+#clientDialog .record-master-edit,#clientDialog .record-master-empty{display:none!important}
+#clientDialog .record-master-top-card:empty{display:none!important}
+#clientDialog .record-master-top-card{padding-left:16px!important;gap:0!important}
+#clientDialog .record-master-facts{gap:7px 16px!important}
+#clientDialog .record-master-fact{font-size:10.5px!important}
+
+/* ---------- Briefing: current state starts immediately, actions live with the version/status row ---------- */
+body.b14358-briefing-mode .b139-shell{gap:8px!important;padding-top:0!important}
+body.b14358-briefing-mode .b14358-briefing-toolbar{display:none!important;min-height:0!important;margin:0!important;padding:0!important}
+body.b14358-briefing-mode .b14358-brief{padding:10px 18px 16px!important;border-radius:16px!important}
+body.b14358-briefing-mode #b139BriefBody{gap:8px!important}
+body.b14358-briefing-mode .b139-lead{margin:0!important;padding:16px 18px!important}
+body.b14358-briefing-mode .b14359-brief-meta{
+  padding:4px 2px 0!important;min-height:34px!important;gap:10px!important;flex-wrap:wrap!important
+}
+body.b14358-briefing-mode .b14359-brief-meta>.b139-actions,
+body.b14358-briefing-mode .b143510-inline-actions{
+  margin-left:auto!important;display:flex!important;align-items:center!important;gap:7px!important
+}
+body.b14358-briefing-mode .b14358-generate{
+  padding:6px 9px!important;font-size:9px!important;background:transparent!important;border-color:#dfcec5!important
+}
+body.b14358-briefing-mode .b14358-more>summary{width:30px!important;height:30px!important;border-radius:9px!important;font-size:18px!important}
+body.b14358-briefing-mode .b14359-tech{margin-top:-2px!important}
+
+/* ---------- Dashboard hierarchy: context -> attention -> schedule -> metrics ---------- */
+#view-dashboard .dashboard-weather{margin-bottom:16px!important}
+#view-dashboard .dash-grid-primary{margin-bottom:16px!important}
+#view-dashboard .dashboard-calendar{margin-bottom:22px!important}
+.dashboard-metrics-wrap{
+  margin:4px 0 18px;padding-top:4px
+}
+.dashboard-metrics-head{display:flex;align-items:baseline;gap:12px;margin:0 2px 10px}
+.dashboard-metrics-head .eyebrow{margin:0}
+.dashboard-metrics-head h2{font-family:Georgia,"Times New Roman",serif;font-size:21px;margin:0;color:#4a3932}
+.dashboard-metrics-wrap .stat-grid{margin-bottom:0!important;gap:11px!important}
+.dashboard-metrics-wrap .stat-card{padding:15px 16px!important;border-radius:15px!important;box-shadow:none!important;background:rgba(255,255,255,.78)!important}
+.dashboard-metrics-wrap .stat-card strong{font-size:26px!important}
+
+@media(max-width:1050px){
+  .dashboard-metrics-wrap .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+  .dashboard-metrics-head{display:block}
+  .dashboard-metrics-head h2{margin-top:3px}
+}

@@ -102,15 +102,17 @@
     const head=document.querySelector('#clientDialog .record-head>div:first-child');
     if(!head||!current.payload)return;
     const c=current.payload.client||{},md=c.masterData||{};
-    let host=$('#recordMasterMeta');
-    if(!host){host=document.createElement('div');host.id='recordMasterMeta';host.className='record-master-inline';head.append(host)}
-    const addr=[md.street,[md.postalCode,md.city].filter(Boolean).join(' '),md.country].filter(Boolean).join(', ');
+    const place=[md.postalCode,md.city].filter(Boolean).join(' ');
+    const meaningfulAddress=[md.street,place].filter(Boolean).join(', ');
+    const addr=meaningfulAddress?[meaningfulAddress,md.country].filter(Boolean).join(', '):'';
     const bits=[];
     if(md.phone)bits.push(`<span title="Telefon">☎ ${esc(md.phone)}</span>`);
     if(md.birthDate)bits.push(`<span title="Geburtsdatum">◷ ${esc(fmtDate(md.birthDate))}</span>`);
     if(addr)bits.push(`<span title="Adresse">⌂ ${esc(addr)}</span>`);
-    host.innerHTML=`${bits.length?bits.join(''):'<span class="muted">Stammdaten noch unvollständig</span>'}<button type="button" class="record-master-edit" data-vault-master-edit>Stammdaten bearbeiten</button>`;
-    host.querySelector('[data-vault-master-edit]')?.addEventListener('click',openMasterDialog);
+    let host=$('#recordMasterMeta');
+    if(!bits.length){host?.remove();return}
+    if(!host){host=document.createElement('div');host.id='recordMasterMeta';host.className='record-master-inline';head.append(host)}
+    host.innerHTML=bits.join('');
   }
   function bindWorkspace(){
     const m=$('#vaultRecordMount');if(!m)return;

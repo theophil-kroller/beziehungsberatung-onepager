@@ -43,8 +43,19 @@
     const recordHead=document.querySelector('#clientDialog .record-head');
     const identity=recordHead?.querySelector(':scope>div:first-child');
     if(!recordHead||!identity)return;
-    const md=v?.client?.masterData||{},address=[md.street,[md.postalCode,md.city].filter(Boolean).join(' '),md.country].filter(Boolean).join(', ');
+    const md=v?.client?.masterData||{};
+    const place=[md.postalCode,md.city].filter(Boolean).join(' ');
+    const meaningfulAddress=[md.street,place].filter(Boolean).join(', ');
+    const fullAddress=meaningfulAddress?[meaningfulAddress,md.country].filter(Boolean).join(', '):'';
     let host=document.querySelector('#recordMasterMeta');
+
+    const facts=[];
+    if(md.phone)facts.push(['☎',md.phone,'Telefon']);
+    if(md.birthDate)facts.push(['◷',fmt(md.birthDate),'Geburtsdatum']);
+    if(fullAddress)facts.push(['⌂',fullAddress,'Adresse']);
+
+    // A lone default country is not useful enough to occupy premium header space.
+    if(!facts.length){host?.remove();return}
     if(!host){
       host=document.createElement('section');
       host.id='recordMasterMeta';
@@ -56,16 +67,7 @@
     if(host.parentElement!==recordHead)recordHead.insertBefore(host,before);
     else if(before&&host.nextSibling!==before)recordHead.insertBefore(host,before);
 
-    const facts=[];
-    if(md.phone)facts.push(['☎',md.phone,'Telefon']);
-    if(md.birthDate)facts.push(['◷',fmt(md.birthDate),'Geburtsdatum']);
-    if(address)facts.push(['⌂',address,'Adresse']);
-    const factsHtml=facts.length
-      ? facts.map(([i,val,label])=>`<span class="record-master-fact" title="${esc(label)}"><span aria-hidden="true">${i}</span>${esc(val)}</span>`).join('')
-      : '<span class="record-master-empty">Stammdaten ergänzen</span>';
-
-    host.innerHTML=`<div class="record-master-facts">${factsHtml}</div><button type="button" class="record-master-edit" data-b14356-master-edit title="Stammdaten bearbeiten" aria-label="Stammdaten bearbeiten">✎</button>`;
-    host.querySelector('[data-b14356-master-edit]')?.addEventListener('click',()=>{clickTab('documentation');setTimeout(()=>document.dispatchEvent(new CustomEvent('bd:edit-master-data')),420)});
+    host.innerHTML=`<div class="record-master-facts">${facts.map(([i,val,label])=>`<span class="record-master-fact" title="${esc(label)}"><span aria-hidden="true">${i}</span>${esc(val)}</span>`).join('')}</div>`;
   }
 
   function pathHtml(v,c){
@@ -103,8 +105,9 @@
 
   function secondaryActions(){
     const old=$('.client-overview-more');if(!old||old.parentElement.querySelector('.client-secondary-actions'))return;
-    old.insertAdjacentHTML('beforebegin',`<details class="client-secondary-actions"><summary>Weitere Aktionen</summary><div class="client-secondary-action-grid"><button class="mini" data-client-tab="bookings">Terminverwaltung</button><button class="mini" data-client-tab="invoices">Honorarnoten / Zahlung</button><button class="mini" data-client-tab="packages">Alle Packages</button><button class="mini offer" data-client-tab="sales">Angebot buchen</button><button class="mini" data-client-tab="journey">Journey</button></div></details>`);
+    old.insertAdjacentHTML('beforebegin',`<details class="client-secondary-actions"><summary>Weitere Aktionen</summary><div class="client-secondary-action-grid"><button class="mini" data-client-tab="bookings">Terminverwaltung</button><button class="mini" data-client-tab="invoices">Honorarnoten / Zahlung</button><button class="mini" data-client-tab="packages">Alle Packages</button><button class="mini offer" data-client-tab="sales">Angebot buchen</button><button class="mini" data-client-tab="journey">Journey</button><button class="mini" data-client-master-edit>Stammdaten</button></div></details>`);
     document.querySelectorAll('.client-secondary-actions [data-client-tab]').forEach(b=>b.onclick=()=>clickTab(b.dataset.clientTab));
+    document.querySelector('.client-secondary-actions [data-client-master-edit]')?.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('bd:edit-master-data')));
   }
   async function enhanceOverview(){
     if(overviewBusy)return;
@@ -171,10 +174,8 @@
     document.body.classList.add('b1435-briefing-mode','b14358-briefing-mode');
 
     const intro=shell.querySelector('.b139-intro');
+    let briefingActions=null;
     if(intro){
-      intro.classList.add('b14358-briefing-toolbar');
-      const copy=intro.querySelector(':scope>div:first-child');
-      if(copy)copy.remove();
       const actions=intro.querySelector('.b139-actions');
       if(actions){
         actions.querySelector('[data-b1434-doc]')?.remove();
@@ -189,7 +190,9 @@
           actions.append(more);
           more.querySelector('[data-b14358-reload]')?.addEventListener('click',()=>{reload?.click();more.removeAttribute('open')});
         }
+        briefingActions=actions;
       }
+      intro.remove();
     }
 
     shell.querySelector('.b139-warning')?.remove();
@@ -216,6 +219,13 @@
             technical.remove();
             meta.insertAdjacentElement('afterend',details);
           }
+          if(briefingActions){
+            briefingActions.classList.add('b143510-inline-actions');
+            meta.append(briefingActions);
+            briefingActions=null;
+          }
+        }else if(briefingActions){
+          const row=document.createElement('div');row.className='b143510-inline-actions-row';row.append(briefingActions);body.append(row);briefingActions=null;
         }
       }
       const sources=brief.querySelector('.b139-sources');
@@ -224,7 +234,6 @@
         details.innerHTML='<summary>Verwendete Quellen anzeigen</summary>';
         sources.parentNode.insertBefore(details,sources);details.append(sources);
       }
-      if(intro&&brief.previousElementSibling!==intro)intro.insertAdjacentElement('afterend',brief);
     }
 
     const prep=shell.querySelector('.b141-prep');
@@ -233,6 +242,13 @@
   function leaveBriefingIfNeeded(){
     const active=document.querySelector('.record-tabs button.active')?.dataset.recordTab;
     if(active!=='case-summary')document.body.classList.remove('b1435-briefing-mode','b14358-briefing-mode');
+  }
+
+  function compactGlobalNavigation(){
+    document.querySelectorAll('.side-nav .nav-item').forEach(item=>{
+      const label=item.querySelector(':scope>span:not(.nav-chevron)')?.textContent?.trim();
+      if(label){if(!item.getAttribute('title'))item.setAttribute('title',label);if(!item.getAttribute('aria-label'))item.setAttribute('aria-label',label)}
+    });
   }
 
   function run(){
@@ -251,6 +267,6 @@
     }
   });
 
-  function boot(){const r=$('#recordContent');if(r)obs.observe(r,{childList:true,subtree:true});coreTabs();run()}
+  function boot(){const r=$('#recordContent');if(r)obs.observe(r,{childList:true,subtree:true});compactGlobalNavigation();coreTabs();run()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
