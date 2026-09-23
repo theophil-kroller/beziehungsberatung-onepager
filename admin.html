@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="admin-build14-1.css?v=20260923-build14-1">
 <link rel="stylesheet" href="admin-build14-2.css?v=20260923-build14-2">
 <link rel="stylesheet" href="admin-build14-3.css?v=20260923-build14-3">
+<link rel="stylesheet" href="admin-build14-3-1.css?v=20260923-build14-3-1">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -63,7 +64,6 @@
       <p class="nav-section-label">Praxis</p>
       <button class="nav-item active" data-view="dashboard"><svg><use href="#i-dashboard"/></svg><span>Dashboard</span></button>
       <button class="nav-item" data-view="clients"><svg><use href="#i-clients"/></svg><span>Klient:innen</span></button>
-      <a class="nav-item nav-link" href="message-center.html"><svg><use href="#i-message"/></svg><span>Message Center</span></a>
 
       <div class="nav-group" data-nav-group="offers">
         <button class="nav-item nav-group-toggle" type="button" aria-expanded="false"><svg><use href="#i-offer"/></svg><span>Angebote</span><span class="nav-chevron">⌄</span></button>
@@ -75,7 +75,11 @@
 
       <button class="nav-item" data-view="invoices"><svg><use href="#i-invoice"/></svg><span>Honorarnoten</span></button>
       <button class="nav-item" data-view="finance" data-build10-finance-nav type="button"><svg><use href="#i-finance"/></svg><span>Buchhaltung</span></button>
-      <a class="nav-item nav-link" href="hub.html"><svg><use href="#i-knowledge"/></svg><span>Knowledge Hub</span></a>
+
+      <div class="nav-divider"></div>
+      <p class="nav-section-label">Arbeitsbereiche</p>
+      <a class="nav-item nav-link nav-workspace-link" href="message-center.html"><svg><use href="#i-message"/></svg><span>Message Center</span></a>
+      <a class="nav-item nav-link nav-workspace-link" href="hub.html"><svg><use href="#i-knowledge"/></svg><span>Knowledge Hub</span></a>
 
       <div class="nav-divider"></div>
       <p class="nav-section-label">Sicherheit & System</p>
@@ -166,7 +170,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3</strong><br><span>Practice UX Refactor: weniger kognitive Last, Klient:innen als Startpunkt und bestehende Funktionalität kontextbezogen statt permanent sichtbar.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.1</strong><br><span>Premium Shell Polish: ruhigere Navigation, klare Arbeitsbereiche und konsistente visuelle Hierarchie – ohne Funktionsverlust.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -199,5 +203,6 @@
 <script src="admin-build13-8.js?v=20260923-build13-8-6"></script>
 <script src="admin-build13-9.js?v=20260923-build14-1"></script>
 <script src="admin-build14-3.js?v=20260923-build14-3"></script>
+<script src="admin-build14-3-1.js?v=20260923-build14-3-1"></script>
 </body>
 </html>

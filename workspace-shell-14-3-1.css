@@ -1,0 +1,38 @@
+/* BUILD 14.3.1 — shared shell for Message Center + Knowledge Hub */
+:root{
+  --suite-rail:#f3eee8;
+  --suite-line:#ddd1c7;
+  --suite-ink:#3a302b;
+  --suite-muted:#8b7a70;
+}
+.suite-page{margin:0!important;padding:0!important}
+.suite-rail{
+  position:fixed;inset:0 auto 0 0;width:220px;z-index:100;
+  background:linear-gradient(180deg,#f6f1ec 0%,#eee6df 100%);
+  border-right:1px solid var(--suite-line);padding:18px 12px;
+  display:flex;flex-direction:column;color:var(--suite-ink);
+  box-shadow:8px 0 28px rgba(64,46,38,.035)
+}
+.suite-brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px;border-bottom:1px solid var(--suite-line)}
+.suite-brand img{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #e4d8cf;padding:5px;object-fit:contain}
+.suite-brand strong,.suite-brand span{display:block}.suite-brand strong{font-size:14px}.suite-brand span{font-size:10px;color:var(--suite-muted);margin-top:2px}
+.suite-label{margin:18px 10px 6px;font-size:9px;font-weight:850;letter-spacing:.15em;text-transform:uppercase;color:#9b897f}
+.suite-nav{display:grid;gap:4px}
+.suite-nav a{display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:10px;color:#62554e;text-decoration:none;font-weight:760;font-size:13px}
+.suite-nav a:hover{background:rgba(184,95,67,.075);color:#342b27}
+.suite-nav a.current{background:#fffaf6;color:#342b27;box-shadow:inset 3px 0 0 var(--suite-accent),0 4px 16px rgba(76,51,41,.045)}
+.suite-nav .suite-icon{width:20px;text-align:center;opacity:.72}
+.suite-nav a.current .suite-icon{opacity:1}
+.suite-separator{height:1px;background:var(--suite-line);margin:15px 7px}
+.suite-note{margin-top:auto;padding:10px 10px 4px;font-size:10px;line-height:1.45;color:var(--suite-muted)}
+.suite-main{margin-left:220px;min-height:100vh;background:var(--suite-bg)}
+.suite-message-page{--suite-accent:#5f8171;--suite-bg:#f4f8f5}
+.suite-knowledge-page{--suite-accent:#b38a45;--suite-bg:#fbf7ee}
+.suite-message-page .mc-strip,.suite-knowledge-page .hub-security-strip{background:#403833!important;color:#f7eee8!important}
+.suite-message-page .mc-strip nav,.suite-knowledge-page .hub-security-strip nav{display:none!important}
+.suite-message-page .mc-head{background:linear-gradient(180deg,#f7fbf8,#f3f7f4)}
+.suite-knowledge-page .topbar{background:rgba(253,249,241,.97)}
+.suite-knowledge-page .hub-layout{background:#fbf7ee}
+@media(max-width:900px){
+  .suite-rail{position:static;width:auto;height:auto;display:block;padding:8px 10px}.suite-brand{display:none}.suite-label,.suite-note{display:none}.suite-nav{display:flex;overflow:auto}.suite-nav a{white-space:nowrap;padding:8px 10px}.suite-separator{display:none}.suite-main{margin-left:0}.suite-message-page .mc-strip,.suite-knowledge-page .hub-security-strip{position:static}
+}

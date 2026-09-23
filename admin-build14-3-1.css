@@ -1,0 +1,85 @@
+/* BUILD 14.3.1 — Premium shell polish
+   Visual-only / information-architecture refinement. No data or Vault logic changes. */
+:root{
+  --ux-sidebar:#f3eee8;
+  --ux-sidebar-soft:#ebe3dc;
+  --ux-sidebar-text:#3a302b;
+  --ux-sidebar-muted:#8c7b71;
+  --ux-sidebar-line:#ddd1c7;
+  --ux-accent-soft:#f4dfd5;
+  --ux-accent-strong:#b85f43;
+}
+
+/* Lighter, quieter navigation shell. */
+.sidebar{
+  background:linear-gradient(180deg,#f6f1ec 0%,#eee6df 100%);
+  color:var(--ux-sidebar-text);
+  border-right:1px solid var(--ux-sidebar-line);
+  box-shadow:8px 0 28px rgba(64,46,38,.035);
+}
+.side-brand{border-bottom:1px solid var(--ux-sidebar-line)}
+.side-brand img{background:#fff;border-color:#e4d8cf}
+.side-brand strong{color:#342b27}
+.side-brand span{color:#8c7b71}
+.nav-section-label{color:#9b897f}
+.nav-item{color:#62554e}
+.nav-item:hover{background:rgba(184,95,67,.075);color:#342b27}
+.nav-item.active{
+  background:#fffaf6;
+  color:#3a2d28;
+  box-shadow:inset 3px 0 0 var(--ux-accent-strong),0 4px 16px rgba(76,51,41,.045);
+}
+.nav-item svg{opacity:.78}
+.nav-item.active svg{opacity:1}
+.nav-item em{background:#e7ddd5;border-color:#d9cbc1;color:#68574e}
+.nav-divider{height:1px;background:var(--ux-sidebar-line);margin:15px 7px}
+.nav-subitems{border-left:1px solid #d8c9be}
+.nav-subitem{color:#76665d}
+.nav-subitem:hover{background:#f8eee7;color:#3f3029}
+.nav-group:has(.nav-subitem.active)>.nav-group-toggle{color:#3a2d28;background:#f3e6de}
+.nav-chevron{color:#8c7468}
+.sidebar-bottom{border-top:1px solid var(--ux-sidebar-line)}
+.admin-pill{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:8px 6px!important;
+}
+.admin-pill .avatar{background:#eadacf;color:#7a4d3d;border:1px solid #dcc8bb}
+.admin-pill strong{color:#3d312c}
+.admin-pill span,.side-link{color:#8a796f}
+.side-link:hover{color:#4b3932;background:#f6ebe4}
+
+/* Stand-alone workspaces are visibly separated from the core practice views. */
+.nav-workspace-link{position:relative}
+.nav-workspace-link:after{content:'↗';margin-left:auto;font-size:11px;opacity:.45}
+
+/* Offers remain nested, but no longer look like a bright foreign card. */
+.nav-group.open{background:rgba(255,255,255,.34);border-radius:12px;padding:2px 0 5px}
+.nav-group.open>.nav-group-toggle{background:transparent}
+.nav-group.open .nav-subitem{background:transparent}
+.nav-group.open .nav-subitem.active{background:#fff8f3}
+
+/* Main working surface: slightly softer and more premium. */
+.workspace{background:linear-gradient(180deg,#fcfaf8 0,#f7f3ef 360px)}
+.panel,.stat-card{box-shadow:0 12px 34px rgba(62,45,37,.045)}
+
+/* Familiar action semantics: starting a session is green. */
+[data-client-flow-email].btn{
+  background:#5f875f!important;
+  border-color:#5f875f!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(67,110,70,.16);
+}
+[data-client-flow-email].btn:hover{background:#527752!important;border-color:#527752!important}
+
+/* Less blocky user area on compact screens too. */
+@media(max-width:1050px){
+  .sidebar{background:#f3ede7}
+  .nav-workspace-link:after{display:none}
+}
+@media(max-width:760px){
+  .sidebar{background:rgba(246,241,236,.98)}
+  .nav-item{color:#62554e}
+  .nav-item.active{color:#342b27}
+}
