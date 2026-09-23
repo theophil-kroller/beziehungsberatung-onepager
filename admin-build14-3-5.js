@@ -75,6 +75,15 @@
     host.querySelectorAll('[data-b1435-target]').forEach(x=>{const go=()=>focusDocumentation(x.dataset.b1435Target);x.onclick=go;x.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}});
   }
 
+
+  function simplifyOverviewQuickActions(){
+    const content=$('#recordContent');
+    if(!content)return;
+    // Briefing already has its own primary record tab; Honorare live in the Documentation rail.
+    content.querySelector('.client-command-actions [data-client-tab="case-summary"]')?.remove();
+    content.querySelector('.client-command-actions [data-client-tab="invoices"]')?.remove();
+  }
+
   function secondaryActions(){
     const old=$('.client-overview-more');if(!old||old.parentElement.querySelector('.client-secondary-actions'))return;
     old.insertAdjacentHTML('beforebegin',`<details class="client-secondary-actions"><summary>Weitere Aktionen</summary><div class="client-secondary-action-grid"><button class="mini" data-client-tab="bookings">Terminverwaltung</button><button class="mini" data-client-tab="invoices">Honorarnoten / Zahlung</button><button class="mini" data-client-tab="packages">Alle Packages</button><button class="mini offer" data-client-tab="sales">Angebot buchen</button><button class="mini" data-client-tab="journey">Journey</button></div></details>`);
@@ -84,6 +93,7 @@
     if(overviewBusy)return;
     const c=ctx(),content=$('#recordContent');if(!c||!content||!content.querySelector('.client-command-bar'))return;
     secondaryActions();
+    simplifyOverviewQuickActions();
     const briefingBtn=content.querySelector('[data-client-tab="case-summary"]');if(briefingBtn)briefingBtn.textContent='Briefing';
     if(content.querySelector('.b1435-overview-path'))return;
     const anchor=content.querySelector('.client-command-bar');if(!anchor)return;

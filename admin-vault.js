@@ -116,13 +116,27 @@
     const m=$('#vaultRecordMount');if(!m)return;
     m.querySelectorAll('[data-vault-doc-section]').forEach(btn=>btn.addEventListener('click',()=>{
       const section=btn.dataset.vaultDocSection;
-      if(section==='finance'){
-        document.querySelector('[data-record-tab="invoices"]')?.click();
-        return;
-      }
       m.querySelectorAll('[data-vault-doc-section]').forEach(x=>x.classList.toggle('active',x===btn));
       m.querySelectorAll('[data-vault-doc-panel]').forEach(x=>x.classList.toggle('active',x.dataset.vaultDocPanel===section));
     }));
+  }
+
+  function financeMoney(cents,currency='EUR'){
+    const value=Number(cents||0)/100;
+    try{return new Intl.NumberFormat('de-AT',{style:'currency',currency:currency||'EUR'}).format(value)}catch(_){return value.toFixed(2)+' €'}
+  }
+  function financeDate(x){return x?fmtDate(x):'—'}
+  function financeStatusLabel(status){
+    return ({paid:'Bezahlt',open:'Offen',overdue:'Überfällig',cancelled:'Storniert',canceled:'Storniert'}[String(status||'').toLowerCase()]||status||'—');
+  }
+  function renderFinancePanel(){
+    const host=$('#vaultFinancePanel');if(!host)return;
+    const c=window.BDClientRecordContext?.(),rows=(c?.clientData?.invoices||[]).slice().sort((a,b)=>new Date(b.createdAt||b.issueDate||b.dueDate||0)-new Date(a.createdAt||a.issueDate||a.dueDate||0));
+    const open=rows.filter(x=>['open','overdue'].includes(String(x.status||'').toLowerCase()));
+    const paid=rows.filter(x=>String(x.status||'').toLowerCase()==='paid');
+    const openSum=open.reduce((n,x)=>n+Number(x.totalCents||0),0),paidSum=paid.reduce((n,x)=>n+Number(x.totalCents||0),0);
+    const body=rows.length?`<div class="vault-finance-list"><div class="vault-finance-row head"><span>Honorarnote</span><span>Betrag</span><span>Fällig</span><span>Status</span></div>${rows.map(x=>{const st=String(x.status||'').toLowerCase();return `<div class="vault-finance-row"><strong>${esc(x.invoiceNumber||'Honorarnote')}</strong><span>${esc(financeMoney(x.totalCents,x.currency))}</span><span>${esc(financeDate(x.dueDate))}</span><span class="vault-finance-status ${esc(st)}">${esc(financeStatusLabel(st))}</span></div>`}).join('')}</div>`:'<div class="vault-finance-empty">Für diese Klient:in sind noch keine Honorarnoten hinterlegt.</div>';
+    host.innerHTML=`<div class="vault-finance-summary"><div class="vault-finance-stats"><div class="vault-finance-stat"><span>Offen</span><strong>${esc(financeMoney(openSum,rows[0]?.currency))}</strong></div><div class="vault-finance-stat"><span>Bezahlt</span><strong>${esc(financeMoney(paidSum,rows[0]?.currency))}</strong></div><div class="vault-finance-stat"><span>Honorarnoten</span><strong>${rows.length}</strong></div></div>${body}<p class="vault-finance-note">Diese Ansicht ist bewusst kompakt. Vollständige Verwaltung, PDF und Zahlungserfassung bleiben im globalen Bereich „Honorarnoten“.</p></div>`;
   }
 
   function renderClient(){
@@ -154,8 +168,13 @@
           <section class="vault-doc-panel vault-card" data-vault-doc-panel="artifacts">
             <div class="vault-section-head"><div><p class="eyebrow">Materialien</p><h3>Artefakte &amp; Dateien</h3></div><label class="mini edit vault-file">+ Foto / Datei<input id="vaultArtifactInput" type="file" accept="image/*,.pdf"></label></div><div class="vault-artifact-tools"><label>Zuordnen zu <select id="vaultArtifactSession"></select></label></div><p class="micro muted">Fotos von Aufstellungen, Worksheets oder andere fallbezogene Artefakte. Max. 12 MB pro Datei.</p><div id="vaultArtifacts" class="vault-artifacts"></div><details class="vault-audit-disclosure"><summary>Lokalen Audit Trail anzeigen</summary><div id="vaultAudit"></div></details>
           </section>
+          <section class="vault-doc-panel vault-card" data-vault-doc-panel="finance">
+            <div class="vault-section-head"><div><p class="eyebrow">Finanzen zur Klientenakte</p><h3>Honorarnoten &amp; Zahlungen</h3><p class="micro muted">Schneller Überblick, ohne die Dokumentationsnavigation zu verlassen.</p></div></div>
+            <div id="vaultFinancePanel"></div>
+          </section>
         </div>
       </div>`;
+    renderFinancePanel();
     $('#vaultDictateCase').onclick=()=>openDictation('case');$('#vaultOpenOffline').onclick=()=>window.open(VAULT+'/offline','_blank','noopener');$('#vaultSaveOverview').onclick=saveOverview;$('#vaultAddGoal').onclick=()=>openGoalEditor();$('#vaultAddSession').onclick=()=>openSessionEditor();$('#vaultArtifactInput').onchange=uploadArtifact;
     const artifactSelect=$('#vaultArtifactSession');if(artifactSelect){const sessions=x.sessions||[];artifactSelect.innerHTML='<option value="">Keine Sitzung</option>'+sessions.map(s=>`<option value="${esc(s.id)}">${esc(fmtDate(s.date))} · ${esc(s.focus||'Sitzung')}</option>`).join('')}
     bindWorkspace();renderGoals();renderCaseNotes();renderSessions();renderArtifacts();renderAudit();
