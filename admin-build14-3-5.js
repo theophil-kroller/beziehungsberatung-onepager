@@ -40,14 +40,27 @@
     return nodes;
   }
   function updateRecordHeaderMeta(v,c){
-    const head=document.querySelector('#clientDialog .record-head>div:first-child');if(!head)return;
+    const recordHead=document.querySelector('#clientDialog .record-head');
+    const identity=recordHead?.querySelector(':scope>div:first-child');
+    if(!recordHead||!identity)return;
     const md=v?.client?.masterData||{},address=[md.street,[md.postalCode,md.city].filter(Boolean).join(' '),md.country].filter(Boolean).join(', ');
-    let host=document.querySelector('#recordMasterMeta');if(!host){host=document.createElement('div');host.id='recordMasterMeta';host.className='record-master-inline';head.append(host)}
-    const bits=[];
-    if(md.phone)bits.push(`<span title="Telefon">☎ ${esc(md.phone)}</span>`);
-    if(md.birthDate)bits.push(`<span title="Geburtsdatum">◷ ${esc(fmt(md.birthDate))}</span>`);
-    if(address)bits.push(`<span title="Adresse">⌂ ${esc(address)}</span>`);
-    host.innerHTML=`${bits.length?bits.join(''):'<span class="muted">Stammdaten noch unvollständig</span>'}<button type="button" class="record-master-edit" data-b14356-master-edit>Stammdaten bearbeiten</button>`;
+    let host=document.querySelector('#recordMasterMeta');
+    if(!host){
+      host=document.createElement('section');
+      host.id='recordMasterMeta';
+      host.className='record-master-top-card';
+    }
+    const rename=recordHead.querySelector('#recordRenameBtn');
+    const status=recordHead.querySelector('.record-status');
+    const before=rename||status||null;
+    if(host.parentElement!==recordHead)recordHead.insertBefore(host,before);
+    else if(before&&host.nextSibling!==before)recordHead.insertBefore(host,before);
+    const rows=[
+      ['☎','Telefon',md.phone||'—'],
+      ['◷','Geburtsdatum',md.birthDate?fmt(md.birthDate):'—'],
+      ['⌂','Adresse',address||'—']
+    ];
+    host.innerHTML=`<div class="record-master-top-head"><span>Stammdaten</span><button type="button" class="record-master-edit" data-b14356-master-edit>Bearbeiten</button></div><div class="record-master-top-grid">${rows.map(([i,l,val])=>`<div><span class="record-master-top-icon" aria-hidden="true">${i}</span><span><small>${esc(l)}</small><strong>${esc(val)}</strong></span></div>`).join('')}</div>`;
     host.querySelector('[data-b14356-master-edit]')?.addEventListener('click',()=>{clickTab('documentation');setTimeout(()=>document.dispatchEvent(new CustomEvent('bd:edit-master-data')),420)});
   }
 
@@ -151,17 +164,56 @@
 
   function enhanceBriefing(){
     const shell=$('.b139-shell');if(!shell)return;
-    document.body.classList.add('b1435-briefing-mode');
-    const intro=shell.querySelector('.b139-intro');if(intro){
-      const h=intro.querySelector('h3');if(h)h.textContent='Briefing';
-      const p=intro.querySelector('p:not(.eyebrow)');if(p)p.textContent='KI-gestützte Fallzusammenfassung und Vorbereitung für den nächsten fachlichen Schritt.';
-      const eyebrow=intro.querySelector('.eyebrow');if(eyebrow)eyebrow.textContent='KLIENTENAKTE · LOKALE KI';
+    document.body.classList.add('b1435-briefing-mode','b14358-briefing-mode');
+
+    const intro=shell.querySelector('.b139-intro');
+    if(intro){
+      intro.classList.add('b14358-briefing-toolbar');
+      const copy=intro.querySelector(':scope>div:first-child');
+      if(copy)copy.remove();
+      const actions=intro.querySelector('.b139-actions');
+      if(actions){
+        actions.querySelector('[data-b1434-doc]')?.remove();
+        actions.querySelector('#b141AddEvent')?.remove();
+        const generate=actions.querySelector('#b139Generate');
+        if(generate){generate.classList.remove('primary');generate.classList.add('secondary','b14358-generate');generate.textContent=generate.textContent.includes('erstellen')?'Fallbriefing erstellen':'Fallbriefing aktualisieren'}
+        const reload=actions.querySelector('#b139Reload');
+        if(reload)reload.classList.add('b14358-native-reload');
+        if(!actions.querySelector('.b14358-more')){
+          const more=document.createElement('details');more.className='b14358-more';
+          more.innerHTML='<summary title="Weitere Optionen" aria-label="Weitere Optionen">⋯</summary><div><button type="button" data-b14358-reload>↻ Neu laden</button></div>';
+          actions.append(more);
+          more.querySelector('[data-b14358-reload]')?.addEventListener('click',()=>{reload?.click();more.removeAttribute('open')});
+        }
+      }
     }
-    const briefTitle=shell.querySelector('.b139-brief .b139-section-title h3');if(briefTitle)briefTitle.textContent='Fallzusammenfassung';
+
+    shell.querySelector('.b139-warning')?.remove();
+    shell.querySelector('.b139-timeline-card')?.remove();
+
+    const brief=shell.querySelector('.b139-brief');
+    if(brief){
+      brief.classList.add('b14358-brief');
+      const sectionTitle=brief.querySelector('.b139-section-title');
+      if(sectionTitle){
+        const eyebrow=sectionTitle.querySelector('.eyebrow');if(eyebrow)eyebrow.textContent='AKTUELLER STAND';
+        const h=sectionTitle.querySelector('h3');if(h)h.textContent='Fallbriefing';
+      }
+      const sources=brief.querySelector('.b139-sources');
+      if(sources&&!sources.closest('.b14358-sources-disclosure')){
+        const details=document.createElement('details');details.className='b14358-sources-disclosure';
+        details.innerHTML='<summary>Verwendete Quellen anzeigen</summary>';
+        sources.parentNode.insertBefore(details,sources);details.append(sources);
+      }
+      if(intro&&brief.previousElementSibling!==intro)intro.insertAdjacentElement('afterend',brief);
+    }
+
+    const prep=shell.querySelector('.b141-prep');
+    if(prep){prep.classList.add('b14358-prep');if(brief&&prep.previousElementSibling!==brief)brief.insertAdjacentElement('afterend',prep)}
   }
   function leaveBriefingIfNeeded(){
     const active=document.querySelector('.record-tabs button.active')?.dataset.recordTab;
-    if(active!=='case-summary')document.body.classList.remove('b1435-briefing-mode');
+    if(active!=='case-summary')document.body.classList.remove('b1435-briefing-mode','b14358-briefing-mode');
   }
 
   function run(){
