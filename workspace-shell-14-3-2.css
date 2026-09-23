@@ -1,0 +1,14 @@
+/* BUILD 14.3.2 — visual continuity for standalone workspaces. */
+.suite-rail{padding:0 12px 18px}
+.suite-brand{
+  min-height:52px;margin:0 -12px 16px;padding:7px 14px;
+  border-bottom:0;background:#403833;color:#f8eee8
+}
+.suite-brand strong{color:#fff8f2}.suite-brand span{color:#c9bbb2}.suite-brand img{width:36px;height:36px}
+.suite-label{margin-top:14px}
+.suite-note{background:transparent}
+/* The dark protected-access bar now reads as one continuous top rail across the application. */
+.suite-message-page .mc-strip,.suite-knowledge-page .hub-security-strip{height:52px;min-height:52px}
+@media(max-width:900px){
+  .suite-rail{padding:8px 10px}.suite-brand{display:none}
+}

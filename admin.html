@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="admin-build14-2.css?v=20260923-build14-2">
 <link rel="stylesheet" href="admin-build14-3.css?v=20260923-build14-3">
 <link rel="stylesheet" href="admin-build14-3-1.css?v=20260923-build14-3-1">
+<link rel="stylesheet" href="admin-build14-3-2.css?v=20260923-build14-3-2">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -113,6 +114,17 @@
         <article class="stat-card"><span>Offene Forderungen</span><strong id="statOpen">—</strong><small id="statOverdue">—</small><small id="statTest" class="sub-stat">—</small></article>
       </div>
 
+      <section class="dashboard-weather" id="dashboardWeather" aria-label="3-Tage-Wetter">
+        <div class="weather-location"><span class="weather-pin">⌖</span><div><strong id="weatherLocationLabel">Graz, Österreich</strong><small>3-Tage-Wetter</small></div></div>
+        <div class="weather-days" id="weatherDays"><span class="weather-loading">Wetter wird geladen …</span></div>
+        <button class="icon-action weather-edit" id="weatherEditBtn" type="button" title="Wetter-Standort ändern" aria-label="Wetter-Standort ändern">⚙</button>
+        <form class="weather-location-form hidden" id="weatherLocationForm">
+          <input id="weatherLocationInput" type="text" value="Graz, Österreich" placeholder="Ort, z. B. Graz, Österreich">
+          <button class="mini edit" type="submit">Übernehmen</button>
+          <button class="mini" id="weatherLocationCancel" type="button">Abbrechen</button>
+        </form>
+      </section>
+
       <div class="dash-grid dash-grid-primary">
         <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute im Blick</p><h2>Was noch offen ist</h2><p class="muted">Nur Aufgaben, Nachrichten und Vorgänge, bei denen du wirklich etwas tun solltest.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
         <section class="panel dashboard-focus"><div class="panel-head"><div><p class="eyebrow">Schnellzugriff</p><h2>Klient:innen im Mittelpunkt</h2><p class="muted">Akte öffnen, Sitzung vorbereiten oder einen laufenden Fall fortsetzen.</p></div></div><div class="dashboard-focus-actions"><button class="btn primary" data-jump="clients">Klient:in öffnen</button><button class="btn ghost" data-jump="bookings">Terminverwaltung</button></div><p class="micro muted">Session Flow, Journey, Packages und Zahlungen bleiben vollständig erhalten – sie erscheinen dort, wo sie gebraucht werden.</p></section>
@@ -129,7 +141,7 @@
     </section>
 
     <section class="view" id="view-clients">
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Klient:innen</p><h2>Klientenakten</h2><p class="muted">Der zentrale Startpunkt für Termine, Sitzungen, Timeline, Angebote und Honorarnoten.</p></div><div class="toolbar"><input id="clientSearch" type="search" placeholder="Name oder E-Mail"><select id="clientStatusFilter"><option value="all">Alle Status</option><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></div></div><div id="clientsTable"></div></section>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Klient:innen</p><h2>Klientenakten</h2><p class="muted">Der zentrale Startpunkt für Termine, Sitzungen, Timeline, Angebote und Honorarnoten.</p></div><div class="toolbar client-toolbar"><input id="clientSearch" type="search" placeholder="Name, E-Mail oder Klientencode"><button class="btn ghost client-privacy-toggle" id="clientPrivacyToggle" type="button" aria-pressed="true" title="Klientendaten ein-/ausblenden">◉ Daten anzeigen</button><select id="clientStatusFilter"><option value="all">Alle Status</option><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></div></div><div id="clientsTable"></div></section>
     </section>
 
     <section class="view" id="view-bookings">
@@ -138,7 +150,22 @@
 
     <section class="view flow-manager-view" id="view-flow"><section class="panel flow-manager-shell"><div class="panel-head"><div><p class="eyebrow">Session Flow Manager</p><h2>Ein klarer Ablauf rund um jede Sitzung.</h2><p class="muted">Vorbereiten → Buchung &amp; Angebote → Nachbereiten. Offene Schritte bleiben sichtbar.</p></div><button class="btn ghost" id="flowRefresh" type="button">Aktualisieren</button></div><div class="flow-summary-grid"><article class="flow-mini-stat"><span>Vorbereitung offen</span><strong id="flowPrepCount">0</strong></article><article class="flow-mini-stat"><span>Nachbereitung offen</span><strong id="flowPostCount">0</strong></article><article class="flow-mini-stat"><span>Geparkt</span><strong id="flowParkCount">0</strong></article></div><div class="flow-board" style="margin-top:18px"><section><div class="panel-head"><div><p class="eyebrow">Jetzt relevant</p><h3>Offene Session Flows</h3></div></div><div id="flowMainList" class="flow-list"><div class="empty">Session Flow wird geladen …</div></div></section></div></section></section>
 
-    <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Buchhaltung</p><h2>Einnahmen, Forderungen und Zahlungswege.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Honorarnoten öffnen</button></div><div class="finance-stat-grid"><article><span>Eingegangen diesen Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div><div class="finance-grid"><section class="finance-box"><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section></section></section>
+    <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Buchhaltung</p><h2>Einnahmen, Forderungen und Zahlungswege.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt. Grafiken nutzen reale Daten – oder klar gekennzeichnete Sandbox/Testwerte, solange noch zu wenig Historie vorhanden ist.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Honorarnoten öffnen</button></div><div class="finance-stat-grid"><article><span>Eingegangen diesen Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div>
+      <div class="finance-visual-grid">
+        <section class="finance-box finance-chart-box">
+          <div class="finance-visual-head"><div><p class="eyebrow">Monatsverlauf</p><h3>Einnahmen & Fixkosten</h3></div><span class="finance-demo-badge" id="financeChartMode">—</span></div>
+          <div id="financeMonthlyChart" class="finance-monthly-chart"></div>
+          <div class="finance-chart-legend"><span><i class="legend-income"></i>Einnahmen</span><span><i class="legend-fixed"></i>berücksichtigte Fixkosten</span></div>
+        </section>
+        <section class="finance-box finance-fixed-box">
+          <p class="eyebrow">Planungswert</p><h3>Monatliche Fixkosten</h3>
+          <label class="finance-fixed-toggle"><input id="financeFixedEnabled" type="checkbox"><span>Fixkosten in Übersicht berücksichtigen</span></label>
+          <label class="finance-fixed-input">Betrag pro Monat<div><span>€</span><input id="financeFixedMonthly" type="number" min="0" step="10" value="150"></div></label>
+          <p class="micro muted">Startwert: 150 € als realistischer Demo-Wert für etwa einen halben Praxistag/Woche. Frei änderbar; nur lokal im Browser gespeichert.</p>
+          <div class="finance-fixed-result"><span>Nach Fixkosten im aktuellen Monat</span><strong id="financeAfterFixed">—</strong></div>
+        </section>
+      </div>
+      <div class="finance-grid"><section class="finance-box finance-payment-mix"><div class="finance-visual-head"><div><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3></div><div id="financePaymentDonut" class="finance-donut" aria-label="Verteilung der Zahlungswege"><span>—</span></div></div><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section></section></section>
 
     <section class="view" id="view-packages">
       <div id="packageCatalogApp"></div>
@@ -170,7 +197,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.1</strong><br><span>Premium Shell Polish: ruhigere Navigation, klare Arbeitsbereiche und konsistente visuelle Hierarchie – ohne Funktionsverlust.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.2</strong><br><span>Dashboard- und Buchhaltungs-Polish: 3-Tage-Wetter, visuelle Finanzübersicht, optionale Fixkosten sowie datensparsame Klientenliste.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -204,5 +231,6 @@
 <script src="admin-build13-9.js?v=20260923-build14-1"></script>
 <script src="admin-build14-3.js?v=20260923-build14-3"></script>
 <script src="admin-build14-3-1.js?v=20260923-build14-3-1"></script>
+<script src="admin-build14-3-2.js?v=20260923-build14-3-2"></script>
 </body>
 </html>
