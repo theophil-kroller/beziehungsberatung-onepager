@@ -6,6 +6,7 @@
   let health={ok:false,setup:false,unlocked:false};
   let current={email:'',name:'',payload:null};
   let latestCloudSnapshot=null;
+  let pendingMasterEdit=false;
   const $=s=>document.querySelector(s);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=x=>x?new Intl.DateTimeFormat('de-AT',{dateStyle:'medium',timeStyle:'short'}).format(new Date(x)):'—';
@@ -65,7 +66,7 @@
     current.email=email;current.name=name;
     const mount=$('#vaultRecordMount');if(!mount)return;
     await checkHealth();if(!health.unlocked){mount.innerHTML=vaultLockedHtml();$('#recordVaultUnlock').onclick=async()=>{if(await openAuth())loadClient(email,name)};return}
-    try{let x=await request('/client?ref='+encodeURIComponent(email));if(!x.exists){await post('/client',{ref:email,displayName:name,overview:'',currentFocus:''});x=await request('/client?ref='+encodeURIComponent(email))}current.payload=x;renderClient()}catch(e){mount.innerHTML=`<div class="vault-empty">${esc(e.message)}</div>`}
+    try{let x=await request('/client?ref='+encodeURIComponent(email));if(!x.exists){await post('/client',{ref:email,displayName:name,overview:'',currentFocus:''});x=await request('/client?ref='+encodeURIComponent(email))}current.payload=x;renderClient();if(pendingMasterEdit){pendingMasterEdit=false;openMasterDialog()}}catch(e){mount.innerHTML=`<div class="vault-empty">${esc(e.message)}</div>`}
   }
 
   async function openDictation(origin='case',session=null){
@@ -78,26 +79,90 @@
     }catch(e){if(popup)popup.close();alert(e.message)}
   }
 
+  function ensureMasterDialog(){
+    if($('#vaultMasterDialog'))return;
+    document.body.insertAdjacentHTML('beforeend',`<dialog id="vaultMasterDialog" class="vault-dialog"><div class="dialog-shell"><button class="dialog-x" id="vaultMasterClose" type="button">×</button><p class="eyebrow">Klientenakte · Stammdaten</p><h2>Kontakt &amp; Basisdaten</h2><p class="muted">Diese Stammdaten werden ausschließlich lokal im Secure Practice Vault gespeichert.</p><form id="vaultMasterForm" class="edit-form"><div class="vault-master-grid"><label>Name<input id="vaultMasterName" disabled></label><label>E-Mail<input id="vaultMasterEmail" disabled></label><label>Geburtsdatum<input id="vaultMasterBirth" type="date"></label><label>Telefon<input id="vaultMasterPhone" type="tel" placeholder="+43 …"></label><label class="wide">Straße / Hausnummer<input id="vaultMasterStreet"></label><label>PLZ<input id="vaultMasterPostal"></label><label>Ort<input id="vaultMasterCity"></label><label>Land<input id="vaultMasterCountry"></label></div><div class="dialog-actions"><button class="btn ghost" id="vaultMasterCancel" type="button">Abbrechen</button><button class="btn primary" type="submit">Stammdaten speichern</button></div></form></div></dialog>`);
+    $('#vaultMasterClose').onclick=$('#vaultMasterCancel').onclick=()=>$('#vaultMasterDialog').close();
+    $('#vaultMasterForm').onsubmit=async e=>{e.preventDefault();await saveMasterData()};
+  }
+  function openMasterDialog(){
+    ensureMasterDialog();
+    const c=current.payload?.client||{},md=c.masterData||{};
+    $('#vaultMasterName').value=current.name||c.displayName||'';
+    $('#vaultMasterEmail').value=current.email||'';
+    $('#vaultMasterBirth').value=md.birthDate||'';
+    $('#vaultMasterPhone').value=md.phone||'';
+    $('#vaultMasterStreet').value=md.street||'';
+    $('#vaultMasterPostal').value=md.postalCode||'';
+    $('#vaultMasterCity').value=md.city||'';
+    $('#vaultMasterCountry').value=md.country||'Österreich';
+    $('#vaultMasterDialog').showModal();
+  }
+  function updateHeaderMaster(){
+    const head=document.querySelector('#clientDialog .record-head>div:first-child');
+    if(!head||!current.payload)return;
+    const c=current.payload.client||{},md=c.masterData||{};
+    let host=$('#recordMasterMeta');
+    if(!host){host=document.createElement('div');host.id='recordMasterMeta';host.className='record-master-inline';head.append(host)}
+    const addr=[md.street,[md.postalCode,md.city].filter(Boolean).join(' '),md.country].filter(Boolean).join(', ');
+    const bits=[];
+    if(md.phone)bits.push(`<span title="Telefon">☎ ${esc(md.phone)}</span>`);
+    if(md.birthDate)bits.push(`<span title="Geburtsdatum">◷ ${esc(fmtDate(md.birthDate))}</span>`);
+    if(addr)bits.push(`<span title="Adresse">⌂ ${esc(addr)}</span>`);
+    host.innerHTML=`${bits.length?bits.join(''):'<span class="muted">Stammdaten noch unvollständig</span>'}<button type="button" class="record-master-edit" data-vault-master-edit>Stammdaten bearbeiten</button>`;
+    host.querySelector('[data-vault-master-edit]')?.addEventListener('click',openMasterDialog);
+  }
+  function bindWorkspace(){
+    const m=$('#vaultRecordMount');if(!m)return;
+    m.querySelectorAll('[data-vault-doc-section]').forEach(btn=>btn.addEventListener('click',()=>{
+      const section=btn.dataset.vaultDocSection;
+      if(section==='finance'){
+        document.querySelector('[data-record-tab="invoices"]')?.click();
+        return;
+      }
+      m.querySelectorAll('[data-vault-doc-section]').forEach(x=>x.classList.toggle('active',x===btn));
+      m.querySelectorAll('[data-vault-doc-panel]').forEach(x=>x.classList.toggle('active',x.dataset.vaultDocPanel===section));
+    }));
+  }
+
   function renderClient(){
-    const m=$('#vaultRecordMount'),x=current.payload;if(!m||!x)return;const c=x.client||{},md=c.masterData||{};
-    m.innerHTML=`<div class="vault-warning">Diese Inhalte werden ausschließlich aus dem lokalen Secure Practice Vault geladen. Sie werden nicht an Cloudflare/D1 übertragen.</div>
-      <div class="vault-form-actions"><button class="btn primary" id="vaultDictateCase" type="button">🎙 Fallnotiz diktieren</button><button class="btn ghost" id="vaultOpenOffline" type="button">Lokale Diktate öffnen</button></div>
-      <section class="vault-card vault-master-card"><div class="vault-section-head"><div><p class="eyebrow">Stammdaten</p><h3>Kontakt &amp; Basisdaten</h3></div><span class="micro muted">lokal verschlüsselt</span></div><div class="vault-master-grid"><label>Name<input value="${esc(current.name||c.displayName||'')}" disabled></label><label>E-Mail<input value="${esc(current.email||'')}" disabled></label><label>Geburtsdatum<input id="vaultMasterBirth" type="date" value="${esc(md.birthDate||'')}"></label><label>Telefon<input id="vaultMasterPhone" type="tel" value="${esc(md.phone||'')}" placeholder="+43 …"></label><label class="wide">Straße / Hausnummer<input id="vaultMasterStreet" value="${esc(md.street||'')}"></label><label>PLZ<input id="vaultMasterPostal" value="${esc(md.postalCode||'')}"></label><label>Ort<input id="vaultMasterCity" value="${esc(md.city||'')}"></label><label>Land<input id="vaultMasterCountry" value="${esc(md.country||'Österreich')}"></label></div><div class="vault-form-actions"><button class="btn secondary" id="vaultSaveMaster" type="button">Stammdaten speichern</button></div></section>
-      <div class="vault-top-grid"><section class="vault-card"><h3>Beratungsziel / Prozessüberblick</h3><textarea id="vaultOverview" placeholder="Worum geht es in der Begleitung? Was soll sich verändern?">${esc(c.overview||'')}</textarea></section><section class="vault-card"><h3>Aktueller Fokus</h3><textarea id="vaultCurrentFocus" placeholder="Worauf möchtest du in der nächsten Sitzung besonders achten?">${esc(c.currentFocus||'')}</textarea></section></div>
-      <div class="vault-form-actions"><button class="btn secondary" id="vaultSaveOverview" type="button">Überblick speichern</button></div>
-      <section class="vault-card vault-initial-card" id="vaultInitialConsultationCard"><div class="vault-section-head"><div><p class="eyebrow">Start der Begleitung</p><h3>Erstgespräch</h3></div><button class="mini edit" id="vaultAddInitial" type="button">+ Erstgespräch nachtragen</button></div><div id="vaultInitialConsultations"></div></section>
-      <section class="vault-card"><div class="vault-section-head"><h3>Ziele</h3><button class="mini edit" id="vaultAddGoal" type="button">+ Ziel</button></div><div id="vaultGoals" class="vault-goals"></div></section>
-      <section class="vault-card"><div class="vault-section-head"><h3>Diktierte Fallnotizen</h3><span class="micro muted">geprüft übernommen</span></div><div id="vaultCaseNotes" class="vault-sessions"></div></section>
-      <section class="vault-card"><div class="vault-section-head"><h3>Sitzungsverlauf</h3><button class="btn primary" id="vaultAddSession" type="button">+ Sitzung dokumentieren</button></div><div id="vaultSessions" class="vault-sessions"></div></section>
-      <section class="vault-card"><div class="vault-section-head"><h3>Artefakte</h3><label class="mini edit vault-file">+ Foto / Datei<input id="vaultArtifactInput" type="file" accept="image/*,.pdf"></label></div><div class="vault-artifact-tools"><label>Zuordnen zu <select id="vaultArtifactSession"></select></label></div><p class="micro muted">Fotos von Aufstellungen, Worksheets oder andere fallbezogene Artefakte. Max. 12 MB pro Datei.</p><div id="vaultArtifacts" class="vault-artifacts"></div></section>
-      <section class="vault-card"><div class="vault-section-head"><h3>Lokaler Audit Trail</h3><span class="micro muted">nur Dokumentation</span></div><div id="vaultAudit"></div></section>`;
-    $('#vaultDictateCase').onclick=()=>openDictation('case');$('#vaultOpenOffline').onclick=()=>window.open(VAULT+'/offline','_blank','noopener');$('#vaultSaveMaster').onclick=saveMasterData;$('#vaultSaveOverview').onclick=saveOverview;$('#vaultAddInitial').onclick=()=>openInitialConsultationEditor();$('#vaultAddGoal').onclick=()=>openGoalEditor();$('#vaultAddSession').onclick=()=>openSessionEditor();$('#vaultArtifactInput').onchange=uploadArtifact;
+    const m=$('#vaultRecordMount'),x=current.payload;if(!m||!x)return;const c=x.client||{};
+    updateHeaderMaster();
+    m.innerHTML=`<div class="vault-warning vault-warning-compact">Diese Dokumentation bleibt lokal im Secure Practice Vault und wird nicht an das Cloud-CRM übertragen.</div>
+      <div class="vault-doc-workspace">
+        <nav class="vault-doc-rail" aria-label="Dokumentationsbereiche">
+          <button class="active" type="button" data-vault-doc-section="sessions" title="Sitzungsverlauf"><span aria-hidden="true">▤</span><small>Verlauf</small></button>
+          <button type="button" data-vault-doc-section="goals" title="Beratungsziele"><span aria-hidden="true">◎</span><small>Ziele</small></button>
+          <button type="button" data-vault-doc-section="notes" title="Fallnotizen"><span aria-hidden="true">✎</span><small>Notizen</small></button>
+          <button type="button" data-vault-doc-section="artifacts" title="Artefakte und Dateien"><span aria-hidden="true">📎</span><small>Dateien</small></button>
+          <button type="button" data-vault-doc-section="finance" title="Honorarnoten und Zahlungen"><span aria-hidden="true">€</span><small>Honorare</small></button>
+        </nav>
+        <div class="vault-doc-main">
+          <section class="vault-doc-panel active vault-card vault-sessions-primary" data-vault-doc-panel="sessions">
+            <div class="vault-section-head vault-section-head-prominent"><div><p class="eyebrow">Dokumentation</p><h3>Sitzungsverlauf</h3><p class="micro muted">Links die Chronologie, rechts die vollständigen Felder der ausgewählten Sitzung.</p></div><button class="btn primary" id="vaultAddSession" type="button">+ Sitzung dokumentieren</button></div>
+            <div id="vaultSessions" class="vault-sessions"></div>
+            <div data-vault-timeline-anchor></div>
+          </section>
+          <section class="vault-doc-panel vault-card" data-vault-doc-panel="goals">
+            <div class="vault-section-head"><div><p class="eyebrow">Fachlicher Rahmen</p><h3>Beratungsziele &amp; Fokus</h3></div><button class="mini edit" id="vaultAddGoal" type="button">+ Ziel</button></div>
+            <div class="vault-top-grid"><div><label class="vault-inline-label">Beratungsziel / Prozessüberblick<textarea id="vaultOverview" placeholder="Worum geht es in der Begleitung? Was soll sich verändern?">${esc(c.overview||'')}</textarea></label></div><div><label class="vault-inline-label">Aktueller Fokus<textarea id="vaultCurrentFocus" placeholder="Worauf möchtest du in der nächsten Sitzung besonders achten?">${esc(c.currentFocus||'')}</textarea></label></div></div>
+            <div class="vault-form-actions"><button class="btn secondary" id="vaultSaveOverview" type="button">Überblick speichern</button></div><div id="vaultGoals" class="vault-goals"></div>
+          </section>
+          <section class="vault-doc-panel vault-card" data-vault-doc-panel="notes">
+            <div class="vault-section-head"><div><p class="eyebrow">Persönliche Arbeitsnotizen</p><h3>Diktierte Fallnotizen</h3></div><div class="vault-form-actions inline"><button class="btn primary" id="vaultDictateCase" type="button">🎙 Fallnotiz diktieren</button><button class="btn ghost" id="vaultOpenOffline" type="button">Lokale Diktate</button></div></div><div id="vaultCaseNotes" class="vault-sessions"></div>
+          </section>
+          <section class="vault-doc-panel vault-card" data-vault-doc-panel="artifacts">
+            <div class="vault-section-head"><div><p class="eyebrow">Materialien</p><h3>Artefakte &amp; Dateien</h3></div><label class="mini edit vault-file">+ Foto / Datei<input id="vaultArtifactInput" type="file" accept="image/*,.pdf"></label></div><div class="vault-artifact-tools"><label>Zuordnen zu <select id="vaultArtifactSession"></select></label></div><p class="micro muted">Fotos von Aufstellungen, Worksheets oder andere fallbezogene Artefakte. Max. 12 MB pro Datei.</p><div id="vaultArtifacts" class="vault-artifacts"></div><details class="vault-audit-disclosure"><summary>Lokalen Audit Trail anzeigen</summary><div id="vaultAudit"></div></details>
+          </section>
+        </div>
+      </div>`;
+    $('#vaultDictateCase').onclick=()=>openDictation('case');$('#vaultOpenOffline').onclick=()=>window.open(VAULT+'/offline','_blank','noopener');$('#vaultSaveOverview').onclick=saveOverview;$('#vaultAddGoal').onclick=()=>openGoalEditor();$('#vaultAddSession').onclick=()=>openSessionEditor();$('#vaultArtifactInput').onchange=uploadArtifact;
     const artifactSelect=$('#vaultArtifactSession');if(artifactSelect){const sessions=x.sessions||[];artifactSelect.innerHTML='<option value="">Keine Sitzung</option>'+sessions.map(s=>`<option value="${esc(s.id)}">${esc(fmtDate(s.date))} · ${esc(s.focus||'Sitzung')}</option>`).join('')}
-    renderInitialConsultations();renderGoals();renderCaseNotes();renderSessions();renderArtifacts();renderAudit();
+    bindWorkspace();renderGoals();renderCaseNotes();renderSessions();renderArtifacts();renderAudit();
   }
   async function refreshClient(){current.payload=await request('/client?ref='+encodeURIComponent(current.email));renderClient()}
   async function saveOverview(){const b=$('#vaultSaveOverview');b.disabled=true;try{await post('/client',{ref:current.email,displayName:current.name,overview:$('#vaultOverview').value,currentFocus:$('#vaultCurrentFocus').value});await refreshClient()}catch(e){alert(e.message)}finally{b.disabled=false}}
-  async function saveMasterData(){const b=$('#vaultSaveMaster');b.disabled=true;try{await post('/client/master-data',{ref:current.email,displayName:current.name,masterData:{birthDate:$('#vaultMasterBirth').value,phone:$('#vaultMasterPhone').value,street:$('#vaultMasterStreet').value,postalCode:$('#vaultMasterPostal').value,city:$('#vaultMasterCity').value,country:$('#vaultMasterCountry').value}});await refreshClient()}catch(e){alert(e.message)}finally{b.disabled=false}}
+  async function saveMasterData(){const b=$('#vaultMasterForm button[type="submit"]');if(b)b.disabled=true;try{await post('/client/master-data',{ref:current.email,displayName:current.name,masterData:{birthDate:$('#vaultMasterBirth').value,phone:$('#vaultMasterPhone').value,street:$('#vaultMasterStreet').value,postalCode:$('#vaultMasterPostal').value,city:$('#vaultMasterCity').value,country:$('#vaultMasterCountry').value}});$('#vaultMasterDialog')?.close();await refreshClient();updateHeaderMaster()}catch(e){alert(e.message)}finally{if(b)b.disabled=false}}
 
   function initialSummary(x){const bits=[x.topic,x.reason,x.mainProblem].map(v=>String(v||'').trim()).filter(Boolean);return bits[0]||'Erstgespräch dokumentiert'}
   function renderInitialConsultations(){const wrap=$('#vaultInitialConsultations');if(!wrap)return;const rows=(current.payload.initialConsultations||[]).slice().sort((a,b)=>new Date(b.date||b.updatedAt||0)-new Date(a.date||a.updatedAt||0));if(!rows.length){wrap.innerHTML='<div class="vault-empty vault-initial-missing"><strong>Erstgespräch noch nicht dokumentiert.</strong><span>Ältere Fälle wurden vor Einführung des strukturierten Erstgesprächs angelegt. Du kannst es hier jederzeit nachtragen.</span><button class="btn primary" type="button" data-vault-add-consultation>+ Erstgespräch nachtragen</button></div>';wrap.querySelector('[data-vault-add-consultation]')?.addEventListener('click',()=>openInitialConsultationEditor());return}wrap.innerHTML=rows.map((x,i)=>`<article class="vault-session vault-initial-entry"><div class="vault-session-head"><div><strong>${i?'Weiteres Erstgespräch':'Erstgespräch'} · ${esc(fmtDate(x.date||x.updatedAt))}</strong><div class="vault-note">${esc(initialSummary(x))}</div></div><div class="row-actions"><span class="vault-status-chip">${x.status==='final'?'final':'Entwurf'}</span><button class="mini" type="button" data-initial-edit="${esc(x.id)}">Öffnen</button></div></div>${x.goals?`<div class="vault-session-grid"><div><strong>Beratungsziele</strong>${esc(x.goals)}</div>${x.nextStep?`<div><strong>Nächster Schritt</strong>${esc(x.nextStep)}</div>`:''}</div>`:''}</article>`).join('');wrap.querySelectorAll('[data-initial-edit]').forEach(b=>b.onclick=()=>openInitialConsultationEditor(rows.find(x=>String(x.id)===String(b.dataset.initialEdit))))}
@@ -160,8 +225,8 @@
     const display=chronological.slice().reverse();
     const consultation=consultations[0]||null;
     const consultationItem=`<button class="vault-session-nav-item consultation${consultation?'':' missing'}" type="button" data-session-select="consultation"><span class="vault-session-nav-title">${consultation?'Erstgespräch':'Erstgespräch fehlt'}</span><span class="vault-session-nav-meta">${consultation?esc(fmtDate(consultation.date||consultation.updatedAt)):'＋ nachtragen'}</span><span class="vault-session-nav-preview">${consultation?esc(initialSummary(consultation)):'Strukturierten Start der Begleitung ergänzen'}</span></button>`;
-    const items=display.map(s=>`<button class="vault-session-nav-item" type="button" data-session-select="session:${esc(s.id)}" data-session-card="${esc(s.id)}"><span class="vault-session-nav-title">Sitzung ${numbered.get(String(s.id))}</span><span class="vault-session-nav-meta">${esc(fmtDate(s.date))}${s.durationMinutes?` · ${esc(s.durationMinutes)} Min.`:''}</span><span class="vault-session-nav-preview">${esc(sessionExcerpt(s).slice(0,120))}</span></button>`).join('');
-    wrap.innerHTML=`<div class="vault-session-split"><aside class="vault-session-index"><div class="vault-session-index-head"><strong>Sitzungen</strong><span>${sessions.length} ${sessions.length===1?'Eintrag':'Einträge'}${consultation?' + Erstgespräch':''}</span></div><div class="vault-session-index-scroll">${items||'<div class="vault-session-index-empty">Noch keine Sitzungen dokumentiert.</div>'}${consultationItem}</div></aside><section class="vault-session-detail" data-session-detail></section></div>`;
+    const items=display.map(s=>`<button class="vault-session-nav-item" type="button" data-session-select="session:${esc(s.id)}" data-session-card="${esc(s.id)}"><span class="vault-session-nav-title">Sitzung ${numbered.get(String(s.id))}</span><span class="vault-session-nav-meta">${esc(fmtDate(s.date))}${s.durationMinutes?` · ${esc(s.durationMinutes)} Min.`:''}</span><span class="vault-session-nav-preview">${esc(sessionExcerpt(s).slice(0,180))}</span></button>`).join('');
+    wrap.innerHTML=`<div class="vault-session-split"><aside class="vault-session-index"><div class="vault-session-index-scroll">${items||'<div class="vault-session-index-empty">Noch keine Sitzungen dokumentiert.</div>'}${consultationItem}</div></aside><section class="vault-session-detail" data-session-detail></section></div>`;
     bindSplitSessionActions(wrap,chronological,consultations);
   }
 
@@ -202,6 +267,7 @@
   function renderAudit(){const wrap=$('#vaultAudit'),rows=(current.payload.audit||[]).slice(0,30);wrap.innerHTML=rows.length?`<div class="timeline">${rows.map(a=>`<div class="timeline-item"><div class="timeline-mark"></div><div class="timeline-copy"><strong>${esc({client_update:'Überblick aktualisiert',goal_create:'Ziel angelegt',goal_update:'Ziel geändert',goal_delete:'Ziel gelöscht',session_create:'Sitzung dokumentiert',session_update:'Sitzung geändert',session_delete:'Sitzung gelöscht',artifact_add:'Artefakt hinzugefügt',artifact_delete:'Artefakt gelöscht'}[a.action]||a.action)}</strong><span>${esc(fmt(a.createdAt))}${a.detail?' · '+esc(a.detail):''}</span></div></div>`).join('')}</div>`:'<div class="vault-empty">Noch keine lokalen Dokumentationsaktionen.</div>'}
 
   document.addEventListener('bd:vault-record',e=>{const {email,name}=e.detail||{};if(email)loadClient(email,name||email)});
+  document.addEventListener('bd:edit-master-data',()=>{if(current.payload)openMasterDialog();else pendingMasterEdit=true});
   document.addEventListener('bd:cloud-snapshot',e=>{latestCloudSnapshot=e.detail||null;if(health.unlocked)syncOfflineSnapshot()});
   async function syncOfflineSnapshot(){
     if(!latestCloudSnapshot||!health.unlocked||!token)return false;

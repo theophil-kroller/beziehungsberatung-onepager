@@ -1,0 +1,93 @@
+/* BUILD 14.3.5.6 — documentation as the core client workspace.
+   One scroll context, compact master data in the record header, Appointmed-like local section rail,
+   and a session-first split view with substantially more room for chronology. */
+
+/* Compact the record header and keep master data where the user expects it: next to the client identity. */
+#clientDialog .record-head{gap:16px;padding-right:58px;align-items:flex-start}
+#clientDialog .record-head>div:first-child{min-width:0;flex:1}
+#clientDialog #recordEmail{margin:5px 0 0}
+.record-master-inline{display:flex;align-items:center;gap:7px 13px;flex-wrap:wrap;margin-top:9px;color:#76655d;font-size:10px;line-height:1.35}
+.record-master-inline>span{display:inline-flex;align-items:center;gap:4px;max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.record-master-inline .muted{color:#a09189}
+.record-master-edit{border:0;background:transparent;color:#a15f49;padding:2px 0;font:inherit;font-weight:850;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(161,95,73,.28);text-underline-offset:3px}
+.record-master-edit:hover{color:#7d4434}
+#clientDialog .record-tabs{margin-top:13px}
+
+/* The old large overview master-data card is intentionally retired; data is shown in the header. */
+.b14354-master-summary{display:none!important}
+.vault-master-card{display:none!important}
+
+/* Documentation is now a workspace with a narrow local rail and one content pane. */
+.vault-warning-compact{margin-bottom:10px;padding:8px 11px;background:#fffaf1;color:#846743}
+.vault-doc-workspace{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;align-items:start;min-width:0}
+.vault-doc-rail{position:sticky;top:0;display:grid;gap:7px;padding:8px;border:1px solid #e5d9d1;border-radius:15px;background:#f4efe9;z-index:2}
+.vault-doc-rail button{border:0;border-radius:11px;background:transparent;color:#7a6a62;min-height:58px;padding:7px 5px;display:grid;place-items:center;align-content:center;gap:3px;cursor:pointer;font:inherit;transition:.15s ease}
+.vault-doc-rail button>span{font-size:20px;line-height:1;font-weight:800}
+.vault-doc-rail button>small{font-size:8px;font-weight:850;letter-spacing:.02em}
+.vault-doc-rail button:hover{background:#fffaf6;color:#4d3d36}
+.vault-doc-rail button.active{background:#27353b;color:#fff;box-shadow:0 5px 14px rgba(39,53,59,.13)}
+.vault-doc-rail button[data-vault-doc-section="finance"]{margin-top:5px;border-top:1px solid #ddd0c7;border-radius:0 0 11px 11px;padding-top:12px}
+.vault-doc-main{min-width:0}
+.vault-doc-panel{display:none!important;margin:0!important}
+.vault-doc-panel.active{display:block!important}
+.vault-doc-panel.vault-card{padding:15px 16px;background:#fffdfa}
+.vault-section-head-prominent{align-items:flex-start;margin-bottom:13px}
+.vault-section-head-prominent h3{font:700 23px Georgia,"Times New Roman",serif!important;margin:2px 0 2px!important}
+.vault-section-head-prominent p{margin:0}
+.vault-inline-label{display:grid;gap:6px;font-size:10px;font-weight:850;color:#806e65;text-transform:uppercase;letter-spacing:.05em}
+.vault-form-actions.inline{margin:0;justify-content:flex-end}
+.vault-audit-disclosure{margin-top:15px;border-top:1px solid #eadfd8;padding-top:10px}
+.vault-audit-disclosure>summary{cursor:pointer;color:#7c6a61;font-size:10px;font-weight:850}
+
+/* Session chronology is the visual centre. No nested vertical scrollbars. */
+#vaultRecordMount #vaultSessions{display:block!important}
+.vault-session-split{display:grid;grid-template-columns:minmax(330px,42%) minmax(0,58%);min-height:0;border:1px solid #e3d5cb;border-radius:15px;overflow:hidden;background:#fff}
+.vault-session-index{background:#fbf7f3;border-right:1px solid #e3d5cb;min-width:0}
+.vault-session-index-head{display:none!important}
+.vault-session-index-scroll{max-height:none!important;overflow:visible!important;padding:8px}
+.vault-session-nav-item{width:100%;border:0;border-left:4px solid transparent;background:transparent;padding:14px 14px 13px;text-align:left;cursor:pointer;color:#4d3e37;display:grid;grid-template-columns:1fr;gap:4px;border-radius:11px;transition:.15s ease;margin:0 0 5px}
+.vault-session-nav-item:hover{background:#f2ebe5}
+.vault-session-nav-item.active{background:#f2dcd3;color:#3f312c;border-left-color:#bb6247;box-shadow:0 4px 13px rgba(121,62,44,.08)}
+.vault-session-nav-item.consultation{margin-top:10px;border-top:1px solid #e4d8d0;border-radius:0 0 11px 11px;padding-top:16px}
+.vault-session-nav-item.consultation.active{border-top-color:transparent;border-radius:11px}
+.vault-session-nav-item.missing{color:#8b651f;background:#fffaf0}
+.vault-session-nav-title{font-size:14px;font-weight:900;line-height:1.2}
+.vault-session-nav-meta{font-size:9.5px;font-weight:750;color:#8c786d;opacity:1;text-align:left}
+.vault-session-nav-preview{font-size:10.5px;line-height:1.48;color:#746259;opacity:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;max-width:100%}
+.vault-session-nav-item.active .vault-session-nav-meta,.vault-session-nav-item.active .vault-session-nav-preview{color:#684f46}
+.vault-session-index-empty{padding:18px;color:#9a877d;font-size:10px}
+.vault-session-detail{padding:20px 22px;min-width:0;background:#fffdfa;overflow:visible!important;max-height:none!important}
+.vault-session-detail-head{position:sticky;top:-1px;z-index:1;background:#fffdfa;display:flex;justify-content:space-between;gap:18px;align-items:flex-start;padding:0 0 13px;border-bottom:1px solid #eadfd8;margin-bottom:13px}
+.vault-session-detail-head h4{font-size:27px!important}
+.vault-session-detail-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.vault-session-fields{display:grid!important;grid-template-columns:1fr!important;gap:9px!important}
+.vault-session-field,.vault-session-field.wide{grid-column:auto!important;border:1px solid #e8dcd4;border-radius:11px;background:#fff;padding:11px 12px;min-width:0}
+.vault-session-field>span{font-size:8.5px!important}
+.vault-session-field>div{font-size:11px!important;line-height:1.55!important}
+.vault-session-detail-empty{min-height:260px}
+
+/* Full timeline stays below the session split and remains collapsed by default. */
+[data-vault-timeline-anchor]{margin-top:13px}
+.b1435-full-timeline{margin-top:0!important}
+
+/* In this build the generic introductory card would duplicate the session heading. */
+.b1435-doc-intro{display:none!important}
+
+@media(max-width:980px){
+  .vault-doc-workspace{grid-template-columns:64px minmax(0,1fr)}
+  .vault-doc-rail button{min-height:54px}
+  .vault-doc-rail button small{display:none}
+  .vault-session-split{grid-template-columns:minmax(280px,40%) minmax(0,60%)}
+}
+@media(max-width:760px){
+  .record-master-inline{font-size:9px}
+  .vault-doc-workspace{display:block}
+  .vault-doc-rail{position:static;display:flex;overflow:auto;margin-bottom:9px;padding:6px}
+  .vault-doc-rail button{min-width:54px;min-height:48px}
+  .vault-doc-rail button[data-vault-doc-section="finance"]{margin-top:0;border-top:0;padding-top:7px}
+  .vault-session-split{grid-template-columns:1fr;overflow:hidden}
+  .vault-session-index{border-right:0;border-bottom:1px solid #e3d5cb}
+  .vault-session-index-scroll{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:5px}
+  .vault-session-nav-item{margin:0}
+  .vault-session-detail-head{position:static}
+}

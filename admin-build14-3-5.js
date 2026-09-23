@@ -39,11 +39,17 @@
     nodes.push({label:'Abschluss',state:completed?'done':'open'});
     return nodes;
   }
-  function masterSummaryHtml(v,c){
-    const md=v?.client?.masterData||{},address=[md.street,[md.postalCode,md.city].filter(Boolean).join(' '),md.country].filter(Boolean).join(', '),code=c?.client?.publicId||c?.client?.id||'—';
-    return `<section class="b14354-master-summary"><div class="b14354-master-head"><div><span class="b1433-card-kicker">Stammdaten</span><h4>Kontakt &amp; Basisdaten</h4></div><button class="mini" type="button" data-b14354-master-edit>Bearbeiten</button></div><div class="b14354-master-grid"><div><span>Name</span><strong>${esc(c?.name||'—')}</strong></div><div><span>Klientencode</span><strong>${esc(code)}</strong></div><div><span>E-Mail</span><strong>${esc(c?.email||'—')}</strong></div><div><span>Telefon</span><strong>${esc(md.phone||'—')}</strong></div><div><span>Geburtsdatum</span><strong>${esc(md.birthDate?fmt(md.birthDate):'—')}</strong></div><div><span>Adresse</span><strong>${esc(address||'—')}</strong></div></div></section>`;
+  function updateRecordHeaderMeta(v,c){
+    const head=document.querySelector('#clientDialog .record-head>div:first-child');if(!head)return;
+    const md=v?.client?.masterData||{},address=[md.street,[md.postalCode,md.city].filter(Boolean).join(' '),md.country].filter(Boolean).join(', ');
+    let host=document.querySelector('#recordMasterMeta');if(!host){host=document.createElement('div');host.id='recordMasterMeta';host.className='record-master-inline';head.append(host)}
+    const bits=[];
+    if(md.phone)bits.push(`<span title="Telefon">☎ ${esc(md.phone)}</span>`);
+    if(md.birthDate)bits.push(`<span title="Geburtsdatum">◷ ${esc(fmt(md.birthDate))}</span>`);
+    if(address)bits.push(`<span title="Adresse">⌂ ${esc(address)}</span>`);
+    host.innerHTML=`${bits.length?bits.join(''):'<span class="muted">Stammdaten noch unvollständig</span>'}<button type="button" class="record-master-edit" data-b14356-master-edit>Stammdaten bearbeiten</button>`;
+    host.querySelector('[data-b14356-master-edit]')?.addEventListener('click',()=>{clickTab('documentation');setTimeout(()=>document.dispatchEvent(new CustomEvent('bd:edit-master-data')),420)});
   }
-  function bindMasterSummary(host){host.querySelector('[data-b14354-master-edit]')?.addEventListener('click',()=>{clickTab('documentation');setTimeout(()=>document.querySelector('.vault-master-card')?.scrollIntoView({behavior:'smooth',block:'start'}),320)})}
 
   function pathHtml(v,c){
     const nodes=pathModel(v,c),n=(v.sessions||[]).length;
@@ -86,7 +92,7 @@
       $('[data-b1435-unlock]')?.addEventListener('click',async()=>{await window.BDVault?.ensureUnlocked?.();document.querySelector('.b1435-overview-path')?.remove();enhanceOverview()});return;
     }
     overviewBusy=true;
-    try{const v=await window.BDVault.request('/client?ref='+encodeURIComponent(c.email));anchor.insertAdjacentHTML('afterend',masterSummaryHtml(v,c)+pathHtml(v,c));bindPath(content);bindMasterSummary(content)}catch(_){/* overview stays operational without local clinical data */}finally{overviewBusy=false}
+    try{const v=await window.BDVault.request('/client?ref='+encodeURIComponent(c.email));updateRecordHeaderMeta(v,c);anchor.insertAdjacentHTML('afterend',pathHtml(v,c));bindPath(content)}catch(_){/* overview stays operational without local clinical data */}finally{overviewBusy=false}
   }
 
   function classifyActivity(x){
@@ -123,13 +129,12 @@
   async function addDocumentationTimeline(){
     if(docBusy)return;
     const c=ctx(),mount=$('#vaultRecordMount');if(!c||!mount||!mount.querySelector('#vaultSessions')||mount.querySelector('.b1435-full-timeline'))return;
-    if(!mount.querySelector('.b1435-doc-intro'))mount.insertAdjacentHTML('afterbegin','<section class="b1435-doc-intro"><span>Fachliche Dokumentation</span><strong>Ziele, Verlauf und Sitzungen</strong><p>Der Sitzungsverlauf ist die primäre Arbeitsansicht. Einzelereignisse, Zahlungen, Nachrichten und Artefakte bleiben vollständig in der Timeline erhalten.</p></section>');
     docBusy=true;
     try{
       const v=await window.BDVault.request('/client?ref='+encodeURIComponent(c.email)),events=timelineEvents(v,c);
-      const sessionsCard=[...mount.querySelectorAll('.vault-card')].find(card=>card.querySelector('h3')?.textContent.trim()==='Sitzungsverlauf');
+      const timelineAnchor=mount.querySelector('[data-vault-timeline-anchor]');
       const details=document.createElement('details');details.className='b1435-full-timeline';details.innerHTML=`<summary><span>Vollständige Timeline</span><small>${events.length} Ereignisse · Kommunikation, Zahlungen, Dateien & Organisation</small></summary><div class="b1435-timeline-body">${timelineHtml(events)}</div>`;
-      if(sessionsCard)sessionsCard.insertAdjacentElement('afterend',details);else mount.append(details);
+      if(timelineAnchor)timelineAnchor.append(details);else mount.append(details);
       details.querySelectorAll('[data-b1435-event-target]').forEach(b=>b.onclick=()=>focusDocumentation(b.dataset.b1435EventTarget));
     }catch(_){/* existing Vault UI handles connectivity state */}finally{docBusy=false}
   }

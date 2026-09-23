@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Praxisverwaltung | Beziehungsdynamiken</title>
+<!-- Basis: BUILD 14.3.5.5 session split -->
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" href="admin-build9.css?v=20260921-build13">
 <link rel="stylesheet" href="admin-build10.css?v=20260921-build13">
@@ -27,6 +28,7 @@
 <link rel="stylesheet" href="admin-build14-3-5-3.css?v=20260923-build14-3-5-3">
 <link rel="stylesheet" href="admin-build14-3-5-4.css?v=20260923-build14-3-5-4">
 <link rel="stylesheet" href="admin-build14-3-5-5.css?v=20260923-build14-3-5-5">
+<link rel="stylesheet" href="admin-build14-3-5-6.css?v=20260923-build14-3-5-6">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -204,7 +206,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.5.5</strong><br><span>Klientenakte vereinfacht: Übersicht → Dokumentation → Briefing; Fallpfad als Prozessnavigator, Sitzungsverlauf als fachlicher Kern und vollständige Timeline als Detailchronik.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.5.6</strong><br><span>Dokumentation als zentrale Arbeitsansicht: Sitzungs-Chronologie links, strukturierte Details rechts, Stammdaten kompakt im Kopf und fachliche Bereiche über eine lokale Seitenleiste.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -229,7 +231,7 @@
 
 <script src="booking-config.js?v=20260918-build8"></script>
 <script src="admin-build9.js?v=20260923-build14-3-5-4"></script>
-<script src="admin-vault.js?v=20260923-build14-3-5-5"></script>
+<script src="admin-vault.js?v=20260923-build14-3-5-6"></script>
 <script src="admin-build10.js?v=20260922-build13-7-3-runtime-fix"></script>
 <script src="admin-build11.js?v=20260922-build13-7-5"></script>
 <script src="admin-build12.js?v=20260918-build12"></script>
@@ -243,6 +245,6 @@
 <script src="admin-build14-3-2.js?v=20260923-build14-3-2"></script>
 <script src="admin-build14-3-3.js?v=20260923-build14-3-3"></script>
 <script src="admin-build14-3-4.js?v=20260923-build14-3-4"></script>
-<script src="admin-build14-3-5.js?v=20260923-build14-3-5-5"></script>
+<script src="admin-build14-3-5.js?v=20260923-build14-3-5-6"></script>
 </body>
 </html>
