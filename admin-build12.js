@@ -66,7 +66,7 @@
     $('#flowCashForm').onsubmit=submitCash;
   }
   async function openCashDialog(){
-    const c=current(),msg=$('#flowCashMsg');if(!c)return;ensureCashDialog();if(msg)msg.textContent='Prüfe offene Rechnungen …';
+    const c=current(),msg=$('#flowCashMsg');if(!c)return;ensureCashDialog();if(msg)msg.textContent='Prüfe offene Honorarnoten …';
     try{
       const d=await adminApi('/admin/dashboard');const invoices=(d.invoices||[]).filter(x=>String(x.customerEmail||'').toLowerCase()===String(c.email||'').toLowerCase()&&!['paid','void','cancelled','canceled','refunded'].includes(String(x.status||'').toLowerCase()));
       if(!invoices.length){if(msg)msg.textContent='Keine unbezahlte Rechnung für diese Person gefunden.';return}

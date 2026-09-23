@@ -1,0 +1,115 @@
+/* BUILD 14.3 — Practice UX Refactor
+   Goal: preserve functionality while reducing cognitive load. */
+:root{
+  --ux-ink:#2b2421;
+  --ux-sidebar:#2f2926;
+  --ux-sidebar-soft:#3a322e;
+  --ux-sidebar-text:#f7eee5;
+  --ux-sidebar-muted:#bfaea2;
+  --ux-border:#eadfd5;
+  --ux-canvas:#f8f5f1;
+  --ux-card:#fffefd;
+  --ux-shadow:0 14px 40px rgba(47,38,35,.055);
+}
+
+/* The dedicated Message Center and Knowledge Hub stay separate workspaces,
+   but are now reached from the primary navigation rather than floating pills. */
+.surface-links{display:none!important}
+.security-strip{height:30px;background:#27211f;color:rgba(255,255,255,.66);letter-spacing:.12em}
+
+.app-shell{grid-template-columns:248px minmax(0,1fr)}
+.sidebar{background:var(--ux-sidebar);border-right:0;padding:22px 14px 18px;color:var(--ux-sidebar-text);box-shadow:10px 0 40px rgba(47,38,35,.055)}
+.side-brand{padding:2px 8px 24px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:14px}
+.side-brand img{background:#fff8f0;border-color:rgba(255,255,255,.12)}
+.side-brand strong{color:#fff8f2}.side-brand span{color:var(--ux-sidebar-muted)}
+.side-nav{gap:4px}
+.nav-section-label{margin:12px 11px 5px;color:#99877c;font-size:9px;font-weight:850;letter-spacing:.15em;text-transform:uppercase}
+.nav-item{color:#d4c6bc;padding:10px 11px;border-radius:10px;text-decoration:none}
+.nav-item:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav-item.active{background:rgba(255,255,255,.105);color:#fff5ee;box-shadow:inset 3px 0 0 var(--terr)}
+.nav-item em{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.09);color:#efe4dc}
+.nav-divider{background:rgba(255,255,255,.09);margin:13px 8px}
+.nav-link{display:grid}
+.nav-group{display:grid;gap:3px}
+.nav-group-toggle{grid-template-columns:22px 1fr auto}
+.nav-chevron{font-size:15px;transition:transform .18s ease;color:#a99588}
+.nav-group.open .nav-chevron{transform:rotate(180deg)}
+.nav-subitems{display:none;margin-left:15px;border-left:1px solid rgba(255,255,255,.10);padding-left:7px}
+.nav-group.open .nav-subitems{display:grid;gap:3px}
+.nav-subitem{font-size:12px;padding-top:8px;padding-bottom:8px}
+.nav-group:has(.nav-subitem.active)>.nav-group-toggle{color:#fff5ee;background:rgba(255,255,255,.06)}
+.ux-utility-nav{display:none!important}
+.sidebar-bottom{border-top-color:rgba(255,255,255,.09)}
+.admin-pill .avatar{background:#f4e3d6;color:#4a3830}.admin-pill strong{color:#fff}.admin-pill span,.side-link{color:#a9978c}
+.side-link:hover{color:#fff}
+
+.workspace{background:linear-gradient(180deg,#fbf8f5 0,#f8f5f1 320px);padding:34px 42px 80px}
+.workspace-head{max-width:1360px;margin-bottom:24px}
+.workspace-head h1{font-size:clamp(34px,3.6vw,48px);letter-spacing:-.02em;color:var(--ux-ink)}
+.workspace-head .eyebrow{color:#9b705d}
+.view{max-width:1360px}
+.panel,.stat-card{background:var(--ux-card);border-color:var(--ux-border);box-shadow:var(--ux-shadow)}
+.panel{border-radius:18px;padding:21px}
+.panel h2,.journey-intro h2,.settings-grid h2{font-size:26px;letter-spacing:-.01em}
+.btn{border-radius:10px}.primary{background:#b96045}.primary:hover{background:#a7543d}.secondary{background:#f3e9df}.ghost{background:#fffefd;border-color:#e5d9cf}
+.btn.compact{padding:9px 12px;font-size:12px}
+.text-button{color:#9b5b45}
+
+/* Dashboard: orientation first, functions second. */
+.stat-grid{gap:12px;margin-bottom:15px}
+.stat-card{border-radius:16px;padding:16px 18px}
+.stat-card strong{font-size:28px}
+.dash-grid-primary{grid-template-columns:1.25fr .75fr;gap:14px}
+.attention-panel{border-top:3px solid #c77a5e}
+.dashboard-focus{background:linear-gradient(145deg,#fffefd,#faf4ee)}
+.dashboard-focus-actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0 12px}
+.dashboard-calendar{margin-top:15px}
+.dashboard-secondary{margin:7px 0 16px;border:1px solid var(--ux-border);border-radius:14px;background:rgba(255,255,255,.52)}
+.dashboard-secondary>summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:12px;font-weight:800;color:#75655d}
+.dashboard-secondary>summary::-webkit-details-marker{display:none}
+.dashboard-secondary>summary:before{content:'＋';display:inline-block;width:18px;color:#a96850}
+.dashboard-secondary[open]>summary:before{content:'−'}
+.dashboard-secondary .panel{margin:0;border:0;border-top:1px solid var(--ux-border);border-radius:0 0 14px 14px;box-shadow:none;background:#fffefd}
+
+/* The dedicated flow panel exists only when something is actually unfinished. */
+.flow-dashboard-panel{border-left:4px solid #bd765d!important;background:#fffdfa!important;margin-top:14px}
+.flow-dashboard-panel.all-clear{display:none!important}
+.flow-dashboard-panel .flow-row{padding:10px 12px}
+.flow-dashboard-panel .panel-head{margin-bottom:11px}
+
+/* Visual appointment preview inspired by calendar-first practice tools. */
+.calendar-preview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.calendar-preview-card{display:grid;grid-template-columns:96px minmax(0,1fr) 38px;gap:13px;align-items:center;min-height:70px;border:1px solid #e9ded4;border-left:4px solid #8c9fba;border-radius:13px;padding:10px 11px;background:#fff}
+.calendar-preview-card.couple{border-left-color:#c98278;background:#fffafa}
+.calendar-preview-card.initial{border-left-color:#c8a055;background:#fffdf7}
+.calendar-preview-card.online{border-left-color:#6e927b;background:#fbfefb}
+.calendar-preview-card.single{border-left-color:#7d91ad}
+.calendar-date{display:grid;gap:3px}.calendar-date strong{font-size:11px;color:#76665f;text-transform:uppercase;letter-spacing:.04em}.calendar-date span{font-family:Georgia,serif;font-weight:800;font-size:21px;color:#342b27}
+.calendar-client{min-width:0}.calendar-client-link{display:block;border:0;background:none;padding:0;font-weight:850;font-size:14px;color:#302824;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.calendar-client-link:hover{color:#a95d45}.calendar-client span{display:block;margin-top:4px;font-size:11px;color:#817067;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.calendar-card-actions{display:flex;justify-content:flex-end}.icon-action{width:32px;height:32px;border-radius:9px;border:1px solid #e5d9cf;background:#fff;color:#6d5d55;font-weight:900;font-size:15px}.icon-action:hover{background:#f5ede6;color:#a45740}
+
+/* Client record becomes the operational hub. */
+.record-dialog .dialog-shell{max-width:1120px}
+.client-command-bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 15px;margin-bottom:15px;border:1px solid #eadfd5;border-radius:14px;background:linear-gradient(140deg,#fffaf6,#fffefd)}
+.client-command-bar>div:first-child{min-width:180px}.client-command-bar strong{display:block;font-family:Georgia,serif;font-size:19px;margin-top:3px}.client-command-label{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#9d705d;font-weight:900}
+.client-command-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.context-card{border-color:#eadfd5;background:#fffefd}
+.record-tabs{gap:5px;border-bottom-color:#eadfd5}.record-tabs button{border-radius:8px 8px 0 0}
+
+/* Calm tables: actions stay visible but recede until needed. */
+.table-wrap{border-color:#e9ded4;border-radius:13px}th{background:#faf7f3;color:#817168}th,td{padding:11px 12px}.mini{border-color:#e5d9cf;border-radius:8px;background:#fff}.mini.edit{background:#fffaf5;color:#84533f}.mini.pay{background:#f2f7ef;color:#4d6d51}.row-actions{gap:5px}
+
+/* Finance / bookkeeping gets room for visual data without a separate Statistics module. */
+.finance-stat-grid article,.finance-box{border-color:#eadfd5!important;background:#fffefd!important}
+.finance-bar{background:#f1ebe5!important}.finance-bar i{background:#b66a50!important}
+
+@media(max-width:1050px){
+  .app-shell{grid-template-columns:78px 1fr}
+  .sidebar{padding:16px 9px}.side-brand div,.nav-item>span:not(.nav-chevron),.nav-section-label,.nav-item em,.admin-pill div,.side-link{display:none}
+  .side-brand{justify-content:center;padding-left:0;padding-right:0}.nav-item{grid-template-columns:1fr;place-items:center;padding:11px}.nav-item svg{width:21px;height:21px}.nav-group-toggle{grid-template-columns:1fr}.nav-chevron{display:none}.nav-subitems{margin-left:0;padding-left:0;border:0}.nav-group.open .nav-subitems{display:grid}.nav-group:not(.open) .nav-subitems{display:none}.admin-pill{justify-content:center}
+  .workspace{padding:30px 24px 70px}.dash-grid-primary{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .app-shell{display:block}.sidebar{background:rgba(47,41,38,.98)}.side-nav{display:flex;overflow:auto;gap:5px}.nav-group{display:flex}.nav-group-toggle{min-width:52px}.nav-group.open .nav-subitems{display:flex}.nav-subitems{padding-left:0;margin-left:0}.workspace{padding:21px 13px 60px}.calendar-preview-grid{grid-template-columns:1fr}.client-command-bar{display:block}.client-command-actions{justify-content:flex-start;margin-top:12px}.client-command-actions .btn{flex:1 1 145px}.dashboard-focus-actions .btn{flex:1}.security-strip{display:none}
+}
+@media(max-width:480px){.calendar-preview-card{grid-template-columns:80px minmax(0,1fr) 34px}.stat-grid{grid-template-columns:1fr 1fr}.stat-card strong{font-size:24px}}

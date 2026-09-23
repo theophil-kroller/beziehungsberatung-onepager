@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="admin-build14.css?v=20260923-build14-0-1">
 <link rel="stylesheet" href="admin-build14-1.css?v=20260923-build14-1">
 <link rel="stylesheet" href="admin-build14-2.css?v=20260923-build14-2">
+<link rel="stylesheet" href="admin-build14-3.css?v=20260923-build14-3">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -31,6 +32,10 @@
   <symbol id="i-invoice" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6m-6 4h6"/></symbol>
   <symbol id="i-vault" viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3m-11 0h12a2 2 0 0 1 2 2v8H4v-8a2 2 0 0 1 2-2Zm6 4v3"/></symbol>
   <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm0-12 1 2.1 2.3.6 2-1.2 1.8 1.8-1.2 2 .6 2.3 2.1 1v2.6l-2.1 1-.6 2.3 1.2 2-1.8 1.8-2-1.2-2.3.6-1 2.1H9.4l-1-2.1-2.3-.6-2 1.2-1.8-1.8 1.2-2-.6-2.3-2.1-1v-2.6l2.1-1 .6-2.3-1.2-2L4.1 5l2 1.2 2.3-.6 1-2.1H12Z"/></symbol>
+
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5Zm3 4h10m-10 4h7"/></symbol>
+  <symbol id="i-knowledge" viewBox="0 0 24 24"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4-4V4Zm0 12h10a4 4 0 0 1 4 4M9 8h6m-6 4h6"/></symbol>
+  <symbol id="i-offer" viewBox="0 0 24 24"><path d="M4 6h16v12H4V6Zm4 4h8m-8 4h5M7 3v3m10-3v3"/></symbol>
 </svg>
 
 <div class="security-strip">Interne Praxisverwaltung · geschützter Zugang</div>
@@ -55,18 +60,33 @@
   <aside class="sidebar">
     <div class="side-brand"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><div><strong>Beziehungsdynamiken</strong><span>Praxis-CRM</span></div></div>
     <nav class="side-nav" aria-label="Praxisbereiche">
+      <p class="nav-section-label">Praxis</p>
       <button class="nav-item active" data-view="dashboard"><svg><use href="#i-dashboard"/></svg><span>Dashboard</span></button>
-      <button class="nav-item" data-view="journey"><svg><use href="#i-journey"/></svg><span>Client Journey</span><em id="navJourneyCount"></em></button>
-      <button class="nav-item" data-view="clients"><svg><use href="#i-clients"/></svg><span>Kund:innen</span></button>
-      <button class="nav-item" data-view="bookings"><svg><use href="#i-calendar"/></svg><span>Termine</span></button>
-      <button class="nav-item flow-nav-special" data-view="flow" data-build10-flow-nav type="button"><svg><use href="#i-flow"/></svg><span>Session Flow</span><em class="flow-nav-badge" id="flowNavCount">0</em></button>
-      <button class="nav-item" data-view="packages"><svg><use href="#i-package"/></svg><span>Packages</span></button>
-      <button class="nav-item" data-view="programs"><svg><use href="#i-programs"/></svg><span>Programme & Gruppen</span><em id="navProgramCount"></em></button>
-      <button class="nav-item" data-view="invoices"><svg><use href="#i-invoice"/></svg><span>Rechnungen</span></button>
-      <button class="nav-item" data-view="finance" data-build10-finance-nav type="button"><svg><use href="#i-finance"/></svg><span>Finanzcockpit</span></button>
+      <button class="nav-item" data-view="clients"><svg><use href="#i-clients"/></svg><span>Klient:innen</span></button>
+      <a class="nav-item nav-link" href="message-center.html"><svg><use href="#i-message"/></svg><span>Message Center</span></a>
+
+      <div class="nav-group" data-nav-group="offers">
+        <button class="nav-item nav-group-toggle" type="button" aria-expanded="false"><svg><use href="#i-offer"/></svg><span>Angebote</span><span class="nav-chevron">⌄</span></button>
+        <div class="nav-subitems">
+          <button class="nav-item nav-subitem" data-view="packages"><svg><use href="#i-package"/></svg><span>Packages</span></button>
+          <button class="nav-item nav-subitem" data-view="programs"><svg><use href="#i-programs"/></svg><span>Programme & Gruppen</span><em id="navProgramCount"></em></button>
+        </div>
+      </div>
+
+      <button class="nav-item" data-view="invoices"><svg><use href="#i-invoice"/></svg><span>Honorarnoten</span></button>
+      <button class="nav-item" data-view="finance" data-build10-finance-nav type="button"><svg><use href="#i-finance"/></svg><span>Buchhaltung</span></button>
+      <a class="nav-item nav-link" href="hub.html"><svg><use href="#i-knowledge"/></svg><span>Knowledge Hub</span></a>
+
       <div class="nav-divider"></div>
+      <p class="nav-section-label">Sicherheit & System</p>
       <button class="nav-item" data-view="vault"><svg><use href="#i-vault"/></svg><span>Secure Vault</span><em id="vaultNavState">lokal</em></button>
-      <button class="nav-item" data-view="settings"><svg><use href="#i-settings"/></svg><span>Einstellungen</span></button>
+      <button class="nav-item" data-view="settings"><svg><use href="#i-settings"/></svg><span>Administration</span></button>
+
+      <div class="ux-utility-nav" aria-hidden="true">
+        <button class="nav-item" data-view="journey"><svg><use href="#i-journey"/></svg><span>Client Journey</span><em id="navJourneyCount"></em></button>
+        <button class="nav-item" data-view="bookings"><svg><use href="#i-calendar"/></svg><span>Termine</span></button>
+        <button class="nav-item flow-nav-special" data-view="flow" data-build10-flow-nav type="button"><svg><use href="#i-flow"/></svg><span>Session Flow</span><em class="flow-nav-badge" id="flowNavCount">0</em></button>
+      </div>
     </nav>
     <div class="sidebar-bottom">
       <div class="admin-pill"><span class="avatar">TK</span><div><strong id="adminIdentity">—</strong><span>Administrator</span></div></div>
@@ -84,17 +104,19 @@
     <section class="view active" id="view-dashboard">
       <div class="stat-grid">
         <article class="stat-card"><span>Heute</span><strong id="statToday">—</strong><small>Termine</small></article>
-        <article class="stat-card"><span>Nächste 7 Tage</span><strong id="statWeek">—</strong><small>Termine</small></article>
+        <article class="stat-card"><span>Diese Woche</span><strong id="statWeek">—</strong><small>Termine</small></article>
         <article class="stat-card"><span>Aktive Klient:innen</span><strong id="statActiveClients">—</strong><small id="statLifecycle">—</small></article>
         <article class="stat-card"><span>Offene Forderungen</span><strong id="statOpen">—</strong><small id="statOverdue">—</small><small id="statTest" class="sub-stat">—</small></article>
       </div>
 
-      <div class="dash-grid">
-        <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute im Blick</p><h2>Aufmerksamkeit nötig</h2><p class="muted">Nur Dinge, bei denen du tatsächlich etwas tun solltest.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
-        <section class="panel"><div class="panel-head"><div><p class="eyebrow">Fortsetzung</p><h2>Continuation opportunities</h2><p class="muted">Packages rechtzeitig weiterdenken – bevor der letzte Termin vorbei ist.</p></div></div><div id="renewals" class="renewal-list"></div></section>
+      <div class="dash-grid dash-grid-primary">
+        <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute im Blick</p><h2>Was noch offen ist</h2><p class="muted">Nur Aufgaben, Nachrichten und Vorgänge, bei denen du wirklich etwas tun solltest.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
+        <section class="panel dashboard-focus"><div class="panel-head"><div><p class="eyebrow">Schnellzugriff</p><h2>Klient:innen im Mittelpunkt</h2><p class="muted">Akte öffnen, Sitzung vorbereiten oder einen laufenden Fall fortsetzen.</p></div></div><div class="dashboard-focus-actions"><button class="btn primary" data-jump="clients">Klient:in öffnen</button><button class="btn ghost" data-jump="bookings">Terminverwaltung</button></div><p class="micro muted">Session Flow, Journey, Packages und Zahlungen bleiben vollständig erhalten – sie erscheinen dort, wo sie gebraucht werden.</p></section>
       </div>
 
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Kalender</p><h2>Die nächsten Termine</h2></div><button class="text-button" data-jump="bookings">Alle Termine →</button></div><div id="nextBookings"></div></section>
+      <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Kalender</p><h2>Die nächsten Termine</h2><p class="muted">Deine Praxiswoche auf einen Blick.</p></div><button class="text-button" data-jump="bookings">Terminverwaltung →</button></div><div id="nextBookings"></div></section>
+
+      <details class="dashboard-secondary"><summary>Fortsetzungen & weitere Hinweise</summary><section class="panel"><div class="panel-head"><div><p class="eyebrow">Fortsetzung</p><h2>Packages rechtzeitig weiterdenken</h2><p class="muted">Nur bei Bedarf öffnen – bevor die letzte Einheit verbraucht ist.</p></div></div><div id="renewals" class="renewal-list"></div></section></details>
     </section>
 
     <section class="view" id="view-journey">
@@ -103,7 +125,7 @@
     </section>
 
     <section class="view" id="view-clients">
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Klientenakten</p><h2>Vollständiger Kontext</h2><p class="muted">Kontaktdaten, Termine, Packages, Rechnungen und Aktivitätsverlauf an einem Ort.</p></div><div class="toolbar"><input id="clientSearch" type="search" placeholder="Name oder E-Mail"><select id="clientStatusFilter"><option value="all">Alle Status</option><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></div></div><div id="clientsTable"></div></section>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Klient:innen</p><h2>Klientenakten</h2><p class="muted">Der zentrale Startpunkt für Termine, Sitzungen, Timeline, Angebote und Honorarnoten.</p></div><div class="toolbar"><input id="clientSearch" type="search" placeholder="Name oder E-Mail"><select id="clientStatusFilter"><option value="all">Alle Status</option><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></div></div><div id="clientsTable"></div></section>
     </section>
 
     <section class="view" id="view-bookings">
@@ -112,11 +134,11 @@
 
     <section class="view flow-manager-view" id="view-flow"><section class="panel flow-manager-shell"><div class="panel-head"><div><p class="eyebrow">Session Flow Manager</p><h2>Ein klarer Ablauf rund um jede Sitzung.</h2><p class="muted">Vorbereiten → Buchung &amp; Angebote → Nachbereiten. Offene Schritte bleiben sichtbar.</p></div><button class="btn ghost" id="flowRefresh" type="button">Aktualisieren</button></div><div class="flow-summary-grid"><article class="flow-mini-stat"><span>Vorbereitung offen</span><strong id="flowPrepCount">0</strong></article><article class="flow-mini-stat"><span>Nachbereitung offen</span><strong id="flowPostCount">0</strong></article><article class="flow-mini-stat"><span>Geparkt</span><strong id="flowParkCount">0</strong></article></div><div class="flow-board" style="margin-top:18px"><section><div class="panel-head"><div><p class="eyebrow">Jetzt relevant</p><h3>Offene Session Flows</h3></div></div><div id="flowMainList" class="flow-list"><div class="empty">Session Flow wird geladen …</div></div></section></div></section></section>
 
-    <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Finanzcockpit</p><h2>Was bereits eingegangen ist – und was planbar ist.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Rechnungen öffnen</button></div><div class="finance-stat-grid"><article><span>Eingegangen diesen Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div><div class="finance-grid"><section class="finance-box"><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section></section></section>
+    <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Buchhaltung</p><h2>Einnahmen, Forderungen und Zahlungswege.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Honorarnoten öffnen</button></div><div class="finance-stat-grid"><article><span>Eingegangen diesen Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div><div class="finance-grid"><section class="finance-box"><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section></section></section>
 
     <section class="view" id="view-packages">
       <div id="packageCatalogApp"></div>
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Gebuchte Begleitpakete</p><h2>Packages bei Kund:innen</h2><p class="muted">Einheiten, Gültigkeit und Fortsetzung im Blick.</p></div></div><div id="packagesTable"></div></section>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Gebuchte Begleitpakete</p><h2>Packages bei Klient:innen</h2><p class="muted">Einheiten, Gültigkeit und Fortsetzung im Blick.</p></div></div><div id="packagesTable"></div></section>
     </section>
 
     <section class="view" id="view-programs">
@@ -124,7 +146,7 @@
     </section>
 
     <section class="view" id="view-invoices">
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Finanzen</p><h2>Rechnungen & Zahlungen</h2><p class="muted">Stripe wird automatisch verbucht. Bar- und Bankzahlungen kannst du mit Datum erfassen; Bank-CSV-Exporte lassen sich abgleichen.</p></div><div class="toolbar finance-toolbar"><div class="bank-sync"><label class="btn ghost file-btn">Bank-CSV importieren<input id="bankCsvInput" type="file" accept=".csv,text/csv,text/plain"></label><span id="bankLastImport" class="micro muted">Noch kein Bankabgleich protokolliert.</span></div><label class="filter-select">Status<select id="invoiceFilter"><option value="all">Alle</option><option value="overdue">Überfällig</option><option value="open">Offen</option><option value="paid">Bezahlt</option></select></label><label class="filter-select">Typ<select id="invoiceTypeFilter"><option value="all">Alle Typen</option><option value="group">Gruppe</option><option value="package">Package</option><option value="single">Einzelsession</option><option value="other">Sonstige</option></select></label></div></div><div id="invoicesTable"></div></section>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Honorarnoten</p><h2>Honorarnoten & Zahlungen</h2><p class="muted">Stripe wird automatisch verbucht. Bar- und Bankzahlungen kannst du mit Datum erfassen; Bank-CSV-Exporte lassen sich abgleichen.</p></div><div class="toolbar finance-toolbar"><div class="bank-sync"><label class="btn ghost file-btn">Bank-CSV importieren<input id="bankCsvInput" type="file" accept=".csv,text/csv,text/plain"></label><span id="bankLastImport" class="micro muted">Noch kein Bankabgleich protokolliert.</span></div><label class="filter-select">Status<select id="invoiceFilter"><option value="all">Alle</option><option value="overdue">Überfällig</option><option value="open">Offen</option><option value="paid">Bezahlt</option></select></label><label class="filter-select">Typ<select id="invoiceTypeFilter"><option value="all">Alle Typen</option><option value="group">Gruppe</option><option value="package">Package</option><option value="single">Einzelsession</option><option value="other">Sonstige</option></select></label></div></div><div id="invoicesTable"></div></section>
     </section>
 
 
@@ -135,7 +157,7 @@
       </div>
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lokaler Dienst</p><h2>Vault verbinden</h2><p class="muted">Der Vault startet normalerweise automatisch mit Windows. Falls er einmal nicht läuft, kannst du ihn mit <code>vault/start_vault.bat</code> starten. Danach hier nur noch entsperren.</p><div class="stack-actions"><button class="btn primary" id="vaultUnlockBtn" type="button">Vault entsperren</button><button class="btn secondary" id="vaultOfflineBtn" type="button">Offline-Praxis öffnen</button><a class="btn secondary" href="capture.html" target="_blank" rel="noopener">Praxis Capture für BOOX / Samsung</a><button class="btn ghost" id="vaultLockBtn" type="button">Sperren</button><button class="btn ghost" id="vaultRefreshBtn" type="button">Status prüfen</button></div><p id="vaultWhisperInfo" class="micro muted" style="margin-top:12px">Whisper-Installation wird geprüft …</p><p id="vaultSnapshotInfo" class="micro muted" style="margin-top:8px">Der organisatorische Offline-Snapshot wird bei entsperrtem Vault automatisch aktualisiert.</p><div id="vaultViewMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Sicherheitsmodell</p><h2>Local-first</h2><ul class="feature-list"><li><strong>AES-256-GCM</strong><span>Beratungstexte und Dateien werden vor dem Schreiben verschlüsselt.</span></li><li><strong>Passwortschlüssel nur im RAM</strong><span>Automatische Sperre nach 15 Minuten Inaktivität.</span></li><li><strong>Nur localhost</strong><span>Der lokale Dienst lauscht ausschließlich auf 127.0.0.1.</span></li><li><strong>Getrennt vom Cloud-CRM</strong><span>Rechnungen, Termine und Packages bleiben im Worker; Sitzungsinhalte bleiben lokal.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Sicherheitsmodell</p><h2>Local-first</h2><ul class="feature-list"><li><strong>AES-256-GCM</strong><span>Beratungstexte und Dateien werden vor dem Schreiben verschlüsselt.</span></li><li><strong>Passwortschlüssel nur im RAM</strong><span>Automatische Sperre nach 15 Minuten Inaktivität.</span></li><li><strong>Nur localhost</strong><span>Der lokale Dienst lauscht ausschließlich auf 127.0.0.1.</span></li><li><strong>Getrennt vom Cloud-CRM</strong><span>Honorarnoten, Termine und Packages bleiben im Worker; Sitzungsinhalte bleiben lokal.</span></li></ul></section>
       </div>
       <section class="panel"><p class="eyebrow">Backup</p><h2>Verschlüsselte Datensicherung</h2><p class="muted">Sperre den Vault und sichere anschließend den gesamten Ordner <code>vault/data</code> auf einen verschlüsselten Datenträger bzw. in ein zusätzlich verschlüsseltes Backup. Ohne Vault-Passwort sind die Inhalte nicht lesbar.</p><button class="btn ghost" id="vaultBackupInfoBtn" type="button">Lokalen Speicherort anzeigen</button><div id="vaultBackupInfo" class="muted micro" style="margin-top:12px"></div></section>
     </section>
@@ -144,13 +166,13 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.2</strong><br><span>Eigenständiges Message Center für freigegebene Praxis-E-Mails und manuell erfasste CRM-Anfragen – mit lokaler KI und bewusst bestätigtem Versand.</span></p><ul class="feature-list roadmap-list"><li><strong>14.3</strong><span>WhatsApp als weiterer Kanal im gemeinsamen Message Center.</span></li><li><strong>Später</strong><span>Öffentliches Anfrageformular, erweiterter Content-Kalender, Kampagnen, Newsletter, Trend Radar und Analytics.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3</strong><br><span>Practice UX Refactor: weniger kognitive Last, Klient:innen als Startpunkt und bestehende Funktionalität kontextbezogen statt permanent sichtbar.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
 </div>
 
-<dialog id="clientDialog" class="record-dialog"><div class="dialog-shell"><button class="dialog-x" id="clientDialogClose" type="button">×</button><div class="record-head"><div><p class="eyebrow">Klientenakte</p><h2 id="recordName">—</h2><p class="muted" id="recordEmail">—</p></div><div class="record-status"><label>Status<select id="recordStatus"><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></label></div></div><div class="record-tabs"><button class="active" data-record-tab="overview">Übersicht</button><button data-record-tab="case-summary">Fallübersicht</button><button data-record-tab="journey">Journey</button><button data-record-tab="bookings">Termine</button><button data-record-tab="sales">Angebote & Buchungen</button><button data-record-tab="packages">Packages</button><button data-record-tab="invoices">Rechnungen</button><button data-record-tab="documentation">Dokumentation <span class="vault-mini-dot" id="recordVaultDot"></span></button><button data-record-tab="activity">Aktivität</button></div><div id="recordContent" class="record-content"></div></div></dialog>
+<dialog id="clientDialog" class="record-dialog"><div class="dialog-shell"><button class="dialog-x" id="clientDialogClose" type="button">×</button><div class="record-head"><div><p class="eyebrow">Klientenakte</p><h2 id="recordName">—</h2><p class="muted" id="recordEmail">—</p></div><div class="record-status"><label>Status<select id="recordStatus"><option value="active">Aktiv</option><option value="paused">Pausiert</option><option value="completed">Abgeschlossen</option><option value="prospect">Interessent:in</option></select></label></div></div><div class="record-tabs"><button class="active" data-record-tab="overview">Übersicht</button><button data-record-tab="case-summary">Fallübersicht</button><button data-record-tab="journey">Journey</button><button data-record-tab="bookings">Termine</button><button data-record-tab="sales">Angebote & Buchungen</button><button data-record-tab="packages">Packages</button><button data-record-tab="invoices">Honorarnoten</button><button data-record-tab="documentation">Dokumentation <span class="vault-mini-dot" id="recordVaultDot"></span></button><button data-record-tab="activity">Aktivität</button></div><div id="recordContent" class="record-content"></div></div></dialog>
 
 <dialog id="editDialog"><div class="dialog-shell compact"><button class="dialog-x" id="editClose" type="button">×</button><p class="eyebrow" id="editEyebrow">Änderung</p><h2 id="editTitle">Bearbeiten</h2><p class="muted" id="editSubtitle"></p><form id="editForm" class="edit-form"><div id="editFields" class="edit-grid"></div><div class="change-box"><strong id="changeHeadline">Keine Änderungen vorgenommen</strong><div id="changeList" class="change-list"></div></div><div id="emailPreview" class="email-preview"><p class="eyebrow">Vor dem Versand prüfen</p><h3>E-Mail-Vorschau</h3><div id="emailPreviewText"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="emailCancel">Nicht senden</button><button class="btn primary" type="button" id="emailConfirm">E-Mail jetzt senden</button></div></div><div class="dialog-actions main-actions"><span id="editState" class="muted micro"></span><button class="btn ghost" type="button" id="editCancel">Abbrechen</button><button class="btn secondary" type="submit" id="saveOnly" disabled>Änderungen speichern</button><button class="btn primary" type="button" id="saveNotify" disabled>Speichern & E-Mail vorbereiten</button></div></form></div></dialog>
 
@@ -161,7 +183,7 @@
 
 <dialog id="salesOrderDialog"><div class="dialog-shell compact"><button class="dialog-x" id="salesOrderClose" type="button">×</button><p class="eyebrow">Bestellung im Auftrag</p><h2 id="salesOrderTitle">Bestellung vorbereiten</h2><p class="muted" id="salesOrderClient">—</p><form id="salesOrderForm" class="edit-form"><div id="salesOrderSummary" class="sales-summary"></div><div class="edit-grid"><label class="edit-field">Straße & Hausnummer<input id="salesStreet" required></label><label class="edit-field">PLZ<input id="salesPostal" required></label><label class="edit-field">Ort<input id="salesCity" required></label><label class="edit-field">Land<input id="salesCountry" value="Österreich" required></label></div><label class="check"><input id="salesIncludeStripe" type="checkbox" checked><span><strong>Sicheren Stripe-Zahlungslink mitsenden</strong><br>Die PDF-Rechnung mit 14 Tagen Zahlungsziel wird in jedem Fall erstellt. Bezahlt die Kundin bzw. der Kunde online, wird dieselbe Rechnung automatisch als bezahlt verbucht.</span></label><label class="check"><input id="salesEarlyService" type="checkbox"><span><strong>Beginn innerhalb der Rücktrittsfrist dokumentiert</strong><br>Nur anhaken, wenn die Kundin bzw. der Kunde ausdrücklich verlangt hat, dass die Beratung vor Ablauf der Rücktrittsfrist beginnen darf.</span></label><label class="check"><input id="salesImmediateDigital" type="checkbox"><span><strong>Digitale Materialien sofort bereitstellen</strong><br>Nur anhaken, wenn die Kundin bzw. der Kunde der sofortigen Bereitstellung ausdrücklich zugestimmt hat.</span></label><div id="salesOrderMsg"></div><div class="dialog-actions"><button class="btn ghost" id="salesOrderCancel" type="button">Vorgang abbrechen</button><button class="btn primary" type="submit">Bestellung anlegen & E-Mail senden</button></div></form></div></dialog>
 
-<dialog id="cancelDialog"><div class="dialog-shell compact"><button class="dialog-x" id="cancelClose" type="button">×</button><p class="eyebrow">Termin stornieren</p><h2>Stornierung & finanzielle Behandlung</h2><p class="muted" id="cancelClient">—</p><div id="cancelSummary" class="cancel-summary"></div><div id="cancelChoices" class="settlement-options"></div><label class="check"><input id="cancelNotify" type="checkbox" checked><span>Kund:in per E-Mail über die Stornierung und finanzielle Behandlung informieren.</span></label><div class="dialog-actions"><button class="btn ghost" id="cancelAbort" type="button">Vorgang abbrechen</button><button class="btn danger" id="cancelConfirm" type="button">Termin verbindlich stornieren</button></div></div></dialog>
+<dialog id="cancelDialog"><div class="dialog-shell compact"><button class="dialog-x" id="cancelClose" type="button">×</button><p class="eyebrow">Termin stornieren</p><h2>Stornierung & finanzielle Behandlung</h2><p class="muted" id="cancelClient">—</p><div id="cancelSummary" class="cancel-summary"></div><div id="cancelChoices" class="settlement-options"></div><label class="check"><input id="cancelNotify" type="checkbox" checked><span>Klient:in per E-Mail über die Stornierung und finanzielle Behandlung informieren.</span></label><div class="dialog-actions"><button class="btn ghost" id="cancelAbort" type="button">Vorgang abbrechen</button><button class="btn danger" id="cancelConfirm" type="button">Termin verbindlich stornieren</button></div></div></dialog>
 
 <dialog id="bankImportDialog"><div class="dialog-shell wide"><button class="dialog-x" id="bankImportClose" type="button">×</button><p class="eyebrow">Zahlungsabgleich</p><h2>Bank-CSV prüfen</h2><p class="muted" id="bankImportSummary">—</p><div id="bankImportTable"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="bankImportCancel">Abbrechen</button><button class="btn primary" type="button" id="bankImportApply">Ausgewählte Zahlungen übernehmen</button></div></div></dialog>
 
@@ -176,5 +198,6 @@
 <script src="admin-build13-6-2.js?v=20260922-build13-7"></script>
 <script src="admin-build13-8.js?v=20260923-build13-8-6"></script>
 <script src="admin-build13-9.js?v=20260923-build14-1"></script>
+<script src="admin-build14-3.js?v=20260923-build14-3"></script>
 </body>
 </html>
