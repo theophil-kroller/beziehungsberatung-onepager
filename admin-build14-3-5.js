@@ -55,12 +55,16 @@
     const before=rename||status||null;
     if(host.parentElement!==recordHead)recordHead.insertBefore(host,before);
     else if(before&&host.nextSibling!==before)recordHead.insertBefore(host,before);
-    const rows=[
-      ['☎','Telefon',md.phone||'—'],
-      ['◷','Geburtsdatum',md.birthDate?fmt(md.birthDate):'—'],
-      ['⌂','Adresse',address||'—']
-    ];
-    host.innerHTML=`<div class="record-master-top-head"><span>Stammdaten</span><button type="button" class="record-master-edit" data-b14356-master-edit>Bearbeiten</button></div><div class="record-master-top-grid">${rows.map(([i,l,val])=>`<div><span class="record-master-top-icon" aria-hidden="true">${i}</span><span><small>${esc(l)}</small><strong>${esc(val)}</strong></span></div>`).join('')}</div>`;
+
+    const facts=[];
+    if(md.phone)facts.push(['☎',md.phone,'Telefon']);
+    if(md.birthDate)facts.push(['◷',fmt(md.birthDate),'Geburtsdatum']);
+    if(address)facts.push(['⌂',address,'Adresse']);
+    const factsHtml=facts.length
+      ? facts.map(([i,val,label])=>`<span class="record-master-fact" title="${esc(label)}"><span aria-hidden="true">${i}</span>${esc(val)}</span>`).join('')
+      : '<span class="record-master-empty">Stammdaten ergänzen</span>';
+
+    host.innerHTML=`<div class="record-master-facts">${factsHtml}</div><button type="button" class="record-master-edit" data-b14356-master-edit title="Stammdaten bearbeiten" aria-label="Stammdaten bearbeiten">✎</button>`;
     host.querySelector('[data-b14356-master-edit]')?.addEventListener('click',()=>{clickTab('documentation');setTimeout(()=>document.dispatchEvent(new CustomEvent('bd:edit-master-data')),420)});
   }
 
@@ -193,11 +197,26 @@
 
     const brief=shell.querySelector('.b139-brief');
     if(brief){
-      brief.classList.add('b14358-brief');
-      const sectionTitle=brief.querySelector('.b139-section-title');
-      if(sectionTitle){
-        const eyebrow=sectionTitle.querySelector('.eyebrow');if(eyebrow)eyebrow.textContent='AKTUELLER STAND';
-        const h=sectionTitle.querySelector('h3');if(h)h.textContent='Fallbriefing';
+      brief.classList.add('b14358-brief','b14359-brief');
+      // Der fachliche Inhalt beginnt sofort mit dem aktuellen Stand. Eine zusätzliche
+      // Überschrift "Fallbriefing" würde nur dieselbe Information noch einmal rahmen.
+      brief.querySelector('.b139-section-title')?.remove();
+      const body=brief.querySelector('#b139BriefBody');
+      if(body){
+        const lead=body.querySelector('.b139-lead');
+        const meta=body.querySelector('.b139-brief-head');
+        if(lead&&body.firstElementChild!==lead)body.insertBefore(lead,body.firstElementChild);
+        if(meta){
+          meta.classList.add('b14359-brief-meta');
+          const technical=meta.querySelector('small');
+          if(technical&&!body.querySelector('.b14359-tech')){
+            const details=document.createElement('details');
+            details.className='b14359-tech';
+            details.innerHTML=`<summary>Technische Details</summary><p>${esc(technical.textContent||'Lokale KI')}</p>`;
+            technical.remove();
+            meta.insertAdjacentElement('afterend',details);
+          }
+        }
       }
       const sources=brief.querySelector('.b139-sources');
       if(sources&&!sources.closest('.b14358-sources-disclosure')){

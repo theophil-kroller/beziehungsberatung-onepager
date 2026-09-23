@@ -1,0 +1,97 @@
+/* BUILD 14.3.5.9 — final client-record density pass.
+   Premium = immediate context, icon-only navigation, and the current clinical state first. */
+
+/* Header: master data sits directly beside the client identity without becoming another panel. */
+#clientDialog .record-head{
+  grid-template-columns:minmax(360px,1.35fr) minmax(300px,1fr) auto auto!important;
+  align-items:center!important;
+  gap:18px!important;
+}
+#clientDialog .record-head>div:first-child{align-self:center!important}
+.record-master-top-card{
+  border:0!important;
+  border-left:1px solid #eadfd8!important;
+  border-radius:0!important;
+  background:transparent!important;
+  padding:4px 0 4px 18px!important;
+  min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:9px!important;
+}
+.record-master-facts{display:flex;align-items:center;gap:8px 14px;min-width:0;flex:1;flex-wrap:wrap}
+.record-master-fact{display:inline-flex;align-items:center;gap:5px;min-width:0;color:#6c5d56;font-size:10.5px;line-height:1.3;white-space:nowrap}
+.record-master-fact>span{color:#a57b69;font-size:11px}
+.record-master-fact:last-child{max-width:290px;overflow:hidden;text-overflow:ellipsis}
+.record-master-empty{font-size:10.5px;color:#9a877e}
+.record-master-edit{
+  width:30px;height:30px;flex:0 0 30px;border:1px solid #e4d5cc!important;border-radius:9px!important;
+  background:#fff!important;color:#a15f49!important;display:grid;place-items:center;padding:0!important;font-size:13px!important;cursor:pointer
+}
+.record-master-edit:hover{background:#fbf5f0!important}
+
+/* Documentation navigation is truly icon-only. The title attribute provides context on hover. */
+.vault-doc-workspace{grid-template-columns:54px minmax(0,1fr)!important;gap:12px!important}
+.vault-doc-rail{padding:6px!important;gap:7px!important}
+.vault-doc-rail button{min-height:48px!important;height:48px!important;padding:0!important;display:grid!important;place-items:center!important}
+.vault-doc-rail button>span{font-size:20px!important;line-height:1!important}
+.vault-doc-rail button>small,.vault-doc-rail button small{display:none!important}
+.vault-doc-rail button[data-vault-doc-section="finance"]{padding-top:0!important;margin-top:7px!important;border-top:1px solid #ddd0c7!important}
+
+/* Sessions are the primary chronology. The add action is a small contextual + above the first entry. */
+.vault-section-head-prominent{margin-bottom:9px!important}
+.vault-section-head-prominent .eyebrow{display:none!important}
+.vault-section-head-prominent h3{font-size:21px!important;margin:0!important}
+.vault-session-index-tools{display:flex;justify-content:flex-end;align-items:center;padding:9px 10px 2px}
+.vault-session-add{
+  width:30px;height:30px;border:1px solid #dbc7bc;border-radius:50%;background:#fff;color:#b85f45;
+  font:700 20px/1 Arial,sans-serif;display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 10px rgba(87,58,45,.06)
+}
+.vault-session-add:hover{background:#f9efe9;border-color:#c9907c}
+.vault-session-index-scroll{padding-top:5px!important}
+.vault-session-nav-item{padding-top:13px!important;padding-bottom:13px!important}
+
+/* Briefing: the first thing the eye meets is the actual current state, not model metadata. */
+body.b14358-briefing-mode .b14358-brief{
+  padding:16px 18px 18px!important;
+  border:0!important;
+  background:transparent!important;
+}
+body.b14358-briefing-mode #b139BriefBody{display:flex;flex-direction:column;gap:10px}
+body.b14358-briefing-mode .b139-lead{
+  order:0;margin:0!important;padding:18px 20px!important;border-radius:14px!important;
+  background:#f3f7ef!important;border-left:4px solid #54755c!important
+}
+body.b14358-briefing-mode .b139-lead h4{
+  margin:0 0 8px!important;font-size:10px!important;letter-spacing:.09em!important;text-transform:uppercase!important;color:#516a57!important
+}
+body.b14358-briefing-mode .b139-lead p{font-size:14px!important;line-height:1.55!important;color:#3f3935!important;margin:0!important}
+body.b14358-briefing-mode .b14359-brief-meta{
+  order:1!important;margin:0!important;padding:0 2px!important;border:0!important;display:flex!important;align-items:center!important;gap:10px!important;justify-content:space-between!important
+}
+body.b14358-briefing-mode .b14359-brief-meta>div:first-child{display:flex!important;align-items:center!important;gap:8px!important;min-width:0!important}
+body.b14358-briefing-mode .b14359-brief-meta .b139-status{margin:0!important}
+body.b14358-briefing-mode .b14359-tech{order:2;margin:0 2px!important;border:0!important;padding:0!important}
+body.b14358-briefing-mode .b14359-tech>summary{cursor:pointer;font-size:8.5px;font-weight:800;color:#9b877d;list-style:none;width:max-content}
+body.b14358-briefing-mode .b14359-tech>summary::-webkit-details-marker{display:none}
+body.b14358-briefing-mode .b14359-tech p{font-size:8.5px;color:#9b877d;margin:5px 0 0}
+body.b14358-briefing-mode .b139-brief-grid{order:3;margin-top:2px!important}
+body.b14358-briefing-mode .b14358-sources-disclosure{order:4}
+body.b14358-briefing-mode .b14358-briefing-toolbar{min-height:34px!important;margin:0 0 2px!important}
+body.b14358-briefing-mode .b14358-generate{font-size:9.5px!important;padding:7px 10px!important;border-radius:9px!important;background:#fff!important;color:#a45740!important;border:1px solid #dfc9bf!important}
+body.b14358-briefing-mode .b14358-generate:hover{background:#fbf4ef!important}
+
+@media(max-width:1180px){
+  #clientDialog .record-head{grid-template-columns:minmax(300px,1fr) minmax(260px,.9fr) auto!important}
+  .record-master-top-card{grid-column:2}
+  #clientDialog #recordRenameBtn,#clientDialog .record-status{grid-column:3}
+}
+@media(max-width:900px){
+  #clientDialog .record-head{display:block!important}
+  .record-master-top-card{border-left:0!important;border-top:1px solid #eadfd8!important;padding:10px 0 0!important;margin-top:10px!important}
+}
+@media(max-width:760px){
+  .vault-doc-workspace{display:block!important}
+  .vault-doc-rail{display:flex!important;overflow:auto!important;margin-bottom:9px!important}
+  .vault-doc-rail button{min-width:46px!important}
+}

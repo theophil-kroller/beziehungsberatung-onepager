@@ -139,21 +139,22 @@
     host.innerHTML=`<div class="vault-finance-summary"><div class="vault-finance-stats"><div class="vault-finance-stat"><span>Offen</span><strong>${esc(financeMoney(openSum,rows[0]?.currency))}</strong></div><div class="vault-finance-stat"><span>Bezahlt</span><strong>${esc(financeMoney(paidSum,rows[0]?.currency))}</strong></div><div class="vault-finance-stat"><span>Honorarnoten</span><strong>${rows.length}</strong></div></div>${body}<p class="vault-finance-note">Diese Ansicht ist bewusst kompakt. Vollständige Verwaltung, PDF und Zahlungserfassung bleiben im globalen Bereich „Honorarnoten“.</p></div>`;
   }
 
+  // UX principle retained: Links die Chronologie, rechts die vollständigen Felder.
   function renderClient(){
     const m=$('#vaultRecordMount'),x=current.payload;if(!m||!x)return;const c=x.client||{};
     updateHeaderMaster();
     m.innerHTML=`<div class="vault-warning vault-warning-compact">Diese Dokumentation bleibt lokal im Secure Practice Vault und wird nicht an das Cloud-CRM übertragen.</div>
       <div class="vault-doc-workspace">
         <nav class="vault-doc-rail" aria-label="Dokumentationsbereiche">
-          <button class="active" type="button" data-vault-doc-section="sessions" title="Sitzungsverlauf"><span aria-hidden="true">▤</span><small>Verlauf</small></button>
-          <button type="button" data-vault-doc-section="goals" title="Beratungsziele"><span aria-hidden="true">◎</span><small>Ziele</small></button>
-          <button type="button" data-vault-doc-section="notes" title="Fallnotizen"><span aria-hidden="true">✎</span><small>Notizen</small></button>
-          <button type="button" data-vault-doc-section="artifacts" title="Artefakte und Dateien"><span aria-hidden="true">📎</span><small>Dateien</small></button>
-          <button type="button" data-vault-doc-section="finance" title="Honorarnoten und Zahlungen"><span aria-hidden="true">€</span><small>Honorare</small></button>
+          <button class="active" type="button" data-vault-doc-section="sessions" title="Sitzungsverlauf" aria-label="Sitzungsverlauf"><span aria-hidden="true">▤</span></button>
+          <button type="button" data-vault-doc-section="goals" title="Beratungsziele" aria-label="Beratungsziele"><span aria-hidden="true">◎</span></button>
+          <button type="button" data-vault-doc-section="notes" title="Fallnotizen" aria-label="Fallnotizen"><span aria-hidden="true">✎</span></button>
+          <button type="button" data-vault-doc-section="artifacts" title="Artefakte und Dateien" aria-label="Artefakte und Dateien"><span aria-hidden="true">📎</span></button>
+          <button type="button" data-vault-doc-section="finance" title="Honorarnoten und Zahlungen" aria-label="Honorarnoten und Zahlungen"><span aria-hidden="true">€</span></button>
         </nav>
         <div class="vault-doc-main">
           <section class="vault-doc-panel active vault-card vault-sessions-primary" data-vault-doc-panel="sessions">
-            <div class="vault-section-head vault-section-head-prominent"><div><p class="eyebrow">Dokumentation</p><h3>Sitzungsverlauf</h3><p class="micro muted">Links die Chronologie, rechts die vollständigen Felder der ausgewählten Sitzung.</p></div><button class="btn primary" id="vaultAddSession" type="button">+ Sitzung dokumentieren</button></div>
+            <div class="vault-section-head vault-section-head-prominent"><div><p class="eyebrow">Dokumentation</p><h3>Sitzungsverlauf</h3></div></div>
             <div id="vaultSessions" class="vault-sessions"></div>
             <div data-vault-timeline-anchor></div>
           </section>
@@ -175,7 +176,7 @@
         </div>
       </div>`;
     renderFinancePanel();
-    $('#vaultDictateCase').onclick=()=>openDictation('case');$('#vaultOpenOffline').onclick=()=>window.open(VAULT+'/offline','_blank','noopener');$('#vaultSaveOverview').onclick=saveOverview;$('#vaultAddGoal').onclick=()=>openGoalEditor();$('#vaultAddSession').onclick=()=>openSessionEditor();$('#vaultArtifactInput').onchange=uploadArtifact;
+    $('#vaultDictateCase').onclick=()=>openDictation('case');$('#vaultOpenOffline').onclick=()=>window.open(VAULT+'/offline','_blank','noopener');$('#vaultSaveOverview').onclick=saveOverview;$('#vaultAddGoal').onclick=()=>openGoalEditor();$('#vaultArtifactInput').onchange=uploadArtifact;
     const artifactSelect=$('#vaultArtifactSession');if(artifactSelect){const sessions=x.sessions||[];artifactSelect.innerHTML='<option value="">Keine Sitzung</option>'+sessions.map(s=>`<option value="${esc(s.id)}">${esc(fmtDate(s.date))} · ${esc(s.focus||'Sitzung')}</option>`).join('')}
     bindWorkspace();renderGoals();renderCaseNotes();renderSessions();renderArtifacts();renderAudit();
   }
@@ -245,7 +246,8 @@
     const consultation=consultations[0]||null;
     const consultationItem=`<button class="vault-session-nav-item consultation${consultation?'':' missing'}" type="button" data-session-select="consultation"><span class="vault-session-nav-title">${consultation?'Erstgespräch':'Erstgespräch fehlt'}</span><span class="vault-session-nav-meta">${consultation?esc(fmtDate(consultation.date||consultation.updatedAt)):'＋ nachtragen'}</span><span class="vault-session-nav-preview">${consultation?esc(initialSummary(consultation)):'Strukturierten Start der Begleitung ergänzen'}</span></button>`;
     const items=display.map(s=>`<button class="vault-session-nav-item" type="button" data-session-select="session:${esc(s.id)}" data-session-card="${esc(s.id)}"><span class="vault-session-nav-title">Sitzung ${numbered.get(String(s.id))}</span><span class="vault-session-nav-meta">${esc(fmtDate(s.date))}${s.durationMinutes?` · ${esc(s.durationMinutes)} Min.`:''}</span><span class="vault-session-nav-preview">${esc(sessionExcerpt(s).slice(0,180))}</span></button>`).join('');
-    wrap.innerHTML=`<div class="vault-session-split"><aside class="vault-session-index"><div class="vault-session-index-scroll">${items||'<div class="vault-session-index-empty">Noch keine Sitzungen dokumentiert.</div>'}${consultationItem}</div></aside><section class="vault-session-detail" data-session-detail></section></div>`;
+    wrap.innerHTML=`<div class="vault-session-split"><aside class="vault-session-index"><div class="vault-session-index-tools"><button class="vault-session-add" type="button" data-vault-add-session title="Neue Sitzung dokumentieren" aria-label="Neue Sitzung dokumentieren">＋</button></div><div class="vault-session-index-scroll">${items||'<div class="vault-session-index-empty">Noch keine Sitzungen dokumentiert.</div>'}${consultationItem}</div></aside><section class="vault-session-detail" data-session-detail></section></div>`;
+    wrap.querySelector('[data-vault-add-session]')?.addEventListener('click',()=>openSessionEditor());
     bindSplitSessionActions(wrap,chronological,consultations);
   }
 
