@@ -1,0 +1,18 @@
+BUILD 13.7.2 · KURZINSTALLATION
+
+Dieser Hotfix ist für den bereits installierten BUILD 13.7.1 gedacht.
+
+Website/CRM:
+Die vier Dateien aus 01_CRM in dein Website-/GitHub-Projekt kopieren und
+die bisherigen Dateien ersetzen.
+
+Lokaler Vault:
+Vault zuerst beenden. Danach die drei Dateien aus 04_LOCAL_VAULT ersetzen.
+Den Ordner vault/data unverändert lassen, weil dort die verschlüsselten
+Beratungsdaten liegen. Anschließend vault/start_vault.bat starten.
+
+Danach im CRM Strg+F5 drücken. Im Session Flow öffnest du die Nachbereitung
+und startest die Aufnahme direkt dort. Die separate lokale Vault-Seite wird
+für diesen Ablauf nicht mehr benötigt.
+
+Keine Datenbankmigration und kein Worker-Upload erforderlich.

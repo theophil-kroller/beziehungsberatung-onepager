@@ -1,0 +1,53 @@
+INSTALLATION · BUILD 13.7.4
+===========================
+
+Voraussetzung
+-------------
+BUILD 13.7.3 inklusive Runtime-Fix ist installiert.
+
+1. Website aktualisieren
+------------------------
+Den Inhalt von 01_WEBSITE_UPLOAD in den bestehenden Website-Root kopieren und
+gleichnamige Dateien ersetzen. Danach die GitHub-Veröffentlichung abwarten.
+
+2. Lokalen Vault sichern und stoppen
+------------------------------------
+- Vault sperren und beenden.
+- Den bestehenden Ordner vault/data verschlüsselt sichern.
+- vault/data niemals löschen, ersetzen oder hochladen.
+
+3. Vault-Programmdateien aktualisieren
+--------------------------------------
+Den Inhalt von 02_LOCAL_VAULT in den bestehenden lokalen Vault-Ordner kopieren.
+Nur Programmdateien ersetzen; der vorhandene Unterordner data bleibt unangetastet.
+
+4. Whisper prüfen
+-----------------
+Im Vault-Ordner check_whisper.bat ausführen.
+
+Wenn „UPDATE NOETIG“ erscheint:
+  update_whisper.bat ausführen
+  danach check_whisper.bat erneut ausführen
+
+Beim ersten Diktat mit turbo wird das Modell einmalig heruntergeladen. Dieser
+erste Durchlauf kann daher deutlich länger dauern.
+
+5. Vault und CRM neu starten
+----------------------------
+- start_vault.bat starten bzw. den Computer bei aktiviertem Autostart neu starten.
+- http://127.0.0.1:47831/health öffnen. Erwartet wird Version 3.7.4 und Modell turbo.
+- CRM mit Strg+F5 vollständig neu laden.
+
+6. Kurztest
+-----------
+- Session Flow → Nachbereiten öffnen.
+- Mikrofon direkt neben „Rohnotizen / Stichpunkte“ wählen.
+- Die Aufnahmeleiste muss unmittelbar unter dem Textfeld erscheinen.
+- Aufnahme stoppen → Transkribieren → Text prüfen → als Rohnotizen übernehmen.
+- „Mit lokaler KI strukturieren“ wählen und prüfen, ob nicht belegte Felder leer bleiben.
+
+Keine Änderungen erforderlich
+------------------------------
+- Cloudflare Worker unverändert
+- D1-Datenbank unverändert
+- Secrets und Bindings unverändert

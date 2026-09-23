@@ -1,1 +1,71 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#315c3a"><title>Praxis Capture</title><link rel="manifest" href="capture-manifest.webmanifest"><link rel="stylesheet" href="capture.css?v=13-8-2"></head><body><main><header><div><p class="overline">BUILD 13.8.2 · verschlüsselte Erfassung</p><h1>Praxis Capture</h1><p>Kurze Notiz, Diktat, Handschrift oder Foto erfassen und sicher an den Praxis-PC senden.</p></div><button id="inkMode" class="ghost" type="button">E‑Ink-Modus</button></header><section class="security"><strong id="relayNotice">Kein direkter Vault-Zugriff.</strong> Die Daten werden verschlüsselt übertragen und später im lokalen Vault gespeichert.</section><section class="card"><div class="grid"><label>Gerät<select id="deviceType"><option value="s22">Samsung / Smartphone</option><option value="boox">BOOX / E‑Ink</option><option value="other">Anderes Gerät</option></select></label><label>Neutrales Kürzel<input id="label" placeholder="z. B. Termin 09:45 (keine Klarnamen)"></label></div><label>Transferpasswort<input id="password" type="password" autocomplete="new-password" minlength="10" placeholder="Nur beim manuellen Datei-Export erforderlich"></label><small>Beim QR-Transfer wird der Schlüssel automatisch aus der einmaligen Übertragung verwendet.</small></section><nav><button data-tab="note" class="active">Notiz & Foto</button><button data-tab="audio">Diktat</button><button data-tab="ink">Handschrift</button></nav><section id="tab-note" class="card tab active"><label>Notiz<textarea id="noteText" rows="8" placeholder="Kurze Stichpunkte …"></textarea></label><label>Foto hinzufügen<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label><div id="photoPreview" class="photo-preview"></div><p id="saveState">Noch nicht lokal zwischengespeichert.</p></section><section id="tab-audio" class="card tab"><div class="rec"><strong id="recordTime">0:00</strong><span id="recordState">Bereit</span></div><div class="actions"><button id="recordStart" class="primary">Aufnahme starten</button><button id="recordStop" disabled>Stoppen</button><button id="recordDelete" class="danger" disabled>Audio löschen</button></div><audio id="audioPreview" controls hidden></audio><p>Die Aufnahme wird am Praxis-PC mit Whisper transkribiert.</p></section><section id="tab-ink" class="card tab"><div class="ink-toolbar"><strong>Handschriftliche Notiz</strong><button id="inkExpand" class="primary" type="button">⛶ Groß schreiben</button></div><div class="canvas-wrap"><canvas id="inkCanvas"></canvas></div><div class="actions"><button id="inkUndo">Letzten Strich zurück</button><button id="inkClear" class="danger">Alles löschen</button></div><p>Mit „Groß schreiben“ nutzt das Schreibfeld den ganzen Bildschirm. Die Originalstriche bleiben erhalten.</p></section><section class="card export"><h2 id="transferTitle">Sicher übergeben</h2><p id="transferCopy">Exportiere die Erfassung als Datei oder sende sie direkt über den QR-Transfer an den geöffneten Session Flow.</p><button id="exportBtn" class="primary big">Verschlüsselt senden</button><p id="exportState"></p></section></main><script src="capture.js?v=13-8-2"></script></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#315c3a">
+  <title>Praxis Capture</title>
+  <link rel="manifest" href="capture-manifest.webmanifest">
+  <link rel="stylesheet" href="capture.css?v=13-8-5">
+</head>
+<body>
+<main>
+  <header>
+    <div><p class="overline">BUILD 13.8.5 · Capture first</p><h1>Praxis Capture</h1><p>Erst erfassen, später mit der richtigen Sitzung verbinden.</p></div>
+    <button id="inkMode" class="ghost" type="button">E‑Ink-Modus</button>
+  </header>
+
+  <section class="security"><strong id="relayNotice">Lokaler, verschlüsselter Entwurf.</strong> Deine Eingaben werden automatisch auf diesem Gerät gesichert. Die Klientenzuordnung erfolgt erst beim QR-Transfer.</section>
+
+  <section class="card draft-card">
+    <div class="draft-head"><div><span class="overline">Lokale Entwürfe</span><strong id="draftState">Wird geladen …</strong></div><div class="actions"><button id="newDraft" type="button">+ Neue Erfassung</button><button id="deleteDraft" class="danger" type="button">Entwurf löschen</button></div></div>
+    <label>Aktueller Entwurf<select id="draftSelect"></select></label>
+    <p id="saveState" class="save-state">Lokaler Speicher wird vorbereitet …</p>
+  </section>
+
+  <section class="card">
+    <div class="grid">
+      <label>Gerät<select id="deviceType"><option value="s22">Samsung / Smartphone</option><option value="boox">BOOX / E‑Ink</option><option value="other">Anderes Gerät</option></select></label>
+      <label>Neutrales Kürzel<input id="label" placeholder="z. B. Termin 09:45 – keine Klarnamen"></label>
+    </div>
+  </section>
+
+  <nav aria-label="Erfassungsart"><button data-tab="note" class="active">Notiz & Fotos</button><button data-tab="audio">Diktate</button><button data-tab="ink">Handschrift</button></nav>
+
+  <section id="tab-note" class="card tab active">
+    <label>Notiz<textarea id="noteText" rows="9" placeholder="Kurze Stichpunkte …"></textarea></label>
+    <div class="section-head"><div><strong>Fotos</strong><small>Mehrere Bilder sind möglich.</small></div><label class="file-button">+ Foto aufnehmen / auswählen<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label></div>
+    <div id="photoPreview" class="media-list"></div>
+  </section>
+
+  <section id="tab-audio" class="card tab">
+    <div class="rec"><strong id="recordTime">0:00</strong><span id="recordState">Bereit für eine neue Aufnahme</span></div>
+    <div class="actions"><button id="recordStart" class="primary" type="button">+ Aufnahme starten</button><button id="recordStop" type="button" disabled>Stoppen</button></div>
+    <p class="help">Jede beendete Aufnahme wird als eigenes Diktat zum Entwurf hinzugefügt und sofort automatisch gespeichert.</p>
+    <div id="audioList" class="media-list"></div>
+  </section>
+
+  <section id="tab-ink" class="card tab">
+    <div class="ink-toolbar"><div><strong>Handschriftliche Notiz</strong><small id="inkPageState">Seite 1 von 1</small></div><button id="inkExpand" class="primary" type="button">⛶ Groß schreiben</button></div>
+    <div class="ink-pages"><button id="inkPrev" type="button">←</button><select id="inkPageSelect" aria-label="Handschriftseite"></select><button id="inkNext" type="button">→</button><button id="inkAdd" class="primary" type="button">+ Seite</button><button id="inkDelete" class="danger" type="button">Seite löschen</button></div>
+    <div class="canvas-wrap"><canvas id="inkCanvas"></canvas></div>
+    <div class="actions ink-actions"><button id="inkUndo" type="button">Letzten Strich zurück</button><button id="inkClear" class="danger" type="button">Seite leeren</button></div>
+    <p class="help">Du kannst mehrere Handschriftseiten anlegen. Alle Seiten werden gemeinsam übertragen.</p>
+  </section>
+
+  <section class="card transfer-card">
+    <p class="overline">Sicher übertragen</p><h2 id="transferTitle">Mit Sitzung verbinden</h2>
+    <p id="transferCopy">Öffne nach der Sitzung am Laptop den richtigen Session Flow. Scanne dessen QR-Code hier – dein bereits gespeicherter Entwurf wird dann zugeordnet und übertragen.</p>
+    <div class="transfer-actions"><button id="scanBtn" class="primary big" type="button">QR-Code scannen</button><button id="sendBtn" class="primary big" type="button" hidden>Jetzt sicher übertragen</button></div>
+    <p id="transferState" class="save-state"></p>
+    <details><summary>Fallback ohne QR-Scanner</summary><div class="fallback"><label>QR-Link oder Kopplungscode einfügen<input id="pairingInput" autocomplete="off" placeholder="https://…/capture.html?relay=…"></label><button id="pairingApply" type="button">Verbindung übernehmen</button><hr><label>Passwort für verschlüsselten Datei-Export<input id="password" type="password" autocomplete="new-password" minlength="10"></label><button id="exportBtn" type="button">.bdcapture-Datei exportieren</button></div></details>
+  </section>
+</main>
+
+<dialog id="scannerDialog">
+  <div class="scanner-shell"><button id="scannerClose" class="scanner-close" type="button">×</button><p class="overline">Session verbinden</p><h2>QR-Code scannen</h2><p>Richte die Kamera auf den QR-Code im geöffneten Session Flow am Laptop.</p><div class="scanner-frame"><video id="scannerVideo" playsinline muted></video><div class="scanner-guide"></div></div><p id="scannerState">Kamera wird gestartet …</p><details><summary>Kamera funktioniert nicht?</summary><p>Der Entwurf ist bereits gespeichert. Du kannst den QR-Code mit der normalen Kamera öffnen oder den Link unten in der Capture-Maske einfügen.</p></details></div>
+</dialog>
+
+<script src="capture.js?v=13-8-5"></script>
+</body>
+</html>

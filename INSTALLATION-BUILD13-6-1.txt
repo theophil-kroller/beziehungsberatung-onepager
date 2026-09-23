@@ -1,0 +1,36 @@
+INSTALLATION BUILD 13.6.1
+========================
+
+Voraussetzung: BUILD 13.6 ist bereits installiert. Falls nicht, zuerst auch die
+BUILD-13.6-Migration aus diesem ZIP ausführen.
+
+1. DATENBANK
+   In der Cloudflare-D1-Konsole den vollständigen Inhalt von
+   03_DATABASE/build13-6-1-package-content.sql ausführen.
+   Die Datei ist idempotent und darf bei Unsicherheit erneut ausgeführt werden.
+
+2. WORKER
+   Den vollständigen Inhalt von 02_CLOUDFLARE_WORKER/worker.js in den bisherigen
+   Worker übernehmen und deployen. Vorhandene Bindings und Secrets bleiben
+   unverändert.
+
+3. WEBSITE
+   Nur den INHALT von 01_WEBSITE_UPLOAD in den bestehenden Webroot hochladen.
+   Vorhandene Bilddateien im Webroot nicht löschen. Danach den Browser mit
+   Strg+F5 hart neu laden.
+
+4. KURZTEST
+   - Admin > Rechnungen: Spalte "Typ" und Filter "Gruppe" prüfen.
+   - Status "Überfällig" zusammen mit Typ "Gruppe" ausprobieren.
+   - Admin > Packages: Package bearbeiten und inkludierte Leistungen eintragen.
+   - Entwurf speichern, veröffentlichen und auf der Angebotsseite kontrollieren.
+   - Danach depublizieren; das Package muss intern erhalten bleiben, aber von der
+     Angebotsseite verschwinden.
+   - Archivieren und reaktivieren prüfen; reaktivierte Packages bleiben zunächst
+     als nicht veröffentlichter Entwurf bestehen.
+
+ROLLBACK
+Website und Worker können aus dem letzten funktionierenden Build wieder
+eingespielt werden. Die neue D1-Tabelle ist additiv und muss für einen Rollback
+nicht entfernt werden. Vor produktiven Datenbankänderungen ist ein D1-Backup
+empfohlen.
