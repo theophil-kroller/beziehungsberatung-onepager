@@ -5,6 +5,7 @@
   const SESSION_KEY="bd_admin_session_v1";
   let session=sessionStorage.getItem(SESSION_KEY)||"";
   let data=null,currentRecordEmail="",currentRecordTab="overview",editCtx=null,offerCtx=null,salesCtx=null,cancelCtx=null;
+  let dashboardWeekOffset=0,bookingWeekOffset=0;
   let pendingBankSource="",pendingBankRowCount=0;
   let crmState={byEmail:{},prospects:[],activities:[],offers:[],settings:{dormantDays:60,renewalRemaining:1,discount:0}};
   const $=s=>root.querySelector(s), $$=s=>[...root.querySelectorAll(s)];
@@ -136,13 +137,43 @@
   function renderRenewals(){const rows=renewalCandidates();$("#renewals").innerHTML=rows.length?rows.slice(0,7).map(x=>`<div class="renewal-item"><div><strong>${esc(x.customerName)} · ${esc(x.productName)}</strong><span>${x.remaining}/${x.total} Einheiten offen${nextBooking(x.customerEmail)?` · nächster Termin ${dt(nextBooking(x.customerEmail).start)}`:" · kein Folgetermin"}</span></div><button class="mini edit" data-open-sales="${esc(x.customerEmail)}">Angebote öffnen</button></div>`).join(""):`<div class="empty">Aktuell kein Package am Übergang.</div>`;$$('[data-open-sales]').forEach(b=>b.addEventListener('click',()=>{openClient(b.dataset.openSales);currentRecordTab='sales';$$('[data-record-tab]').forEach(x=>x.classList.toggle('active',x.dataset.recordTab==='sales'));renderRecord()}))}
 
   function table(headers,rows){return `<div class="table-wrap"><table><thead><tr>${headers.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`}
+
+  function viennaCalendarParts(value){
+    const d=value instanceof Date?value:new Date(value);
+    const parts=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(d).map(x=>[x.type,x.value]));
+    return {ymd:`${parts.year}-${parts.month}-${parts.day}`,hour:Number(parts.hour||0),minute:Number(parts.minute||0)};
+  }
+  function addCalendarDays(ymd,days){const d=new Date(`${ymd}T12:00:00Z`);d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10)}
+  function mondayFor(ymd){const d=new Date(`${ymd}T12:00:00Z`),wd=d.getUTCDay()||7;return addCalendarDays(ymd,1-wd)}
+  function currentCalendarMonday(offset=0){return addCalendarDays(mondayFor(viennaCalendarParts(new Date()).ymd),Number(offset||0)*7)}
+  function calendarLabel(ymd){return new Intl.DateTimeFormat('de-AT',{weekday:'short',day:'2-digit',month:'2-digit',timeZone:'UTC'}).format(new Date(`${ymd}T12:00:00Z`))}
+  function calendarRangeLabel(monday){const end=addCalendarDays(monday,6),a=new Date(`${monday}T12:00:00Z`),b=new Date(`${end}T12:00:00Z`);const sameMonth=a.getUTCMonth()===b.getUTCMonth();const sameYear=a.getUTCFullYear()===b.getUTCFullYear();if(sameMonth&&sameYear)return `${a.getUTCDate()}.–${b.getUTCDate()}. ${new Intl.DateTimeFormat('de-AT',{month:'long',year:'numeric',timeZone:'UTC'}).format(a)}`;return `${new Intl.DateTimeFormat('de-AT',{day:'2-digit',month:'short',timeZone:'UTC'}).format(a)} – ${new Intl.DateTimeFormat('de-AT',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'}).format(b)}`}
+  function bookingDurationMinutes(x){if(x?.end){const n=(new Date(x.end)-new Date(x.start))/60000;if(Number.isFinite(n)&&n>0)return n}const t=String(x?.typeLabel||x?.type||'').toLowerCase();return t.includes('90')||t.includes('paar')||t.includes('couple')?90:60}
+  function calendarTone(x){const t=String(x?.typeLabel||x?.type||'').toLowerCase(),loc=String(x?.locationLabel||'').toLowerCase();if(t.includes('erst')||t.includes('initial'))return'initial';if(t.includes('paar')||t.includes('couple')||t.includes('gemeinsam'))return'couple';if(loc.includes('online')||t.includes('online'))return'online';return'single'}
+  function weekCalendarHtml(rows,offset,scope,compact=false){
+    const monday=currentCalendarMonday(offset),days=Array.from({length:7},(_,i)=>addCalendarDays(monday,i)),today=viennaCalendarParts(new Date()).ymd;
+    const booked=(rows||[]).filter(x=>x.status==='booked'&&x.start);
+    const weekRows=booked.filter(x=>{const y=viennaCalendarParts(x.start).ymd;return y>=days[0]&&y<=days[6]});
+    let startHour=8,endHour=20;
+    weekRows.forEach(x=>{const p=viennaCalendarParts(x.start),dur=bookingDurationMinutes(x);startHour=Math.min(startHour,Math.max(6,p.hour));endHour=Math.max(endHour,Math.min(22,Math.ceil((p.hour*60+p.minute+dur)/60)))});
+    const hourHeight=compact?42:54,totalHeight=(endHour-startHour)*hourHeight;
+    const gutter=Array.from({length:endHour-startHour+1},(_,i)=>`<span style="top:${i*hourHeight}px">${String(startHour+i).padStart(2,'0')}:00</span>`).join('');
+    const columns=days.map((day,idx)=>{
+      const events=weekRows.filter(x=>viennaCalendarParts(x.start).ymd===day).sort((a,b)=>new Date(a.start)-new Date(b.start));
+      const nowP=viennaCalendarParts(new Date()),nowMin=nowP.hour*60+nowP.minute,startMin=startHour*60;
+      const nowLine=day===today&&nowMin>=startMin&&nowMin<=endHour*60?`<i class="bd-cal-now" style="top:${((nowMin-startMin)/60)*hourHeight}px"></i>`:'';
+      return `<div class="bd-cal-day ${day===today?'today':''} ${idx>=5?'weekend':''}" style="height:${totalHeight}px">${nowLine}${events.map(x=>{const p=viennaCalendarParts(x.start),mins=p.hour*60+p.minute-startMin,dur=bookingDurationMinutes(x),top=Math.max(0,(mins/60)*hourHeight),height=Math.max(compact?30:38,(dur/60)*hourHeight-3);return `<button class="bd-cal-event ${calendarTone(x)}" type="button" data-booking-edit="${esc(x.eventId)}" style="top:${top}px;height:${height}px" title="${esc(x.name)} · ${esc(x.typeLabel||'Termin')}"><strong>${String(p.hour).padStart(2,'0')}:${String(p.minute).padStart(2,'0')} · ${esc(x.name)}</strong><span>${esc(x.typeLabel||'Termin')}${compact?'':` · ${esc(x.locationLabel||'')}`}</span></button>`}).join('')}</div>`
+    }).join('');
+    return `<div class="bd-week-calendar ${compact?'compact':''}" data-calendar-scope="${scope}"><div class="bd-cal-toolbar"><div class="bd-cal-nav"><button type="button" class="mini" data-cal-nav="${scope}" data-dir="-1" aria-label="Vorige Woche">←</button><button type="button" class="mini" data-cal-today="${scope}">Heute</button><button type="button" class="mini" data-cal-nav="${scope}" data-dir="1" aria-label="Nächste Woche">→</button></div><strong>${esc(calendarRangeLabel(monday))}</strong><span class="bd-cal-hint">${weekRows.length} Termin${weekRows.length===1?'':'e'}</span></div><div class="bd-cal-scroll"><div class="bd-cal-grid" style="--bd-hour:${hourHeight}px"><div class="bd-cal-head bd-cal-time-head">Zeit</div>${days.map((d,i)=>`<div class="bd-cal-head ${d===today?'today':''} ${i>=5?'weekend':''}">${esc(calendarLabel(d))}</div>`).join('')}<div class="bd-cal-times" style="height:${totalHeight}px">${gutter}</div>${columns}</div></div></div>`;
+  }
+  function bindWeekCalendar(scope){
+    $$(`[data-cal-nav="${scope}"]`).forEach(b=>b.addEventListener('click',()=>{const d=Number(b.dataset.dir||0);if(scope==='dashboard'){dashboardWeekOffset+=d;renderNext()}else{bookingWeekOffset+=d;renderBookings()}}));
+    $$(`[data-cal-today="${scope}"]`).forEach(b=>b.addEventListener('click',()=>{if(scope==='dashboard'){dashboardWeekOffset=0;renderNext()}else{bookingWeekOffset=0;renderBookings()}}));
+  }
   function renderNext(){
-    const rows=(data.bookings||[]).filter(x=>x.status==="booked"&&new Date(x.start).getTime()>=now()).sort((a,b)=>new Date(a.start)-new Date(b.start)).slice(0,8);
-    const dayFmt=new Intl.DateTimeFormat("de-AT",{timeZone:"Europe/Vienna",weekday:"short",day:"2-digit",month:"2-digit"});
-    const timeFmt=new Intl.DateTimeFormat("de-AT",{timeZone:"Europe/Vienna",hour:"2-digit",minute:"2-digit"});
-    const tone=x=>{const t=String(x.typeLabel||x.type||"").toLowerCase();if(t.includes("paar")||t.includes("couple"))return"couple";if(t.includes("erst")||t.includes("initial"))return"initial";if(t.includes("online"))return"online";return"single"};
-    $("#nextBookings").innerHTML=rows.length?`<div class="calendar-preview-grid">${rows.map(x=>`<article class="calendar-preview-card ${tone(x)}"><div class="calendar-date"><strong>${esc(dayFmt.format(new Date(x.start)))}</strong><span>${esc(timeFmt.format(new Date(x.start)))}</span></div><div class="calendar-client"><button class="calendar-client-link" data-open-client="${esc(x.email)}">${esc(x.name)}</button><span>${esc(x.typeLabel||"Termin")} · ${esc(x.locationLabel||"")}</span></div><div class="calendar-card-actions"><button class="icon-action" data-booking-edit="${esc(x.eventId)}" title="Termin bearbeiten" aria-label="Termin bearbeiten">✎</button></div></article>`).join("")}</div>`:`<div class="empty">Keine kommenden Termine.</div>`;
-    bindPowerActions();bindClientOpeners()
+    const rows=(data.bookings||[]).filter(x=>x.status==='booked');
+    $('#nextBookings').innerHTML=weekCalendarHtml(rows,dashboardWeekOffset,'dashboard',true);
+    bindWeekCalendar('dashboard');bindPowerActions();
   }
 
   const stages={
@@ -197,8 +228,11 @@
   window.BDClientRecordContext=()=>{const c=customerUniverse().find(x=>x.email===currentRecordEmail);if(!c)return null;return{email:c.email,name:c.name,client:c,clientData:clientData(c.email),activities:activitiesFor(c.email),lifecycle:lifecycleOf(c),nextBooking:nextBooking(c.email),lastBooking:lastPastBooking(c.email),activePackage:activePackage(c.email)}};
   window.BDAdminUX={switchView,openClient,getData:()=>data,getCurrentRecordEmail:()=>currentRecordEmail,refresh:load};
 
-  function renderBookings(){const filter=$("#bookingFilter").value,t=now();let rows=(data.bookings||[]).slice();if(filter==='upcoming')rows=rows.filter(x=>x.status==='booked'&&new Date(x.start).getTime()>=t);if(filter==='past')rows=rows.filter(x=>x.status==='booked'&&new Date(x.start).getTime()<t);if(filter==='cancelled')rows=rows.filter(x=>x.status==='cancelled');rows.sort((a,b)=>filter==='upcoming'?new Date(a.start)-new Date(b.start):new Date(b.start)-new Date(a.start));$("#bookingsTable").innerHTML=rows.length?table(["Termin","Klient:in","Berater","Beratung","Ort","Status","Aktion"],rows.map(x=>`<tr><td>${esc(dt(x.start))}</td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.advisorName||'Theophil Kroller')}</td><td>${esc(x.typeLabel)}${x.packageName?`<div class="sub">${esc(x.packageName)}</div>`:''}</td><td>${esc(x.locationLabel)}</td><td><span class="badge ${x.status==='cancelled'?'cancelled':'booked'}">${x.status==='cancelled'?'Abgesagt':new Date(x.start).getTime()<t?'Vergangen':'Gebucht'}</span></td><td>${x.status==='booked'?`<div class="row-actions"><button class="mini edit" data-booking-edit="${esc(x.eventId)}">Verschieben</button><button class="mini danger" data-booking-delete="${esc(x.eventId)}">Stornieren</button></div>`:'—'}</td></tr>`)):`<div class="empty">Keine Termine in dieser Ansicht.</div>`;bindPowerActions()}
-  $("#bookingFilter").addEventListener('change',()=>data&&renderBookings());
+  function renderBookings(){
+    const all=(data.bookings||[]).slice();
+    const cal=$('#bookingCalendar');if(cal){cal.innerHTML=weekCalendarHtml(all,bookingWeekOffset,'bookings',false);bindWeekCalendar('bookings')}
+    const filter=$('#bookingFilter')?.value||'upcoming',t=now();let rows=all.slice();if(filter==='upcoming')rows=rows.filter(x=>x.status==='booked'&&new Date(x.start).getTime()>=t);if(filter==='past')rows=rows.filter(x=>x.status==='booked'&&new Date(x.start).getTime()<t);if(filter==='cancelled')rows=rows.filter(x=>x.status==='cancelled');rows.sort((a,b)=>filter==='upcoming'?new Date(a.start)-new Date(b.start):new Date(b.start)-new Date(a.start));$('#bookingsTable').innerHTML=rows.length?table(['Termin','Klient:in','Berater','Beratung','Ort','Status','Aktion'],rows.map(x=>`<tr><td>${esc(dt(x.start))}</td><td><span class="name">${esc(x.name)}</span><div class="sub">${esc(x.email)}</div></td><td>${esc(x.advisorName||'Theophil Kroller')}</td><td>${esc(x.typeLabel)}${x.packageName?`<div class="sub">${esc(x.packageName)}</div>`:''}</td><td>${esc(x.locationLabel)}</td><td><span class="badge ${x.status==='cancelled'?'cancelled':'booked'}">${x.status==='cancelled'?'Abgesagt':new Date(x.start).getTime()<t?'Vergangen':'Gebucht'}</span></td><td>${x.status==='booked'?`<div class="row-actions"><button class="mini edit" data-booking-edit="${esc(x.eventId)}">Verschieben</button><button class="mini danger" data-booking-delete="${esc(x.eventId)}">Stornieren</button></div>`:'—'}</td></tr>`)):'<div class="empty">Keine Termine in dieser Ansicht.</div>';bindPowerActions()}
+  $('#bookingFilter')?.addEventListener('change',()=>data&&renderBookings());
   function renderPackages(){const rows=(data.packages||[]).map(x=>`<tr><td><span class="name">${esc(x.customerName)}</span><div class="sub">${esc(visibleContactEmail(x.customerContactEmail||x.customerEmail))}</div></td><td>${esc(x.advisorName||'Theophil Kroller')}</td><td><strong>${esc(x.productName)}</strong><div class="sub">${esc(x.reference||'')}</div></td><td><strong>${x.remaining}/${x.total}</strong>${Number(x.remaining)<=loadSettings().renewalRemaining?'<div class="sub" style="color:#99631E">Fortsetzung im Blick</div>':''}</td><td>${x.expiresAt?dateOnly(x.expiresAt):'—'}</td><td>${x.purchaseAmountCents===null?'—':money(x.purchaseAmountCents,x.currency)}<div class="sub">${esc(x.purchaseStatus||'')}</div></td><td><div class="row-actions"><button class="mini edit" data-package-edit="${x.creditId}">Bearbeiten</button>${Number(x.remaining)<=loadSettings().renewalRemaining?`<button class="mini" data-offer="${x.creditId}">Fortsetzung</button>`:''}</div></td></tr>`);$("#packagesTable").innerHTML=rows.length?table(["Klient:in","Berater","Package","Offen","Gültig bis","Kauf","Aktion"],rows):`<div class="empty">Noch keine Packages.</div>`;bindPowerActions();bindOfferButtons()}
   function invoiceTypeLabel(type){return({group:'Gruppe',package:'Package',single:'Einzelsession',other:'Sonstige'})[type]||'Sonstige'}
   function renderInvoices(){

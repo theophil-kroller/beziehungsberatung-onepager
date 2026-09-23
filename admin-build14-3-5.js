@@ -75,21 +75,34 @@
     try{const v=await window.BDVault.request('/client?ref='+encodeURIComponent(c.email));anchor.insertAdjacentHTML('afterend',pathHtml(v,c));bindPath(content)}catch(_){/* overview stays operational without local clinical data */}finally{overviewBusy=false}
   }
 
-  function classifyActivity(x){const t=`${x.title||''} ${x.detail||''}`.toLowerCase();if(/rechnung|honorar|zahlung|guthaben|betrag/.test(t))return'finance';if(/anfrage|kontakt|website|e-mail|email|telefon|whatsapp|nachricht/.test(t))return'contact';if(/termin|buchung|storn/.test(t))return'booking';if(/package|paket/.test(t))return'package';return'organization'}
+  function classifyActivity(x){
+    const t=`${x.title||''} ${x.detail||''}`.toLowerCase();
+    if(/whatsapp/.test(t))return'whatsapp';
+    if(/e-mail|email|mail /.test(t))return'email';
+    if(/telefon|anruf/.test(t))return'phone';
+    if(/zahlung|betrag erhalten|bezahlt|stripe|barzahlung|überweisung/.test(t))return'payment';
+    if(/rechnung|honorar/.test(t))return'invoice';
+    if(/termin|buchung|storn/.test(t))return'booking';
+    if(/package|paket/.test(t))return'package';
+    if(/anfrage|kontakt|website|nachricht/.test(t))return'contact';
+    return'organization';
+  }
+  function iconFor(type){return({session:'📝',booking:'📅',email:'✉️',whatsapp:'💬',phone:'📞',invoice:'💶',payment:'🏦',note:'✍️',artifact:'📎',goal:'🎯',package:'📦',contact:'👤',manual:'🧭',organization:'•'})[type]||'•'}
+  function iconLabel(type){return({session:'Sitzung',booking:'Termin',email:'E-Mail',whatsapp:'WhatsApp',phone:'Telefon',invoice:'Honorarnote',payment:'Zahlung',note:'Notiz',artifact:'Dokument',goal:'Ziel',package:'Package',contact:'Kontakt',manual:'Ereignis',organization:'Organisation'})[type]||'Ereignis'}
   function timelineEvents(v,c){
     const ev=[];const add=(type,date,title,detail='',target='')=>date&&ev.push({type,date,title,detail,target});
     (v.initialConsultations||[]).forEach(x=>add('session',x.date||x.updatedAt,'Erstgespräch',x.topic||x.mainProblem||x.reason||'', 'consultation'));
-    (v.sessions||[]).forEach((x,i)=>add('session',x.date||x.updatedAt,x.focus||`Sitzung ${i+1}`,x.agreements||x.nextFocus||x.dynamics||x.dictatedNote||'',`session:${x.id}`));
+    (v.sessions||[]).forEach((x,i)=>add('session',x.date||x.updatedAt,`Sitzung ${i+1}${x.focus?` · ${x.focus}`:''}`,x.agreements||x.nextFocus||x.dynamics||x.dictatedNote||'',`session:${x.id}`));
     (v.caseNotes||[]).forEach(x=>add('note',x.createdAt,'Fallnotiz',x.body||''));
     (v.artifacts||[]).forEach(x=>add('artifact',x.createdAt,'Artefakt / Datei',x.filename||''));
     (v.goals||[]).forEach(x=>add('goal',x.updatedAt||x.createdAt,`Ziel: ${x.title||'Ziel'}`,x.detail||x.status||''));
-    (v.timelineEvents||[]).forEach(x=>add('manual',x.date||x.createdAt,x.title||'Timeline-Ereignis',x.detail||''));
+    (v.timelineEvents||[]).forEach(x=>{const type=classifyActivity(x)==='organization'?'manual':classifyActivity(x);add(type,x.date||x.createdAt,x.title||'Timeline-Ereignis',x.detail||'')});
     (c.activities||[]).forEach(x=>add(classifyActivity(x),x.at,x.title||'CRM-Aktivität',x.detail||''));
     return ev.sort((a,b)=>new Date(b.date)-new Date(a.date));
   }
   function timelineHtml(events){
     if(!events.length)return'<div class="b1435-timeline-empty">Noch keine Ereignisse vorhanden.</div>';
-    return events.map(x=>`<div class="b1435-timeline-row ${esc(x.type)}"><span class="b1435-timeline-date">${esc(dateTime(x.date))}</span><span class="b1435-timeline-dot"></span><div class="b1435-timeline-copy"><strong>${esc(x.title)}</strong>${x.detail?`<p>${esc(String(x.detail).replace(/\s+/g,' ').slice(0,260))}</p>`:''}${x.target?`<button type="button" data-b1435-event-target="${esc(x.target)}">Dokumentation öffnen →</button>`:''}</div></div>`).join('');
+    return events.map(x=>`<div class="b1435-timeline-row ${esc(x.type)}" data-event-type="${esc(x.type)}"><span class="b1435-timeline-date">${esc(dateTime(x.date))}</span><span class="b1435-timeline-icon" title="${esc(iconLabel(x.type))}" aria-label="${esc(iconLabel(x.type))}"><span class="b14352-symbol" aria-hidden="true">${iconFor(x.type)}</span></span><div class="b1435-timeline-copy"><strong>${esc(x.title)}</strong>${x.detail?`<p>${esc(String(x.detail).replace(/\s+/g,' ').slice(0,260))}</p>`:''}${x.target?`<button type="button" data-b1435-event-target="${esc(x.target)}">Dokumentation öffnen →</button>`:''}</div></div>`).join('');
   }
   async function addDocumentationTimeline(){
     if(docBusy)return;

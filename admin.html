@@ -22,7 +22,8 @@
 <link rel="stylesheet" href="admin-build14-3-2.css?v=20260923-build14-3-2">
 <link rel="stylesheet" href="admin-build14-3-3.css?v=20260923-build14-3-3">
 <link rel="stylesheet" href="admin-build14-3-4.css?v=20260923-build14-3-4">
-<link rel="stylesheet" href="admin-build14-3-5.css?v=20260923-build14-3-5">
+<link rel="stylesheet" href="admin-build14-3-5.css?v=20260923-build14-3-5-1">
+<link rel="stylesheet" href="admin-build14-3-5-2.css?v=20260923-build14-3-5-2">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -133,7 +134,7 @@
         <section class="panel dashboard-focus"><div class="panel-head"><div><p class="eyebrow">Schnellzugriff</p><h2>Klient:innen im Mittelpunkt</h2><p class="muted">Akte öffnen, Sitzung vorbereiten oder einen laufenden Fall fortsetzen.</p></div></div><div class="dashboard-focus-actions"><button class="btn primary" data-jump="clients">Klient:in öffnen</button><button class="btn ghost" data-jump="bookings">Terminverwaltung</button></div><p class="micro muted">Session Flow, Journey, Packages und Zahlungen bleiben vollständig erhalten – sie erscheinen dort, wo sie gebraucht werden.</p></section>
       </div>
 
-      <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Kalender</p><h2>Die nächsten Termine</h2><p class="muted">Deine Praxiswoche auf einen Blick.</p></div><button class="text-button" data-jump="bookings">Terminverwaltung →</button></div><div id="nextBookings"></div></section>
+      <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Kalender</p><h2>Die nächsten Termine</h2><p class="muted">Deine Praxiswoche als echte Kalenderansicht.</p></div><button class="text-button" data-jump="bookings">Terminverwaltung →</button></div><div id="nextBookings"></div></section>
 
       <details class="dashboard-secondary"><summary>Fortsetzungen & weitere Hinweise</summary><section class="panel"><div class="panel-head"><div><p class="eyebrow">Fortsetzung</p><h2>Packages rechtzeitig weiterdenken</h2><p class="muted">Nur bei Bedarf öffnen – bevor die letzte Einheit verbraucht ist.</p></div></div><div id="renewals" class="renewal-list"></div></section></details>
     </section>
@@ -148,7 +149,7 @@
     </section>
 
     <section class="view" id="view-bookings">
-      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Terminverwaltung</p><h2>Termine</h2><p class="muted">Verschieben mit Kalender und Uhrzeit – ohne kryptische Datumsformate.</p></div><div class="toolbar"><select id="bookingFilter"><option value="upcoming">Kommende</option><option value="all">Alle</option><option value="past">Vergangene</option><option value="cancelled">Abgesagte</option></select></div></div><div id="bookingsTable"></div></section>
+      <section class="panel"><div class="panel-head"><div><p class="eyebrow">Terminverwaltung</p><h2>Kalender</h2><p class="muted">Woche visuell planen; Details, Verschieben und Stornieren bleiben in der Listenansicht erhalten.</p></div></div><div id="bookingCalendar"></div><details class="booking-list-details"><summary>Listenansicht &amp; Verwaltungsdetails</summary><div class="toolbar booking-list-toolbar"><label class="filter-select">Status<select id="bookingFilter"><option value="upcoming">Kommende</option><option value="all">Alle</option><option value="past">Vergangene</option><option value="cancelled">Abgesagte</option></select></label></div><div id="bookingsTable"></div></details></section>
     </section>
 
     <section class="view flow-manager-view" id="view-flow"><section class="panel flow-manager-shell"><div class="panel-head"><div><p class="eyebrow">Session Flow Manager</p><h2>Ein klarer Ablauf rund um jede Sitzung.</h2><p class="muted">Vorbereiten → Buchung &amp; Angebote → Nachbereiten. Offene Schritte bleiben sichtbar.</p></div><button class="btn ghost" id="flowRefresh" type="button">Aktualisieren</button></div><div class="flow-summary-grid"><article class="flow-mini-stat"><span>Vorbereitung offen</span><strong id="flowPrepCount">0</strong></article><article class="flow-mini-stat"><span>Nachbereitung offen</span><strong id="flowPostCount">0</strong></article><article class="flow-mini-stat"><span>Geparkt</span><strong id="flowParkCount">0</strong></article></div><div class="flow-board" style="margin-top:18px"><section><div class="panel-head"><div><p class="eyebrow">Jetzt relevant</p><h3>Offene Session Flows</h3></div></div><div id="flowMainList" class="flow-list"><div class="empty">Session Flow wird geladen …</div></div></section></div></section></section>
@@ -222,7 +223,7 @@
 <dialog id="bankImportDialog"><div class="dialog-shell wide"><button class="dialog-x" id="bankImportClose" type="button">×</button><p class="eyebrow">Zahlungsabgleich</p><h2>Bank-CSV prüfen</h2><p class="muted" id="bankImportSummary">—</p><div id="bankImportTable"></div><div class="dialog-actions"><button class="btn ghost" type="button" id="bankImportCancel">Abbrechen</button><button class="btn primary" type="button" id="bankImportApply">Ausgewählte Zahlungen übernehmen</button></div></div></dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="admin-build9.js?v=20260922-build13-7"></script>
+<script src="admin-build9.js?v=20260923-build14-3-5-2"></script>
 <script src="admin-vault.js?v=20260923-build13-8-6"></script>
 <script src="admin-build10.js?v=20260922-build13-7-3-runtime-fix"></script>
 <script src="admin-build11.js?v=20260922-build13-7-5"></script>
@@ -237,6 +238,6 @@
 <script src="admin-build14-3-2.js?v=20260923-build14-3-2"></script>
 <script src="admin-build14-3-3.js?v=20260923-build14-3-3"></script>
 <script src="admin-build14-3-4.js?v=20260923-build14-3-4"></script>
-<script src="admin-build14-3-5.js?v=20260923-build14-3-5"></script>
+<script src="admin-build14-3-5.js?v=20260923-build14-3-5-2"></script>
 </body>
 </html>

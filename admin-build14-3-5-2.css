@@ -1,0 +1,22 @@
+/* BUILD 14.3.5.2 — real weekly calendar + explicit timeline symbols */
+.bd-week-calendar{margin-top:8px}
+.bd-cal-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.bd-cal-toolbar>strong{font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#372b26}
+.bd-cal-nav{display:flex;gap:6px;align-items:center}.bd-cal-hint{font-size:10px;color:#907d73;font-weight:700}
+.bd-cal-scroll{overflow-x:auto;border:1px solid #e8ddd5;border-radius:15px;background:#fff;box-shadow:0 6px 22px rgba(67,46,37,.035)}
+.bd-cal-grid{display:grid;grid-template-columns:52px repeat(7,minmax(132px,1fr));min-width:980px;position:relative}
+.bd-cal-head{height:44px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #e9dfd8;border-left:1px solid #efe7e2;background:#fbf9f6;font-size:10px;font-weight:850;color:#65544c;text-transform:uppercase;letter-spacing:.03em}
+.bd-cal-head.today{background:#fff2eb;color:#a7553d}.bd-cal-head.weekend{background:#faf7f2}.bd-cal-time-head{border-left:0;color:#a08e84}
+.bd-cal-times{position:relative;background:#fcfaf8;border-right:1px solid #e9dfd8}.bd-cal-times span{position:absolute;right:8px;transform:translateY(-50%);font-size:9px;color:#a08f86}
+.bd-cal-day{position:relative;border-left:1px solid #eee5df;background:repeating-linear-gradient(to bottom,#fff 0,#fff calc(var(--bd-hour) - 1px),#eee6e0 calc(var(--bd-hour) - 1px),#eee6e0 var(--bd-hour))}
+.bd-cal-day.weekend{background:repeating-linear-gradient(to bottom,#fdfbf8 0,#fdfbf8 calc(var(--bd-hour) - 1px),#eee6e0 calc(var(--bd-hour) - 1px),#eee6e0 var(--bd-hour))}.bd-cal-day.today{background-color:#fffaf7}
+.bd-cal-event{position:absolute;left:5px;right:5px;z-index:2;border:1px solid transparent;border-left-width:4px;border-radius:9px;padding:5px 7px;text-align:left;overflow:hidden;cursor:pointer;box-shadow:0 2px 8px rgba(55,43,38,.06);transition:transform .12s ease,box-shadow .12s ease;background:#eef4fa;color:#34485e}
+.bd-cal-event:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(55,43,38,.11)}.bd-cal-event strong{display:block;font-size:9.5px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bd-cal-event span{display:block;margin-top:2px;font-size:8.5px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.8}
+.bd-cal-event.single{background:#e9f3ed;border-color:#7aa68b;color:#315942}.bd-cal-event.online{background:#eaf2f9;border-color:#7798b9;color:#365470}.bd-cal-event.couple{background:#f8e9ee;border-color:#bf7d91;color:#704052}.bd-cal-event.initial{background:#fff0cf;border-color:#c89b42;color:#705417}
+.bd-cal-now{position:absolute;left:0;right:0;border-top:2px solid #d7684b;z-index:3;pointer-events:none}.bd-cal-now:before{content:'';position:absolute;left:-4px;top:-5px;width:8px;height:8px;border-radius:50%;background:#d7684b}
+.bd-week-calendar.compact .bd-cal-grid{grid-template-columns:48px repeat(7,minmax(118px,1fr));min-width:875px}.bd-week-calendar.compact .bd-cal-head{height:38px}.bd-week-calendar.compact .bd-cal-event{padding:4px 6px}.bd-week-calendar.compact .bd-cal-event span{display:none}
+.booking-list-details{margin-top:16px;border-top:1px solid #eadfd8;padding-top:10px}.booking-list-details>summary{cursor:pointer;font-weight:850;color:#6f5144;padding:8px 2px}.booking-list-toolbar{justify-content:flex-end;margin:8px 0 12px}
+/* Force event symbols to remain visible in the full Vault timeline even with inherited legacy styles. */
+.b1435-timeline-icon{display:grid!important;place-items:center!important;overflow:visible!important;color:#3f332e!important;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif!important;font-size:15px!important;line-height:1!important;opacity:1!important}
+.b1435-timeline-icon .b14352-symbol{display:block!important;opacity:1!important;visibility:visible!important;filter:none!important;transform:none!important}
+@media(max-width:900px){.bd-cal-grid{grid-template-columns:48px repeat(7,minmax(120px,1fr));min-width:890px}.bd-cal-toolbar>strong{order:3;width:100%}}
