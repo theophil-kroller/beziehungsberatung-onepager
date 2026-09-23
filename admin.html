@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="admin-build13-9.css?v=20260923-build13-9">
 <link rel="stylesheet" href="admin-build14.css?v=20260923-build14-0-1">
 <link rel="stylesheet" href="admin-build14-1.css?v=20260923-build14-1">
+<link rel="stylesheet" href="admin-build14-2.css?v=20260923-build14-2">
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" width="0" height="0">
@@ -50,7 +51,7 @@
 </section>
 
 <div id="appShell" class="app-shell hidden">
-  <a class="hub-strip-link" href="hub.html">Knowledge Hub öffnen →</a>
+  <div class="surface-links"><a href="message-center.html">Message Center öffnen</a><a href="hub.html">Knowledge Hub öffnen</a></div>
   <aside class="sidebar">
     <div class="side-brand"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><div><strong>Beziehungsdynamiken</strong><span>Praxis-CRM</span></div></div>
     <nav class="side-nav" aria-label="Praxisbereiche">
@@ -143,7 +144,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.1</strong><br><span>Klientenakte &amp; Timeline 2.0: vollständige Fallchronik, lokale Meilensteine, versionierte KI-Fallübersicht und kompakte Sitzungsvorbereitung.</span></p><ul class="feature-list roadmap-list"><li><strong>14.2</strong><span>Eigenständiges Message Center mit Website-Anfragen und relevanten Praxis-E-Mails.</span></li><li><strong>14.3</strong><span>WhatsApp als weiterer Kanal im gemeinsamen Message Center.</span></li><li><strong>Später</strong><span>Erweiterter Content-Kalender, Kampagnen, Newsletter, Trend Radar und Analytics.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.2</strong><br><span>Eigenständiges Message Center für freigegebene Praxis-E-Mails und manuell erfasste CRM-Anfragen – mit lokaler KI und bewusst bestätigtem Versand.</span></p><ul class="feature-list roadmap-list"><li><strong>14.3</strong><span>WhatsApp als weiterer Kanal im gemeinsamen Message Center.</span></li><li><strong>Später</strong><span>Öffentliches Anfrageformular, erweiterter Content-Kalender, Kampagnen, Newsletter, Trend Radar und Analytics.</span></li></ul></section>
       </div>
     </section>
   </main>

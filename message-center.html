@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Message Center · Beziehungsdynamiken</title>
+  <link rel="stylesheet" href="message-center.css?v=14.2">
+</head>
+<body>
+  <header class="mc-strip"><span>MESSAGE CENTER · GESCHÜTZTER ZUGANG</span><nav><a href="hub.html">Knowledge Hub</a><a class="active" href="admin.html">← Praxis-CRM</a></nav></header>
+  <section class="mc-head"><div><p class="eyebrow">BUILD 14.2 · ACTION INBOX</p><h1>Nachrichten, die eine Entscheidung brauchen.</h1><p>Freigegebene Praxis-E-Mails und manuell erfasste CRM-Anfragen – mit lokalem Antwortentwurf, aber ohne automatischen Versand.</p></div><div class="mc-head-actions"><button id="refreshBtn" type="button">Aktualisieren</button><button id="settingsBtn" type="button">Einstellungen</button></div></section>
+
+  <div id="authNotice" class="notice error" hidden>Deine CRM-Sitzung fehlt oder ist abgelaufen. <a href="admin.html">Bitte zuerst im CRM anmelden.</a></div>
+  <div id="vaultNotice" class="notice" hidden><strong>Lokaler Vault gesperrt.</strong><span>Gmail und KI-Entwürfe sind erst nach dem Entsperren verfügbar.</span><button id="unlockBtn" type="button">Vault entsperren</button></div>
+
+  <main id="messageApp" class="mc-layout" hidden>
+    <aside class="queues">
+      <div class="connection"><span id="connectionDot"></span><div><strong id="connectionTitle">Gmail wird geprüft …</strong><small id="connectionDetail">—</small></div></div>
+      <nav aria-label="Nachrichtenfilter">
+        <button class="active" data-queue="all">Alle <b id="countAll">0</b></button>
+        <button data-queue="reply">Antwort erforderlich <b id="countReply">0</b></button>
+        <button data-queue="info">Nur Information <b id="countInfo">0</b></button>
+        <button data-queue="waiting">Warte auf Klient:in <b id="countWaiting">0</b></button>
+        <button data-queue="unassigned">Nicht zugeordnet <b id="countUnassigned">0</b></button>
+        <button data-queue="done">Erledigt <b id="countDone">0</b></button>
+      </nav>
+      <div class="privacy-note"><strong>Local-first</strong><span>E-Mail-Inhalte und KI-Entwürfe bleiben im lokalen Vault. Gesendet wird nur nach deiner Bestätigung.</span></div>
+    </aside>
+
+    <section class="inbox">
+      <div class="inbox-tools"><input id="searchInput" type="search" placeholder="Name, E-Mail oder Betreff"><span id="syncState">Noch nicht geladen</span></div>
+      <div id="messageList" class="message-list"><p class="empty">Nachrichten werden geladen …</p></div>
+    </section>
+
+    <article id="reader" class="reader"><div class="reader-empty"><p class="eyebrow">Kontext statt Postfach</p><h2>Wähle eine Nachricht.</h2><p>Hier erscheinen Nachricht, Klientenzuordnung, CRM-Kontext und dein prüfbarer Antwortentwurf.</p></div></article>
+  </main>
+
+  <dialog id="unlockDialog"><form id="unlockForm" class="dialog-card"><button class="dialog-x" type="button" data-close="unlockDialog">×</button><p class="eyebrow">Secure Practice Vault</p><h2>Vault entsperren</h2><p>Das Passwort wird ausschließlich an den lokalen Dienst auf diesem Computer gesendet.</p><label>Vault-Passwort<input id="vaultPassword" type="password" autocomplete="current-password" required></label><div id="unlockMessage" class="form-message"></div><button class="primary" type="submit">Entsperren</button></form></dialog>
+
+  <dialog id="settingsDialog"><form id="settingsForm" class="dialog-card wide"><button class="dialog-x" type="button" data-close="settingsDialog">×</button><p class="eyebrow">Gmail & Arbeitsweise</p><h2>Message Center einrichten</h2><div id="gmailSetup" class="setup-box"></div><div class="form-grid"><label>Nur dieses Gmail-Label laden<input id="labelInput" value="Praxis-CRM"></label><label>Standardansprache<select id="defaultStyle"><option value="du">Du</option><option value="sie">Sie</option></select></label><label>Maximale Nachrichten pro Abruf<input id="maxResults" type="number" min="1" max="50" value="25"></label></div><p class="micro">Der Filter begrenzt, welche Nachrichten das Message Center aktiv abruft. Die von Google angezeigte OAuth-Berechtigung ist technisch weiter gefasst.</p><div id="settingsMessage" class="form-message"></div><div class="dialog-actions"><button id="disconnectBtn" class="danger" type="button" hidden>Gmail trennen</button><button type="button" data-close="settingsDialog">Abbrechen</button><button class="primary" type="submit">Einstellungen speichern</button></div></form></dialog>
+
+  <script src="booking-config.js?v=14.2"></script>
+  <script src="message-center.js?v=14.2"></script>
+</body>
+</html>
