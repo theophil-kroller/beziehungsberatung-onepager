@@ -1,0 +1,71 @@
+INSTALLATION BUILD 13.7
+=======================
+
+Voraussetzung
+-------------
+Diese Kurzanleitung geht davon aus, dass BUILD 13.6.2 bereits installiert ist.
+Bei einem älteren Stand zuerst die fehlenden SQL-Dateien aus `03_DATABASE` in
+chronologischer Reihenfolge ausführen.
+
+1. Sicherung
+------------
+- Aktuellen Website-/Worker-Stand sichern.
+- Den lokalen Vault sperren und eine verschlüsselte Sicherung des bestehenden
+  Ordners `vault/data` erstellen.
+- `vault/data` niemals löschen, überschreiben oder hochladen.
+
+2. Website
+----------
+Den Inhalt von `01_WEBSITE_UPLOAD` vollständig in den bestehenden Website-Root
+kopieren. Die vorhandenen Dateien mit den gleichnamigen BUILD-13.7-Dateien
+ersetzen. Danach den Browser-Cache hart neu laden.
+
+3. Cloudflare Worker
+--------------------
+`02_CLOUDFLARE_WORKER/worker.js` vollständig in den bestehenden Worker übernehmen
+und deployen. Anschließend `/health` prüfen. Erwartet wird:
+
+  "build": "13.7"
+
+Die bestehenden Bindings und Secrets bleiben unverändert.
+
+4. D1-Datenbank
+---------------
+Von BUILD 13.6.2 auf 13.7 ist keine neue D1-Migration erforderlich. Die neuen
+Diktatdaten gehören bewusst nicht in D1, sondern ausschließlich in den lokalen
+Vault. SQL-Dateien im Komplettpaket sind nur für eine vollständige Neuinstallation
+oder ein Upgrade von einem älteren Stand enthalten.
+
+5. Lokaler Vault
+----------------
+1. Vault und Autostart-Prozess beenden.
+2. Dateien aus `04_LOCAL_VAULT` in den vorhandenen Vault-Programmordner kopieren.
+3. Den existierenden Unterordner `data` unangetastet lassen.
+4. `check_whisper.bat` ausführen.
+5. Vault mit `start_vault.bat` oder dem bestehenden Autostart neu starten.
+
+Beim ersten Start erweitert der Vault seine lokale SQLite-Struktur automatisch.
+Vorhandene Klienten, Sitzungen, KI-Zusammenfassungen und Artefakte bleiben erhalten.
+
+6. Funktionstest
+----------------
+- CRM öffnen und den Vault entsperren.
+- Unter Vault muss „Whisper bereit · Modell small“ erscheinen.
+- Offline-Praxis öffnen und ein kurzes Schnelldiktat aufnehmen.
+- Aufnahme stoppen; der Status wechselt lokal zu Transkription und dann Entwurf.
+- Text ändern, einer Testperson zuordnen und „Geprüft übernehmen“ wählen.
+- In der Akte prüfen, ob die Fallnotiz erscheint.
+- Eine Sitzung öffnen und „Sitzungsnotiz diktieren“ prüfen.
+- Eine Test-Gruppenanmeldung durchführen und E-Mail-Status sowie PDF kontrollieren.
+
+7. Falls Whisper nicht bereit ist
+---------------------------------
+Siehe `06_SETUP_REFERENCE/BUILD13-7-WHISPER-SETUP.txt`. Häufig fehlen entweder
+FFmpeg im PATH oder openai-whisper in der Python-Umgebung, die den Vault startet.
+
+Rollback
+--------
+Website und Worker können auf die vorher gesicherte Version zurückgesetzt werden.
+Beim Vault die BUILD-13.6.2-Programmdateien zurückkopieren, aber den aktuellen
+`vault/data`-Ordner behalten. Die zusätzlichen lokalen Tabellen sind abwärts
+unschädlich und enthalten die verschlüsselten Diktatdaten.
