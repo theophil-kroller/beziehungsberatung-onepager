@@ -58,8 +58,8 @@
         const add=document.querySelector('[data-vault-add-consultation],#vaultAddInitial');
         if(add){add.scrollIntoView({behavior:'smooth',block:'center'});add.click();return}
       }else{
-        const selector=target==='consultation'?'.vault-initial-card':`#vaultSessions [data-session-card="${CSS.escape(String(target).replace('session:',''))}"]`;
-        const el=$(selector);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('b1434-session-focus');setTimeout(()=>el.classList.remove('b1434-session-focus'),1800);return}
+        const selector=target==='consultation'?'#vaultSessions [data-session-select="consultation"]':`#vaultSessions [data-session-card="${CSS.escape(String(target).replace('session:',''))}"]`;
+        const el=$(selector);if(el){el.click?.();el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('b1434-session-focus');setTimeout(()=>el.classList.remove('b1434-session-focus'),1800);return}
       }
       if(tries<24)setTimeout(find,120);
     };
