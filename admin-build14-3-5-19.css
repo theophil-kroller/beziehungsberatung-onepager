@@ -1,0 +1,25 @@
+/* BUILD 14.3.5.19 — bookkeeping performance graphic, additive to existing page */
+.b143519-performance{margin-top:16px!important;padding:18px 20px!important}
+.b143519-performance-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.b143519-performance-head h3{margin:2px 0 3px}
+.b143519-performance-controls{display:flex;align-items:center;gap:8px}
+.b143519-performance-controls select{border:1px solid #ded2c9;border-radius:10px;background:#fffdfa;color:#5e4e47;padding:7px 30px 7px 10px;font-size:11px;font-weight:800}
+.b143519-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:14px 0 10px;padding:4px;background:#f4efea;border-radius:12px}
+.b143519-tabs button{border:0;background:transparent;color:#77665e;border-radius:9px;padding:8px 10px;font-size:10.5px;font-weight:850;cursor:pointer}
+.b143519-tabs button.active{background:#fff;box-shadow:0 1px 4px rgba(47,38,35,.08);color:#352c28}
+.b143519-summary{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;min-height:38px;border:1px solid #eadfd7;border-radius:11px;background:#fffdfa;padding:8px 12px;color:#786961;font-size:10px}
+.b143519-summary span{white-space:nowrap}.b143519-summary strong{color:#3a302b;margin-left:3px}.b143519-summary .paid strong{color:#4f7559}.b143519-summary .unpaid strong{color:#a95647}.b143519-summary .unbilled strong{color:#a76d29}.b143519-summary .planned strong{color:#7d7772}
+.b143519-chart{height:270px;display:grid;grid-template-columns:repeat(12,minmax(36px,1fr));gap:9px;align-items:end;padding:30px 8px 0;margin-top:8px;border-bottom:1px solid #ddd2ca;position:relative}
+.b143519-chart:before,.b143519-chart:after{content:'';position:absolute;left:0;right:0;border-top:1px dashed #e7ddd6;pointer-events:none}.b143519-chart:before{top:36%}.b143519-chart:after{top:68%}
+.b143519-month{height:238px;display:grid;grid-template-rows:210px 22px;gap:6px;align-items:end;min-width:0;z-index:1}
+.b143519-month>span{text-align:center;font-size:9px;color:#87766e;font-weight:750}
+.b143519-column-wrap{height:210px;display:flex;align-items:end;justify-content:center;position:relative}
+.b143519-total{position:absolute;bottom:calc(var(--bar-height,0%) + 4px);font-size:7.5px;font-weight:800;color:#75665e;white-space:nowrap;display:none}
+.b143519-stack{width:min(38px,72%);min-height:0;border-radius:7px 7px 2px 2px;overflow:hidden;display:flex;flex-direction:column-reverse;box-shadow:0 0 0 1px rgba(79,59,48,.04)}
+.b143519-seg{display:block;width:100%;min-height:2px}.b143519-seg.paid,.b143519-legend i.paid{background:#5e8c68}.b143519-seg.unpaid,.b143519-legend i.unpaid{background:#c86f5d}.b143519-seg.unbilled,.b143519-legend i.unbilled{background:repeating-linear-gradient(135deg,#d49a4a 0 5px,#f4d7ae 5px 9px)}.b143519-seg.planned,.b143519-legend i.planned{background:#bdb8b3}
+.b143519-pair{height:100%;width:100%;display:flex;align-items:end;justify-content:center;gap:5px}.b143519-pair i{display:block;width:min(22px,36%);min-height:0;border-radius:6px 6px 2px 2px}.b143519-pair .income{background:#5e8c68}.b143519-pair .expense{background:#c86f5d}
+.b143519-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:12px 0 2px;color:#817169;font-size:9.5px}.b143519-legend span{display:flex;align-items:center;gap:6px}.b143519-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.b143519-methods{margin-top:13px;border-top:1px solid #eadfd7;padding-top:12px}.b143519-methods[hidden]{display:none!important}.b143519-method-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}.b143519-method-head span{font-size:10px;font-weight:850;color:#5e4e47}.b143519-method-head small{font-size:8.5px;color:#99867c}.b143519-method-list{display:flex;gap:7px;flex-wrap:wrap}.b143519-method{display:inline-flex;align-items:center;gap:8px;border:1px solid #e7dcd4;background:#fff;border-radius:999px;padding:6px 9px;font-size:9.5px}.b143519-method strong{color:#5b4d46}.b143519-method em{font-style:normal;font-weight:850;color:#3d342f}
+#financePerformanceCaption{margin:11px 2px 0;line-height:1.45}
+@media(max-width:1100px){.b143519-chart{overflow-x:auto;grid-template-columns:repeat(12,58px);justify-content:start}.b143519-performance-head{align-items:flex-start}.b143519-summary{justify-content:flex-start}}
+@media(max-width:680px){.b143519-performance-head{display:block}.b143519-performance-controls{margin-top:10px;justify-content:space-between}.b143519-performance-controls select{flex:1}.b143519-tabs{grid-template-columns:1fr}.b143519-summary{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px}.b143519-method-head{display:block}.b143519-method-head small{display:block;margin-top:3px}}
