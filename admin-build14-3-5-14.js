@@ -3,6 +3,7 @@
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
   const SESSION_KEY='bd_admin_session_v1', PREF_KEY='bd_cockpit_preferences_v1', EA_KEY='bd_dashboard_ea_range_v1', FIXED_KEY='bd_finance_fixed_costs_v1';
+  async function waitForSharedDashboard(){for(let i=0;i<25;i++){const shared=window.BDAdminUX?.getData?.();if(shared?.bookings||shared?.payments||shared?.invoices)return shared;await new Promise(r=>setTimeout(r,80))}return null}
   const icons={
     personPlus:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 19a6 6 0 0 0-12 0M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm9-5v6m-3-3h6"/></svg>',
     calendar:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3m10-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Zm7 7v5m-2.5-2.5h5"/></svg>',
@@ -53,7 +54,7 @@
 
   function bindWeatherExpand(){const w=$('#dashboardWeather');if(!w||w.dataset.b143514Bound)return;w.dataset.b143514Bound='1';w.tabIndex=0;w.title='Klicken für 3-Tage-Vorschau';w.addEventListener('click',e=>{if(e.target.closest('button,input,form'))return;w.classList.toggle('weather-expanded')})}
 
-  async function dashboardData(){const shared=window.BDAdminUX?.getData?.();if(shared?.bookings||shared?.payments||shared?.invoices)return shared;const session=sessionStorage.getItem(SESSION_KEY)||'';if(!session||!API)return null;try{const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});return r.ok?await r.json():null}catch(_){return null}}
+  async function dashboardData(){const shared=await waitForSharedDashboard();if(shared)return shared;const session=sessionStorage.getItem(SESSION_KEY)||'';if(!session||!API)return null;try{const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});return r.ok?await r.json():null}catch(_){return null}}
   const euro=n=>new Intl.NumberFormat('de-AT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Number(n||0));
   const monthStart=d=>new Date(d.getFullYear(),d.getMonth(),1), addMonths=(d,n)=>new Date(d.getFullYear(),d.getMonth()+n,1);
   function paidDate(p){const d=new Date(p?.paidAt||'');return isNaN(d)?null:d}
@@ -75,7 +76,7 @@
   }
   function polishClientOpeners(){$$('#clientsTable button').forEach(b=>{if(b.textContent.trim().toLowerCase()==='akte öffnen'){b.classList.add('b143514-open-record');b.innerHTML=icons.open;b.title='Akte öffnen';b.setAttribute('aria-label','Akte öffnen')}})}
   function polishVault(){const map=[['#vaultLockBtn','lock','Vault sperren'],['#vaultRefreshBtn','refresh','Vault-Status prüfen'],['#vaultUnlockBtn','unlock','Vault entsperren']];map.forEach(([s,i,l])=>{const b=$(s);if(!b||b.classList.contains('b143514-vault-icon'))return;b.classList.add('b143514-vault-icon');b.innerHTML=icons[i];b.title=l;b.setAttribute('aria-label',l)})}
-  function updateRoadmap(){const p=$('.roadmap-current strong');if(p)p.textContent='Aktuell: BUILD 14.3.5.14'}
+  function updateRoadmap(){const p=$('.roadmap-current strong');if(p)p.textContent='Aktuell: BUILD 14.3.6.1'}
 
   function apply(){syncDashClass();quickActions();ensureCockpitDialog();ensureDashboardFinance();applyCockpitPrefs();bindWeatherExpand();polishInvoices();polishClientOpeners();polishVault();updateRoadmap()}
   const mo=new MutationObserver(()=>queueMicrotask(apply));mo.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});

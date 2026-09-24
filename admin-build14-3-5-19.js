@@ -9,6 +9,7 @@
   const VIEW_KEY='bd_finance_performance_view_v1';
   const YEAR_KEY='bd_finance_performance_year_v1';
   const $=s=>document.querySelector(s);
+  async function waitForSharedDashboard(){for(let i=0;i<25;i++){const shared=window.BDAdminUX?.getData?.();if(shared?.bookings||shared?.payments||shared?.invoices)return shared;await new Promise(r=>setTimeout(r,80))}return null}
   const $$=s=>[...document.querySelectorAll(s)];
   const euroCents=c=>new Intl.NumberFormat('de-AT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Number(c||0)/100);
   const num=n=>new Intl.NumberFormat('de-AT',{maximumFractionDigits:0}).format(Number(n||0));
@@ -16,8 +17,8 @@
   const now=()=>new Date();
 
   async function dashboard(){
-    const shared=window.BDAdminUX?.getData?.();
-    if(shared?.bookings||shared?.payments||shared?.invoices)return shared;
+    const shared=await waitForSharedDashboard();
+    if(shared)return shared;
     const session=sessionStorage.getItem(SESSION_KEY)||'';
     if(!session||!API)return null;
     const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});

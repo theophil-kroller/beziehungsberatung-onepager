@@ -6,13 +6,14 @@
   const WEATHER_KEY='bd_dashboard_weather_location_v1';
   const FIXED_KEY='bd_finance_fixed_costs_v1';
   const $=s=>document.querySelector(s);
+  async function waitForSharedDashboard(){for(let i=0;i<25;i++){const shared=window.BDAdminUX?.getData?.();if(shared?.bookings||shared?.payments||shared?.invoices)return shared;await new Promise(r=>setTimeout(r,80))}return null}
   const moneyEuro=n=>new Intl.NumberFormat('de-AT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Number(n||0));
   const normMonth=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
   const monthLabel=d=>new Intl.DateTimeFormat('de-AT',{month:'short'}).format(d).replace('.','');
 
   async function dashboard(){
-    const shared=window.BDAdminUX?.getData?.();
-    if(shared?.bookings||shared?.payments||shared?.invoices)return shared;
+    const shared=await waitForSharedDashboard();
+    if(shared)return shared;
     const session=sessionStorage.getItem(SESSION_KEY)||'';
     if(!session||!API) return null;
     const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});
