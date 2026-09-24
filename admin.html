@@ -41,6 +41,7 @@
 <link rel="stylesheet" href="admin-build14-3-5-15.css?v=20260924-build14-3-5-15">
 <link rel="stylesheet" href="admin-build14-3-5-18.css?v=20260924-build14-3-5-18">
 <link rel="stylesheet" href="admin-build14-3-5-19.css?v=20260924-build14-3-5-19">
+<link rel="stylesheet" href="admin-build14-3-6.css?v=20260924-build14-3-6">
 </head>
 <body>
 <!-- Regression lineage: BUILD 14.3.5.8 -->
@@ -146,6 +147,15 @@
         <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute im Blick</p><h2>Was noch offen ist</h2><p class="muted">Nur Aufgaben, Nachrichten und Vorgänge, bei denen du wirklich etwas tun solltest.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
         <section class="panel dashboard-focus"><div class="panel-head"><div><p class="eyebrow">Schnellzugriff</p><h2>Klient:innen im Mittelpunkt</h2><p class="muted">Akte öffnen, Sitzung vorbereiten oder einen laufenden Fall fortsetzen.</p></div></div><div class="dashboard-focus-actions"><button class="btn primary" data-jump="clients">Klient:in öffnen</button><button class="btn ghost" data-jump="bookings">Terminverwaltung</button></div><p class="micro muted">Session Flow, Journey, Packages und Zahlungen bleiben vollständig erhalten – sie erscheinen dort, wo sie gebraucht werden.</p></section>
       </div>
+
+      <section class="panel documentation-inbox-panel" id="documentationInboxPanel">
+        <div class="panel-head documentation-inbox-head">
+          <div><p class="eyebrow">Dokumentation</p><h2>📥 Dokumentations-Inbox</h2><p class="muted">Neue Captures zuerst sicher übernehmen, dann transkribieren, prüfen oder als Anlage ablegen.</p></div>
+          <div class="panel-head-actions"><span class="documentation-inbox-count" id="documentationInboxCount">—</span><button class="btn ghost" id="documentationInboxRefresh" type="button">Aktualisieren</button></div>
+        </div>
+        <div class="documentation-inbox-list" id="documentationInboxList"><div class="doc-inbox-empty">Dokumentations-Inbox wird geladen …</div></div>
+        <p class="micro documentation-relay-hint" id="documentationRelayHint"></p>
+      </section>
 
       <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Termine</p><h2>Nächste Termine</h2><p class="muted">Direkt in die Akte oder in den Kalender.</p></div><button class="text-button" data-jump="bookings">Kalender öffnen →</button></div><div id="nextBookings"></div></section>
 
@@ -306,5 +316,6 @@
 <script src="admin-build14-3-5-14.js?v=20260924-build14-3-5-14"></script>
 <script src="admin-build14-3-5-15.js?v=20260924-build14-3-5-15-1"></script>
 <script src="admin-build14-3-5-19.js?v=20260924-build14-3-5-19"></script>
+<script src="admin-build14-3-6.js?v=20260924-build14-3-6"></script>
 </body>
 </html>

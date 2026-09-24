@@ -54,7 +54,7 @@
       const dlg=$('#vaultAuthDialog');
       const form=$('#vaultAuthForm');
       const close=()=>{form.onsubmit=null;resolve(false)};dlg.addEventListener('close',close,{once:true});
-      form.onsubmit=async e=>{e.preventDefault();const password=$('#vaultPassword').value;if(setup&&password!==$('#vaultPassword2').value){toast('Die beiden Passwörter stimmen nicht überein.','err','#vaultAuthMsg');return}const btn=$('#vaultAuthSubmit');btn.disabled=true;btn.textContent='Bitte warten …';try{const x=await post(setup?'/setup':'/unlock',{password});token=x.token;sessionStorage.setItem(TOKEN_KEY,token);health.unlocked=true;health.setup=true;updateStatus();await syncOfflineSnapshot();form.onsubmit=null;dlg.removeEventListener('close',close);dlg.close();resolve(true)}catch(err){toast(err.message,'err','#vaultAuthMsg')}finally{btn.disabled=false;btn.textContent=setup?'Vault einrichten':'Entsperren'}};
+      form.onsubmit=async e=>{e.preventDefault();const password=$('#vaultPassword').value;if(setup&&password!==$('#vaultPassword2').value){toast('Die beiden Passwörter stimmen nicht überein.','err','#vaultAuthMsg');return}const btn=$('#vaultAuthSubmit');btn.disabled=true;btn.textContent='Bitte warten …';try{const x=await post(setup?'/setup':'/unlock',{password});token=x.token;sessionStorage.setItem(TOKEN_KEY,token);health.unlocked=true;health.setup=true;updateStatus();await syncOfflineSnapshot();document.dispatchEvent(new CustomEvent('bd:vault-unlocked'));form.onsubmit=null;dlg.removeEventListener('close',close);dlg.close();resolve(true)}catch(err){toast(err.message,'err','#vaultAuthMsg')}finally{btn.disabled=false;btn.textContent=setup?'Vault einrichten':'Entsperren'}};
       dlg.showModal();setTimeout(()=>$('#vaultPassword').focus(),50);
     });
   }
@@ -293,6 +293,7 @@
   async function saveCaptureTranscript(id,text,message){try{await post('/dictation/update',{id,editedTranscript:text});message.textContent='Korrektur lokal gespeichert.'}catch(error){message.textContent=error.message}}
   async function acceptCaptureTranscript(id,text,a,payload){const rows=await captureDictations(),row=rows.find(item=>item.id===id),index=(payload.audio||[]).findIndex((item,i)=>captureDictationMarker(a,i)&&String(row?.contextLabel||'').includes(captureDictationMarker(a,i))),host=document.querySelector(`[data-capture-audio="${index}"]`),message=host?.querySelector('[data-capture-message]');try{await post('/dictation/update',{id,editedTranscript:text});await post('/dictation/accept',{id,autoDeleteAudio:true});current.payload=await request('/client?ref='+encodeURIComponent(current.email));message.textContent=row?.targetSessionId?'Geprüft in die Sitzungsnotiz übernommen.':'Geprüft als Fallnotiz übernommen.';await hydrateCaptureTranscripts(a,payload)}catch(error){message.textContent=error.message}}
   async function openArtifact(id){try{const a=(current.payload.artifacts||[]).find(x=>x.id===id),blob=await artifactBlob(id);if(isCaptureArtifact(a)){let payload;try{payload=JSON.parse(await blob.text())}catch(e){throw new Error('Die Capture-Erfassung konnte nicht gelesen werden.')}showCaptureArtifact(a,payload,blob);return}const url=URL.createObjectURL(blob),w=window.open(url,'_blank','noopener');if(!w){const link=document.createElement('a');link.href=url;link.download=a?.filename||'artifact';link.click()}setTimeout(()=>URL.revokeObjectURL(url),120000)}catch(e){alert(e.message)}}
+  async function openArtifactForClient(email,name,id){if(!email||!id)return false;if(!await ensureUnlocked())return false;current.email=email;current.name=name||email;let x=await request('/client?ref='+encodeURIComponent(email));if(!x.exists){await post('/client',{ref:email,displayName:name||email,overview:'',currentFocus:''});x=await request('/client?ref='+encodeURIComponent(email))}current.payload=x;await openArtifact(id);return true}
   function renderAudit(){const wrap=$('#vaultAudit'),rows=(current.payload.audit||[]).slice(0,30);wrap.innerHTML=rows.length?`<div class="timeline">${rows.map(a=>`<div class="timeline-item"><div class="timeline-mark"></div><div class="timeline-copy"><strong>${esc({client_update:'Überblick aktualisiert',goal_create:'Ziel angelegt',goal_update:'Ziel geändert',goal_delete:'Ziel gelöscht',session_create:'Sitzung dokumentiert',session_update:'Sitzung geändert',session_delete:'Sitzung gelöscht',artifact_add:'Artefakt hinzugefügt',artifact_delete:'Artefakt gelöscht'}[a.action]||a.action)}</strong><span>${esc(fmt(a.createdAt))}${a.detail?' · '+esc(a.detail):''}</span></div></div>`).join('')}</div>`:'<div class="vault-empty">Noch keine lokalen Dokumentationsaktionen.</div>'}
 
   document.addEventListener('bd:vault-record',e=>{const {email,name}=e.detail||{};if(email)loadClient(email,name||email)});
@@ -319,6 +320,7 @@
     checkHealth,
     request,
     post,
+    openArtifactForClient,
     status:()=>({...health}),
     token:()=>token
   };
