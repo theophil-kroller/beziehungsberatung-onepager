@@ -1,0 +1,84 @@
+/* BUILD 14.3.5.15 — cockpit focus, client intake, offers tabs, unified shell. */
+
+/* One quiet rail: no inner sidebar scrollbar. */
+body:not(.suite-page) .sidebar{overflow:hidden!important}
+body:not(.suite-page) .side-nav{overflow:visible!important}
+body:not(.suite-page) .sidebar-bottom{margin-top:auto!important}
+
+/* Dashboard header = cockpit + ambient weather + actions. */
+body.b143514-dashboard-active .workspace-head{gap:18px!important;padding-bottom:12px!important}
+body.b143514-dashboard-active .workspace-head .head-actions{display:flex!important;align-items:center!important;gap:8px!important;position:relative!important}
+.b143515-weather-slot{display:none;position:relative;width:82px;height:44px;flex:0 0 82px;z-index:30}
+body.b143514-dashboard-active .b143515-weather-slot{display:block}
+.b143515-weather-slot:has(.b143514-dashboard-hidden){display:none!important}
+.b143515-weather-slot #dashboardWeather{position:absolute!important;right:0;top:0;width:82px!important;min-height:44px!important;height:44px!important;padding:0 10px!important;margin:0!important;border:1px solid var(--line)!important;border-radius:13px!important;background:#fffdfb!important;box-shadow:none!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;cursor:pointer!important;transition:width .16s ease,height .16s ease,box-shadow .16s ease,background .16s ease!important}
+.b143515-weather-slot #dashboardWeather .weather-location,.b143515-weather-slot #dashboardWeather .weather-edit,.b143515-weather-slot #dashboardWeather .weather-location-form{display:none!important}
+.b143515-weather-slot #dashboardWeather .weather-days{display:block!important;width:100%!important;min-width:0!important}
+.b143515-weather-slot #dashboardWeather .weather-day{display:none!important;border:0!important;padding:0!important;min-height:0!important;grid-template-columns:auto auto!important;gap:5px!important;align-items:center!important;justify-content:center!important}
+.b143515-weather-slot #dashboardWeather .weather-day:first-child{display:grid!important}
+.b143515-weather-slot #dashboardWeather .weather-day:first-child>div{display:none!important}
+.b143515-weather-slot #dashboardWeather .weather-day:first-child .weather-icon{font-size:18px!important}
+.b143515-weather-slot #dashboardWeather .weather-day:first-child .weather-temp{font-size:14px!important;font-weight:850!important;white-space:nowrap!important;color:#4b3c35!important}
+.b143515-weather-slot #dashboardWeather .weather-day:first-child .weather-temp .weather-low{display:none!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded,
+.b143515-weather-slot:hover #dashboardWeather,
+.b143515-weather-slot:focus-within #dashboardWeather{width:470px!important;height:auto!important;min-height:116px!important;padding:14px 16px!important;display:grid!important;grid-template-columns:145px 1fr 40px!important;gap:12px!important;align-items:center!important;overflow:visible!important;box-shadow:0 18px 45px rgba(55,38,30,.15)!important;cursor:default!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-location,
+.b143515-weather-slot:hover #dashboardWeather .weather-location,
+.b143515-weather-slot:focus-within #dashboardWeather .weather-location{display:flex!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-edit,
+.b143515-weather-slot:hover #dashboardWeather .weather-edit,
+.b143515-weather-slot:focus-within #dashboardWeather .weather-edit{display:grid!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-days,
+.b143515-weather-slot:hover #dashboardWeather .weather-days,
+.b143515-weather-slot:focus-within #dashboardWeather .weather-days{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:4px!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-day,
+.b143515-weather-slot:hover #dashboardWeather .weather-day,
+.b143515-weather-slot:focus-within #dashboardWeather .weather-day{display:grid!important;grid-template-columns:auto 1fr!important;padding:7px 8px!important;min-height:58px!important;border-left:1px solid #eee2da!important;justify-content:stretch!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-day>div,
+.b143515-weather-slot:hover #dashboardWeather .weather-day>div,
+.b143515-weather-slot:focus-within #dashboardWeather .weather-day>div{display:block!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-temp,
+.b143515-weather-slot:hover #dashboardWeather .weather-temp,
+.b143515-weather-slot:focus-within #dashboardWeather .weather-temp{grid-column:2;font-size:12px!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-temp .weather-low,
+.b143515-weather-slot:hover #dashboardWeather .weather-temp .weather-low,
+.b143515-weather-slot:focus-within #dashboardWeather .weather-temp .weather-low{display:inline!important}
+.b143515-weather-slot #dashboardWeather.weather-expanded .weather-location-form,
+.b143515-weather-slot #dashboardWeather:has(.weather-location-form:not(.hidden)) .weather-location-form{display:flex!important;position:absolute!important;left:14px;right:14px;bottom:-58px;background:#fffdfb;border:1px solid var(--line);border-radius:12px;padding:8px;box-shadow:0 15px 35px rgba(55,38,30,.14);z-index:3}
+
+/* Operational work is the first real dashboard surface. */
+#view-dashboard .attention-panel{margin-top:2px!important}
+#view-dashboard .attention-panel .panel-head{margin-bottom:10px!important}
+#view-dashboard .attention-panel .panel-head .muted{display:none!important}
+#view-dashboard .attention-panel .panel-head h2{font-size:30px!important}
+#view-dashboard #attention.attention-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+#view-dashboard #attention.attention-list>*{margin:0!important;min-width:0}
+
+/* Offers are one workspace; subnavigation belongs inside the page. */
+.nav-group[data-nav-group="offers"] .nav-subitems{display:none!important}
+.nav-group[data-nav-group="offers"] .nav-chevron{display:none!important}
+.b143515-offer-tabs{display:flex;gap:6px;margin:0 0 16px;padding:4px;border:1px solid var(--line);background:#f7f1ec;border-radius:14px;width:max-content;max-width:100%}
+.b143515-offer-tabs button{border:0;background:transparent;color:#78665d;border-radius:10px;padding:10px 16px;font:inherit;font-weight:800;cursor:pointer}
+.b143515-offer-tabs button.active{background:#fffdfb;color:#3d302b;box-shadow:0 4px 14px rgba(53,37,29,.07)}
+
+/* New client dialog: same calm master-data logic as the record. */
+.b143515-client-dialog{border:0;padding:0;background:transparent;max-width:min(760px,94vw);width:100%}
+.b143515-client-dialog::backdrop{background:rgba(42,34,30,.4);backdrop-filter:blur(3px)}
+.b143515-client-card{position:relative;background:#fffdfb;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 22px 70px rgba(40,28,22,.18)}
+.b143515-client-card h2{margin:4px 0 8px;font-family:var(--serif,Georgia,serif);font-size:32px}.b143515-client-card>p{margin:0 0 18px;color:var(--muted)}
+.b143515-client-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.b143515-client-grid label{display:grid;gap:7px;color:#806b5f;font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.07em}
+.b143515-client-grid label.wide{grid-column:1/-1}.b143515-client-grid input{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff;color:#3d302b;font:inherit;text-transform:none;letter-spacing:normal;font-weight:500}
+.b143515-client-msg{min-height:22px;margin-top:10px;font-size:13px;color:#6f5a50}.b143515-client-msg.warn{color:#9b6b24}.b143515-client-msg.err{color:#a7463e}
+
+/* Smaller chrome: the cockpit settings icon must read as settings, not brightness. */
+.b143515-gear svg{width:19px!important;height:19px!important}
+
+@media(max-width:900px){
+  #view-dashboard #attention.attention-list{grid-template-columns:1fr!important}
+  .b143515-weather-slot{width:72px;flex-basis:72px}.b143515-weather-slot #dashboardWeather{width:72px!important}
+  .b143515-weather-slot #dashboardWeather.weather-expanded,.b143515-weather-slot:hover #dashboardWeather,.b143515-weather-slot:focus-within #dashboardWeather{right:-96px;width:min(470px,86vw)!important;grid-template-columns:1fr!important}
+  .b143515-client-grid{grid-template-columns:1fr}.b143515-client-grid label.wide{grid-column:auto}
+}
+@media(max-height:820px){body:not(.suite-page) .side-nav{gap:3px!important}.nav-item{min-height:42px!important}.sidebar-bottom{padding-top:6px!important}}
