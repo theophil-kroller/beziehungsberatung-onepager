@@ -78,9 +78,11 @@
     offerTabs($('#view-packages'),'packages');offerTabs($('#view-programs'),'programs');
   }
 
-  function updateRoadmap(){const p=$('.roadmap-current strong');if(p)p.textContent='Aktuell: BUILD 14.3.5.15'}
+  function updateRoadmap(){const p=$('.roadmap-current strong'),value='Aktuell: BUILD 14.3.5.15';if(p&&p.textContent!==value)p.textContent=value}
   function sync(){if(applying)return;applying=true;try{polishDashboard();ensureNewClient();setupOffers();updateRoadmap()}finally{applying=false}}
-  const mo=new MutationObserver(()=>queueMicrotask(sync));mo.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+  let syncQueued=false;
+  function scheduleSync(){if(syncQueued)return;syncQueued=true;requestAnimationFrame(()=>{syncQueued=false;sync()})}
+  const mo=new MutationObserver(scheduleSync);mo.observe(document.documentElement,{subtree:true,childList:true});
   document.addEventListener('click',()=>setTimeout(sync,0),true);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',sync,{once:true});else sync();
 })();
