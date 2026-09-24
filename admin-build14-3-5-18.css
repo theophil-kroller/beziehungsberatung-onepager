@@ -1,0 +1,57 @@
+/* BUILD 14.3.5.18 – compact invoice/payment overview */
+#view-invoices .panel-head{align-items:flex-start;gap:22px}
+#view-invoices .b143518-invoice-toolbar{display:grid;grid-template-columns:minmax(150px,1fr) repeat(4,minmax(125px,auto));gap:10px 12px;align-items:end;max-width:980px}
+#view-invoices .b143518-invoice-toolbar .bank-sync{min-width:150px}
+#view-invoices .b143518-invoice-toolbar .file-btn{width:42px;height:42px;min-width:42px;padding:0;display:grid;place-items:center;font-size:20px}
+#view-invoices .b143518-invoice-toolbar .filter-select{min-width:0}
+#view-invoices .b143518-invoice-toolbar .filter-select select{min-width:0;width:100%;padding-right:34px}
+
+#invoicesTable{overflow-x:visible}
+#invoicesTable .table-wrap{overflow-x:visible;scrollbar-gutter:auto}
+#invoicesTable table{width:100%;min-width:0!important;table-layout:fixed}
+#invoicesTable th,#invoicesTable td{padding-left:12px;padding-right:12px;vertical-align:middle}
+#invoicesTable th:nth-child(1),#invoicesTable td:nth-child(1){width:132px!important;min-width:0!important}
+#invoicesTable th:nth-child(2),#invoicesTable td:nth-child(2){width:168px!important}
+#invoicesTable th:nth-child(3),#invoicesTable td:nth-child(3){width:128px!important}
+#invoicesTable th:nth-child(4),#invoicesTable td:nth-child(4){width:102px!important}
+#invoicesTable th:nth-child(5),#invoicesTable td:nth-child(5){width:94px!important}
+#invoicesTable th:nth-child(6),#invoicesTable td:nth-child(6){width:100px!important}
+#invoicesTable th:nth-child(7),#invoicesTable td:nth-child(7){width:118px!important}
+#invoicesTable th:nth-child(8),#invoicesTable td:nth-child(8){width:92px!important;text-align:center}
+#invoicesTable th:nth-child(9),#invoicesTable td:nth-child(9){width:158px!important;position:static!important;right:auto!important;box-shadow:none!important;background:transparent!important}
+#invoicesTable th:nth-child(9){background:var(--cream, #fffbf6)!important}
+#invoicesTable .b143516-invoice-number .name{max-width:122px!important;font-size:12.5px!important;letter-spacing:-.01em}
+#invoicesTable .row-actions{gap:5px!important;justify-content:flex-start}
+#invoicesTable .b143516-invoice-icon{width:32px;height:32px;min-width:32px;border-radius:9px;font-size:13px}
+#invoicesTable .b143516-invoice-icon.remind{font-size:16px}
+
+.b143518-provider-chip{display:inline-block;max-width:116px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;font-size:12px;color:#61534d}
+.b143518-payment-cell{white-space:nowrap}
+.b143518-payment-ref{max-width:84px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:5px}
+.b143518-payment-empty{color:#a89a92}
+.b143518-payment-brand{width:38px;height:26px;border:1px solid #ddd2ca;border-radius:7px;background:#fff;display:inline-flex;align-items:center;justify-content:center;font:800 11px/1 Arial,sans-serif;letter-spacing:-.03em;color:#443a35;box-shadow:0 1px 1px rgba(47,38,35,.03)}
+.b143518-payment-brand svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.b143518-payment-brand.visa{color:#173b73;font-style:italic}
+.b143518-payment-brand.amex{color:#24678f;font-size:9px}
+.b143518-payment-brand.stripe{color:#635bff;font-size:16px;font-family:Georgia,serif}
+.b143518-payment-brand.cash{color:#3f7650;background:#f3faf4;border-color:#bfd6c5;font-size:16px}
+.b143518-payment-brand.bank{color:#5e6876;background:#f6f8fa}
+.b143518-payment-brand.card,.b143518-payment-brand.sumup{color:#4d6175;background:#f4f7fa;font-size:16px}
+.b143518-payment-brand.mastercard{position:relative;width:40px}
+.b143518-payment-brand.mastercard i{display:block;width:14px;height:14px;border-radius:50%;background:#d85c49;position:absolute;left:8px}
+.b143518-payment-brand.mastercard i+ i{left:17px;background:#d7a245;opacity:.92}
+
+@media (max-width:1450px){
+  #view-invoices .b143518-invoice-toolbar{grid-template-columns:42px repeat(4,minmax(118px,1fr));max-width:760px}
+  #view-invoices .bank-sync .micro{display:none}
+  #invoicesTable th,#invoicesTable td{padding-left:9px;padding-right:9px}
+  #invoicesTable th:nth-child(2),#invoicesTable td:nth-child(2){width:150px!important}
+  #invoicesTable th:nth-child(3),#invoicesTable td:nth-child(3){width:116px!important}
+  #invoicesTable th:nth-child(9),#invoicesTable td:nth-child(9){width:148px!important}
+}
+@media (max-width:1180px){
+  #view-invoices .panel-head{display:block}
+  #view-invoices .b143518-invoice-toolbar{margin-top:18px;grid-template-columns:42px repeat(2,minmax(145px,1fr));max-width:none}
+  #invoicesTable .table-wrap{overflow-x:auto}
+  #invoicesTable table{min-width:1080px!important}
+}

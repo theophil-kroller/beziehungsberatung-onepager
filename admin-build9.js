@@ -347,24 +347,59 @@
   $('#availabilitySave')?.addEventListener('click',saveAvailability);$('#availabilityDelete')?.addEventListener('click',deleteAvailability);$('#availabilityCancel')?.addEventListener('click',()=>$('#availabilityDialog')?.close());$('#availabilityClose')?.addEventListener('click',()=>$('#availabilityDialog')?.close());
   function renderPackages(){const rows=(data.packages||[]).map(x=>`<tr><td><span class="name">${esc(x.customerName)}</span><div class="sub">${esc(visibleContactEmail(x.customerContactEmail||x.customerEmail))}</div></td><td>${esc(x.advisorName||'Theophil Kroller')}</td><td><strong>${esc(x.productName)}</strong><div class="sub">${esc(x.reference||'')}</div></td><td><strong>${x.remaining}/${x.total}</strong>${Number(x.remaining)<=loadSettings().renewalRemaining?'<div class="sub" style="color:#99631E">Fortsetzung im Blick</div>':''}</td><td>${x.expiresAt?dateOnly(x.expiresAt):'—'}</td><td>${x.purchaseAmountCents===null?'—':money(x.purchaseAmountCents,x.currency)}<div class="sub">${esc(x.purchaseStatus||'')}</div></td><td><div class="row-actions"><button class="mini edit" data-package-edit="${x.creditId}">Bearbeiten</button>${Number(x.remaining)<=loadSettings().renewalRemaining?`<button class="mini" data-offer="${x.creditId}">Fortsetzung</button>`:''}</div></td></tr>`);$("#packagesTable").innerHTML=rows.length?table(["Klient:in","Berater","Package","Offen","Gültig bis","Kauf","Aktion"],rows):`<div class="empty">Noch keine Packages.</div>`;bindPowerActions();bindOfferButtons()}
   function invoiceTypeLabel(type){return({group:'Gruppe',package:'Package',single:'Einzelsession',other:'Sonstige'})[type]||'Sonstige'}
+  function invoiceProviderName(x){return String(x?.advisorName||x?.providerName||x?.practitionerName||'Theophil Kroller').trim()||'Theophil Kroller'}
+  function normalizePaymentFilter(x){
+    const raw=`${x?.paymentMethod||''} ${x?.paymentProvider||''} ${x?.paymentReference||''}`.toLowerCase();
+    if(/visa|mastercard|master card|amex|american express|card|karte/.test(raw)&&!/stripe|sumup/.test(raw))return'card';
+    if(/stripe/.test(raw))return'stripe';
+    if(/sumup/.test(raw))return'sumup';
+    if(/cash|bar/.test(raw))return'cash';
+    if(/bank_transfer|bank transfer|überweisung|ueberweisung|sepa|bank/.test(raw))return'bank_transfer';
+    return x?.status==='paid'?'other':'';
+  }
+  function paymentBrandHtml(x){
+    if(x?.status!=='paid')return '<span class="b143518-payment-empty" title="Noch keine Zahlung erfasst">—</span>';
+    const raw=`${x?.cardBrand||''} ${x?.paymentBrand||''} ${x?.paymentMethod||''} ${x?.paymentProvider||''} ${x?.paymentReference||''}`.toLowerCase();
+    let cls='other',label='Zahlung',mark='€';
+    if(/mastercard|master card/.test(raw)){cls='mastercard';label='Mastercard';mark='<i></i><i></i>'}
+    else if(/visa/.test(raw)){cls='visa';label='Visa';mark='VISA'}
+    else if(/amex|american express/.test(raw)){cls='amex';label='American Express';mark='AMEX'}
+    else if(/cash|bar/.test(raw)){cls='cash';label='Barzahlung';mark='€'}
+    else if(/bank_transfer|bank transfer|überweisung|ueberweisung|sepa|bank/.test(raw)){cls='bank';label='Banküberweisung';mark='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18M5 9V7l7-4 7 4v2M6 10v7m4-7v7m4-7v7m4-7v7M3 20h18"/></svg>'}
+    else if(/sumup/.test(raw)){cls='sumup';label='SumUp / Kartenzahlung';mark='▰'}
+    else if(/stripe/.test(raw)){cls='stripe';label='Stripe / Kartenzahlung';mark='S'}
+    else if(/card|karte/.test(raw)){cls='card';label='Kartenzahlung';mark='▰'}
+    const paid=x?.paidAt?` · ${dt(x.paidAt)}`:'';
+    return `<span class="b143518-payment-brand ${cls}" title="${esc(label+paid)}" aria-label="${esc(label+paid)}">${mark}</span>`;
+  }
+  function syncInvoiceProviderFilter(){
+    const el=$('#invoiceProviderFilter');if(!el||!data)return;
+    const current=el.value||'all';
+    const names=[...new Set((data.invoices||[]).map(invoiceProviderName).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'de'));
+    el.innerHTML='<option value="all">Alle</option>'+names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');
+    el.value=names.includes(current)?current:'all';
+  }
   function renderInvoices(){
     const bi=b9().bankImport||{},el=$("#bankLastImport");
     if(el)el.textContent=bi.lastImportedAt?`Letzter Bankabgleich: ${dt(bi.lastImportedAt)} · ${bi.rowCount||0} Buchungen · ${bi.importedCount||0} übernommen`:'Noch kein Bankabgleich protokolliert.';
-    const statusFilter=$("#invoiceFilter").value,typeFilter=$("#invoiceTypeFilter")?.value||'all';
-    const rows=(data.invoices||[]).filter(x=>(statusFilter==='all'||x.status===statusFilter)&&(typeFilter==='all'||(x.invoiceType||'other')===typeFilter));
-    $("#invoicesTable").innerHTML=rows.length?table(["Honorarnote","Klient:in","Typ","Betrag","Fällig","Status / Zahlung","Aktion"],rows.map(x=>{
+    syncInvoiceProviderFilter();
+    const statusFilter=$("#invoiceFilter").value,typeFilter=$("#invoiceTypeFilter")?.value||'all',providerFilter=$("#invoiceProviderFilter")?.value||'all',paymentFilter=$("#invoicePaymentFilter")?.value||'all';
+    const rows=(data.invoices||[]).filter(x=>(statusFilter==='all'||x.status===statusFilter)&&(typeFilter==='all'||(x.invoiceType||'other')===typeFilter)&&(providerFilter==='all'||invoiceProviderName(x)===providerFilter)&&(paymentFilter==='all'||normalizePaymentFilter(x)===paymentFilter));
+    $("#invoicesTable").innerHTML=rows.length?table(["Honorarnote","Klient:in","Leistungserbringer:in","Typ","Betrag","Fällig","Status","Zahlungsart","Aktion"],rows.map(x=>{
       let actions=`<button class="b143516-invoice-icon" data-pdf="${x.id}" title="PDF öffnen" aria-label="PDF öffnen">▤</button><button class="b143516-invoice-icon" data-due-edit="${x.id}" title="Zahlungsziel ändern" aria-label="Zahlungsziel ändern">◷</button>`;
       if(invoicePayable(x))actions+=`<button class="b143516-invoice-icon pay" data-paid="${x.id}" title="Zahlung erfassen" aria-label="Zahlung erfassen">€</button>`;
       if(x.status==='overdue')actions+=`<button class="b143516-invoice-icon remind" data-remind="${x.id}" title="Zahlungserinnerung / Mahnung" aria-label="Zahlungserinnerung / Mahnung">!</button>`;
       if(x.status==='paid')actions+=`<button class="b143516-invoice-icon" data-open="${x.id}" title="Wieder öffnen" aria-label="Wieder öffnen">↶</button>`;
-      const payment=x.status==='paid'?`<div class="payment-meta"><strong>${esc(paymentLabel(x.paymentMethod))}</strong><span>${dt(x.paidAt)}${x.paymentReference?` · ${esc(x.paymentReference)}`:''}</span></div>`:'';
       const type=x.invoiceType||'other';
-      return `<tr><td class="b143516-invoice-number"><span class="name" title="${esc(x.invoiceNumber||'—')}">${esc(x.invoiceNumber||'—')}</span><div class="sub">${dateOnly(x.invoiceDate)}</div></td><td>${esc(x.customerName)}<div class="sub">${esc(visibleContactEmail(x.customerContactEmail||x.customerEmail))}</div></td><td><span class="invoice-type ${esc(type)}">${esc(invoiceTypeLabel(type))}</span></td><td><strong>${money(x.totalCents,x.currency)}</strong></td><td>${dateOnly(x.dueDate)}</td><td><span class="badge ${esc(x.status)}">${esc(statusLabel(x.status))}</span>${x.dbStatus==='test'?` <span class="badge test">Sandbox/Test</span>`:''}${payment}</td><td><div class="row-actions">${actions}</div></td></tr>`
+      const paymentTip=x.status==='paid'&&x.paymentReference?`<div class="sub b143518-payment-ref" title="${esc(x.paymentReference)}">${esc(x.paymentReference)}</div>`:'';
+      return `<tr><td class="b143516-invoice-number"><span class="name" title="${esc(x.invoiceNumber||'—')}">${esc(x.invoiceNumber||'—')}</span><div class="sub">${dateOnly(x.invoiceDate)}</div></td><td>${esc(x.customerName)}<div class="sub">${esc(visibleContactEmail(x.customerContactEmail||x.customerEmail))}</div></td><td class="b143518-provider"><span class="b143518-provider-chip" title="${esc(invoiceProviderName(x))}">${esc(invoiceProviderName(x))}</span></td><td><span class="invoice-type ${esc(type)}">${esc(invoiceTypeLabel(type))}</span></td><td><strong>${money(x.totalCents,x.currency)}</strong></td><td>${dateOnly(x.dueDate)}</td><td><span class="badge ${esc(x.status)}">${esc(statusLabel(x.status))}</span>${x.dbStatus==='test'?` <span class="badge test">Test</span>`:''}</td><td class="b143518-payment-cell">${paymentBrandHtml(x)}${paymentTip}</td><td><div class="row-actions">${actions}</div></td></tr>`
     })): `<div class="empty">Keine Honorarnoten für diese Filterkombination.</div>`;
     bindInvoiceActions();bindPowerActions()
   }
   $("#invoiceFilter").addEventListener('change',()=>data&&renderInvoices());
   $("#invoiceTypeFilter")?.addEventListener('change',()=>data&&renderInvoices());
+  $("#invoiceProviderFilter")?.addEventListener('change',()=>data&&renderInvoices());
+  $("#invoicePaymentFilter")?.addEventListener('change',()=>data&&renderInvoices());
 
   function findBooking(id){return(data.bookings||[]).find(x=>x.eventId===id&&x.status==='booked')}function findPackage(id){return(data.packages||[]).find(x=>Number(x.creditId)===Number(id))}function findInvoice(id){return(data.invoices||[]).find(x=>Number(x.id)===Number(id))}
   function viennaParts(iso){const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date(iso)).map(x=>[x.type,x.value]));return{date:`${p.year}-${p.month}-${p.day}`,time:`${p.hour}:${p.minute}`}}
