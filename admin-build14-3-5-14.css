@@ -1,0 +1,86 @@
+/* BUILD 14.3.5.14 — configurable cockpit + UI consolidation. */
+
+/* Dashboard: cockpit first, no redundant hero copy. */
+body.b143514-dashboard-active #viewTitle,
+body.b143514-dashboard-active #viewSubtitle{display:none!important}
+body.b143514-dashboard-active .workspace-head{min-height:auto!important;padding-bottom:14px!important;align-items:center!important}
+body.b143514-dashboard-active .workspace-head>div:first-child{display:flex!important;align-items:center!important;min-height:42px}
+body.b143514-dashboard-active #viewEyebrow{margin:0!important;font-size:12px!important}
+body.b143514-dashboard-active #newInquiryBtn{display:none!important}
+
+.b143514-quick-actions{display:none;align-items:center;gap:8px}
+body.b143514-dashboard-active .b143514-quick-actions{display:flex}
+.b143514-icon-btn{width:44px;height:44px;min-width:44px;padding:0!important;border:1px solid var(--line)!important;border-radius:13px!important;background:#fffdfb!important;color:#6d5a50!important;display:inline-grid!important;place-items:center!important;box-shadow:none!important}
+.b143514-icon-btn:hover{background:#f8efe9!important;color:var(--terr2)!important;border-color:#d9b6a5!important}
+.b143514-icon-btn.primary{background:var(--terracotta,#bf6548)!important;color:#fff!important;border-color:transparent!important}
+.b143514-icon-btn svg,.b143514-table-icon svg,.b143514-inline-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* The former client shortcut card was navigation, not cockpit information. */
+#view-dashboard .dashboard-focus{display:none!important}
+#view-dashboard .dash-grid-primary{grid-template-columns:1fr!important}
+
+/* Compact weather: today by default, three days on hover/focus/click. */
+#view-dashboard .dashboard-weather{min-height:64px!important;padding:10px 14px!important;grid-template-columns:minmax(190px,.65fr) minmax(240px,1fr) 42px!important;gap:10px!important;transition:box-shadow .18s ease,background .18s ease}
+#view-dashboard .weather-location small{font-size:9px!important;letter-spacing:.08em;text-transform:uppercase}
+#view-dashboard .weather-days{grid-template-columns:1fr!important;min-width:0}
+#view-dashboard .weather-day{border-left:0!important;padding:5px 9px!important;min-height:38px}
+#view-dashboard .weather-day:nth-child(n+2){display:none!important}
+#view-dashboard .dashboard-weather:hover .weather-day:nth-child(n+2),
+#view-dashboard .dashboard-weather:focus-within .weather-day:nth-child(n+2),
+#view-dashboard .dashboard-weather.weather-expanded .weather-day:nth-child(n+2){display:grid!important}
+#view-dashboard .dashboard-weather:hover .weather-days,
+#view-dashboard .dashboard-weather:focus-within .weather-days,
+#view-dashboard .dashboard-weather.weather-expanded .weather-days{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#view-dashboard .dashboard-weather:hover,
+#view-dashboard .dashboard-weather.weather-expanded{box-shadow:0 12px 28px rgba(69,48,38,.08)}
+
+/* Configurable dashboard blocks. */
+.b143514-dashboard-hidden{display:none!important}
+.b143514-cockpit-dialog{border:0;padding:0;background:transparent;max-width:min(560px,92vw);width:100%}
+.b143514-cockpit-dialog::backdrop{background:rgba(42,34,30,.38);backdrop-filter:blur(3px)}
+.b143514-cockpit-card{position:relative;background:#fffdfb;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 22px 70px rgba(40,28,22,.18)}
+.b143514-cockpit-card h2{margin:4px 0 6px;font-family:var(--serif,Georgia,serif);font-size:30px}.b143514-cockpit-card>p{margin:0 0 18px;color:var(--muted)}
+.b143514-cockpit-options{display:grid;gap:2px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0;margin:12px 0 18px}
+.b143514-cockpit-options label{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 4px;font-weight:760;color:#4f4039}
+.b143514-cockpit-options input{width:18px;height:18px;accent-color:var(--terr2,#b85c42)}
+.b143514-dialog-close{position:absolute;right:16px;top:16px}
+
+/* Compact finance snapshot on dashboard. */
+.dashboard-finance-snapshot{margin-top:16px!important;padding:18px 20px!important}
+.dashboard-finance-snapshot .panel-head{align-items:center!important;margin-bottom:12px!important}
+.dashboard-finance-snapshot .panel-head h2{font-size:24px!important;margin:2px 0 0!important}
+.dashboard-finance-snapshot .panel-head .muted{display:none!important}
+.b143514-finance-range{border:1px solid var(--line);border-radius:11px;background:#fffdfb;padding:8px 34px 8px 10px;color:#5f4d44;font-weight:700}
+.b143514-finance-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.b143514-finance-values>div{padding:12px 14px;border:1px solid #eadfd7;border-radius:14px;background:#fff}
+.b143514-finance-values span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#9b7f70;font-weight:800}
+.b143514-finance-values strong{display:block;margin-top:5px;font-family:var(--serif,Georgia,serif);font-size:26px;color:#342824}.b143514-finance-values .result strong.negative{color:#a7473f}.b143514-finance-values .result strong.positive{color:#4d7653}
+
+/* Dashboard metrics sit later and quieter. */
+#view-dashboard .dashboard-metrics-wrap{margin-top:18px!important}
+#view-dashboard .dashboard-metrics-head h2{font-size:22px!important}
+#view-dashboard .dashboard-metrics-wrap .stat-card{box-shadow:none!important;background:#fffdfb!important}
+
+/* Invoice actions: icons instead of button rows. */
+#view-invoices .row-actions{gap:6px!important;align-items:center!important;flex-wrap:nowrap!important}
+#view-invoices .b143514-table-icon{width:38px!important;height:38px!important;min-width:38px!important;padding:0!important;border-radius:11px!important;display:inline-grid!important;place-items:center!important;font-size:0!important;background:#fffdfb!important;border:1px solid var(--line)!important;color:#6f5b51!important}
+#view-invoices .b143514-table-icon:hover{background:#f8efe9!important;color:var(--terr2)!important}
+#view-invoices .b143514-table-icon.danger{color:#a7463e!important;background:#fff7f6!important;border-color:#ebc5c1!important}
+#view-invoices .bank-sync .file-btn.b143514-table-icon{display:inline-grid!important;position:relative!important}
+#view-invoices .bank-sync .file-btn.b143514-table-icon input{position:absolute!important;inset:0!important;opacity:0!important;cursor:pointer!important}
+
+/* Client list: row is the target; explicit open button becomes a subtle icon. */
+#view-clients .b143514-open-record{width:38px!important;height:38px!important;min-width:38px!important;padding:0!important;border-radius:11px!important;display:inline-grid!important;place-items:center!important;font-size:0!important}
+#view-clients .b143514-open-record svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Vault utility controls. */
+#view-vault .b143514-vault-icon{width:44px!important;height:44px!important;min-width:44px!important;padding:0!important;display:inline-grid!important;place-items:center!important;border-radius:12px!important;font-size:0!important}
+#view-vault .b143514-vault-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+@media(max-width:900px){
+  .b143514-finance-values{grid-template-columns:1fr}.dashboard-finance-snapshot .panel-head{align-items:flex-start!important}.b143514-finance-range{width:100%}
+  #view-dashboard .dashboard-weather{grid-template-columns:1fr 42px!important}.weather-days{grid-column:1/-1!important}
+}
+
+#view-invoices>.panel>.panel-head>div:first-child>.muted{display:none!important}
+#view-invoices>.panel>.panel-head>div:first-child h2{margin-bottom:0!important}
