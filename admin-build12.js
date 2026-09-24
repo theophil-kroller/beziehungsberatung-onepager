@@ -68,7 +68,7 @@
   async function openCashDialog(){
     const c=current(),msg=$('#flowCashMsg');if(!c)return;ensureCashDialog();if(msg)msg.textContent='Prüfe offene Honorarnoten …';
     try{
-      const d=await adminApi('/admin/dashboard');const invoices=(d.invoices||[]).filter(x=>String(x.customerEmail||'').toLowerCase()===String(c.email||'').toLowerCase()&&!['paid','void','cancelled','canceled','refunded'].includes(String(x.status||'').toLowerCase()));
+      const d=window.BDAdminUX?.getData?.()||await adminApi('/admin/dashboard');const invoices=(d.invoices||[]).filter(x=>String(x.customerEmail||'').toLowerCase()===String(c.email||'').toLowerCase()&&!['paid','void','cancelled','canceled','refunded'].includes(String(x.status||'').toLowerCase()));
       if(!invoices.length){if(msg)msg.textContent='Keine unbezahlte Rechnung für diese Person gefunden.';return}
       const sel=$('#flowCashInvoice');sel.innerHTML=invoices.map(x=>`<option value="${esc(x.id)}">${esc(x.invoiceNumber||'#'+x.id)} · ${esc(money(x.totalCents))}${x.dbStatus==='test'?' · Sandbox/Test':''}</option>`).join('');
       const vp=viennaParts();$('#flowCashDate').value=vp.date;$('#flowCashTime').value=vp.time;$('#flowCashReference').value='Barzahlung nach Sitzung';$('#flowCashClient').textContent=`${c.name} · ${c.email}`;$('#flowCashDialogMsg').textContent='';$('#flowCashDialog').showModal();if(msg)msg.textContent='';

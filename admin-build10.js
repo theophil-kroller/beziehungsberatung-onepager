@@ -2,7 +2,7 @@
   'use strict';
   const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
   const SESSION_KEY='bd_admin_session_v1',VAULT='http://127.0.0.1:47831',VAULT_TOKEN_KEY='bd_vault_token_v1';
-  let session=sessionStorage.getItem(SESSION_KEY)||'',dashboard=null,flows=[],current=null,vaultData=null,refreshTimer=null,booted=false;
+  let session=sessionStorage.getItem(SESSION_KEY)||'',dashboard=null,flows=[],current=null,vaultData=null,refreshTimer=null,booted=false,lastRefreshAt=0;
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const norm=s=>String(s||'').trim().toLowerCase();
@@ -106,6 +106,8 @@
   function openFlowView(){ $$('.nav-item[data-view], [data-build10-flow-nav], [data-build10-finance-nav]').forEach(b=>b.classList.toggle('active',b.hasAttribute('data-build10-flow-nav')));$$('.view').forEach(v=>v.classList.toggle('active',v.id==='view-flow'));$('#viewEyebrow').textContent='Session Flow Manager';$('#viewTitle').textContent='Session Flow';$('#viewSubtitle').textContent='Vorbereitung, Nachbereitung und offene Dokumentation an einem Ort.';$('#newInquiryBtn').style.display='none';refresh() }
   async function refresh(force=false){
     if(!sessionStorage.getItem(SESSION_KEY))return false;
+    if(!force&&Date.now()-lastRefreshAt<2000)return true;
+    lastRefreshAt=Date.now();
     const host=$('#flowMainList');
     try{
       const shared=!force?window.BDAdminUX?.getData?.():null;
@@ -179,7 +181,13 @@
   function nextAction(tab){if(tab==='none'){$('#flowDialog').close();return}openClientSection(tab)}
   function mergeFlow(f){if(!f)return;const i=flows.findIndex(x=>String(x.bookingEventId)===String(f.bookingEventId));if(i>=0)flows[i]={...flows[i],...f};else flows.push(f)}
   function msg(text,kind='ok'){const el=$('#flowMsg');el.className='notice '+kind;el.textContent=text}
-  function observeAdmin(){const target=$('#statToday');if(!target)return;const ob=new MutationObserver(()=>{clearTimeout(refreshTimer);refreshTimer=setTimeout(refresh,180)});ob.observe(target,{childList:true,characterData:true,subtree:true});setTimeout(refresh,500);setInterval(()=>{if(!document.hidden&&sessionStorage.getItem(SESSION_KEY))refresh()},600000)}
+  function observeAdmin(){
+    // BUILD 14.3.5.17: no background polling. The Session Flow consumes the
+    // already loaded dashboard snapshot and refreshes after real user actions.
+    // This removes hundreds of unnecessary Worker/D1/KV calls per day.
+    setTimeout(()=>refresh(false),500);
+    document.addEventListener('bd:cloud-snapshot',()=>{clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>refresh(false),120)},{passive:true});
+  }
 
   async function openForClient(email){
     if(!dashboard)await refresh();

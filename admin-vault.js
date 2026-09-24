@@ -300,7 +300,7 @@
   document.addEventListener('bd:cloud-snapshot',e=>{latestCloudSnapshot=e.detail||null;if(health.unlocked)syncOfflineSnapshot()});
   async function syncOfflineSnapshot(){
     if(!latestCloudSnapshot||!health.unlocked||!token)return false;
-    const customers=(latestCloudSnapshot.customers||[]).filter(c=>c.publicId&&c.email).map(c=>({ref:c.email,publicId:c.publicId,customerId:c.id,name:c.name,contactEmail:c.contactEmail||'',isSandbox:!!c.isSandboxProfile}));
+    const customers=(latestCloudSnapshot.customers||[]).filter(c=>c.email).map(c=>({ref:c.email,publicId:c.publicId||'',customerId:c.id,name:c.name,contactEmail:c.contactEmail||'',isSandbox:!!c.isSandboxProfile}));
     const known=new Set(customers.map(c=>String(c.ref)));
     const bookings=(latestCloudSnapshot.bookings||[]).map(b=>({ref:b.customerIdentityEmail||b.email,eventId:b.eventId,start:b.start,end:b.end,typeLabel:b.typeLabel,locationLabel:b.locationLabel,status:b.status})).filter(b=>known.has(String(b.ref)));
     try{const x=await post('/offline/snapshot',{clients:customers,bookings});const info=$('#vaultSnapshotInfo');if(info)info.textContent=`Zuletzt lokal aktualisiert: ${fmt(x.syncedAt)} · ${x.clientCount} Personen · ${x.bookingCount} Termine`;return true}catch(e){return false}

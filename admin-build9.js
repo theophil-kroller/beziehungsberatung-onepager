@@ -3,6 +3,8 @@
   const root=document;
   const API=(window.BD_BOOKING_CONFIG?.apiBaseUrl||"").replace(/\/$/,"");
   const SESSION_KEY="bd_admin_session_v1";
+  const VAULT="http://127.0.0.1:47831",VAULT_TOKEN_KEY="bd_vault_token_v1";
+  const CLOUD_BACKOFF_KEY="bd_cloud_backoff_until_v1";
   let session=sessionStorage.getItem(SESSION_KEY)||"";
   let data=null,currentRecordEmail="",currentRecordTab="overview",editCtx=null,offerCtx=null,salesCtx=null,cancelCtx=null;
   let dashboardWeekOffset=0,bookingWeekOffset=0,availabilityEditMode=false,availabilityDialogCtx=null;
@@ -62,7 +64,39 @@
     if(r.status===401){session="";sessionStorage.removeItem(SESSION_KEY);showLogin();throw new Error("Sitzung abgelaufen. Bitte erneut einloggen.")}
     if(!r.ok||body?.ok===false)throw new Error(body?.error||"Die Anfrage konnte nicht verarbeitet werden.");return body;
   }
-  async function post(path,body){return api(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})}
+  async function localOfflineSnapshot(){
+    const token=sessionStorage.getItem(VAULT_TOKEN_KEY)||'';
+    if(!token)return null;
+    try{
+      const r=await fetch(VAULT+'/offline/snapshot',{headers:{Authorization:'Bearer '+token},cache:'no-store'});
+      if(!r.ok)return null;
+      const x=await r.json();
+      return x?.ok?x.snapshot:null;
+    }catch(_){return null}
+  }
+  function dashboardFromOffline(snapshot){
+    if(!snapshot)return null;
+    const clients=(snapshot.clients||[]).map(x=>({id:x.customerId||null,email:x.ref,contactEmail:x.contactEmail||'',name:x.name,publicId:x.publicId||null,isSandboxProfile:!!x.isSandbox}));
+    const byRef=new Map(clients.map(c=>[String(c.email||''),c]));
+    const bookings=(snapshot.bookings||[]).map(x=>{const c=byRef.get(String(x.ref||''))||{};return{status:x.status||'booked',eventId:x.eventId||null,name:c.name||'Klient:in',email:c.contactEmail||c.email||x.ref,customerId:c.id||null,customerIdentityEmail:x.ref,typeLabel:x.typeLabel||'Beratung',locationLabel:x.locationLabel||'',start:x.start,end:x.end,advisorName:'Theophil Kroller'}}).sort((a,b)=>String(b.start||'').localeCompare(String(a.start||'')));
+    const nowMs=Date.now(),today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()),week=nowMs+7*86400000;
+    const ymd=v=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(v));
+    const active=bookings.filter(x=>x.status==='booked');
+    return {ok:true,offline:true,offlineSyncedAt:snapshot.syncedAt||null,admin:{email:'Offline-Snapshot'},generatedAt:snapshot.syncedAt||null,overview:{todayBookings:active.filter(x=>x.start&&ymd(x.start)===today).length,next7Bookings:active.filter(x=>x.start&&new Date(x.start).getTime()>=nowMs&&new Date(x.start).getTime()<=week).length,activePackages:0,openInvoicesCount:0,openInvoicesCents:0,overdueInvoicesCount:0,overdueInvoicesCents:0,testInvoicesCount:0,testInvoicesCents:0,customersCount:clients.length},customers:clients,bookings,invoices:[],payments:[],packages:[],crm:{inquiries:[],lifecycle:[],activities:[],offers:[],settings:{dormantDays:60,renewalRemaining:1,discount:0}},build9:{catalog:[],wallet:[],salesOrders:[],subscriptions:[],billing:[],bankImport:{}},build13:{offline:true}};
+  }
+  function showOfflineBanner(snapshot){
+    let el=document.getElementById('bdOfflineSnapshotBanner');
+    if(!el){
+      el=document.createElement('div');el.id='bdOfflineSnapshotBanner';el.className='notice';el.style.cssText='margin:0 0 14px;border:1px solid #e4cda9;background:#fff8e9;color:#6f5730;padding:10px 14px;border-radius:12px;font-size:14px;';
+      const main=document.querySelector('.workspace-main')||document.querySelector('main');main?.prepend(el);
+    }
+    el.textContent=`Offline-Snapshot aktiv${snapshot?.syncedAt?' · zuletzt synchronisiert '+dt(snapshot.syncedAt):''}. Termine und Klient:innen kommen aus dem lokalen Secure Vault; Cloud-Daten werden später wieder aktualisiert.`;
+  }
+  function clearOfflineBanner(){document.getElementById('bdOfflineSnapshotBanner')?.remove()}
+  function cloudBackoffActive(){return Number(sessionStorage.getItem(CLOUD_BACKOFF_KEY)||0)>Date.now()}
+  function setCloudBackoff(minutes=10){sessionStorage.setItem(CLOUD_BACKOFF_KEY,String(Date.now()+minutes*60000))}
+  function clearCloudBackoff(){sessionStorage.removeItem(CLOUD_BACKOFF_KEY)}
+  async function post(path,body){const x=await api(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});clearCloudBackoff();return x}
   function message(el,text,kind="ok"){el.className="notice "+kind;el.textContent=text}
   function showLogin(){$("#loginView").classList.remove("hidden");$("#appShell").classList.add("hidden")}
   function showApp(){$("#loginView").classList.add("hidden");$("#appShell").classList.remove("hidden")}
@@ -70,7 +104,7 @@
   $("#loginForm").addEventListener("submit",async e=>{e.preventDefault();const btn=$("#loginBtn"),email=$("#loginEmail").value.trim();btn.disabled=true;btn.textContent="Sende …";try{const r=await fetch(API+"/admin/request-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email})});const x=await r.json();if(!r.ok)throw new Error(x.error||"Login-Link konnte nicht versendet werden.");message($("#loginMsg"),x.message||"Wenn diese Adresse freigeschaltet ist, wurde ein Login-Link versendet.")}catch(err){message($("#loginMsg"),err.message,"err")}finally{btn.disabled=false;btn.textContent="Login-Link senden"}});
   async function consumeMagicLink(){const u=new URL(location.href),token=u.searchParams.get("login");if(!token)return false;history.replaceState({},document.title,location.pathname);try{const r=await fetch(API+"/admin/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});const x=await r.json();if(!r.ok||!x.ok)throw new Error(x.error||"Login-Link ungültig.");session=x.sessionToken;sessionStorage.setItem(SESSION_KEY,session);return true}catch(err){showLogin();message($("#loginMsg"),err.message,"err");return false}}
   $("#logoutBtn").addEventListener("click",async()=>{try{await api("/admin/logout",{method:"POST"})}catch(e){}session="";sessionStorage.removeItem(SESSION_KEY);showLogin()});
-  $("#refreshBtn").addEventListener("click",()=>load());
+  $("#refreshBtn").addEventListener("click",()=>{clearCloudBackoff();load(true)});
 
   const viewMeta={
     dashboard:["Praxis-Cockpit","Dashboard","Was heute Aufmerksamkeit braucht – und was als Nächstes kommt."],
@@ -90,9 +124,32 @@
   }
   $$(".nav-item[data-view]").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));$$('[data-jump]').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.jump)));
 
-  async function load(){
-    if(!session){showLogin();return}$("#appShell").classList.add("loading");
-    try{data=await api("/admin/dashboard");hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.email||"Administrator";renderAll();document.dispatchEvent(new CustomEvent('bd:cloud-snapshot',{detail:{customers:data.customers||[],bookings:data.bookings||[]}}))}catch(err){if(session)alert(err.message)}finally{$("#appShell").classList.remove("loading")}
+  async function load(force=false){
+    if(!session){showLogin();return}
+    $("#appShell").classList.add("loading");
+    try{
+      if(!force&&cloudBackoffActive()){
+        const snap=await localOfflineSnapshot(),fallback=dashboardFromOffline(snap);
+        if(fallback){
+          data=fallback;hydrateCrm();showApp();$("#adminIdentity").textContent="Offline · Secure Vault";renderAll();showOfflineBanner(snap);return;
+        }
+      }
+      try{
+        data=await api("/admin/dashboard"+(force?"?fresh=1":""));
+        clearCloudBackoff();clearOfflineBanner();hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.email||"Administrator";renderAll();
+        document.dispatchEvent(new CustomEvent('bd:cloud-snapshot',{detail:{customers:data.customers||[],bookings:data.bookings||[]}}));
+      }catch(err){
+        // Cloudflare quota/network failures should not make the practice view blank.
+        // Back off for ten minutes so a blocked quota does not create a retry storm.
+        setCloudBackoff(10);
+        const snap=await localOfflineSnapshot(),fallback=dashboardFromOffline(snap);
+        if(!fallback)throw err;
+        data=fallback;hydrateCrm();showApp();$("#adminIdentity").textContent="Offline · Secure Vault";renderAll();showOfflineBanner(snap);
+        console.warn("Cloud dashboard unavailable; using encrypted local snapshot:",err.message);
+      }
+    }catch(err){
+      if(session)alert(err.message);
+    }finally{$("#appShell").classList.remove("loading")}
   }
 
   function customerUniverse(){
