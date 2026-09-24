@@ -1,0 +1,97 @@
+/* BUILD 14.3.5.12 — quieter client-record action language.
+   Icon-only utility actions, compact status, and a hardened close control. */
+
+/* Header utility cluster: keep only the information/action that matters. */
+#clientDialog .record-head{
+  align-items:flex-start!important;
+}
+#clientDialog .record-status{
+  min-width:0!important;
+  align-self:flex-start!important;
+}
+#clientDialog .record-status label{
+  font-size:0!important;
+  line-height:0!important;
+  gap:0!important;
+}
+#clientDialog .record-status select{
+  min-width:116px!important;
+  height:42px!important;
+  padding:0 38px 0 14px!important;
+  border-radius:12px!important;
+  font-size:13px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  background-color:#fffdfb!important;
+}
+
+/* Rename is a utility, not a primary CTA. */
+#clientDialog #recordRenameBtn.b143512-icon-action,
+#clientDialog .record-privacy-toggle,
+#clientDialog #clientDialogClose{
+  width:42px!important;
+  min-width:42px!important;
+  height:42px!important;
+  padding:0!important;
+  border-radius:12px!important;
+  display:grid!important;
+  place-items:center!important;
+  flex:0 0 42px!important;
+}
+#clientDialog #recordRenameBtn.b143512-icon-action{
+  border:1px solid var(--line)!important;
+  background:#fffdfb!important;
+  color:#6e5b52!important;
+  box-shadow:none!important;
+}
+#clientDialog #recordRenameBtn.b143512-icon-action:hover,
+#clientDialog #clientDialogClose:hover{
+  background:#faf3ed!important;
+  color:var(--terr2)!important;
+}
+#clientDialog #recordRenameBtn.b143512-icon-action svg,
+#clientDialog #clientDialogClose svg,
+#clientDialog .b143512-icon-action svg{
+  width:18px;height:18px;display:block;fill:none;stroke:currentColor;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* Harden the close affordance against overlays / stacking changes. */
+#clientDialog #clientDialogClose{
+  position:relative!important;
+  z-index:250!important;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+}
+
+/* Session/document list utility actions: icon-only, with native title tooltips. */
+#clientDialog #vaultRecordMount .b143512-icon-action{
+  width:38px!important;
+  min-width:38px!important;
+  height:38px!important;
+  padding:0!important;
+  border-radius:11px!important;
+  display:inline-grid!important;
+  place-items:center!important;
+  line-height:1!important;
+  gap:0!important;
+}
+#clientDialog #vaultRecordMount .b143512-icon-action.danger{
+  color:#a84639!important;
+}
+#clientDialog #vaultRecordMount .b143512-icon-action:hover{
+  transform:none!important;
+}
+#clientDialog #vaultRecordMount .vault-session-detail-actions,
+#clientDialog #vaultRecordMount .row-actions{
+  gap:7px!important;
+  align-items:center!important;
+}
+
+/* Keep high-value buttons textual; utility controls become icons only. */
+@media(max-width:760px){
+  #clientDialog .record-status select{min-width:100px!important}
+  #clientDialog #recordRenameBtn.b143512-icon-action,
+  #clientDialog .record-privacy-toggle,
+  #clientDialog #clientDialogClose{width:38px!important;min-width:38px!important;height:38px!important;flex-basis:38px!important}
+}
