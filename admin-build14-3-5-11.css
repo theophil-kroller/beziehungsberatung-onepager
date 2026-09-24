@@ -1,0 +1,80 @@
+/* BUILD 14.3.5.11 — client-record privacy + single-scroll shell + restored finance E/A row. */
+
+/* ---------- Client record: one scroll context only ----------
+   Older builds made recordContent the inner scroll container. The dialog itself now owns
+   the single scroll bar at the far right; the white record surface grows naturally. */
+/* Keep the underlying dashboard from showing a second scrollbar while the record is open. */
+html:has(#clientDialog[open]),body:has(#clientDialog[open]){overflow:hidden!important}
+
+#clientDialog.record-dialog{
+  width:min(1540px,calc(100vw - 16px))!important;
+  max-width:1540px!important;
+  height:auto!important;
+  max-height:calc(100dvh - 16px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scrollbar-gutter:stable;
+}
+#clientDialog.record-dialog>.dialog-shell{
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:calc(100dvh - 18px)!important;
+  max-height:none!important;
+  overflow:visible!important;
+  display:block!important;
+  box-sizing:border-box!important;
+}
+#clientDialog .record-head,#clientDialog .record-tabs{position:relative}
+#clientDialog .record-content{
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  scrollbar-gutter:auto!important;
+  padding-right:0!important;
+  padding-bottom:34px!important;
+}
+
+/* ---------- Eye / privacy mode ---------- */
+.record-privacy-toggle{
+  width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:12px;background:#fffdfb;color:#6e5b52;
+  cursor:pointer;align-self:flex-start;margin-left:auto;margin-right:2px;
+}
+.record-privacy-toggle:hover{background:#faf3ed;color:var(--terr2)}
+.record-privacy-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.record-privacy-toggle .record-eye-off{display:none}
+.record-privacy-toggle.is-hidden .record-eye-open{display:none}
+.record-privacy-toggle.is-hidden .record-eye-off{display:block}
+
+#clientDialog.record-private-hidden #recordName,
+#clientDialog.record-private-hidden #recordEmail,
+#clientDialog.record-private-hidden #recordMasterMeta{
+  filter:blur(7px);opacity:.48;user-select:none;pointer-events:none
+}
+#clientDialog.record-private-hidden #recordRenameBtn{visibility:hidden!important}
+#clientDialog.record-private-hidden .record-content{
+  position:relative;min-height:430px!important;overflow:hidden!important
+}
+#clientDialog.record-private-hidden .record-content>*{
+  filter:blur(10px);opacity:.18;pointer-events:none!important;user-select:none!important
+}
+#clientDialog.record-private-hidden .record-content:after{
+  content:"Klientendaten ausgeblendet";
+  position:absolute;z-index:20;left:50%;top:88px;transform:translateX(-50%);
+  padding:12px 18px;border:1px solid #e3d5cb;border-radius:999px;background:#fffdfb;
+  color:#6f5c53;font-size:12px;font-weight:850;letter-spacing:.02em;box-shadow:0 8px 28px rgba(47,38,35,.08)
+}
+
+/* Finance lower row: keep the restored E/A card visually balanced beside recent payments. */
+.finance-bottom-grid{align-items:stretch!important}
+.finance-bottom-grid>.finance-box{height:100%}
+
+@media(max-width:760px){
+  #clientDialog.record-dialog{width:calc(100vw - 8px)!important;max-height:calc(100dvh - 8px)!important}
+  #clientDialog.record-dialog>.dialog-shell{min-height:calc(100dvh - 10px)!important}
+  .record-privacy-toggle{width:38px;height:38px;flex-basis:38px}
+}
