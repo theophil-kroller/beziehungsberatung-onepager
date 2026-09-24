@@ -1,0 +1,57 @@
+/* BUILD 14.3.5.13 — documentation search + quieter utility controls. */
+.b143513-icon-button{
+  width:42px!important;min-width:42px!important;height:42px!important;padding:0!important;
+  display:inline-grid!important;place-items:center!important;border-radius:12px!important;
+  line-height:1!important;gap:0!important;
+}
+.b143513-icon-button svg,.client-secondary-action-grid svg{
+  width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;display:block;
+}
+.b143513-approve{background:#eef6ec!important;border-color:#bfd6bc!important;color:#4d7653!important}
+.b143513-approve:hover{background:#e5f1e3!important}
+.client-command-actions .b143513-quick-action{
+  background:#fffdfb!important;border:1px solid var(--line)!important;color:#725f55!important;
+  box-shadow:none!important;
+}
+.client-command-actions .b143513-quick-action:hover{background:#faf3ed!important;color:var(--terr2)!important}
+.client-secondary-action-grid button{display:flex!important;align-items:center!important;gap:8px!important}
+.client-secondary-action-grid svg{width:15px;height:15px;flex:0 0 15px}
+.head-actions .b143513-refresh,.flow-manager-shell .b143513-refresh{
+  background:#fffdfb!important;border:1px solid var(--line)!important;color:#725f55!important;
+}
+#clientPrivacyToggle.b143513-client-eye{
+  width:42px!important;min-width:42px!important;height:42px!important;padding:0!important;
+  display:grid!important;place-items:center!important;border-radius:12px!important;font-size:0!important;
+}
+#clientPrivacyToggle.b143513-client-eye svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Search belongs to the session chronology: all structured session fields are searched locally. */
+#clientDialog .vault-session-index-tools{
+  display:grid!important;grid-template-columns:minmax(0,1fr) 42px!important;gap:10px!important;
+  align-items:center!important;
+}
+#clientDialog .vault-session-search{
+  position:relative;display:flex;align-items:center;min-width:0;height:42px;
+  border:1px solid var(--line);border-radius:12px;background:#fffdfb;
+}
+#clientDialog .vault-session-search>span{padding-left:12px;color:#9a8174;font-size:18px;line-height:1}
+#clientDialog .vault-session-search input{
+  width:100%;min-width:0;border:0!important;outline:0!important;background:transparent!important;
+  padding:9px 34px 9px 8px!important;font:inherit;color:inherit;
+}
+#clientDialog .vault-session-search input::-webkit-search-cancel-button{display:none}
+#clientDialog .vault-session-search button{
+  position:absolute;right:5px;top:5px;width:30px;height:30px;border:0;background:transparent;
+  border-radius:8px;color:#91786c;font-size:18px;display:grid;place-items:center;
+}
+#clientDialog .vault-session-search button:hover{background:#f5ece5;color:var(--terr2)}
+#clientDialog .vault-session-search-meta{
+  margin:7px 2px 9px;color:var(--muted);font-size:11px;min-height:16px;
+}
+#clientDialog .vault-session-nav-item[hidden]{display:none!important}
+
+@media(max-width:760px){
+  .b143513-icon-button,#clientPrivacyToggle.b143513-client-eye{width:38px!important;min-width:38px!important;height:38px!important}
+  #clientDialog .vault-session-index-tools{grid-template-columns:minmax(0,1fr) 38px!important}
+}
