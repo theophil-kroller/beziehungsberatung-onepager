@@ -11,6 +11,8 @@
   const monthLabel=d=>new Intl.DateTimeFormat('de-AT',{month:'short'}).format(d).replace('.','');
 
   async function dashboard(){
+    const shared=window.BDAdminUX?.getData?.();
+    if(shared?.bookings||shared?.payments||shared?.invoices)return shared;
     const session=sessionStorage.getItem(SESSION_KEY)||'';
     if(!session||!API) return null;
     const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});

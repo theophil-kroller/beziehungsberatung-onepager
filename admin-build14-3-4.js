@@ -102,6 +102,7 @@
   const addMonths=(d,n)=>new Date(d.getFullYear(),d.getMonth()+n,1);
   const fixed=()=>{try{return {...{enabled:false,monthly:150},...(JSON.parse(localStorage.getItem(FIXED_KEY)||'null')||{})}}catch(_){return{enabled:false,monthly:150}}};
   async function data(){
+    const shared=window.BDAdminUX?.getData?.();if(shared?.bookings||shared?.payments||shared?.invoices)return shared;
     const session=sessionStorage.getItem(SESSION_KEY)||'';if(!session||!API)return null;
     const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});if(!r.ok)return null;
     return r.json().catch(()=>null);

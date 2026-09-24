@@ -15,6 +15,7 @@
     upload:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M5 14v6h14v-6"/></svg>',
     lock:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>',
     unlock:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7-2"/></svg>',
+    offer:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 7 9-4 9 4-9 4-9-4Zm0 0v10l9 4 9-4V7M12 11v10"/></svg>',
     refresh:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6.1 8.3A7 7 0 0 1 18.7 7M17.9 15.7A7 7 0 0 1 5.3 17"/></svg>'
   };
   const defaults={weather:true,attention:true,calendar:true,finance:true,metrics:true};
@@ -32,9 +33,10 @@
       $('#newInquiryBtn')?.click();
       setTimeout(()=>{const dlg=$('#inquiryDialog'),stage=$('#inqStage'),title=dlg?.querySelector('h2');if(stage)stage.value='consultation';if(title)title.textContent='Neue Klient:in erfassen';},0);
     });
-    const cal=iconButton('calendar','Terminverwaltung öffnen');cal.addEventListener('click',()=>document.querySelector('[data-view="bookings"]')?.click());
+    const cal=iconButton('calendar','Neuen Termin / Kalender öffnen');cal.addEventListener('click',()=>document.querySelector('[data-view="bookings"]')?.click());
+    const offer=iconButton('offer','Angebote öffnen');offer.classList.add('b143516-offer-action');offer.addEventListener('click',()=>document.querySelector('.nav-subitem[data-view="packages"]')?.click());
     const cfg=iconButton('settings','Cockpit anpassen');cfg.addEventListener('click',()=>openCockpitSettings());
-    wrap.append(addClient,cal,cfg);host.appendChild(wrap);
+    wrap.append(addClient,cal,offer,cfg);host.appendChild(wrap);
   }
 
   function ensureCockpitDialog(){
@@ -51,7 +53,7 @@
 
   function bindWeatherExpand(){const w=$('#dashboardWeather');if(!w||w.dataset.b143514Bound)return;w.dataset.b143514Bound='1';w.tabIndex=0;w.title='Klicken für 3-Tage-Vorschau';w.addEventListener('click',e=>{if(e.target.closest('button,input,form'))return;w.classList.toggle('weather-expanded')})}
 
-  async function dashboardData(){const session=sessionStorage.getItem(SESSION_KEY)||'';if(!session||!API)return null;try{const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});return r.ok?await r.json():null}catch(_){return null}}
+  async function dashboardData(){const shared=window.BDAdminUX?.getData?.();if(shared?.bookings||shared?.payments||shared?.invoices)return shared;const session=sessionStorage.getItem(SESSION_KEY)||'';if(!session||!API)return null;try{const r=await fetch(API+'/admin/dashboard',{headers:{Authorization:'Bearer '+session},cache:'no-store'});return r.ok?await r.json():null}catch(_){return null}}
   const euro=n=>new Intl.NumberFormat('de-AT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Number(n||0));
   const monthStart=d=>new Date(d.getFullYear(),d.getMonth(),1), addMonths=(d,n)=>new Date(d.getFullYear(),d.getMonth()+n,1);
   function paidDate(p){const d=new Date(p?.paidAt||'');return isNaN(d)?null:d}

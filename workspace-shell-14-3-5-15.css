@@ -24,3 +24,21 @@
 
 @media(max-height:820px){.suite-nav{gap:2px!important;margin:6px 0!important}.suite-nav a{height:42px!important;min-height:42px!important}.suite-brand{height:66px!important;min-height:66px!important}.suite-brand img{width:40px!important;height:40px!important}.suite-separator{margin:4px 7px!important}}
 @media(max-width:760px){.suite-page{--suite-rail:64px!important}.suite-rail{width:var(--suite-rail)!important;min-width:var(--suite-rail)!important;padding-left:3px!important;padding-right:3px!important}.suite-main{margin-left:var(--suite-rail)!important}.suite-nav a{width:50px!important}.suite-brand img{width:38px!important;height:38px!important}.mc-head,.topbar{padding-left:24px!important;padding-right:24px!important}}
+
+/* BUILD 14.3.5.16 — suite rail now mirrors the CRM rail. */
+.suite-page{--suite-rail:92px!important}
+.suite-rail{width:92px!important;min-width:92px!important;padding:14px 10px 16px!important;background:#fbf6ef!important;border-right:1px solid #e5d9d0!important;overflow:hidden!important}
+.suite-main{margin-left:92px!important}
+.suite-brand{height:auto!important;min-height:0!important;padding:4px 0 17px!important;border-bottom:0!important;display:flex!important;justify-content:center!important;align-items:center!important}
+.suite-brand img{width:48px!important;height:48px!important;padding:4px!important;border:1px solid #e4d7ce!important;border-radius:50%!important;background:#fffaf6!important}
+.suite-nav{gap:7px!important;margin:0!important;padding:0!important}
+.suite-nav a{width:100%!important;height:52px!important;min-height:52px!important;border-radius:14px!important;padding:11px 8px!important;background:transparent!important;border:0!important;color:#7a6c64!important;box-shadow:none!important}
+.suite-nav a:hover{background:#f2eae1!important;color:#3f332d!important}
+.suite-nav a.current{background:#eee6dd!important;color:#b2573d!important;box-shadow:inset 3px 0 0 #c76a4d!important}
+.suite-nav a.current:before{display:none!important}
+.suite-svg{width:23px!important;height:23px!important;stroke-width:1.7!important}
+.suite-separator{height:1px!important;background:#e3d7cf!important;margin:12px 8px!important}
+.suite-rail .suite-nav:last-of-type{margin-top:auto!important;margin-bottom:0!important}
+.suite-message .suite-nav a.current,.suite-knowledge .suite-nav a.current{background:#eee6dd!important;color:#b2573d!important;box-shadow:inset 3px 0 0 #c76a4d!important}
+@media(max-height:820px){.suite-nav{gap:3px!important}.suite-nav a{height:46px!important;min-height:46px!important}.suite-brand{padding-bottom:10px!important}.suite-brand img{width:42px!important;height:42px!important}.suite-separator{margin:7px 8px!important}}
+@media(max-width:760px){.suite-page{--suite-rail:72px!important}.suite-rail{width:72px!important;min-width:72px!important;padding-left:8px!important;padding-right:8px!important}.suite-main{margin-left:72px!important}.suite-nav a{height:48px!important;min-height:48px!important}.suite-svg{width:21px!important;height:21px!important}}

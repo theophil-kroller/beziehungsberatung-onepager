@@ -223,7 +223,12 @@
       $$('.bd-cal-day.availability-edit').forEach(day=>day.addEventListener('click',e=>{if(e.target.closest('.bd-cal-event,.bd-cal-availability'))return;const rect=day.getBoundingClientRect(),hourHeight=Number(day.dataset.calHourHeight||50),startHour=Number(day.dataset.calStartHour||8),endHour=Number(day.dataset.calEndHour||20),mins=Math.max(0,Math.min((endHour-startHour)*60-15,Math.round(((e.clientY-rect.top)/hourHeight*60)/15)*15)),start=startHour*60+mins,end=Math.min(endHour*60,start+60),hm=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;openAvailabilityDialog({date:day.dataset.calDay,startHm:hm(start),endHm:hm(end)})}));
     }
   }
-  function renderNext(){const rows=(data.bookings||[]).filter(x=>x.status==='booked');$('#nextBookings').innerHTML=weekCalendarHtml(rows,dashboardWeekOffset,'dashboard',true);bindWeekCalendar('dashboard');bindPowerActions()}
+  function renderNext(){
+    const rows=(data.bookings||[]).filter(x=>x.status==='booked'&&new Date(x.start).getTime()>=now()).sort((a,b)=>new Date(a.start)-new Date(b.start)).slice(0,7);
+    const dateFmt=new Intl.DateTimeFormat('de-AT',{timeZone:'Europe/Vienna',weekday:'short',day:'2-digit',month:'2-digit'}),timeFmt=new Intl.DateTimeFormat('de-AT',{timeZone:'Europe/Vienna',hour:'2-digit',minute:'2-digit'});
+    $('#nextBookings').innerHTML=rows.length?`<div class="b143516-next-list">${rows.map(x=>`<article class="b143516-next-row"><div class="b143516-next-time"><span>${esc(dateFmt.format(new Date(x.start)))}</span><strong>${esc(timeFmt.format(new Date(x.start)))}</strong></div><div class="b143516-next-client"><button type="button" class="b143516-client-link" data-open-client="${esc(x.customerIdentityEmail||x.email)}">${esc(x.name)}</button><span>${esc(x.typeLabel||'Termin')} · ${esc(x.locationLabel||'')}</span></div><button class="icon-action b143516-edit-booking" data-booking-edit="${esc(x.eventId)}" title="Termin bearbeiten" aria-label="Termin bearbeiten">✎</button></article>`).join('')}</div>`:'<div class="empty">Keine kommenden Termine.</div>';
+    bindPowerActions();bindClientOpeners()
+  }
 
   const stages={
     inquiry:{title:"Anfrage",copy:"Neu eingegangen, noch kein Erstgespräch.",dot:"stage-inquiry"},
@@ -291,13 +296,13 @@
     const statusFilter=$("#invoiceFilter").value,typeFilter=$("#invoiceTypeFilter")?.value||'all';
     const rows=(data.invoices||[]).filter(x=>(statusFilter==='all'||x.status===statusFilter)&&(typeFilter==='all'||(x.invoiceType||'other')===typeFilter));
     $("#invoicesTable").innerHTML=rows.length?table(["Honorarnote","Klient:in","Typ","Betrag","Fällig","Status / Zahlung","Aktion"],rows.map(x=>{
-      let actions=`<button class="mini" data-pdf="${x.id}">PDF</button><button class="mini edit" data-due-edit="${x.id}">Zahlungsziel</button>`;
-      if(invoicePayable(x))actions+=`<button class="mini pay" data-paid="${x.id}">Zahlung erfassen</button>`;
-      if(x.status==='overdue')actions+=`<button class="mini remind" data-remind="${x.id}">Erinnerung</button>`;
-      if(x.status==='paid')actions+=`<button class="mini" data-open="${x.id}">Wieder öffnen</button>`;
+      let actions=`<button class="b143516-invoice-icon" data-pdf="${x.id}" title="PDF öffnen" aria-label="PDF öffnen">▤</button><button class="b143516-invoice-icon" data-due-edit="${x.id}" title="Zahlungsziel ändern" aria-label="Zahlungsziel ändern">◷</button>`;
+      if(invoicePayable(x))actions+=`<button class="b143516-invoice-icon pay" data-paid="${x.id}" title="Zahlung erfassen" aria-label="Zahlung erfassen">€</button>`;
+      if(x.status==='overdue')actions+=`<button class="b143516-invoice-icon remind" data-remind="${x.id}" title="Zahlungserinnerung / Mahnung" aria-label="Zahlungserinnerung / Mahnung">!</button>`;
+      if(x.status==='paid')actions+=`<button class="b143516-invoice-icon" data-open="${x.id}" title="Wieder öffnen" aria-label="Wieder öffnen">↶</button>`;
       const payment=x.status==='paid'?`<div class="payment-meta"><strong>${esc(paymentLabel(x.paymentMethod))}</strong><span>${dt(x.paidAt)}${x.paymentReference?` · ${esc(x.paymentReference)}`:''}</span></div>`:'';
       const type=x.invoiceType||'other';
-      return `<tr><td><span class="name">${esc(x.invoiceNumber||'—')}</span><div class="sub">${dateOnly(x.invoiceDate)}</div></td><td>${esc(x.customerName)}<div class="sub">${esc(visibleContactEmail(x.customerContactEmail||x.customerEmail))}</div></td><td><span class="invoice-type ${esc(type)}">${esc(invoiceTypeLabel(type))}</span></td><td><strong>${money(x.totalCents,x.currency)}</strong></td><td>${dateOnly(x.dueDate)}</td><td><span class="badge ${esc(x.status)}">${esc(statusLabel(x.status))}</span>${x.dbStatus==='test'?` <span class="badge test">Sandbox/Test</span>`:''}${payment}</td><td><div class="row-actions">${actions}</div></td></tr>`
+      return `<tr><td class="b143516-invoice-number"><span class="name" title="${esc(x.invoiceNumber||'—')}">${esc(x.invoiceNumber||'—')}</span><div class="sub">${dateOnly(x.invoiceDate)}</div></td><td>${esc(x.customerName)}<div class="sub">${esc(visibleContactEmail(x.customerContactEmail||x.customerEmail))}</div></td><td><span class="invoice-type ${esc(type)}">${esc(invoiceTypeLabel(type))}</span></td><td><strong>${money(x.totalCents,x.currency)}</strong></td><td>${dateOnly(x.dueDate)}</td><td><span class="badge ${esc(x.status)}">${esc(statusLabel(x.status))}</span>${x.dbStatus==='test'?` <span class="badge test">Sandbox/Test</span>`:''}${payment}</td><td><div class="row-actions">${actions}</div></td></tr>`
     })): `<div class="empty">Keine Honorarnoten für diese Filterkombination.</div>`;
     bindInvoiceActions();bindPowerActions()
   }

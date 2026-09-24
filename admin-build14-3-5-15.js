@@ -31,15 +31,32 @@
     if(w.parentElement!==slot)slot.appendChild(w);
   }
 
+  function restructureNavigation(){
+    const clientBtn=document.querySelector('.side-nav .nav-item[data-view="clients"]');
+    const bookingBtn=document.querySelector('.ux-utility-nav .nav-item[data-view="bookings"]');
+    if(clientBtn&&bookingBtn&&bookingBtn.previousElementSibling!==clientBtn){
+      bookingBtn.title='Kalender';bookingBtn.setAttribute('aria-label','Kalender');clientBtn.insertAdjacentElement('afterend',bookingBtn);
+    }
+    const offers=document.querySelector('.nav-group[data-nav-group="offers"]');if(offers)offers.classList.add('b143516-offers-hidden');
+  }
+
   function polishDashboard(){
     const panel=$('#view-dashboard .attention-panel');
     if(panel){const eye=panel.querySelector('.eyebrow'),h=panel.querySelector('h2');if(eye)eye.textContent='Heute';if(h)h.textContent='Heute zu erledigen'}
+    restructureNavigation();
     const quick=$('.b143514-quick-actions');
     if(quick){
       const bs=$$('.b143514-icon-btn',quick);
-      if(bs[0]&&!bs[0].dataset.b143515Client){bs[0].dataset.b143515Client='1';bs[0].title='Neue Klient:in';bs[0].setAttribute('aria-label','Neue Klient:in');bs[0].addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();openNewClient()},true)}
-      if(bs[1]){bs[1].title='Termin planen';bs[1].setAttribute('aria-label','Termin planen')}
-      if(bs[2]&&!bs[2].classList.contains('b143515-gear')){bs[2].classList.add('b143515-gear');bs[2].innerHTML=gear;bs[2].title='Cockpit anpassen';bs[2].setAttribute('aria-label','Cockpit anpassen')}
+      const client=bs.find(b=>/Klient/i.test(b.title||b.getAttribute('aria-label')||''))||bs[0];
+      const cal=bs.find(b=>/Termin|Kalender/i.test(b.title||b.getAttribute('aria-label')||''));
+      const cfg=bs.find(b=>/Cockpit|anpassen/i.test(b.title||b.getAttribute('aria-label')||''));
+      if(client&&!client.dataset.b143515Client){client.dataset.b143515Client='1';client.title='Neue Klient:in';client.setAttribute('aria-label','Neue Klient:in');client.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();openNewClient()},true)}
+      if(cal){cal.title='Neuen Termin / Kalender öffnen';cal.setAttribute('aria-label','Neuen Termin / Kalender öffnen')}
+      if(!quick.querySelector('.b143516-offer-action')){
+        const offer=document.createElement('button');offer.type='button';offer.className='b143514-icon-btn b143516-offer-action';offer.title='Angebote';offer.setAttribute('aria-label','Angebote');offer.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 7 9-4 9 4-9 4-9-4Zm0 0v10l9 4 9-4V7M12 11v10"/></svg>';offer.addEventListener('click',()=>document.querySelector('.nav-subitem[data-view="packages"]')?.click());
+        if(cfg)quick.insertBefore(offer,cfg);else quick.appendChild(offer);
+      }
+      if(cfg&&!cfg.classList.contains('b143515-gear')){cfg.classList.add('b143515-gear');cfg.innerHTML=gear;cfg.title='Cockpit anpassen';cfg.setAttribute('aria-label','Cockpit anpassen')}
     }
     moveWeather();
   }
@@ -78,7 +95,7 @@
     offerTabs($('#view-packages'),'packages');offerTabs($('#view-programs'),'programs');
   }
 
-  function updateRoadmap(){const p=$('.roadmap-current strong'),value='Aktuell: BUILD 14.3.5.15';if(p&&p.textContent!==value)p.textContent=value}
+  function updateRoadmap(){const p=$('.roadmap-current strong'),value='Aktuell: BUILD 14.3.5.16';if(p&&p.textContent!==value)p.textContent=value}
   function sync(){if(applying)return;applying=true;try{polishDashboard();ensureNewClient();setupOffers();updateRoadmap()}finally{applying=false}}
   let syncQueued=false;
   function scheduleSync(){if(syncQueued)return;syncQueued=true;requestAnimationFrame(()=>{syncQueued=false;sync()})}

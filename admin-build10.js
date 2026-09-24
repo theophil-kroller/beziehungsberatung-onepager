@@ -104,11 +104,12 @@
     $('#flowPrepDone').onclick=savePrep;$('#flowPrepToSales').onclick=()=>setFlowTab('sales');$('#flowSalesSkip').onclick=()=>setFlowTab('post');$('#flowSalesToPost').onclick=()=>setFlowTab('post');$('#flowPark').onclick=parkFlow;$('#flowSaveNotes').onclick=saveNotes;$('#flowDictateNotes').onclick=()=>openFlowDictation(current);$$('[data-flow-next]').forEach(b=>b.onclick=()=>nextAction(b.dataset.flowNext));
   }
   function openFlowView(){ $$('.nav-item[data-view], [data-build10-flow-nav], [data-build10-finance-nav]').forEach(b=>b.classList.toggle('active',b.hasAttribute('data-build10-flow-nav')));$$('.view').forEach(v=>v.classList.toggle('active',v.id==='view-flow'));$('#viewEyebrow').textContent='Session Flow Manager';$('#viewTitle').textContent='Session Flow';$('#viewSubtitle').textContent='Vorbereitung, Nachbereitung und offene Dokumentation an einem Ort.';$('#newInquiryBtn').style.display='none';refresh() }
-  async function refresh(){
+  async function refresh(force=false){
     if(!sessionStorage.getItem(SESSION_KEY))return false;
     const host=$('#flowMainList');
     try{
-      const d=await api('/admin/dashboard');
+      const shared=!force?window.BDAdminUX?.getData?.():null;
+      const d=shared||await api('/admin/dashboard');
       let f={flows:[]},flowWarning='';
       try{f=await api('/admin/flows')}catch(e){flowWarning=e.message||'Flow-Status konnte nicht geladen werden.';console.error('Build10 flow states',e)}
       dashboard=d;flows=f.flows||[];render();renderFinance();
@@ -178,7 +179,7 @@
   function nextAction(tab){if(tab==='none'){$('#flowDialog').close();return}openClientSection(tab)}
   function mergeFlow(f){if(!f)return;const i=flows.findIndex(x=>String(x.bookingEventId)===String(f.bookingEventId));if(i>=0)flows[i]={...flows[i],...f};else flows.push(f)}
   function msg(text,kind='ok'){const el=$('#flowMsg');el.className='notice '+kind;el.textContent=text}
-  function observeAdmin(){const target=$('#statToday');if(!target)return;const ob=new MutationObserver(()=>{clearTimeout(refreshTimer);refreshTimer=setTimeout(refresh,180)});ob.observe(target,{childList:true,characterData:true,subtree:true});setTimeout(refresh,500);setInterval(()=>{if(!document.hidden&&sessionStorage.getItem(SESSION_KEY))refresh()},60000)}
+  function observeAdmin(){const target=$('#statToday');if(!target)return;const ob=new MutationObserver(()=>{clearTimeout(refreshTimer);refreshTimer=setTimeout(refresh,180)});ob.observe(target,{childList:true,characterData:true,subtree:true});setTimeout(refresh,500);setInterval(()=>{if(!document.hidden&&sessionStorage.getItem(SESSION_KEY))refresh()},600000)}
 
   async function openForClient(email){
     if(!dashboard)await refresh();
