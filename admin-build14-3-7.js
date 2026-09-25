@@ -1,6 +1,7 @@
 (function(){
   'use strict';
-  const DOCUMENTATION_STEP_SEMANTICS=['Eingang','Zuordnen','Verarbeiten','Protokoll','Prüfen'];
+  const DOCUMENTATION_STEP_SEMANTICS=['Eingang','Zuordnung','Verarbeitung','Prüfung'];
+  const LEGACY_DOCUMENTATION_COPY=['Zuordnen','Verarbeiten','Protokoll','Prüfen','Final prüfen & abschließen','Transkript erstellt und automatisch gespeichert','Zukünftige Termine ausnahmsweise anzeigen','Du darfst dieses Fenster und das CRM schließen','Geprüft & als Sitzungsprotokoll abschließen'];
   const $=s=>document.querySelector(s);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const apiBase=()=>String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
@@ -11,7 +12,8 @@
   const relTime=x=>{try{const d=new Date(x).getTime(),sec=Math.max(0,Math.round((Date.now()-d)/1000));if(sec<45)return'gerade eben';if(sec<3600)return`vor ${Math.max(1,Math.round(sec/60))} Min.`;if(sec<86400)return`vor ${Math.round(sec/3600)} Std.`;return fmt(x)}catch(_){return fmt(x)}};
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const pendingKeys=()=>Object.keys(localStorage).filter(key=>key.startsWith('bd_capture_relay_'));
-  let syncing=false,lastCloudCheck=0,workflowItem=null,workflowPayload=null,workflowTimer=null,workflowSecondsTimer=null,workflowStartedAt=0,activeHandoff=null;
+  let syncing=false,lastCloudCheck=0,workflowItem=null,workflowPayload=null,workflowTimer=null,workflowSecondsTimer=null,workflowStartedAt=0,activeHandoff=null,workflowActiveStep='assign';
+  const localAutomationBusy=new Set();let localAutomationTimer=null;
 
   function b64bytes(value){let s=String(value||'').replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';const raw=atob(s),out=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
   function bytes64(bytes){let raw='';for(let i=0;i<bytes.length;i+=0x8000)raw+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(raw)}
@@ -42,9 +44,10 @@
     const sessionId=assigned?String(meta.eventId||payload.sessionId||''):'',sessionDate=assigned?String(meta.sessionDate||payload.sessionDate||payload.createdAt||'').slice(0,10):'',safeId=captureId.replace(/[^a-zA-Z0-9_-]/g,'-'),filename=`capture-${safeId}.json`;
     let artifactId='';
     const bytes=new TextEncoder().encode(JSON.stringify({...payload,captureId,sessionId,sessionDate}));
-    const stored=await window.BDVault.post('/artifact',{ref,displayName,filename,mime:'application/json',note:`BUILD 14.3.8 Capture-Quelle${sessionId?' für Session '+sessionId:''}`,dataBase64:bytes64(bytes)});artifactId=stored.id;
+    const stored=await window.BDVault.post('/artifact',{ref,displayName,filename,mime:'application/json',note:`BUILD 14.3.10 Capture-Quelle${sessionId?' für Session '+sessionId:''}`,dataBase64:bytes64(bytes)});artifactId=stored.id;
     const type=captureType(payload),label=type==='session'?'Sitzungsaufnahme':type==='dictation'?'Diktat':'Notiz / Anlage',pages=Array.isArray(payload.inkPages)?payload.inkPages.some(page=>(page.strokes||[]).length):!!(payload.strokes||[]).length;
     const saved=await window.BDVault.post('/documentation-inbox',{ref,displayName,captureId,sessionId,sessionDate,artifactId,captureType:type,status:'new',title:`${label}${assigned&&meta.displayName?' · '+meta.displayName:''}`,summary:captureSummary(payload),hasAudio:(payload.audio||[]).length>0,hasInk:pages,hasText:!!String(payload.noteText||'').trim(),hasPhotos:(payload.photos||[]).length>0,createdAt:payload.createdAt});
+    setTimeout(()=>advanceLocalAutomation(saved.item,payload).catch(()=>{}),120);
     return saved.item;
   }
 
@@ -89,7 +92,7 @@
     try{await syncSessionRelays();await syncGenericInbox()}catch(error){updateRelayHint('Cloud-Synchronisierung derzeit nicht möglich · lokale Capture-Kopien bleiben erhalten.')}finally{syncing=false;await renderInbox(false)}
   }
 
-  function statusCopy(status){return({new:'Neu',processing:'In Bearbeitung',review:'Zur Prüfung',done:'Erledigt'}[status]||status)}
+  function statusCopy(item){if(typeof item==='string')return({new:'Neu',processing:'In Bearbeitung',review:'Zur Prüfung',done:'Erledigt'}[item]||item);if(item?.status==='done')return'Erledigt';if(item?.aiDraft||item?.status==='review')return'Bereit zur Prüfung';if(item?.hasAudio&&!item?.transcript&&(item?.dictationIds||[]).length)return'Transkription läuft';if(item?.assigned&&item?.transcript&&!item?.aiDraft)return'Entwurf wird vorbereitet';if(!item?.assigned)return'Zuordnung nötig';return item?.status==='processing'?'Verarbeitung läuft':'Neu'}
   function typeIcon(item){return item.captureType==='session'?'🎧':item.captureType==='dictation'?'🎙':'✍️'}
   function sourceTags(item){return[item.hasAudio?'Audio':null,item.hasInk?'Handschrift':null,item.hasText?'Text':null,item.hasPhotos?'Foto':null].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join('')}
   function updateRelayHint(text=''){const el=$('#documentationRelayHint');if(!el)return;const count=pendingKeys().length;el.textContent=text||(count?`${count} direkter Sitzungs-Transfer wartet noch auf sichere Übernahme. Zusätzlich wird die persönliche Inbox höchstens alle 5 Minuten geprüft.`:'Persönliche Capture-Inbox wird sparsam synchronisiert · keine permanente Cloud-Abfrage.');el.classList.toggle('has-pending',count>0)}
@@ -106,15 +109,64 @@
       let statsHost=$('#documentationInboxStats');if(!statsHost){$('#documentationInboxList').insertAdjacentHTML('beforebegin','<div class="doc-inbox-stats" id="documentationInboxStats"></div>');statsHost=$('#documentationInboxStats')}
       statsHost.innerHTML=`<span><b>${stats.new}</b> Neu</span><span><b>${stats.processing}</b> In Bearbeitung</span><span class="review"><b>${stats.review}</b> Zur Prüfung</span>`;
       if(!items.length){host.innerHTML='<div class="doc-inbox-empty" id="documentationInboxBaseEmpty"><strong>Keine Capture-Eingänge offen.</strong><span>Vergangene Termine mit offener Nachbereitung werden darunter ergänzt.</span></div>';await window.BDDocumentationUX?.enrichInbox?.(host,items);if(host.querySelector('.b1438-open-task'))$('#documentationInboxBaseEmpty')?.remove();updateRelayHint();return}
-      host.innerHTML=items.slice(0,12).map(item=>`<article class="doc-inbox-row" data-doc-item="${esc(item.id)}"><div class="doc-inbox-icon">${typeIcon(item)}</div><div class="doc-inbox-main"><div class="doc-inbox-title"><strong>${esc(item.title||'Capture-Eingang')}</strong><span class="doc-inbox-state ${esc(item.status)}">${esc(statusCopy(item.status))}</span>${!item.assigned?'<span class="doc-inbox-state assignment">Zuordnung nötig</span>':''}</div><p>${esc(item.summary||'Capture-Quelle')}${item.sessionDate?' · Sitzung '+esc(fmtDate(item.sessionDate)):''}</p><div class="doc-inbox-tags">${sourceTags(item)}<span>${esc(relTime(item.receivedAt))}</span></div></div><div class="doc-inbox-actions"><button class="btn primary" type="button" data-doc-open="${esc(item.id)}">${!item.assigned?'Zuordnen':item.status==='review'?'Prüfen':'Weiter'}</button>${item.sessionId?`<button class="btn ghost" type="button" data-doc-session="${esc(item.id)}">Sitzung öffnen</button>`:''}</div></article>`).join('');
+      host.innerHTML=items.slice(0,12).map(item=>`<article class="doc-inbox-row" data-doc-item="${esc(item.id)}"><div class="doc-inbox-icon">${typeIcon(item)}</div><div class="doc-inbox-main"><div class="doc-inbox-title"><strong>${esc(item.title||'Capture-Eingang')}</strong><span class="doc-inbox-state ${esc(item.status)}">${esc(statusCopy(item))}</span></div><p>${esc(item.summary||'Capture-Quelle')}${item.sessionDate?' · Sitzung '+esc(fmtDate(item.sessionDate)):''}</p><div class="doc-inbox-tags">${sourceTags(item)}<span>${esc(relTime(item.receivedAt))}</span></div></div><div class="doc-inbox-actions"><button class="btn primary" type="button" data-doc-open="${esc(item.id)}">${!item.assigned?'Zuordnen':item.aiDraft||item.status==='review'?'Prüfen':'Status ansehen'}</button>${item.sessionId?`<button class="btn ghost" type="button" data-doc-session="${esc(item.id)}">Sitzung öffnen</button>`:''}</div></article>`).join('');
       host.querySelectorAll('[data-doc-open]').forEach(button=>button.onclick=()=>openWorkflow(items.find(x=>String(x.id)===button.dataset.docOpen)));
       host.querySelectorAll('[data-doc-session]').forEach(button=>button.onclick=()=>openSession(items.find(x=>String(x.id)===button.dataset.docSession)));
       await window.BDDocumentationUX?.enrichInbox?.(host,items);
       updateRelayHint();
+      runLocalAutomationCycle(items).catch(()=>{});ensureLocalAutomationLoop();
     }catch(error){host.innerHTML=`<div class="doc-inbox-empty error"><strong>Inbox konnte nicht geladen werden.</strong><span>${esc(error.message)}</span></div>`}
   }
 
   async function mark(item,status,extra={}){if(!item)return null;const x=await window.BDVault.post('/documentation-inbox/update',{id:item.id,status,...extra});document.dispatchEvent(new CustomEvent('bd:documentation-inbox-updated',{detail:{item:x.item}}));return x.item}
+  async function automationPayload(item,payload=null){if(payload)return payload;try{return await loadArtifactPayload(item.artifactId)}catch(_){return{}}}
+  async function beginAutomaticTranscription(item,payload){
+    if(!item?.hasAudio||item.transcript||(item.dictationIds||[]).length||!(payload?.audio||[]).length)return item;
+    const ids=[];
+    for(let index=0;index<payload.audio.length;index++){
+      const audio=payload.audio[index];
+      const created=await window.BDVault.post('/dictation/start',{origin:item.sessionId?'session':item.assigned?'case':'quick',ref:item.clientRef||'',displayName:item.clientName||'',targetSessionId:item.sessionId||'',sessionDate:item.sessionDate||String(payload.createdAt||new Date().toISOString()).slice(0,10),durationMinutes:Math.ceil(Number(audio.durationSeconds||0)/60),contextLabel:`Dokumentations-Inbox · Aufnahme ${index+1} · ${item.captureId}`,language:'de'});
+      const id=created.dictation.id,raw=b64bytes(audio.dataBase64),partSize=2*1024*1024;
+      for(let offset=0,sequence=0;offset<raw.length;offset+=partSize,sequence++)await window.BDVault.post('/dictation/chunk',{id,sequence,mime:audio.mime||'audio/webm',dataBase64:bytes64(raw.subarray(offset,Math.min(raw.length,offset+partSize)))});
+      await window.BDVault.post('/dictation/finalize',{id,language:'de',transcribe:true});ids[index]=id;
+    }
+    return await mark(item,'processing',{dictationIds:ids,transcriptionStartedAt:new Date().toISOString(),processingError:''});
+  }
+  async function collectAutomaticTranscript(item){
+    const ids=item?.dictationIds||[];if(!ids.length||item.transcript)return item;
+    const rows=[];for(const id of ids){try{rows.push((await window.BDVault.request('/dictation?id='+encodeURIComponent(id))).dictation)}catch(e){rows.push({id,status:'error',error:e.message})}}
+    for(const row of rows.filter(x=>x.status==='saved'))await window.BDVault.post('/dictation/transcribe',{id:row.id,language:'de',transcribe:true}).catch(()=>{});
+    if(rows.some(x=>x.status==='error'))return await mark(item,'processing',{processingError:'Mindestens eine Audioquelle konnte noch nicht transkribiert werden.'});
+    if(!rows.length||!rows.every(x=>['draft','accepted'].includes(x.status)))return item;
+    const transcript=rows.map((x,i)=>`[Aufnahme ${i+1}]\n${x.editedTranscript||x.originalTranscript||''}`.trim()).join('\n\n');
+    const elapsed=item.transcriptionStartedAt?Math.max(1,(Date.now()-new Date(item.transcriptionStartedAt).getTime())/1000):0;
+    return await mark(item,'processing',{transcript,processingError:'',transcriptionSeconds:elapsed});
+  }
+  async function beginAutomaticAi(item,payload){
+    if(!item?.assigned||item.aiDraft||item.aiStartedAt)return item;
+    const raw=[String(item.transcript||'').trim(),String(payload?.noteText||'').trim()].filter(Boolean).join('\n\n');if(raw.length<8)return item;
+    const x=await window.BDVault.post('/documentation-inbox/ai-start',{id:item.id,rawNotes:raw});
+    return {...item,status:'processing',aiStartedAt:x.startedAt,processingError:''};
+  }
+  async function refreshAutomaticAi(item){
+    if(!item?.aiStartedAt||item.aiDraft)return item;const items=(await window.BDVault.request('/documentation-inbox?status=all')).items||[];return items.find(x=>String(x.id)===String(item.id))||item;
+  }
+  async function advanceLocalAutomation(item,payload=null){
+    if(!item||item.status==='done'||localAutomationBusy.has(String(item.id))||!window.BDVault?.status?.().unlocked)return item;
+    localAutomationBusy.add(String(item.id));try{
+      payload=await automationPayload(item,payload);
+      if(item.hasAudio&&!item.transcript){item=await beginAutomaticTranscription(item,payload);item=await collectAutomaticTranscript(item);if(!item.transcript)return item}
+      if(item.aiStartedAt&&!item.aiDraft)item=await refreshAutomaticAi(item);
+      if(item.assigned&&!item.aiDraft&&!item.aiStartedAt)item=await beginAutomaticAi(item,payload);
+      return item;
+    }finally{localAutomationBusy.delete(String(item.id))}
+  }
+  async function runLocalAutomationCycle(items=null){
+    if(!window.BDVault?.status?.().unlocked)return;const rows=items||(await window.BDVault.request('/documentation-inbox?status=open')).items||[];let changed=false;
+    for(const item of rows.slice(0,8)){const next=await advanceLocalAutomation(item).catch(()=>item);if(next&&String(next.updatedAt)!==String(item.updatedAt))changed=true}
+    if(changed)setTimeout(()=>renderInbox(false).catch(()=>{}),80);
+  }
+  function ensureLocalAutomationLoop(){if(localAutomationTimer)return;localAutomationTimer=setInterval(()=>{if(!document.hidden)runLocalAutomationCycle().catch(()=>{})},4000)}
   function dashboard(){return window.BDAdminUX?.getData?.()||{}}
   function looksTechnicalName(value){
     const x=String(value||'').trim();
@@ -138,7 +190,7 @@
     return (dashboard().bookings||[]).filter(b=>String(b.customerIdentityEmail||b.email||'').trim().toLowerCase()===key&&String(b.status||'').toLowerCase()!=='cancelled'&&(includeFuture||new Date(b.start).getTime()<=now+5*60*1000)).sort((a,b)=>new Date(b.start)-new Date(a.start));
   }
   function bookingOptions(ref,selected='',includeFuture=false){
-    return '<option value="">Nur der Klientenakte zuordnen</option>'+bookingsFor(ref,includeFuture).map(b=>`<option value="${esc(b.eventId)}" data-date="${esc(String(b.start||'').slice(0,10))}" ${String(b.eventId)===String(selected)?'selected':''}>${esc(fmt(b.start))} · ${esc(b.typeLabel||'Sitzung')}</option>`).join('');
+    return '<option value="">Nur der Klientenakte zuordnen</option>'+bookingsFor(ref,includeFuture).map(b=>`<option value="${esc(b.eventId)}" data-date="${esc(String(b.start||'').slice(0,10))}" ${String(b.eventId)===String(selected)?'selected':''}>${esc(fmt(b.start))} · ${esc(b.typeLabel||'Sitzung')}</option>`).join('')+'<option value="__manual__">＋ Sitzung nachträglich erfassen …</option>';
   }
   function recommendedBooking(ref){
     const target=new Date(workflowPayload?.createdAt||workflowItem?.receivedAt||Date.now()).getTime();
@@ -147,21 +199,18 @@
 
   function ensureWorkflow(){
     if($('#documentationWorkflowDialog'))return;
-    document.body.insertAdjacentHTML('beforeend',`<dialog id="documentationWorkflowDialog" class="doc-workflow-dialog"><div class="doc-workflow-shell"><button class="dialog-x" id="docWorkflowClose" type="button" aria-label="Schließen">×</button><header class="doc-workflow-top"><div><p class="eyebrow">Dokumentation</p><h2 id="docWorkflowTitle">Dokumentation bearbeiten</h2><p class="muted" id="docWorkflowSub"></p></div><span class="doc-workflow-state" id="docWorkflowState"></span></header><nav class="doc-stepper" id="docStepper" aria-label="Dokumentationsfortschritt"><button data-doc-step="source"><b>1</b><span>Eingang</span></button><button data-doc-step="assign"><b>2</b><span>Zuordnung</span></button><button data-doc-step="process"><b>3</b><span>Quellen</span></button><button data-doc-step="draft"><b>4</b><span>Entwurf</span></button><button data-doc-step="review"><b>5</b><span>Abschluss</span></button></nav><div id="docWorkflowBody"></div></div></dialog>`);
+    document.body.insertAdjacentHTML('beforeend',`<dialog id="documentationWorkflowDialog" class="doc-workflow-dialog"><div class="doc-workflow-shell"><button class="dialog-x" id="docWorkflowClose" type="button" aria-label="Schließen">×</button><header class="doc-workflow-top"><div><p class="eyebrow">Dokumentation</p><h2 id="docWorkflowTitle">Dokumentation bearbeiten</h2><p class="muted" id="docWorkflowSub"></p></div><span class="doc-workflow-state" id="docWorkflowState"></span></header><nav class="doc-stepper doc-stepper-four" id="docStepper" aria-label="Dokumentationsfortschritt"><button data-doc-step="source" disabled><b>1</b><span>Eingang</span></button><button data-doc-step="assign" disabled><b>2</b><span>Zuordnung</span></button><button data-doc-step="process" disabled><b>3</b><span>Verarbeitung</span></button><button data-doc-step="review" disabled><b>4</b><span>Prüfung</span></button></nav><div id="docWorkflowBody"></div></div></dialog>`);
     $('#docWorkflowClose').onclick=()=>$('#documentationWorkflowDialog').close();
-    $('#documentationWorkflowDialog').addEventListener('close',()=>{clearWorkflowTimers();workflowItem=null;workflowPayload=null});
-    $('#docStepper').addEventListener('click',e=>{const b=e.target.closest('[data-doc-step]');if(b)showStep(b.dataset.docStep)});
+    $('#documentationWorkflowDialog').addEventListener('close',()=>{clearWorkflowTimers();workflowItem=null;workflowPayload=null;workflowActiveStep='assign'});
   }
   function clearWorkflowTimers(){if(workflowTimer)clearInterval(workflowTimer);if(workflowSecondsTimer)clearInterval(workflowSecondsTimer);workflowTimer=workflowSecondsTimer=null}
-  function stepState(item){if(!item?.assigned)return'assign';if(item.aiDraft)return'review';if(item.transcript||(!item.hasAudio&&(item.hasText||item.hasInk||item.hasPhotos)))return'draft';if(item.hasAudio)return'process';return'draft'}
-  function completedSteps(item){
-    return new Set(['source',...(item?.assigned?['assign']:[]),...((!item?.hasAudio||String(item?.transcript||'').trim())?['process']:[]),...(item?.aiDraft?['draft']:[]),...(item?.status==='done'?['review']:[])]);
-  }
+  function stepState(item){if(!item?.assigned)return'assign';if(item?.aiDraft||item?.status==='review')return'review';return'process'}
+  function completedSteps(item){return new Set(['source',...(item?.assigned?['assign']:[]),...(item?.aiDraft?['process']:[]),...(item?.status==='done'?['review']:[])])}
   function setStepper(active){
-    const done=completedSteps(workflowItem);
-    $('#docStepper')?.querySelectorAll('button').forEach(b=>{const step=b.dataset.docStep;b.classList.toggle('active',step===active);b.classList.toggle('done',done.has(step)&&step!==active);b.setAttribute('aria-current',step===active?'step':'false')});
+    workflowActiveStep=active;const done=completedSteps(workflowItem);
+    $('#docStepper')?.querySelectorAll('button').forEach(b=>{const step=b.dataset.docStep;b.disabled=true;b.classList.toggle('active',step===active);b.classList.toggle('done',done.has(step)&&step!==active);b.setAttribute('aria-current',step===active?'step':'false')});
   }
-  function workflowStatus(item){if(item?.status==='done')return'Abgeschlossen';if(!item?.assigned)return'Zuordnung fehlt';if(item?.aiDraft)return'Bereit zur Prüfung';if(item?.transcript)return'Entwurf offen';return'In Bearbeitung'}
+  function workflowStatus(item){return statusCopy(item)}
 
   async function openWorkflow(item){
     if(!item)return;if(!await window.BDVault.ensureUnlocked())return;
@@ -173,74 +222,54 @@
     $('#docWorkflowTitle').textContent=latest.assigned?(latest.clientName||'Klient:in')+' · Dokumentation':'Dokumentation bearbeiten';
     $('#docWorkflowSub').textContent=`${sourceLabel}${latest.sessionDate?' · Sitzung '+fmtDate(latest.sessionDate):''}${latest.receivedAt?' · '+fmt(latest.receivedAt):''}`;
     $('#docWorkflowState').textContent=workflowStatus(latest);
-    $('#documentationWorkflowDialog').showModal();showStep(stepState(latest));
+    $('#documentationWorkflowDialog').showModal();workflowItem=await advanceLocalAutomation(workflowItem,workflowPayload).catch(()=>workflowItem);showStep(stepState(workflowItem));ensureLocalAutomationLoop();
   }
 
-  function sourcePreview(){
-    const p=workflowPayload||{},audio=(p.audio||[]).length,pages=Array.isArray(p.inkPages)?p.inkPages.filter(x=>(x.strokes||[]).length).length:((p.strokes||[]).length?1:0),photos=(p.photos||[]).length,text=String(p.noteText||'').trim();
-    const captureLabel=workflowItem.captureType==='session'?'Sitzungsaufnahme':workflowItem.captureType==='dictation'?'Diktat':workflowItem.captureId?.startsWith('manual-session:')?'Termin / Nachbereitung':'Notiz / Anlage';
-    const contents=[audio?`${audio} Audio`:null,pages?`${pages} Handschriftseite${pages===1?'':'n'}`:null,text?'Textnotiz':null,photos?`${photos} Foto${photos===1?'':'s'}`:null].filter(Boolean).join(' · ')||'Manuelle Nachbereitung';
-    return `<section class="doc-work-card doc-source-entry"><div class="doc-screen-head"><div><h3>Eingang prüfen</h3><p>Bevor du weiterarbeitest: Das ist die Quelle, die verarbeitet wird.</p></div><span class="doc-soft-status">✓ lokal gesichert</span></div><div class="doc-entry-summary"><div><span>Quelle</span><strong>${esc(captureLabel)}</strong></div><div><span>Inhalt</span><strong>${esc(contents)}</strong></div><div><span>Eingang</span><strong>${esc(fmt(workflowItem.receivedAt))}</strong></div></div>${text?`<div class="doc-note-preview"><span>Textnotiz</span><p>${esc(text)}</p></div>`:''}<p class="doc-vault-footnote">${workflowItem.artifactId?'✓ Originalquelle bleibt unverändert im lokalen Vault.':'Keine Capture-Datei vorhanden · manuelle Nachbereitung.'}</p><div class="dialog-actions doc-action-bar"><button class="btn primary" data-doc-next="assign">Weiter zur Zuordnung</button></div></section>`;
-  }
-
+  function captureContents(){const p=workflowPayload||{},audio=(p.audio||[]).length,pages=Array.isArray(p.inkPages)?p.inkPages.filter(x=>(x.strokes||[]).length).length:((p.strokes||[]).length?1:0),photos=(p.photos||[]).length,text=String(p.noteText||'').trim();return[audio?`${audio} Audio`:null,pages?`${pages} Handschriftseite${pages===1?'':'n'}`:null,text?'Textnotiz':null,photos?`${photos} Foto${photos===1?'':'s'}`:null].filter(Boolean).join(' · ')||'Quelle'}
+  function sourcePreview(){return `<section class="doc-work-card doc-source-minimal"><div class="doc-mini-source"><span>${typeIcon(workflowItem)}</span><div><strong>${esc(workflowItem.captureType==='session'?'Sitzungsaufnahme':workflowItem.captureType==='dictation'?'Diktat':'Notiz')}</strong><small>${esc(captureContents())} · ${esc(fmt(workflowItem.receivedAt))}</small></div><b>✓ lokal</b></div></section>`}
   function assignView(){
-    return `<section class="doc-work-card"><div class="doc-screen-head"><div><h3>Wem gehört diese Dokumentation?</h3><p>Ordne zuerst die Person zu. Für ein finales Sitzungsprotokoll wählst du zusätzlich einen bereits stattgefundenen Termin.</p></div>${workflowItem.assigned?'<span class="doc-soft-status">✓ zugeordnet</span>':''}</div><div class="doc-form-stack"><label><span>Klient:in</span><select id="docAssignClient"><option value="">Bitte auswählen …</option>${customerOptions(workflowItem.clientRef||'')}</select></label><label><span>Sitzung</span><small>Nur erforderlich, wenn daraus ein Sitzungsprotokoll wird.</small><select id="docAssignSession"></select></label></div><label class="doc-future-toggle"><input type="checkbox" id="docShowFuture"> Zukünftige Termine ausnahmsweise anzeigen</label><div class="doc-assignment-current" id="docAssignmentCurrent"></div><div class="dialog-actions doc-action-bar"><button class="btn primary" id="docAssignSave" type="button">Zuordnung speichern & weiter</button></div></section>`;
+    return `<section class="doc-work-card"><div class="doc-screen-head compact"><div><h3>Zuordnen</h3></div><span class="doc-soft-status">${esc(captureContents())}</span></div><div class="doc-form-stack compact"><label><span>Klient:in</span><select id="docAssignClient"><option value="">Bitte auswählen …</option>${customerOptions(workflowItem.clientRef||'')}</select></label><label><span>Sitzung</span><select id="docAssignSession"></select></label><div id="docManualSession" class="doc-manual-session" hidden><label><span>Datum der stattgefundenen Sitzung</span><input id="docManualSessionDate" type="date" max="${new Date().toISOString().slice(0,10)}"></label></div></div><details class="doc-assignment-options"><summary>Weitere Optionen</summary><label><input type="checkbox" id="docShowFuture"> Zukünftige Termine anzeigen</label><small>Zukünftige Termine können für Vorbereitung gewählt werden, aber nicht als bereits stattgefundenes Sitzungsprotokoll abgeschlossen werden.</small></details><div class="doc-assignment-current" id="docAssignmentCurrent"></div><div class="dialog-actions doc-action-bar"><button class="btn primary" id="docAssignSave" type="button">Weiter →</button></div></section>`;
   }
-
-  function processView(){
-    const ids=workflowItem.dictationIds||[],hasTranscript=!!String(workflowItem.transcript||'').trim(),seconds=Number(workflowItem.transcriptionSeconds||0);
-    const timing=seconds?(seconds<60?Math.round(seconds)+' Sek.':Math.floor(seconds/60)+' Min. '+Math.round(seconds%60)+' Sek.'):'—';
-    return `<section class="doc-work-card"><div class="doc-screen-head"><div><h3>${workflowItem.hasAudio?'Audio in Text umwandeln':'Quellen prüfen'}</h3><p>${workflowItem.hasAudio?'Whisper arbeitet ausschließlich im lokalen Vault.':'Die vorhandenen Quellen bleiben unverändert erhalten.'}</p></div>${hasTranscript?`<span class="doc-soft-status">✓ ${esc(timing)}</span>`:''}</div>${workflowItem.hasAudio?`<div class="doc-processing-box ${hasTranscript?'complete':''}"><div class="doc-processing-title"><span>🎙</span><div><strong>${hasTranscript?'Transkript fertig':'Lokale Transkription'}</strong>${hasTranscript?'<span class="visually-hidden">Transkript erstellt und automatisch gespeichert</span>':''}<small id="docTranscribeState">${hasTranscript?'Automatisch gespeichert':ids.length?'Whisper arbeitet …':'Bereit'}</small></div></div><div class="doc-close-safe" id="docCloseSafe" ${ids.length&&!hasTranscript?'':'hidden'}><strong>Du kannst dieses Fenster schließen.</strong><span>Die Verarbeitung läuft im Vault weiter. Das Audio bleibt auch bei einem Neustart erhalten.</span><span class="doc-elapsed" id="docElapsed"></span></div><button class="btn primary" id="docTranscribeAll" type="button" ${hasTranscript?'hidden':''}>${ids.length?'Transkription fortsetzen':'Audio lokal transkribieren'}</button></div>`:'<div class="doc-safe-note"><strong>Keine Audioquelle.</strong><span>Du kannst direkt mit dem Entwurf fortfahren.</span></div>'}<label class="doc-transcript-label" ${hasTranscript?'':'hidden'} id="docTranscriptWrap"><span>Transkript</span><textarea id="docTranscript" rows="12"></textarea><small id="docTranscriptSaveState">✓ automatisch gespeichert</small></label><div class="dialog-actions doc-action-bar"><button class="btn primary" id="docProcessNext" type="button" ${workflowItem.hasAudio&&!hasTranscript?'disabled':''}>Weiter zum Entwurf</button></div></section>`;
-  }
-
   function cleanDraftValue(value){const x=String(value??'').trim();return /^(leer|nicht dokumentiert|keine angabe|n\/a|—)$/i.test(x)?'':x}
   function draftFields(draft,review=false){
     draft=draft||{};const interventions=Array.isArray(draft.interventions)?draft.interventions.join(', '):draft.interventions||'';const uncertainties=Array.isArray(draft.uncertainties)?draft.uncertainties.join('\n'):draft.uncertainties||'';
     const field=(label,key,value,rows=3)=>`<label><span>${label}</span><textarea data-draft="${key}" rows="${rows}" placeholder="Nicht dokumentiert">${esc(cleanDraftValue(value))}</textarea></label>`;
     return `<div class="doc-editor ${review?'review':''}"><section><h4>Kern der Sitzung</h4>${field('Fokus','focus',draft.focus,3)}${field('Dynamik / relevante Beobachtungen','dynamics',draft.dynamics,4)}</section><section><h4>Arbeit in der Sitzung</h4>${field('Interventionen','interventions',interventions,3)}${field('Reaktion / Verlauf','response',draft.response,4)}</section><section><h4>Vereinbarungen & Ausblick</h4>${field('Vereinbarungen','agreements',draft.agreements,3)}${field('Nächster Fokus','nextFocus',draft.nextFocus,3)}</section><details class="doc-internal-notes" ${cleanDraftValue(draft.privatePrep)||cleanDraftValue(uncertainties)?'open':''}><summary>Interne Notizen</summary><div>${field('Interne Vorbereitung','privatePrep',draft.privatePrep,3)}${field('Unsicherheiten / prüfen','uncertainties',uncertainties,3)}</div></details></div>`;
   }
-
+  function inkSvg(page,index){const strokes=Array.isArray(page?.strokes)?page.strokes:[];const lines=strokes.map(stroke=>{const pts=(stroke||[]).map(pt=>`${Math.max(0,Math.min(1,Number(pt.x)||0))*1000},${Math.max(0,Math.min(1,Number(pt.y)||0))*700}`).join(' ');return pts?`<polyline points="${pts}" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`:''}).join('');return `<figure class="doc-ink-page"><figcaption>Seite ${index+1}</figcaption><svg viewBox="0 0 1000 700" role="img" aria-label="Handschriftseite ${index+1}">${lines}</svg></figure>`}
   function sourceList(){
     const p=workflowPayload||{},parts=[];
-    if(workflowItem.transcript)parts.push(`<details class="doc-source-text"><summary><span>🎙 Transkript</span><small>Aufnahme anzeigen</small></summary><pre>${esc(workflowItem.transcript)}</pre></details>`);
+    if(workflowItem.transcript)parts.push(`<details class="doc-source-text"><summary><span>🎙 Transkript</span><small>Anzeigen</small></summary><pre>${esc(workflowItem.transcript)}</pre></details>`);
     if(String(p.noteText||'').trim())parts.push(`<details class="doc-source-text"><summary><span>📝 Textnotiz</span><small>Anzeigen</small></summary><pre>${esc(String(p.noteText||'').trim())}</pre></details>`);
-    const pages=Array.isArray(p.inkPages)?p.inkPages.filter(x=>(x.strokes||[]).length).length:((p.strokes||[]).length?1:0);
-    if(pages)parts.push(`<div class="doc-source-chip"><span>✍️ Handschrift</span><small>${pages} Seite${pages===1?'':'n'} · im Vault</small></div>`);
-    if((p.photos||[]).length)parts.push(`<div class="doc-source-chip"><span>📎 Fotos</span><small>${(p.photos||[]).length} · im Vault</small></div>`);
-    if(!parts.length&&workflowItem.captureId?.startsWith('manual-session:'))parts.push('<div class="doc-source-chip"><span>📝 Manuelle Nachbereitung</span><small>Keine Capture-Quelle</small></div>');
-    return parts.join('');
+    const inkPages=Array.isArray(p.inkPages)?p.inkPages.filter(x=>(x.strokes||[]).length):((p.strokes||[]).length?[{strokes:p.strokes}]:[]);
+    if(inkPages.length)parts.push(`<details class="doc-source-text"><summary><span>✍️ Handschrift</span><small>${inkPages.length} Seite${inkPages.length===1?'':'n'}</small></summary><div class="doc-ink-grid">${inkPages.map(inkSvg).join('')}</div></details>`);
+    if((p.photos||[]).length)parts.push(`<details class="doc-source-text"><summary><span>📎 Fotos</span><small>${(p.photos||[]).length}</small></summary><div class="doc-photo-grid">${(p.photos||[]).map((photo,i)=>`<figure><img src="data:${esc(photo.mime||'image/jpeg')};base64,${String(photo.dataBase64||'')}" alt="Anlage ${i+1}"><figcaption>${esc(photo.name||'Anlage '+(i+1))}</figcaption></figure>`).join('')}</div></details>`);
+    return parts.join('')
   }
-
-  function hasDraftContent(d){if(!d)return false;return ['focus','dynamics','response','agreements','nextFocus','privatePrep'].some(k=>String(d[k]||'').trim())||(d.interventions||[]).length||(d.uncertainties||[]).length}
-  function draftView(){
-    const raw=[workflowItem.transcript,String(workflowPayload?.noteText||'').trim()].filter(Boolean).join('\n\n'),draft=workflowItem.aiDraft||{};
-    return `<section class="doc-work-card"><div class="doc-screen-head"><div><h3>Entwurf bearbeiten</h3><p>Die KI schlägt vor – du entscheidest. Leere Felder sind besser als Annahmen, die nicht aus den Quellen hervorgehen.</p></div>${workflowItem.aiDraft?`<span class="doc-soft-status">✓ KI-Entwurf${Number(workflowItem.aiSeconds||0)?' · '+Math.round(Number(workflowItem.aiSeconds))+' Sek.':''}</span>`:'<span class="doc-soft-status neutral">noch kein Entwurf</span>'}</div>${!workflowItem.assigned?'<div class="doc-warning">Bitte zuerst einer Klientenakte zuordnen.</div>':''}<details class="doc-sources-disclosure"><summary>Quellen vergleichen</summary><div class="doc-source-stack">${sourceList()||'<div class="doc-source-chip"><span>Keine maschinenlesbare Quelle</span><small>Manuell dokumentieren</small></div>'}</div></details><div id="docAiState"></div>${draftFields(draft)}<div class="doc-autosave" id="docDraftAutoSave">✓ Änderungen werden automatisch lokal gespeichert.</div><div class="dialog-actions doc-action-bar">${raw&&!workflowItem.aiDraft?`<button class="btn secondary" id="docAiStart" type="button" ${!workflowItem.assigned?'disabled':''}>✨ Entwurf lokal erstellen</button>`:''}<button class="btn primary" id="docDraftNext" type="button" ${!workflowItem.assigned?'disabled':''}>Weiter zur Prüfung</button></div></section>`;
+  function processingPhase(){if(workflowItem.processingError)return'error';if(workflowItem.aiDraft)return'ready';if(!workflowItem.hasAudio&&!workflowItem.hasText&&(workflowItem.hasInk||workflowItem.hasPhotos))return'attachment';if(workflowItem.aiStartedAt)return'ai';if(workflowItem.transcript&&workflowItem.assigned)return'ai';if(workflowItem.hasAudio)return'whisper';if(workflowItem.assigned)return'ai';return'waiting'}
+  function processView(){
+    const phase=processingPhase(),seconds=Number(workflowItem.transcriptionSeconds||0),transcript=String(workflowItem.transcript||'').trim();
+    const timing=seconds?(seconds<60?Math.round(seconds)+' Sek.':Math.floor(seconds/60)+' Min. '+Math.round(seconds%60)+' Sek.'):'';
+    const states=phase==='whisper'?['🎙','Transkription läuft','Whisper verarbeitet die Audioquelle lokal.']:phase==='ai'?['✨','Entwurf wird vorbereitet','Die lokale KI strukturiert die vorhandenen Quellen.']:phase==='ready'?['✓','Bereit zur Prüfung','Transkript und Entwurf sind vorbereitet.']:phase==='attachment'?['✓','Anlage bereit','Für diese Quelle ist keine Transkription erforderlich.']:phase==='error'?['!','Verarbeitung pausiert',workflowItem.processingError||'Lokale Verarbeitung konnte nicht fortgesetzt werden.']:['…','Wartet auf Zuordnung','Nach der Zuordnung wird die lokale Verarbeitung automatisch fortgesetzt.'];
+    return `<section class="doc-work-card"><div class="doc-screen-head compact"><div><h3>Verarbeitung</h3></div></div><div class="doc-auto-pipeline"><div class="doc-pipeline-icon">${states[0]}</div><div><strong>${states[1]}</strong><span>${states[2]}</span>${phase==='whisper'?`<small id="docElapsed">${timing?'Bisher '+esc(timing):'läuft lokal …'}</small>`:''}</div></div>${transcript?`<details class="doc-transcript-disclosure"><summary>Transkript ansehen / korrigieren ${timing?'· '+esc(timing):''}</summary><label class="doc-transcript-label"><textarea id="docTranscript" rows="12">${esc(transcript)}</textarea><small id="docTranscriptSaveState">✓ automatisch gespeichert</small></label></details>`:''}<div class="doc-source-stack compact">${sourceList()}</div>${phase==='error'?'<button class="btn secondary" id="docRetryAutomation" type="button">Erneut versuchen</button>':''}<div class="dialog-actions doc-action-bar"><button class="btn ghost" id="docProcessBack" type="button">← Zuordnung</button><button class="btn primary" id="docProcessNext" type="button" ${['ready','attachment'].includes(phase)?'':'disabled'}>Zur Prüfung →</button></div></section>`;
   }
-
   function reviewView(){
-    const draft=workflowItem.aiDraft||{},canFinalize=!!(workflowItem.assigned&&workflowItem.sessionId&&workflowItem.sessionDate),attachmentOnly=!hasDraftContent(draft)&&!workflowItem.hasAudio&&!workflowItem.hasText&&!!(workflowItem.hasInk||workflowItem.hasPhotos);
-    return `<section class="doc-work-card"><div class="doc-screen-head"><div><h3>Final prüfen & abschließen</h3><p>Jetzt wird aus dem Entwurf eine finale Sitzungsdokumentation. Lies sie ein letztes Mal als Ganzes.</p></div><span class="doc-human-badge">Menschliche Freigabe</span></div><div class="doc-final-context"><div><span>Klient:in</span><strong>${esc(workflowItem.clientName||'—')}</strong></div><div><span>Sitzung</span><strong>${esc(workflowItem.sessionDate?fmtDate(workflowItem.sessionDate):'nicht gewählt')}</strong></div></div>${!workflowItem.sessionId&&!attachmentOnly?'<div class="doc-warning"><strong>Eine Sitzung fehlt noch.</strong><span>Für ein finales Sitzungsprotokoll wähle bitte den tatsächlich stattgefundenen Termin.</span><button class="btn secondary" type="button" data-doc-next="assign">Sitzung zuordnen</button></div>':''}${attachmentOnly?'<div class="doc-review-summary"><strong>Nur als Anlage ablegen?</strong><span>Es gibt keinen Protokollentwurf. Die Originalquelle wird der Klientenakte zugeordnet.</span></div>':`<div class="doc-review-summary"><strong>Ist das die Dokumentation, die du ablegen möchtest?</strong><span>Du kannst jedes Feld noch ändern. Mit „Geprüft & abschließen“ wird diese Version final im lokalen Vault gespeichert.</span></div>${draftFields(draft,true)}<details class="doc-sources-disclosure final"><summary>Mit Quellen vergleichen</summary><div class="doc-source-stack">${sourceList()}</div></details><div class="doc-autosave" id="docReviewAutoSave">Änderungen werden beim Abschluss gespeichert.</div>`}<div class="dialog-actions doc-action-bar final">${attachmentOnly?'<button class="btn primary" id="docCompleteAttachment" type="button">Als Fallanlage abschließen</button>':`<button class="btn primary" id="docFinalizeProtocol" type="button" ${canFinalize?'':'disabled'} title="Geprüft & als Sitzungsprotokoll abschließen">✓ Geprüft & abschließen</button>`}</div></section>`;
+    const draft=workflowItem.aiDraft||{},attachmentOnly=!workflowItem.hasAudio&&!workflowItem.hasText&&!workflowItem.aiDraft&&!!(workflowItem.hasInk||workflowItem.hasPhotos),canFinalize=!!(workflowItem.assigned&&workflowItem.sessionId&&workflowItem.sessionDate),future=workflowItem.sessionDate&&new Date(workflowItem.sessionDate+'T23:59:59').getTime()>Date.now();
+    if(attachmentOnly)return `<section class="doc-work-card"><div class="doc-screen-head compact"><div><h3>Anlage prüfen</h3><p>${esc(workflowItem.clientName||'Klient:in')}</p></div><span class="doc-human-badge">Menschliche Freigabe</span></div><div class="doc-source-stack">${sourceList()}</div><div class="doc-review-summary"><strong>Als Fallanlage ablegen?</strong><span>Die Originalquelle bleibt unverändert im lokalen Vault und wird der Klientenakte zugeordnet.</span></div><div class="dialog-actions doc-action-bar final"><button class="btn ghost" id="docReviewBack" type="button">← Verarbeitung</button><button class="btn primary" id="docCompleteAttachment" type="button" ${workflowItem.assigned?'':'disabled'}>✓ Als Fallanlage ablegen</button></div></section>`;
+    return `<section class="doc-work-card"><div class="doc-screen-head compact"><div><h3>Prüfen & abschließen</h3><p>${esc(workflowItem.clientName||'Klient:in')}${workflowItem.sessionDate?' · '+esc(fmtDate(workflowItem.sessionDate)):''}</p></div><span class="doc-human-badge">Menschliche Freigabe</span></div>${!workflowItem.sessionId?'<div class="doc-warning"><strong>Sitzung noch nicht gewählt.</strong><span>Ordne den tatsächlich stattgefundenen Termin zu oder erfasse ihn nachträglich.</span><button class="btn secondary" id="docReviewAssign" type="button">Zuordnung ändern</button></div>':''}${future?'<div class="doc-warning"><strong>Dieser Termin liegt in der Zukunft.</strong><span>Ein finales Sitzungsprotokoll kann erst für eine stattgefundene Sitzung abgeschlossen werden.</span><button class="btn secondary" id="docReviewAssignFuture" type="button">Zuordnung ändern</button></div>':''}<details class="doc-sources-disclosure final" open><summary>Quellen vergleichen</summary><div class="doc-source-stack">${sourceList()}</div></details>${draftFields(draft,true)}<div class="doc-autosave">Änderungen werden beim Abschluss gespeichert.</div><div class="dialog-actions doc-action-bar final"><button class="btn ghost" id="docReviewBack" type="button">← Verarbeitung</button><button class="btn primary" id="docFinalizeProtocol" type="button" ${canFinalize&&!future?'':'disabled'}>✓ Final ablegen</button></div></section>`;
   }
-
-
   function showStep(step){
-    if(!workflowItem)return;setStepper(step);const body=$('#docWorkflowBody');
-    body.innerHTML=step==='source'?sourcePreview():step==='assign'?assignView():step==='process'?processView():step==='draft'?draftView():reviewView();
-    body.querySelectorAll('[data-doc-next]').forEach(b=>b.onclick=()=>showStep(b.dataset.docNext));
-    if(step==='assign')bindAssign();if(step==='process')bindProcess();if(step==='draft')bindDraft();if(step==='review')bindReview();
+    if(!workflowItem)return;workflowActiveStep=step;setStepper(step);const body=$('#docWorkflowBody');body.innerHTML=step==='source'?sourcePreview():step==='assign'?assignView():step==='process'?processView():reviewView();
+    if(step==='assign')bindAssign();if(step==='process')bindProcess();if(step==='review')bindReview();
   }
 
   function bindAssign(){
-    const client=$('#docAssignClient'),session=$('#docAssignSession'),future=$('#docShowFuture');
-    const selectedWasFuture=!!workflowItem.sessionId&&(dashboard().bookings||[]).some(b=>String(b.eventId)===String(workflowItem.sessionId)&&new Date(b.start).getTime()>Date.now()+5*60*1000);
-    future.checked=selectedWasFuture;
-    const updateSummary=()=>{const c=[...client.options].find(o=>o.value===client.value),opt=session.selectedOptions[0];$('#docAssignmentCurrent').innerHTML=client.value?`<strong>${esc(c?.textContent||client.value)}</strong><span>${session.value?`Sitzung: ${esc(opt?.textContent||'gewählt')}`:'Nur Fallzuordnung · vor dem finalen Sitzungsprotokoll bitte eine Sitzung wählen.'}</span>`:'<span>Noch keine Zuordnung.</span>'};
-    const hydrate=(keep='')=>{const previous=keep||session.value||((client.value===workflowItem.clientRef)?workflowItem.sessionId:'');session.innerHTML=bookingOptions(client.value,previous,future.checked);if(previous&&[...session.options].some(o=>o.value===String(previous)))session.value=String(previous);if(!session.value&&!workflowItem.sessionId&&client.value){const rec=recommendedBooking(client.value),captureAt=new Date(workflowPayload?.createdAt||workflowItem.receivedAt||Date.now()).getTime();if(rec&&Math.abs(new Date(rec.start).getTime()-captureAt)<72*3600*1000)session.value=String(rec.eventId)}updateSummary()};
-    client.onchange=()=>hydrate('');
-    session.onchange=updateSummary;
-    future.onchange=()=>hydrate(session.value);
-    hydrate(workflowItem.sessionId||'');
-    $('#docAssignSave').onclick=async()=>{const ref=client.value;if(!ref){alert('Bitte zuerst eine Klientin oder einen Klienten auswählen.');return}const c=[...client.options].find(o=>o.value===ref),name=String(c?.textContent||displayClientName(ref)).split(' · ')[0],opt=session.selectedOptions[0],sessionId=session.value,sessionDate=sessionId?String(opt?.dataset.date||''):'';const b=$('#docAssignSave');b.disabled=true;try{workflowItem=await mark(workflowItem,workflowItem.status==='new'?'processing':workflowItem.status,{ref,displayName:name,sessionId,sessionDate,clearSession:!sessionId});$('#docWorkflowState').textContent=workflowStatus(workflowItem);showStep(workflowItem.hasAudio&&!workflowItem.transcript?'process':workflowItem.aiDraft?'review':'draft')}catch(e){alert(e.message)}finally{b.disabled=false}};
+    const client=$('#docAssignClient'),session=$('#docAssignSession'),future=$('#docShowFuture'),manual=$('#docManualSession'),manualDate=$('#docManualSessionDate');
+    const selectedWasFuture=!!workflowItem.sessionId&&(dashboard().bookings||[]).some(b=>String(b.eventId)===String(workflowItem.sessionId)&&new Date(b.start).getTime()>Date.now()+5*60*1000);future.checked=selectedWasFuture;
+    const updateSummary=()=>{const c=[...client.options].find(o=>o.value===client.value),opt=session.selectedOptions[0],isManual=session.value==='__manual__';manual.hidden=!isManual;if(isManual&&!manualDate.value)manualDate.value=String(workflowPayload?.createdAt||workflowItem.receivedAt||new Date().toISOString()).slice(0,10);$('#docAssignmentCurrent').innerHTML=client.value?`<strong>${esc(c?.textContent||client.value)}</strong><span>${isManual?'Sitzung wird nachträglich erfasst':session.value?esc(opt?.textContent||'Sitzung gewählt'):'Nur Klientenakte'}</span>`:''};
+    const hydrate=(keep='')=>{const previous=keep||session.value||((client.value===workflowItem.clientRef)?workflowItem.sessionId:'');session.innerHTML=bookingOptions(client.value,previous,future.checked);if(String(previous||'').startsWith('manual-session:')){session.value='__manual__';manualDate.value=workflowItem.sessionDate||String(workflowPayload?.createdAt||workflowItem.receivedAt||new Date().toISOString()).slice(0,10)}else if(previous&&[...session.options].some(o=>o.value===String(previous)))session.value=String(previous);if(!session.value&&!workflowItem.sessionId&&client.value){const rec=recommendedBooking(client.value),captureAt=new Date(workflowPayload?.createdAt||workflowItem.receivedAt||Date.now()).getTime();if(rec&&Math.abs(new Date(rec.start).getTime()-captureAt)<72*3600*1000)session.value=String(rec.eventId)}updateSummary()};
+    client.onchange=()=>hydrate('');session.onchange=updateSummary;future.onchange=()=>hydrate(session.value);hydrate(workflowItem.sessionId||'');
+    $('#docAssignSave').onclick=async()=>{const ref=client.value;if(!ref){alert('Bitte Klient:in auswählen.');return}const c=[...client.options].find(o=>o.value===ref),name=String(c?.textContent||displayClientName(ref)).split(' · ')[0],opt=session.selectedOptions[0];let sessionId=session.value,sessionDate='';if(sessionId==='__manual__'){sessionDate=manualDate.value;if(!sessionDate){alert('Bitte das Datum der stattgefundenen Sitzung wählen.');return}if(new Date(sessionDate+'T23:59:59').getTime()>Date.now()){alert('Die nachträglich erfasste Sitzung darf nicht in der Zukunft liegen.');return}sessionId=String(workflowItem.sessionId||'').startsWith('manual-session:')?workflowItem.sessionId:'manual-session:'+workflowItem.captureId}else sessionDate=sessionId?String(opt?.dataset.date||''):'';const b=$('#docAssignSave');b.disabled=true;try{workflowItem=await mark(workflowItem,workflowItem.status==='new'?'processing':workflowItem.status,{ref,displayName:name,sessionId,sessionDate,clearSession:!sessionId});$('#docWorkflowState').textContent=workflowStatus(workflowItem);workflowItem=await advanceLocalAutomation(workflowItem,workflowPayload).catch(()=>workflowItem);showStep(workflowItem.aiDraft?'review':'process')}catch(e){alert(e.message)}finally{b.disabled=false}};
   }
 
   async function startAllTranscriptions(){
@@ -269,44 +298,33 @@
   }
   function startTranscriptionWatcher(){showCloseSafe();if(workflowTimer)clearInterval(workflowTimer);refreshTranscriptions();workflowTimer=setInterval(()=>{if($('#documentationWorkflowDialog')?.open)refreshTranscriptions().catch(()=>{})},2500)}
   function bindProcess(){
-    const ta=$('#docTranscript');if(ta)ta.value=workflowItem.transcript||'';
-    $('#docTranscribeAll')?.addEventListener('click',()=>workflowItem.dictationIds?.length?startTranscriptionWatcher():startAllTranscriptions());
-    let saveTimer=null;
-    const saveTranscript=async()=>{if(!ta)return;workflowItem=await mark(workflowItem,workflowItem.status==='new'?'processing':workflowItem.status,{transcript:ta.value});const state=$('#docTranscriptSaveState');if(state)state.textContent='💾 gespeichert'};
-    ta?.addEventListener('input',()=>{const state=$('#docTranscriptSaveState');if(state)state.textContent='💾 wird gespeichert …';clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveTranscript().catch(()=>{if(state)state.textContent='⚠ Speichern fehlgeschlagen'}),600)});
-    $('#docProcessNext')?.addEventListener('click',async()=>{try{clearTimeout(saveTimer);if(ta)await saveTranscript();showStep('draft')}catch(e){alert(e.message)}});
-    if(workflowItem.dictationIds?.length&&!workflowItem.transcript)startTranscriptionWatcher();
+    const ta=$('#docTranscript');let saveTimer=null;
+    const saveTranscript=async()=>{if(!ta)return;workflowItem=await mark(workflowItem,workflowItem.status==='new'?'processing':workflowItem.status,{transcript:ta.value,aiDraft:null,clearAiDraft:true,clearAiStarted:true});const state=$('#docTranscriptSaveState');if(state)state.textContent='✓ gespeichert · Entwurf wird neu vorbereitet';workflowItem=await advanceLocalAutomation(workflowItem,workflowPayload).catch(()=>workflowItem)};
+    ta?.addEventListener('input',()=>{const state=$('#docTranscriptSaveState');if(state)state.textContent='wird gespeichert …';clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveTranscript().catch(()=>{if(state)state.textContent='⚠ Speichern fehlgeschlagen'}),650)});
+    $('#docProcessBack')?.addEventListener('click',()=>showStep('assign'));
+    $('#docProcessNext')?.addEventListener('click',()=>showStep('review'));
+    $('#docRetryAutomation')?.addEventListener('click',async()=>{workflowItem=await mark(workflowItem,'processing',{processingError:'',clearAiStarted:true});workflowItem=await advanceLocalAutomation(workflowItem,workflowPayload).catch(()=>workflowItem);showStep('process')});
+    clearWorkflowTimers();workflowStartedAt=workflowItem.transcriptionStartedAt?new Date(workflowItem.transcriptionStartedAt).getTime():Date.now();workflowSecondsTimer=setInterval(()=>{const el=$('#docElapsed');if(el)el.textContent=`läuft seit ${Math.max(0,Math.floor((Date.now()-workflowStartedAt)/1000))} Sek.`},1000);workflowTimer=setInterval(async()=>{if(!$('#documentationWorkflowDialog')?.open)return;const latest=await advanceLocalAutomation(workflowItem,workflowPayload).catch(()=>workflowItem);if(latest&&String(latest.updatedAt)!==String(workflowItem.updatedAt)){workflowItem=latest;$('#docWorkflowState').textContent=workflowStatus(workflowItem);if(workflowItem.aiDraft){clearWorkflowTimers();showStep('review')}else showStep('process')}},3000);
   }
 
   function readDraftFromForm(){const get=k=>String(document.querySelector(`[data-draft="${k}"]`)?.value||'').trim();return{focus:get('focus'),dynamics:get('dynamics'),interventions:get('interventions').split(',').map(x=>x.trim()).filter(Boolean),response:get('response'),agreements:get('agreements'),nextFocus:get('nextFocus'),privatePrep:get('privatePrep'),uncertainties:get('uncertainties').split(/\n+/).map(x=>x.trim()).filter(Boolean)}}
-  async function refreshAi(){const items=(await window.BDVault.request('/documentation-inbox?status=all')).items||[],latest=items.find(x=>String(x.id)===String(workflowItem.id));if(!latest)return;if(latest.aiDraft){workflowItem=latest;clearWorkflowTimers();showStep('draft')}else{workflowItem=latest;const host=$('#docAiState');if(host)host.innerHTML=latest.processingError?`<div class="doc-warning">${esc(latest.processingError)}</div>`:`<div class="doc-close-safe"><strong>Lokale KI arbeitet …</strong><span>Du darfst dieses Fenster schließen. Der Auftrag läuft im lokalen Vault weiter, solange Computer und Vault-Dienst laufen.</span><span class="doc-elapsed" id="docElapsed"></span></div>`}}
-  function startAiWatcher(){if(workflowTimer)clearInterval(workflowTimer);workflowStartedAt=workflowItem.aiStartedAt?new Date(workflowItem.aiStartedAt).getTime():Date.now();if(workflowSecondsTimer)clearInterval(workflowSecondsTimer);workflowSecondsTimer=setInterval(()=>{const el=$('#docElapsed');if(el)el.textContent=`Läuft seit ${Math.floor((Date.now()-workflowStartedAt)/1000)} Sekunden.`},1000);workflowTimer=setInterval(()=>{if($('#documentationWorkflowDialog')?.open)refreshAi().catch(()=>{})},3000)}
-  function bindDraft(){
-    let saveTimer=null;
-    const saveDraft=async()=>{workflowItem=await mark(workflowItem,'review',{aiDraft:readDraftFromForm()});const x=$('#docDraftAutoSave');if(x)x.textContent='💾 gespeichert'};
-    document.querySelectorAll('[data-draft]').forEach(el=>el.addEventListener('input',()=>{const x=$('#docDraftAutoSave');if(x)x.textContent='💾 wird gespeichert …';clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveDraft().catch(()=>{if(x)x.textContent='⚠ Speichern fehlgeschlagen'}),650)}));
-    $('#docAiStart')?.addEventListener('click',async()=>{const raw=[workflowItem.transcript,String(workflowPayload?.noteText||'').trim()].filter(Boolean).join('\n\n');const btn=$('#docAiStart');btn.disabled=true;try{const x=await window.BDVault.post('/documentation-inbox/ai-start',{id:workflowItem.id,rawNotes:raw});workflowItem={...workflowItem,status:'processing',aiStartedAt:x.startedAt};$('#docAiState').innerHTML='<div class="doc-close-safe"><strong>Lokale KI erstellt den Protokollentwurf.</strong><span>Du darfst dieses Fenster und das CRM schließen. Das Ergebnis wird in der Dokumentations-Inbox gespeichert.</span><span class="doc-elapsed" id="docElapsed"></span></div>';startAiWatcher()}catch(e){$('#docAiState').innerHTML=`<div class="doc-warning">${esc(e.message)}</div>`;btn.disabled=false}});
-    $('#docDraftNext')?.addEventListener('click',async()=>{try{clearTimeout(saveTimer);await saveDraft();showStep('review')}catch(e){alert(e.message)}});
-    if(workflowItem.aiStartedAt&&!workflowItem.aiDraft&&workflowItem.status==='processing')startAiWatcher();
-  }
-
   async function bestEffortCompleteCloudFlow(){
     try{const b=(dashboard().bookings||[]).find(x=>String(x.eventId)===String(workflowItem.sessionId));if(!b)return;const t=new Date().toISOString(),payload={bookingEventId:b.eventId,customerId:b.customerId||null,customerEmail:b.customerIdentityEmail||b.email,customerName:b.name,sessionStart:b.start,sessionEnd:b.end,state:'completed',notesSavedAt:t,completedAt:t,parkedAt:null,remindAt:null,eventType:'notes_saved'};await fetch(apiBase()+'/admin/flow/upsert',{method:'POST',headers:{Authorization:'Bearer '+sessionToken(),'Content-Type':'application/json'},body:JSON.stringify(payload)})}catch(_){}
   }
-  function successView(){return `<section class="doc-work-card doc-success"><div class="doc-success-icon">✓</div><h3>Dokumentation abgeschlossen</h3><p>${esc(workflowItem.clientName||'Klient:in')}${workflowItem.sessionDate?' · '+esc(fmtDate(workflowItem.sessionDate)):''}</p><span>Das finale Protokoll und die Originalquellen liegen im lokalen Vault. Der Eingang ist aus der offenen Inbox entfernt.</span><div class="dialog-actions"><button class="btn secondary" id="docSuccessProtocol" type="button">Protokoll ansehen</button><button class="btn ghost" id="docSuccessClient" type="button">Zur Klientenakte</button><button class="btn primary" id="docSuccessDone" type="button">Fertig</button></div></section>`}
+  function successView(){return `<section class="doc-work-card doc-success"><div class="doc-success-icon">✓</div><h3>Dokumentation abgeschlossen</h3><p>${esc(workflowItem.clientName||'Klient:in')}${workflowItem.sessionDate?' · '+esc(fmtDate(workflowItem.sessionDate)):''}</p><span>Protokoll und Originalquellen liegen sicher im lokalen Vault.</span><div class="dialog-actions"><button class="btn primary" id="docSuccessInbox" type="button">Zur Dokumentations-Inbox →</button><button class="btn secondary" id="docSuccessProtocol" type="button">Protokoll ansehen</button><button class="btn ghost" id="docSuccessClient" type="button">Klientenakte</button></div></section>`}
   function openClientAfterSuccess(tab='documentation'){$('#documentationWorkflowDialog')?.close();if(!workflowItem?.clientRef)return;window.BDAdminUX?.openClient?.(workflowItem.clientRef);setTimeout(()=>document.querySelector(`[data-record-tab="${tab}"]`)?.click(),180)}
   async function finalizeProtocol(){
-    if(!workflowItem.sessionId||!workflowItem.sessionDate){showStep('assign');return}
+    if(!workflowItem.sessionId||!workflowItem.sessionDate){showStep('assign');return}if(new Date(workflowItem.sessionDate+'T23:59:59').getTime()>Date.now()){alert('Für ein finales Protokoll bitte eine bereits stattgefundene Sitzung wählen.');showStep('assign');return}
     const btn=$('#docFinalizeProtocol');if(btn)btn.disabled=true;
     try{
       const d=readDraftFromForm(),booking=(dashboard().bookings||[]).find(x=>String(x.eventId)===String(workflowItem.sessionId)),duration=booking?.start&&booking?.end?Math.max(1,Math.round((new Date(booking.end)-new Date(booking.start))/60000)):0;
       const x=await window.BDVault.post('/documentation-inbox/finalize',{id:workflowItem.id,ref:workflowItem.clientRef,displayName:workflowItem.clientName,sessionId:workflowItem.sessionId,sessionDate:workflowItem.sessionDate,durationMinutes:duration,dictatedNote:workflowItem.transcript||'',draft:d});
-      workflowItem=x.item||{...workflowItem,status:'done',aiDraft:d};await bestEffortCompleteCloudFlow();document.dispatchEvent(new CustomEvent('bd:documentation-inbox-updated',{detail:{item:workflowItem}}));setStepper('review');$('#docWorkflowBody').innerHTML=successView();$('#docSuccessProtocol').onclick=()=>openClientAfterSuccess('documentation');$('#docSuccessClient').onclick=()=>openClientAfterSuccess('overview');$('#docSuccessDone').onclick=()=>$('#documentationWorkflowDialog').close();renderInbox(false);
+      workflowItem=x.item||{...workflowItem,status:'done',aiDraft:d};await bestEffortCompleteCloudFlow();document.dispatchEvent(new CustomEvent('bd:documentation-inbox-updated',{detail:{item:workflowItem}}));setStepper('review');$('#docWorkflowBody').innerHTML=successView();$('#docSuccessProtocol').onclick=()=>openClientAfterSuccess('documentation');$('#docSuccessClient').onclick=()=>openClientAfterSuccess('overview');$('#docSuccessInbox').onclick=()=>{$('#documentationWorkflowDialog').close();document.querySelector('#documentationInboxList')?.scrollIntoView({behavior:'smooth',block:'start'})};renderInbox(false);
     }catch(e){alert(e.message);if(btn)btn.disabled=false}
   }
   function bindReview(){
-    $('#docFinalizeProtocol')?.addEventListener('click',finalizeProtocol);
-    $('#docCompleteAttachment')?.addEventListener('click',async()=>{if(!workflowItem.assigned){alert('Bitte zuerst einer Klientenakte zuordnen.');showStep('assign');return}if(!confirm('Diese Originalquelle als Fallanlage abschließen?'))return;workflowItem=await mark(workflowItem,'done');$('#docWorkflowBody').innerHTML=successView();$('#docSuccessProtocol')?.remove();$('#docSuccessClient').onclick=()=>openClientAfterSuccess('documentation');$('#docSuccessDone').onclick=()=>$('#documentationWorkflowDialog').close();renderInbox(false)});
+    $('#docFinalizeProtocol')?.addEventListener('click',finalizeProtocol);$('#docReviewBack')?.addEventListener('click',()=>showStep('process'));$('#docReviewAssign')?.addEventListener('click',()=>showStep('assign'));$('#docReviewAssignFuture')?.addEventListener('click',()=>showStep('assign'));
+    $('#docCompleteAttachment')?.addEventListener('click',async()=>{if(!workflowItem.assigned){showStep('assign');return}if(!confirm('Diese Quelle als Fallanlage abschließen?'))return;workflowItem=await mark(workflowItem,'done');setStepper('review');$('#docWorkflowBody').innerHTML=successView();$('#docSuccessProtocol')?.remove();$('#docSuccessClient').onclick=()=>openClientAfterSuccess('documentation');$('#docSuccessInbox').onclick=()=>{$('#documentationWorkflowDialog').close();document.querySelector('#documentationInboxList')?.scrollIntoView({behavior:'smooth',block:'start'})};renderInbox(false)});
   }
   async function openSession(item){if(!item?.clientRef)return;window.BDAdminUX?.openClient?.(item.clientRef);setTimeout(()=>document.querySelector('[data-record-tab="case-summary"]')?.click(),180)}
   function decorateFlowForDocumentation(){}
@@ -331,11 +349,11 @@
   function bind(){
     injectPairButton();
     $('#documentationInboxRefresh')?.addEventListener('click',()=>{lastCloudCheck=0;const b=$('#documentationInboxRefresh');if(b)b.textContent='Prüfe …';syncPendingRelays({force:true}).finally(()=>{if(b)b.textContent='Neue Eingänge prüfen';stampInboxCheck()})});
-    document.addEventListener('bd:vault-unlocked',()=>{lastCloudCheck=0;renderInbox(true).then(stampInboxCheck)});
+    document.addEventListener('bd:vault-unlocked',()=>{lastCloudCheck=0;renderInbox(true).then(stampInboxCheck);ensureLocalAutomationLoop()});
     document.addEventListener('bd:documentation-inbox-updated',()=>renderInbox(false));
     window.addEventListener('online',()=>{lastCloudCheck=0;syncPendingRelays({force:true}).then(stampInboxCheck)});
     window.addEventListener('focus',()=>{if(Date.now()-lastCloudCheck>60000)syncPendingRelays({force:true}).finally(stampInboxCheck)});
-    setTimeout(()=>renderInbox(true).then(stampInboxCheck),1100);
+    ensureLocalAutomationLoop();setTimeout(()=>renderInbox(true).then(stampInboxCheck),1100);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);else bind();
   window.BDDocumentationInbox={refresh:()=>renderInbox(false),sync:()=>syncPendingRelays({force:true}),open:openWorkflow,pair:createAccessPairing};

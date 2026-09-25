@@ -1,0 +1,24 @@
+/* BUILD 14.3.10 — Documentation automation + interaction reduction */
+.doc-stepper-four{grid-template-columns:repeat(4,1fr)}
+.doc-stepper-four:before{left:calc(12.5% + 28px);right:calc(12.5% + 28px)}
+.doc-stepper button:disabled{cursor:default;opacity:1}
+.doc-stepper button:not(.active):not(.done){pointer-events:none}
+.doc-screen-head.compact{margin-bottom:16px;align-items:center}
+.doc-screen-head.compact h3{font-size:1.25rem}
+.doc-screen-head.compact p{margin-top:4px}
+.doc-source-minimal{min-height:0!important;padding-bottom:28px!important}
+.doc-mini-source{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid #e7ded7;border-radius:16px}
+.doc-mini-source>span{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#f4eee8;font-size:1.1rem}
+.doc-mini-source>div{display:grid;gap:3px}.doc-mini-source small{color:#7d7069}.doc-mini-source>b{font-size:.74rem;color:#42694b;background:#edf6ea;padding:6px 8px;border-radius:999px}
+.doc-form-stack.compact{max-width:600px;gap:12px}.doc-form-stack.compact label>span{font-size:.78rem}.doc-form-stack.compact select,.doc-form-stack.compact input{padding:11px 12px;border:1px solid #d9cec7;border-radius:12px;background:#fff}
+.doc-assignment-options{max-width:600px;margin-top:10px;color:#746861}.doc-assignment-options>summary{cursor:pointer;font-size:.78rem;font-weight:800}.doc-assignment-options label{display:flex;align-items:center;gap:8px;margin:10px 0 4px;font-size:.8rem}.doc-assignment-options input{width:auto}.doc-assignment-options small{display:block;font-size:.72rem;color:#8a7d76;line-height:1.4}
+.doc-manual-session{margin-top:2px;padding:12px 13px;background:#f7f3ef;border-radius:13px}.doc-assignment-current:empty{display:none}
+.doc-auto-pipeline{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:20px;border-radius:18px;background:#fff;border:1px solid #e7ded7;margin-bottom:14px}.doc-pipeline-icon{width:48px;height:48px;border-radius:15px;background:#f4eee8;display:grid;place-items:center;font-size:1.2rem}.doc-auto-pipeline>div:last-child{display:grid;gap:4px}.doc-auto-pipeline span{color:#756861;font-size:.84rem}.doc-auto-pipeline small{color:#55705b;font-size:.76rem}
+.doc-transcript-disclosure{margin:12px 0;border:1px solid #e7ded7;background:#fff;border-radius:16px;overflow:hidden}.doc-transcript-disclosure>summary{padding:13px 15px;cursor:pointer;font-weight:800;font-size:.82rem;color:#5f534d}.doc-transcript-disclosure .doc-transcript-label{padding:0 14px 14px;margin:0}.doc-transcript-disclosure textarea{min-height:240px}
+.doc-source-stack.compact{margin-top:12px}.doc-source-stack.compact .doc-source-text,.doc-source-stack.compact .doc-source-chip{background:#faf8f5}
+.doc-ink-grid{display:grid;gap:12px;padding:12px;background:#f7f4f1}.doc-ink-page{margin:0;background:#fff;border:1px solid #e1d7cf;border-radius:12px;overflow:hidden}.doc-ink-page figcaption{padding:7px 10px;font-size:.72rem;color:#7a6e67;border-bottom:1px solid #eee6e0}.doc-ink-page svg{display:block;width:100%;height:auto;aspect-ratio:10/7;color:#171311;background:#fff}
+.doc-photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;padding:12px;background:#f7f4f1}.doc-photo-grid figure{margin:0;background:#fff;border:1px solid #e1d7cf;border-radius:12px;overflow:hidden}.doc-photo-grid img{display:block;width:100%;height:160px;object-fit:contain;background:#fff}.doc-photo-grid figcaption{padding:7px 10px;font-size:.72rem;color:#7a6e67}
+.doc-review-summary{margin-top:14px}
+.doc-action-bar .btn.ghost{min-width:auto;background:transparent;border:0;color:#7a6d65}
+.doc-success .dialog-actions{justify-content:center;flex-wrap:wrap}.doc-success .btn.primary{min-width:230px}
+@media(max-width:720px){.doc-stepper-four:before{left:calc(12.5% + 12px);right:calc(12.5% + 12px)}.doc-mini-source{grid-template-columns:auto 1fr}.doc-mini-source>b{grid-column:2;justify-self:start}.doc-auto-pipeline{padding:16px}.doc-photo-grid{grid-template-columns:1fr}.doc-action-bar{gap:8px}.doc-action-bar .btn.ghost{order:-1;width:auto;align-self:center}.doc-success .dialog-actions{display:grid}.doc-success .dialog-actions .btn{width:100%}}
