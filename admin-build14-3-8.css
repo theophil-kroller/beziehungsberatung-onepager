@@ -1,0 +1,18 @@
+/* BUILD 14.3.8 – Documentation UX consolidation */
+.flow-nav-special,#view-flow,[data-build10-flow-attention]{display:none!important}
+#nextBookings .b143516-next-row{grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center}
+.b1438-prepare{white-space:nowrap}
+.b1438-prep-context{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:16px 18px;margin:0 0 18px;border:1px solid rgba(201,107,75,.32);border-radius:16px;background:rgba(201,107,75,.08)}
+.b1438-prep-context div{display:grid;gap:3px}.b1438-prep-context span{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#8b5b49}.b1438-prep-context strong{font-size:1.05rem}.b1438-prep-context small{color:var(--muted,#746b67)}.b1438-prep-ready{white-space:nowrap;font-weight:700}
+.documentation-inbox-head .panel-head-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.documentation-inbox-last-checked{font-size:.76rem;color:var(--muted,#746b67);white-space:nowrap}
+.doc-stepper{position:relative}.doc-stepper:before{content:"";position:absolute;left:6%;right:6%;top:20px;height:2px;background:rgba(47,38,35,.12);z-index:0}.doc-stepper button{position:relative;z-index:1}.doc-stepper button.done{opacity:1}.doc-stepper button.done:before{content:"✓ ";font-weight:800}.doc-stepper button.active{box-shadow:0 0 0 2px rgba(201,107,75,.18)}
+.doc-future-toggle{display:flex!important;flex-direction:row!important;gap:8px;align-items:center;margin-top:8px;font-size:.86rem;color:var(--muted,#746b67)}.doc-future-toggle input{width:auto!important}
+.doc-complete-line{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin:12px 0;padding:12px 14px;border-radius:12px;background:rgba(55,130,92,.09);border:1px solid rgba(55,130,92,.22)}
+.doc-transcript-label>span{font-weight:700;display:block;margin-bottom:6px}.doc-transcript-label small,.doc-autosave{display:block;margin-top:6px;color:var(--muted,#746b67);font-size:.8rem}
+.doc-source-stack{display:grid;gap:8px;margin:12px 0}.doc-source-chip{padding:10px 12px;border:1px solid rgba(47,38,35,.12);border-radius:10px;background:rgba(255,255,255,.55)}
+.doc-review-meta{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.doc-review-meta span{padding:8px 10px;border-radius:10px;background:rgba(47,38,35,.05)}.doc-warning{display:grid;gap:8px}
+.doc-success{text-align:center;padding:32px 22px}.doc-success-icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;background:rgba(55,130,92,.12);font-size:28px;font-weight:800}.doc-success .dialog-actions{justify-content:center;margin-top:22px}
+.b1438-open-task{border-style:dashed}.b1438-open-task .doc-inbox-state.assignment{background:rgba(201,107,75,.1)}
+@media(max-width:800px){#nextBookings .b143516-next-row{grid-template-columns:auto minmax(0,1fr) auto}.b1438-prepare{grid-column:2/4;justify-self:start}.b1438-prep-context{align-items:flex-start;flex-direction:column}.doc-stepper:before{display:none}}
+
+.b1438-prep-gaps{display:grid;gap:4px;margin:-8px 0 18px;padding:12px 15px;border-radius:12px;background:rgba(201,107,75,.07);border-left:3px solid #c96b4b}.b1438-prep-gaps span{color:var(--muted,#746b67);font-size:.86rem}

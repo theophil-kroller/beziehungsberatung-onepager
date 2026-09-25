@@ -42,7 +42,8 @@
 <link rel="stylesheet" href="admin-build14-3-5-18.css?v=20260924-build14-3-5-18">
 <link rel="stylesheet" href="admin-build14-3-5-19.css?v=20260924-build14-3-5-19">
 <link rel="stylesheet" href="admin-build14-3-6.css?v=20260924-build14-3-6">
-<link rel="stylesheet" href="admin-build14-3-7.css?v=20260925-build14-3-7">
+<link rel="stylesheet" href="admin-build14-3-7.css?v=20260925-build14-3-8">
+<link rel="stylesheet" href="admin-build14-3-8.css?v=20260925-build14-3-8">
 </head>
 <body>
 <!-- Regression lineage: BUILD 14.3.5.8 -->
@@ -146,19 +147,19 @@
 
       <div class="dash-grid dash-grid-primary">
         <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute im Blick</p><h2>Was noch offen ist</h2><p class="muted">Nur Aufgaben, Nachrichten und Vorgänge, bei denen du wirklich etwas tun solltest.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
-        <section class="panel dashboard-focus"><div class="panel-head"><div><p class="eyebrow">Schnellzugriff</p><h2>Klient:innen im Mittelpunkt</h2><p class="muted">Akte öffnen, Sitzung vorbereiten oder einen laufenden Fall fortsetzen.</p></div></div><div class="dashboard-focus-actions"><button class="btn primary" data-jump="clients">Klient:in öffnen</button><button class="btn ghost" data-jump="bookings">Terminverwaltung</button></div><p class="micro muted">Session Flow, Journey, Packages und Zahlungen bleiben vollständig erhalten – sie erscheinen dort, wo sie gebraucht werden.</p></section>
+        <section class="panel dashboard-focus"><div class="panel-head"><div><p class="eyebrow">Schnellzugriff</p><h2>Klient:innen im Mittelpunkt</h2><p class="muted">Akte öffnen, Sitzung vorbereiten oder einen laufenden Fall fortsetzen.</p></div></div><div class="dashboard-focus-actions"><button class="btn primary" data-jump="clients">Klient:in öffnen</button><button class="btn ghost" data-jump="bookings">Terminverwaltung</button></div><p class="micro muted">Briefing vor der Sitzung, Dokumentations-Inbox danach. Termine, Packages und Zahlungen bleiben direkt erreichbar.</p></section>
       </div>
 
       <section class="panel documentation-inbox-panel" id="documentationInboxPanel">
         <div class="panel-head documentation-inbox-head">
           <div><p class="eyebrow">Dokumentation</p><h2>📥 Dokumentations-Inbox</h2><p class="muted">Neue Captures zuerst sicher übernehmen, dann transkribieren, prüfen oder als Anlage ablegen.</p></div>
-          <div class="panel-head-actions"><span class="documentation-inbox-count" id="documentationInboxCount">—</span><button class="btn ghost" id="documentationInboxRefresh" type="button">Aktualisieren</button></div>
+          <div class="panel-head-actions"><span class="documentation-inbox-count" id="documentationInboxCount">—</span><span class="documentation-inbox-last-checked" id="documentationInboxLastChecked">Noch nicht geprüft</span><button class="btn ghost" id="documentationInboxRefresh" type="button">Neue Eingänge prüfen</button></div>
         </div>
         <div class="documentation-inbox-list" id="documentationInboxList"><div class="doc-inbox-empty">Dokumentations-Inbox wird geladen …</div></div>
         <p class="micro documentation-relay-hint" id="documentationRelayHint"></p>
       </section>
 
-      <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Termine</p><h2>Nächste Termine</h2><p class="muted">Direkt in die Akte oder in den Kalender.</p></div><button class="text-button" data-jump="bookings">Kalender öffnen →</button></div><div id="nextBookings"></div></section>
+      <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Termine</p><h2>Nächste Termine</h2><p class="muted">Vor dem Termin das Briefing öffnen oder direkt in den Kalender.</p></div><button class="text-button" data-jump="bookings">Kalender öffnen →</button></div><div id="nextBookings"></div></section>
 
       <section class="dashboard-metrics-wrap"><div class="dashboard-metrics-head"><p class="eyebrow">Praxis auf einen Blick</p><h2>Kennzahlen</h2></div>
       <div class="stat-grid">
@@ -268,7 +269,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.5.12</strong><br><span>Premium UI: ruhige Icon-Aktionen in der Klientenakte, zuverlässiges Schließen und kontextbezogene Bedienelemente.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.8</strong><br><span>Documentation UX: Session-Briefing vor Terminen, Capture &amp; Dokumentations-Inbox als durchgehender Nachbereitungsflow.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -318,6 +319,7 @@
 <script src="admin-build14-3-5-14.js?v=20260925-build14-3-6-1"></script>
 <script src="admin-build14-3-5-15.js?v=20260924-build14-3-5-15-1"></script>
 <script src="admin-build14-3-5-19.js?v=20260925-build14-3-6-1"></script>
-<script src="admin-build14-3-7.js?v=20260925-build14-3-7-1"></script>
+<script src="admin-build14-3-7.js?v=20260925-build14-3-8"></script>
+<script src="admin-build14-3-8.js?v=20260925-build14-3-8"></script>
 </body>
 </html>
