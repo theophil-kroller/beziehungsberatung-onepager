@@ -1,0 +1,9 @@
+/* BUILD 14.3.10 · one consistent application chrome across CRM, Message Center and Knowledge Hub */
+:root{--bd-global-strip:34px}
+.suite-page .suite-rail{top:var(--bd-global-strip)!important;bottom:0!important;height:calc(100vh - var(--bd-global-strip))!important}
+.suite-page .suite-main{padding-top:var(--bd-global-strip)!important;min-height:100vh!important}
+.suite-message-page .mc-strip,.suite-knowledge-page .hub-security-strip{position:fixed!important;top:0!important;left:0!important;right:0!important;width:100%!important;height:var(--bd-global-strip)!important;min-height:var(--bd-global-strip)!important;margin:0!important;padding:0 18px!important;box-sizing:border-box!important;background:#2f2926!important;color:#fff8f2!important;display:flex!important;align-items:center!important;justify-content:space-between!important;z-index:1000!important;border:0!important;box-shadow:none!important}
+.suite-message-page .mc-strip span,.suite-knowledge-page .hub-security-strip span{font-size:10px!important;line-height:1!important;letter-spacing:.075em!important;font-weight:750!important;color:#fff8f2!important}
+.suite-message-page .mc-strip nav,.suite-knowledge-page .hub-security-strip nav{display:none!important}
+.suite-page .suite-brand{padding-top:10px!important}
+@media(max-width:760px){:root{--bd-global-strip:32px}.suite-page .suite-rail{top:var(--bd-global-strip)!important;height:calc(100vh - var(--bd-global-strip))!important}.suite-page .suite-main{padding-top:var(--bd-global-strip)!important}.suite-message-page .mc-strip,.suite-knowledge-page .hub-security-strip{height:var(--bd-global-strip)!important;min-height:var(--bd-global-strip)!important;padding:0 12px!important}.suite-message-page .mc-strip span,.suite-knowledge-page .hub-security-strip span{font-size:9px!important}}

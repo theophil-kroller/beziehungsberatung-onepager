@@ -147,19 +147,19 @@
         </form>
       </section>
 
-      <div class="dash-grid dash-grid-primary">
-        <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute im Blick</p><h2>Was noch offen ist</h2><p class="muted">Nur Aufgaben, Nachrichten und Vorgänge, bei denen du wirklich etwas tun solltest.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
-        <section class="panel dashboard-focus"><div class="panel-head"><div><p class="eyebrow">Schnellzugriff</p><h2>Klient:innen im Mittelpunkt</h2><p class="muted">Akte öffnen, Sitzung vorbereiten oder einen laufenden Fall fortsetzen.</p></div></div><div class="dashboard-focus-actions"><button class="btn primary" data-jump="clients">Klient:in öffnen</button><button class="btn ghost" data-jump="bookings">Terminverwaltung</button></div><p class="micro muted">Briefing vor der Sitzung, Dokumentations-Inbox danach. Termine, Packages und Zahlungen bleiben direkt erreichbar.</p></section>
-      </div>
+      <div class="dash-grid dash-grid-primary b14310-work-grid">
+        <!-- Legacy semantic: Was noch offen ist -->
+        <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute</p><h2>Heute zu erledigen</h2><p class="muted">Termine, Nachrichten und organisatorische Aufgaben mit Handlungsbedarf.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
 
-      <section class="panel documentation-inbox-panel" id="documentationInboxPanel">
-        <div class="panel-head documentation-inbox-head">
-          <div><p class="eyebrow">Dokumentation</p><h2>📥 Dokumentations-Inbox</h2><p class="muted">Neue Captures zuerst sicher übernehmen, dann transkribieren, prüfen oder als Anlage ablegen.</p></div>
-          <div class="panel-head-actions"><span class="documentation-inbox-count" id="documentationInboxCount">—</span><span class="documentation-inbox-last-checked" id="documentationInboxLastChecked">Noch nicht geprüft</span><button class="btn ghost" id="documentationInboxRefresh" type="button">Neue Eingänge prüfen</button></div>
-        </div>
-        <div class="documentation-inbox-list" id="documentationInboxList"><div class="doc-inbox-empty">Dokumentations-Inbox wird geladen …</div></div>
-        <p class="micro documentation-relay-hint" id="documentationRelayHint"></p>
-      </section>
+        <section class="panel documentation-inbox-panel" id="documentationInboxPanel">
+          <div class="panel-head documentation-inbox-head">
+            <div><p class="eyebrow">Nachbereitung</p><h2>Noch nicht abgeschlossen</h2><p class="muted">Captures, Transkriptionen und Sitzungsdokumentationen, bei denen noch etwas zu tun ist.</p></div>
+            <div class="panel-head-actions"><button class="b14310-processing-pill" id="localProcessingSummary" type="button" title="Lokale Verarbeitung anzeigen"><span class="b14310-processing-dot"></span><span id="localProcessingSummaryText">Lokal bereit</span></button><span class="documentation-inbox-count" id="documentationInboxCount">—</span><span class="documentation-inbox-last-checked" id="documentationInboxLastChecked">Noch nicht geprüft</span><button class="btn ghost" id="documentationInboxRefresh" type="button">Neue Eingänge prüfen</button></div>
+          </div>
+          <div class="documentation-inbox-list" id="documentationInboxList"><div class="doc-inbox-empty">Dokumentations-Inbox wird geladen …</div></div>
+          <p class="micro documentation-relay-hint" id="documentationRelayHint"></p>
+        </section>
+      </div>
 
       <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Termine</p><h2>Nächste Termine</h2><p class="muted">Vor dem Termin das Briefing öffnen oder direkt in den Kalender.</p></div><button class="text-button" data-jump="bookings">Kalender öffnen →</button></div><div id="nextBookings"></div></section>
 
@@ -271,7 +271,7 @@
       <div class="settings-grid">
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.8</strong><br><span>Documentation UX: Session-Briefing vor Terminen, Capture &amp; Dokumentations-Inbox als durchgehender Nachbereitungsflow.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.3.10</strong><br><span>Workflow &amp; UI Consolidation: sequenzielle lokale Verarbeitung, steuerbare Queue, Live-Status und ruhigeres Praxis-Cockpit.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>WhatsApp, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -323,5 +323,6 @@
 <script src="admin-build14-3-5-19.js?v=20260925-build14-3-6-1"></script>
 <script src="admin-build14-3-7.js?v=20260925-build14-3-10"></script>
 <script src="admin-build14-3-8.js?v=20260925-build14-3-8"></script>
+<script src="admin-build14-3-10.js?v=20260925-build14-3-10"></script>
 </body>
 </html>

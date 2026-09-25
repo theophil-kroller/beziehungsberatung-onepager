@@ -1,4 +1,4 @@
-// previous caches migrated from bd-capture-14-3-8 and bd-capture-14-3-9
+// previous cache migrated from bd-capture-14-3-8
 const CACHE='bd-capture-14-3-10';
 const SHELL=['/capture.html','/capture.css?v=14-3-10','/capture.js?v=14-3-10','/capture-manifest.webmanifest','/booking-config.js?v=20260918-build8','/capture-icon-192.png','/capture-icon-512.png'];
 const CAPTURE_PATHS=new Set(['/capture.html','/capture.css','/capture.js','/capture-manifest.webmanifest','/booking-config.js','/capture-icon-192.png','/capture-icon-512.png']);
