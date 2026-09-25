@@ -7,6 +7,7 @@
   let current={email:'',name:'',payload:null};
   let latestCloudSnapshot=null;
   let pendingMasterEdit=false;
+  let captureTranscriptWatcher=null,captureTranscriptStartedAt=0;
   const $=s=>document.querySelector(s);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=x=>x?new Intl.DateTimeFormat('de-AT',{dateStyle:'medium',timeStyle:'short'}).format(new Date(x)):'—';
@@ -270,7 +271,7 @@
   function captureDeviceLabel(value){return({s22:'Samsung / Smartphone',boox:'BOOX / E-Ink',other:'Anderes Gerät'}[value]||value||'Gerät')}
   function decodeCaptureBase64(value,mime){const raw=atob(String(value||'').replace(/-/g,'+').replace(/_/g,'/')),bytes=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);return new Blob([bytes],{type:mime||'application/octet-stream'})}
   function drawCaptureInk(canvas,strokes){const rows=Array.isArray(strokes)?strokes.filter(s=>Array.isArray(s)&&s.length):[];if(!rows.length)return;const rect=canvas.getBoundingClientRect(),width=Math.max(320,Math.round(rect.width||760)),height=Math.max(360,Math.round(Math.min(620,width*.68))),ratio=Math.min(window.devicePixelRatio||1,2),ctx=canvas.getContext('2d');canvas.style.height=height+'px';canvas.width=Math.round(width*ratio);canvas.height=Math.round(height*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);ctx.fillStyle='#fff';ctx.fillRect(0,0,width,height);ctx.strokeStyle='#2f2623';ctx.lineWidth=2.2;ctx.lineCap='round';ctx.lineJoin='round';for(const stroke of rows){if(!stroke.length)continue;ctx.beginPath();ctx.moveTo(Number(stroke[0].x||0)*width,Number(stroke[0].y||0)*height);for(const point of stroke.slice(1))ctx.lineTo(Number(point.x||0)*width,Number(point.y||0)*height);if(stroke.length===1){ctx.lineTo(Number(stroke[0].x||0)*width+.2,Number(stroke[0].y||0)*height+.2)}ctx.stroke()}}
-  function ensureCaptureDialog(){if($('#vaultCaptureDialog'))return;document.body.insertAdjacentHTML('beforeend',`<dialog id="vaultCaptureDialog" class="vault-dialog capture-viewer-dialog"><div class="dialog-shell"><button class="dialog-x" id="vaultCaptureClose" type="button">×</button><p class="eyebrow">Lokaler Secure Practice Vault</p><h2>Capture-Erfassung</h2><div id="vaultCaptureContent"></div><div class="dialog-actions capture-viewer-actions"><button class="btn ghost" id="vaultCaptureDownload" type="button">Originaldatei herunterladen</button><button class="btn primary" id="vaultCaptureDone" type="button">Schließen</button></div></div></dialog>`);$('#vaultCaptureClose').onclick=$('#vaultCaptureDone').onclick=()=>$('#vaultCaptureDialog').close()}
+  function ensureCaptureDialog(){if($('#vaultCaptureDialog'))return;document.body.insertAdjacentHTML('beforeend',`<dialog id="vaultCaptureDialog" class="vault-dialog capture-viewer-dialog"><div class="dialog-shell"><button class="dialog-x" id="vaultCaptureClose" type="button">×</button><p class="eyebrow">Lokaler Secure Practice Vault</p><h2>Capture-Erfassung</h2><div id="vaultCaptureContent"></div><div class="dialog-actions capture-viewer-actions"><button class="btn ghost" id="vaultCaptureDownload" type="button">Originaldatei herunterladen</button><button class="btn primary" id="vaultCaptureDone" type="button">Schließen</button></div></div></dialog>`);$('#vaultCaptureClose').onclick=$('#vaultCaptureDone').onclick=()=>$('#vaultCaptureDialog').close();$('#vaultCaptureDialog').addEventListener('close',()=>{if(captureTranscriptWatcher)clearInterval(captureTranscriptWatcher);captureTranscriptWatcher=null})}
   function showCaptureArtifact(a,payload,blob){
     ensureCaptureDialog();
     const dlg=$('#vaultCaptureDialog'),host=$('#vaultCaptureContent'),audio=Array.isArray(payload.audio)?payload.audio:[],note=String(payload.noteText||'').trim();
@@ -288,8 +289,50 @@
   async function captureDictations(){const result=await request('/dictations?ref='+encodeURIComponent(current.email));return result.dictations||[]}
   async function hydrateCaptureTranscripts(a,payload){const rows=await captureDictations().catch(()=>[]);for(let index=0;index<(payload.audio||[]).length;index++)renderCaptureTranscriptRow(a,payload,index,captureDictationFor(rows,a,index))}
   function renderCaptureTranscriptRow(a,payload,index,row){const host=document.querySelector(`[data-capture-audio="${index}"]`);if(!host)return;const status=host.querySelector('[data-capture-status]'),message=host.querySelector('[data-capture-message]'),editor=host.querySelector('[data-capture-editor]'),text=host.querySelector('[data-capture-text]'),button=host.querySelector('[data-capture-transcribe]'),save=host.querySelector('[data-capture-save]'),accept=host.querySelector('[data-capture-accept]');const labels={recording:'Audio gespeichert',saved:'bereit',transcribing:'Whisper arbeitet',draft:'Transkriptentwurf',error:'Fehler',accepted:'übernommen'};status.textContent=row?labels[row.status]||row.status:'nicht transkribiert';message.textContent=row?.error||'';editor.hidden=!row||!['draft','accepted'].includes(row.status);if(row)text.value=row.editedTranscript||row.originalTranscript||'';text.disabled=row?.status==='accepted';save.hidden=!row||row.status!=='draft';accept.hidden=!row||row.status!=='draft';button.hidden=!!row&&['draft','accepted','transcribing'].includes(row.status);button.textContent=row?.status==='error'?'Erneut transkribieren':'Lokal transkribieren';button.onclick=()=>startCaptureTranscription(a,payload,index,row);if(row){save.onclick=()=>saveCaptureTranscript(row.id,text.value,message);accept.onclick=()=>acceptCaptureTranscript(row.id,text.value,a,payload)}}
-  async function startCaptureTranscription(a,payload,index,existing=null){const item=payload.audio?.[index],host=document.querySelector(`[data-capture-audio="${index}"]`),message=host?.querySelector('[data-capture-message]'),button=host?.querySelector('[data-capture-transcribe]');if(!item||!host)return;button.disabled=true;try{let id=existing?.id;if(!id){const target=$('#vaultCaptureTarget')?.value||'',session=(current.payload.sessions||[]).find(row=>String(row.id)===String(target)),created=await post('/dictation/start',{origin:target?'session':'case',ref:current.email,displayName:current.name,targetSessionId:target||'',sessionDate:String(session?.date||payload.createdAt||new Date().toISOString()).slice(0,10),durationMinutes:Math.ceil(Number(item.durationSeconds||0)/60),contextLabel:`Capture-Aufnahme ${index+1} ${captureDictationMarker(a,index)}`,language:'de'});id=created.dictation.id;const raw=new Uint8Array(await decodeCaptureBase64(item.dataBase64,item.mime).arrayBuffer()),partSize=2*1024*1024;for(let offset=0,sequence=0;offset<raw.length;offset+=partSize,sequence++){message.textContent=`Audio wird lokal gesichert · Abschnitt ${sequence+1}`;const part=raw.subarray(offset,Math.min(raw.length,offset+partSize));let binary='';for(let pos=0;pos<part.length;pos+=0x8000)binary+=String.fromCharCode(...part.subarray(pos,pos+0x8000));await post('/dictation/chunk',{id,sequence,mime:item.mime||'audio/webm',dataBase64:btoa(binary)})}}message.textContent='Whisper transkribiert lokal …';await post('/dictation/transcribe',{id,language:'de',transcribe:true});let result=null;for(let count=0;count<360;count++){await new Promise(resolve=>setTimeout(resolve,1000));result=(await request('/dictation?id='+encodeURIComponent(id))).dictation;message.textContent=result.status==='transcribing'?`Whisper transkribiert lokal … ${count+1} s`:'';if(['draft','error'].includes(result.status))break}if(result?.status!=='draft')throw new Error(result?.error||'Die Transkription wurde nicht abgeschlossen. Das Audio bleibt erhalten.');renderCaptureTranscriptRow(a,payload,index,result)}catch(error){message.textContent=error.message}finally{button.disabled=false}}
-  async function transcribeAllCaptureAudio(a,payload){const button=$('#vaultCaptureTranscribeAll');button.disabled=true;try{for(let index=0;index<(payload.audio||[]).length;index++){const rows=await captureDictations(),existing=captureDictationFor(rows,a,index);if(existing&&['draft','accepted'].includes(existing.status))continue;await startCaptureTranscription(a,payload,index,existing)}}finally{button.disabled=false;await hydrateCaptureTranscripts(a,payload)}}
+  function watchCaptureTranscripts(a,payload){
+    if(captureTranscriptWatcher)clearInterval(captureTranscriptWatcher);
+    captureTranscriptStartedAt=Date.now();
+    const tick=async()=>{
+      if(!$('#vaultCaptureDialog')?.open){clearInterval(captureTranscriptWatcher);captureTranscriptWatcher=null;return}
+      const rows=await captureDictations().catch(()=>[]);let running=0;
+      for(let index=0;index<(payload.audio||[]).length;index++){
+        const row=captureDictationFor(rows,a,index);if(row?.status==='transcribing'||row?.status==='saved')running++;
+        renderCaptureTranscriptRow(a,payload,index,row);
+        const host=document.querySelector(`[data-capture-audio="${index}"]`),message=host?.querySelector('[data-capture-message]');
+        if(message&&row?.status==='transcribing')message.textContent=`Whisper arbeitet lokal im Hintergrund · ${Math.floor((Date.now()-captureTranscriptStartedAt)/1000)} s · Du darfst dieses Fenster schließen.`;
+        if(row?.status==='saved'){try{await post('/dictation/transcribe',{id:row.id,language:'de',transcribe:true})}catch(e){}}
+      }
+      if(!running){clearInterval(captureTranscriptWatcher);captureTranscriptWatcher=null}
+    };
+    tick();captureTranscriptWatcher=setInterval(tick,2500);
+  }
+  async function startCaptureTranscription(a,payload,index,existing=null){
+    const item=payload.audio?.[index],host=document.querySelector(`[data-capture-audio="${index}"]`),message=host?.querySelector('[data-capture-message]'),button=host?.querySelector('[data-capture-transcribe]');if(!item||!host)return;button.disabled=true;
+    try{
+      let id=existing?.id;
+      if(!id){
+        const target=$('#vaultCaptureTarget')?.value||'',session=(current.payload.sessions||[]).find(row=>String(row.id)===String(target)),created=await post('/dictation/start',{origin:target?'session':'case',ref:current.email,displayName:current.name,targetSessionId:target||'',sessionDate:String(session?.date||payload.createdAt||new Date().toISOString()).slice(0,10),durationMinutes:Math.ceil(Number(item.durationSeconds||0)/60),contextLabel:`Capture-Aufnahme ${index+1} ${captureDictationMarker(a,index)}`,language:'de'});id=created.dictation.id;
+        const raw=new Uint8Array(await decodeCaptureBase64(item.dataBase64,item.mime).arrayBuffer()),partSize=2*1024*1024;
+        for(let offset=0,sequence=0;offset<raw.length;offset+=partSize,sequence++){
+          message.textContent=`Audio wird lokal gesichert · Abschnitt ${sequence+1}`;const part=raw.subarray(offset,Math.min(raw.length,offset+partSize));let binary='';for(let pos=0;pos<part.length;pos+=0x8000)binary+=String.fromCharCode(...part.subarray(pos,pos+0x8000));await post('/dictation/chunk',{id,sequence,mime:item.mime||'audio/webm',dataBase64:btoa(binary)})
+        }
+      }
+      await post('/dictation/transcribe',{id,language:'de',transcribe:true});
+      message.textContent='Whisper läuft jetzt lokal im Hintergrund. Du darfst dieses Fenster und das CRM schließen; der Computer und der Vault-Dienst müssen weiterlaufen.';
+      watchCaptureTranscripts(a,payload);
+    }catch(error){message.textContent=error.message}finally{button.disabled=false}
+  }
+  async function transcribeAllCaptureAudio(a,payload){
+    const button=$('#vaultCaptureTranscribeAll');button.disabled=true;
+    try{
+      const rows=await captureDictations();
+      for(let index=0;index<(payload.audio||[]).length;index++){
+        const existing=captureDictationFor(rows,a,index);if(existing&&['draft','accepted','transcribing'].includes(existing.status))continue;
+        await startCaptureTranscription(a,payload,index,existing);
+      }
+      watchCaptureTranscripts(a,payload);
+    }finally{button.disabled=false;await hydrateCaptureTranscripts(a,payload)}
+  }
   async function saveCaptureTranscript(id,text,message){try{await post('/dictation/update',{id,editedTranscript:text});message.textContent='Korrektur lokal gespeichert.'}catch(error){message.textContent=error.message}}
   async function acceptCaptureTranscript(id,text,a,payload){const rows=await captureDictations(),row=rows.find(item=>item.id===id),index=(payload.audio||[]).findIndex((item,i)=>captureDictationMarker(a,i)&&String(row?.contextLabel||'').includes(captureDictationMarker(a,i))),host=document.querySelector(`[data-capture-audio="${index}"]`),message=host?.querySelector('[data-capture-message]');try{await post('/dictation/update',{id,editedTranscript:text});await post('/dictation/accept',{id,autoDeleteAudio:true});current.payload=await request('/client?ref='+encodeURIComponent(current.email));message.textContent=row?.targetSessionId?'Geprüft in die Sitzungsnotiz übernommen.':'Geprüft als Fallnotiz übernommen.';await hydrateCaptureTranscripts(a,payload)}catch(error){message.textContent=error.message}}
   async function openArtifact(id){try{const a=(current.payload.artifacts||[]).find(x=>x.id===id),blob=await artifactBlob(id);if(isCaptureArtifact(a)){let payload;try{payload=JSON.parse(await blob.text())}catch(e){throw new Error('Die Capture-Erfassung konnte nicht gelesen werden.')}showCaptureArtifact(a,payload,blob);return}const url=URL.createObjectURL(blob),w=window.open(url,'_blank','noopener');if(!w){const link=document.createElement('a');link.href=url;link.download=a?.filename||'artifact';link.click()}setTimeout(()=>URL.revokeObjectURL(url),120000)}catch(e){alert(e.message)}}

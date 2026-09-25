@@ -10,12 +10,12 @@
   <link rel="manifest" href="capture-manifest.webmanifest">
   <link rel="icon" href="capture-icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="capture-icon-192.png">
-  <link rel="stylesheet" href="capture.css?v=14-3-6">
+  <link rel="stylesheet" href="capture.css?v=14-3-7">
 </head>
 <body>
 <main>
   <header class="app-head">
-    <div><p class="overline">BUILD 14.3.6 · Local-safe Capture</p><h1>Praxis Capture</h1><p>Erfassen, lokal sichern und später sicher in die Dokumentation übernehmen.</p></div>
+    <div><p class="overline">BUILD 14.3.7 · Local-first Documentation Capture</p><h1>Praxis Capture</h1><p>Erfassen, lokal sichern und später sicher in die Dokumentation übernehmen.</p></div>
     <div class="head-actions"><span id="networkState" class="status-pill">Prüfe Verbindung …</span><button id="installBtn" class="ghost" type="button" hidden>App installieren</button><button id="inkMode" class="ghost" type="button">E‑Ink</button></div>
   </header>
 
@@ -73,21 +73,32 @@
   </section>
 
   <section class="card transfer-card">
-    <p class="overline">Mit Sitzung verbinden</p><h2 id="transferTitle">Sichere Zuordnung</h2>
-    <p id="transferCopy">Öffne im Praxis-CRM die richtige Sitzung und scanne den dort erzeugten QR-Code. Bei einem Ausfall bleibt die Erfassung lokal in der Warteschlange.</p>
-    <div class="transfer-actions"><button id="scanBtn" class="primary big" type="button">QR-Code scannen</button><button id="sendBtn" class="primary big" type="button" hidden>Jetzt synchronisieren</button></div>
+    <p class="overline">Sicher an die Praxis übergeben</p><h2 id="transferTitle">Dokumentations-Inbox</h2>
+    <div class="access-pairing" id="accessPairingBox">
+      <div><span class="access-dot" id="accessDot"></span><div><strong id="accessTitle">Noch nicht mit einem Praxis-Login gekoppelt</strong><small id="accessCopy">Im CRM einmal „Capture-Gerät koppeln“ wählen. Danach brauchst du für normale Übertragungen keinen Sitzungs-QR mehr.</small></div></div>
+      <button id="forgetAccess" class="ghost" type="button" hidden>Kopplung entfernen</button>
+    </div>
+    <div class="target-box" id="targetBox">
+      <span>Ziel dieser Erfassung</span><strong id="targetTitle">Persönliche Dokumentations-Inbox</strong><small id="targetCopy">Die konkrete Klient:innenakte oder Sitzung kannst du später am Laptop zuordnen.</small>
+    </div>
+    <div class="transfer-actions">
+      <button id="sendInboxBtn" class="primary big" type="button" hidden>📥 An meine Dokumentations-Inbox senden</button>
+      <button id="sendBtn" class="primary big" type="button" hidden>✓ An diese Sitzung senden</button>
+      <button id="scanBtn" class="ghost big" type="button">Optional: Sitzungs-QR scannen</button>
+      <button id="clearSessionPairing" class="ghost" type="button" hidden>Direkte Sitzungszuordnung entfernen</button>
+    </div>
     <p id="transferState" class="save-state"></p>
-    <details><summary>Fallback & verschlüsselter Export</summary><div class="fallback"><label>QR-Link oder Kopplungscode einfügen<input id="pairingInput" autocomplete="off" placeholder="https://…/capture.html?relay=…"></label><button id="pairingApply" type="button">Verbindung übernehmen</button><hr><label>Passwort für verschlüsselten Datei-Export<input id="password" type="password" autocomplete="new-password" minlength="10"></label><button id="exportBtn" type="button">.bdcapture-Datei exportieren</button></div></details>
+    <details><summary>Fallback, Kopplungslink & verschlüsselter Export</summary><div class="fallback"><label>QR-Link oder Kopplungscode einfügen<input id="pairingInput" autocomplete="off" placeholder="https://…/capture.html?…"></label><button id="pairingApply" type="button">Verbindung übernehmen</button><hr><label>Passwort für verschlüsselten Datei-Export<input id="password" type="password" autocomplete="new-password" minlength="10"></label><button id="exportBtn" type="button">.bdcapture-Datei exportieren</button></div></details>
   </section>
 
   <section class="local-guarantee"><strong>Local-first Sicherheitsprinzip</strong><span>Aufnahme → lokale verschlüsselte Speicherung → Synchronisation → lokale Vault-Übernahme. Ein Netzwerkfehler löscht keine Erfassung.</span></section>
 </main>
 
 <dialog id="scannerDialog">
-  <div class="scanner-shell"><button id="scannerClose" class="scanner-close" type="button">×</button><p class="overline">Session verbinden</p><h2>QR-Code scannen</h2><p>Richte die Kamera auf den QR-Code im geöffneten Session Flow am Laptop.</p><div class="scanner-frame"><video id="scannerVideo" playsinline muted></video><div class="scanner-guide"></div></div><p id="scannerState">Kamera wird gestartet …</p><details><summary>Kamera funktioniert nicht?</summary><p>Die Erfassung ist bereits lokal gespeichert. Du kannst den QR-Code mit der normalen Kamera öffnen oder den Link unten in der Capture-Maske einfügen.</p></details></div>
+  <div class="scanner-shell"><button id="scannerClose" class="scanner-close" type="button">×</button><p class="overline">Optionale Direktzuordnung</p><h2>Sitzungs-QR scannen</h2><p>Nur wenn du diese Erfassung sofort einer konkreten Sitzung zuordnen möchtest. Ohne Sitzungs-QR kannst du jederzeit an deine persönliche Dokumentations-Inbox senden.</p><div class="scanner-frame"><video id="scannerVideo" playsinline muted></video><div class="scanner-guide"></div></div><p id="scannerState">Kamera wird gestartet …</p><details><summary>Kamera funktioniert nicht?</summary><p>Die Erfassung ist bereits lokal gespeichert. Du kannst den QR-Code mit der normalen Kamera öffnen oder den Link unten in der Capture-Maske einfügen.</p></details></div>
 </dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="capture.js?v=14-3-6"></script>
+<script src="capture.js?v=14-3-7"></script>
 </body>
 </html>
