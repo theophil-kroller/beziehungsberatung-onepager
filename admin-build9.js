@@ -108,7 +108,7 @@
   $("#refreshBtn").addEventListener("click",()=>{clearCloudBackoff();load(true)});
 
   const viewMeta={
-    dashboard:["Heute","Dein Praxistag","Was jetzt relevant ist – ohne Systemballast."],
+    dashboard:["Praxis-Cockpit","Dashboard","Was heute Aufmerksamkeit braucht – und was als Nächstes kommt."],
     journey:["Client Journey","Klientenreise","Vom ersten Kontakt bis zur abgeschlossenen Begleitung."],
     clients:["Klient:innen","Klient:innen","Akte öffnen und von hier aus Termine, Sitzungen, Angebote und Honorarnoten steuern."],
     bookings:["Kalender","Termine","Buchungen verwalten, verschieben und nachvollziehen."],
