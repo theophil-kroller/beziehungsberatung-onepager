@@ -46,6 +46,8 @@
 <link rel="stylesheet" href="admin-build14-3-8.css?v=20260925-build14-3-8">
 <link rel="stylesheet" href="admin-build14-3-9.css?v=20260925-build14-3-9">
 <link rel="stylesheet" href="admin-build14-3-10.css?v=20260925-build14-3-10">
+<link rel="stylesheet" href="practice-shell-14-4-0-7.css?v=20260926-build14-4-0-7">
+<link rel="stylesheet" href="admin-build14-4-0-7.css?v=20260926-build14-4-0-7">
 <link rel="stylesheet" href="admin-build14-4-0.css?v=20260925-build14-4-0">
 </head>
 <body>
@@ -136,6 +138,10 @@
     </header>
 
     <section class="view active" id="view-dashboard">
+      <section class="b14407-dashboard-intro" aria-label="Tagesübersicht">
+        <div><p class="eyebrow">Heute</p><h1>Dein Praxistag</h1><p id="b14407TodayDate"></p></div>
+        <div class="b14407-local-state" id="b14407LocalState" title="Lokaler Verarbeitungsstatus"><i></i><span>Lokal bereit</span></div>
+      </section>
 
       <section class="dashboard-weather" id="dashboardWeather" aria-label="3-Tage-Wetter">
         <div class="weather-location"><span class="weather-pin">⌖</span><div><strong id="weatherLocationLabel">Graz, Österreich</strong><small>3-Tage-Wetter</small></div></div>
@@ -148,13 +154,17 @@
         </form>
       </section>
 
+      <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Als Nächstes</p><h2>Nächste Sitzung</h2><p class="muted">Der nächste relevante Termin zuerst. Weitere Termine bleiben darunter sichtbar.</p></div><button class="text-button" data-jump="bookings">Alle Termine →</button></div><div id="nextBookings"></div></section>
+
+      <section class="b14407-work-heading"><div><p class="eyebrow">Meine Arbeit</p><h2>Heute & offen</h2><p>Was heute ansteht – und was noch auf deinen Abschluss wartet.</p></div></section>
+
       <div class="dash-grid dash-grid-primary b14310-work-grid">
         <!-- Legacy semantic: Was noch offen ist -->
-        <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute</p><h2>Heute zu erledigen</h2><p class="muted">Termine, Nachrichten und organisatorische Aufgaben mit Handlungsbedarf.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
+        <section class="panel attention-panel"><div class="panel-head"><div><p class="eyebrow">Heute</p><h2>Aufmerksamkeit</h2><p class="muted">Nur Dinge, die heute eine Aktion brauchen.</p></div><span class="count-badge" id="attentionCount">0</span></div><div id="attention" class="attention-list"></div></section>
 
         <section class="panel documentation-inbox-panel" id="documentationInboxPanel">
           <div class="panel-head documentation-inbox-head">
-            <div><p class="eyebrow">Nachbereitung</p><h2>Noch nicht abgeschlossen</h2><p class="muted">Captures, Transkriptionen und Sitzungsdokumentationen, bei denen noch etwas zu tun ist.</p></div>
+            <div><p class="eyebrow">Offen</p><h2>Nachbereitung</h2><p class="muted">Dokumentationen und Verarbeitung, die noch offen sind.</p></div>
             <div class="panel-head-actions"><button class="b14310-processing-pill" id="localProcessingSummary" type="button" title="Lokale Verarbeitung anzeigen"><span class="b14310-processing-dot"></span><span id="localProcessingSummaryText">Lokal bereit</span></button><span class="documentation-inbox-count" id="documentationInboxCount">—</span><span class="documentation-inbox-last-checked" id="documentationInboxLastChecked">Noch nicht geprüft</span><button class="btn ghost" id="documentationInboxRefresh" type="button">Neue Eingänge prüfen</button></div>
           </div>
           <div class="documentation-inbox-list" id="documentationInboxList"><div class="doc-inbox-empty">Dokumentations-Inbox wird geladen …</div></div>
@@ -162,9 +172,9 @@
         </section>
       </div>
 
-      <section class="panel dashboard-calendar"><div class="panel-head"><div><p class="eyebrow">Termine</p><h2>Nächste Termine</h2><p class="muted">Vor dem Termin das Briefing öffnen oder direkt in den Kalender.</p></div><button class="text-button" data-jump="bookings">Kalender öffnen →</button></div><div id="nextBookings"></div></section>
 
-      <section class="dashboard-metrics-wrap"><div class="dashboard-metrics-head"><p class="eyebrow">Praxis auf einen Blick</p><h2>Kennzahlen</h2></div>
+
+      <section class="dashboard-metrics-wrap"><div class="dashboard-metrics-head"><p class="eyebrow">Praxis</p><h2>Praxisüberblick</h2></div>
       <div class="stat-grid">
         <article class="stat-card"><span>Heute</span><strong id="statToday">—</strong><small>Termine</small></article>
         <article class="stat-card"><span>Diese Woche</span><strong id="statWeek">—</strong><small>Termine</small></article>
@@ -300,7 +310,7 @@
 
 <script src="qrcode-local.js?v=20260925-build14-3-7-1" data-bd-local-qr="1"></script>
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="desktop-bridge.js?v=20260925-build14-4-0"></script>
+<script src="desktop-bridge.js?v=20260926-build14-4-0-7"></script>
 <script src="admin-build9.js?v=20260923-build14-3-5-4"></script>
 <script src="admin-vault.js?v=20260924-build14-3-5-13"></script>
 <script src="admin-build10.js?v=20260922-build13-7-3-runtime-fix"></script>
@@ -326,6 +336,7 @@
 <script src="admin-build14-3-7.js?v=20260925-build14-3-10"></script>
 <script src="admin-build14-3-8.js?v=20260925-build14-3-8"></script>
 <script src="admin-build14-3-10.js?v=20260925-build14-3-10"></script>
-<script src="admin-build14-4-0.js?v=20260925-build14-4-0"></script>
+<script src="admin-build14-4-0-7.js?v=20260926-build14-4-0-7"></script>
+<script src="admin-build14-4-0.js?v=20260926-build14-4-0-5"></script>
 </body>
 </html>

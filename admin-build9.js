@@ -12,6 +12,7 @@
   let pendingBankSource="",pendingBankRowCount=0;
   let crmState={byEmail:{},prospects:[],activities:[],offers:[],settings:{dormantDays:60,renewalRemaining:1,discount:0}};
   const $=s=>root.querySelector(s), $$=s=>[...root.querySelectorAll(s)];
+  const desktopStage=(stage,detail='')=>{if(window.BDDesktop?.isDesktop)document.dispatchEvent(new CustomEvent('bd:desktop-stage',{detail:{stage,detail}}))};
   const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const normEmail=s=>String(s||"").trim().toLowerCase();
   const visibleContactEmail=s=>{const raw=String(s||"").trim();if(/^__bd(?:test|13)__:/i.test(raw)){const parts=raw.split(":");try{return decodeURIComponent(parts.slice(2).join(":"))||raw}catch(_){return raw}}return raw};
@@ -107,7 +108,7 @@
   $("#refreshBtn").addEventListener("click",()=>{clearCloudBackoff();load(true)});
 
   const viewMeta={
-    dashboard:["Praxis-Cockpit","Dashboard","Was heute Aufmerksamkeit braucht – und was als Nächstes kommt."],
+    dashboard:["Heute","Dein Praxistag","Was jetzt relevant ist – ohne Systemballast."],
     journey:["Client Journey","Klientenreise","Vom ersten Kontakt bis zur abgeschlossenen Begleitung."],
     clients:["Klient:innen","Klient:innen","Akte öffnen und von hier aus Termine, Sitzungen, Angebote und Honorarnoten steuern."],
     bookings:["Kalender","Termine","Buchungen verwalten, verschieben und nachvollziehen."],
@@ -125,29 +126,39 @@
   $$(".nav-item[data-view]").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));$$('[data-jump]').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.jump)));
 
   async function load(force=false){
-    if(!session){showLogin();return}
+    if(!session){desktopStage('admin_no_session','Keine lokale Desktop-Sitzung vorhanden.');showLogin();return}
     $("#appShell").classList.add("loading");
+    desktopStage('dashboard_start','Praxisdaten werden geladen …');
     try{
       if(!force&&cloudBackoffActive()){
+        desktopStage('offline_snapshot_check','Lokalen Praxisstand prüfen …');
         const snap=await localOfflineSnapshot(),fallback=dashboardFromOffline(snap);
         if(fallback){
-          data=fallback;hydrateCrm();showApp();$("#adminIdentity").textContent="Offline · Secure Vault";renderAll();showOfflineBanner(snap);return;
+          data=fallback;hydrateCrm();desktopStage('dashboard_render','Lokalen Praxisstand darstellen …');showApp();$("#adminIdentity").textContent="Offline · Secure Vault";renderAll();showOfflineBanner(snap);desktopStage('dashboard_rendered','Praxisverwaltung ist bereit.');document.dispatchEvent(new CustomEvent('bd:desktop-ready'));return;
         }
       }
       try{
+        desktopStage('cloud_dashboard_request','Aktuellen Praxisstand synchronisieren …');
         data=await api("/admin/dashboard"+(force?"?fresh=1":""));
-        clearCloudBackoff();clearOfflineBanner();hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.email||"Administrator";renderAll();
+        desktopStage('cloud_dashboard_received','Praxisdaten empfangen · Oberfläche wird aufgebaut …');
+        clearCloudBackoff();clearOfflineBanner();hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.email||"Administrator";
+        desktopStage('dashboard_render','Dashboard und Arbeitsbereiche werden dargestellt …');
+        renderAll();
+        desktopStage('dashboard_rendered','Praxisverwaltung ist bereit.');
+        document.dispatchEvent(new CustomEvent('bd:desktop-ready'));
         document.dispatchEvent(new CustomEvent('bd:cloud-snapshot',{detail:{customers:data.customers||[],bookings:data.bookings||[]}}));
       }catch(err){
         // Cloudflare quota/network failures should not make the practice view blank.
         // Back off for ten minutes so a blocked quota does not create a retry storm.
+        desktopStage('cloud_dashboard_failed',String(err?.message||err));
         setCloudBackoff(10);
         const snap=await localOfflineSnapshot(),fallback=dashboardFromOffline(snap);
         if(!fallback)throw err;
-        data=fallback;hydrateCrm();showApp();$("#adminIdentity").textContent="Offline · Secure Vault";renderAll();showOfflineBanner(snap);
+        data=fallback;hydrateCrm();desktopStage('offline_dashboard_render','Cloud nicht verfügbar · lokalen Praxisstand darstellen …');showApp();$("#adminIdentity").textContent="Offline · Secure Vault";renderAll();showOfflineBanner(snap);desktopStage('dashboard_rendered','Praxisverwaltung ist offline bereit.');document.dispatchEvent(new CustomEvent('bd:desktop-ready'));
         console.warn("Cloud dashboard unavailable; using encrypted local snapshot:",err.message);
       }
     }catch(err){
+      desktopStage('dashboard_failed',String(err?.stack||err?.message||err));
       if(session)alert(err.message);
     }finally{$("#appShell").classList.remove("loading")}
   }
@@ -461,5 +472,5 @@
   $("#exportLifecycleBtn").addEventListener('click',()=>{const payload={version:1,exportedAt:new Date().toISOString(),lifecycle:loadLifecycle(),settings:loadSettings()};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='beziehungsdynamiken-crm-status-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1200)});
   if($("#importLifecycleInput")) $("#importLifecycleInput").addEventListener('change',async e=>{e.target.value='';message($("#settingsMsg"),'Import ist in BUILD 9 bewusst deaktiviert, weil CRM-Status jetzt serverseitig in D1 gespeichert wird. Nutze für Migrationen die D1-Sicherung.','err')});
 
-  (async()=>{if(!API){showLogin();message($("#loginMsg"),'Die API-Adresse ist noch nicht konfiguriert.','err');return}const magic=await consumeMagicLink();if(session||magic)await load();else showLogin()})();
+  (async()=>{desktopStage('admin_init','Praxisverwaltung initialisiert …');if(!API){desktopStage('admin_api_missing','API-Adresse fehlt.');showLogin();message($("#loginMsg"),'Die API-Adresse ist noch nicht konfiguriert.','err');return}desktopStage('admin_auth_check',session?'Lokale Desktop-Sitzung gefunden.':'Anmeldung prüfen …');const magic=await consumeMagicLink();if(session||magic)await load();else showLogin()})();
 })();
