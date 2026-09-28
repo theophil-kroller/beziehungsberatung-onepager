@@ -80,7 +80,7 @@
       return true;
     }catch(e){
       try{await window.BDVault?.post?.('/backup/error',{message:e.message})}catch(_){ }
-      const local=await getLocalStatus().catch(()=>null);setBackupUI(local,cloudConfig);const m=$('#b1441BackupMessage');const legacy=/\bnot found\b/i.test(String(e.message||''));if(m)m.textContent=legacy?'Lokaler Vault-Dienst ist veraltet: Backup-API fehlt. Build 14.4.1.2 aktualisiert den Vault auf 3.15.1. Danach den Vault-Dienst neu starten.':'Backup fehlgeschlagen: '+e.message;const pill=$('#b1441BackupPill');if(legacy&&pill){pill.className='b1441-backup-pill error';pill.textContent='Vault-Update nötig'}window.BDDesktop?.log?.('backup_r2_error',e.message);return false;
+      const local=await getLocalStatus().catch(()=>null);setBackupUI(local,cloudConfig);const m=$('#b1441BackupMessage');const legacy=/\bnot found\b/i.test(String(e.message||''));if(m)m.textContent=legacy?'Lokaler Vault-Dienst ist veraltet: Backup-API fehlt. Build 14.4.2 aktualisiert den Vault auf 3.16.0. Danach den Vault-Dienst neu starten.':'Backup fehlgeschlagen: '+e.message;const pill=$('#b1441BackupPill');if(legacy&&pill){pill.className='b1441-backup-pill error';pill.textContent='Vault-Update nötig'}window.BDDesktop?.log?.('backup_r2_error',e.message);return false;
     }finally{backupBusy=false}
   }
 
