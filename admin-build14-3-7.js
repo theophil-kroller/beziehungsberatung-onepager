@@ -432,7 +432,7 @@
     }catch(e){alert(e.message)}finally{if(btn)btn.disabled=false}
   }
 
-  function injectPairButton(){const actions=$('.workspace-head .head-actions');if(actions&&!$('#captureAccessPairBtn')){const b=document.createElement('button');b.className='btn ghost';b.id='captureAccessPairBtn';b.type='button';b.textContent='📱 Gerät verbinden';b.onclick=createAccessPairing;actions.prepend(b)}const inboxActions=$('.documentation-inbox-head .panel-head-actions');if(inboxActions&&!$('#captureAccessPairInboxBtn')){const b=document.createElement('button');b.className='btn ghost';b.id='captureAccessPairInboxBtn';b.type='button';b.textContent='Gerät verbinden';b.onclick=createAccessPairing;inboxActions.insertBefore(b,$('#documentationInboxRefresh'))}}
+  function injectPairButton(){const actions=$('.workspace-head .head-actions');if(actions&&!$('#captureAccessPairBtn')){const b=document.createElement('button');b.className='btn ghost';b.id='captureAccessPairBtn';b.type='button';b.textContent='📱 Gerät verbinden';b.onclick=createAccessPairing;actions.prepend(b)}$('#captureAccessPairInboxBtn')?.remove()}
 
   function stampInboxCheck(){const t=$('#documentationInboxLastChecked');if(t)t.textContent='Zuletzt geprüft: '+new Date().toLocaleTimeString('de-AT',{hour:'2-digit',minute:'2-digit'})}
   function bind(){
