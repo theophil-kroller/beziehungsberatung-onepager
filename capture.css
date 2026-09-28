@@ -3,3 +3,18 @@
 /* BUILD 14.3.10 — typing should never fight the sticky action bar. */
 .capture-typing .stage-footer{position:static;box-shadow:none;background:#fff;border-color:var(--line)}
 @media(max-width:640px){.capture-typing .stage-footer{margin-top:12px}}
+
+/* BUILD 14.4.1.1 — BOOX / E-Ink low-latency capture + camera-free pairing. */
+.eink-device *{animation:none!important;transition:none!important}
+.eink-device .capture-app{max-width:980px}
+.eink-device .canvas-wrap{border-radius:6px;box-shadow:none}
+.eink-device .work-surface{box-shadow:none}
+.eink-device .stage-footer{backdrop-filter:none}
+.eink-device #workSaveState{font-weight:700}
+.connect-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.connect-options button{display:grid;gap:5px;text-align:left;padding:16px}
+.connect-options small{font-size:.78rem;color:var(--muted);font-weight:500}
+.pair-code-shell{display:grid;gap:12px}
+.pair-code-input{width:100%;font:700 clamp(1.15rem,4vw,1.55rem)/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase;text-align:center;border:2px solid #b9afa8;border-radius:14px;padding:16px;background:#fff;color:#211b19}
+.eink-device .pair-code-input{border-color:#111;border-radius:4px}
+@media(max-width:640px){.connect-options{grid-template-columns:1fr}.pair-code-input{font-size:1.1rem;letter-spacing:.035em}}

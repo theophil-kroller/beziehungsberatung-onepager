@@ -10,7 +10,7 @@
   <link rel="manifest" href="capture-manifest.webmanifest">
   <link rel="icon" href="capture-icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="capture-icon-192.png">
-  <link rel="stylesheet" href="capture.css?v=14-3-10">
+  <link rel="stylesheet" href="capture.css?v=14-4-1-1">
 </head>
 <body>
 <main class="capture-app">
@@ -121,7 +121,7 @@
       <p id="transferState" class="save-state"></p>
     </section>
 
-    <details class="support-drawer"><summary>Problembehandlung & Export</summary><div class="support-body"><section class="queue-card"><div class="section-head"><div><strong>Noch nicht übertragen</strong><p class="help">Wird nur relevant, wenn eine Synchronisierung fehlgeschlagen ist.</p></div><button id="retryQueue" class="soft-button" type="button">Erneut versuchen</button></div><div id="queueSummary" class="queue-summary"></div><div id="queueList" class="queue-list"></div></section><div class="fallback"><label>QR-Link oder Kopplungscode einfügen<input id="pairingInput" autocomplete="off" placeholder="https://…/capture.html?…"></label><button id="pairingApply" type="button">Verbindung übernehmen</button><hr><label>Passwort für verschlüsselten Datei-Export<input id="password" type="password" autocomplete="new-password" minlength="10"></label><button id="exportBtn" type="button">.bdcapture-Datei exportieren</button></div></div></details>
+    <details class="support-drawer"><summary>Problembehandlung & Export</summary><div class="support-body"><section class="queue-card"><div class="section-head"><div><strong>Noch nicht übertragen</strong><p class="help">Wird nur relevant, wenn eine Synchronisierung fehlgeschlagen ist.</p></div><button id="retryQueue" class="soft-button" type="button">Erneut versuchen</button></div><div id="queueSummary" class="queue-summary"></div><div id="queueList" class="queue-list"></div></section><div class="fallback"><label>QR-Link oder Kopplungscode einfügen<input id="pairingInput" autocomplete="off" placeholder="BD-XXXX-XXXX-XXXX oder https://…"></label><button id="pairingApply" type="button">Verbindung übernehmen</button><hr><label>Passwort für verschlüsselten Datei-Export<input id="password" type="password" autocomplete="new-password" minlength="10"></label><button id="exportBtn" type="button">.bdcapture-Datei exportieren</button></div></div></details>
   </section>
 
   <section id="captureSuccess" class="capture-stage success-stage">
@@ -133,11 +133,19 @@
   <section id="localSafety" class="visually-hidden"><strong id="relayNotice">✓ Lokaler Speicher aktiv.</strong></section>
 </main>
 
+<dialog id="connectDialog">
+  <div class="scanner-shell connect-choice"><button id="connectClose" class="scanner-close" type="button">×</button><p class="overline">Gerät verbinden</p><h2>Wie möchtest du koppeln?</h2><p>Die Kopplung ist nur einmal nötig. Danach sendest du Captures direkt an deine persönliche Dokumentations-Inbox.</p><div class="connect-options"><button id="connectQrBtn" class="soft-button" type="button"><strong>QR-Code scannen</strong><small>Für Smartphone oder Tablet mit Kamera</small></button><button id="connectCodeBtn" class="soft-button" type="button"><strong>Kopplungscode eingeben</strong><small>Für BOOX / E-Ink ohne Kamera</small></button></div></div>
+</dialog>
+
+<dialog id="pairCodeDialog">
+  <div class="scanner-shell pair-code-shell"><button id="pairCodeClose" class="scanner-close" type="button">×</button><p class="overline">Einmaliges Pairing</p><h2>Kopplungscode eingeben</h2><p>Öffne im Praxis-CRM <strong>„Gerät verbinden“</strong> und gib den dort angezeigten Code hier ein.</p><input id="pairCodeInput" class="pair-code-input" inputmode="text" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="17" placeholder="BD-XXXX-XXXX-XXXX"><button id="pairCodeSubmit" class="primary-button full" type="button">Sicher verbinden</button><p id="pairCodeState" class="save-state">Der Code ist nur kurz gültig und kann nur einmal verwendet werden.</p><p class="micro muted">Der Verschlüsselungsschlüssel wird direkt zwischen diesem Gerät und deinem Praxis-CRM ausgehandelt. Cloudflare erhält ihn nicht.</p></div>
+</dialog>
+
 <dialog id="scannerDialog">
   <div class="scanner-shell"><button id="scannerClose" class="scanner-close" type="button">×</button><p class="overline" id="scannerEyebrow">Verbindung</p><h2 id="scannerTitle">Gerät verbinden</h2><p id="scannerCopy">Scanne den QR-Code aus dem CRM.</p><div class="scanner-frame"><video id="scannerVideo" playsinline muted></video><div class="scanner-guide"></div></div><p id="scannerState">Kamera wird gestartet …</p><details><summary>Kamera funktioniert nicht?</summary><p>Die Erfassung ist bereits lokal gespeichert. Du kannst den QR-Code mit der normalen Kamera öffnen oder den Link unter Problembehandlung einfügen.</p></details></div>
 </dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="capture.js?v=14-3-10"></script>
+<script src="capture.js?v=14-4-1-1"></script>
 </body>
 </html>
