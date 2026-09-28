@@ -43,7 +43,7 @@
   }
   async function ackRelay(relay){const r=await fetch(apiBase()+'/capture-transfer/ack',{method:'POST',headers:{Authorization:'Bearer '+sessionToken(),'Content-Type':'application/json'},body:JSON.stringify({relay})}),x=await r.json().catch(()=>({}));if(!r.ok||x.ok===false)throw new Error(x.error||'Capture konnte am Relay noch nicht bestätigt werden.');return x}
   function resolvePending(meta){if(meta.ref)return meta;const bookings=window.BDAdminUX?.getData?.()?.bookings||[],booking=bookings.find(row=>String(row.eventId)===String(meta.eventId));if(!booking)return meta;return{...meta,ref:booking.customerIdentityEmail||booking.email||'',displayName:booking.name||'',sessionDate:String(booking.start||'').slice(0,10)}}
-  function captureType(payload){if(['dictation','session','note'].includes(payload?.captureType))return payload.captureType;return(payload?.audio||[]).length?'dictation':'note'}
+  function captureType(payload){if(['dictation','session','note','idea'].includes(payload?.captureType))return payload.captureType;return(payload?.audio||[]).length?'dictation':'note'}
   function captureSummary(payload){const audio=(payload.audio||[]).length,pages=Array.isArray(payload.inkPages)?payload.inkPages.filter(page=>(page.strokes||[]).length).length:((payload.strokes||[]).length?1:0),photos=(payload.photos||[]).length,hasText=!!String(payload.noteText||'').trim();return[audio?`${audio} Audio`:null,pages?`${pages} Handschriftseite${pages===1?'':'n'}`:null,hasText?'Textnotiz':null,photos?`${photos} Foto${photos===1?'':'s'}`:null].filter(Boolean).join(' · ')||'Capture-Quelle'}
 
   async function loadArtifactPayload(id){
@@ -55,7 +55,15 @@
     try{return JSON.parse(await r.text())}catch(_){throw new Error('Originalquelle ist kein lesbarer Capture-Datensatz.')}
   }
 
+  async function storeKnowledgeIncoming(meta,payload){
+    const captureId=String(payload.captureId||meta?.relay||crypto.randomUUID()),raw=new TextEncoder().encode(JSON.stringify(payload));
+    const pages=Array.isArray(payload.inkPages)?payload.inkPages.some(page=>(page.strokes||[]).length):!!(payload.strokes||[]).length;
+    const saved=await window.BDVault.post('/knowledge-idea-inbox',{captureId,title:String(payload.label||'').trim()||'Neue Idee',body:String(payload.noteText||''),sourceType:String(payload.ideaSourceType||'own'),sourceUrl:String(payload.ideaSourceUrl||''),hasAudio:(payload.audio||[]).length>0,hasInk:pages,hasText:!!String(payload.noteText||'').trim(),hasPhotos:(payload.photos||[]).length>0,rawBase64:bytes64(raw),createdAt:payload.createdAt});
+    return saved.item;
+  }
+
   async function storeIncoming(meta,payload){
+    if(payload?.domain==='knowledge'||payload?.captureType==='idea')return storeKnowledgeIncoming(meta,payload);
     meta=resolvePending(meta||{});
     const assigned=!!meta.ref,ownerId=String(meta.ownerId||meta.owner||'practice'),ref=assigned?meta.ref:`__bd_inbox__:${ownerId}`;
     const displayName=assigned?(meta.displayName||meta.ref):'Dokumentations-Inbox';

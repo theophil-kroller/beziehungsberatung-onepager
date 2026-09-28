@@ -27,12 +27,16 @@ class KnowledgeHubBuild140Tests(unittest.TestCase):
         worker = (ROOT / "cloudflare-worker/worker.js").read_text(encoding="utf-8")
         hub = (ROOT / "hub.html").read_text(encoding="utf-8")
         admin = (ROOT / "admin.html").read_text(encoding="utf-8")
+        public_page = (ROOT / "wissen/index.html").read_text(encoding="utf-8")
         for marker in ("/admin/knowledge/save", "/admin/knowledge/action", "/wissen/", "sanitizeKnowledgeHtml"):
             self.assertIn(marker, worker)
-        for marker in ("contenteditable=\"true\"", "publishDateInput", "editorialPlan"):
+        for marker in ("contenteditable=\"true\"", "detailPublishDate", "calendarBoard"):
             self.assertIn(marker, hub)
         self.assertIn('href="hub.html"', admin)
+        self.assertNotIn('href="hub.html" target="_blank"', admin)
         self.assertNotIn('data-view="knowledge"', admin)
+        self.assertIn('href="wissen/"', hub)
+        self.assertIn('id="articleGrid"', public_page)
 
 
 if __name__ == "__main__":

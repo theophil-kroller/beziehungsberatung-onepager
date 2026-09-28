@@ -67,7 +67,7 @@
     try{await window.BDVault.request('/backup/status')}catch(e){
       if(!/not found/i.test(String(e.message||'')))return;
       const msg=$('#b1441BackupMessage'),pill=$('#b1441BackupPill');
-      if(msg)msg.textContent='Lokaler Vault-Dienst ist veraltet. Build 14.4.2 enthält Vault 3.16.0 mit Backup-API. Bitte vault_server.py aktualisieren und den Vault-Dienst neu starten.';
+      if(msg)msg.textContent='Lokaler Vault-Dienst ist veraltet. Build 14.5 enthält Vault 3.17.0 mit Backup-API. Bitte vault_server.py aktualisieren und den Vault-Dienst neu starten.';
       if(pill){pill.className='b1441-backup-pill error';pill.textContent='Vault-Update nötig'}
     }
   }

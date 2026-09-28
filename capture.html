@@ -10,7 +10,7 @@
   <link rel="manifest" href="capture-manifest.webmanifest">
   <link rel="icon" href="capture-icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="capture-icon-192.png">
-  <link rel="stylesheet" href="capture.css?v=14-4-1-1">
+  <link rel="stylesheet" href="capture.css?v=14-5">
 </head>
 <body>
 <main class="capture-app">
@@ -44,6 +44,7 @@
       <button type="button" data-mode="dictation"><span class="mode-icon">🎙</span><span><strong>Diktat</strong><small>Kurz nach der Sitzung festhalten, was wichtig war</small></span><b>›</b></button>
       <button type="button" data-mode="session" aria-label="Sitzung + Handschrift"><span class="mode-icon">🎧</span><span><strong>Sitzung aufnehmen</strong><small>Audio aufnehmen und gleichzeitig mitschreiben</small></span><b>›</b></button>
       <button type="button" data-mode="note" aria-label="Notiz / Anlage"><span class="mode-icon">✍️</span><span><strong>Notiz</strong><small>Text, Handschrift oder Foto erfassen</small></span><b>›</b></button>
+      <button type="button" data-mode="idea" class="idea-mode" aria-label="Idee oder Inspiration"><span class="mode-icon">💡</span><span><strong>Idee / Inspiration</strong><small>Geistesblitz, Reddit-/YouTube-Fundstück, Screenshot oder Content-Idee</small></span><b>›</b></button>
     </div>
 
     <section id="resumeCard" class="resume-card" hidden>
@@ -83,10 +84,19 @@
         <summary><span>＋</span> Notiz oder Foto hinzufügen</summary>
         <div class="optional-body">
           <label>Textnotiz<textarea id="noteText" rows="6" placeholder="Kurze Stichpunkte, Beobachtungen oder Ergänzungen …"></textarea></label>
-          <div class="photo-row"><strong>Fotos / Anlagen</strong><label class="file-button">Foto hinzufügen<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label></div>
+          <div class="photo-row"><strong>Fotos / Anlagen</strong><label class="file-button"><span id="photoButtonLabel">Foto hinzufügen</span><input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label></div>
           <div id="photoPreview" class="media-list"></div>
         </div>
       </details>
+    </section>
+
+    <section id="ideaMetaSection" class="idea-meta-section" hidden>
+      <div class="idea-meta-head"><span class="idea-bulb">💡</span><div><strong>Woher kommt die Inspiration?</strong><small>Optional – hilft später beim Clustern und Wiederfinden.</small></div></div>
+      <div class="advanced-grid">
+        <label>Quelle<select id="ideaSourceType"><option value="own">Eigener Gedanke</option><option value="reddit">Reddit</option><option value="youtube">YouTube / Kommentar</option><option value="web">Website / Artikel</option><option value="book">Buch / Paper</option><option value="conversation">Gespräch</option><option value="other">Sonstiges</option></select></label>
+        <label>Link (optional)<input id="ideaSourceUrl" type="url" inputmode="url" placeholder="https://…"></label>
+      </div>
+      <p class="help">Tipp: Ein Screenshot kann einfach über „Foto hinzufügen“ mitgesendet werden. Der Original-Capture bleibt lokal erhalten.</p>
     </section>
 
     <details class="advanced-capture">
@@ -134,7 +144,7 @@
 </main>
 
 <dialog id="connectDialog">
-  <div class="scanner-shell connect-choice"><button id="connectClose" class="scanner-close" type="button">×</button><p class="overline">Gerät verbinden</p><h2>Wie möchtest du koppeln?</h2><p>Die Kopplung ist nur einmal nötig. Danach sendest du Captures direkt an deine persönliche Dokumentations-Inbox.</p><div class="connect-options"><button id="connectQrBtn" class="soft-button" type="button"><strong>QR-Code scannen</strong><small>Für Smartphone oder Tablet mit Kamera</small></button><button id="connectCodeBtn" class="soft-button" type="button"><strong>Kopplungscode eingeben</strong><small>Für BOOX / E-Ink ohne Kamera</small></button></div></div>
+  <div class="scanner-shell connect-choice"><button id="connectClose" class="scanner-close" type="button">×</button><p class="overline">Gerät verbinden</p><h2>Wie möchtest du koppeln?</h2><p>Die Kopplung ist nur einmal nötig. Danach sendest du Praxis-Captures an deine Dokumentations-Inbox und Ideen an den Knowledge Hub.</p><div class="connect-options"><button id="connectQrBtn" class="soft-button" type="button"><strong>QR-Code scannen</strong><small>Für Smartphone oder Tablet mit Kamera</small></button><button id="connectCodeBtn" class="soft-button" type="button"><strong>Kopplungscode eingeben</strong><small>Für BOOX / E-Ink ohne Kamera</small></button></div></div>
 </dialog>
 
 <dialog id="pairCodeDialog">
@@ -146,6 +156,6 @@
 </dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="capture.js?v=14-4-1-1"></script>
+<script src="capture.js?v=14-5"></script>
 </body>
 </html>
