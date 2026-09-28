@@ -1,0 +1,39 @@
+/* BUILD 14.4.1 — production hardening + client action rail. */
+
+/* Client record: contextual actions live on a narrow, quiet rail at the right edge. */
+#clientDialog.record-dialog>.dialog-shell{padding-right:112px!important}
+.client-action-rail{position:absolute;right:18px;top:112px;width:72px;display:flex;flex-direction:column;gap:8px;z-index:30;padding:8px;border:1px solid #e8ddd5;border-radius:20px;background:rgba(255,253,250,.96);box-shadow:0 12px 32px rgba(47,38,35,.08);backdrop-filter:blur(10px)}
+.client-action-rail>button{appearance:none;border:0;background:transparent;border-radius:14px;min-height:58px;padding:8px 4px;display:grid;place-items:center;gap:3px;color:#5f514a;font:700 19px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;transition:background .15s ease,color .15s ease,transform .15s ease}
+.client-action-rail>button:hover,.client-action-rail>button:focus-visible{background:#f6ebe3;color:#9e513a;outline:none;transform:translateY(-1px)}
+.client-action-rail>button span{font-size:9px;line-height:1.15;font-weight:800;color:#8a7770;letter-spacing:.01em}
+.client-action-rail>button:hover span{color:#9e513a}
+.client-action-more{position:absolute;right:82px;bottom:4px;width:160px;padding:7px;background:#fff;border:1px solid #e6d9d0;border-radius:15px;box-shadow:0 16px 42px rgba(47,38,35,.14);display:grid;gap:3px}
+.client-action-more[hidden]{display:none!important}
+.client-action-more button{border:0;background:transparent;border-radius:10px;padding:9px 10px;text-align:left;color:#51443e;font:750 11px system-ui;cursor:pointer}
+.client-action-more button:hover{background:#f8f1eb}
+
+/* Backup card: calm when healthy, unmistakable when the required R2 copy is missing. */
+.b1441-backup-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.b1441-backup-heading h2{margin-bottom:7px}
+.b1441-backup-pill{display:inline-flex;align-items:center;white-space:nowrap;border-radius:999px;padding:7px 10px;font-size:10px;font-weight:850;background:#f1ece8;color:#74645c}
+.b1441-backup-pill.ok{background:#e8f3e8;color:#446649}.b1441-backup-pill.warn{background:#fff2dd;color:#8a641e}.b1441-backup-pill.error{background:#fbe8e5;color:#93463c}.b1441-backup-pill.pending{background:#f1ece8;color:#74645c}
+.b1441-backup-status{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.b1441-backup-status>div{border:1px solid #eadfd7;border-radius:14px;background:#fffdfb;padding:12px 13px}
+.b1441-backup-status span,.b1441-backup-status strong{display:block}.b1441-backup-status span{font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.07em;color:#987e72}.b1441-backup-status strong{margin-top:5px;font-size:12px;color:#463934}
+.b1441-backup-panel.is-error{border-color:#e3b4aa!important;box-shadow:0 0 0 3px rgba(186,78,61,.04)}
+.b1441-backup-alert{border:1px solid #e4b5aa!important;background:#fff5f2!important;color:#904a3e!important}
+
+.b1441-backup-dialog{max-width:760px}
+.b1441-backup-list{display:grid;gap:8px;margin:16px 0;max-height:50vh;overflow:auto}
+.b1441-backup-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;border:1px solid #eadfd7;border-radius:14px;padding:12px 13px;background:#fff}
+.b1441-backup-row strong,.b1441-backup-row span{display:block}.b1441-backup-row span{font-size:10px;color:#8a7770;margin-top:3px}
+.b1441-backup-row-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.b1441-backup-row-actions button{border:1px solid #e2d5cc;border-radius:10px;background:#fff;padding:7px 9px;font-size:10px;font-weight:800;color:#5d4e47;cursor:pointer}.b1441-backup-row-actions button.restore{color:#8d4337;background:#fff6f3}
+
+@media(max-width:900px){
+  #clientDialog.record-dialog>.dialog-shell{padding-right:26px!important;padding-bottom:92px!important}
+  .client-action-rail{position:sticky;left:0;right:auto;bottom:8px;top:auto;width:100%;margin-top:8px;flex-direction:row;justify-content:center;border-radius:18px;padding:6px;box-shadow:0 10px 30px rgba(47,38,35,.1)}
+  .client-action-rail>button{flex:1;min-height:52px;max-width:100px}
+  .client-action-more{right:10px;bottom:66px}
+  .b1441-backup-status{grid-template-columns:1fr}
+}

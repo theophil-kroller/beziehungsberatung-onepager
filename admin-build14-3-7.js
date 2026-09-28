@@ -15,7 +15,7 @@
   const cloudCadenceMs=()=>{const v=String(localStorage.getItem('bdCloudCadence')||'sparsam');return v==='aktuell'?2*60*1000:v==='ausgewogen'?5*60*1000:15*60*1000};
   const isRecentAutoItem=item=>{const t=new Date(item?.receivedAt||item?.createdAt||0).getTime();return !!t&&(Date.now()-t)<20*60*1000};
   const pendingKeys=()=>Object.keys(localStorage).filter(key=>key.startsWith('bd_capture_relay_'));
-  let syncing=false,lastCloudCheck=0,workflowItem=null,workflowPayload=null,workflowTimer=null,workflowSecondsTimer=null,workflowStartedAt=0,activeHandoff=null,localInboxTimer=null;
+  let syncing=false,lastCloudCheck=0,workflowItem=null,workflowPayload=null,workflowTimer=null,workflowSecondsTimer=null,workflowStartedAt=0,activeHandoff=null,localInboxTimer=null,lastInboxRenderSignature='';
   const autoStarting=new Set();
 
   function b64bytes(value){let s=String(value||'').replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';const raw=atob(s),out=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
@@ -157,6 +157,20 @@
     if(!item.assigned)return{label:'Zuordnung nötig',kind:'assignment',action:'Zuordnen ›'};
     return{label:statusCopy(item.status),kind:item.status,action:'Weiter ›'};
   }
+  function inboxStructureSignature(items,queue){
+    const jobs=(queue?.items||[]).map(x=>[String(x.id),String(x.status),Number(x.queuePosition||0)]);
+    const rows=(items||[]).map(x=>[String(x.id),String(x.status),!!x.aiDraft,!!x.aiStartedAt,!!x.transcript,!!x.assigned,(x.dictationIds||[]).map(String).join(','),String(x.sessionId||''),String(x.clientRef||'')]);
+    return JSON.stringify([rows,jobs]);
+  }
+  function updateInboxLiveState(host,items,queue){
+    const byId=new Map((items||[]).map(x=>[String(x.id),x]));
+    host.querySelectorAll('[data-doc-item]').forEach(row=>{
+      const item=byId.get(String(row.dataset.docItem||''));if(!item)return;
+      const state=cardState(item,queue),badge=row.querySelector('.doc-card-state'),arrow=row.querySelector('.doc-card-arrow');
+      if(badge){if(badge.textContent!==state.label)badge.textContent=state.label;badge.className=`doc-card-state ${state.kind}`}
+      if(arrow&&arrow.textContent!==state.action)arrow.textContent=state.action;
+    });
+  }
   async function renderInbox(sync=true){
     const host=$('#documentationInboxList'),count=$('#documentationInboxCount');if(!host||!count)return;
     if(!window.BDVault){host.innerHTML='<div class="doc-inbox-empty">Lokaler Vault wird geladen …</div>';return}
@@ -165,14 +179,17 @@
     if(sync)await syncPendingRelays().catch(()=>{});
     try{
       const [result,queue]=await Promise.all([window.BDVault.request('/documentation-inbox?status=open'),window.BDVault.request('/whisper/queue').catch(()=>({items:[]}))]);
-      const items=(result.items||[]).sort((a,b)=>new Date(b.receivedAt)-new Date(a.receivedAt)),stats=inboxStats(items);count.textContent=String(items.length);
+      const items=(result.items||[]).sort((a,b)=>new Date(b.receivedAt)-new Date(a.receivedAt)),stats=inboxStats(items);if(count.textContent!==String(items.length))count.textContent=String(items.length);
       let statsHost=$('#documentationInboxStats');if(!statsHost){$('#documentationInboxList').insertAdjacentHTML('beforebegin','<div class="doc-inbox-stats" id="documentationInboxStats"></div>');statsHost=$('#documentationInboxStats')}
-      statsHost.innerHTML=`<span><b>${stats.new}</b> Neu</span><span><b>${stats.processing}</b> In Arbeit</span><span class="review"><b>${stats.review}</b> Zur Prüfung</span>`;
+      const statsMarkup=`<span><b>${stats.new}</b> Neu</span><span><b>${stats.processing}</b> In Arbeit</span><span class="review"><b>${stats.review}</b> Zur Prüfung</span>`;if(statsHost.innerHTML!==statsMarkup)statsHost.innerHTML=statsMarkup;
       const toAuto=items.filter(x=>x.autoProcess&&x.status!=='done'&&isRecentAutoItem(x)&&((x.hasAudio&&!x.transcript&&!(x.dictationIds||[]).length)||(!x.hasAudio&&!x.aiDraft&&!x.aiStartedAt&&x.hasText)));
       toAuto.slice(0,2).forEach(item=>ensureAutomaticProcessing(item).catch(()=>{}));
       scheduleLocalInboxRefresh(items);
       document.dispatchEvent(new CustomEvent('bd:local-processing-status',{detail:{queue,items}}));
-      if(!items.length){host.innerHTML='<div class="doc-inbox-empty" id="documentationInboxBaseEmpty"><strong>Alles erledigt.</strong><span>Neue Captures und offene Nachbereitungen erscheinen hier.</span></div>';await window.BDDocumentationUX?.enrichInbox?.(host,items);if(host.querySelector('.b1438-open-task'))$('#documentationInboxBaseEmpty')?.remove();updateRelayHint();return}
+      const renderSignature=inboxStructureSignature(items,queue);
+      if(items.length&&renderSignature===lastInboxRenderSignature&&host.querySelector('[data-doc-item]')){updateInboxLiveState(host,items,queue);updateRelayHint();return}
+      lastInboxRenderSignature=renderSignature;
+      if(!items.length){const emptyMarkup='<div class="doc-inbox-empty" id="documentationInboxBaseEmpty"><strong>Alles erledigt.</strong><span>Neue Captures und offene Nachbereitungen erscheinen hier.</span></div>';if(host.innerHTML!==emptyMarkup)host.innerHTML=emptyMarkup;await window.BDDocumentationUX?.enrichInbox?.(host,items);if(host.querySelector('.b1438-open-task'))$('#documentationInboxBaseEmpty')?.remove();updateRelayHint();return}
       host.innerHTML=items.slice(0,12).map(item=>{const state=cardState(item,queue);return `<article class="doc-inbox-row doc-inbox-row-compact" tabindex="0" role="button" data-doc-item="${esc(item.id)}"><div class="doc-inbox-icon">${typeIcon(item)}</div><div class="doc-inbox-main"><div class="doc-inbox-title"><strong>${esc(item.title||'Dokumentation')}</strong></div><p>${esc(item.summary||'Capture-Quelle')}${item.sessionDate?' · '+esc(fmtDate(item.sessionDate)):''}</p><div class="doc-inbox-tags">${sourceTags(item)}<span>${esc(relTime(item.receivedAt))}</span></div></div><div class="doc-inbox-next"><span class="doc-card-state ${esc(state.kind)}">${esc(state.label)}</span><span class="doc-card-arrow">${esc(state.action)}</span></div></article>`}).join('');
       host.querySelectorAll('[data-doc-item]').forEach(row=>{const open=()=>openWorkflow(items.find(x=>String(x.id)===row.dataset.docItem));row.onclick=open;row.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
       await window.BDDocumentationUX?.enrichInbox?.(host,items);updateRelayHint();

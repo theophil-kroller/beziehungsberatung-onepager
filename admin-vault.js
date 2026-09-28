@@ -24,7 +24,7 @@
     if(!r.ok||body?.ok===false)throw new Error(body?.error||'Vault-Anfrage fehlgeschlagen');
     return body;
   }
-  async function post(path,body){return request(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})}
+  async function post(path,body){const result=await request(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!String(path||'').startsWith('/backup/')&&!['/unlock','/lock','/setup'].includes(String(path||'')))document.dispatchEvent(new CustomEvent('bd:vault-mutated',{detail:{path:String(path||'')}}));return result}
   async function del(path){return request(path,{method:'DELETE'})}
 
   function updateStatus(){

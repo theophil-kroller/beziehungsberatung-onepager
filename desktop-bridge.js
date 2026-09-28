@@ -6,7 +6,7 @@
   const SESSION_KEY='bd_admin_session_v1';
   const desktop = {
     isDesktop,
-    version:'14.4.0.8-beta',
+    version:'14.4.1-beta',
     async status(){
       if(!isDesktop) return {ok:false,isDesktop:false};
       const r=await fetch('/desktop/status',{cache:'no-store'});return r.json();
@@ -85,7 +85,7 @@
     window.BD_BOOKING_CONFIG.apiBaseUrl=location.origin+'/desktop/cloud';
   }
   bootOverlay();
-  desktop.log(isAdminPage?'admin_shell_loaded':'workspace_shell_loaded',isAdminPage?'desktop bridge 14.4.0.8':location.pathname);
+  desktop.log(isAdminPage?'admin_shell_loaded':'workspace_shell_loaded',isAdminPage?'desktop bridge 14.4.1':location.pathname);
   window.addEventListener('DOMContentLoaded',()=>{document.body?.classList.add('bd-desktop-shell');desktop.log(isAdminPage?'admin_dom_ready':'workspace_dom_ready',location.pathname)});
   window.addEventListener('load',()=>desktop.log(isAdminPage?'admin_window_loaded':'workspace_window_loaded',location.pathname));
   if(isAdminPage){
