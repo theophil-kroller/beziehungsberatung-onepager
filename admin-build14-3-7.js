@@ -58,7 +58,8 @@
   async function storeKnowledgeIncoming(meta,payload){
     const captureId=String(payload.captureId||meta?.relay||crypto.randomUUID()),raw=new TextEncoder().encode(JSON.stringify(payload));
     const pages=Array.isArray(payload.inkPages)?payload.inkPages.some(page=>(page.strokes||[]).length):!!(payload.strokes||[]).length;
-    const saved=await window.BDVault.post('/knowledge-idea-inbox',{captureId,title:String(payload.label||'').trim()||'Neue Idee',body:String(payload.noteText||''),sourceType:String(payload.ideaSourceType||'own'),sourceUrl:String(payload.ideaSourceUrl||''),hasAudio:(payload.audio||[]).length>0,hasInk:pages,hasText:!!String(payload.noteText||'').trim(),hasPhotos:(payload.photos||[]).length>0,rawBase64:bytes64(raw),createdAt:payload.createdAt});
+    const web=payload.captureSubtype==='web'?payload.web||{}:null,original=web?(web.subtype==='selection'?web.selectedText:web.subtype==='page'?web.pageExcerpt:''):String(payload.noteText||'');
+    const saved=await window.BDVault.post('/knowledge-idea-inbox',{captureId,title:String(web?.pageTitle||payload.label||'').trim()||'Neue Idee',body:String(original||''),sourceType:web?'web':String(payload.ideaSourceType||'own'),sourceUrl:String(web?.url||payload.ideaSourceUrl||''),sourceDescription:web?[web.domain,web.nearestHeading].filter(Boolean).join(' · '):'',captureType:web?(web.subtype==='screenshot'?'screenshot':'web'):undefined,hasAudio:(payload.audio||[]).length>0,hasInk:pages,hasText:!!String(original||'').trim(),hasPhotos:(payload.photos||[]).length>0,rawBase64:bytes64(raw),createdAt:payload.createdAt});
     return saved.item;
   }
 
