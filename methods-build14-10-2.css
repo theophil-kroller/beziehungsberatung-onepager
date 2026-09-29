@@ -10,3 +10,5 @@
 .method-ink-pages{display:grid;gap:14px}.method-ink-pages figure{margin:0}.method-ink-pages figcaption{font-size:.82rem;color:#776a62;margin:0 0 5px}
 .method-ink-pages canvas{display:block;width:100%;height:auto;border:1px solid #ddd2c9;border-radius:8px;background:#fff}
 @media(max-width:900px){.method-review-layout{grid-template-columns:1fr}.method-review-source{position:relative;max-height:40vh}.method-review-edit .method-form{grid-template-columns:1fr}}
+
+.method-external-assist{margin:18px 0;border:1px solid #dbc9bc;border-radius:10px;background:#fff9f3;padding:14px}.method-external-assist summary{cursor:pointer;font-weight:700}.method-external-assist p{line-height:1.45}.method-external-assist label{display:block;margin:12px 0;font-weight:600}.method-external-assist textarea{display:block;width:100%;box-sizing:border-box;min-height:110px;margin-top:7px;padding:10px;font:inherit;resize:vertical}.method-external-assist textarea[hidden]{display:none}.method-external-assist button{margin:4px 8px 4px 0}
