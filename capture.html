@@ -10,7 +10,7 @@
   <link rel="manifest" href="capture-manifest.webmanifest">
   <link rel="icon" href="capture-icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="capture-icon-192.png">
-  <link rel="stylesheet" href="capture.css?v=14-5-1">
+  <link rel="stylesheet" href="capture.css?v=14-10-2">
 </head>
 <body>
 <main class="capture-app">
@@ -52,6 +52,8 @@
       <div><span class="resume-kicker">Letzte Erfassung</span><strong id="resumeTitle">Erfassung</strong><small id="resumeMeta">✓ sicher auf diesem Gerät</small></div>
       <button id="resumeDraft" class="soft-button" type="button">Fortsetzen</button>
     </section>
+
+    <section id="recentTransfers" class="recent-transfers" hidden><div class="recent-transfers-head"><strong>Zuletzt übertragen</strong><small>Die letzten drei Captures als lokale Sicherheitskopie</small></div><div id="recentTransferList"></div></section>
 
     <details class="draft-drawer">
       <summary>Gespeicherte Erfassungen <span id="draftCount"></span></summary>
@@ -166,6 +168,6 @@
 </dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-  <script src="capture.js?v=14-8-1"></script>
+  <script src="capture.js?v=14-10-2"></script>
 </body>
 </html>

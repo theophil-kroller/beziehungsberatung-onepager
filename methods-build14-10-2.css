@@ -1,0 +1,11 @@
+.method-dialog.method-review-dialog{width:min(1320px,calc(100vw - 32px));box-sizing:border-box}
+.method-review-layout{display:grid;grid-template-columns:minmax(300px,42%) minmax(0,1fr);gap:24px;align-items:start}
+.method-review-source{position:sticky;top:0;max-height:62vh;overflow:auto;background:#f5eee8;border:1px solid #dfd0c5;border-radius:12px;padding:18px}
+.method-review-source>h3{font-size:1rem;margin:0 0 12px}.method-review-source h3:not(:first-child){font-size:.88rem;margin:18px 0 7px;color:#795d4e}
+.method-review-source .method-original-text{line-height:1.55;overflow-wrap:anywhere;white-space:pre-wrap;user-select:text}
+.method-review-source .method-original-media{max-width:100%}.method-review-source .method-original-media img{max-height:250px}
+.method-review-edit{min-width:0}.method-review-edit .method-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+.method-rejected{background:#fff4e5;border:1px solid #dfc29e;border-radius:9px;padding:12px;color:#704929;line-height:1.4}
+.method-ink-pages{display:grid;gap:14px}.method-ink-pages figure{margin:0}.method-ink-pages figcaption{font-size:.82rem;color:#776a62;margin:0 0 5px}
+.method-ink-pages canvas{display:block;width:100%;height:auto;border:1px solid #ddd2c9;border-radius:8px;background:#fff}
+@media(max-width:900px){.method-review-layout{grid-template-columns:1fr}.method-review-source{position:relative;max-height:40vh}.method-review-edit .method-form{grid-template-columns:1fr}}
