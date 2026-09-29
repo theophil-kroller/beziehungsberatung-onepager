@@ -1,6 +1,6 @@
 // previous cache migrated from bd-capture-14-3-8
-const CACHE='bd-capture-14-5-1';
-const SHELL=['/capture.html','/capture.css?v=14-5-1','/capture.js?v=14-5-1','/capture-manifest.webmanifest','/booking-config.js?v=20260918-build8','/capture-icon-192.png','/capture-icon-512.png'];
+const CACHE='bd-capture-14-8-1';
+const SHELL=['/capture.html','/capture.css?v=14-5-1','/capture.js?v=14-8-1','/capture-manifest.webmanifest','/booking-config.js?v=20260918-build8','/capture-icon-192.png','/capture-icon-512.png'];
 const CAPTURE_PATHS=new Set(['/capture.html','/capture.css','/capture.js','/capture-manifest.webmanifest','/booking-config.js','/capture-icon-192.png','/capture-icon-512.png']);
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE&&key.startsWith('bd-capture-')).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));

@@ -45,6 +45,7 @@
       <button type="button" data-mode="session" aria-label="Sitzung + Handschrift"><span class="mode-icon">🎧</span><span><strong>Sitzung aufnehmen</strong><small>Audio aufnehmen und gleichzeitig mitschreiben</small></span><b>›</b></button>
       <button type="button" data-mode="note" aria-label="Notiz / Anlage"><span class="mode-icon">✍️</span><span><strong>Notiz</strong><small>Text, Handschrift oder Foto erfassen</small></span><b>›</b></button>
       <button type="button" data-mode="idea" class="idea-mode" aria-label="Idee oder Inspiration"><span class="mode-icon">💡</span><span><strong>Idee / Inspiration</strong><small>Geistesblitz, Reddit-/YouTube-Fundstück, Screenshot oder Content-Idee</small></span><b>›</b></button>
+      <button type="button" data-mode="method" class="idea-mode" aria-label="Übung oder Methode"><span class="mode-icon">🧩</span><span><strong>Übung / Methode</strong><small>Audio, Text, Foto, Screenshot oder Link schnell festhalten</small></span><b>›</b></button>
     </div>
 
     <section id="resumeCard" class="resume-card" hidden>
@@ -99,6 +100,15 @@
       <p class="help">Tipp: Ein Screenshot kann einfach über „Foto hinzufügen“ mitgesendet werden. Der Original-Capture bleibt lokal erhalten.</p>
     </section>
 
+    <section id="methodMetaSection" class="idea-meta-section" hidden>
+      <div class="idea-meta-head"><span class="idea-bulb">🧩</span><div><strong>Herkunft</strong><small>Optional. Erfasse zuerst die Übung; die Angaben kannst du später ergänzen.</small></div></div>
+      <div class="advanced-grid">
+        <label>Art der Quelle<select id="methodSourceType"><option value="">Nicht angegeben</option><option value="workshop">Workshop / Seminar</option><option value="book">Buch</option><option value="conversation">Gespräch</option><option value="own">Eigene Idee</option><option value="training">Ausbildung / Fortbildung</option><option value="web">Web</option><option value="other">Sonstiges</option></select></label>
+        <label>Quelle / Herkunft<input id="methodSourceDescription" type="text" placeholder="z. B. RLT Workshop Hamburg, Buch S. 143"></label>
+        <label>Link (optional)<input id="methodSourceUrl" type="url" inputmode="url" placeholder="https://…"></label>
+      </div>
+    </section>
+
     <details class="advanced-capture">
       <summary>Weitere Angaben</summary>
       <div class="advanced-grid">
@@ -135,7 +145,7 @@
   </section>
 
   <section id="captureSuccess" class="capture-stage success-stage">
-    <div class="success-icon">✓</div><p class="overline">Übertragung abgeschlossen</p><h1>Sicher übertragen</h1><p>Diese Erfassung befindet sich jetzt in deiner Dokumentations-Inbox. Die lokale Kopie bleibt auf diesem Gerät erhalten.</p>
+    <div class="success-icon">✓</div><p class="overline">Übertragung abgeschlossen</p><h1>Sicher übertragen</h1><p id="captureSuccessCopy">Diese Erfassung befindet sich jetzt in deiner Dokumentations-Inbox. Die lokale Kopie bleibt auf diesem Gerät erhalten.</p>
     <button id="successNewCapture" class="primary-button" type="button" data-legacy-label="+ Neue Erfassung starten">Neue Erfassung</button>
     <button id="successHome" class="link-button" type="button">Zur Übersicht</button>
   </section>
@@ -144,7 +154,7 @@
 </main>
 
 <dialog id="connectDialog">
-  <div class="scanner-shell connect-choice"><button id="connectClose" class="scanner-close" type="button">×</button><p class="overline">Gerät verbinden</p><h2>Wie möchtest du koppeln?</h2><p>Die Kopplung ist nur einmal nötig. Danach sendest du Praxis-Captures an deine Dokumentations-Inbox und Ideen an den Knowledge Hub.</p><div class="connect-options"><button id="connectQrBtn" class="soft-button" type="button"><strong>QR-Code scannen</strong><small>Für Smartphone oder Tablet mit Kamera</small></button><button id="connectCodeBtn" class="soft-button" type="button"><strong>Kopplungscode eingeben</strong><small>Für BOOX / E-Ink ohne Kamera</small></button></div></div>
+  <div class="scanner-shell connect-choice"><button id="connectClose" class="scanner-close" type="button">×</button><p class="overline">Gerät verbinden</p><h2>Wie möchtest du koppeln?</h2><p>Die Kopplung ist nur einmal nötig. Danach sendest du Erfassungen an die passende Inbox.</p><div class="connect-options"><button id="connectQrBtn" class="soft-button" type="button"><strong>QR-Code scannen</strong><small>Für Smartphone oder Tablet mit Kamera</small></button><button id="connectCodeBtn" class="soft-button" type="button"><strong>Kopplungscode eingeben</strong><small>Für BOOX / E-Ink ohne Kamera</small></button></div></div>
 </dialog>
 
 <dialog id="pairCodeDialog">
@@ -156,6 +166,6 @@
 </dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-<script src="capture.js?v=14-5-1"></script>
+  <script src="capture.js?v=14-8-1"></script>
 </body>
 </html>
