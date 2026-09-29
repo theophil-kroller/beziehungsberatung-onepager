@@ -6,7 +6,7 @@
   const SESSION_KEY='bd_admin_session_v1';
   const desktop = {
     isDesktop,
-    version:'14.7-beta',
+    version:'14.7.2-beta',
     async status(){
       if(!isDesktop) return {ok:false,isDesktop:false};
       const r=await fetch('/desktop/status',{cache:'no-store'});return r.json();

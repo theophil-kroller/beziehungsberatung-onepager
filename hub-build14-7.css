@@ -43,3 +43,27 @@
 .voice-reference-hint{margin-top:8px;padding:10px 12px;border-radius:12px;background:#f8f4f1;color:#75635a;font-size:12px;line-height:1.45}
 @media(max-width:1100px){#productionDialog,#assetDialog{width:calc(100vw - 20px)!important}.guided-stepper{overflow-x:auto}.guided-concept-panel{grid-template-columns:1fr}.guided-concept-panel.context-collapsed{grid-template-columns:1fr}.guided-context-card.collapsed{min-height:auto;display:block;padding:10px 12px}.guided-context-card.collapsed .guided-context-head{display:flex}.review-grid{grid-template-columns:1fr}}
 @media(max-width:720px){#productionDialog,#assetDialog{width:calc(100vw - 12px)!important}#productionDialog .production-dialog,#assetDialog .asset-dialog{padding:20px 16px 24px;max-height:calc(100vh - 12px)}.guided-stepper{margin-top:10px}.guided-step-connector{display:none}.guided-step{padding:8px 9px}.editor-pass-head{flex-direction:column}}
+
+
+/* BUILD 14.7.2 · True fullscreen workspace + rich draft editor */
+#productionDialog.kh-dialog,#assetDialog.kh-dialog{position:fixed!important;inset:8px!important;width:auto!important;height:auto!important;max-width:none!important;max-height:none!important;margin:0!important;overflow:hidden!important;border-radius:26px}
+#productionDialog .production-dialog,#assetDialog .asset-dialog{width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;overflow:auto!important;border-radius:24px;padding:26px 30px 34px}
+#productionDialog .production-head,#assetDialog .asset-dialog-head{padding-right:46px}
+#productionDialog .guided-stepper,#assetDialog .guided-stepper{position:sticky;top:-26px;z-index:8;margin-top:10px;background:rgba(255,250,246,.96);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(47,38,35,.04)}
+#assetDialog [data-asset-panel="draft"]{display:grid;gap:16px}
+.draft-fallback-field{display:none!important}
+.rich-draft-shell{border:1px solid #e7d9d0;border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 8px 24px rgba(47,38,35,.035)}
+.rich-draft-toolbar{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:9px 10px;border-bottom:1px solid #ede1d9;background:#fbf8f5;position:sticky;top:49px;z-index:7}
+.rich-draft-toolbar button{border:1px solid transparent;background:transparent;color:#54443d;border-radius:9px;min-width:34px;height:34px;padding:0 9px;font:700 12px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}
+.rich-draft-toolbar button:hover,.rich-draft-toolbar button:focus-visible{background:#fff;border-color:#e6d8cf;outline:none}
+.rich-draft-toolbar .toolbar-sep{width:1px;height:20px;background:#e2d5cc;margin:0 2px}
+.rich-draft-editor{min-height:58vh;padding:30px clamp(24px,4vw,64px);outline:none;color:#312824;font:18px/1.72 Georgia,"Times New Roman",serif;max-width:1040px;width:100%;margin:0 auto}
+.rich-draft-editor:empty:before{content:attr(data-placeholder);color:#a1938c;pointer-events:none}
+.rich-draft-editor h1{font-size:2.15rem;line-height:1.12;margin:1.3em 0 .55em;letter-spacing:-.02em}.rich-draft-editor h1:first-child{margin-top:0}
+.rich-draft-editor h2{font-size:1.62rem;line-height:1.2;margin:1.45em 0 .5em;letter-spacing:-.01em}.rich-draft-editor h3{font-size:1.28rem;line-height:1.28;margin:1.3em 0 .45em}
+.rich-draft-editor p{margin:.75em 0}.rich-draft-editor ul,.rich-draft-editor ol{padding-left:1.6em;margin:.8em 0}.rich-draft-editor li{margin:.28em 0}.rich-draft-editor blockquote{margin:1.2em 0;padding:.15em 0 .15em 1.15em;border-left:3px solid #c96b4b;color:#65564f}.rich-draft-editor a{color:#a95035;text-decoration:underline;text-underline-offset:2px}
+.rich-draft-status{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;border-top:1px solid #ede1d9;background:#fdfaf7;color:#827169;font-size:11px}
+.review-draft{font:17px/1.68 Georgia,"Times New Roman",serif}.review-draft h1{font-size:2rem}.review-draft h2{font-size:1.45rem;margin-top:1.35em}.review-draft h3{font-size:1.2rem}.review-draft p{margin:.72em 0}.review-draft blockquote{border-left:3px solid #c96b4b;padding-left:1em;color:#65564f}.review-draft ul,.review-draft ol{padding-left:1.45em}
+@media(max-width:900px){#productionDialog.kh-dialog,#assetDialog.kh-dialog{inset:4px!important}#productionDialog .production-dialog,#assetDialog .asset-dialog{padding:20px 16px 26px;border-radius:19px}.rich-draft-toolbar{top:39px}.rich-draft-editor{min-height:52vh;padding:22px 18px;font-size:16px}}
+
+.review-grid .pane-title{align-items:center;gap:10px}.review-edit-draft{margin-left:auto;white-space:nowrap;font-size:11px;padding:7px 10px!important}
