@@ -6,6 +6,7 @@
 .method-review-source .method-original-media{max-width:100%}.method-review-source .method-original-media img{max-height:250px}
 .method-review-edit{min-width:0}.method-review-edit .method-form{grid-template-columns:repeat(2,minmax(0,1fr))}
 .method-rejected{background:#fff4e5;border:1px solid #dfc29e;border-radius:9px;padding:12px;color:#704929;line-height:1.4}
+.method-model-choice{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px;border:1px solid #e7d8ca;border-radius:10px;background:#fff;margin-bottom:15px}.method-model-choice label{display:flex;gap:8px;align-items:center;font-weight:600}.method-model-choice select{font:inherit;max-width:260px;border:1px solid #d5c8bd;background:#fff;border-radius:8px;padding:7px}.method-model-choice small{color:#78685d}
 .method-ink-pages{display:grid;gap:14px}.method-ink-pages figure{margin:0}.method-ink-pages figcaption{font-size:.82rem;color:#776a62;margin:0 0 5px}
 .method-ink-pages canvas{display:block;width:100%;height:auto;border:1px solid #ddd2c9;border-radius:8px;background:#fff}
 @media(max-width:900px){.method-review-layout{grid-template-columns:1fr}.method-review-source{position:relative;max-height:40vh}.method-review-edit .method-form{grid-template-columns:1fr}}
