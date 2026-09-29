@@ -210,6 +210,7 @@
     refresh,
     openFlow,
     openFlowView,
+    getPending:()=>pendingRows().map(b=>({eventId:b.eventId,name:b.name,email:b.customerIdentityEmail||b.email,start:b.start,parked:derivedState(b,flowFor(b))==='parked'})),
     openForClient,
     boot
   };

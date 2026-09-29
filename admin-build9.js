@@ -108,7 +108,7 @@
   $("#refreshBtn").addEventListener("click",()=>{clearCloudBackoff();load(true)});
 
   const viewMeta={
-    dashboard:["Praxis-Cockpit","Dashboard","Was heute Aufmerksamkeit braucht – und was als Nächstes kommt."],
+    dashboard:["Praxis-Cockpit","Praxis-Cockpit","Was jetzt Aufmerksamkeit braucht und womit du beginnen möchtest."],
     journey:["Client Journey","Klientenreise","Vom ersten Kontakt bis zur abgeschlossenen Begleitung."],
     clients:["Klient:innen","Klient:innen","Akte öffnen und von hier aus Termine, Sitzungen, Angebote und Honorarnoten steuern."],
     bookings:["Kalender","Termine","Buchungen verwalten, verschieben und nachvollziehen."],
@@ -292,9 +292,9 @@
     }
   }
   function renderNext(){
-    const rows=(data.bookings||[]).filter(x=>x.status==='booked'&&new Date(x.start).getTime()>=now()).sort((a,b)=>new Date(a.start)-new Date(b.start)).slice(0,7);
+    const rows=(data.bookings||[]).filter(x=>x.status==='booked'&&new Date(x.start).getTime()>=now()&&new Date(x.start).getTime()<now()+7*86400000).sort((a,b)=>new Date(a.start)-new Date(b.start)).slice(0,7);
     const dateFmt=new Intl.DateTimeFormat('de-AT',{timeZone:'Europe/Vienna',weekday:'short',day:'2-digit',month:'2-digit'}),timeFmt=new Intl.DateTimeFormat('de-AT',{timeZone:'Europe/Vienna',hour:'2-digit',minute:'2-digit'});
-    $('#nextBookings').innerHTML=rows.length?`<div class="b143516-next-list">${rows.map(x=>`<article class="b143516-next-row"><div class="b143516-next-time"><span>${esc(dateFmt.format(new Date(x.start)))}</span><strong>${esc(timeFmt.format(new Date(x.start)))}</strong></div><div class="b143516-next-client"><button type="button" class="b143516-client-link" data-open-client="${esc(x.customerIdentityEmail||x.email)}">${esc(x.name)}</button><span>${esc(x.typeLabel||'Termin')} · ${esc(x.locationLabel||'')}</span></div><button class="icon-action b143516-edit-booking" data-booking-edit="${esc(x.eventId)}" title="Termin bearbeiten" aria-label="Termin bearbeiten">✎</button></article>`).join('')}</div>`:'<div class="empty">Keine kommenden Termine.</div>';
+    $('#nextBookings').innerHTML=rows.length?`<div class="b143516-next-list">${rows.map(x=>`<article class="b143516-next-row"><button type="button" class="b143516-next-time cockpit-date-link" data-booking-edit="${esc(x.eventId)}" aria-label="Termin ${esc(dateFmt.format(new Date(x.start)))} ${esc(timeFmt.format(new Date(x.start)))} öffnen"><span>${esc(dateFmt.format(new Date(x.start)))}</span><strong>${esc(timeFmt.format(new Date(x.start)))}</strong></button><div class="b143516-next-client"><button type="button" class="b143516-client-link" data-open-client="${esc(x.customerIdentityEmail||x.email)}">${esc(x.name)}</button><span>${esc(x.typeLabel||'Termin')} · ${esc(x.locationLabel||'')}</span></div><button class="icon-action b143516-edit-booking" data-booking-edit="${esc(x.eventId)}" title="Termin bearbeiten" aria-label="Termin bearbeiten">✎</button></article>`).join('')}</div>`:'<div class="empty">Keine kommenden Termine.</div>';
     bindPowerActions();bindClientOpeners()
   }
 

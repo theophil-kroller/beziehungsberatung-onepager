@@ -49,7 +49,7 @@
   function applyCockpitPrefs(){
     const p=prefs(), map={weather:'#dashboardWeather',attention:'.attention-panel',calendar:'.dashboard-calendar',finance:'.dashboard-finance-snapshot',metrics:'.dashboard-metrics-wrap'};
     Object.entries(map).forEach(([k,s])=>$(s)?.classList.toggle('b143514-dashboard-hidden',!p[k]));
-    if(p.finance)renderDashboardFinance();
+    if(p.finance&&(!$('#cockpitMetrics')||$('#cockpitMetrics').open))renderDashboardFinance();
   }
 
   function bindWeatherExpand(){const w=$('#dashboardWeather');if(!w||w.dataset.b143514Bound)return;w.dataset.b143514Bound='1';w.tabIndex=0;w.title='Klicken für 3-Tage-Vorschau';w.addEventListener('click',e=>{if(e.target.closest('button,input,form'))return;w.classList.toggle('weather-expanded')})}
@@ -67,7 +67,7 @@
     const sel=$('#b143514FinanceRange');sel.value=localStorage.getItem(EA_KEY)||'month';sel.addEventListener('change',()=>{localStorage.setItem(EA_KEY,sel.value);renderDashboardFinance()});
   }
   let financeCache=null,financeCacheAt=0;
-  async function renderDashboardFinance(){ensureDashboardFinance();if(!$('#b143514Income'))return;let d=financeCache;if(!d||Date.now()-financeCacheAt>30000){d=await dashboardData();financeCache=d;financeCacheAt=Date.now()}if(!d)return;const payments=d.payments||[],real=payments.filter(p=>!p.isTest&&paidDate(p)),test=payments.filter(p=>p.isTest&&paidDate(p)),use=real.length?real:test,range=$('#b143514FinanceRange')?.value||'month',b=bounds(range,use);const income=use.reduce((s,p)=>{const dt=paidDate(p);return s+(dt&&dt>=b.start&&dt<b.end?Number(p.amountCents||0)/100:0)},0),fs=fixed(),expenses=fs.enabled?Math.max(0,Number(fs.monthly||0))*b.months:0,result=income-expenses;$('#b143514Income').textContent=euro(income);$('#b143514Expenses').textContent=euro(expenses);const r=$('#b143514Result');r.textContent=euro(result);r.classList.toggle('negative',result<0);r.classList.toggle('positive',result>=0)}
+  async function renderDashboardFinance(){ensureDashboardFinance();if($('#cockpitMetrics')&&!$('#cockpitMetrics').open)return;if(!$('#b143514Income'))return;let d=financeCache;if(!d||Date.now()-financeCacheAt>30000){d=await dashboardData();financeCache=d;financeCacheAt=Date.now()}if(!d)return;const payments=d.payments||[],real=payments.filter(p=>!p.isTest&&paidDate(p)),test=payments.filter(p=>p.isTest&&paidDate(p)),use=real.length?real:test,range=$('#b143514FinanceRange')?.value||'month',b=bounds(range,use);const income=use.reduce((s,p)=>{const dt=paidDate(p);return s+(dt&&dt>=b.start&&dt<b.end?Number(p.amountCents||0)/100:0)},0),fs=fixed(),expenses=fs.enabled?Math.max(0,Number(fs.monthly||0))*b.months:0,result=income-expenses;$('#b143514Income').textContent=euro(income);$('#b143514Expenses').textContent=euro(expenses);const r=$('#b143514Result');r.textContent=euro(result);r.classList.toggle('negative',result<0);r.classList.toggle('positive',result>=0)}
 
   function utilityButton(btn,icon,label,extra=''){if(!btn)return;if(btn.dataset.b143514Icon===icon&&btn.classList.contains('b143514-table-icon'))return;btn.classList.add('b143514-table-icon',extra);btn.innerHTML=icons[icon]||'';btn.dataset.b143514Icon=icon;btn.title=label;btn.setAttribute('aria-label',label)}
   function polishInvoices(){
@@ -81,5 +81,6 @@
   function apply(){syncDashClass();quickActions();ensureCockpitDialog();ensureDashboardFinance();applyCockpitPrefs();bindWeatherExpand();polishInvoices();polishClientOpeners();polishVault();updateRoadmap()}
   const mo=new MutationObserver(()=>queueMicrotask(apply));mo.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
   document.addEventListener('click',()=>setTimeout(apply,0),true);
+  window.BDDashboardFinanceRefresh=renderDashboardFinance;
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{apply();setTimeout(renderDashboardFinance,250)},{once:true});else{apply();setTimeout(renderDashboardFinance,250)}
 })();
