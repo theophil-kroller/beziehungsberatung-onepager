@@ -55,7 +55,7 @@ class Build14602StaticTests(unittest.TestCase):
     def test_local_ai_routes_exist_and_vault_version_bumped(self):
         self.assertIn('/knowledge/content-brief/suggest-local', self.vault)
         self.assertIn('/knowledge/content-family/suggest-local', self.vault)
-        self.assertIn('BDVault/3.26.0', self.vault)
+        self.assertIn('BDVault/3.27.0', self.vault)
         self.assertIn('knowledgeContentAssist', self.vault)
 
     def test_ai_suggestions_do_not_auto_write(self):

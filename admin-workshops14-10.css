@@ -1,0 +1,6 @@
+/* Keep both knowledge workspaces visible on the icon-only CRM rail, including
+   short laptop windows. Existing main navigation can scroll independently. */
+.sidebar .side-nav{min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#dbc9bc transparent}
+.sidebar .sidebar-bottom{flex:0 0 auto}
+.sidebar .nav-workspace-link svg{display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+.sidebar .nav-workspace-link:focus-visible{outline:2px solid #c96b4b;outline-offset:2px}
