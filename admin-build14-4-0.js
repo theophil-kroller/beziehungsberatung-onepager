@@ -2,7 +2,7 @@
   'use strict';
   const $=s=>document.querySelector(s);
   const isDesktop=!!window.BDDesktop?.isDesktop;
-  const DOWNLOAD='downloads/Beziehungsdynamiken-Desktop-14.8.1-beta-windows.exe';
+  const DOWNLOAD='downloads/Beziehungsdynamiken-Desktop-14.9-beta-windows.exe';
   const duration=(seconds)=>{seconds=Math.max(0,Math.floor(Number(seconds)||0));const m=Math.floor(seconds/60),s=seconds%60;return m?`${m} Min. ${String(s).padStart(2,'0')} Sek.`:`${s} Sek.`};
 
   function installDesktopSettings(){
