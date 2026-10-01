@@ -1,0 +1,25 @@
+/* BUILD 15.2.0 Phase A — Compliance Foundation */
+.bd152-compliance{grid-column:1/-1}
+.bd152-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.bd152-regime-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.bd152-regime-card,.bd152-case-card{border:1px solid rgba(47,38,35,.12);border-radius:16px;padding:14px;background:rgba(255,255,255,.5)}
+.bd152-regime-card strong,.bd152-case-card strong{display:block;margin:3px 0 7px}
+.bd152-regime-card small,.bd152-case-card small{display:block;color:#756a64;line-height:1.45}
+.bd152-status{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 8px;font-size:12px;background:#f1ece7;color:#5d504a}
+.bd152-status.ok{background:#edf4ef;color:#3f6650}.bd152-status.warn{background:#fff1df;color:#8a5b1f}
+.bd152-dialog{max-width:760px}.bd152-dialog-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.bd152-dialog-grid .wide{grid-column:1/-1}
+.bd152-requirements{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}.bd152-requirements li{padding:9px 11px;border:1px solid rgba(47,38,35,.1);border-radius:12px}.bd152-requirements small{display:block;color:#756a64;margin-top:3px}
+.bd152-case-list{display:grid;gap:10px}.bd152-case-card{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+@media(max-width:760px){.bd152-dialog-grid{grid-template-columns:1fr}.bd152-dialog-grid .wide{grid-column:auto}.bd152-case-card{display:block}}
+
+/* BUILD 15.2 Phase B — Data rights */
+.bd152-rights{margin-top:16px;border:1px solid #eadfd8;border-radius:16px;padding:16px;background:#fffaf6}
+.bd152-rights-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.bd152-rights-head h3{margin:2px 0 4px}
+.bd152-right-list{display:grid;gap:8px;margin-top:12px}.bd152-right-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 12px;border:1px solid #eadfd8;border-radius:12px;background:#fff}.bd152-right-row>div:first-child{display:grid;gap:3px}.bd152-right-row small{color:#74655e}.bd152-flag{display:inline-flex;width:max-content;margin-right:5px;padding:2px 7px;border-radius:999px;background:#f7e8d9;color:#7f4f34;font-size:11px;font-weight:700}.bd152-warning{margin:10px 0;padding:10px 12px;border:1px solid #e8c9a8;border-radius:10px;background:#fff5e8;color:#6d4b32;font-size:13px}.bd152-rights-dialog{max-width:760px}.bd152-export-preview{margin:12px 0}.bd152-export-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}.bd152-export-grid span{display:grid;gap:2px;padding:10px;border:1px solid #eadfd8;border-radius:10px;background:#fff}.bd152-export-grid b{font-size:20px}.bd152-export-options{display:grid;gap:10px;margin-top:12px}.bd152-export-options .check{padding:10px;border:1px solid #eadfd8;border-radius:10px;background:#fff}
+@media(max-width:760px){.bd152-right-row,.bd152-rights-head{align-items:stretch;flex-direction:column}.bd152-export-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* BUILD 15.2 Phase C */
+.bd152-retention-lifecycle{margin-top:22px;padding-top:18px;border-top:1px solid rgba(75,55,45,.12)}
+.bd152-ret-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid rgba(75,55,45,.09)}
+.bd152-ret-row>div:first-child{display:grid;gap:4px;min-width:0}.bd152-ret-row small{color:#766964}.bd152-ret-row .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:760px){.bd152-ret-row{align-items:flex-start;flex-direction:column}.bd152-ret-row .row-actions{justify-content:flex-start}}

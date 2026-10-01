@@ -1,0 +1,178 @@
+{
+  "build": "15.2.0",
+  "base": "15.1.0",
+  "package": "Compliance, Data Rights & Retention",
+  "phases": [
+    "A Compliance Foundation",
+    "B Record Access & Client Rights",
+    "C Retention, Destruction & Release Hardening"
+  ],
+  "windowsExe": "downloads/Beziehungsdynamiken-Desktop-15.2.0-windows.exe",
+  "files": [
+    {
+      "path": "database/build15-2-compliance-foundation.sql",
+      "bytes": 15214,
+      "sha256": "517813c4ed2ddeea4ef4b6c5adc108003296be5ff8dc7c8d26eb24aebf93b0b6"
+    },
+    {
+      "path": "database/build15-2-data-rights.sql",
+      "bytes": 3752,
+      "sha256": "746af4584f7fe7977a7fc720c5013fb07f1d962b4db4fc3073d9483965f93ceb"
+    },
+    {
+      "path": "database/build15-2-retention-lifecycle.sql",
+      "bytes": 2586,
+      "sha256": "3920f268b3acc7618ee6c11d84cc323695acdf7b431fabf8037104b45dc64545"
+    },
+    {
+      "path": "database/build15-2.sql",
+      "bytes": 21552,
+      "sha256": "c8bd2149dcebd4cad2a654be21d19931111edb4e546d1e33b6fba90e3cd83d8f"
+    },
+    {
+      "path": "cloudflare-worker/worker.js",
+      "bytes": 646642,
+      "sha256": "0eaf82a90757156d4a117f723993a4076fbe82799737a19d050a398edf6c6be5"
+    },
+    {
+      "path": "admin-build15-2.js",
+      "bytes": 33276,
+      "sha256": "17e3e193a4eecb3d13baad7d3d5853684996e7f16e064afa2df71bc52b9d6e29"
+    },
+    {
+      "path": "admin-build15-2.css",
+      "bytes": 3688,
+      "sha256": "8dc0562ca94029b90c265f25aa0e5d186cd7ce39fa7f7dce822c803b356acfdc"
+    },
+    {
+      "path": "admin.html",
+      "bytes": 50607,
+      "sha256": "f8daadf8e08ff5a8ec4b3f8fb88c1d03c51bf51f5f6110f49c818e282c7e20fe"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 527303,
+      "sha256": "1ebf7a9f46728d8e617fd876d72bdeb1b402acaf7534ee868817987f9e2b7d38"
+    },
+    {
+      "path": "vault/data_rights_export.py",
+      "bytes": 11325,
+      "sha256": "acab1122e66755dcde928c46caa1538d05e10d2e504bfe3b0c5298ea03bef7fe"
+    },
+    {
+      "path": "desktop/app/main.go",
+      "bytes": 20040,
+      "sha256": "5c3538e68bb54b6f98c4ffb5bdf68a75b60209056b54850bf7520ce500e9ec42"
+    },
+    {
+      "path": "desktop/app/web/admin.html",
+      "bytes": 50607,
+      "sha256": "f8daadf8e08ff5a8ec4b3f8fb88c1d03c51bf51f5f6110f49c818e282c7e20fe"
+    },
+    {
+      "path": "desktop/app/web/admin-build15-2.js",
+      "bytes": 33276,
+      "sha256": "17e3e193a4eecb3d13baad7d3d5853684996e7f16e064afa2df71bc52b9d6e29"
+    },
+    {
+      "path": "desktop/app/web/admin-build15-2.css",
+      "bytes": 3688,
+      "sha256": "8dc0562ca94029b90c265f25aa0e5d186cd7ce39fa7f7dce822c803b356acfdc"
+    },
+    {
+      "path": "downloads/Beziehungsdynamiken-Desktop-15.2.0-windows.exe",
+      "bytes": 12365312,
+      "sha256": "54607b5a7eebe595fe103113da271a3f43cc4da79bb5e5d9cc5c50badace2417"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.2.0.cmd",
+      "bytes": 491,
+      "sha256": "1cfc7b1f2c5102dc0cc5b884c36ea3cff99482c5a2995486f09cba3981598fb2"
+    },
+    {
+      "path": "INSTALLATION-15.2.0.txt",
+      "bytes": 2110,
+      "sha256": "df34709699272fe06bbdb5ba23158fa64f37a37d5ce05d9b8dfc7d86fa298cbd"
+    },
+    {
+      "path": "BUILD15-2-PHASE-A-NOTE.txt",
+      "bytes": 3708,
+      "sha256": "c0cefe1edd419ac254f71bb419ec6f5e5e73c31f8aa4924dd1c975f9cac89535"
+    },
+    {
+      "path": "BUILD15-2-PHASE-B-NOTE.txt",
+      "bytes": 4514,
+      "sha256": "313ccfaca3b627cd50d028f6819ef5a3750a97bf468c278c22e6068453070edf"
+    },
+    {
+      "path": "BUILD15-2-PHASE-C-NOTE.txt",
+      "bytes": 3139,
+      "sha256": "0e616df6558b0d5d13ea29764d343de4950d0a0ebfd24739ab5c1288393a4d1e"
+    },
+    {
+      "path": "BUILD15-2-TESTREPORT.txt",
+      "bytes": 1729,
+      "sha256": "38700cec170768ebf8783418877341cef694209afd1b72447369a8c770af502e"
+    },
+    {
+      "path": "tests/test_build15_2_phase_a.mjs",
+      "bytes": 1029,
+      "sha256": "5ab2cdf2149af88c1cc0c628ae90a5c5a653cc192e04593c71d00e8c433fb270"
+    },
+    {
+      "path": "tests/test_build15_2_phase_a_migration.py",
+      "bytes": 6159,
+      "sha256": "fd915a79ebcfd845e710f35c50bee1f8c8c17f0934fdb2db9bc49e83fd839413"
+    },
+    {
+      "path": "tests/test_build15_2_phase_a_vault.py",
+      "bytes": 1018,
+      "sha256": "d63287bbd59b034f893ad3a2c8b3a982a3962c2686f7a92280c4bb671d1a83d4"
+    },
+    {
+      "path": "tests/test_build15_2_phase_b.mjs",
+      "bytes": 1013,
+      "sha256": "e200d2f004891178e4a52a3308cec7ef255341ecec1887d7ee09b9edf053b92f"
+    },
+    {
+      "path": "tests/test_build15_2_phase_b_migration.py",
+      "bytes": 7612,
+      "sha256": "2a45a3424485d1585920101b77d345d44013769c76e2b15c21d35fa6b59dede5"
+    },
+    {
+      "path": "tests/test_build15_2_phase_b_vault.py",
+      "bytes": 808,
+      "sha256": "4077c89a64f9b51dae297f185df6033fead9006d10fc60d928cf3b62257b9f98"
+    },
+    {
+      "path": "tests/test_build15_2_phase_b_export.py",
+      "bytes": 1205,
+      "sha256": "321565de3e766371f53fa17282d16dea4e8518c4611197eed905f5cebedddb9f"
+    },
+    {
+      "path": "tests/test_build15_2_phase_c.mjs",
+      "bytes": 669,
+      "sha256": "fad5b2e732000be74dfcba720287ab3e8b152c3bfe172ef1e82017dd417ab4b8"
+    },
+    {
+      "path": "tests/test_build15_2_phase_c_migration.py",
+      "bytes": 2914,
+      "sha256": "34d04dcc6ed68512694cb8648588806986f6c84329477dea7e4fb2b228c10784"
+    },
+    {
+      "path": "tests/test_build15_2_phase_c_vault.py",
+      "bytes": 2030,
+      "sha256": "e827ede8fcd036d793b6b7f1c82aad42801b96453f1de834edf09160812384a1"
+    },
+    {
+      "path": "tests/test_build15_2_phase_c_export.py",
+      "bytes": 1376,
+      "sha256": "da2ea3fbd70b46b6fe3a656dfbf794e93000165dbb30529893263ca7c33bf4f2"
+    }
+  ],
+  "safetyBoundaries": [
+    "case-level automatic destruction is blocked when multiple cases share one local client record",
+    "destruction completion requires a fresh post-destruction vault backup",
+    "clinical exports are generated locally; private working notes remain opt-in"
+  ]
+}
