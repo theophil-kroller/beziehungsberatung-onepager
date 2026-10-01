@@ -62,7 +62,7 @@
   async function api(path,opts={}){
     const headers={...(opts.headers||{})}; if(session)headers.Authorization="Bearer "+session;
     const r=await fetch(API+path,{...opts,headers});const type=r.headers.get("content-type")||"";const body=type.includes("application/json")?await r.json():await r.text();
-    if(r.status===401){session="";sessionStorage.removeItem(SESSION_KEY);showLogin();throw new Error("Sitzung abgelaufen. Bitte erneut einloggen.")}
+    if(r.status===401){session="";sessionStorage.removeItem(SESSION_KEY);sessionStorage.removeItem("bd_vault_token_v1");sessionStorage.removeItem("bd_admin_identity_v1");showLogin();throw new Error("Sitzung abgelaufen. Bitte erneut einloggen.")}
     if(!r.ok||body?.ok===false)throw new Error(body?.error||"Die Anfrage konnte nicht verarbeitet werden.");return body;
   }
   async function localOfflineSnapshot(){
@@ -103,8 +103,8 @@
   function showApp(){$("#loginView").classList.add("hidden");$("#appShell").classList.remove("hidden")}
 
   $("#loginForm").addEventListener("submit",async e=>{e.preventDefault();const btn=$("#loginBtn"),email=$("#loginEmail").value.trim();btn.disabled=true;btn.textContent="Sende …";try{const r=await fetch(API+"/admin/request-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,returnUrl:window.BDDesktop?.isDesktop?location.origin+"/desktop/login":""})});const x=await r.json();if(!r.ok)throw new Error(x.error||"Login-Link konnte nicht versendet werden.");message($("#loginMsg"),x.message||"Wenn diese Adresse freigeschaltet ist, wurde ein Login-Link versendet.")}catch(err){message($("#loginMsg"),err.message,"err")}finally{btn.disabled=false;btn.textContent="Login-Link senden"}});
-  async function consumeMagicLink(){const u=new URL(location.href),token=u.searchParams.get("login");if(!token)return false;history.replaceState({},document.title,location.pathname);try{const r=await fetch(API+"/admin/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});const x=await r.json();if(!r.ok||!x.ok)throw new Error(x.error||"Login-Link ungültig.");session=x.sessionToken;sessionStorage.setItem(SESSION_KEY,session);return true}catch(err){showLogin();message($("#loginMsg"),err.message,"err");return false}}
-  $("#logoutBtn").addEventListener("click",async()=>{try{await api("/admin/logout",{method:"POST"})}catch(e){}session="";sessionStorage.removeItem(SESSION_KEY);showLogin()});
+  async function consumeMagicLink(){const u=new URL(location.href),token=u.searchParams.get("login");if(!token)return false;history.replaceState({},document.title,location.pathname);try{const r=await fetch(API+"/admin/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});const x=await r.json();if(!r.ok||!x.ok)throw new Error(x.error||"Login-Link ungültig.");session=x.sessionToken;sessionStorage.removeItem("bd_vault_token_v1");sessionStorage.setItem(SESSION_KEY,session);return true}catch(err){showLogin();message($("#loginMsg"),err.message,"err");return false}}
+  $("#logoutBtn").addEventListener("click",async()=>{try{await api("/admin/logout",{method:"POST"})}catch(e){}session="";sessionStorage.removeItem(SESSION_KEY);sessionStorage.removeItem("bd_vault_token_v1");sessionStorage.removeItem("bd_admin_identity_v1");showLogin()});
   $("#refreshBtn").addEventListener("click",()=>{clearCloudBackoff();load(true)});
 
   const viewMeta={
@@ -141,7 +141,7 @@
         desktopStage('cloud_dashboard_request','Aktuellen Praxisstand synchronisieren …');
         data=await api("/admin/dashboard"+(force?"?fresh=1":""));
         desktopStage('cloud_dashboard_received','Praxisdaten empfangen · Oberfläche wird aufgebaut …');
-        clearCloudBackoff();clearOfflineBanner();hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.email||"Administrator";
+        clearCloudBackoff();clearOfflineBanner();hydrateCrm();showApp();$("#adminIdentity").textContent=data.admin?.displayName||data.admin?.email||"Administrator";if($("#adminRoleLabel"))$("#adminRoleLabel").textContent=data.admin?.roleLabel||"Administrator";
         desktopStage('dashboard_render','Dashboard und Arbeitsbereiche werden dargestellt …');
         renderAll();
         desktopStage('dashboard_rendered','Praxisverwaltung ist bereit.');
@@ -230,7 +230,7 @@
   function availabilityForWeek(monday){return availabilityCache.get(availabilityKey(monday))?.windows||[]}
   function googleCalendarErrorInfo(err){
     const raw=String(err?.message||err||'');const low=raw.toLowerCase();
-    if(low.includes('invalid_grant')||low.includes('expired or revoked'))return {kind:'auth',title:'Google Calendar-Verbindung abgelaufen',text:'Die Verfügbarkeiten können derzeit nicht gelesen oder gespeichert werden. Das ist kein Cloudflare-Kontingentproblem: Der Google Refresh Token muss erneuert werden.'};
+    if(low.includes('invalid_grant')||low.includes('expired or revoked')||low.includes('calendar ist nicht verbunden'))return {kind:'auth',title:'Google Calendar verbinden',text:'Die Verfügbarkeiten können derzeit nicht gelesen oder gespeichert werden. Bitte den Google-Zugriff prüfen und dein Konto gegebenenfalls neu verbinden.'};
     return {kind:'other',title:'Google Calendar derzeit nicht erreichbar',text:raw.replace(/\s+/g,' ').slice(0,240)||'Die Verfügbarkeiten konnten nicht geladen werden.'};
   }
   function requestAvailability(scope,monday){
@@ -273,13 +273,40 @@
   async function deleteAvailability(){if(!availabilityDialogCtx?.eventId)return;if(!confirm('Diese freigegebene Praxiszeit aus Google Calendar löschen?'))return;const b=$('#availabilityDelete');b.disabled=true;try{await post('/admin/availability/window/delete',{eventId:availabilityDialogCtx.eventId});$('#availabilityDialog').close();clearAvailabilityCache();renderNext();renderBookings()}catch(e){showGoogleCalendarProblem(e)}finally{b.disabled=false}}
   function ensureGoogleCalendarHelpDialog(){
     let d=$('#googleCalendarHelpDialog');if(d)return d;
-    d=document.createElement('dialog');d.id='googleCalendarHelpDialog';d.innerHTML=`<div class="dialog-shell compact"><button class="dialog-x" type="button" data-google-help-close>×</button><p class="eyebrow">Google Calendar</p><h2>Verbindung erneuern</h2><p class="muted">Der gespeicherte Google Refresh Token ist abgelaufen oder wurde widerrufen. Das hat nichts mit dem Cloudflare-KV-Tageslimit zu tun.</p><ol class="google-reconnect-steps"><li>Im Google-OAuth-Projekt prüfen, ob die App noch auf <strong>Testing</strong> steht. Für dauerhaften Betrieb auf <strong>Production</strong> stellen.</li><li>Einen neuen Refresh Token mit Calendar-Zugriff erzeugen.</li><li>In Cloudflare beim Booking-Worker das Secret <code>GOOGLE_REFRESH_TOKEN</code> ersetzen und den Worker neu deployen.</li><li>Danach hier auf <strong>Erneut prüfen</strong> klicken.</li></ol><p class="micro muted">Der bestehende ungültige Token kann technisch nicht erneuert werden; Google verlangt eine neue Autorisierung.</p><div class="dialog-actions"><a class="btn ghost" href="https://console.cloud.google.com/apis/credentials/consent" target="_blank" rel="noopener">Google Cloud öffnen ↗</a><button class="btn primary" type="button" data-google-help-close>Verstanden</button></div></div>`;document.body.appendChild(d);d.querySelectorAll('[data-google-help-close]').forEach(b=>b.onclick=()=>d.close());return d;
+    d=document.createElement('dialog');d.id='googleCalendarHelpDialog';d.innerHTML=`<div class="dialog-shell compact"><button class="dialog-x" type="button" data-google-help-close>×</button><p class="eyebrow">Google Calendar</p><h2>Kalenderverbindung prüfen</h2><p class="muted">Die Verbindung zu Google Calendar ist derzeit nicht nutzbar. Prüfe die Diagnose und autorisiere dein Google-Konto bei Bedarf neu.</p><p class="bd-google-status" data-google-status role="status">Prüfe Kalenderzugriff …</p><div class="bd-google-setup"><strong>Einmalige Einrichtung in Google Cloud</strong><p>Im OAuth-Client vom Typ <strong>Webanwendung</strong> diese autorisierte Weiterleitungs-URI eintragen:</p><code data-google-redirect>Wird geladen …</code><p class="micro muted">Für dauerhaften Betrieb die externe OAuth-App unter <strong>Audience</strong> auf <strong>In production</strong> stellen. Im Status „Testing“ laufen Calendar-Freigaben nach sieben Tagen ab. Bei persönlicher Nutzung kann Google beim Verbinden eine Warnung zur nicht verifizierten App zeigen.</p></div><div class="dialog-actions"><button class="btn ghost" type="button" data-google-status-check>Erneut prüfen</button><button class="btn primary" type="button" data-google-connect>Google-Konto verbinden ↗</button></div><div class="dialog-actions"><a class="btn ghost" href="https://console.cloud.google.com/apis/credentials/consent" target="_blank" rel="noopener">Google Cloud öffnen ↗</a><button class="btn ghost" type="button" data-google-help-close>Schließen</button></div></div>`;document.body.appendChild(d);
+    d.querySelectorAll('[data-google-help-close]').forEach(b=>b.onclick=()=>d.close());
+    d.querySelector('[data-google-status-check]').onclick=()=>checkGoogleCalendarStatus(d);
+    d.querySelector('[data-google-connect]').onclick=()=>connectGoogleCalendar(d);
+    return d;
   }
-  function showGoogleCalendarProblem(err){const info=googleCalendarErrorInfo(err),d=ensureGoogleCalendarHelpDialog();d.querySelector('h2').textContent=info.title;d.querySelector('.muted').textContent=info.text;d.showModal()}
+  async function checkGoogleCalendarStatus(d=ensureGoogleCalendarHelpDialog()){
+    const status=d.querySelector('[data-google-status]');status.textContent='Prüfe Google-Zugriff …';
+    try{
+      const x=await api('/admin/google-calendar/status');
+      d.querySelector('[data-google-redirect]').textContent=x.redirectUri||'Nicht verfügbar';
+      d.querySelector('[data-google-connect]').disabled=!x.configured;
+      status.textContent=x.connected?'✓ Verbindung funktioniert: Verfügbarkeitskalender und Hauptkalender sind erreichbar.':x.issue||'Google Calendar ist nicht verbunden.';
+      status.classList.toggle('ok',!!x.connected);status.classList.toggle('warning',!x.connected);
+      if(x.connected){clearAvailabilityCache();renderNext();renderBookings()}
+    }catch(e){status.textContent=e.message;status.classList.add('warning')}
+  }
+  async function connectGoogleCalendar(d){
+    const status=d.querySelector('[data-google-status]'),button=d.querySelector('[data-google-connect]');
+    const popup=window.open('about:blank','bdGoogleCalendar','width=620,height=750');
+    if(!popup){status.textContent='Bitte Popups für die Praxisverwaltung erlauben und erneut versuchen.';return}
+    button.disabled=true;status.textContent='Google-Freigabe wird vorbereitet …';
+    try{const x=await post('/admin/google-calendar/oauth/start',{});popup.location.href=x.authUrl;status.textContent='Google-Freigabe im neuen Fenster abschließen. Danach hier erneut prüfen.'}
+    catch(e){popup.close();status.textContent=e.message;status.classList.add('warning')}
+    finally{button.disabled=false}
+  }
+  function openGoogleCalendarHelp(){const d=ensureGoogleCalendarHelpDialog();d.showModal();checkGoogleCalendarStatus(d)}
+  function showGoogleCalendarProblem(err){const info=googleCalendarErrorInfo(err),d=ensureGoogleCalendarHelpDialog();d.querySelector('h2').textContent=info.title;d.querySelector('.muted').textContent=info.text;d.showModal();checkGoogleCalendarStatus(d)}
   function bindGoogleCalendarStatus(scope,monday){
-    document.querySelectorAll('[data-google-calendar-help]').forEach(b=>b.onclick=()=>ensureGoogleCalendarHelpDialog().showModal());
+    document.querySelectorAll('[data-google-calendar-help]').forEach(b=>b.onclick=openGoogleCalendarHelp);
     document.querySelectorAll('[data-google-calendar-retry]').forEach(b=>b.onclick=()=>{const key=availabilityKey(monday);availabilityErrors.delete(key);availabilityCache.delete(key);availabilityPending.delete(key);requestAvailability(scope,monday);if(scope==='dashboard')renderNext();else renderBookings()});
   }
+  window.addEventListener('message',event=>{if(event.origin!==new URL(API).origin||event.data?.type!=='bd-google-calendar-oauth')return;const d=$('#googleCalendarHelpDialog');if(d?.open)checkGoogleCalendarStatus(d)});
+  window.addEventListener('focus',()=>{const d=$('#googleCalendarHelpDialog');if(d?.open)checkGoogleCalendarStatus(d)});
   function bindWeekCalendar(scope){
     $$(`[data-cal-nav="${scope}"]`).forEach(b=>b.addEventListener('click',()=>{const d=Number(b.dataset.dir||0);if(scope==='dashboard'){dashboardWeekOffset+=d;renderNext()}else{bookingWeekOffset+=d;renderBookings()}}));
     $$(`[data-cal-today="${scope}"]`).forEach(b=>b.addEventListener('click',()=>{if(scope==='dashboard'){dashboardWeekOffset=0;renderNext()}else{bookingWeekOffset=0;renderBookings()}}));

@@ -52,7 +52,8 @@
 <link rel="stylesheet" href="admin-build14-4-1-2.css?v=20260928-build14-4-1-2">
   <link rel="stylesheet" href="admin-build14-4-2.css?v=20260928-build14-4-2">
   <link rel="stylesheet" href="admin-workshops14-10.css">
-<link rel="stylesheet" href="admin-build14-13.css?v=14.13.0"><link rel="stylesheet" href="admin-browser-capture.css?v=14.14.0"></head>
+<link rel="stylesheet" href="admin-build14-13.css?v=14.13.0"><link rel="stylesheet" href="admin-browser-capture.css?v=14.14.0"><link rel="stylesheet" href="admin-build15-0.css?v=15.0.0">
+</head>
 <body>
 <!-- Regression lineage: BUILD 14.3.5.8 -->
 <!-- regression asset: admin-build14-3-5.js?v=20260924-build14-3-5-8 -->
@@ -130,7 +131,7 @@
       </div>
     </nav>
     <div class="sidebar-bottom">
-      <div class="admin-pill"><span class="avatar">TK</span><div><strong id="adminIdentity">—</strong><span>Administrator</span></div></div>
+      <div class="admin-pill"><span class="avatar">TK</span><div><strong id="adminIdentity">—</strong><span id="adminRoleLabel">Administrator</span></div></div>
       <a class="side-link" href="index.html">← Zur Website</a>
       <button class="side-link button-link" id="logoutBtn" type="button">Abmelden</button>
     </div>
@@ -271,7 +272,7 @@
         <section class="panel" id="browserCaptureSettings"><p class="eyebrow">Geräte / Capture</p><h2>Browser Capture</h2><p class="muted">Speichere interessante Texte, Webseiten und Screenshots direkt aus deinem Browser in deine Beziehungsdynamiken Inbox.</p><div class="stack-actions"><a class="btn secondary" href="BD-Browser-Capture.zip" download>BD Browser Capture herunterladen</a><button class="btn primary" id="browserCaptureConnect" type="button">Browser verbinden</button></div><p class="micro muted">ZIP entpacken, <code>chrome://extensions</code> öffnen, Entwicklermodus aktivieren und „Entpackte Erweiterung laden“ wählen. Danach den einmaligen Code in der Erweiterung eingeben.</p><div id="browserCaptureDevices" aria-live="polite"></div></section>
         <section class="panel"><p class="eyebrow">Lifecycle-Regeln</p><h2>Aufmerksamkeit & Fortsetzung</h2><div class="settings-form"><label>Hinweis „kein Folgetermin“ nach<input id="settingDormantDays" type="number" min="14" max="365"><span>Tagen ohne kommenden Termin</span></label><label>Renewal-Hinweis ab<input id="settingRenewalRemaining" type="number" min="0" max="10"><span>verbleibenden Package-Einheiten</span></label><label>Standard-Fortsetzungsbonus<input id="settingDiscount" type="number" min="0" max="50" step="1"><span>% (nur Vorschlagswert)</span></label><button class="btn primary" id="saveSettingsBtn" type="button">Einstellungen speichern</button></div></section>
         <section class="panel"><p class="eyebrow">Datensicherung</p><h2>Lifecycle-Daten</h2><p class="muted">BUILD 9 speichert Journey, Status, Aktivitäten, Angebote, Bestellungen und Zahlungsabgleich zentral im Cloudflare-Worker/D1. Beratungsinhalte bleiben davon getrennt im lokalen Secure Practice Vault.</p><div class="stack-actions"><button class="btn secondary" id="exportLifecycleBtn" type="button">Statusdaten exportieren</button></div><div id="settingsMsg"></div></section>
-        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 14.5.0.1 Creative Knowledge Hub</strong><br><span>Creative Knowledge Hub mit eigener Capture-Inbox, Datascout-Drop/Paste, reicheren Concept Cards, lokaler KI-Analyse, Timeline und Publishing-Fix.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>Automatische WhatsApp Business API, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
+        <section class="panel"><p class="eyebrow">Roadmap</p><h2>Current Build & nächste Schritte</h2><p class="roadmap-current"><strong>Aktuell: BUILD 15.0.0 Multi-User Foundation</strong><br><span>Team-Zugänge, Owner-Verwaltung, Practitioner-Verknüpfung, Berufsrollen und Qualifikationsstatus bei unverändertem Local-first Vault.</span></p><ul class="feature-list roadmap-list"><li><strong>Stabilisierung</strong><span>Regressionstests der bestehenden Praxis-, Vault-, Message-Center- und Knowledge-Hub-Funktionen.</span></li><li><strong>Später</strong><span>Automatische WhatsApp Business API, Mobile Sync, erweiterte Growth Intelligence und Bank-/Buchhaltungsautomation.</span></li></ul></section>
       </div>
     </section>
   </main>
@@ -332,5 +333,6 @@
 <script src="admin-build14-13.js?v=14.16.0"></script>
 <script src="admin-build14-13-traffic.js?v=14.13.0"></script>
 <script src="admin-browser-capture.js?v=14.14.0"></script>
+<script src="admin-build15-0.js?v=15.0.0"></script>
 </body>
 </html>

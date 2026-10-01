@@ -1,0 +1,18 @@
+{
+  "build": "15.0.0",
+  "base": "14.16.4",
+  "package": "Multi-User Foundation",
+  "databaseMigration": "database/build15-0-multi-user.sql",
+  "changedRootFiles": [
+    "cloudflare-worker/worker.js",
+    "admin.html",
+    "admin-build9.js",
+    "admin-build15-0.js",
+    "admin-build15-0.css",
+    "desktop-login.html",
+    "desktop/app/main.go",
+    "BUILD-WINDOWS-15.0.0.cmd"
+  ],
+  "newTables": ["users", "practice_memberships", "user_practitioners", "practitioner_credentials"],
+  "scopeDeferredTo15_1": ["personal vault ownership", "case ownership", "billing entities", "device enrollment", "vault bootstrap/restore", "capture routing"]
+}
