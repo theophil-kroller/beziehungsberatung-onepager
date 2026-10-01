@@ -72,7 +72,7 @@
       if(!force&&!local.needsCloudBackup){setBackupUI(local,remote);return true}
       setBackupUI(local,remote,'running');
       const pack=await packageForUpload(local);
-      const uploaded=await cloudPost('/admin/backup/upload',{packageBase64:pack.packageBase64,createdAt:pack.createdAt,sha256:pack.sha256,byteSize:pack.byteSize,sourceStamp:pack.sourceStamp});
+      const uploaded=await cloudPost('/admin/backup/upload',{packageBase64:pack.packageBase64,createdAt:pack.createdAt,sha256:pack.sha256,byteSize:pack.byteSize,sourceStamp:pack.sourceStamp,localDeviceId:localStorage.getItem('bd_local_device_id_v1')||''});
       local=await window.BDVault.post('/backup/cloud-confirm',{sha256:uploaded.sha256,objectKey:uploaded.objectKey,uploadedAt:uploaded.uploadedAt});
       cloudConfig={...remote,configured:true,latest:{objectKey:uploaded.objectKey,uploadedAt:uploaded.uploadedAt,byteSize:uploaded.byteSize}};
       setBackupUI(local,cloudConfig);

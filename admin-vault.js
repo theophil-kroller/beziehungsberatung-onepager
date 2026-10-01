@@ -31,7 +31,7 @@
     const dot=$('#vaultStatusDot'),mini=$('#recordVaultDot'),nav=$('#vaultNavState'),text=$('#vaultStatusText'),detail=$('#vaultStatusDetail');
     const whisperInfo=$('#vaultWhisperInfo');
     [dot,mini].forEach(x=>x&&x.classList.remove('connected','locked'));
-    if(!health.ok){ if(text)text.textContent='Lokaler Vault nicht gestartet'; if(detail)detail.textContent='Starte vault/start_vault.bat'; if(nav)nav.textContent='offline';if(whisperInfo)whisperInfo.textContent='Whisper-Status kann erst bei laufendem Vault geprüft werden.'; return; }
+    if(!health.ok){ if(text)text.textContent='Lokaler Vault nicht gestartet'; if(detail)detail.textContent='Starte den lokalen Vault-Dienst (Windows: start_vault.bat · Mac: start_vault_mac.command)'; if(nav)nav.textContent='offline';if(whisperInfo)whisperInfo.textContent='Whisper-Status kann erst bei laufendem Vault geprüft werden.'; return; }
     if(whisperInfo){const w=health.whisper||{};whisperInfo.textContent=w.ready?`Whisper bereit · Modell ${w.model}${w.version?' · Version '+w.version:''} · Verarbeitung ausschließlich lokal`:w.available?'Whisper wurde gefunden, aber FFmpeg fehlt oder ist nicht im PATH.':'Whisper wurde vom lokalen Vault noch nicht gefunden.'}
     if(!health.setup){dot?.classList.add('locked');mini?.classList.add('locked');if(text)text.textContent='Vault noch nicht eingerichtet';if(detail)detail.textContent='Einmalig ein starkes Passwort setzen';if(nav)nav.textContent='setup';return}
     if(!health.unlocked){dot?.classList.add('locked');mini?.classList.add('locked');if(text)text.textContent='Vault gesperrt';if(detail)detail.textContent='Lokal verbunden · Inhalte verschlüsselt';if(nav)nav.textContent='gesperrt';return}
@@ -49,7 +49,7 @@
   }
   async function openAuth(){
     ensureAuthDialog();await checkHealth();
-    if(!health.ok){toast('Der lokale Vault-Dienst ist nicht erreichbar. Starte zuerst vault/start_vault.bat.','err');return false}
+    if(!health.ok){toast('Der lokale Vault-Dienst ist nicht erreichbar. Starte zuerst den lokalen Vault-Dienst (Windows: start_vault.bat · Mac: start_vault_mac.command).','err');return false}
     const setup=!health.setup;$('#vaultAuthTitle').textContent=setup?'Vault einmalig einrichten':'Vault entsperren';$('#vaultAuthCopy').textContent=setup?'Wähle ein starkes, nur dir bekanntes Passwort. Es gibt absichtlich keine Passwort-Wiederherstellung.':'Das Passwort wird nur an den lokalen Dienst auf diesem Computer gesendet.';$('#vaultPassword2Wrap').classList.toggle('hidden',!setup);$('#vaultPassword2').required=setup;$('#vaultAuthWarning').classList.toggle('hidden',!setup);$('#vaultAuthWarning').textContent=setup?'Wichtig: Ohne dieses Passwort können die verschlüsselten Beratungsdaten nicht wiederhergestellt werden. Bewahre es sicher in einem Passwortmanager auf.':'';$('#vaultAuthSubmit').textContent=setup?'Vault einrichten':'Entsperren';$('#vaultPassword').value='';$('#vaultPassword2').value='';$('#vaultAuthMsg').textContent='';
     return new Promise(resolve=>{
       const dlg=$('#vaultAuthDialog');
@@ -61,7 +61,7 @@
   }
   async function ensureUnlocked(){await checkHealth();if(health.unlocked)return true;return openAuth()}
 
-  function vaultLockedHtml(){return `<div class="vault-lock-panel"><strong>Secure Practice Vault ist ${health.ok?'gesperrt':'nicht gestartet'}.</strong><p class="muted">${health.ok?'Entsperre den lokalen Vault, um Ziele, Sitzungsverläufe und Artefakte zu sehen.':'Starte auf diesem Computer zuerst <code>vault/start_vault.bat</code>.'}</p><button class="btn primary" id="recordVaultUnlock" type="button">${health.setup?'Vault entsperren':'Vault einrichten'}</button></div>`}
+  function vaultLockedHtml(){return `<div class="vault-lock-panel"><strong>Secure Practice Vault ist ${health.ok?'gesperrt':'nicht gestartet'}.</strong><p class="muted">${health.ok?'Entsperre den lokalen Vault, um Ziele, Sitzungsverläufe und Artefakte zu sehen.':'Starte auf diesem Computer zuerst den lokalen Vault-Dienst.'}</p><button class="btn primary" id="recordVaultUnlock" type="button">${health.setup?'Vault entsperren':'Vault einrichten'}</button></div>`}
 
   async function loadClient(email,name){
     current.email=email;current.name=name;
@@ -365,7 +365,8 @@
     post,
     openArtifactForClient,
     status:()=>({...health}),
-    token:()=>token
+    token:()=>token,
+    acceptToken:(value)=>{token=String(value||'');if(token){sessionStorage.setItem(TOKEN_KEY,token);health.ok=true;health.setup=true;health.unlocked=true}else sessionStorage.removeItem(TOKEN_KEY);updateStatus();return !!token}
   };
   checkHealth();
 })();

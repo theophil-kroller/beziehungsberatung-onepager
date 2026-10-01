@@ -1,0 +1,109 @@
+{
+  "build": "15.1.0",
+  "base": "15.0.0",
+  "package": "Multi-Practitioner Operations & Vault Provisioning",
+  "phases": [
+    "A Data & Ownership",
+    "B Runtime & Routing",
+    "C Onboarding, Workspace Key & Stabilization"
+  ],
+  "windowsExe": "deferred to 15.2 as requested",
+  "files": [
+    {
+      "path": "database/build15-1-multi-practitioner-operations.sql",
+      "bytes": 21481,
+      "sha256": "291746ad2449c2d6ee058b05048591373b3d40663087a2afa5b60c4fa2687c68"
+    },
+    {
+      "path": "cloudflare-worker/worker.js",
+      "bytes": 603131,
+      "sha256": "c985986dfe3c7f83ceb209edf0121e5dea084b4a124a8a36698aed9b0bdb67e1"
+    },
+    {
+      "path": "admin-build15-1.js",
+      "bytes": 33951,
+      "sha256": "008fbf307dbad121bb9590a6df9b728065d5c0b78ce85ed2d82ee97ea20beac7"
+    },
+    {
+      "path": "admin-build15-1.css",
+      "bytes": 3576,
+      "sha256": "d7d08499a800efe086de788ebef790a9190ea974b39786aea76e38cedab3d289"
+    },
+    {
+      "path": "admin-build14-3-7.js",
+      "bytes": 66404,
+      "sha256": "5678ac70c26f6253b374220b374ed47c9a77259834ce1dd9d6e7fd6b55080f30"
+    },
+    {
+      "path": "admin-build14-4-1.js",
+      "bytes": 13513,
+      "sha256": "c1bec752c5ed9703efb8bfcca8813af1aa79cd0a67c64906f988a156712eb19e"
+    },
+    {
+      "path": "admin-vault.js",
+      "bytes": 63855,
+      "sha256": "f3cea947914153ff174c9a9cbccc413d152a0d26790a06c492637c42db3e1b32"
+    },
+    {
+      "path": "capture.js",
+      "bytes": 65826,
+      "sha256": "7105039020f29cf4824b487fd0d0f828f48704080d5ad99fcb4b995acc9d9f5f"
+    },
+    {
+      "path": "methods-build14-8-1.js",
+      "bytes": 15172,
+      "sha256": "00de08ff104d1a21070416a5090d75be275546fbca42f88807467a1b90023319"
+    },
+    {
+      "path": "methods-build14-9.js",
+      "bytes": 38015,
+      "sha256": "72aaa9130197b955621f49021aed182ca54a7e7503be1de15907391a68ead7a1"
+    },
+    {
+      "path": "hub-build14-5.js",
+      "bytes": 111322,
+      "sha256": "533056f4466db0f7e027d5ddbb7268d78512a6398113b4b9a3168226415664e0"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 496836,
+      "sha256": "beb00467e8c742926bc36f42f01ab8c21a1edc36cba2e14fc3ca315d026db2d5"
+    },
+    {
+      "path": "vault/start_vault_mac.command",
+      "bytes": 266,
+      "sha256": "c84fa61026a40051bfc659e16e23779988985efc6096369b1b92274ead161192"
+    },
+    {
+      "path": "desktop/app/main.go",
+      "bytes": 20040,
+      "sha256": "e78d1aaebd58dad0b864dd8993fe745017582c14012e5b639b5be5fb952be974"
+    },
+    {
+      "path": "INSTALLATION-15.1.0.txt",
+      "bytes": 2425,
+      "sha256": "9a2be65d64b14f196aec6ad7d97785c43c4bbf66facfec6bb075836b64bc7ad3"
+    },
+    {
+      "path": "BUILD15-1-PHASE-A-NOTE.txt",
+      "bytes": 3432,
+      "sha256": "08eeca50abd72af2e2f92796dc12b546bc188b4663be87e4834d198453590900"
+    },
+    {
+      "path": "BUILD15-1-PHASE-B-NOTE.txt",
+      "bytes": 3960,
+      "sha256": "bc114147be91bdf916a9513ddc1a6420241472627e8813abf04a4a9c8de436bb"
+    },
+    {
+      "path": "BUILD15-1-PHASE-C-NOTE.txt",
+      "bytes": 2582,
+      "sha256": "65372c0b25e7dd18b5035ae19796ccbc431fcb2bce6a1bdfd28558dcc0e5d3c3"
+    },
+    {
+      "path": "BUILD15-1-TESTREPORT.txt",
+      "bytes": 909,
+      "sha256": "ef2abace69a06e9ec97448002f7da23891c668e75b5dc9736e849cdf7d4b1561"
+    }
+  ],
+  "knownBoundary": "R2 Vault restore covers structured/text SQLite backup; large media artifacts remain local in 15.1."
+}

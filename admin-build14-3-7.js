@@ -26,7 +26,7 @@
   async function decryptRelay(ciphertext,secret){const envelope=JSON.parse(new TextDecoder().decode(b64bytes(ciphertext))),key=await crypto.subtle.importKey('raw',b64bytes(secret),'AES-GCM',false,['decrypt']),plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64bytes(envelope.iv)},key,b64bytes(envelope.ciphertext));return JSON.parse(new TextDecoder().decode(plain))}
   async function pairHandshakeKey(privateKey,devicePublicJwk){const peer=await crypto.subtle.importKey('jwk',devicePublicJwk,{name:'ECDH',namedCurve:'P-256'},false,[]),bits=await crypto.subtle.deriveBits({name:'ECDH',public:peer},privateKey,256);return crypto.subtle.importKey('raw',bits,'AES-GCM',false,['encrypt'])}
   async function encryptPairPackage(payload,key){const iv=crypto.getRandomValues(new Uint8Array(12)),plain=new TextEncoder().encode(JSON.stringify(payload)),cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,plain);return{iv:bytes64(iv),ciphertext:bytes64(new Uint8Array(cipher))}}
-  async function completePairingCode({sessionId,keyPair,pairId,accessToken,secret,owner,dialog}){
+  async function completePairingCode({sessionId,keyPair,pairId,accessToken,secret,workspaceSecret,workspaceKeyId,owner,userId,practiceId,practitionerId,vaultId,dialog}){
     if(!sessionId||!keyPair)return;const state=dialog.querySelector('#docPairCodeState');
     for(let i=0;i<750&&dialog.isConnected;i++){
       if(!dialog.open)return;await sleep(800);
@@ -35,7 +35,7 @@
         if(!r.ok||x.ok===false){if(r.status===410){state.textContent='Code abgelaufen · bitte einen neuen Kopplungscode erzeugen.';return}continue}
         if(x.status!=='claimed'||!x.devicePublicJwk)continue;
         state.textContent='BOOX erkannt · sichere Kopplung wird abgeschlossen …';
-        const key=await pairHandshakeKey(keyPair.privateKey,x.devicePublicJwk),envelope=await encryptPairPackage({pairId,accessToken,secret,owner},key);
+        const key=await pairHandshakeKey(keyPair.privateKey,x.devicePublicJwk),envelope=await encryptPairPackage({pairId,accessToken,secret,workspaceSecret:workspaceSecret||'',workspaceKeyId:workspaceKeyId||'',owner,userId:userId||null,practiceId:practiceId||null,practitionerId:practitionerId||null,vaultId:vaultId||null},key);
         const done=await fetch(apiBase()+'/capture-access/code/complete',{method:'POST',headers:{Authorization:'Bearer '+sessionToken(),'Content-Type':'application/json'},body:JSON.stringify({sessionId,envelope})}),y=await done.json().catch(()=>({}));if(!done.ok||y.ok===false)throw new Error(y.error||'Kopplung konnte nicht abgeschlossen werden.');
         state.textContent='✓ Gerät sicher gekoppelt · der Code wurde einmalig verwendet.';state.className='doc-pair-code-state ok';return;
       }catch(error){state.textContent='Kopplung wartet · '+error.message;state.className='doc-pair-code-state warn'}
@@ -141,7 +141,7 @@
   }
 
   async function syncGenericInbox(){
-    const r=await fetch(apiBase()+'/capture-transfer/inbox',{headers:{Authorization:'Bearer '+sessionToken()}}),x=await r.json().catch(()=>({}));
+    const r=await fetch(apiBase()+'/capture-transfer/inbox?scope=personal',{headers:{Authorization:'Bearer '+sessionToken()}}),x=await r.json().catch(()=>({}));
     if(!r.ok||x.ok===false)throw new Error(x.error||'Persönliche Dokumentations-Inbox konnte nicht abgefragt werden.');
     for(const row of (x.relays||[]).slice(0,20)){
       try{
@@ -433,11 +433,13 @@
     try{
       const pairKeys=await crypto.subtle.generateKey({name:'ECDH',namedCurve:'P-256'},true,['deriveBits']),adminPublicJwk=await crypto.subtle.exportKey('jwk',pairKeys.publicKey);
       const r=await fetch(apiBase()+'/capture-access/create',{method:'POST',headers:{Authorization:'Bearer '+sessionToken(),'Content-Type':'application/json'},body:JSON.stringify({adminPublicJwk})}),x=await r.json();if(!r.ok||!x.ok)throw new Error(x.error||'Capture-Gerät konnte nicht gekoppelt werden.');
-      const secret=randomSecret();await window.BDVault.post('/capture-access-pair',{pairId:x.pairId,ownerId:x.owner,secret});
-      const url=x.captureUrl+'&key='+encodeURIComponent(secret)+'&owner='+encodeURIComponent(x.owner||'');
+      const secret=randomSecret();await window.BDVault.post('/capture-access-pair',{pairId:x.pairId,ownerId:x.owner,ownerUserId:x.userId||null,practiceId:x.practiceId||null,practitionerId:x.practitionerId||null,vaultId:x.vaultId||null,secret});
+      let workspace={};try{workspace=await window.BDVault.request('/workspace/key/capture?practiceId='+encodeURIComponent(x.practiceId||''))}catch(_){}
+      const workspaceSecret=String(workspace.secret||''),workspaceKeyId=String(workspace.workspaceKeyId||'');
+      const url=x.captureUrl+'&key='+encodeURIComponent(secret)+'&workspaceKey='+encodeURIComponent(workspaceSecret)+'&workspaceKeyId='+encodeURIComponent(workspaceKeyId)+'&owner='+encodeURIComponent(x.owner||'')+'&userId='+encodeURIComponent(x.userId||'')+'&practiceId='+encodeURIComponent(x.practiceId||'')+'&practitionerId='+encodeURIComponent(x.practitionerId||'')+'&vaultId='+encodeURIComponent(x.vaultId||'');
       const dlg=document.createElement('dialog');dlg.className='doc-pair-dialog';dlg.innerHTML=`<div class="doc-pair-shell"><button class="dialog-x" type="button">×</button><p class="eyebrow">Capture-Gerät koppeln</p><h2>Gerät verbinden</h2><div class="doc-pair-owner"><span>Praxis-Login</span><strong>${esc(x.owner||'')}</strong></div><p>Mit Kamera kannst du den QR-Code scannen. Für BOOX oder andere Geräte ohne Kamera gibst du einfach den einmaligen Code ein.</p><div class="doc-pair-methods"><div class="doc-pair-qr"><span>QR-Code</span><canvas id="docPairQr"></canvas></div><div class="doc-pair-code"><span>Ohne Kamera</span><strong id="docPairCode">${esc(x.pairingCode||'Code nicht verfügbar')}</strong><button class="btn ghost" id="docPairCopy" type="button" ${x.pairingCode?'':'disabled'}>Code kopieren</button><small>Gültig für 10 Minuten · einmal verwendbar</small><p id="docPairCodeState" class="doc-pair-code-state">Warte auf Eingabe am Gerät …</p></div></div><p class="micro muted">🔒 Der Capture-Schlüssel bleibt zwischen deinem lokalen Vault und dem gekoppelten Gerät. Cloudflare vermittelt nur die einmalige Kopplung.</p><div class="dialog-actions"><button class="btn primary" type="button" id="docPairDone">Fertig</button></div></div>`;document.body.appendChild(dlg);dlg.querySelector('.dialog-x').onclick=()=>dlg.close();dlg.querySelector('#docPairDone').onclick=()=>dlg.close();dlg.querySelector('#docPairCopy').onclick=async()=>{try{await navigator.clipboard.writeText(x.pairingCode);dlg.querySelector('#docPairCopy').textContent='Kopiert ✓'}catch(_){}};dlg.addEventListener('close',()=>dlg.remove(),{once:true});dlg.showModal();
       try{const QR=await loadLocalQr();await QR.toCanvas(dlg.querySelector('#docPairQr'),url,{width:260,margin:2})}catch(error){dlg.querySelector('#docPairQr').hidden=true;const note=document.createElement('div');note.className='doc-warning';note.innerHTML='<strong>QR-Code konnte nicht erzeugt werden.</strong><br>Nutze stattdessen den Kopplungscode. Der geheime Pairing-Link wird nicht an externe QR-Dienste gesendet.';dlg.querySelector('#docPairQr').after(note);console.error('BD local QR error',error)}
-      completePairingCode({sessionId:x.pairingSessionId,keyPair:pairKeys,pairId:x.pairId,accessToken:x.accessToken,secret,owner:x.owner||'',dialog:dlg});
+      completePairingCode({sessionId:x.pairingSessionId,keyPair:pairKeys,pairId:x.pairId,accessToken:x.accessToken,secret,workspaceSecret,workspaceKeyId,owner:x.owner||'',userId:x.userId||null,practiceId:x.practiceId||null,practitionerId:x.practitionerId||null,vaultId:x.vaultId||null,dialog:dlg});
     }catch(e){alert(e.message)}finally{if(btn)btn.disabled=false}
   }
 
