@@ -1,0 +1,28 @@
+BUILD 14.15.0 · Validierung am 01.10.2026
+
+BESTANDEN
+- 14 bestehende Python-Tests für Workshop-Planung, Exporte und Durchführung.
+- 2 neue Python-Tests: verschlüsselte Landingpage-Speicherung, Erhalt beim
+  normalen Workshop-Speichern, Revisionskonflikte, falsche Workshop-Kennung,
+  Duplikat ohne öffentliche Verknüpfung.
+- Node-Test: JSON-Schema, Typ-/URL-Prüfung, öffentliche Text-Escapes,
+  Auslassung interner Daten im KI-Export, Termine/Preise und Buchungslink.
+- Node-Test des Worker-Routers mit isolierten Backend-Mocks: Admin-Authentifizierung,
+  Publikationsbedingungen, unzulässiges Schema, öffentliche Datenbegrenzung,
+  Depublikation und nicht verfügbare Durchführung.
+- JavaScript/Python-Syntaxprüfung.
+- D1-Migration wiederholt auf SQLite angewendet.
+- Patch gegen Basisarchiv rekonstruiert; identisch zum Full-Build.
+
+GRENZEN
+Worker-Tests nutzen Mocks und ersetzen keinen Live-Test in Cloudflare D1.
+Browsercheck konnte nicht ausgeführt werden: kein installierter Browser,
+Download der Browserinstallation lieferte kein verwendbares Archiv.
+Kein Live-Deployment; keine echten E-Mails, Zahlungen oder Buchungen ausgelöst.
+Desktop-Quellen/Web-Bundle aktualisiert; keine neue EXE kompiliert.
+
+REPRODUZIEREN
+python -m unittest discover -s tests -p 'test_build14_1*_workshop*.py'
+python -m unittest discover -s tests -p 'test_build14_15_landingpage.py'
+node tests/test_build14_15_landingpage.mjs
+node tests/test_build14_15_worker.mjs
