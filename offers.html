@@ -24,6 +24,22 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
 .cart-toast{position:fixed;right:22px;bottom:22px;z-index:60;max-width:390px;background:var(--brown);color:#fff;border-radius:16px;padding:15px 17px;box-shadow:0 18px 50px rgba(47,38,35,.24);display:flex;gap:14px;align-items:center;transform:translateY(20px);opacity:0;pointer-events:none;transition:.22s ease}.cart-toast.show{transform:none;opacity:1;pointer-events:auto}.cart-toast span{line-height:1.4;font-size:14px}.cart-toast a{white-space:nowrap;color:#F2B49D;font-weight:800;text-decoration:none}@media(max-width:600px){.cart-toast{left:14px;right:14px;bottom:14px}}
 @media(max-width:900px){.grid-three{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.grid-two,.grid-three{grid-template-columns:1fr}.back{display:none}main{padding-top:44px}}
+
+/* BUILD 15.2.1 · public offers polish */
+main{position:relative;isolation:isolate}.offer-hero{position:relative;overflow:hidden;border:1px solid rgba(232,210,190,.86);border-radius:34px;padding:clamp(34px,6vw,70px);margin-bottom:34px;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(245,230,211,.68));box-shadow:0 24px 70px rgba(47,38,35,.055)}
+.offer-hero-copy{position:relative;z-index:2;max-width:790px}.offer-hero .lead{margin-bottom:0}.offer-paths{position:absolute;inset:-55px -70px auto auto;width:min(520px,55vw);height:360px;opacity:.5;pointer-events:none}.offer-paths path{fill:none;stroke-linecap:round;stroke-width:2.2}.offer-paths .p1{stroke:rgba(201,107,75,.54);stroke-dasharray:5 13;animation:bdPathDrift 18s linear infinite}.offer-paths .p2{stroke:rgba(95,80,74,.25);stroke-width:1.5;animation:bdPathFloat 12s ease-in-out infinite alternate}.offer-paths .p3{stroke:rgba(169,84,59,.22);stroke-width:5;filter:blur(.25px);animation:bdPathFloat 15s ease-in-out -3s infinite alternate}
+.offer-whisper{position:absolute;right:clamp(28px,5vw,72px);bottom:24px;font:italic 15px Georgia,serif;color:rgba(95,80,74,.6);transform:rotate(-2deg)}
+@keyframes bdPathDrift{to{stroke-dashoffset:-180}}@keyframes bdPathFloat{from{transform:translate3d(0,-5px,0)}to{transform:translate3d(-14px,12px,0)}}
+.offer-steps{position:relative;margin:26px 0 60px;padding:30px 0 8px}.offer-steps-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:22px}.offer-steps-head h2{font-size:clamp(30px,4vw,43px);margin:6px 0 0}.offer-steps-note{max-width:360px;color:var(--muted);line-height:1.55;font-size:14px}.step-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:offerstep}.step-card{position:relative;padding:26px 24px 25px;border-top:1px solid var(--line);counter-increment:offerstep;min-height:220px}.step-card:before{content:"0" counter(offerstep);display:block;margin-bottom:18px;color:var(--terr);font-weight:900;letter-spacing:.12em;font-size:12px}.step-card:after{content:"";position:absolute;left:24px;top:-3px;width:56px;height:5px;border-radius:999px;background:var(--terr);transform:rotate(-1.5deg)}.step-card:nth-child(2):after{width:76px;transform:rotate(1deg);background:#806B60}.step-card:nth-child(3):after{width:64px;transform:rotate(-.5deg);background:#69745F}.step-card h3{font:700 27px/1.1 Georgia,serif;margin:0 0 12px}.step-card p{margin:0;color:var(--muted);line-height:1.68;font-size:15px}
+.offer-section{position:relative;margin-top:38px}.offer-section-head{display:flex;align-items:center;gap:14px;margin:42px 0 18px}.offer-section-head .section-title{margin:0}.offer-section-head:after{content:"";height:1px;background:linear-gradient(90deg,var(--line),transparent);flex:1}.grid-two,.grid-three{position:relative}
+.card{position:relative;overflow:hidden;transform:translateY(0);transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease}.card:before{content:"";position:absolute;right:-24px;top:-24px;width:116px;height:74px;border:1.5px solid rgba(201,107,75,.22);border-radius:50% 45% 55% 45%;transform:rotate(-18deg);pointer-events:none}.card:after{content:"";position:absolute;right:19px;top:26px;width:40px;height:9px;border-top:2px solid rgba(169,84,59,.34);border-radius:50%;transform:rotate(17deg);pointer-events:none}.card:hover{transform:translateY(-4px);box-shadow:0 22px 55px rgba(47,38,35,.095);border-color:#DDBFA9}.card.package:before{border-color:rgba(95,80,74,.17);width:132px;height:90px;transform:rotate(13deg)}.card .tag{position:relative;z-index:1}.card h2{max-width:88%}.card .meta{display:inline-flex;align-items:center;gap:7px}.card .meta:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--terr);box-shadow:0 0 0 4px rgba(201,107,75,.11)}
+.offer-section-packages{padding:1px 0 10px}.offer-section-packages:before{content:"";position:absolute;z-index:-1;left:-12vw;right:-12vw;top:-18px;bottom:-22px;background:radial-gradient(ellipse at 14% 18%,rgba(201,107,75,.07),transparent 34%),radial-gradient(ellipse at 84% 76%,rgba(105,116,95,.08),transparent 30%);pointer-events:none}
+.btn{transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease}.btn:not([disabled]):hover{opacity:1;transform:translateY(-1px);box-shadow:0 8px 20px rgba(47,38,35,.12)}select:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid rgba(201,107,75,.28);outline-offset:3px}
+@media(max-width:900px){.offer-steps-head{align-items:flex-start;flex-direction:column}.step-grid{grid-template-columns:1fr}.step-card{min-height:0;padding-bottom:22px}.offer-whisper{display:none}}
+@media(max-width:760px){.offer-hero{padding:32px 24px;border-radius:26px}.offer-paths{width:420px;right:-210px;opacity:.34}.offer-steps{margin-bottom:46px}.step-card{padding-left:10px;padding-right:10px}.step-card:after{left:10px}.card h2{max-width:100%}}
+.bd-program-card{position:relative!important;transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease!important;overflow:hidden!important}.bd-program-card:after{content:"";position:absolute;right:-20px;top:-17px;width:100px;height:58px;border-top:2px solid rgba(201,107,75,.24);border-radius:50%;transform:rotate(12deg);pointer-events:none}.bd-program-card:hover{transform:translateY(-4px)!important;box-shadow:0 22px 55px rgba(47,38,35,.10)!important;border-color:#DDBFA9!important}.bd-program-button{transition:transform .18s ease,box-shadow .18s ease}.bd-program-button:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(47,38,35,.12)}
+@media(prefers-reduced-motion:reduce){.offer-paths path,.card,.btn{animation:none!important;transition:none!important}.card:hover,.btn:hover{transform:none!important}}
+
 </style>
 </head>
 <body>
@@ -35,9 +51,10 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
 <a class="back" href="en.html">← Back to website</a>
 </div></div></nav>
 <main>
-<div class="eyebrow">Single sessions & multi-session support</div><h1>Offers</h1><p class="lead">You can start with a single session or choose a package if you want to work on a topic over several steps.</p>
+<section class="offer-hero"><svg class="offer-paths" viewBox="0 0 520 360" aria-hidden="true"><path class="p1" d="M12 262 C120 130 208 335 310 182 S447 102 515 33"/><path class="p2" d="M36 320 C156 198 228 350 349 221 S456 162 507 82"/><path class="p3" d="M146 32 C248 76 278 132 368 86 S470 71 522 126"/></svg><div class="offer-hero-copy"><div class="eyebrow">Single sessions & multi-session support</div><h1>Offers</h1><p class="lead">You can start with a single session or choose a package if you want to work on a topic over several steps.</p></div><div class="offer-whisper" aria-hidden="true">You do not need to know exactly what you need yet.</div></section>
+<section class="offer-steps" aria-labelledby="offerStepsTitle"><div class="offer-steps-head"><div><div class="eyebrow">Getting started</div><h2 id="offerStepsTitle">Three steps.</h2></div><p class="offer-steps-note">No complicated intake process. We start with where you are right now.</p></div><div class="step-grid"><article class="step-card"><h3>Arrive</h3><p>You do not need a perfectly formed explanation of the problem. We first look at what is pressing right now, what has been building for a while and why you are here today.</p></article><article class="step-card"><h3>Sort it out</h3><p>In conversation it often becomes visible quite quickly where things tip: what keeps happening, what is left unsaid, and where withdrawal, pressure or uncertainty takes over.</p></article><article class="step-card"><h3>Move forward</h3><p>Something should feel more tangible by the end. Sometimes that is a concrete agreement or a decision. Sometimes it is simply finding the point where the real work can begin.</p></article></div></section>
 
-<div class="section-title">Single sessions</div>
+<section class="offer-section offer-section-sessions"><div class="offer-section-head"><div class="section-title">Single sessions</div></div>
 <div class="grid-two">
 <article class="card">
   <div class="tag">Single session</div>
@@ -58,9 +75,9 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <label for="advisor-1">Choose counsellor</label>
   <select id="advisor-1"><option>Theophil Kroller</option></select>
   <a class="btn primary" href="booking-en.html?type=couple">Book a session</a>
-</article></div>
+</article></div></section>
 
-<div class="section-title">Support over several sessions</div>
+<section class="offer-section offer-section-packages"><div class="offer-section-head"><div class="section-title">Support over several sessions</div></div>
 <div class="grid-three">
 <article class="card package">
   <div class="tag">Package</div>
@@ -93,7 +110,7 @@ label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px}select
   <div class="price price-unavailable">Price to follow · currently unavailable</div><button class="btn dark" type="button" disabled aria-disabled="true">Currently unavailable</button>
 </article></div>
 
-<p class="note">Package contents and prices can still be adjusted before launch.</p>
+<p class="note">Package contents and prices can still be adjusted before launch.</p></section>
 </main>
 <div class="cart-toast" id="cartToast" role="status" aria-live="polite"><span id="cartToastText"></span><a href="cart-en.html">View cart →</a></div>
 <script src="./cart.js?v=20260925-build14-3-6-1"></script>
