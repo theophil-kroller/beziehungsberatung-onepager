@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#fff7ed">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="BD Admin">
+  <title>BD Admin Mobile</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="app.css?v=15.4.0">
+  <script src="../booking-config.js"></script>
+</head>
+<body>
+  <div id="installGate" class="gate" hidden>
+    <main class="gate-card">
+      <div class="brand-mark" aria-hidden="true">BD</div>
+      <p class="eyebrow">Beziehungsdynamiken</p>
+      <h1>Admin Mobile</h1>
+      <p class="gate-lead">Die schlanke Praxisverwaltung für unterwegs – als App auf deinem Homescreen.</p>
+      <div class="gate-benefits">
+        <div><span>✓</span><p><strong>Termine</strong><small>Heute sehen, verschieben und verwalten</small></p></div>
+        <div><span>✓</span><p><strong>Klient:innen</strong><small>Organisatorische Daten kompakt verfügbar</small></p></div>
+        <div><span>✓</span><p><strong>Finanzen & Packages</strong><small>Nur Funktionen, die mobil wirklich nutzbar sind</small></p></div>
+      </div>
+      <button class="primary big" id="installPrimary">App installieren</button>
+      <button class="text-button" id="continueBrowser">Im Browser fortfahren</button>
+      <div id="iosInstallHelp" class="ios-help" hidden>
+        <strong>Auf dem iPhone installieren</strong>
+        <ol><li>Unten in Safari auf <b>Teilen</b> tippen.</li><li><b>Zum Home-Bildschirm</b> wählen.</li><li>Mit <b>Hinzufügen</b> bestätigen.</li></ol>
+      </div>
+    </main>
+  </div>
+
+  <section id="loginView" class="auth-screen" hidden>
+    <div class="auth-wrap">
+      <div class="brand-mark small">BD</div>
+      <p class="eyebrow">Sicherer Zugang</p>
+      <h1>Willkommen zurück.</h1>
+      <p>Melde dich mit deiner freigeschalteten Praxis-E-Mail-Adresse an.</p>
+      <form id="loginForm">
+        <label for="loginEmail">E-Mail</label>
+        <input id="loginEmail" type="email" autocomplete="email" inputmode="email" required placeholder="deine E-Mail-Adresse">
+        <button id="loginBtn" class="primary big" type="submit">Login-Link senden</button>
+      </form>
+      <p id="loginMsg" class="form-msg" aria-live="polite"></p>
+      <form id="codeForm" hidden>
+        <label for="loginCode">Bestätigungscode</label>
+        <input id="loginCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" pattern="[0-9]{8}" placeholder="8-stelliger Code">
+        <button id="codeBtn" class="secondary" style="width:100%;margin-top:12px" type="submit">Mit Code anmelden</button>
+      </form>
+    </div>
+  </section>
+
+  <div id="app" hidden>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">BD Admin Mobile</p>
+        <h1 id="pageTitle">Home</h1>
+      </div>
+      <button class="avatar" id="profileBtn" aria-label="Konto öffnen">TK</button>
+    </header>
+
+    <main class="screen-wrap">
+      <section class="screen active" data-screen="home">
+        <div id="homeContent"></div>
+      </section>
+      <section class="screen" data-screen="appointments">
+        <div class="section-head"><div><h2>Termine</h2><p>Deine nächsten Buchungen.</p></div><button class="icon-button" id="refreshAppointments" aria-label="Aktualisieren">↻</button></div>
+        <div id="appointmentsList"></div>
+      </section>
+      <section class="screen" data-screen="clients">
+        <div class="section-head"><div><h2>Klient:innen</h2><p>Kontakte, Termine, Packages und Honorarnoten kompakt.</p></div></div>
+        <div class="search-wrap"><span>⌕</span><input id="clientSearch" type="search" placeholder="Suchen"></div>
+        <div id="clientsList"></div>
+      </section>
+      <section class="screen" data-screen="more">
+        <div class="section-head"><div><h2>Mehr</h2><p>Cloudfähige Praxisfunktionen.</p></div></div>
+        <div class="settings-list">
+          <button data-more="finance"><span class="menu-icon">€</span><span><strong>Honorarnoten</strong><small>Offen, bezahlt, Zahlungsstatus</small></span><b>›</b></button>
+          <button data-more="packages"><span class="menu-icon">▣</span><span><strong>Packages</strong><small>Katalog ansehen und Package anlegen</small></span><b>›</b></button>
+          <button data-more="workshop-events"><span class="menu-icon">◷</span><span><strong>Workshop-Termine</strong><small>Organisatorische Termine im Kalender</small></span><b>›</b></button>
+          <button data-more="account"><span class="menu-icon">◉</span><span><strong>Konto & App</strong><small>Sync, Installation, Abmelden</small></span><b>›</b></button>
+        </div>
+      </section>
+      <section class="screen" data-screen="finance"><div id="financeContent"></div></section>
+      <section class="screen" data-screen="packages"><div id="packagesContent"></div></section>
+      <section class="screen" data-screen="workshop-events"><div id="workshopEventsContent"></div></section>
+      <section class="screen" data-screen="account"><div id="accountContent"></div></section>
+    </main>
+
+    <nav class="tabbar" aria-label="Hauptnavigation">
+      <button class="active" data-tab="home"><span>⌂</span><small>Home</small></button>
+      <button data-tab="appointments"><span>▣</span><small>Termine</small></button>
+      <button data-tab="clients"><span>♙</span><small>Klient:innen</small></button>
+      <button data-tab="more"><span>•••</span><small>Mehr</small></button>
+    </nav>
+  </div>
+
+  <dialog id="sheet"><div class="sheet"><div class="sheet-grabber"></div><button class="sheet-close" id="sheetClose" aria-label="Schließen">×</button><div id="sheetContent"></div></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js?v=15.4.0"></script>
+</body>
+</html>
