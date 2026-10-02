@@ -28,3 +28,8 @@
 .eink-device .idea-meta-section{background:#fff;border-radius:4px}
 
 .recent-transfers{margin-top:18px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:16px}.recent-transfers-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}.recent-transfers-head small,.recent-transfer-item small{color:var(--muted);font-size:.78rem}.recent-transfer-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 0;border-top:1px solid var(--line)}.recent-transfer-item>div{display:grid;gap:3px}.recent-transfer-item button{font:inherit;color:var(--terr);background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 11px;cursor:pointer}.resume-card.transferred{background:#f1f7ef;border-color:#d0e1ce}.resume-card.transferred .resume-kicker{color:#315c3a}
+/* BUILD 15.4.2 · discreet route from Capture to the mobile practice login */
+.praxis-login-link{width:34px;height:34px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.68);display:grid;place-items:center;color:#8a7b73;text-decoration:none;flex:0 0 auto;transition:.15s ease}
+.praxis-login-link:hover,.praxis-login-link:focus-visible{color:var(--ink);background:#fff;border-color:#d8ccc4;outline:none}
+.praxis-login-link svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7}
+@media(max-width:520px){.praxis-login-link{width:32px;height:32px}.praxis-login-link svg{width:15px;height:15px}.connection-pill{padding-inline:9px}}
