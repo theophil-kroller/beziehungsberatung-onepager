@@ -1,0 +1,17 @@
+{
+  "build": "15.4.1",
+  "name": "PWA Isolation + Unified Admin Navigation",
+  "base": "15.4.0 FULL",
+  "capture_changed": true,
+  "mobile_changed": true,
+  "worker_api_changed": false,
+  "database_changed": false,
+  "vault_runtime_changed": false,
+  "cloud_polling": false,
+  "new_cloud_reads": false,
+  "navigation": "shared icon rail with horizontal flyouts",
+  "pwa_ids": {
+    "capture": "/capture.html",
+    "admin_mobile": "/mobile/"
+  }
+}

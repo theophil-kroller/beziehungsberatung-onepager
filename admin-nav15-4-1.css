@@ -1,0 +1,78 @@
+/* BUILD 15.4.1 · unified compact admin rail + horizontal flyouts */
+:root{
+  --bd1541-rail-w:76px;
+  --bd1541-terr:#C96B4B;
+  --bd1541-terr-dark:#A9543B;
+  --bd1541-brown:#2F2623;
+  --bd1541-cream:#FFF7ED;
+  --bd1541-sand:#F5E6D3;
+  --bd1541-line:#EAD9CB;
+  --bd1541-muted:#74645C;
+}
+@media (min-width:761px){
+  body.bd1541-main .app-shell{grid-template-columns:var(--bd1541-rail-w) minmax(0,1fr)!important}
+  body.bd1541-main .sidebar{visibility:hidden!important;pointer-events:none!important}
+  body.bd1541-standalone{padding-left:var(--bd1541-rail-w)!important;min-height:100vh}
+  body.bd1541-standalone .suite-main{margin-left:0!important;width:auto!important}
+
+  .bd1541-rail.is-hidden{display:none!important}
+  .bd1541-rail{
+    position:fixed;inset:0 auto 0 0;width:var(--bd1541-rail-w);z-index:1200;
+    display:flex;flex-direction:column;align-items:center;
+    background:rgba(255,250,245,.97);border-right:1px solid var(--bd1541-line);
+    box-shadow:6px 0 24px rgba(47,38,35,.035);padding:10px 8px;
+    -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)
+  }
+  .bd1541-logo{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;margin:0 0 9px;text-decoration:none}
+  .bd1541-logo img{width:39px;height:39px;object-fit:contain}
+  .bd1541-nav{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;overflow:visible}
+  .bd1541-bottom{margin-top:auto;display:grid;gap:4px;justify-items:center;width:100%}
+  .bd1541-sep{height:1px;background:#E7D7CA;width:38px;margin:6px 0}
+  .bd1541-slot{position:relative;width:54px;height:48px;overflow:visible}
+  .bd1541-item{
+    position:relative;width:54px;height:48px;border:0;border-radius:14px;background:transparent;
+    display:grid;place-items:center;color:#6E5D55;text-decoration:none;cursor:pointer;
+    transition:background .15s ease,color .15s ease,transform .15s ease;appearance:none
+  }
+  .bd1541-item:hover,.bd1541-slot:focus-within>.bd1541-item{background:#F5E8DD;color:var(--bd1541-brown);transform:translateY(-1px)}
+  .bd1541-item.current,.bd1541-slot.group-current>.bd1541-item{background:#F6E5DC;color:var(--bd1541-terr-dark);box-shadow:inset 3px 0 0 var(--bd1541-terr)}
+  .bd1541-item svg,.bd1541-flyout svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .bd1541-item:focus-visible,.bd1541-flyout a:focus-visible,.bd1541-flyout button:focus-visible{outline:2px solid var(--bd1541-terr);outline-offset:2px}
+  .bd1541-avatar{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#E9D8CB;color:#6A4D42;font-size:10px;font-weight:900;letter-spacing:.02em}
+  .bd1541-beta-dot{position:absolute;right:8px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--bd1541-terr);border:2px solid #FFFAF5}
+
+  /* Direct-item label: horizontal, never expands the rail itself. */
+  .bd1541-slot.direct::after{
+    content:attr(data-label);position:absolute;left:64px;top:50%;transform:translate(0,-50%) translateX(-5px);
+    padding:8px 11px;border:1px solid var(--bd1541-line);border-radius:10px;background:#FFFCF9;
+    box-shadow:0 14px 40px rgba(47,38,35,.13);color:var(--bd1541-brown);font-size:12px;font-weight:750;
+    white-space:nowrap;opacity:0;pointer-events:none;transition:.14s ease;z-index:5
+  }
+  .bd1541-slot.direct:hover::after,.bd1541-slot.direct:focus-within::after{opacity:1;transform:translate(0,-50%) translateX(0)}
+
+  /* Horizontal flyout for grouped navigation. */
+  .bd1541-flyout{
+    position:absolute;left:64px;top:50%;transform:translate(-6px,-50%);
+    width:248px;padding:10px;border:1px solid var(--bd1541-line);border-radius:16px;
+    background:rgba(255,252,249,.985);box-shadow:0 20px 55px rgba(47,38,35,.16);
+    opacity:0;visibility:hidden;pointer-events:none;transition:opacity .14s ease,transform .14s ease,visibility .14s;
+    z-index:20
+  }
+  .bd1541-slot:hover>.bd1541-flyout,.bd1541-slot:focus-within>.bd1541-flyout,.bd1541-slot.pinned>.bd1541-flyout{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translate(0,-50%)
+  }
+  .bd1541-flyout-head{padding:6px 9px 8px;font-size:10px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;color:#A65A43}
+  .bd1541-flyout a,.bd1541-flyout button{
+    width:100%;min-height:42px;border:0;background:transparent;border-radius:11px;padding:9px 10px;
+    display:flex;align-items:center;gap:10px;color:#5E4E47;text-decoration:none;font:700 12px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;text-align:left;cursor:pointer
+  }
+  .bd1541-flyout a:hover,.bd1541-flyout button:hover{background:#F7ECE3;color:var(--bd1541-brown)}
+  .bd1541-flyout a.current,.bd1541-flyout button.current{background:#F6E5DC;color:var(--bd1541-terr-dark)}
+  .bd1541-flyout svg{width:18px;height:18px;flex:0 0 auto}
+  .bd1541-flyout small{margin-left:auto;color:#9A877D;font-size:9px;font-weight:700}
+}
+
+@media (max-width:760px){
+  /* The dedicated Admin Mobile PWA is the intended mobile surface. Keep legacy pages untouched here. */
+  .bd1541-rail{display:none!important}
+}
