@@ -33,7 +33,12 @@
 .publish-status148{padding:11px 12px;border-radius:13px;background:#f5f1ee;color:#725f56;font-size:13px;line-height:1.45}.publish-status148.ok{background:#eaf3e9;color:#4d6f52}.publish-status148.warn{background:#fff0e7;color:#975539}
 .publish-date-row148{display:grid;gap:7px;margin-top:14px}.publish-date-row148 input{border:1px solid #decfc6;border-radius:12px;background:#fff;padding:10px 11px;font:inherit}
 
-.repurpose-dialog148{width:min(1120px,calc(100vw - 36px));max-width:none!important}
+#repurposeDialog148.kh-dialog{width:min(1480px,calc(100vw - 28px));height:min(900px,calc(100vh - 24px));max-width:none!important}
+#repurposeDialog148 .repurpose-dialog148{width:100%!important;height:100%;max-width:none!important;max-height:none!important;overflow:auto;padding:32px 36px 24px;grid-template-rows:auto auto minmax(250px,1fr) auto auto}
+#repurposeDialog148 .repurpose-suggestions148{align-content:start;min-height:250px}
+#repurposeDialog148 .repurpose-footer148{position:sticky;bottom:-24px;background:#fff;padding-bottom:4px;z-index:3}
+@media(min-width:1250px){#repurposeDialog148 .repurpose-suggestions148{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){#repurposeDialog148.kh-dialog{width:calc(100vw - 12px);height:calc(100vh - 12px)}#repurposeDialog148 .repurpose-dialog148{padding:24px 18px 18px}}
 .repurpose-source148{padding:13px 14px;border-radius:14px;background:#f8f3ef;border:1px solid #ead9cf;margin:10px 0 18px}.repurpose-source148 strong{display:block;margin-bottom:3px}.repurpose-source148 span{font-size:13px;color:#806e65}
 .repurpose-suggestions148{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0 18px}.repurpose-card148{position:relative;display:grid;gap:8px;padding:16px;border:1px solid #e5d5cc;border-radius:17px;background:#fff;cursor:pointer}.repurpose-card148.selected{border-color:#c97656;background:#fff9f5;box-shadow:0 0 0 1px rgba(201,118,86,.12)}.repurpose-card148 input{position:absolute;right:14px;top:14px}.repurpose-card148 .type{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:#a1563b;font-weight:850}.repurpose-card148 strong{padding-right:28px;font-size:16px}.repurpose-card148 p{margin:0;color:#76635a;font-size:13px;line-height:1.45}.repurpose-card148 .hook{padding:8px 10px;border-radius:10px;background:#f7f2ef;color:#604c43;font-size:12px}
 .repurpose-note148{font-size:13px;color:#7b685e}.repurpose-footer148{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #ecded6;padding-top:16px}

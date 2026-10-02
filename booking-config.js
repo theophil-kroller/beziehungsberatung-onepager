@@ -6,7 +6,7 @@ window.BD_BOOKING_CONFIG = {
 
   timezone: "Europe/Vienna",
   minNoticeHours: 24,
-  maxDaysAhead: 60,
+  maxDaysAhead: 30,
   bufferMinutes: 15,
 
 

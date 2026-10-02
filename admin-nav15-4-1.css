@@ -1,4 +1,4 @@
-/* BUILD 15.4.1 · unified compact admin rail + horizontal flyouts */
+/* BUILD 15.4.4 · unified compact admin rail + horizontal flyouts */
 :root{
   --bd1541-rail-w:76px;
   --bd1541-terr:#C96B4B;
@@ -39,6 +39,14 @@
   .bd1541-item svg,.bd1541-flyout svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
   .bd1541-item:focus-visible,.bd1541-flyout a:focus-visible,.bd1541-flyout button:focus-visible{outline:2px solid var(--bd1541-terr);outline-offset:2px}
   .bd1541-avatar{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#E9D8CB;color:#6A4D42;font-size:10px;font-weight:900;letter-spacing:.02em}
+
+  /* Keep the rail visually identical even on legacy standalone pages such as Newsletter. */
+  .bd1541-rail,.bd1541-rail *{box-sizing:border-box}
+  .bd1541-rail .bd1541-item{margin:0!important;padding:0!important;border:0!important;background:transparent!important;color:#6E5D55!important;font:inherit!important;line-height:1!important;text-decoration:none!important;box-shadow:none!important}
+  .bd1541-rail .bd1541-item:hover,.bd1541-rail .bd1541-slot:focus-within>.bd1541-item{background:#F5E8DD!important;color:var(--bd1541-brown)!important}
+  .bd1541-rail .bd1541-item.current,.bd1541-rail .bd1541-slot.group-current>.bd1541-item{background:#F6E5DC!important;color:var(--bd1541-terr-dark)!important;box-shadow:inset 3px 0 0 var(--bd1541-terr)!important}
+  .bd1541-rail .bd1541-flyout a,.bd1541-rail .bd1541-flyout button{margin:0!important;text-decoration:none!important}
+  body.nl-page.bd1541-standalone{margin:0!important;padding-left:var(--bd1541-rail-w)!important}
   .bd1541-beta-dot{position:absolute;right:8px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--bd1541-terr);border:2px solid #FFFAF5}
 
   /* Direct-item label: horizontal, never expands the rail itself. */
