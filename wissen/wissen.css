@@ -7,3 +7,6 @@
 
 /* BUILD 14.8 · Wissen brand marker */
 .knowledge-index-head{margin:4px 0 30px;max-width:760px}.knowledge-index-head h1{margin:.08em 0 .14em;font-size:clamp(3rem,7vw,5rem)}.knowledge-index-head>p:last-child{margin:0;color:var(--muted);font-size:1.08rem;max-width:680px}.knowledge-word-accent{position:relative;display:inline-block;z-index:0}.knowledge-word-accent:after{content:"";position:absolute;left:-2%;right:-3%;bottom:.03em;height:.19em;background:var(--accent);opacity:.82;border-radius:56% 44% 48% 52%/42% 58% 46% 54%;transform:rotate(-1.2deg);z-index:-1;clip-path:polygon(0 45%,7% 28%,17% 39%,28% 25%,40% 36%,52% 20%,65% 34%,78% 23%,90% 35%,100% 26%,99% 76%,88% 66%,76% 78%,63% 68%,50% 82%,36% 70%,22% 84%,10% 72%,0 79%)}
+
+/* BUILD 15.5 · knowledge-only public mode */
+.preview-ribbon{position:sticky;top:0;z-index:100;background:#2f2623;color:#fff7ed;text-align:center;padding:8px 14px;font:700 12px/1.2 Arial,sans-serif;letter-spacing:.04em}.knowledge-index-head{padding:18px 0 12px;border-bottom:1px solid var(--line);margin-bottom:28px}.knowledge-index-head>p:last-child{font-family:Arial,sans-serif;line-height:1.65}.site-head nav .cta{font-weight:800}footer{align-items:center}footer span{margin-right:auto}@media(max-width:720px){footer span{width:100%;order:2}}
