@@ -1,0 +1,233 @@
+{
+  "build": "15.9.6",
+  "base": "15.9.5",
+  "emotionAssets": 77,
+  "emotionGroups": 10,
+  "files": [
+    {
+      "path": "admin.html",
+      "bytes": 52046,
+      "sha256": "74c8952100aceda03c3ee90ca649e0cd0633c4a87d8d1f8e8bc04c23595825da"
+    },
+    {
+      "path": "admin-build14-13.js",
+      "bytes": 20305,
+      "sha256": "b7fd576288ebaa1e18c7f30e6fb0cc3001917d91b7d978c3fbfd1eed8980dd8b"
+    },
+    {
+      "path": "admin-build14-13.css",
+      "bytes": 9720,
+      "sha256": "1f256ad9f524f63269361aa3598d9df4eed1f114d52ac1e19efec71e06cbb903"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 579791,
+      "sha256": "c3d70a021b0d0269ec567f5a72925668445191007ba22a119127725ad6fe791f"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "6bbde15f65b1ccb98ba6548c26e3b0f82c15df5d107cbff25013b7e9dd52b9b0"
+    },
+    {
+      "path": "public/emotion/emotion-library.json",
+      "bytes": 67064,
+      "sha256": "e06cb33f785af101c1ebb1aff4fac190e53be3b155b8e28e3246c7c0a59ef035"
+    },
+    {
+      "path": "public/emotion/emotion-library.csv",
+      "bytes": 16280,
+      "sha256": "ce17922fc25b7a4b607d2ba99bdaab8d8a7ffa99752d6d807e7b85084fe09aba"
+    },
+    {
+      "path": "public/emotion/info.txt",
+      "bytes": 313,
+      "sha256": "37113109375cffbb187cf4a36e933786f232471779c3289755479b4534add27b"
+    },
+    {
+      "path": "BUILD15-9-6-NOTE.txt",
+      "bytes": 1565,
+      "sha256": "a27ea7528bc3c234565f463cda76a9d77fcad1f23164d1a5ede9e955e23c7147"
+    },
+    {
+      "path": "BUILD15-9-6-TESTREPORT.txt",
+      "bytes": 859,
+      "sha256": "600fef48f0a7ce0243b8cdd7e3d9fe7da4be22f152248a2d9c538137752afc0f"
+    },
+    {
+      "path": "INSTALLATION-15.9.6.txt",
+      "bytes": 311,
+      "sha256": "f78fffffe0448e940eae3dd9c3df912ea86dc26cf0797889bdca3790e9d98977"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.9.6.cmd",
+      "bytes": 106,
+      "sha256": "3d9cceade6653b9e9239e34351a6c3b00d91587c4e8dd2aefab0105b5fb2dd47"
+    },
+    {
+      "path": "tests/test_build15_9_6_focus_emotions.py",
+      "bytes": 2592,
+      "sha256": "3de512cb1b62cfdf62c03676623a3e85588e4bbca58695af2a7290404696f345"
+    },
+    {
+      "path": "desktop/app/web/admin.html",
+      "bytes": 52046,
+      "sha256": "74c8952100aceda03c3ee90ca649e0cd0633c4a87d8d1f8e8bc04c23595825da"
+    },
+    {
+      "path": "desktop/app/web/admin-build14-13.js",
+      "bytes": 20305,
+      "sha256": "b7fd576288ebaa1e18c7f30e6fb0cc3001917d91b7d978c3fbfd1eed8980dd8b"
+    },
+    {
+      "path": "desktop/app/web/admin-build14-13.css",
+      "bytes": 9720,
+      "sha256": "1f256ad9f524f63269361aa3598d9df4eed1f114d52ac1e19efec71e06cbb903"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 579791,
+      "sha256": "c3d70a021b0d0269ec567f5a72925668445191007ba22a119127725ad6fe791f"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 7,
+      "sha256": "6bbde15f65b1ccb98ba6548c26e3b0f82c15df5d107cbff25013b7e9dd52b9b0"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/emotion-library.json",
+      "bytes": 67064,
+      "sha256": "e06cb33f785af101c1ebb1aff4fac190e53be3b155b8e28e3246c7c0a59ef035"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/emotion-library.csv",
+      "bytes": 16280,
+      "sha256": "ce17922fc25b7a4b607d2ba99bdaab8d8a7ffa99752d6d807e7b85084fe09aba"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/info.txt",
+      "bytes": 313,
+      "sha256": "37113109375cffbb187cf4a36e933786f232471779c3289755479b4534add27b"
+    },
+    {
+      "path": "public/emotion/Emotion_Angst_B1.png",
+      "bytes": 1819937,
+      "sha256": "73bf91ce787350c375e8ead0fee204f923ba22ae6244494e2c7bfbfdf5a7068b"
+    },
+    {
+      "path": "public/emotion/Emotion_Angst_B2.png",
+      "bytes": 1721182,
+      "sha256": "549c1128f20f8eb62827f11dbc7e9b92c6d3533e610d5971500d0225957952cc"
+    },
+    {
+      "path": "public/emotion/Emotion_Angst_B3.png",
+      "bytes": 1665369,
+      "sha256": "6a72886d14872baa7b5a6f056a5f10260e0881b7aa066c504b838f28e31e4447"
+    },
+    {
+      "path": "public/emotion/Emotion_Angst_B4.png",
+      "bytes": 1673528,
+      "sha256": "86a32af3e5911286304f5c9f6e25ff3a3a7ba30b56c322f533a70a40e187955c"
+    },
+    {
+      "path": "public/emotion/Emotion_Verzweiflung_B1.png",
+      "bytes": 1949610,
+      "sha256": "2084d1aa5bdd244dda7e2d559360efa46b985f5d17775bbc417782c857e8ba8f"
+    },
+    {
+      "path": "public/emotion/Emotion_Verzweiflung_B2.png",
+      "bytes": 1875785,
+      "sha256": "1039e221c1cc840b56cdb7cd396f3f0fcaf4473608be5056e7ca83b065ba778d"
+    },
+    {
+      "path": "public/emotion/Emotion_Verzweiflung_B3.png",
+      "bytes": 1922675,
+      "sha256": "61b345ed79bf89cb86e8700d029182f0b943db1cf60dd5f0bde8f0aef1143324"
+    },
+    {
+      "path": "public/emotion/Emotion_Verzweiflung_B4.png",
+      "bytes": 1801124,
+      "sha256": "7aa2200ecabb588684fee40c4f6a7143ba7a6f7a2a455c775a8f94a949ba9c9c"
+    },
+    {
+      "path": "public/emotion/Emotion_Zuneigung_B1.png",
+      "bytes": 1718413,
+      "sha256": "a159398c2c22df51963c4bdb1619a6f714f8de4ebefec4f7eb361417c6a66919"
+    },
+    {
+      "path": "public/emotion/Emotion_Zuneigung_B2.png",
+      "bytes": 1684453,
+      "sha256": "bfd8cb57c468c267c29e274403a5528ed2fe5958a2e7d11da991e4ce2c3c3269"
+    },
+    {
+      "path": "public/emotion/Emotion_Zuneigung_B3.png",
+      "bytes": 1708607,
+      "sha256": "aa00c94fc465397941f493f5a0ddeee97cf790b8a02d449b9379f453a60c0abd"
+    },
+    {
+      "path": "public/emotion/Emotion_Zuneigung_B4.png",
+      "bytes": 1657736,
+      "sha256": "11f0ddb47b979e0c957536dd7429fafa803700ddc3755c3e7e90b6bd9d78e680"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Angst_B1.png",
+      "bytes": 1819937,
+      "sha256": "73bf91ce787350c375e8ead0fee204f923ba22ae6244494e2c7bfbfdf5a7068b"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Angst_B2.png",
+      "bytes": 1721182,
+      "sha256": "549c1128f20f8eb62827f11dbc7e9b92c6d3533e610d5971500d0225957952cc"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Angst_B3.png",
+      "bytes": 1665369,
+      "sha256": "6a72886d14872baa7b5a6f056a5f10260e0881b7aa066c504b838f28e31e4447"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Angst_B4.png",
+      "bytes": 1673528,
+      "sha256": "86a32af3e5911286304f5c9f6e25ff3a3a7ba30b56c322f533a70a40e187955c"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Verzweiflung_B1.png",
+      "bytes": 1949610,
+      "sha256": "2084d1aa5bdd244dda7e2d559360efa46b985f5d17775bbc417782c857e8ba8f"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Verzweiflung_B2.png",
+      "bytes": 1875785,
+      "sha256": "1039e221c1cc840b56cdb7cd396f3f0fcaf4473608be5056e7ca83b065ba778d"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Verzweiflung_B3.png",
+      "bytes": 1922675,
+      "sha256": "61b345ed79bf89cb86e8700d029182f0b943db1cf60dd5f0bde8f0aef1143324"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Verzweiflung_B4.png",
+      "bytes": 1801124,
+      "sha256": "7aa2200ecabb588684fee40c4f6a7143ba7a6f7a2a455c775a8f94a949ba9c9c"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Zuneigung_B1.png",
+      "bytes": 1718413,
+      "sha256": "a159398c2c22df51963c4bdb1619a6f714f8de4ebefec4f7eb361417c6a66919"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Zuneigung_B2.png",
+      "bytes": 1684453,
+      "sha256": "bfd8cb57c468c267c29e274403a5528ed2fe5958a2e7d11da991e4ce2c3c3269"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Zuneigung_B3.png",
+      "bytes": 1708607,
+      "sha256": "aa00c94fc465397941f493f5a0ddeee97cf790b8a02d449b9379f453a60c0abd"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Zuneigung_B4.png",
+      "bytes": 1657736,
+      "sha256": "11f0ddb47b979e0c957536dd7429fafa803700ddc3755c3e7e90b6bd9d78e680"
+    }
+  ]
+}
