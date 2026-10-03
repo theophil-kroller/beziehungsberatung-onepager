@@ -1,0 +1,56 @@
+{
+  "build": "15.9.0",
+  "files": [
+    {
+      "path": "hub.html",
+      "bytes": 52102,
+      "sha256": "c31a73f02c0d9169d6029c4f5ff29fa7435fd4fda97b438d94eb4cb44c53c543"
+    },
+    {
+      "path": "hub-build14-8.js",
+      "bytes": 66898,
+      "sha256": "b6a35f463ac74a5daa1fea95d4c6571d25391ddfa3f3e49fb3c66ddec4190ce5"
+    },
+    {
+      "path": "hub-build15-8.js",
+      "bytes": 47796,
+      "sha256": "efc83bef4cf172b6160ef0c7ed7c8f5459d732a7027c8fd352b7e83013adc3f0"
+    },
+    {
+      "path": "emotion-library-15-9.js",
+      "bytes": 6197,
+      "sha256": "cb86cb98514ef0490568defa5e474356892e6274df8179031d00d8a8698f4f53"
+    },
+    {
+      "path": "emotion-library-15-9.css",
+      "bytes": 3722,
+      "sha256": "2696c1803dac01e4eae6859ce635421ed3063cd8e1f9edca63a7e4fe3bfedeaa"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 577839,
+      "sha256": "94f292d9ef27bdf14dde592d430e3c3fc046cff9bd262563260eb8518935f0a1"
+    },
+    {
+      "path": "public/emotion/emotion-library.json",
+      "bytes": 55952,
+      "sha256": "b61bfa4577c6962f8fc1eee036c0080c6ea2485da49616e0fa580f5157abba51"
+    },
+    {
+      "path": "BUILD15-9-NOTE.txt",
+      "bytes": 1359,
+      "sha256": "32c0c6d854b0c54fca2589458284b045db6eb06059bc56abaeb94cbbee1523b4"
+    },
+    {
+      "path": "BUILD15-9-TESTREPORT.txt",
+      "bytes": 983,
+      "sha256": "96865e7ba59efa9c6316920384c5f4fdf4de3e94e71dadb4e0165ab0e19e8b95"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "3b47e9c1f5b76ee8c736677d7e289ee4ceb95413334e471fc0aad15c0724015d"
+    }
+  ],
+  "emotionAssets": 65
+}
