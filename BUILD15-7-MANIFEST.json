@@ -1,0 +1,22 @@
+{
+  "build": "15.7.0",
+  "base": "15.6.0",
+  "vaultVersion": "3.37.0",
+  "features": [
+    "persistent_repurpose_suggestions",
+    "repurpose_production_state",
+    "article_artifact_navigation",
+    "carousel_studio_package_2",
+    "carousel_live_slide_renderer",
+    "carousel_local_photo_indexeddb",
+    "carousel_png_zip_export"
+  ],
+  "changed": [
+    "hub.html",
+    "hub-build14-8.js",
+    "hub-build14-8.css",
+    "vault/vault_server.py"
+  ],
+  "cloudflareWorkerDeploy": false,
+  "d1Migration": false
+}
