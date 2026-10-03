@@ -1,0 +1,30 @@
+{
+  "build": "15.8.0",
+  "base": "15.7.0",
+  "vaultVersion": "3.38.0",
+  "features": [
+    "creator_studio_navigation",
+    "creator_studio_overview",
+    "creator_artifact_resume",
+    "youtube_short_prompt_workflow",
+    "youtube_short_structured_import",
+    "youtube_short_editor",
+    "generic_derivative_reuse"
+  ],
+  "changed": [
+    "hub.html",
+    "hub-build14-8.js",
+    "hub-build15-8.js",
+    "hub-build15-8.css",
+    "admin-nav15-4-1.js",
+    "admin.html",
+    "message-center.html",
+    "methods.html",
+    "workshops.html",
+    "newsletter-admin.html",
+    "vault/vault_server.py"
+  ],
+  "cloudflareWorkerDeploy": false,
+  "d1Migration": false,
+  "emotionContentLibraryIntegrated": false
+}

@@ -13,6 +13,7 @@ const icons={
  package:'<path d="m3 7 9-4 9 4-9 4-9-4Zm0 0v10l9 4 9-4V7M12 11v10"/>',
  programs:'<path d="M4 5h16v14H4zM8 9h8M8 13h5"/>',
  hub:'<path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4-4V4zm0 12h10a4 4 0 0 1 4 4M9 8h6m-6 4h6"/>',
+ creator:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3V9ZM7 3v4m10-4v4"/>',
  methods:'<path d="M8 3h8v5h5v8h-5v5H8v-5H3V8h5V3Z"/><path d="M10 8h4m-4 8h4"/>',
  workshops:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18M7 14h3m4 0h3m-10 4h3"/>',
  newsletter:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>',
@@ -22,8 +23,9 @@ const icons={
 };
 const svg=k=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[k]}</svg>`;
 function activeStandalone(key){
+ if(page==='hub.html'){if(key==='creator')return location.hash==='#creator';if(key==='hub')return location.hash!=='#creator'}
  const map={
-  'hub.html':'hub','methods.html':'methods','workshops.html':'workshops','newsletter-admin.html':'newsletter','message-center.html':'messages'
+  'methods.html':'methods','workshops.html':'workshops','newsletter-admin.html':'newsletter','message-center.html':'messages'
  };
  return map[page]===key;
 }
@@ -106,6 +108,7 @@ function mount(){
    {key:'programs',label:'Programme & Gruppen',icon:'programs',view:'programs'},
    {key:'newsletter',label:'Newsletter',icon:'newsletter',href:'newsletter-admin.html'},
    {key:'hub',label:'Knowledge Hub',icon:'hub',href:'hub.html'},
+   {key:'creator',label:'Creator Studio',icon:'creator',href:'hub.html#creator'},
    {key:'methods',label:'Methoden',icon:'methods',href:'methods.html'},
    {key:'workshops',label:'Workshops',icon:'workshops',href:'workshops.html'}
   ]}),
@@ -121,8 +124,8 @@ function mount(){
  document.addEventListener('click',e=>{if(!e.target.closest('.bd1541-slot'))closePinned()});
  if(isMain){
   const old=document.querySelector('.side-nav');if(old)new MutationObserver(syncActive).observe(old,{subtree:true,attributes:true,attributeFilter:['class']});
-  window.addEventListener('hashchange',()=>setTimeout(syncActive,0));
  }
+ window.addEventListener('hashchange',()=>setTimeout(syncActive,0));
  syncActive();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(mount,20),{once:true});else setTimeout(mount,20);
