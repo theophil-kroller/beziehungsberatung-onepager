@@ -1,0 +1,273 @@
+{
+  "build": "15.9.7",
+  "base": "15.9.6",
+  "emotionAssets": 96,
+  "emotionGroups": 12,
+  "files": [
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "25f7528fe872ed9c97308041136aee00bcfd6a4fe3b98c8e3040ed1fefb8184d"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 579851,
+      "sha256": "2c4af0b5a44a61f0e1b2eee1b1c2cc3cf4a7f3c68fb53308df3f38d5e3082adf"
+    },
+    {
+      "path": "public/emotion/emotion-library.json",
+      "bytes": 84219,
+      "sha256": "ab513af3dab0f8b7ab5302b3ccac3ce6bdf260911bb33ad94183dd2e45b7a27b"
+    },
+    {
+      "path": "public/emotion/emotion-library.csv",
+      "bytes": 20912,
+      "sha256": "718b52b1c7ae3458cb1dbcabc69711471ba17a8e5bb4189f6587750d57162ad7"
+    },
+    {
+      "path": "public/emotion/info.txt",
+      "bytes": 367,
+      "sha256": "66ee9bad88df45ce6a5ef9e8ed47d5144f4f0224ab8bf355e32f2bbc28a1302e"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 7,
+      "sha256": "25f7528fe872ed9c97308041136aee00bcfd6a4fe3b98c8e3040ed1fefb8184d"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 579851,
+      "sha256": "2c4af0b5a44a61f0e1b2eee1b1c2cc3cf4a7f3c68fb53308df3f38d5e3082adf"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/emotion-library.json",
+      "bytes": 84219,
+      "sha256": "ab513af3dab0f8b7ab5302b3ccac3ce6bdf260911bb33ad94183dd2e45b7a27b"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/emotion-library.csv",
+      "bytes": 20912,
+      "sha256": "718b52b1c7ae3458cb1dbcabc69711471ba17a8e5bb4189f6587750d57162ad7"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/info.txt",
+      "bytes": 367,
+      "sha256": "66ee9bad88df45ce6a5ef9e8ed47d5144f4f0224ab8bf355e32f2bbc28a1302e"
+    },
+    {
+      "path": "BUILD15-9-7-NOTE.txt",
+      "bytes": 919,
+      "sha256": "4fb8c60d1783a7fd29b90960ad1c53262faed319b81b42a56c948caa2f368e05"
+    },
+    {
+      "path": "BUILD15-9-7-TESTREPORT.txt",
+      "bytes": 798,
+      "sha256": "e0fabe792fa72f27eea050790e62050094bc01deb59b6d1976fe8f0ca2606f19"
+    },
+    {
+      "path": "INSTALLATION-15.9.7.txt",
+      "bytes": 199,
+      "sha256": "51b8f16e2cc0f36c39561649f0ab17a8fc66aa73b81b6ee3d26ced2a13649d2e"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.9.7.cmd",
+      "bytes": 74,
+      "sha256": "c24a2f52d668b76752d2f45c6ac41db219faf3ca5b26999a9f83a13dd14ffa51"
+    },
+    {
+      "path": "tests/test_build15_9_7_emotion_final.py",
+      "bytes": 949,
+      "sha256": "336afa867327692dfc70c786e089557246991e62e01dee17ec67848a4216e52d"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_A1.png",
+      "bytes": 1784610,
+      "sha256": "cbd6c374ba0013c1e88f6af45bd4d185e2af0404cb6b782c6be0c066ff0e8ad9"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_A1.png",
+      "bytes": 1784610,
+      "sha256": "cbd6c374ba0013c1e88f6af45bd4d185e2af0404cb6b782c6be0c066ff0e8ad9"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_A2.png",
+      "bytes": 1606076,
+      "sha256": "51c02a411ec574aa612d549631447f1680e11a720db71aeb16be16d4ac582e4a"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_A2.png",
+      "bytes": 1606076,
+      "sha256": "51c02a411ec574aa612d549631447f1680e11a720db71aeb16be16d4ac582e4a"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_A3.png",
+      "bytes": 1745443,
+      "sha256": "a1e89b51dc844dfc2d9c282889e1e7bf5c826083d7d801aaca3cd662b66b311a"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_A3.png",
+      "bytes": 1745443,
+      "sha256": "a1e89b51dc844dfc2d9c282889e1e7bf5c826083d7d801aaca3cd662b66b311a"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_A4.png",
+      "bytes": 1809919,
+      "sha256": "5e1d37864b6e8062f55ec6007913ce5875f730098577b63d360bb944a7444980"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_A4.png",
+      "bytes": 1809919,
+      "sha256": "5e1d37864b6e8062f55ec6007913ce5875f730098577b63d360bb944a7444980"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_A5.png",
+      "bytes": 1738134,
+      "sha256": "2832d28e8f0414545ae1188b3cd1de1d0ee6086497e55f9c5615f666606e2bd7"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_A5.png",
+      "bytes": 1738134,
+      "sha256": "2832d28e8f0414545ae1188b3cd1de1d0ee6086497e55f9c5615f666606e2bd7"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_A6.png",
+      "bytes": 1682484,
+      "sha256": "0ce83f99358a37c6fba2472f1867ab410ce789ea0b95d4986957ef1ad9684bac"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_A6.png",
+      "bytes": 1682484,
+      "sha256": "0ce83f99358a37c6fba2472f1867ab410ce789ea0b95d4986957ef1ad9684bac"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_A7.png",
+      "bytes": 1942119,
+      "sha256": "fdea5eaefa487e3d41934ba37c5e89f368d074f9b771fe3c4c0336623b3e8f7f"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_A7.png",
+      "bytes": 1942119,
+      "sha256": "fdea5eaefa487e3d41934ba37c5e89f368d074f9b771fe3c4c0336623b3e8f7f"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_B1.png",
+      "bytes": 1650077,
+      "sha256": "848dcac178a666f9d790dfcfd57ae472752d71af2f5e62aab30e573eb5c5d826"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_B1.png",
+      "bytes": 1650077,
+      "sha256": "848dcac178a666f9d790dfcfd57ae472752d71af2f5e62aab30e573eb5c5d826"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_B2.png",
+      "bytes": 1763469,
+      "sha256": "9b25921e860480d94e00f7cb5f82f192be06545b7dc33436a6a310eebb5c0445"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_B2.png",
+      "bytes": 1763469,
+      "sha256": "9b25921e860480d94e00f7cb5f82f192be06545b7dc33436a6a310eebb5c0445"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_B3.png",
+      "bytes": 1748610,
+      "sha256": "517b6851870945460fceb4762f527c19b696154875cbed3eebcc0822adf0fd03"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_B3.png",
+      "bytes": 1748610,
+      "sha256": "517b6851870945460fceb4762f527c19b696154875cbed3eebcc0822adf0fd03"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_B4.png",
+      "bytes": 1862965,
+      "sha256": "c02f31389fbe7cbd4f3420484f0ea0c82645dc941944971e04d6d36d4dbaf2a1"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_B4.png",
+      "bytes": 1862965,
+      "sha256": "c02f31389fbe7cbd4f3420484f0ea0c82645dc941944971e04d6d36d4dbaf2a1"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_B5.png",
+      "bytes": 1731728,
+      "sha256": "7f146924876eb5506e5c7b8c10b3a8a55c936ed3d5bb333b42b872c7daf6486b"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_B5.png",
+      "bytes": 1731728,
+      "sha256": "7f146924876eb5506e5c7b8c10b3a8a55c936ed3d5bb333b42b872c7daf6486b"
+    },
+    {
+      "path": "public/emotion/Emotion_Traurigkeit_B6.png",
+      "bytes": 1632843,
+      "sha256": "49338e19f3b35dced69d6646afc6b87a9815910a75e2d09957e2f4a047dc153c"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Traurigkeit_B6.png",
+      "bytes": 1632843,
+      "sha256": "49338e19f3b35dced69d6646afc6b87a9815910a75e2d09957e2f4a047dc153c"
+    },
+    {
+      "path": "public/emotion/Emotion_Erleichterung_A1.png",
+      "bytes": 1711651,
+      "sha256": "e651a28c971a1dcec97e8f297296ab0797304a67b2fb019099398a6e5a42d49e"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Erleichterung_A1.png",
+      "bytes": 1711651,
+      "sha256": "e651a28c971a1dcec97e8f297296ab0797304a67b2fb019099398a6e5a42d49e"
+    },
+    {
+      "path": "public/emotion/Emotion_Erleichterung_A2.png",
+      "bytes": 1739309,
+      "sha256": "2e4c646f39883c141acb22353b547bc9a7a746e1c2b05d9f60dc39260a6cef31"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Erleichterung_A2.png",
+      "bytes": 1739309,
+      "sha256": "2e4c646f39883c141acb22353b547bc9a7a746e1c2b05d9f60dc39260a6cef31"
+    },
+    {
+      "path": "public/emotion/Emotion_Erleichterung_A3.png",
+      "bytes": 1727161,
+      "sha256": "227e0ceed91d0d1a3dfe3d07d17d2dd2a350a3f1e494da11cde22c6af42ef6a5"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Erleichterung_A3.png",
+      "bytes": 1727161,
+      "sha256": "227e0ceed91d0d1a3dfe3d07d17d2dd2a350a3f1e494da11cde22c6af42ef6a5"
+    },
+    {
+      "path": "public/emotion/Emotion_Erleichterung_B1.png",
+      "bytes": 1758782,
+      "sha256": "b87c3ce62830732168cc4290c67d9649625b31f12b8a9beb24bccbe5a3018bfa"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Erleichterung_B1.png",
+      "bytes": 1758782,
+      "sha256": "b87c3ce62830732168cc4290c67d9649625b31f12b8a9beb24bccbe5a3018bfa"
+    },
+    {
+      "path": "public/emotion/Emotion_Erleichterung_B2.png",
+      "bytes": 1801924,
+      "sha256": "87736dba2d617bec7b991c40b0821a4e1c98679d55188dc579092d8a55a65aa6"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Erleichterung_B2.png",
+      "bytes": 1801924,
+      "sha256": "87736dba2d617bec7b991c40b0821a4e1c98679d55188dc579092d8a55a65aa6"
+    },
+    {
+      "path": "public/emotion/Emotion_Erleichterung_B3.png",
+      "bytes": 1913922,
+      "sha256": "bad550a74733a68f2373215c6614ff9e72c5272d981bb64d8f293f4fd737e31f"
+    },
+    {
+      "path": "desktop/app/web/public/emotion/Emotion_Erleichterung_B3.png",
+      "bytes": 1913922,
+      "sha256": "bad550a74733a68f2373215c6614ff9e72c5272d981bb64d8f293f4fd737e31f"
+    }
+  ]
+}
