@@ -4,13 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#fff7ed">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="BD Admin">
   <title>BD Admin Mobile</title>
-  <link rel="stylesheet" href="app.css?v=15.4.2">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="app.css?v=15.4.5">
   <script src="../booking-config.js"></script>
 </head>
 <body>
+  <div id="installGate" class="gate" hidden>
+    <main class="gate-card">
+      <div class="brand-mark" aria-hidden="true">BD</div>
+      <p class="eyebrow">Beziehungsdynamiken</p>
+      <h1>Admin Mobile</h1>
+      <p class="gate-lead">Die schlanke Praxisverwaltung für unterwegs – als App auf deinem Homescreen.</p>
+      <div class="gate-benefits">
+        <div><span>✓</span><p><strong>Termine</strong><small>Heute sehen, verschieben und verwalten</small></p></div>
+        <div><span>✓</span><p><strong>Klient:innen</strong><small>Organisatorische Daten kompakt verfügbar</small></p></div>
+        <div><span>✓</span><p><strong>Finanzen & Packages</strong><small>Nur Funktionen, die mobil wirklich nutzbar sind</small></p></div>
+      </div>
+      <button class="primary big" id="installPrimary">App installieren</button>
+      <button class="text-button" id="continueBrowser">Im Browser fortfahren</button>
+      <div id="iosInstallHelp" class="ios-help" hidden>
+        <strong>Auf dem iPhone installieren</strong>
+        <ol><li>Unten in Safari auf <b>Teilen</b> tippen.</li><li><b>Zum Home-Bildschirm</b> wählen.</li><li>Mit <b>Hinzufügen</b> bestätigen.</li></ol>
+      </div>
+    </main>
+  </div>
+
   <section id="loginView" class="auth-screen" hidden>
-    <a class="capture-return auth-return" href="../capture.html" aria-label="Zurück zu Capture" title="Zurück zu Capture"><span>‹</span><small>Capture</small></a>
     <div class="auth-wrap">
       <div class="brand-mark small">BD</div>
       <p class="eyebrow">Sicherer Zugang</p>
@@ -36,7 +61,7 @@
         <p class="eyebrow">BD Admin Mobile</p>
         <h1 id="pageTitle">Home</h1>
       </div>
-      <div class="top-actions"><a class="capture-return compact" href="../capture.html" aria-label="Zu Capture" title="Zu Capture"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M8 8v8M16 8v8M4 10v4M20 10v4"/></svg></a><button class="avatar" id="profileBtn" aria-label="Konto öffnen">TK</button></div>
+      <button class="avatar" id="profileBtn" aria-label="Konto öffnen">TK</button>
     </header>
 
     <main class="screen-wrap">
@@ -58,7 +83,7 @@
           <button data-more="finance"><span class="menu-icon">€</span><span><strong>Honorarnoten</strong><small>Offen, bezahlt, Zahlungsstatus</small></span><b>›</b></button>
           <button data-more="packages"><span class="menu-icon">▣</span><span><strong>Packages</strong><small>Katalog ansehen und Package anlegen</small></span><b>›</b></button>
           <button data-more="workshop-events"><span class="menu-icon">◷</span><span><strong>Workshop-Termine</strong><small>Organisatorische Termine im Kalender</small></span><b>›</b></button>
-          <button data-more="account"><span class="menu-icon">◉</span><span><strong>Konto & Sync</strong><small>Sync, Installation, Abmelden</small></span><b>›</b></button>
+          <button data-more="account"><span class="menu-icon">◉</span><span><strong>Konto & App</strong><small>Sync, Installation, Abmelden</small></span><b>›</b></button>
         </div>
       </section>
       <section class="screen" data-screen="finance"><div id="financeContent"></div></section>
@@ -77,6 +102,6 @@
 
   <dialog id="sheet"><div class="sheet"><div class="sheet-grabber"></div><button class="sheet-close" id="sheetClose" aria-label="Schließen">×</button><div id="sheetContent"></div></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=15.4.2"></script>
+  <script src="app.js?v=15.4.5"></script>
 </body>
 </html>
