@@ -1,6 +1,6 @@
 {
   "schema": "bd.emotion_library.v1",
-  "version": "15.9.6",
+  "version": "15.9.7",
   "generatedAt": "2026-10-04",
   "root": "/public/emotion/",
   "seriesLegend": {
@@ -2200,6 +2200,542 @@
             "Intimität"
           ],
           "path": "/public/emotion/Emotion_Zuneigung_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Traurigkeit",
+      "label": "Traurigkeit",
+      "summary": "Kummer, Verlust, Rückzug, Verletzlichkeit und Melancholie",
+      "keywords": [
+        "traurigkeit",
+        "traurig",
+        "kummer",
+        "verlust",
+        "abschied",
+        "enttäuschung",
+        "herzschmerz",
+        "vermissen",
+        "melancholie",
+        "rückzug",
+        "trost",
+        "niedergeschlagen"
+      ],
+      "assets": [
+        {
+          "id": "Traurigkeit_A1",
+          "filename": "Emotion_Traurigkeit_A1.png",
+          "label": "Traurigkeit A1",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Blick gesenkt zur Seite, Mund weich und Körper leicht nach innen genommen; ruhige, nach innen gerichtete Traurigkeit.",
+          "tags": [
+            "Niedergeschlagenheit",
+            "Rückzug",
+            "Nachdenklichkeit",
+            "Verlust",
+            "Stille"
+          ],
+          "bestFor": [
+            "Trauer",
+            "Rückzug",
+            "Enttäuschung",
+            "Vermissen"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_A1.png"
+        },
+        {
+          "id": "Traurigkeit_A2",
+          "filename": "Emotion_Traurigkeit_A2.png",
+          "label": "Traurigkeit A2",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Blick nach unten, Stirn sichtbar zusammengezogen; Kummer und Grübeln, als würde etwas innerlich nachhallen.",
+          "tags": [
+            "Kummer",
+            "Grübeln",
+            "Rückzug",
+            "Enttäuschung",
+            "Schwere"
+          ],
+          "bestFor": [
+            "Kummer",
+            "Grübeln",
+            "Enttäuschung",
+            "Trennung"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_A2.png"
+        },
+        {
+          "id": "Traurigkeit_A3",
+          "filename": "Emotion_Traurigkeit_A3.png",
+          "label": "Traurigkeit A3",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Verletzlicher Blick zur Kamera, Hand nahe Hals und Brust; wirkt berührt, traurig und trostbedürftig.",
+          "tags": [
+            "Verletzlichkeit",
+            "Trostbedürfnis",
+            "Kummer",
+            "Nähe",
+            "Berührtsein"
+          ],
+          "bestFor": [
+            "Verletzlichkeit",
+            "Trost",
+            "Herzschmerz",
+            "Nähebedürfnis"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_A3.png"
+        },
+        {
+          "id": "Traurigkeit_A4",
+          "filename": "Emotion_Traurigkeit_A4.png",
+          "label": "Traurigkeit A4",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Frontaler, müder Blick mit Hand an der gegenüberliegenden Schulter; Selbstberuhigung bei deutlich spürbarer Verletztheit.",
+          "tags": [
+            "Selbstberuhigung",
+            "Verlust",
+            "Verletztheit",
+            "Trost",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Verlust",
+            "Verletztheit",
+            "Trost",
+            "Zurückweisung"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_A4.png"
+        },
+        {
+          "id": "Traurigkeit_A5",
+          "filename": "Emotion_Traurigkeit_A5.png",
+          "label": "Traurigkeit A5",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "A",
+          "index": 5,
+          "origin": "initial_generation",
+          "intensity": "subtil",
+          "description": "Blick seitlich nach unten und sehr zurückhaltende Mimik; leise Melancholie, Nachdenken und ein Gefühl von Leere.",
+          "tags": [
+            "Melancholie",
+            "Nachdenklichkeit",
+            "Leere",
+            "Rückzug",
+            "Vermissen"
+          ],
+          "bestFor": [
+            "Melancholie",
+            "Vermissen",
+            "Abstand",
+            "Nachdenken"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_A5.png"
+        },
+        {
+          "id": "Traurigkeit_A6",
+          "filename": "Emotion_Traurigkeit_A6.png",
+          "label": "Traurigkeit A6",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "A",
+          "index": 6,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Kopf deutlich gesenkt, Augen fast geschlossen und Stirn angespannt; schwere Traurigkeit mit Erschöpfung und innerer Last.",
+          "tags": [
+            "Erschöpfung",
+            "Kummer",
+            "Resignation",
+            "Schwere",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Erschöpfung",
+            "Resignation",
+            "Trennung",
+            "tiefer Kummer"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_A6.png"
+        },
+        {
+          "id": "Traurigkeit_A7",
+          "filename": "Emotion_Traurigkeit_A7.png",
+          "label": "Traurigkeit A7",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "A",
+          "index": 7,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Weicher frontaler Blick mit Hand am oberen Brustbereich; bittersüß berührt, traurig und zugleich noch verbunden.",
+          "tags": [
+            "Bittersüß",
+            "Verbundenheit",
+            "Abschied",
+            "Berührtsein",
+            "Vermissen"
+          ],
+          "bestFor": [
+            "Abschied",
+            "Vermissen",
+            "Verbundenheit",
+            "bittersüße Erinnerung"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_A7.png"
+        },
+        {
+          "id": "Traurigkeit_B1",
+          "filename": "Emotion_Traurigkeit_B1.png",
+          "label": "Traurigkeit B1",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Blick nach unten zur Seite, Mund leicht gepresst; zurückgenommene Traurigkeit und stilles Nachdenken.",
+          "tags": [
+            "Kummer",
+            "Rückzug",
+            "Nachdenken",
+            "Enttäuschung",
+            "Stille"
+          ],
+          "bestFor": [
+            "Kummer",
+            "Rückzug",
+            "Enttäuschung",
+            "Nachdenken"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_B1.png"
+        },
+        {
+          "id": "Traurigkeit_B2",
+          "filename": "Emotion_Traurigkeit_B2.png",
+          "label": "Traurigkeit B2",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Frontaler Blick mit angehobenen inneren Brauen und leicht gepresstem Mund; sichtbar traurig, aber noch gefasst.",
+          "tags": [
+            "Verletzlichkeit",
+            "Zurückweisung",
+            "Enttäuschung",
+            "Trostbedürfnis",
+            "Kummer"
+          ],
+          "bestFor": [
+            "Zurückweisung",
+            "Enttäuschung",
+            "Verletzlichkeit",
+            "Trostbedürfnis"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_B2.png"
+        },
+        {
+          "id": "Traurigkeit_B3",
+          "filename": "Emotion_Traurigkeit_B3.png",
+          "label": "Traurigkeit B3",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Blick gesenkt, Arm greift die gegenüberliegende Schulter; deutlicher Selbstschutz, Rückzug und Bedürfnis nach Trost.",
+          "tags": [
+            "Selbstschutz",
+            "Rückzug",
+            "Einsamkeit",
+            "Verletztheit",
+            "Trost"
+          ],
+          "bestFor": [
+            "Selbstschutz",
+            "Rückzug",
+            "Einsamkeit",
+            "Verletztheit"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_B3.png"
+        },
+        {
+          "id": "Traurigkeit_B4",
+          "filename": "Emotion_Traurigkeit_B4.png",
+          "label": "Traurigkeit B4",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Offener, verletzlicher Blick zur Kamera mit Hand auf der Brust; Kummer und Nähebedürfnis sind unmittelbar sichtbar.",
+          "tags": [
+            "Kummer",
+            "Nähebedürfnis",
+            "Verletzlichkeit",
+            "Herzschmerz",
+            "Trost"
+          ],
+          "bestFor": [
+            "Herzschmerz",
+            "Nähebedürfnis",
+            "Trost",
+            "Verletzlichkeit"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_B4.png"
+        },
+        {
+          "id": "Traurigkeit_B5",
+          "filename": "Emotion_Traurigkeit_B5.png",
+          "label": "Traurigkeit B5",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "B",
+          "index": 5,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Blick deutlich zur Seite und Mund fest; Traurigkeit mit Distanz, Kränkung und zurückgehaltener Reaktion.",
+          "tags": [
+            "Distanz",
+            "Kränkung",
+            "Enttäuschung",
+            "Rückzug",
+            "Unbehagen"
+          ],
+          "bestFor": [
+            "Kränkung",
+            "Enttäuschung",
+            "Distanz",
+            "Beziehungskonflikt"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_B5.png"
+        },
+        {
+          "id": "Traurigkeit_B6",
+          "filename": "Emotion_Traurigkeit_B6.png",
+          "label": "Traurigkeit B6",
+          "emotion": "Traurigkeit",
+          "emotionKey": "Traurigkeit",
+          "series": "B",
+          "index": 6,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Kopf tief gesenkt, Augen geschlossen und Körper ruhig; Resignation und schwere Niedergeschlagenheit nach anhaltender Belastung.",
+          "tags": [
+            "Resignation",
+            "Verlust",
+            "Kummer",
+            "Erschöpfung",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Resignation",
+            "Verlust",
+            "Erschöpfung",
+            "tiefe Trauer"
+          ],
+          "path": "/public/emotion/Emotion_Traurigkeit_B6.png"
+        }
+      ]
+    },
+    {
+      "key": "Erleichterung",
+      "label": "Erleichterung",
+      "summary": "Aufatmen, Loslassen, Entspannung, Sicherheit und wiederkehrende Leichtigkeit",
+      "keywords": [
+        "erleichterung",
+        "erleichtert",
+        "aufatmen",
+        "loslassen",
+        "entspannung",
+        "beruhigung",
+        "ruhe",
+        "sicherheit",
+        "leichtigkeit",
+        "hoffnung",
+        "zuversicht",
+        "versöhnung"
+      ],
+      "assets": [
+        {
+          "id": "Erleichterung_A1",
+          "filename": "Emotion_Erleichterung_A1.png",
+          "label": "Erleichterung A1",
+          "emotion": "Erleichterung",
+          "emotionKey": "Erleichterung",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Augen geschlossen und ein sanftes Lächeln; das Gesicht wirkt gelöst, als würde die Spannung gerade sichtbar abfallen.",
+          "tags": [
+            "Entspannung",
+            "Loslassen",
+            "Aufatmen",
+            "Ruhe",
+            "Sicherheit"
+          ],
+          "bestFor": [
+            "Aufatmen",
+            "Loslassen",
+            "Entspannung",
+            "Konflikt ist vorbei"
+          ],
+          "path": "/public/emotion/Emotion_Erleichterung_A1.png"
+        },
+        {
+          "id": "Erleichterung_A2",
+          "filename": "Emotion_Erleichterung_A2.png",
+          "label": "Erleichterung A2",
+          "emotion": "Erleichterung",
+          "emotionKey": "Erleichterung",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Sanftes Lächeln mit Hand auf der Brust; spürbares Aufatmen, Beruhigung und ein Moment von Dankbarkeit.",
+          "tags": [
+            "Dankbarkeit",
+            "Aufatmen",
+            "Sicherheit",
+            "Verbundenheit",
+            "Ruhe"
+          ],
+          "bestFor": [
+            "Dankbarkeit",
+            "Versöhnung",
+            "Sicherheit",
+            "wieder Nähe spüren"
+          ],
+          "path": "/public/emotion/Emotion_Erleichterung_A2.png"
+        },
+        {
+          "id": "Erleichterung_A3",
+          "filename": "Emotion_Erleichterung_A3.png",
+          "label": "Erleichterung A3",
+          "emotion": "Erleichterung",
+          "emotionKey": "Erleichterung",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "leicht",
+          "description": "Blick nach oben zur Seite mit warmem Lächeln; hoffnungsvolle Erleichterung und wiedergewonnene Leichtigkeit.",
+          "tags": [
+            "Hoffnung",
+            "Zuversicht",
+            "Aufatmen",
+            "Leichtigkeit",
+            "Beruhigung"
+          ],
+          "bestFor": [
+            "Hoffnung",
+            "Zuversicht",
+            "gute Nachricht",
+            "Entspannung"
+          ],
+          "path": "/public/emotion/Emotion_Erleichterung_A3.png"
+        },
+        {
+          "id": "Erleichterung_B1",
+          "filename": "Emotion_Erleichterung_B1.png",
+          "label": "Erleichterung B1",
+          "emotion": "Erleichterung",
+          "emotionKey": "Erleichterung",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Augen geschlossen, Kopf leicht zur Seite und kleines zufriedenes Lächeln; körperliches Loslassen nach Anspannung.",
+          "tags": [
+            "Loslassen",
+            "Entspannung",
+            "Ruhe",
+            "Aufatmen",
+            "Regulation"
+          ],
+          "bestFor": [
+            "Stress fällt ab",
+            "Aufatmen",
+            "Regulation",
+            "Entspannung"
+          ],
+          "path": "/public/emotion/Emotion_Erleichterung_B1.png"
+        },
+        {
+          "id": "Erleichterung_B2",
+          "filename": "Emotion_Erleichterung_B2.png",
+          "label": "Erleichterung B2",
+          "emotion": "Erleichterung",
+          "emotionKey": "Erleichterung",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Blick nach oben und ruhiges Lächeln; erleichterte Zuversicht, als wäre wieder Luft und Perspektive da.",
+          "tags": [
+            "Zuversicht",
+            "Hoffnung",
+            "Leichtigkeit",
+            "Ruhe",
+            "Aufatmen"
+          ],
+          "bestFor": [
+            "Zuversicht",
+            "Hoffnung",
+            "Lösung gefunden",
+            "wieder Luft bekommen"
+          ],
+          "path": "/public/emotion/Emotion_Erleichterung_B2.png"
+        },
+        {
+          "id": "Erleichterung_B3",
+          "filename": "Emotion_Erleichterung_B3.png",
+          "label": "Erleichterung B3",
+          "emotion": "Erleichterung",
+          "emotionKey": "Erleichterung",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "leicht",
+          "description": "Direkter, gelöster Blick mit kleinem Lächeln; ruhig, erleichtert und wieder bei sich.",
+          "tags": [
+            "Beruhigung",
+            "Stabilität",
+            "Leichtigkeit",
+            "Sicherheit",
+            "Entspannung"
+          ],
+          "bestFor": [
+            "Beruhigung",
+            "Sicherheit",
+            "nach einem klärenden Gespräch",
+            "Stabilisierung"
+          ],
+          "path": "/public/emotion/Emotion_Erleichterung_B3.png"
         }
       ]
     }
