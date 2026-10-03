@@ -1,0 +1,96 @@
+{
+  "build": "15.9.3",
+  "base": "15.9.1 + Newsletter-Redesign 15.9.2",
+  "files": [
+    {
+      "path": "hub.html",
+      "bytes": 52163,
+      "sha256": "b9e4a921e2ab39346a2a4d33a42ff7cb590f4d0609d11a500985a71c22beba21"
+    },
+    {
+      "path": "hub-build14-8.js",
+      "bytes": 67621,
+      "sha256": "e95e644cf1a41f07d2d16d0f7d724579e8a7959fce964e851ed0402e2d9652f4"
+    },
+    {
+      "path": "hub-build14-8.css",
+      "bytes": 20728,
+      "sha256": "e662921c2dd716a045fd8df168e768b5c35ce1694254297f9bcc0329995d359c"
+    },
+    {
+      "path": "hub-build15-8.js",
+      "bytes": 62861,
+      "sha256": "ac2e471d9c2970324f95773d78cae95ba4821ff0252f5870a2d6e454fc4e11d5"
+    },
+    {
+      "path": "hub-build15-8.css",
+      "bytes": 14382,
+      "sha256": "0e3d038b262f46e7fb7489f84f461f0e3b261facea0845f42eaebe56f66a07b0"
+    },
+    {
+      "path": "emotion-library-15-9.js",
+      "bytes": 6197,
+      "sha256": "cb86cb98514ef0490568defa5e474356892e6274df8179031d00d8a8698f4f53"
+    },
+    {
+      "path": "emotion-library-15-9.css",
+      "bytes": 3791,
+      "sha256": "aecc7a88945ebeb623e80feb84cd552917cf08fb811e6bfaad44953a60c36673"
+    },
+    {
+      "path": "short-hook-15-9-3.css",
+      "bytes": 3723,
+      "sha256": "33ae3ce95c98b19e199120bbe2b7e20690268fd08125be49ef98024ac1c8fd73"
+    },
+    {
+      "path": "newsletter-admin.html",
+      "bytes": 7080,
+      "sha256": "2c5b4d3c85c168f4faa75697815f035279249ec98fbb0f3cd238aff7fa40943a"
+    },
+    {
+      "path": "newsletter-admin.js",
+      "bytes": 12620,
+      "sha256": "efd03d7eafbb772a8a0ec43b281015835d68a1ee445ac13fac557ed58402d7ae"
+    },
+    {
+      "path": "newsletter-admin15-9-3.css",
+      "bytes": 4877,
+      "sha256": "a627b8f22316a151039b920deb6deb02bc2d1996a9d248f5c32c1b9793adba1a"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 578711,
+      "sha256": "a5efe598189f7c975b0d85fa030ee8c8deac8ae29655fa75f279273780eb79e5"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "3f3c36d7673b304ea2d8e6e62412619f2ccd238941a82f8cb69fd21892e914c0"
+    },
+    {
+      "path": "BUILD15-9-3-NOTE.txt",
+      "bytes": 1104,
+      "sha256": "033e1ed43be817a38a2fc65e4369fab9bfc49012e2dc55f25dde8eb4a7e33a37"
+    },
+    {
+      "path": "BUILD15-9-3-TESTREPORT.txt",
+      "bytes": 895,
+      "sha256": "ee98cdaf9b53748092f31a4a4de14aa26b601978a1af7cb847dc83d520846c56"
+    },
+    {
+      "path": "INSTALLATION-15.9.3.txt",
+      "bytes": 853,
+      "sha256": "e37ddebb719a258c1341e319d530d218ccdecd593284ce897e52552100a4282a"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.9.3.cmd",
+      "bytes": 669,
+      "sha256": "438b2ed695ccb8ee0aa67b6cd980765b493d2ac66bf6b095bb48cfbef6688b60"
+    },
+    {
+      "path": "tests/test_build15_9_3_short_hook.py",
+      "bytes": 1028,
+      "sha256": "5d5734f2b060efe97171ac181c1b056380e944f7ca3f1b66d458fda28bc8cf98"
+    }
+  ]
+}
