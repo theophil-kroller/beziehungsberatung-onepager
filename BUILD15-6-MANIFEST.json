@@ -1,0 +1,20 @@
+{
+  "build": "15.6.0",
+  "base": "15.5.4",
+  "feature": "Content Hub Carousel Package 1",
+  "requires_d1_migration": false,
+  "requires_worker_deploy": false,
+  "requires_vault_restart": true,
+  "vault_version": "3.36.0",
+  "changed": [
+    "hub.html",
+    "hub-build14-8.js",
+    "hub-build14-8.css",
+    "vault/vault_server.py",
+    "desktop/app/web/hub.html",
+    "desktop/app/web/hub-build14-8.js",
+    "desktop/app/web/hub-build14-8.css",
+    "desktop/app/web/vault/vault_server.py"
+  ],
+  "schema": "bd.carousel.v1"
+}
