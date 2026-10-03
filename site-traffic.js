@@ -2,6 +2,7 @@
 (()=>{'use strict';
   if(!/^https:\/\/(?:www\.)?beziehungsdynamiken\.at$/i.test(location.origin))return;
   if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;
+  if(new URLSearchParams(location.search).has('bd_preview'))return;
   let host='';try{host=new URL(document.referrer).hostname.toLowerCase()}catch(_){}
   const source=new URLSearchParams(location.search).get('utm_source')||'';
   const api=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'https://beziehungsdynamiken-booking.theophil-kroller.workers.dev').replace(/\/$/,'');

@@ -55,6 +55,8 @@
 <link rel="stylesheet" href="admin-build14-13.css?v=14.13.0"><link rel="stylesheet" href="admin-browser-capture.css?v=14.14.0"><link rel="stylesheet" href="admin-build15-0.css?v=15.0.0"><link rel="stylesheet" href="admin-build15-1.css?v=15.1.0"><link rel="stylesheet" href="admin-build15-2.css?v=15.2.0"><link rel="stylesheet" href="admin-build15-2-1.css?v=15.2.1">
 <link rel="stylesheet" href="admin-build15-3.css?v=15.4.4">
 <link rel="stylesheet" href="admin-nav15-4-1.css?v=15.4.6">
+<link rel="stylesheet" href="admin-site-mode15-5.css?v=15.5.0">
+<link rel="stylesheet" href="admin-build15-5-traffic.css?v=15.5.0">
 </head>
 <body>
 <!-- Regression lineage: BUILD 14.3.5.8 -->
@@ -153,7 +155,7 @@
       </div>
       <section class="panel dashboard-calendar cockpit-next"><div class="panel-head"><div><p class="eyebrow">Kalender</p><h2>Nächste 7 Tage</h2></div><button class="text-button" data-jump="bookings">Kalender öffnen →</button></div><div id="nextBookings"></div></section>
       <details id="cockpitMetrics" class="cockpit-metrics"><summary>Kennzahlen &amp; Praxisübersicht</summary>
-      <section class="panel cockpit-traffic" aria-labelledby="cockpitTrafficHeading"><div class="panel-head"><div><p class="eyebrow">Öffentliche Website</p><h2 id="cockpitTrafficHeading">Woher kommen die Aufrufe?</h2><p class="muted">Anonyme Seitenaufrufe nach Herkunft und ungefährem Standort.</p></div><label>Zeitraum <select id="cockpitTrafficDays"><option value="30">30 Tage</option><option value="90">90 Tage</option></select></label></div><p id="cockpitTrafficStatus" role="status" class="muted micro">Öffne die Kennzahlen, um die Auswertung zu laden.</p><div id="cockpitTrafficResults" class="cockpit-traffic-grid"></div><p class="micro muted">Quellen werden nur erkannt, wenn ein Verweis oder ein utm_source-Link übermittelt wurde. „Direkt / unbekannt“ umfasst auch nicht zuordenbare Aufrufe. Gezählt werden Seitenaufrufe, keine eindeutigen Personen.</p></section>
+      <section class="panel cockpit-traffic" aria-labelledby="cockpitTrafficHeading"><div class="panel-head"><div><p class="eyebrow">Öffentliche Website</p><h2 id="cockpitTrafficHeading">Woher kommen die Aufrufe?</h2><p class="muted">Anonyme Seitenaufrufe nach Herkunft und ungefährem Standort.</p></div><label>Zeitraum <select id="cockpitTrafficDays"><option value="30">30 Tage</option><option value="90">90 Tage</option></select></label></div><p id="cockpitTrafficStatus" role="status" class="muted micro">Öffne die Kennzahlen, um die Auswertung zu laden.</p><div id="cockpitTrafficTime" class="bd155-traffic-time"></div><div id="cockpitTrafficResults" class="cockpit-traffic-grid"></div><p class="micro muted">Quellen werden nur erkannt, wenn ein Verweis oder ein utm_source-Link übermittelt wurde. „Direkt / unbekannt“ umfasst auch nicht zuordenbare Aufrufe. Gezählt werden Seitenaufrufe, keine eindeutigen Personen.</p></section>
       <section class="dashboard-weather" id="dashboardWeather" aria-label="3-Tage-Wetter">
         <div class="weather-location"><span class="weather-pin">⌖</span><div><strong id="weatherLocationLabel">Graz, Österreich</strong><small>3-Tage-Wetter</small></div></div>
         <div class="weather-days" id="weatherDays"><span class="weather-loading">Wetter wird geladen …</span></div>
@@ -333,7 +335,7 @@
 <script src="admin-build14-4-1-2.js?v=20260928-build14-4-1-2"></script>
 <script src="admin-build14-4-2.js?v=20260928-build14-4-2"></script>
 <script src="admin-build14-13.js?v=14.16.0"></script>
-<script src="admin-build14-13-traffic.js?v=14.13.0"></script>
+<script src="admin-build15-5-traffic.js?v=15.5.0"></script>
 <script src="admin-browser-capture.js?v=14.14.0"></script>
 <script src="admin-build15-0.js?v=15.0.0"></script>
 <script src="admin-build15-1.js?v=15.1.0"></script>
@@ -341,5 +343,6 @@
 <script src="admin-build15-2-1.js?v=15.2.1"></script>
 <script src="admin-build15-3.js?v=15.4.4"></script>
 <script src="admin-nav15-4-1.js?v=15.4.6"></script>
+<script src="admin-site-mode15-5.js?v=15.5.0"></script>
 </body>
 </html>
