@@ -1,0 +1,107 @@
+{
+  "build": "15.9.2",
+  "base": "15.9.1",
+  "files": [
+    {
+      "path": "hub.html",
+      "bytes": 52102,
+      "sha256": "1fdb641e24076483cce31dde4d1239448e03720414f4bf4cfbce2f9d17e8f7d8"
+    },
+    {
+      "path": "hub-build14-8.js",
+      "bytes": 78778,
+      "sha256": "ff90057162d1ef16254688aedb75ae08ded5dbbb10eb94c9ffddbfa8ad6d2afd"
+    },
+    {
+      "path": "hub-build14-8.css",
+      "bytes": 23519,
+      "sha256": "c49fa1da82bcdc1f8a70be85107ecd148084586ed31fb055536fbc55453ea119"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 578904,
+      "sha256": "1a0c2cff2d233134a07339ca6fe5f06beb59feeac5eb4cb0542397e35394bb19"
+    },
+    {
+      "path": "newsletter-admin.html",
+      "bytes": 7080,
+      "sha256": "bb6b3023258ef91bf84660505dee16c89c5a13ea834c4c1054eed718dbcc4390"
+    },
+    {
+      "path": "newsletter-admin.js",
+      "bytes": 12620,
+      "sha256": "5129211fda5bc385cbb5ae2fed10cdb4fbdd67fb0e37bbfe0cc456d206f5510b"
+    },
+    {
+      "path": "newsletter-admin15-9-2.css",
+      "bytes": 4877,
+      "sha256": "d8974511908031d5fc18450318b47f0ecc626141052131518a0af677555552c6"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "9dbec57da7080fa70f5672009382f359b670aa36eaa71d943deb219c63ec45cb"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.9.2.cmd",
+      "bytes": 669,
+      "sha256": "8fb55ac03978e8d928b393fd0141ec2e1f6fa10089ac6c36107f730d6750efb5"
+    },
+    {
+      "path": "INSTALLATION-15.9.2.txt",
+      "bytes": 495,
+      "sha256": "75c365fdde892410beb20ee35ef46c86c291fa26f51310cfcc9775a87aeb475d"
+    },
+    {
+      "path": "BUILD15-9-2-NOTE.txt",
+      "bytes": 886,
+      "sha256": "c5e3fc4ec5f5cc6aebf53c6f2ff134a72a6b85d527477e84e246ace6954a03a3"
+    },
+    {
+      "path": "BUILD15-9-2-TESTREPORT.txt",
+      "bytes": 925,
+      "sha256": "02147d59b21197fc72be74b6b18b666551d3d23ce6a71e7780a4869df44553e0"
+    },
+    {
+      "path": "tests/test_build15_9_2_hook_newsletter.py",
+      "bytes": 2448,
+      "sha256": "66dff9e32a6e40ed9ab51395f2d61f94ad11e643b2561ef4f9f6293ead48360c"
+    },
+    {
+      "path": "desktop/app/web/hub.html",
+      "bytes": 52102,
+      "sha256": "1fdb641e24076483cce31dde4d1239448e03720414f4bf4cfbce2f9d17e8f7d8"
+    },
+    {
+      "path": "desktop/app/web/hub-build14-8.js",
+      "bytes": 78778,
+      "sha256": "ff90057162d1ef16254688aedb75ae08ded5dbbb10eb94c9ffddbfa8ad6d2afd"
+    },
+    {
+      "path": "desktop/app/web/hub-build14-8.css",
+      "bytes": 23519,
+      "sha256": "c49fa1da82bcdc1f8a70be85107ecd148084586ed31fb055536fbc55453ea119"
+    },
+    {
+      "path": "desktop/app/web/newsletter-admin.html",
+      "bytes": 7080,
+      "sha256": "bb6b3023258ef91bf84660505dee16c89c5a13ea834c4c1054eed718dbcc4390"
+    },
+    {
+      "path": "desktop/app/web/newsletter-admin.js",
+      "bytes": 12620,
+      "sha256": "5129211fda5bc385cbb5ae2fed10cdb4fbdd67fb0e37bbfe0cc456d206f5510b"
+    },
+    {
+      "path": "desktop/app/web/newsletter-admin15-9-2.css",
+      "bytes": 4877,
+      "sha256": "d8974511908031d5fc18450318b47f0ecc626141052131518a0af677555552c6"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 7,
+      "sha256": "9dbec57da7080fa70f5672009382f359b670aa36eaa71d943deb219c63ec45cb"
+    }
+  ],
+  "emotionAssets": 65
+}
