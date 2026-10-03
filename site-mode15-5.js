@@ -1,6 +1,8 @@
 (function(){
 'use strict';
-const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+const pathname=String(location.pathname||'/').replace(/\/{2,}/g,'/');
+const isRoot=pathname==='/'||pathname.toLowerCase()==='/index.html';
+const path=(pathname.split('/').filter(Boolean).pop()||'index.html').toLowerCase();
 const INTERNAL=new Set(['admin.html','capture.html','hub.html','methods.html','workshops.html','message-center.html','newsletter-admin.html','mobile-admin.html','desktop-login.html']);
 if(INTERNAL.has(path))return;
 const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'https://beziehungsdynamiken-booking.theophil-kroller.workers.dev').replace(/\/$/,'');
@@ -24,7 +26,7 @@ async function boot(){
     enablePreviewPropagation();
     if(mode==='private'&&!LEGAL.has(path)){screen('private');return}
     if(mode==='knowledge'&&PRACTICE_ONLY.has(path)){screen('knowledge');return}
-    if(mode==='knowledge'&&(path==='index.html'||path==='')){location.replace(carry('/wissen/'));return}
+    if(mode==='knowledge'&&isRoot){location.replace(carry('/wissen/'));return}
     if(mode==='knowledge')knowledgeClean();
     robots(preview?'noindex,nofollow':mode==='practice'?'index,follow':'index,follow');
     document.documentElement.classList.remove('bd-site-pending');previewRibbon(mode);

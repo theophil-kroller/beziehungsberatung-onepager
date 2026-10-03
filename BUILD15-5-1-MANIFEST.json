@@ -1,0 +1,19 @@
+{
+  "build": "15.5.1",
+  "base": "15.5.0",
+  "scope": "Knowledge-mode redirect-loop hotfix; frontend only",
+  "worker_change": false,
+  "d1_change": false,
+  "changed_files": {
+    "BUILD15-5-1-HOTFIX.txt": "12989875d2706cf69b6181325d322d831f4293a046bd2d5be8afb0e5444f4cec",
+    "BUILD15-5-1-TESTREPORT.txt": "222f7d691a5bb5c76377fee10d8555a37fa2de39d2a875302d94ac9b605f213b",
+    "INSTALLATION-15.5.1.txt": "70d66f1357daf693559d346c0dfe03b7df3899f1e499615323b4b4f145ec4737",
+    "desktop/app/web/index.html": "f5a4d5f7aba721810829ea5158b000566717a0abc774e486c187853b1662ec5a",
+    "desktop/app/web/site-mode15-5.js": "6470ab6d2aa8569b698dfb62e7367574444d0d3d79a595ed1368e278da17222c",
+    "desktop/app/web/wissen/index.html": "6b2d10e81816d0adcdc410a1fcac781262a718c1a044db589e54fa7cc1f5892d",
+    "index.html": "f5a4d5f7aba721810829ea5158b000566717a0abc774e486c187853b1662ec5a",
+    "site-mode15-5.js": "6470ab6d2aa8569b698dfb62e7367574444d0d3d79a595ed1368e278da17222c",
+    "tests/test_build15_5_1_site_mode_routing.py": "5886a5ec0a562ed21aac663a8be2243c19e60b70a998f950c082299eceac6bf7",
+    "wissen/index.html": "6b2d10e81816d0adcdc410a1fcac781262a718c1a044db589e54fa7cc1f5892d"
+  }
+}
