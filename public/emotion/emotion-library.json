@@ -1,7 +1,7 @@
 {
   "schema": "bd.emotion_library.v1",
-  "version": "15.9.0",
-  "generatedAt": "2026-10-03",
+  "version": "15.9.6",
+  "generatedAt": "2026-10-04",
   "root": "/public/emotion/",
   "seriesLegend": {
     "A": "erste Generationsserie ohne hochgeladene Referenzfotos",
@@ -459,6 +459,131 @@
             "Kontrollverlust"
           ],
           "path": "/public/emotion/Emotion_Wut_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Angst",
+      "label": "Angst",
+      "summary": "Unsicherheit, Alarm, Schutzimpuls und akute Bedrohungswahrnehmung",
+      "keywords": [
+        "angst",
+        "ängstlich",
+        "unsicherheit",
+        "alarm",
+        "bedrohung",
+        "sorge",
+        "befürchtung",
+        "schutz",
+        "zurückweichen",
+        "erschrecken",
+        "verlustangst",
+        "panik"
+      ],
+      "assets": [
+        {
+          "id": "Angst_B1",
+          "filename": "Emotion_Angst_B1.png",
+          "label": "Angst B1",
+          "emotion": "Angst",
+          "emotionKey": "Angst",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Seitlicher, wachsamer Blick mit eng zusammengehaltenen Händen; wirkt angespannt, unsicher und auf der Suche nach Sicherheit.",
+          "tags": [
+            "Angst",
+            "Unsicherheit",
+            "Wachsamkeit",
+            "Sicherheitsbedürfnis",
+            "Anspannung"
+          ],
+          "bestFor": [
+            "Unsicherheit",
+            "Sorge",
+            "Wachsamkeit",
+            "Angst vor einer Reaktion"
+          ],
+          "path": "/public/emotion/Emotion_Angst_B1.png"
+        },
+        {
+          "id": "Angst_B2",
+          "filename": "Emotion_Angst_B2.png",
+          "label": "Angst B2",
+          "emotion": "Angst",
+          "emotionKey": "Angst",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Arme schützen den Oberkörper, Blick deutlich zur Seite; zurückhaltende, körperlich defensive Angst mit sichtbarer Vorsicht.",
+          "tags": [
+            "Angst",
+            "Schutz",
+            "Vorsicht",
+            "Abwehr",
+            "Anspannung"
+          ],
+          "bestFor": [
+            "Schutzimpuls",
+            "Vorsicht",
+            "Unsicherheit",
+            "Sich zurückziehen"
+          ],
+          "path": "/public/emotion/Emotion_Angst_B2.png"
+        },
+        {
+          "id": "Angst_B3",
+          "filename": "Emotion_Angst_B3.png",
+          "label": "Angst B3",
+          "emotion": "Angst",
+          "emotionKey": "Angst",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Hände eng vor dem Körper, Augen weit und Mund leicht geöffnet; starke erwartungsvolle Angst kurz vor einer möglichen Reaktion.",
+          "tags": [
+            "Angst",
+            "Alarm",
+            "Erwartungsangst",
+            "Hilflosigkeit",
+            "Anspannung"
+          ],
+          "bestFor": [
+            "Erwartungsangst",
+            "Alarm",
+            "Hilflosigkeit",
+            "Konfliktangst"
+          ],
+          "path": "/public/emotion/Emotion_Angst_B3.png"
+        },
+        {
+          "id": "Angst_B4",
+          "filename": "Emotion_Angst_B4.png",
+          "label": "Angst B4",
+          "emotion": "Angst",
+          "emotionKey": "Angst",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Oberkörper weicht zurück, Hände gehen schützend nach oben und der Blick sucht die Gefahr; akuter Schreck- und Abwehrmoment.",
+          "tags": [
+            "Angst",
+            "Schreck",
+            "Abwehr",
+            "Zurückweichen",
+            "Akuter Alarm"
+          ],
+          "bestFor": [
+            "Akute Angst",
+            "Schreck",
+            "Bedrohung",
+            "Grenz- oder Konfliktsituation"
+          ],
+          "path": "/public/emotion/Emotion_Angst_B4.png"
         }
       ]
     },
@@ -1846,6 +1971,235 @@
             "Kontrollverlust"
           ],
           "path": "/public/emotion/Emotion_Verzweiflung_A4.png"
+        },
+        {
+          "id": "Verzweiflung_B1",
+          "filename": "Emotion_Verzweiflung_B1.png",
+          "label": "Verzweiflung B1",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Kopf tief gesenkt, eine Hand greift ins Haar; der Körper fällt nach vorne und wirkt erschöpft, ratlos und ohne guten nächsten Schritt.",
+          "tags": [
+            "Verzweiflung",
+            "Erschöpfung",
+            "Ratlosigkeit",
+            "Hilflosigkeit",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Verzweiflung",
+            "Ratlosigkeit",
+            "Erschöpfung",
+            "Kein Ausweg"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_B1.png"
+        },
+        {
+          "id": "Verzweiflung_B2",
+          "filename": "Emotion_Verzweiflung_B2.png",
+          "label": "Verzweiflung B2",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Beide Hände greifen an den Kopf, Blick und Gesicht nach unten; hoher innerer Druck und akute Verzweiflung werden körperlich sichtbar.",
+          "tags": [
+            "Verzweiflung",
+            "Zusammenbruch",
+            "Druck",
+            "Hilflosigkeit",
+            "Kontrollverlust"
+          ],
+          "bestFor": [
+            "Akute Verzweiflung",
+            "Zusammenbruch",
+            "Überlastung",
+            "Hilflosigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_B2.png"
+        },
+        {
+          "id": "Verzweiflung_B3",
+          "filename": "Emotion_Verzweiflung_B3.png",
+          "label": "Verzweiflung B3",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Beide Hände am Kopf, Augen geschlossen und Gesicht deutlich angespannt; wirkt wie ein Moment des emotionalen Zusammenbrechens.",
+          "tags": [
+            "Verzweiflung",
+            "Zusammenbruch",
+            "Schmerz",
+            "Überlastung",
+            "Hoffnungslosigkeit"
+          ],
+          "bestFor": [
+            "Zusammenbruch",
+            "Hoffnungslosigkeit",
+            "Emotionaler Schmerz",
+            "Überlastung"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_B3.png"
+        },
+        {
+          "id": "Verzweiflung_B4",
+          "filename": "Emotion_Verzweiflung_B4.png",
+          "label": "Verzweiflung B4",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Beide Hände greifen fest in den Kopf, Gesicht schmerzhaft verzogen; sehr unmittelbare, körperlich gespürte Verzweiflung mit Kontrollverlust.",
+          "tags": [
+            "Verzweiflung",
+            "Kontrollverlust",
+            "Schmerz",
+            "Überlastung",
+            "Panik"
+          ],
+          "bestFor": [
+            "Kontrollverlust",
+            "Akute Verzweiflung",
+            "Panik",
+            "Emotionaler Schmerz"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Zuneigung",
+      "label": "Zuneigung",
+      "summary": "Wärme, Nähe, Wohlwollen, Vertrauen und sanfte Verbundenheit",
+      "keywords": [
+        "zuneigung",
+        "nähe",
+        "wärme",
+        "verbundenheit",
+        "liebe",
+        "wohlwollen",
+        "vertrauen",
+        "intimität",
+        "interesse",
+        "sanft",
+        "offenheit",
+        "zugewandt"
+      ],
+      "assets": [
+        {
+          "id": "Zuneigung_B1",
+          "filename": "Emotion_Zuneigung_B1.png",
+          "label": "Zuneigung B1",
+          "emotion": "Zuneigung",
+          "emotionKey": "Zuneigung",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "subtil",
+          "description": "Weicher Gesichtsausdruck mit leichtem Lächeln und etwas seitlichem Blick; ruhige Wärme und unaufdringliche Zuneigung.",
+          "tags": [
+            "Zuneigung",
+            "Wärme",
+            "Sanftheit",
+            "Wohlwollen",
+            "Nähe"
+          ],
+          "bestFor": [
+            "Zuneigung",
+            "Wohlwollen",
+            "Sanfte Nähe",
+            "Positive Verbindung"
+          ],
+          "path": "/public/emotion/Emotion_Zuneigung_B1.png"
+        },
+        {
+          "id": "Zuneigung_B2",
+          "filename": "Emotion_Zuneigung_B2.png",
+          "label": "Zuneigung B2",
+          "emotion": "Zuneigung",
+          "emotionKey": "Zuneigung",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Direkter, warmer Blick mit sanftem Lächeln; offen, zugewandt und emotional erreichbar.",
+          "tags": [
+            "Zuneigung",
+            "Nähe",
+            "Offenheit",
+            "Wärme",
+            "Vertrauen"
+          ],
+          "bestFor": [
+            "Nähe",
+            "Vertrauen",
+            "Zugewandtheit",
+            "Verbundenheit"
+          ],
+          "path": "/public/emotion/Emotion_Zuneigung_B2.png"
+        },
+        {
+          "id": "Zuneigung_B3",
+          "filename": "Emotion_Zuneigung_B3.png",
+          "label": "Zuneigung B3",
+          "emotion": "Zuneigung",
+          "emotionKey": "Zuneigung",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "subtil",
+          "description": "Ruhiger direkter Blick und zurückhaltendes Lächeln; vermittelt Interesse, Vertrauen und leise Verbundenheit.",
+          "tags": [
+            "Zuneigung",
+            "Vertrauen",
+            "Interesse",
+            "Verbundenheit",
+            "Ruhe"
+          ],
+          "bestFor": [
+            "Vertrauen",
+            "Interesse",
+            "Leise Nähe",
+            "Verbundenheit"
+          ],
+          "path": "/public/emotion/Emotion_Zuneigung_B3.png"
+        },
+        {
+          "id": "Zuneigung_B4",
+          "filename": "Emotion_Zuneigung_B4.png",
+          "label": "Zuneigung B4",
+          "emotion": "Zuneigung",
+          "emotionKey": "Zuneigung",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Frontaler, offener Blick mit warmem Lächeln; wirkt präsent, sicher und freundlich verbunden.",
+          "tags": [
+            "Zuneigung",
+            "Wärme",
+            "Offenheit",
+            "Sicherheit",
+            "Verbundenheit"
+          ],
+          "bestFor": [
+            "Zugewandtheit",
+            "Sichere Nähe",
+            "Wärme",
+            "Intimität"
+          ],
+          "path": "/public/emotion/Emotion_Zuneigung_B4.png"
         }
       ]
     }

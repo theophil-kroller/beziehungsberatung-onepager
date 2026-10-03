@@ -1,4 +1,6 @@
-Beziehungsdynamiken Emotionsbibliothek · Build 15.9.0
+Beziehungsdynamiken Emotionsbibliothek · Build 15.9.6
 A = erste Generationsserie ohne hochgeladene Referenzfotos
 B = referenzinformierte Generationsserie nach Upload echter Fotos
+77 Bilder · 10 Hauptemotionen
+Neu in 15.9.6: Angst B1–B4, Zuneigung B1–B4, Verzweiflung B1–B4
 Metadaten: emotion-library.json
