@@ -1,4 +1,4 @@
-/* BUILD 15.4.4 · unified compact admin rail + horizontal flyouts */
+/* BUILD 15.4.5 · unified compact admin rail + horizontal flyouts */
 :root{
   --bd1541-rail-w:76px;
   --bd1541-terr:#C96B4B;
@@ -14,10 +14,12 @@
   body.bd1541-main .sidebar{visibility:hidden!important;pointer-events:none!important}
   body.bd1541-standalone{padding-left:var(--bd1541-rail-w)!important;min-height:100vh}
   body.bd1541-standalone .suite-main{margin-left:0!important;width:auto!important}
+  /* The dark security strip belongs to the full viewport, not to the content column. */
+  body.bd1541-standalone>.security-strip{margin-left:calc(-1 * var(--bd1541-rail-w))!important;width:calc(100% + var(--bd1541-rail-w))!important}
 
   .bd1541-rail.is-hidden{display:none!important}
   .bd1541-rail{
-    position:fixed;inset:0 auto 0 0;width:var(--bd1541-rail-w);z-index:1200;
+    position:fixed;left:0;top:var(--bd-shell-top,52px);bottom:0;width:var(--bd1541-rail-w);height:calc(100vh - var(--bd-shell-top,52px));z-index:1200;
     display:flex;flex-direction:column;align-items:center;
     background:rgba(255,250,245,.97);border-right:1px solid var(--bd1541-line);
     box-shadow:6px 0 24px rgba(47,38,35,.035);padding:10px 8px;
@@ -78,6 +80,13 @@
   .bd1541-flyout a.current,.bd1541-flyout button.current{background:#F6E5DC;color:var(--bd1541-terr-dark)}
   .bd1541-flyout svg{width:18px;height:18px;flex:0 0 auto}
   .bd1541-flyout small{margin-left:auto;color:#9A877D;font-size:9px;font-weight:700}
+
+  /* Shared top strip fallback for standalone pages that historically did not load practice-shell CSS. */
+  .security-strip{position:relative!important;z-index:1000!important;height:var(--bd-shell-top,52px)!important;min-height:var(--bd-shell-top,52px)!important;display:grid!important;grid-template-columns:248px minmax(0,1fr)!important;align-items:stretch!important;padding:0!important;background:#403833!important;color:#f7eee8!important}
+  .security-brand{display:flex!important;align-items:center!important;gap:10px!important;height:var(--bd-shell-top,52px)!important;padding:7px 14px!important;border-right:1px solid rgba(255,255,255,.08)!important;min-width:0!important}
+  .security-brand img{width:36px!important;height:36px!important;flex:0 0 36px!important;border-radius:50%!important;object-fit:contain!important;background:#fff!important;border:1px solid #e4d8cf!important;padding:5px!important}
+  .security-brand strong,.security-brand span{display:block!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}.security-brand strong{font-size:14px!important;line-height:1.15!important;color:#fff8f2!important}.security-brand span{font-size:10px!important;color:#c9bbb2!important;margin-top:2px!important}
+  .security-strip-label{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;padding:0 18px!important;color:rgba(255,247,237,.82)!important;font-size:10px!important;font-weight:760!important;letter-spacing:.15em!important;text-transform:uppercase!important}
 }
 
 @media (max-width:760px){

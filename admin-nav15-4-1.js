@@ -80,7 +80,14 @@ function syncActive(){
   slot.classList.toggle('group-current',childActive)
  })
 }
+function ensureSecurityStrip(){
+ if(document.querySelector('.security-strip'))return;
+ const strip=document.createElement('div');strip.className='security-strip';
+ strip.innerHTML='<div class="security-brand"><img src="./public/Beziehungsdynmiken_logo_colour.png" alt=""><div><strong>Beziehungsdynamiken</strong><span>Praxis-Plattform</span></div></div><span class="security-strip-label">Interne Praxisverwaltung · geschützter Zugang</span>';
+ document.body.prepend(strip);
+}
 function mount(){
+ ensureSecurityStrip();
  document.querySelectorAll('.bd1541-rail,.bd153-rail,.suite-rail').forEach(x=>x.remove());
  document.body.classList.remove('bd153-standalone');document.body.classList.add(isMain?'bd1541-main':'bd1541-standalone');
  const rail=document.createElement('aside');rail.className='bd1541-rail';rail.setAttribute('aria-label','Praxisnavigation');
