@@ -1,0 +1,25 @@
+{
+  "build": "15.5.3",
+  "base": "15.5.2",
+  "scope": "Static GitHub Pages knowledge-only About page and closed pre-launch knowledge navigation",
+  "worker_change": false,
+  "d1_change": false,
+  "changed_files": {
+    "BUILD15-5-3-NOTE.txt": "1efc115a365f0cef9f586d339e874c9328a391e984f5cae4f0628e871f3020cd",
+    "BUILD15-5-3-TESTREPORT.txt": "059501a52e79ca1f1328d9aa069fb354f626f810edd771a6f0f56073d10e2f8a",
+    "INSTALLATION-15.5.3.txt": "22c836d193e5b9740b25b87d0daa85007dd99548fec8c731f68c320595bc7201",
+    "site-mode15-5.js": "6ca94f9559ed7ac3b348f6fd51462716e605e491e36eaf0b38ae991dfeaf2857",
+    "wissen/index.html": "f297819d34fc8767efc88dd36fa7057a93c89bc59ba15300c6509467b36c9679",
+    "wissen/ueber-mich/index.html": "1ca93e562dff098b8e08f6d4dd05c7961b33cc23a5984258daa382305b7a2ca3",
+    "about.html": "79b836901b1f8129f8923969ebf246389f88a1b08b154ebf8a5ec20679ab908f",
+    "about-en.html": "36fbae4c42af91a7e3dce3a2abfe6d37de9f220623467ff10c8d00e4c877f9f9",
+    "desktop/app/web/site-mode15-5.js": "6ca94f9559ed7ac3b348f6fd51462716e605e491e36eaf0b38ae991dfeaf2857",
+    "desktop/app/web/wissen/index.html": "f297819d34fc8767efc88dd36fa7057a93c89bc59ba15300c6509467b36c9679",
+    "desktop/app/web/wissen/ueber-mich/index.html": "1ca93e562dff098b8e08f6d4dd05c7961b33cc23a5984258daa382305b7a2ca3",
+    "desktop/app/web/about.html": "79b836901b1f8129f8923969ebf246389f88a1b08b154ebf8a5ec20679ab908f",
+    "desktop/app/web/about-en.html": "36fbae4c42af91a7e3dce3a2abfe6d37de9f220623467ff10c8d00e4c877f9f9",
+    "tests/test_build15_5_3_static_knowledge_about.py": "4ff9fcaa7b3f9b3757877972115a9cb7bdf3f9c61dcb74dd60b36b1a19fc19bb",
+    "tests/test_build15_5_1_site_mode_routing.py": "8d329d741f1f0f405914d16117bf0670ed3469bf19ce23a3d149640c78a0cadc",
+    "tests/test_build15_5_2_knowledge_about.py": "93887e16ee8406d154e0ac0c4044a1fdbd59aa16d10d520303dda8f92ca7f48f"
+  }
+}
