@@ -1,0 +1,17 @@
+{
+  "build": "15.8.2",
+  "base": "15.8.1",
+  "vaultVersion": "3.38.2",
+  "d1Migration": false,
+  "workerDeploy": false,
+  "changed": [
+    "hub.html",
+    "hub-build15-8.js",
+    "hub-build15-8.css",
+    "vault/vault_server.py",
+    "desktop/app/web/hub.html",
+    "desktop/app/web/hub-build15-8.js",
+    "desktop/app/web/hub-build15-8.css",
+    "desktop/app/web/vault/vault_server.py"
+  ]
+}
