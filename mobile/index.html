@@ -11,7 +11,7 @@
   <title>BD Admin Mobile</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icon-192.png">
-  <link rel="stylesheet" href="app.css?v=15.4.5">
+  <link rel="stylesheet" href="app.css?v=15.4.6">
   <script src="../booking-config.js"></script>
 </head>
 <body>
@@ -94,6 +94,7 @@
 
     <nav class="tabbar" aria-label="Hauptnavigation">
       <button class="active" data-tab="home"><span>⌂</span><small>Home</small></button>
+      <button id="captureTab" type="button" aria-label="Praxis Capture öffnen"><span>●</span><small>Capture</small></button>
       <button data-tab="appointments"><span>▣</span><small>Termine</small></button>
       <button data-tab="clients"><span>♙</span><small>Klient:innen</small></button>
       <button data-tab="more"><span>•••</span><small>Mehr</small></button>
@@ -102,6 +103,6 @@
 
   <dialog id="sheet"><div class="sheet"><div class="sheet-grabber"></div><button class="sheet-close" id="sheetClose" aria-label="Schließen">×</button><div id="sheetContent"></div></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=15.4.5"></script>
+  <script src="app.js?v=15.4.6"></script>
 </body>
 </html>
