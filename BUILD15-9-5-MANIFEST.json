@@ -1,0 +1,71 @@
+{
+  "build": "15.9.5",
+  "base": "15.9.4",
+  "files": [
+    {
+      "path": "admin.html",
+      "bytes": 51673,
+      "sha256": "a879d11cce5362c7d5c417d59d15fe115cf57df69655b9cbc2265236f5d57556"
+    },
+    {
+      "path": "admin-client-cards15-9-5.js",
+      "bytes": 11677,
+      "sha256": "1ee5772ddbbc6d30eeac3d581bdce8c42b40612efadf4244697b029e21005800"
+    },
+    {
+      "path": "admin-client-cards15-9-5.css",
+      "bytes": 4438,
+      "sha256": "48b3a0839666366ed0f83f81af9c3de30c8bf08f50269c24a4012191fe2bf9ac"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 579684,
+      "sha256": "0940ac3c44ca76681e714644ed6e8b11a0fd9f104e1da60a65aae0a94f5a7150"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "d93dca206a9def521740eb491591888785e1351780db02aa017582263cc0c5bc"
+    },
+    {
+      "path": "BUILD15-9-5-NOTE.txt",
+      "bytes": 1439,
+      "sha256": "a7f45ceb55d563ffa5a0d07a8173891fe1d774c111ffde99b387e0c60faaedc6"
+    },
+    {
+      "path": "INSTALLATION-15.9.5.txt",
+      "bytes": 386,
+      "sha256": "a28bb166970f1bc6ff5289f111813ba1297f3e7332114f26b8b8d306f2865e5d"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.9.5.cmd",
+      "bytes": 184,
+      "sha256": "3c49447ac0f061c4e3edd2c207ac226702a87d2684de384fa037c3628d6d46ca"
+    },
+    {
+      "path": "tests/test_build15_9_5_client_cards.py",
+      "bytes": 1492,
+      "sha256": "5bd5849da75f6777a6ec8110c59d5d801e5853288b056f817b195838821dcf0e"
+    },
+    {
+      "path": "desktop/app/web/admin.html",
+      "bytes": 51673,
+      "sha256": "a879d11cce5362c7d5c417d59d15fe115cf57df69655b9cbc2265236f5d57556"
+    },
+    {
+      "path": "desktop/app/web/admin-client-cards15-9-5.js",
+      "bytes": 11677,
+      "sha256": "1ee5772ddbbc6d30eeac3d581bdce8c42b40612efadf4244697b029e21005800"
+    },
+    {
+      "path": "desktop/app/web/admin-client-cards15-9-5.css",
+      "bytes": 4438,
+      "sha256": "48b3a0839666366ed0f83f81af9c3de30c8bf08f50269c24a4012191fe2bf9ac"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 7,
+      "sha256": "d93dca206a9def521740eb491591888785e1351780db02aa017582263cc0c5bc"
+    }
+  ]
+}
