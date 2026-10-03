@@ -1,0 +1,23 @@
+{
+  "build": "15.5.2",
+  "base": "15.5.1",
+  "scope": "Reduced About page inside knowledge/pre-launch mode; closed knowledge navigation",
+  "worker_change": true,
+  "d1_change": false,
+  "changed_files": {
+    "BUILD15-5-2-NOTE.txt": "98d73a4eff6c99668be53a7ca99a0a2bd068d8c6f57cdfdf8ca9de80b0a39fed",
+    "BUILD15-5-2-TESTREPORT.txt": "90ec76ce3ad1df5e1f201ff3e9328ba96be7f35d5098127d28aed320181ff142",
+    "INSTALLATION-15.5.2.txt": "723513a2132b5b324c307499f574fd406a7e03c5de40cd4c152b5c9a2ce3d18e",
+    "about-en.html": "0d8c8dbdf159a0bfa6f64862327d246e43c099e9ae8e14d258abd5883fe7fd4d",
+    "about.html": "8ce2cf4c93a0c865472756408c2e3c5e598a8cc3a9d591bc8806e1ff765b678b",
+    "cloudflare-worker/worker.js": "ad2a84b5a59a743a20d94dd73a991f5445f5c512cb7de49dcd109cb74e94a417",
+    "desktop/app/web/about-en.html": "0d8c8dbdf159a0bfa6f64862327d246e43c099e9ae8e14d258abd5883fe7fd4d",
+    "desktop/app/web/about.html": "8ce2cf4c93a0c865472756408c2e3c5e598a8cc3a9d591bc8806e1ff765b678b",
+    "desktop/app/web/cloudflare-worker/worker.js": "ad2a84b5a59a743a20d94dd73a991f5445f5c512cb7de49dcd109cb74e94a417",
+    "desktop/app/web/site-mode15-5.js": "6c58a182edf62df23c76ff6706bc8cdc661c4684e39fbc332862ae783e579593",
+    "desktop/app/web/wissen/wissen.css": "88fdf56be27e7c2acb57fa69bd328b0ec6561dd24583093965821cb293cc74f3",
+    "site-mode15-5.js": "6c58a182edf62df23c76ff6706bc8cdc661c4684e39fbc332862ae783e579593",
+    "tests/test_build15_5_2_knowledge_about.py": "3bfa98eb8801c3d86776bc00047bda6a3596edfcc07f252f031b06e004b30b8a",
+    "wissen/wissen.css": "88fdf56be27e7c2acb57fa69bd328b0ec6561dd24583093965821cb293cc74f3"
+  }
+}

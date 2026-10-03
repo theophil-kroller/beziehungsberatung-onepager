@@ -25,6 +25,7 @@ async function boot(){
     const q=preview?'?preview='+encodeURIComponent(preview):'';const r=await fetch(API+'/public/site-mode'+q,{cache:'no-store'});if(!r.ok)throw new Error();const x=await r.json(),mode=x.mode||'private';window.BD_SITE_MODE=x;document.documentElement.dataset.siteMode=mode;
     enablePreviewPropagation();
     if(mode==='private'&&!LEGAL.has(path)){screen('private');return}
+    if(mode==='knowledge'&&(path==='about.html'||path==='about-en.html')){location.replace(carry('/wissen/ueber-mich'));return}
     if(mode==='knowledge'&&PRACTICE_ONLY.has(path)){screen('knowledge');return}
     if(mode==='knowledge'&&isRoot){location.replace(carry('/wissen/'));return}
     if(mode==='knowledge')knowledgeClean();
