@@ -1,0 +1,74 @@
+{
+  "build": "15.9.1",
+  "baseBuild": "15.9.0",
+  "type": "ui-hotfix",
+  "files": [
+    {
+      "path": "hub.html",
+      "bytes": 52102,
+      "sha256": "693340fbf8618ce2945bc3370fa579246546bb800dd08693d7286710687f3489"
+    },
+    {
+      "path": "hub-build14-8.js",
+      "bytes": 67621,
+      "sha256": "e95e644cf1a41f07d2d16d0f7d724579e8a7959fce964e851ed0402e2d9652f4"
+    },
+    {
+      "path": "hub-build14-8.css",
+      "bytes": 20728,
+      "sha256": "e662921c2dd716a045fd8df168e768b5c35ce1694254297f9bcc0329995d359c"
+    },
+    {
+      "path": "hub-build15-8.js",
+      "bytes": 49483,
+      "sha256": "034102edd51bd31bd5f0106e784c456a69a319db2e3eca4109973747aa46a9a1"
+    },
+    {
+      "path": "hub-build15-8.css",
+      "bytes": 14382,
+      "sha256": "0e3d038b262f46e7fb7489f84f461f0e3b261facea0845f42eaebe56f66a07b0"
+    },
+    {
+      "path": "emotion-library-15-9.css",
+      "bytes": 3791,
+      "sha256": "aecc7a88945ebeb623e80feb84cd552917cf08fb811e6bfaad44953a60c36673"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 577839,
+      "sha256": "35a03c3ada745a96ef845a055b81604b39cc75a00ca5deda5c27288e6e74d732"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "239705a8b1cf6f1a6b6b1d25f1c9103cf4db027da0093b31378607fb91630bc7"
+    },
+    {
+      "path": "BUILD15-9-1-NOTE.txt",
+      "bytes": 1442,
+      "sha256": "975c55c7ca7a51bd8830ef33740fd49a25bbbfd4d6336a0c790c2272e418b1ec"
+    },
+    {
+      "path": "BUILD15-9-1-TESTREPORT.txt",
+      "bytes": 593,
+      "sha256": "6692d4de79c34c0d15fb93aaaccc1deb8f2f935d57fa88bf1bf0266151b2483d"
+    },
+    {
+      "path": "INSTALLATION-15.9.1.txt",
+      "bytes": 413,
+      "sha256": "0ab5482b14fd2534909f26295580ba862af1bd2ae1db11e6ada7751f397e6e7c"
+    },
+    {
+      "path": "tests/test_build15_9_1_studio_ui.py",
+      "bytes": 1838,
+      "sha256": "f7e1745fe1a851c9753be560db0884ee8d9335f99f71c74384de524132226d7f"
+    },
+    {
+      "path": "tests/test_build15_9_emotion_library.py",
+      "bytes": 3020,
+      "sha256": "429c31588f9c152b1af77321a1164f12b9caa204fa00c1682e73d6c90af29dcb"
+    }
+  ],
+  "emotionAssets": 65,
+  "dataMigrationRequired": false
+}
