@@ -1,0 +1,91 @@
+{
+  "build": "15.9.4",
+  "base": "15.9.3",
+  "files": [
+    {
+      "path": "hub.html",
+      "bytes": 52163,
+      "sha256": "5b8ce9a06079c0a009b590fb365dfa4f42d4caa715af7f48fea526c325810afe"
+    },
+    {
+      "path": "hub-build15-8.js",
+      "bytes": 74845,
+      "sha256": "e8ea6ec9729710689739252cc7cef0b823745e7bf70f8deab36eb632b639e14c"
+    },
+    {
+      "path": "hub-build15-8.css",
+      "bytes": 14382,
+      "sha256": "0e3d038b262f46e7fb7489f84f461f0e3b261facea0845f42eaebe56f66a07b0"
+    },
+    {
+      "path": "hub-build14-8.js",
+      "bytes": 67621,
+      "sha256": "e95e644cf1a41f07d2d16d0f7d724579e8a7959fce964e851ed0402e2d9652f4"
+    },
+    {
+      "path": "hub-build14-8.css",
+      "bytes": 20728,
+      "sha256": "e662921c2dd716a045fd8df168e768b5c35ce1694254297f9bcc0329995d359c"
+    },
+    {
+      "path": "emotion-library-15-9.js",
+      "bytes": 6197,
+      "sha256": "cb86cb98514ef0490568defa5e474356892e6274df8179031d00d8a8698f4f53"
+    },
+    {
+      "path": "emotion-library-15-9.css",
+      "bytes": 3791,
+      "sha256": "aecc7a88945ebeb623e80feb84cd552917cf08fb811e6bfaad44953a60c36673"
+    },
+    {
+      "path": "short-hook-15-9-4.css",
+      "bytes": 7806,
+      "sha256": "a506004f819042ec747837b3feae2fdb237b82ff7b5fc2d652d0d86c9803f952"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 579649,
+      "sha256": "87e0962214eeaaa225400f63439bba4a207bafed4ed2f08f296dec7fc000d3c4"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "1842242c0dd6bd07534384b791273fd5028b6525db13628bbeeadd245dcdf45b"
+    },
+    {
+      "path": "BUILD15-9-4-NOTE.txt",
+      "bytes": 1047,
+      "sha256": "d1dcbfeef72faa2938489861892c80edba9fb7821072a49dc28cc61613b9e386"
+    },
+    {
+      "path": "INSTALLATION-15.9.4.txt",
+      "bytes": 319,
+      "sha256": "feff5e55c87747a4e17b8f95e2da289571a2eef0a43812521edf90ad7039929a"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.9.4.cmd",
+      "bytes": 241,
+      "sha256": "41e7ea8cbc0927ab58d763c2ea024cfe38464d028c466964e721223d4310888e"
+    },
+    {
+      "path": "newsletter-admin.html",
+      "bytes": 7080,
+      "sha256": "2c5b4d3c85c168f4faa75697815f035279249ec98fbb0f3cd238aff7fa40943a"
+    },
+    {
+      "path": "newsletter-admin.js",
+      "bytes": 12620,
+      "sha256": "efd03d7eafbb772a8a0ec43b281015835d68a1ee445ac13fac557ed58402d7ae"
+    },
+    {
+      "path": "newsletter-admin15-9-3.css",
+      "bytes": 4877,
+      "sha256": "a627b8f22316a151039b920deb6deb02bc2d1996a9d248f5c32c1b9793adba1a"
+    },
+    {
+      "path": "tests/test_build15_9_4_short_hook_free.py",
+      "bytes": 1433,
+      "sha256": "e76d36a8a891df641e0cb8f029a053aa3d35869f5b47b52309e0a51979858688"
+    }
+  ]
+}
