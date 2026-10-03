@@ -1,0 +1,12 @@
+{
+  "build": "15.4.6",
+  "name": "BD Admin Mobile",
+  "base": "15.4.5 FULL",
+  "capture_changed": true,
+  "desktop_vault_runtime_changed": false,
+  "new_client": "/mobile/",
+  "cloud_polling": false,
+  "mobile_cache_minutes": 15,
+  "migration": "database/build15-4.sql",
+  "notes": "Desktop rail/security-strip alignment; Mobile Admin ↔ Capture navigation."
+}

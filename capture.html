@@ -10,7 +10,7 @@
   <link rel="manifest" href="capture-manifest.webmanifest">
   <link rel="icon" href="capture-icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="capture-icon-192.png">
-  <link rel="stylesheet" href="capture.css?v=15-4-2">
+  <link rel="stylesheet" href="capture.css?v=15-4-6">
 </head>
 <body>
 <main class="capture-app">
@@ -20,12 +20,12 @@
       <div><strong>Praxis Capture</strong><small>Beziehungsdynamiken</small></div>
     </div>
     <div class="head-actions">
-      <a class="praxis-login-link" href="/mobile/?source=capture" aria-label="Praxisverwaltung öffnen" title="Praxisverwaltung"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></a>
       <button id="connectionAction" class="connection-pill" type="button" aria-label="Verbindungsstatus"><span id="connectionDot"></span><span id="connectionLabel">Nicht verbunden</span></button>
       <details class="app-menu">
         <summary aria-label="Weitere Optionen">•••</summary>
         <div class="app-menu-popover">
           <button id="installBtn" type="button" hidden>App installieren</button>
+          <button id="adminMobileBtn" type="button">Praxisverwaltung öffnen</button>
           <button id="inkMode" type="button">E‑Ink-Modus</button>
           <div class="menu-divider"></div>
           <div class="menu-status"><span id="networkState" class="status-pill">Prüfe Verbindung …</span><span id="storageState">Lokaler Speicher wird geprüft …</span></div>
@@ -169,6 +169,6 @@
 </dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-  <script src="capture.js?v=15-4-2"></script>
+  <script src="capture.js?v=15-4-6"></script>
 </body>
 </html>

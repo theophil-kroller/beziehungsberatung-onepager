@@ -1,4 +1,4 @@
-/* BUILD 15.4.5 · unified compact admin rail + horizontal flyouts */
+/* BUILD 15.4.6 · unified compact admin rail + horizontal flyouts */
 :root{
   --bd1541-rail-w:76px;
   --bd1541-terr:#C96B4B;
@@ -14,12 +14,9 @@
   body.bd1541-main .sidebar{visibility:hidden!important;pointer-events:none!important}
   body.bd1541-standalone{padding-left:var(--bd1541-rail-w)!important;min-height:100vh}
   body.bd1541-standalone .suite-main{margin-left:0!important;width:auto!important}
-  /* The dark security strip belongs to the full viewport, not to the content column. */
-  body.bd1541-standalone>.security-strip{margin-left:calc(-1 * var(--bd1541-rail-w))!important;width:calc(100% + var(--bd1541-rail-w))!important}
-
   .bd1541-rail.is-hidden{display:none!important}
   .bd1541-rail{
-    position:fixed;left:0;top:var(--bd-shell-top,52px);bottom:0;width:var(--bd1541-rail-w);height:calc(100vh - var(--bd-shell-top,52px));z-index:1200;
+    position:fixed;left:0;top:0;bottom:0;width:var(--bd1541-rail-w);height:100vh;z-index:1200;
     display:flex;flex-direction:column;align-items:center;
     background:rgba(255,250,245,.97);border-right:1px solid var(--bd1541-line);
     box-shadow:6px 0 24px rgba(47,38,35,.035);padding:10px 8px;
@@ -80,6 +77,22 @@
   .bd1541-flyout a.current,.bd1541-flyout button.current{background:#F6E5DC;color:var(--bd1541-terr-dark)}
   .bd1541-flyout svg{width:18px;height:18px;flex:0 0 auto}
   .bd1541-flyout small{margin-left:auto;color:#9A877D;font-size:9px;font-weight:700}
+
+  /* BUILD 15.4.6: the compact rail owns the left 76 px from top to bottom.
+     The security strip therefore starts to the right of the rail and no longer
+     repeats the large brand block underneath/behind it. */
+  body.bd1541-main>.security-strip{
+    margin-left:var(--bd1541-rail-w)!important;
+    width:calc(100% - var(--bd1541-rail-w))!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  body.bd1541-standalone>.security-strip{
+    margin-left:0!important;
+    width:auto!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  body.bd1541-main>.security-strip .security-brand,
+  body.bd1541-standalone>.security-strip .security-brand{display:none!important}
 
   /* Shared top strip fallback for standalone pages that historically did not load practice-shell CSS. */
   .security-strip{position:relative!important;z-index:1000!important;height:var(--bd-shell-top,52px)!important;min-height:var(--bd-shell-top,52px)!important;display:grid!important;grid-template-columns:248px minmax(0,1fr)!important;align-items:stretch!important;padding:0!important;background:#403833!important;color:#f7eee8!important}
