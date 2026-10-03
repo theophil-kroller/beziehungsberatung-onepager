@@ -1,0 +1,46 @@
+{
+  "build": "15.8.1",
+  "base": "15.8.0",
+  "files": [
+    {
+      "path": "hub.html",
+      "sha256": "70aaba025592ecf1ffba576d47f3f4d1afa73f8bc053dd3115c5876fd2cae987",
+      "bytes": 51982
+    },
+    {
+      "path": "hub-build15-8.js",
+      "sha256": "76c3eb5449a75a1103b33d384adeaa5853b69f9d0dd5ed977e776dd46bf6c5f8",
+      "bytes": 33290
+    },
+    {
+      "path": "hub-build15-8.css",
+      "sha256": "25fb413ae2b0e85430794d13dde8a0ae49fd4be0ad76743b70e2be067acd6535",
+      "bytes": 9721
+    },
+    {
+      "path": "vault/vault_server.py",
+      "sha256": "7c1e96393f97fe415dd919aa40198b07da4c5ac1f1c4613095e06bcd81a70612",
+      "bytes": 571995
+    },
+    {
+      "path": "BUILD15-8-1-NOTE.txt",
+      "sha256": "053c9ae7462477cb884689acdc5c7820139885ec822253a26647a2ef69a63ef2",
+      "bytes": 2922
+    },
+    {
+      "path": "INSTALLATION-15.8.1.txt",
+      "sha256": "a9f7f2f975b7c1f0b638c81a22c9f8320b91b53169a635b039e9493705a3f80b",
+      "bytes": 1393
+    },
+    {
+      "path": "BUILD15-8-1-TESTREPORT.txt",
+      "sha256": "00c569fc1520ad722dda7cb45d851de79346250eadda2bb043c0b246376243f9",
+      "bytes": 1325
+    },
+    {
+      "path": "tests/test_build15_8_1_spoken_voice.py",
+      "sha256": "9ac5f43bbc4b8a07bededa9f83273f5725ad1b703e71eff910fb8250b0cadf97",
+      "bytes": 7336
+    }
+  ]
+}
