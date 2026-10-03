@@ -1,0 +1,1853 @@
+{
+  "schema": "bd.emotion_library.v1",
+  "version": "15.9.0",
+  "generatedAt": "2026-10-03",
+  "root": "/public/emotion/",
+  "seriesLegend": {
+    "A": "erste Generationsserie ohne hochgeladene Referenzfotos",
+    "B": "referenzinformierte Generationsserie nach Upload echter Fotos"
+  },
+  "emotions": [
+    {
+      "key": "Eifersucht",
+      "label": "Eifersucht",
+      "summary": "Misstrauen, Vergleich, Verlustangst und Kontrollimpuls",
+      "keywords": [
+        "eifersucht",
+        "misstrauen",
+        "verdacht",
+        "vergleich",
+        "kontrolle",
+        "dritte person",
+        "verlustangst",
+        "betrug",
+        "affäre",
+        "treue"
+      ],
+      "assets": [
+        {
+          "id": "Eifersucht_A1",
+          "filename": "Emotion_Eifersucht_A1.png",
+          "label": "Eifersucht A1",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Seitlicher, prüfender Blick; kontrollierte Spannung, eher misstrauisch als offen wütend.",
+          "tags": [
+            "Misstrauen",
+            "Vergleich",
+            "Kontrolle",
+            "Beobachten",
+            "Unsicherheit"
+          ],
+          "bestFor": [
+            "Misstrauen",
+            "Vergleich",
+            "Kontrolle",
+            "Beobachten"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_A1.png"
+        },
+        {
+          "id": "Eifersucht_A2",
+          "filename": "Emotion_Eifersucht_A2.png",
+          "label": "Eifersucht A2",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Kopf deutlich zur Seite gedreht, zusammengezogene Brauen; argwöhnisches Beobachten einer Situation außerhalb des Bildes.",
+          "tags": [
+            "Misstrauen",
+            "Argwohn",
+            "Dritte Person",
+            "Beobachten",
+            "Kontrolle"
+          ],
+          "bestFor": [
+            "Misstrauen",
+            "Argwohn",
+            "Dritte Person",
+            "Beobachten"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_A2.png"
+        },
+        {
+          "id": "Eifersucht_A3",
+          "filename": "Emotion_Eifersucht_A3.png",
+          "label": "Eifersucht A3",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Direkter Blick mit gespannter Stirn und zurückgehaltener Reaktion; innerer Alarm ohne Eskalation.",
+          "tags": [
+            "innerer Alarm",
+            "Unsicherheit",
+            "Misstrauen",
+            "Anspannung",
+            "Kontrollimpuls"
+          ],
+          "bestFor": [
+            "innerer Alarm",
+            "Unsicherheit",
+            "Misstrauen",
+            "Anspannung"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_A3.png"
+        },
+        {
+          "id": "Eifersucht_A4",
+          "filename": "Emotion_Eifersucht_A4.png",
+          "label": "Eifersucht A4",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Direkter, enger Blick mit stärkerem Druck in Stirn und Mund; Eifersucht kippt sichtbar in Konfrontation.",
+          "tags": [
+            "Konfrontation",
+            "Besitzangst",
+            "Kontrolle",
+            "Misstrauen",
+            "Wut"
+          ],
+          "bestFor": [
+            "Konfrontation",
+            "Besitzangst",
+            "Kontrolle",
+            "Misstrauen"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_A4.png"
+        },
+        {
+          "id": "Eifersucht_B1",
+          "filename": "Emotion_Eifersucht_B1.png",
+          "label": "Eifersucht B1",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Seitlicher Blick nach unten, skeptisch und gereizt; wirkt wie ein Moment des Vergleichens oder Verdachts.",
+          "tags": [
+            "Vergleich",
+            "Verdacht",
+            "Kränkung",
+            "Misstrauen",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Vergleich",
+            "Verdacht",
+            "Kränkung",
+            "Misstrauen"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_B1.png"
+        },
+        {
+          "id": "Eifersucht_B2",
+          "filename": "Emotion_Eifersucht_B2.png",
+          "label": "Eifersucht B2",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Deutlich zur Seite gerichteter Blick, Kiefer angespannt; beobachtend, kontrollierend und innerlich aufgeladen.",
+          "tags": [
+            "Kontrolle",
+            "Argwohn",
+            "Dritte Person",
+            "Beobachten",
+            "Anspannung"
+          ],
+          "bestFor": [
+            "Kontrolle",
+            "Argwohn",
+            "Dritte Person",
+            "Beobachten"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_B2.png"
+        },
+        {
+          "id": "Eifersucht_B3",
+          "filename": "Emotion_Eifersucht_B3.png",
+          "label": "Eifersucht B3",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Frontaler, harter Blick mit gepresstem Mund; verletzte Eifersucht mit deutlicher Abwehr.",
+          "tags": [
+            "Kränkung",
+            "Abwehr",
+            "Misstrauen",
+            "Kontrolle",
+            "Verletztheit"
+          ],
+          "bestFor": [
+            "Kränkung",
+            "Abwehr",
+            "Misstrauen",
+            "Kontrolle"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_B3.png"
+        },
+        {
+          "id": "Eifersucht_B4",
+          "filename": "Emotion_Eifersucht_B4.png",
+          "label": "Eifersucht B4",
+          "emotion": "Eifersucht",
+          "emotionKey": "Eifersucht",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Sehr intensiver direkter Blick, stark gerunzelte Stirn; Eifersucht an der Grenze zu offener Wut.",
+          "tags": [
+            "Konfrontation",
+            "Wut",
+            "Besitzangst",
+            "Kontrollverlust",
+            "Misstrauen"
+          ],
+          "bestFor": [
+            "Konfrontation",
+            "Wut",
+            "Besitzangst",
+            "Kontrollverlust"
+          ],
+          "path": "/public/emotion/Emotion_Eifersucht_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Wut",
+      "label": "Wut",
+      "summary": "Ärger, Grenzverletzung, Frust und Eskalation",
+      "keywords": [
+        "wut",
+        "ärger",
+        "aggression",
+        "grenze",
+        "grenzverletzung",
+        "streit",
+        "konflikt",
+        "frust",
+        "eskalation",
+        "schreien"
+      ],
+      "assets": [
+        {
+          "id": "Wut_A1",
+          "filename": "Emotion_Wut_A1.png",
+          "label": "Wut A1",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Frontaler, enger Blick; Ärger wird sichtbar, bleibt aber noch gebremst.",
+          "tags": [
+            "Ärger",
+            "Grenze",
+            "Frust",
+            "Anspannung",
+            "Konflikt"
+          ],
+          "bestFor": [
+            "Ärger",
+            "Grenze",
+            "Frust",
+            "Anspannung"
+          ],
+          "path": "/public/emotion/Emotion_Wut_A1.png"
+        },
+        {
+          "id": "Wut_A2",
+          "filename": "Emotion_Wut_A2.png",
+          "label": "Wut A2",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Stärkerer Stirndruck und direkter Blick; konzentrierte, kontrollierte Wut.",
+          "tags": [
+            "Wut",
+            "Konfrontation",
+            "Grenzverletzung",
+            "Druck",
+            "Konflikt"
+          ],
+          "bestFor": [
+            "Wut",
+            "Konfrontation",
+            "Grenzverletzung",
+            "Druck"
+          ],
+          "path": "/public/emotion/Emotion_Wut_A2.png"
+        },
+        {
+          "id": "Wut_A3",
+          "filename": "Emotion_Wut_A3.png",
+          "label": "Wut A3",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Fester Blick mit gepresstem Mund; ruhige, kalte Wut ohne große Gestik.",
+          "tags": [
+            "kalte Wut",
+            "Abwehr",
+            "Grenze",
+            "Konfrontation",
+            "Ressentiment"
+          ],
+          "bestFor": [
+            "kalte Wut",
+            "Abwehr",
+            "Grenze",
+            "Konfrontation"
+          ],
+          "path": "/public/emotion/Emotion_Wut_A3.png"
+        },
+        {
+          "id": "Wut_A4",
+          "filename": "Emotion_Wut_A4.png",
+          "label": "Wut A4",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Sehr fokussierter Blick und gespannter Mund; Wut kurz vor einer verbalen Reaktion.",
+          "tags": [
+            "Eskalation",
+            "Konflikt",
+            "Grenze",
+            "Frust",
+            "Angriff"
+          ],
+          "bestFor": [
+            "Eskalation",
+            "Konflikt",
+            "Grenze",
+            "Frust"
+          ],
+          "path": "/public/emotion/Emotion_Wut_A4.png"
+        },
+        {
+          "id": "Wut_B1",
+          "filename": "Emotion_Wut_B1.png",
+          "label": "Wut B1",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Direkt und ernst, mit wenig Mimik; kontrollierter Ärger, der noch nicht ausbricht.",
+          "tags": [
+            "Ärger",
+            "Kontrolle",
+            "Grenze",
+            "Enttäuschung",
+            "Konflikt"
+          ],
+          "bestFor": [
+            "Ärger",
+            "Kontrolle",
+            "Grenze",
+            "Enttäuschung"
+          ],
+          "path": "/public/emotion/Emotion_Wut_B1.png"
+        },
+        {
+          "id": "Wut_B2",
+          "filename": "Emotion_Wut_B2.png",
+          "label": "Wut B2",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Deutlich gespannter, nach unten gerichteter Blick; unterdrückte Wut und hoher innerer Druck.",
+          "tags": [
+            "unterdrückte Wut",
+            "Druck",
+            "Frust",
+            "Abwehr",
+            "Konflikt"
+          ],
+          "bestFor": [
+            "unterdrückte Wut",
+            "Druck",
+            "Frust",
+            "Abwehr"
+          ],
+          "path": "/public/emotion/Emotion_Wut_B2.png"
+        },
+        {
+          "id": "Wut_B3",
+          "filename": "Emotion_Wut_B3.png",
+          "label": "Wut B3",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Nase und Stirn stark angespannt, direkter Blick; aggressiver Impuls wird sichtbar.",
+          "tags": [
+            "Wut",
+            "Aggression",
+            "Konfrontation",
+            "Eskalation",
+            "Grenzverletzung"
+          ],
+          "bestFor": [
+            "Wut",
+            "Aggression",
+            "Konfrontation",
+            "Eskalation"
+          ],
+          "path": "/public/emotion/Emotion_Wut_B3.png"
+        },
+        {
+          "id": "Wut_B4",
+          "filename": "Emotion_Wut_B4.png",
+          "label": "Wut B4",
+          "emotion": "Wut",
+          "emotionKey": "Wut",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "extrem",
+          "description": "Offener Schrei mit stark gespannter Mimik; maximaler Wutausbruch und Kontrollverlust.",
+          "tags": [
+            "Wutausbruch",
+            "Schreien",
+            "Eskalation",
+            "Kontrollverlust",
+            "Konflikt"
+          ],
+          "bestFor": [
+            "Wutausbruch",
+            "Schreien",
+            "Eskalation",
+            "Kontrollverlust"
+          ],
+          "path": "/public/emotion/Emotion_Wut_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Verletzt",
+      "label": "Verletzt",
+      "summary": "Kränkung, Enttäuschung, Zurückweisung und Vertrauensbruch",
+      "keywords": [
+        "verletzt",
+        "verletztheit",
+        "kränkung",
+        "enttäuschung",
+        "zurückweisung",
+        "vertrauensbruch",
+        "affäre",
+        "betrug",
+        "traurig",
+        "schmerz"
+      ],
+      "assets": [
+        {
+          "id": "Verletzt_A1",
+          "filename": "Emotion_Verletzt_A1.png",
+          "label": "Verletzt A1",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Frontal, weichere Augen und gespannte Mundwinkel; stille Verletztheit und Enttäuschung.",
+          "tags": [
+            "Verletztheit",
+            "Enttäuschung",
+            "Kränkung",
+            "Traurigkeit",
+            "Vertrauen"
+          ],
+          "bestFor": [
+            "Verletztheit",
+            "Enttäuschung",
+            "Kränkung",
+            "Traurigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_A1.png"
+        },
+        {
+          "id": "Verletzt_A2",
+          "filename": "Emotion_Verletzt_A2.png",
+          "label": "Verletzt A2",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Blick zur Seite, Stirn angespannt; verletzt und zugleich prüfend, als hätte etwas getroffen.",
+          "tags": [
+            "Kränkung",
+            "Enttäuschung",
+            "Misstrauen",
+            "Vertrauensbruch",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Kränkung",
+            "Enttäuschung",
+            "Misstrauen",
+            "Vertrauensbruch"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_A2.png"
+        },
+        {
+          "id": "Verletzt_A3",
+          "filename": "Emotion_Verletzt_A3.png",
+          "label": "Verletzt A3",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Direkter Blick mit hochgezogenen inneren Brauen; offen verletzlich und traurig.",
+          "tags": [
+            "Verletzlichkeit",
+            "Traurigkeit",
+            "Kränkung",
+            "Nähe",
+            "Vertrauen"
+          ],
+          "bestFor": [
+            "Verletzlichkeit",
+            "Traurigkeit",
+            "Kränkung",
+            "Nähe"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_A3.png"
+        },
+        {
+          "id": "Verletzt_A4",
+          "filename": "Emotion_Verletzt_A4.png",
+          "label": "Verletzt A4",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Deutlich trauriger Ausdruck, leicht geneigter Kopf; emotional getroffen und offen verletzlich.",
+          "tags": [
+            "Traurigkeit",
+            "Verletztheit",
+            "Enttäuschung",
+            "Zurückweisung",
+            "Verlust"
+          ],
+          "bestFor": [
+            "Traurigkeit",
+            "Verletztheit",
+            "Enttäuschung",
+            "Zurückweisung"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_A4.png"
+        },
+        {
+          "id": "Verletzt_B1",
+          "filename": "Emotion_Verletzt_B1.png",
+          "label": "Verletzt B1",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Blick schräg nach unten, Mund nach unten gezogen; gekränkt, traurig und zurückgenommen.",
+          "tags": [
+            "Kränkung",
+            "Rückzug",
+            "Traurigkeit",
+            "Zurückweisung",
+            "Enttäuschung"
+          ],
+          "bestFor": [
+            "Kränkung",
+            "Rückzug",
+            "Traurigkeit",
+            "Zurückweisung"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_B1.png"
+        },
+        {
+          "id": "Verletzt_B2",
+          "filename": "Emotion_Verletzt_B2.png",
+          "label": "Verletzt B2",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Kopf gesenkt und Blick nach unten; leise, resignierte Verletztheit.",
+          "tags": [
+            "Rückzug",
+            "Resignation",
+            "Traurigkeit",
+            "Kränkung",
+            "Hilflosigkeit"
+          ],
+          "bestFor": [
+            "Rückzug",
+            "Resignation",
+            "Traurigkeit",
+            "Kränkung"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_B2.png"
+        },
+        {
+          "id": "Verletzt_B3",
+          "filename": "Emotion_Verletzt_B3.png",
+          "label": "Verletzt B3",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Ein Auge zur Kamera, Gesicht angespannt; verletzlich, aber noch in Kontakt mit dem Gegenüber.",
+          "tags": [
+            "Verletzlichkeit",
+            "Kontakt",
+            "Kränkung",
+            "Misstrauen",
+            "Enttäuschung"
+          ],
+          "bestFor": [
+            "Verletzlichkeit",
+            "Kontakt",
+            "Kränkung",
+            "Misstrauen"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_B3.png"
+        },
+        {
+          "id": "Verletzt_B4",
+          "filename": "Emotion_Verletzt_B4.png",
+          "label": "Verletzt B4",
+          "emotion": "Verletzt",
+          "emotionKey": "Verletzt",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Blick deutlich zur Seite, Mund schwer; verletzt und emotional auf Abstand gehend.",
+          "tags": [
+            "Rückzug",
+            "Distanz",
+            "Kränkung",
+            "Enttäuschung",
+            "Beziehungsbruch"
+          ],
+          "bestFor": [
+            "Rückzug",
+            "Distanz",
+            "Kränkung",
+            "Enttäuschung"
+          ],
+          "path": "/public/emotion/Emotion_Verletzt_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Verachtung",
+      "label": "Verachtung",
+      "summary": "Abwertung, Geringschätzung, Spott und emotionale Distanz",
+      "keywords": [
+        "verachtung",
+        "abwertung",
+        "geringschätzung",
+        "spott",
+        "zynismus",
+        "herablassung",
+        "überlegenheit",
+        "abneigung",
+        "respektverlust"
+      ],
+      "assets": [
+        {
+          "id": "Verachtung_A2",
+          "filename": "Emotion_Verachtung_A2.png",
+          "label": "Verachtung A2",
+          "emotion": "Verachtung",
+          "emotionKey": "Verachtung",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Leicht schräger Blick und einseitig gespannter Mund; skeptische Geringschätzung.",
+          "tags": [
+            "Verachtung",
+            "Geringschätzung",
+            "Abwertung",
+            "Skepsis",
+            "Distanz"
+          ],
+          "bestFor": [
+            "Verachtung",
+            "Geringschätzung",
+            "Abwertung",
+            "Skepsis"
+          ],
+          "path": "/public/emotion/Emotion_Verachtung_A2.png"
+        },
+        {
+          "id": "Verachtung_A3",
+          "filename": "Emotion_Verachtung_A3.png",
+          "label": "Verachtung A3",
+          "emotion": "Verachtung",
+          "emotionKey": "Verachtung",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Kinn leicht angehoben, halb geschlossene Augen; kühle Überlegenheit und Distanz.",
+          "tags": [
+            "Überlegenheit",
+            "Verachtung",
+            "Distanz",
+            "Abwertung",
+            "Zynismus"
+          ],
+          "bestFor": [
+            "Überlegenheit",
+            "Verachtung",
+            "Distanz",
+            "Abwertung"
+          ],
+          "path": "/public/emotion/Emotion_Verachtung_A3.png"
+        },
+        {
+          "id": "Verachtung_A4",
+          "filename": "Emotion_Verachtung_A4.png",
+          "label": "Verachtung A4",
+          "emotion": "Verachtung",
+          "emotionKey": "Verachtung",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Seitlicher Blick mit deutlich einseitiger Mimik; misstrauische, abwertende Haltung.",
+          "tags": [
+            "Abwertung",
+            "Verachtung",
+            "Misstrauen",
+            "Geringschätzung",
+            "Konflikt"
+          ],
+          "bestFor": [
+            "Abwertung",
+            "Verachtung",
+            "Misstrauen",
+            "Geringschätzung"
+          ],
+          "path": "/public/emotion/Emotion_Verachtung_A4.png"
+        },
+        {
+          "id": "Verachtung_B1",
+          "filename": "Emotion_Verachtung_B1.png",
+          "label": "Verachtung B1",
+          "emotion": "Verachtung",
+          "emotionKey": "Verachtung",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Oberkörper zurückgelehnt, ein Auge verengt und Mund verzogen; demonstrative Abneigung.",
+          "tags": [
+            "Abneigung",
+            "Verachtung",
+            "Geringschätzung",
+            "Ekel",
+            "Distanz"
+          ],
+          "bestFor": [
+            "Abneigung",
+            "Verachtung",
+            "Geringschätzung",
+            "Ekel"
+          ],
+          "path": "/public/emotion/Emotion_Verachtung_B1.png"
+        },
+        {
+          "id": "Verachtung_B3",
+          "filename": "Emotion_Verachtung_B3.png",
+          "label": "Verachtung B3",
+          "emotion": "Verachtung",
+          "emotionKey": "Verachtung",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Kinn angehoben, halb geschlossene Augen und gepresster Mund; herablassende Distanz.",
+          "tags": [
+            "Herablassung",
+            "Überlegenheit",
+            "Verachtung",
+            "Abwertung",
+            "Distanz"
+          ],
+          "bestFor": [
+            "Herablassung",
+            "Überlegenheit",
+            "Verachtung",
+            "Abwertung"
+          ],
+          "path": "/public/emotion/Emotion_Verachtung_B3.png"
+        },
+        {
+          "id": "Verachtung_B4",
+          "filename": "Emotion_Verachtung_B4.png",
+          "label": "Verachtung B4",
+          "emotion": "Verachtung",
+          "emotionKey": "Verachtung",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Schräger Kopf, enger Blick und verzogener Mund; spöttische, abwertende Reaktion.",
+          "tags": [
+            "Spott",
+            "Verachtung",
+            "Abwertung",
+            "Zynismus",
+            "Distanz"
+          ],
+          "bestFor": [
+            "Spott",
+            "Verachtung",
+            "Abwertung",
+            "Zynismus"
+          ],
+          "path": "/public/emotion/Emotion_Verachtung_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Ueberforderung",
+      "label": "Überforderung",
+      "summary": "Stress, mentale Last, Reizüberflutung und Kontrollverlust",
+      "keywords": [
+        "überforderung",
+        "überfordert",
+        "stress",
+        "druck",
+        "zu viel",
+        "belastung",
+        "erschöpfung",
+        "grübeln",
+        "hilflos",
+        "kontrollverlust"
+      ],
+      "assets": [
+        {
+          "id": "Ueberforderung_A1",
+          "filename": "Emotion_Ueberforderung_A1.png",
+          "label": "Überforderung A1",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Weite Augen, leicht geöffneter Mund; plötzliches Überfordertsein oder 'zu viel auf einmal'.",
+          "tags": [
+            "Überforderung",
+            "Stress",
+            "Überraschung",
+            "Hilflosigkeit",
+            "Reizüberflutung"
+          ],
+          "bestFor": [
+            "Überforderung",
+            "Stress",
+            "Überraschung",
+            "Hilflosigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_A1.png"
+        },
+        {
+          "id": "Ueberforderung_A2",
+          "filename": "Emotion_Ueberforderung_A2.png",
+          "label": "Überforderung A2",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Eine Hand an der Stirn, Blick zur Seite; mentale Last und beginnende Erschöpfung.",
+          "tags": [
+            "Stress",
+            "mentale Last",
+            "Erschöpfung",
+            "Sorgen",
+            "Überforderung"
+          ],
+          "bestFor": [
+            "Stress",
+            "mentale Last",
+            "Erschöpfung",
+            "Sorgen"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_A2.png"
+        },
+        {
+          "id": "Ueberforderung_A3",
+          "filename": "Emotion_Ueberforderung_A3.png",
+          "label": "Überforderung A3",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Hand greift in den Kopf, Blick nach unten; deutliches Feststecken und Grübeln.",
+          "tags": [
+            "Grübeln",
+            "Stress",
+            "Überforderung",
+            "Hilflosigkeit",
+            "Druck"
+          ],
+          "bestFor": [
+            "Grübeln",
+            "Stress",
+            "Überforderung",
+            "Hilflosigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_A3.png"
+        },
+        {
+          "id": "Ueberforderung_A4",
+          "filename": "Emotion_Ueberforderung_A4.png",
+          "label": "Überforderung A4",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "sehr stark",
+          "description": "Beide Hände an den Schläfen, Gesicht stark angespannt; Überlastung kurz vor dem Zusammenbruch.",
+          "tags": [
+            "Überlastung",
+            "Druck",
+            "Panik",
+            "Stress",
+            "Kontrollverlust"
+          ],
+          "bestFor": [
+            "Überlastung",
+            "Druck",
+            "Panik",
+            "Stress"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_A4.png"
+        },
+        {
+          "id": "Ueberforderung_B1",
+          "filename": "Emotion_Ueberforderung_B1.png",
+          "label": "Überforderung B1",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Eine Hand auf dem Kopf, Blick stark nach unten; erschöpft und innerlich voll.",
+          "tags": [
+            "Erschöpfung",
+            "Überforderung",
+            "Rückzug",
+            "Druck",
+            "Sorgen"
+          ],
+          "bestFor": [
+            "Erschöpfung",
+            "Überforderung",
+            "Rückzug",
+            "Druck"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B1.png"
+        },
+        {
+          "id": "Ueberforderung_B2",
+          "filename": "Emotion_Ueberforderung_B2.png",
+          "label": "Überforderung B2",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Hand auf dem Kopf, zusammengezogene Stirn; ratloses Grübeln unter Belastung.",
+          "tags": [
+            "Ratlosigkeit",
+            "Grübeln",
+            "Stress",
+            "Überforderung",
+            "Hilflosigkeit"
+          ],
+          "bestFor": [
+            "Ratlosigkeit",
+            "Grübeln",
+            "Stress",
+            "Überforderung"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B2.png"
+        },
+        {
+          "id": "Ueberforderung_B3",
+          "filename": "Emotion_Ueberforderung_B3.png",
+          "label": "Überforderung B3",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Eine Hand auf dem Kopf, Blick nach vorne unten; Belastung ist sichtbar, Kontakt bleibt erhalten.",
+          "tags": [
+            "Belastung",
+            "Stress",
+            "Überforderung",
+            "Sorgen",
+            "Anspannung"
+          ],
+          "bestFor": [
+            "Belastung",
+            "Stress",
+            "Überforderung",
+            "Sorgen"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B3.png"
+        },
+        {
+          "id": "Ueberforderung_B4",
+          "filename": "Emotion_Ueberforderung_B4.png",
+          "label": "Überforderung B4",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Kopf seitlich gesenkt, Hand auf der Stirn; resigniert und erschöpft.",
+          "tags": [
+            "Erschöpfung",
+            "Resignation",
+            "Überforderung",
+            "Rückzug",
+            "Druck"
+          ],
+          "bestFor": [
+            "Erschöpfung",
+            "Resignation",
+            "Überforderung",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B4.png"
+        },
+        {
+          "id": "Ueberforderung_B5",
+          "filename": "Emotion_Ueberforderung_B5.png",
+          "label": "Überforderung B5",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 5,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Hand auf dem Kopf, seitlicher Blick; gereizte Überforderung und innere Unruhe.",
+          "tags": [
+            "Reizbarkeit",
+            "Überforderung",
+            "Stress",
+            "Druck",
+            "Frust"
+          ],
+          "bestFor": [
+            "Reizbarkeit",
+            "Überforderung",
+            "Stress",
+            "Druck"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B5.png"
+        },
+        {
+          "id": "Ueberforderung_B6",
+          "filename": "Emotion_Ueberforderung_B6.png",
+          "label": "Überforderung B6",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 6,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Beide Hände umfassen den Kopf, Augen geschlossen; akute Überlastung und Zusammenbruchsnähe.",
+          "tags": [
+            "Zusammenbruch",
+            "Überlastung",
+            "Panik",
+            "Hilflosigkeit",
+            "Stress"
+          ],
+          "bestFor": [
+            "Zusammenbruch",
+            "Überlastung",
+            "Panik",
+            "Hilflosigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B6.png"
+        },
+        {
+          "id": "Ueberforderung_B7",
+          "filename": "Emotion_Ueberforderung_B7.png",
+          "label": "Überforderung B7",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 7,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Beide Hände am Kopf, Stirn stark angespannt; hoher innerer Druck und Kontrollverlust.",
+          "tags": [
+            "Kontrollverlust",
+            "Überlastung",
+            "Druck",
+            "Verzweiflung",
+            "Stress"
+          ],
+          "bestFor": [
+            "Kontrollverlust",
+            "Überlastung",
+            "Druck",
+            "Verzweiflung"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B7.png"
+        },
+        {
+          "id": "Ueberforderung_B8",
+          "filename": "Emotion_Ueberforderung_B8.png",
+          "label": "Überforderung B8",
+          "emotion": "Überforderung",
+          "emotionKey": "Ueberforderung",
+          "series": "B",
+          "index": 8,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Beide Hände am Kopf, Blick tief nach unten; schwere mentale Last und Erschöpfung.",
+          "tags": [
+            "Erschöpfung",
+            "Zusammenbruch",
+            "Überforderung",
+            "Verzweiflung",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Erschöpfung",
+            "Zusammenbruch",
+            "Überforderung",
+            "Verzweiflung"
+          ],
+          "path": "/public/emotion/Emotion_Ueberforderung_B8.png"
+        }
+      ]
+    },
+    {
+      "key": "Scham",
+      "label": "Scham",
+      "summary": "Sich klein machen, nicht gesehen werden wollen, Selbstabwertung und Bedauern",
+      "keywords": [
+        "scham",
+        "schämen",
+        "peinlich",
+        "selbstzweifel",
+        "selbstabwertung",
+        "bedauern",
+        "reue",
+        "bewertung",
+        "nicht gesehen",
+        "klein machen"
+      ],
+      "assets": [
+        {
+          "id": "Scham_A1",
+          "filename": "Emotion_Scham_A1.png",
+          "label": "Scham A1",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Kopf und Blick nach unten, Schultern ruhig; stille Scham und Rückzug ohne große Gestik.",
+          "tags": [
+            "Scham",
+            "Rückzug",
+            "Selbstzweifel",
+            "Verletzlichkeit",
+            "Bewertung"
+          ],
+          "bestFor": [
+            "Scham",
+            "Rückzug",
+            "Selbstzweifel",
+            "Verletzlichkeit"
+          ],
+          "path": "/public/emotion/Emotion_Scham_A1.png"
+        },
+        {
+          "id": "Scham_A2",
+          "filename": "Emotion_Scham_A2.png",
+          "label": "Scham A2",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Hand bedeckt einen Teil des Gesichts, Blick abgewandt; Scham wird körperlich sichtbar.",
+          "tags": [
+            "Scham",
+            "Gesicht verbergen",
+            "Peinlichkeit",
+            "Selbstschutz",
+            "Bewertung"
+          ],
+          "bestFor": [
+            "Scham",
+            "Gesicht verbergen",
+            "Peinlichkeit",
+            "Selbstschutz"
+          ],
+          "path": "/public/emotion/Emotion_Scham_A2.png"
+        },
+        {
+          "id": "Scham_A3",
+          "filename": "Emotion_Scham_A3.png",
+          "label": "Scham A3",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Blick tief nach unten, Gesicht geschlossen; innerer Rückzug und Selbstabwertung.",
+          "tags": [
+            "Scham",
+            "Selbstabwertung",
+            "Rückzug",
+            "Unsicherheit",
+            "Verletzlichkeit"
+          ],
+          "bestFor": [
+            "Scham",
+            "Selbstabwertung",
+            "Rückzug",
+            "Unsicherheit"
+          ],
+          "path": "/public/emotion/Emotion_Scham_A3.png"
+        },
+        {
+          "id": "Scham_A4",
+          "filename": "Emotion_Scham_A4.png",
+          "label": "Scham A4",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Sitzend, Hände zusammen und Blick nach unten; kleinmachen, Bedauern und schwere Scham.",
+          "tags": [
+            "Scham",
+            "Bedauern",
+            "klein machen",
+            "Rückzug",
+            "Schuldgefühl"
+          ],
+          "bestFor": [
+            "Scham",
+            "Bedauern",
+            "klein machen",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Scham_A4.png"
+        },
+        {
+          "id": "Scham_B1",
+          "filename": "Emotion_Scham_B1.png",
+          "label": "Scham B1",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Eine Hand auf der Stirn, Kopf gesenkt; beschämt, belastet und selbstkritisch.",
+          "tags": [
+            "Scham",
+            "Selbstkritik",
+            "Bedauern",
+            "Rückzug",
+            "Belastung"
+          ],
+          "bestFor": [
+            "Scham",
+            "Selbstkritik",
+            "Bedauern",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Scham_B1.png"
+        },
+        {
+          "id": "Scham_B2",
+          "filename": "Emotion_Scham_B2.png",
+          "label": "Scham B2",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Hand bedeckt fast das ganze Gesicht; stärkste Form von 'ich will nicht gesehen werden'.",
+          "tags": [
+            "Scham",
+            "Gesicht verbergen",
+            "nicht gesehen werden",
+            "Selbstschutz",
+            "Peinlichkeit"
+          ],
+          "bestFor": [
+            "Scham",
+            "Gesicht verbergen",
+            "nicht gesehen werden",
+            "Selbstschutz"
+          ],
+          "path": "/public/emotion/Emotion_Scham_B2.png"
+        },
+        {
+          "id": "Scham_B3",
+          "filename": "Emotion_Scham_B3.png",
+          "label": "Scham B3",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Kopf tief gesenkt ohne Handgestik; stille, introvertierte Scham.",
+          "tags": [
+            "Scham",
+            "Rückzug",
+            "Selbstzweifel",
+            "Verletzlichkeit",
+            "Stillwerden"
+          ],
+          "bestFor": [
+            "Scham",
+            "Rückzug",
+            "Selbstzweifel",
+            "Verletzlichkeit"
+          ],
+          "path": "/public/emotion/Emotion_Scham_B3.png"
+        },
+        {
+          "id": "Scham_B4",
+          "filename": "Emotion_Scham_B4.png",
+          "label": "Scham B4",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "sehr stark",
+          "description": "Sitzend, stark nach unten gebeugt und Hände fest zusammen; zusammengesunkene Scham und Reue.",
+          "tags": [
+            "Scham",
+            "Reue",
+            "klein machen",
+            "Rückzug",
+            "Selbstabwertung"
+          ],
+          "bestFor": [
+            "Scham",
+            "Reue",
+            "klein machen",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Scham_B4.png"
+        },
+        {
+          "id": "Scham_B5",
+          "filename": "Emotion_Scham_B5.png",
+          "label": "Scham B5",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "B",
+          "index": 5,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Kopf gesenkt, Blick zum Boden; ruhige, traurige Scham ohne dramatische Geste.",
+          "tags": [
+            "Scham",
+            "Traurigkeit",
+            "Rückzug",
+            "Selbstzweifel",
+            "Verletzlichkeit"
+          ],
+          "bestFor": [
+            "Scham",
+            "Traurigkeit",
+            "Rückzug",
+            "Selbstzweifel"
+          ],
+          "path": "/public/emotion/Emotion_Scham_B5.png"
+        },
+        {
+          "id": "Scham_B6",
+          "filename": "Emotion_Scham_B6.png",
+          "label": "Scham B6",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "B",
+          "index": 6,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Hand an der Stirn, Blick nach unten; Scham gemischt mit Grübeln und Bedauern.",
+          "tags": [
+            "Scham",
+            "Grübeln",
+            "Bedauern",
+            "Selbstkritik",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Scham",
+            "Grübeln",
+            "Bedauern",
+            "Selbstkritik"
+          ],
+          "path": "/public/emotion/Emotion_Scham_B6.png"
+        },
+        {
+          "id": "Scham_B7",
+          "filename": "Emotion_Scham_B7.png",
+          "label": "Scham B7",
+          "emotion": "Scham",
+          "emotionKey": "Scham",
+          "series": "B",
+          "index": 7,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Hand greift an Stirn/Schläfe, Kopf gesenkt; belastete Scham mit hoher innerer Spannung.",
+          "tags": [
+            "Scham",
+            "Belastung",
+            "Selbstkritik",
+            "Rückzug",
+            "Überforderung"
+          ],
+          "bestFor": [
+            "Scham",
+            "Belastung",
+            "Selbstkritik",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Scham_B7.png"
+        }
+      ]
+    },
+    {
+      "key": "Einsamkeit",
+      "label": "Einsamkeit",
+      "summary": "Distanz, Leere, Vermissen, Isolation und Sehnsucht nach Kontakt",
+      "keywords": [
+        "einsam",
+        "einsamkeit",
+        "allein",
+        "isolation",
+        "distanz",
+        "leere",
+        "vermissen",
+        "sehnsucht",
+        "nicht gesehen",
+        "ausgeschlossen"
+      ],
+      "assets": [
+        {
+          "id": "Einsamkeit_A1",
+          "filename": "Emotion_Einsamkeit_A1.png",
+          "label": "Einsamkeit A1",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Seitlich nach unten blickend; traurig, still und vom Gegenüber innerlich entfernt.",
+          "tags": [
+            "Einsamkeit",
+            "Distanz",
+            "Traurigkeit",
+            "Rückzug",
+            "Nicht gesehen werden"
+          ],
+          "bestFor": [
+            "Einsamkeit",
+            "Distanz",
+            "Traurigkeit",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_A1.png"
+        },
+        {
+          "id": "Einsamkeit_A2",
+          "filename": "Emotion_Einsamkeit_A2.png",
+          "label": "Einsamkeit A2",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Blick nach oben zur Seite; suchend, sehnsüchtig und etwas verloren.",
+          "tags": [
+            "Sehnsucht",
+            "Einsamkeit",
+            "Nähe",
+            "Vermissen",
+            "Hoffnung"
+          ],
+          "bestFor": [
+            "Sehnsucht",
+            "Einsamkeit",
+            "Nähe",
+            "Vermissen"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_A2.png"
+        },
+        {
+          "id": "Einsamkeit_A3",
+          "filename": "Emotion_Einsamkeit_A3.png",
+          "label": "Einsamkeit A3",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Sitzend, Hände zusammen, Blick nach unten; körperlich zurückgezogen und allein.",
+          "tags": [
+            "Einsamkeit",
+            "Rückzug",
+            "Isolation",
+            "Traurigkeit",
+            "Leere"
+          ],
+          "bestFor": [
+            "Einsamkeit",
+            "Rückzug",
+            "Isolation",
+            "Traurigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_A3.png"
+        },
+        {
+          "id": "Einsamkeit_A4",
+          "filename": "Emotion_Einsamkeit_A4.png",
+          "label": "Einsamkeit A4",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "mittel",
+          "description": "Naher seitlicher Blick nach unten; stille Traurigkeit und emotionale Abwesenheit.",
+          "tags": [
+            "Einsamkeit",
+            "Traurigkeit",
+            "Distanz",
+            "Leere",
+            "Rückzug"
+          ],
+          "bestFor": [
+            "Einsamkeit",
+            "Traurigkeit",
+            "Distanz",
+            "Leere"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_A4.png"
+        },
+        {
+          "id": "Einsamkeit_B1",
+          "filename": "Emotion_Einsamkeit_B1.png",
+          "label": "Einsamkeit B1",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "B",
+          "index": 1,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Profilnah, Blick nach unten; ruhig, isoliert und gedanklich weit weg.",
+          "tags": [
+            "Einsamkeit",
+            "Isolation",
+            "Rückzug",
+            "Traurigkeit",
+            "Distanz"
+          ],
+          "bestFor": [
+            "Einsamkeit",
+            "Isolation",
+            "Rückzug",
+            "Traurigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_B1.png"
+        },
+        {
+          "id": "Einsamkeit_B2",
+          "filename": "Emotion_Einsamkeit_B2.png",
+          "label": "Einsamkeit B2",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "B",
+          "index": 2,
+          "origin": "reference_informed",
+          "intensity": "mittel",
+          "description": "Blick nach oben, Gesicht weich; Sehnsucht nach Kontakt oder jemandem, der fehlt.",
+          "tags": [
+            "Sehnsucht",
+            "Vermissen",
+            "Einsamkeit",
+            "Nähe",
+            "Hoffnung"
+          ],
+          "bestFor": [
+            "Sehnsucht",
+            "Vermissen",
+            "Einsamkeit",
+            "Nähe"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_B2.png"
+        },
+        {
+          "id": "Einsamkeit_B3",
+          "filename": "Emotion_Einsamkeit_B3.png",
+          "label": "Einsamkeit B3",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "B",
+          "index": 3,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Kopf nach unten, Blick ins Leere; resignierte Einsamkeit und Rückzug.",
+          "tags": [
+            "Resignation",
+            "Einsamkeit",
+            "Leere",
+            "Rückzug",
+            "Traurigkeit"
+          ],
+          "bestFor": [
+            "Resignation",
+            "Einsamkeit",
+            "Leere",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_B3.png"
+        },
+        {
+          "id": "Einsamkeit_B4",
+          "filename": "Emotion_Einsamkeit_B4.png",
+          "label": "Einsamkeit B4",
+          "emotion": "Einsamkeit",
+          "emotionKey": "Einsamkeit",
+          "series": "B",
+          "index": 4,
+          "origin": "reference_informed",
+          "intensity": "stark",
+          "description": "Seitlich abgewandt und nach unten blickend; Distanz und Gefühl, außen zu stehen.",
+          "tags": [
+            "Distanz",
+            "Einsamkeit",
+            "Ausgeschlossen sein",
+            "Rückzug",
+            "Leere"
+          ],
+          "bestFor": [
+            "Distanz",
+            "Einsamkeit",
+            "Ausgeschlossen sein",
+            "Rückzug"
+          ],
+          "path": "/public/emotion/Emotion_Einsamkeit_B4.png"
+        }
+      ]
+    },
+    {
+      "key": "Verzweiflung",
+      "label": "Verzweiflung",
+      "summary": "Hoffnungslosigkeit, Ratlosigkeit, Zusammenbruch und emotionale Überlastung",
+      "keywords": [
+        "verzweiflung",
+        "verzweifelt",
+        "hoffnungslos",
+        "ratlos",
+        "zusammenbruch",
+        "hilflos",
+        "kein ausweg",
+        "erschöpfung",
+        "aufgeben",
+        "überlastung"
+      ],
+      "assets": [
+        {
+          "id": "Verzweiflung_A1",
+          "filename": "Emotion_Verzweiflung_A1.png",
+          "label": "Verzweiflung A1",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "A",
+          "index": 1,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Sitzend, eine Hand am Kopf, Körper nach vorne; erschöpft und ohne guten nächsten Schritt.",
+          "tags": [
+            "Verzweiflung",
+            "Erschöpfung",
+            "Ratlosigkeit",
+            "Hilflosigkeit",
+            "Zusammenbruch"
+          ],
+          "bestFor": [
+            "Verzweiflung",
+            "Erschöpfung",
+            "Ratlosigkeit",
+            "Hilflosigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_A1.png"
+        },
+        {
+          "id": "Verzweiflung_A2",
+          "filename": "Emotion_Verzweiflung_A2.png",
+          "label": "Verzweiflung A2",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "A",
+          "index": 2,
+          "origin": "initial_generation",
+          "intensity": "stark",
+          "description": "Kopf und Blick tief gesenkt, Arme schwer; resigniert und hoffnungslos.",
+          "tags": [
+            "Hoffnungslosigkeit",
+            "Resignation",
+            "Verzweiflung",
+            "Leere",
+            "Erschöpfung"
+          ],
+          "bestFor": [
+            "Hoffnungslosigkeit",
+            "Resignation",
+            "Verzweiflung",
+            "Leere"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_A2.png"
+        },
+        {
+          "id": "Verzweiflung_A3",
+          "filename": "Emotion_Verzweiflung_A3.png",
+          "label": "Verzweiflung A3",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "A",
+          "index": 3,
+          "origin": "initial_generation",
+          "intensity": "sehr stark",
+          "description": "Beide Hände am Kopf, Augen geschlossen; akute Verzweiflung und innere Überlastung.",
+          "tags": [
+            "Verzweiflung",
+            "Zusammenbruch",
+            "Überlastung",
+            "Hilflosigkeit",
+            "Panik"
+          ],
+          "bestFor": [
+            "Verzweiflung",
+            "Zusammenbruch",
+            "Überlastung",
+            "Hilflosigkeit"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_A3.png"
+        },
+        {
+          "id": "Verzweiflung_A4",
+          "filename": "Emotion_Verzweiflung_A4.png",
+          "label": "Verzweiflung A4",
+          "emotion": "Verzweiflung",
+          "emotionKey": "Verzweiflung",
+          "series": "A",
+          "index": 4,
+          "origin": "initial_generation",
+          "intensity": "extrem",
+          "description": "Beide Hände greifen in den Kopf, Gesicht schmerzhaft verzogen; emotionaler Zusammenbruch.",
+          "tags": [
+            "Zusammenbruch",
+            "Verzweiflung",
+            "Hoffnungslosigkeit",
+            "Kontrollverlust",
+            "Schmerz"
+          ],
+          "bestFor": [
+            "Zusammenbruch",
+            "Verzweiflung",
+            "Hoffnungslosigkeit",
+            "Kontrollverlust"
+          ],
+          "path": "/public/emotion/Emotion_Verzweiflung_A4.png"
+        }
+      ]
+    }
+  ]
+}

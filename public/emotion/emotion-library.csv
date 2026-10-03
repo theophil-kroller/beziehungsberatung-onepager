@@ -1,0 +1,66 @@
+﻿id;emotion;series;index;intensity;description;tags;filename
+Eifersucht_A1;Eifersucht;A;1;mittel;"Seitlicher, prüfender Blick; kontrollierte Spannung, eher misstrauisch als offen wütend.";Misstrauen, Vergleich, Kontrolle, Beobachten, Unsicherheit;Emotion_Eifersucht_A1.png
+Eifersucht_A2;Eifersucht;A;2;mittel;"Kopf deutlich zur Seite gedreht, zusammengezogene Brauen; argwöhnisches Beobachten einer Situation außerhalb des Bildes.";Misstrauen, Argwohn, Dritte Person, Beobachten, Kontrolle;Emotion_Eifersucht_A2.png
+Eifersucht_A3;Eifersucht;A;3;mittel;"Direkter Blick mit gespannter Stirn und zurückgehaltener Reaktion; innerer Alarm ohne Eskalation.";innerer Alarm, Unsicherheit, Misstrauen, Anspannung, Kontrollimpuls;Emotion_Eifersucht_A3.png
+Eifersucht_A4;Eifersucht;A;4;stark;"Direkter, enger Blick mit stärkerem Druck in Stirn und Mund; Eifersucht kippt sichtbar in Konfrontation.";Konfrontation, Besitzangst, Kontrolle, Misstrauen, Wut;Emotion_Eifersucht_A4.png
+Eifersucht_B1;Eifersucht;B;1;mittel;"Seitlicher Blick nach unten, skeptisch und gereizt; wirkt wie ein Moment des Vergleichens oder Verdachts.";Vergleich, Verdacht, Kränkung, Misstrauen, Rückzug;Emotion_Eifersucht_B1.png
+Eifersucht_B2;Eifersucht;B;2;stark;"Deutlich zur Seite gerichteter Blick, Kiefer angespannt; beobachtend, kontrollierend und innerlich aufgeladen.";Kontrolle, Argwohn, Dritte Person, Beobachten, Anspannung;Emotion_Eifersucht_B2.png
+Eifersucht_B3;Eifersucht;B;3;stark;"Frontaler, harter Blick mit gepresstem Mund; verletzte Eifersucht mit deutlicher Abwehr.";Kränkung, Abwehr, Misstrauen, Kontrolle, Verletztheit;Emotion_Eifersucht_B3.png
+Eifersucht_B4;Eifersucht;B;4;sehr stark;"Sehr intensiver direkter Blick, stark gerunzelte Stirn; Eifersucht an der Grenze zu offener Wut.";Konfrontation, Wut, Besitzangst, Kontrollverlust, Misstrauen;Emotion_Eifersucht_B4.png
+Wut_A1;Wut;A;1;mittel;"Frontaler, enger Blick; Ärger wird sichtbar, bleibt aber noch gebremst.";Ärger, Grenze, Frust, Anspannung, Konflikt;Emotion_Wut_A1.png
+Wut_A2;Wut;A;2;stark;"Stärkerer Stirndruck und direkter Blick; konzentrierte, kontrollierte Wut.";Wut, Konfrontation, Grenzverletzung, Druck, Konflikt;Emotion_Wut_A2.png
+Wut_A3;Wut;A;3;stark;"Fester Blick mit gepresstem Mund; ruhige, kalte Wut ohne große Gestik.";kalte Wut, Abwehr, Grenze, Konfrontation, Ressentiment;Emotion_Wut_A3.png
+Wut_A4;Wut;A;4;stark;"Sehr fokussierter Blick und gespannter Mund; Wut kurz vor einer verbalen Reaktion.";Eskalation, Konflikt, Grenze, Frust, Angriff;Emotion_Wut_A4.png
+Wut_B1;Wut;B;1;mittel;"Direkt und ernst, mit wenig Mimik; kontrollierter Ärger, der noch nicht ausbricht.";Ärger, Kontrolle, Grenze, Enttäuschung, Konflikt;Emotion_Wut_B1.png
+Wut_B2;Wut;B;2;stark;"Deutlich gespannter, nach unten gerichteter Blick; unterdrückte Wut und hoher innerer Druck.";unterdrückte Wut, Druck, Frust, Abwehr, Konflikt;Emotion_Wut_B2.png
+Wut_B3;Wut;B;3;sehr stark;"Nase und Stirn stark angespannt, direkter Blick; aggressiver Impuls wird sichtbar.";Wut, Aggression, Konfrontation, Eskalation, Grenzverletzung;Emotion_Wut_B3.png
+Wut_B4;Wut;B;4;extrem;"Offener Schrei mit stark gespannter Mimik; maximaler Wutausbruch und Kontrollverlust.";Wutausbruch, Schreien, Eskalation, Kontrollverlust, Konflikt;Emotion_Wut_B4.png
+Verletzt_A1;Verletzt;A;1;mittel;"Frontal, weichere Augen und gespannte Mundwinkel; stille Verletztheit und Enttäuschung.";Verletztheit, Enttäuschung, Kränkung, Traurigkeit, Vertrauen;Emotion_Verletzt_A1.png
+Verletzt_A2;Verletzt;A;2;mittel;"Blick zur Seite, Stirn angespannt; verletzt und zugleich prüfend, als hätte etwas getroffen.";Kränkung, Enttäuschung, Misstrauen, Vertrauensbruch, Rückzug;Emotion_Verletzt_A2.png
+Verletzt_A3;Verletzt;A;3;stark;"Direkter Blick mit hochgezogenen inneren Brauen; offen verletzlich und traurig.";Verletzlichkeit, Traurigkeit, Kränkung, Nähe, Vertrauen;Emotion_Verletzt_A3.png
+Verletzt_A4;Verletzt;A;4;stark;"Deutlich trauriger Ausdruck, leicht geneigter Kopf; emotional getroffen und offen verletzlich.";Traurigkeit, Verletztheit, Enttäuschung, Zurückweisung, Verlust;Emotion_Verletzt_A4.png
+Verletzt_B1;Verletzt;B;1;stark;"Blick schräg nach unten, Mund nach unten gezogen; gekränkt, traurig und zurückgenommen.";Kränkung, Rückzug, Traurigkeit, Zurückweisung, Enttäuschung;Emotion_Verletzt_B1.png
+Verletzt_B2;Verletzt;B;2;stark;"Kopf gesenkt und Blick nach unten; leise, resignierte Verletztheit.";Rückzug, Resignation, Traurigkeit, Kränkung, Hilflosigkeit;Emotion_Verletzt_B2.png
+Verletzt_B3;Verletzt;B;3;stark;"Ein Auge zur Kamera, Gesicht angespannt; verletzlich, aber noch in Kontakt mit dem Gegenüber.";Verletzlichkeit, Kontakt, Kränkung, Misstrauen, Enttäuschung;Emotion_Verletzt_B3.png
+Verletzt_B4;Verletzt;B;4;stark;"Blick deutlich zur Seite, Mund schwer; verletzt und emotional auf Abstand gehend.";Rückzug, Distanz, Kränkung, Enttäuschung, Beziehungsbruch;Emotion_Verletzt_B4.png
+Verachtung_A2;Verachtung;A;2;mittel;"Leicht schräger Blick und einseitig gespannter Mund; skeptische Geringschätzung.";Verachtung, Geringschätzung, Abwertung, Skepsis, Distanz;Emotion_Verachtung_A2.png
+Verachtung_A3;Verachtung;A;3;stark;"Kinn leicht angehoben, halb geschlossene Augen; kühle Überlegenheit und Distanz.";Überlegenheit, Verachtung, Distanz, Abwertung, Zynismus;Emotion_Verachtung_A3.png
+Verachtung_A4;Verachtung;A;4;stark;"Seitlicher Blick mit deutlich einseitiger Mimik; misstrauische, abwertende Haltung.";Abwertung, Verachtung, Misstrauen, Geringschätzung, Konflikt;Emotion_Verachtung_A4.png
+Verachtung_B1;Verachtung;B;1;stark;"Oberkörper zurückgelehnt, ein Auge verengt und Mund verzogen; demonstrative Abneigung.";Abneigung, Verachtung, Geringschätzung, Ekel, Distanz;Emotion_Verachtung_B1.png
+Verachtung_B3;Verachtung;B;3;stark;"Kinn angehoben, halb geschlossene Augen und gepresster Mund; herablassende Distanz.";Herablassung, Überlegenheit, Verachtung, Abwertung, Distanz;Emotion_Verachtung_B3.png
+Verachtung_B4;Verachtung;B;4;stark;"Schräger Kopf, enger Blick und verzogener Mund; spöttische, abwertende Reaktion.";Spott, Verachtung, Abwertung, Zynismus, Distanz;Emotion_Verachtung_B4.png
+Ueberforderung_A1;Überforderung;A;1;mittel;"Weite Augen, leicht geöffneter Mund; plötzliches Überfordertsein oder 'zu viel auf einmal'.";Überforderung, Stress, Überraschung, Hilflosigkeit, Reizüberflutung;Emotion_Ueberforderung_A1.png
+Ueberforderung_A2;Überforderung;A;2;mittel;"Eine Hand an der Stirn, Blick zur Seite; mentale Last und beginnende Erschöpfung.";Stress, mentale Last, Erschöpfung, Sorgen, Überforderung;Emotion_Ueberforderung_A2.png
+Ueberforderung_A3;Überforderung;A;3;stark;"Hand greift in den Kopf, Blick nach unten; deutliches Feststecken und Grübeln.";Grübeln, Stress, Überforderung, Hilflosigkeit, Druck;Emotion_Ueberforderung_A3.png
+Ueberforderung_A4;Überforderung;A;4;sehr stark;"Beide Hände an den Schläfen, Gesicht stark angespannt; Überlastung kurz vor dem Zusammenbruch.";Überlastung, Druck, Panik, Stress, Kontrollverlust;Emotion_Ueberforderung_A4.png
+Ueberforderung_B1;Überforderung;B;1;stark;"Eine Hand auf dem Kopf, Blick stark nach unten; erschöpft und innerlich voll.";Erschöpfung, Überforderung, Rückzug, Druck, Sorgen;Emotion_Ueberforderung_B1.png
+Ueberforderung_B2;Überforderung;B;2;stark;"Hand auf dem Kopf, zusammengezogene Stirn; ratloses Grübeln unter Belastung.";Ratlosigkeit, Grübeln, Stress, Überforderung, Hilflosigkeit;Emotion_Ueberforderung_B2.png
+Ueberforderung_B3;Überforderung;B;3;stark;"Eine Hand auf dem Kopf, Blick nach vorne unten; Belastung ist sichtbar, Kontakt bleibt erhalten.";Belastung, Stress, Überforderung, Sorgen, Anspannung;Emotion_Ueberforderung_B3.png
+Ueberforderung_B4;Überforderung;B;4;stark;"Kopf seitlich gesenkt, Hand auf der Stirn; resigniert und erschöpft.";Erschöpfung, Resignation, Überforderung, Rückzug, Druck;Emotion_Ueberforderung_B4.png
+Ueberforderung_B5;Überforderung;B;5;stark;"Hand auf dem Kopf, seitlicher Blick; gereizte Überforderung und innere Unruhe.";Reizbarkeit, Überforderung, Stress, Druck, Frust;Emotion_Ueberforderung_B5.png
+Ueberforderung_B6;Überforderung;B;6;sehr stark;"Beide Hände umfassen den Kopf, Augen geschlossen; akute Überlastung und Zusammenbruchsnähe.";Zusammenbruch, Überlastung, Panik, Hilflosigkeit, Stress;Emotion_Ueberforderung_B6.png
+Ueberforderung_B7;Überforderung;B;7;sehr stark;"Beide Hände am Kopf, Stirn stark angespannt; hoher innerer Druck und Kontrollverlust.";Kontrollverlust, Überlastung, Druck, Verzweiflung, Stress;Emotion_Ueberforderung_B7.png
+Ueberforderung_B8;Überforderung;B;8;sehr stark;"Beide Hände am Kopf, Blick tief nach unten; schwere mentale Last und Erschöpfung.";Erschöpfung, Zusammenbruch, Überforderung, Verzweiflung, Rückzug;Emotion_Ueberforderung_B8.png
+Scham_A1;Scham;A;1;mittel;"Kopf und Blick nach unten, Schultern ruhig; stille Scham und Rückzug ohne große Gestik.";Scham, Rückzug, Selbstzweifel, Verletzlichkeit, Bewertung;Emotion_Scham_A1.png
+Scham_A2;Scham;A;2;stark;"Hand bedeckt einen Teil des Gesichts, Blick abgewandt; Scham wird körperlich sichtbar.";Scham, Gesicht verbergen, Peinlichkeit, Selbstschutz, Bewertung;Emotion_Scham_A2.png
+Scham_A3;Scham;A;3;stark;"Blick tief nach unten, Gesicht geschlossen; innerer Rückzug und Selbstabwertung.";Scham, Selbstabwertung, Rückzug, Unsicherheit, Verletzlichkeit;Emotion_Scham_A3.png
+Scham_A4;Scham;A;4;stark;"Sitzend, Hände zusammen und Blick nach unten; kleinmachen, Bedauern und schwere Scham.";Scham, Bedauern, klein machen, Rückzug, Schuldgefühl;Emotion_Scham_A4.png
+Scham_B1;Scham;B;1;stark;"Eine Hand auf der Stirn, Kopf gesenkt; beschämt, belastet und selbstkritisch.";Scham, Selbstkritik, Bedauern, Rückzug, Belastung;Emotion_Scham_B1.png
+Scham_B2;Scham;B;2;sehr stark;"Hand bedeckt fast das ganze Gesicht; stärkste Form von 'ich will nicht gesehen werden'.";Scham, Gesicht verbergen, nicht gesehen werden, Selbstschutz, Peinlichkeit;Emotion_Scham_B2.png
+Scham_B3;Scham;B;3;mittel;"Kopf tief gesenkt ohne Handgestik; stille, introvertierte Scham.";Scham, Rückzug, Selbstzweifel, Verletzlichkeit, Stillwerden;Emotion_Scham_B3.png
+Scham_B4;Scham;B;4;sehr stark;"Sitzend, stark nach unten gebeugt und Hände fest zusammen; zusammengesunkene Scham und Reue.";Scham, Reue, klein machen, Rückzug, Selbstabwertung;Emotion_Scham_B4.png
+Scham_B5;Scham;B;5;mittel;"Kopf gesenkt, Blick zum Boden; ruhige, traurige Scham ohne dramatische Geste.";Scham, Traurigkeit, Rückzug, Selbstzweifel, Verletzlichkeit;Emotion_Scham_B5.png
+Scham_B6;Scham;B;6;stark;"Hand an der Stirn, Blick nach unten; Scham gemischt mit Grübeln und Bedauern.";Scham, Grübeln, Bedauern, Selbstkritik, Rückzug;Emotion_Scham_B6.png
+Scham_B7;Scham;B;7;stark;"Hand greift an Stirn/Schläfe, Kopf gesenkt; belastete Scham mit hoher innerer Spannung.";Scham, Belastung, Selbstkritik, Rückzug, Überforderung;Emotion_Scham_B7.png
+Einsamkeit_A1;Einsamkeit;A;1;mittel;"Seitlich nach unten blickend; traurig, still und vom Gegenüber innerlich entfernt.";Einsamkeit, Distanz, Traurigkeit, Rückzug, Nicht gesehen werden;Emotion_Einsamkeit_A1.png
+Einsamkeit_A2;Einsamkeit;A;2;mittel;"Blick nach oben zur Seite; suchend, sehnsüchtig und etwas verloren.";Sehnsucht, Einsamkeit, Nähe, Vermissen, Hoffnung;Emotion_Einsamkeit_A2.png
+Einsamkeit_A3;Einsamkeit;A;3;stark;"Sitzend, Hände zusammen, Blick nach unten; körperlich zurückgezogen und allein.";Einsamkeit, Rückzug, Isolation, Traurigkeit, Leere;Emotion_Einsamkeit_A3.png
+Einsamkeit_A4;Einsamkeit;A;4;mittel;"Naher seitlicher Blick nach unten; stille Traurigkeit und emotionale Abwesenheit.";Einsamkeit, Traurigkeit, Distanz, Leere, Rückzug;Emotion_Einsamkeit_A4.png
+Einsamkeit_B1;Einsamkeit;B;1;mittel;"Profilnah, Blick nach unten; ruhig, isoliert und gedanklich weit weg.";Einsamkeit, Isolation, Rückzug, Traurigkeit, Distanz;Emotion_Einsamkeit_B1.png
+Einsamkeit_B2;Einsamkeit;B;2;mittel;"Blick nach oben, Gesicht weich; Sehnsucht nach Kontakt oder jemandem, der fehlt.";Sehnsucht, Vermissen, Einsamkeit, Nähe, Hoffnung;Emotion_Einsamkeit_B2.png
+Einsamkeit_B3;Einsamkeit;B;3;stark;"Kopf nach unten, Blick ins Leere; resignierte Einsamkeit und Rückzug.";Resignation, Einsamkeit, Leere, Rückzug, Traurigkeit;Emotion_Einsamkeit_B3.png
+Einsamkeit_B4;Einsamkeit;B;4;stark;"Seitlich abgewandt und nach unten blickend; Distanz und Gefühl, außen zu stehen.";Distanz, Einsamkeit, Ausgeschlossen sein, Rückzug, Leere;Emotion_Einsamkeit_B4.png
+Verzweiflung_A1;Verzweiflung;A;1;stark;"Sitzend, eine Hand am Kopf, Körper nach vorne; erschöpft und ohne guten nächsten Schritt.";Verzweiflung, Erschöpfung, Ratlosigkeit, Hilflosigkeit, Zusammenbruch;Emotion_Verzweiflung_A1.png
+Verzweiflung_A2;Verzweiflung;A;2;stark;"Kopf und Blick tief gesenkt, Arme schwer; resigniert und hoffnungslos.";Hoffnungslosigkeit, Resignation, Verzweiflung, Leere, Erschöpfung;Emotion_Verzweiflung_A2.png
+Verzweiflung_A3;Verzweiflung;A;3;sehr stark;"Beide Hände am Kopf, Augen geschlossen; akute Verzweiflung und innere Überlastung.";Verzweiflung, Zusammenbruch, Überlastung, Hilflosigkeit, Panik;Emotion_Verzweiflung_A3.png
+Verzweiflung_A4;Verzweiflung;A;4;extrem;"Beide Hände greifen in den Kopf, Gesicht schmerzhaft verzogen; emotionaler Zusammenbruch.";Zusammenbruch, Verzweiflung, Hoffnungslosigkeit, Kontrollverlust, Schmerz;Emotion_Verzweiflung_A4.png

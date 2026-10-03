@@ -1,1 +1,4 @@
-
+Beziehungsdynamiken Emotionsbibliothek · Build 15.9.0
+A = erste Generationsserie ohne hochgeladene Referenzfotos
+B = referenzinformierte Generationsserie nach Upload echter Fotos
+Metadaten: emotion-library.json
