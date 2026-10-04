@@ -1,0 +1,82 @@
+{
+  "build": "15.9.8",
+  "base": "15.9.7",
+  "feature": "youtube-short-thumbnail-markup",
+  "files": [
+    {
+      "path": "VERSION.txt",
+      "bytes": 7,
+      "sha256": "acf493fb81c777f6702f42ec611d8d407d24a4ee0b4c40b332ebd3897fc3a912"
+    },
+    {
+      "path": "hub.html",
+      "bytes": 52224,
+      "sha256": "4a1e6f45578f779e156e51d14c0cdb231e284c0974bfb512189e3f0bf4a96815"
+    },
+    {
+      "path": "hub-build15-8.js",
+      "bytes": 92360,
+      "sha256": "f08cc65858166f0f69bb7d84dccefea9f88a1ef472b41eae00052a689c7b67f8"
+    },
+    {
+      "path": "short-hook-15-9-8.css",
+      "bytes": 5189,
+      "sha256": "9264527911203a786ab2aeb8555abd35f47cf82ce38984c67338dbfd6576c9e3"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 581714,
+      "sha256": "903ec10af6dcfbf0e58bd5bae6400a00b862f1bb603a2fcc925f10fd015b9cbc"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 7,
+      "sha256": "acf493fb81c777f6702f42ec611d8d407d24a4ee0b4c40b332ebd3897fc3a912"
+    },
+    {
+      "path": "desktop/app/web/hub.html",
+      "bytes": 52224,
+      "sha256": "4a1e6f45578f779e156e51d14c0cdb231e284c0974bfb512189e3f0bf4a96815"
+    },
+    {
+      "path": "desktop/app/web/hub-build15-8.js",
+      "bytes": 92360,
+      "sha256": "f08cc65858166f0f69bb7d84dccefea9f88a1ef472b41eae00052a689c7b67f8"
+    },
+    {
+      "path": "desktop/app/web/short-hook-15-9-8.css",
+      "bytes": 5189,
+      "sha256": "9264527911203a786ab2aeb8555abd35f47cf82ce38984c67338dbfd6576c9e3"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 581714,
+      "sha256": "903ec10af6dcfbf0e58bd5bae6400a00b862f1bb603a2fcc925f10fd015b9cbc"
+    },
+    {
+      "path": "BUILD15-9-8-NOTE.txt",
+      "bytes": 1013,
+      "sha256": "9b373e7aad440178f6eab85a3b6cd7305c1860aa4a6f7dc6b4b9ebc9b207c8a7"
+    },
+    {
+      "path": "BUILD15-9-8-TESTREPORT.txt",
+      "bytes": 559,
+      "sha256": "87be7a67c007bd95fc26016c2045e4e907da53c40a1ca6a5146e53ca9415d10a"
+    },
+    {
+      "path": "INSTALLATION-15.9.8.txt",
+      "bytes": 188,
+      "sha256": "d1761f765bd599c75fa98034afaaa631709153457d39e4df878e9bb38be325b0"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.9.8.cmd",
+      "bytes": 74,
+      "sha256": "18541f7b53e72216cb6583fd76de5238df611b4e1c986e695853bfc1145fb530"
+    },
+    {
+      "path": "tests/test_build15_9_8_short_markup.py",
+      "bytes": 853,
+      "sha256": "bea6fe28cfbd3548c9ddf61f6ab3cd62ec793ee6cda891ee79d27e0295171d4b"
+    }
+  ]
+}
