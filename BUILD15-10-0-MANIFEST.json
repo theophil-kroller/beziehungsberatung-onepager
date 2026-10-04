@@ -1,0 +1,82 @@
+{
+  "build": "15.10.0",
+  "base": "15.9.9",
+  "feature": "knowledge-hub-content-strategy-board",
+  "files": [
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "75046e15302da40b35cab9445fe86ad9b787479d22dedb2fb939dfdb2fdad014"
+    },
+    {
+      "path": "hub.html",
+      "bytes": 56848,
+      "sha256": "0f133752eb3731caa84d317cb1643cebf81976e9b86d52994748ae3457c112c0"
+    },
+    {
+      "path": "content-strategy-15-10.css",
+      "bytes": 8902,
+      "sha256": "f2a46658edf5a5369258b40605119405d7892d1ac4da4171500832059563ea19"
+    },
+    {
+      "path": "content-strategy-15-10.js",
+      "bytes": 13668,
+      "sha256": "0143638c7adb1a0658ea72e4f94f8d1b986624b647ec2ef6e7514a79a6e10f38"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 620444,
+      "sha256": "69a677e6bf9ecbdc333a55ff202a3554490a8f9ca906f2f6ab3fa65fc8da1a64"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "75046e15302da40b35cab9445fe86ad9b787479d22dedb2fb939dfdb2fdad014"
+    },
+    {
+      "path": "desktop/app/web/hub.html",
+      "bytes": 56848,
+      "sha256": "0f133752eb3731caa84d317cb1643cebf81976e9b86d52994748ae3457c112c0"
+    },
+    {
+      "path": "desktop/app/web/content-strategy-15-10.css",
+      "bytes": 8902,
+      "sha256": "f2a46658edf5a5369258b40605119405d7892d1ac4da4171500832059563ea19"
+    },
+    {
+      "path": "desktop/app/web/content-strategy-15-10.js",
+      "bytes": 13668,
+      "sha256": "0143638c7adb1a0658ea72e4f94f8d1b986624b647ec2ef6e7514a79a6e10f38"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 620444,
+      "sha256": "69a677e6bf9ecbdc333a55ff202a3554490a8f9ca906f2f6ab3fa65fc8da1a64"
+    },
+    {
+      "path": "BUILD15-10-0-NOTE.txt",
+      "bytes": 1385,
+      "sha256": "7aaebb9a8e75053e2a3cc6e6631b4fa66ad8799124b9da9764ac8b6868ee4dce"
+    },
+    {
+      "path": "BUILD15-10-0-TESTREPORT.txt",
+      "bytes": 953,
+      "sha256": "7e9851a7aee77ee67b1045f217d866946b0b304f6267b7b5277241018858e815"
+    },
+    {
+      "path": "INSTALLATION-15.10.0.txt",
+      "bytes": 287,
+      "sha256": "89f96fd38c7ee89b77d0b509c13c0141e205acf4f65dc61c17f636a426eb3cc5"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.0.cmd",
+      "bytes": 99,
+      "sha256": "f8dbcc8e82e86befe0c43431ea94586b4d66aee90cd35553eb53c55ffdaf2624"
+    },
+    {
+      "path": "tests/test_build15_10_0_strategy.py",
+      "bytes": 1031,
+      "sha256": "d340dafdb81779d6395f787f62bc135d67b7507b8664af43c03192e4a447f9bc"
+    }
+  ]
+}
