@@ -1,0 +1,72 @@
+{
+  "build": "15.10.2",
+  "base": "15.10.1",
+  "scope": "Frontend – Einstieg & Arbeitsweise",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 30698,
+      "sha256": "c523607c987505df7b0bdd7334830e47e1487e30708865f525efd3fb5301d9e8"
+    },
+    {
+      "path": "arbeitsweise.html",
+      "bytes": 13880,
+      "sha256": "bc4f016bcf5ba8b52cbb648673182bbf149c054fc8e202f59b935c23155de656"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "0d255ad5d81e88c7a3b06c7901e362b607e8cad68fd9ac71098c0f10d508f12a"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 625281,
+      "sha256": "cfe14f09044298984642f7316284dfb23cc61b584c76e501996fa5c6c6c71d31"
+    },
+    {
+      "path": "desktop/app/web/index.html",
+      "bytes": 30698,
+      "sha256": "c523607c987505df7b0bdd7334830e47e1487e30708865f525efd3fb5301d9e8"
+    },
+    {
+      "path": "desktop/app/web/arbeitsweise.html",
+      "bytes": 13880,
+      "sha256": "bc4f016bcf5ba8b52cbb648673182bbf149c054fc8e202f59b935c23155de656"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "0d255ad5d81e88c7a3b06c7901e362b607e8cad68fd9ac71098c0f10d508f12a"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 625281,
+      "sha256": "cfe14f09044298984642f7316284dfb23cc61b584c76e501996fa5c6c6c71d31"
+    },
+    {
+      "path": "tests/test_build15_10_2_frontend_voice.py",
+      "bytes": 2066,
+      "sha256": "9a92098b379e5a33648d9ab47b39b0f82acec8c1350fb813fee6af75ef1c7d5d"
+    },
+    {
+      "path": "BUILD15-10-2-NOTE.txt",
+      "bytes": 1465,
+      "sha256": "ebd22a4f4a89eb01410884e0f857f01d52b9724e31403bfd56fb0b21bdf0e4b4"
+    },
+    {
+      "path": "BUILD15-10-2-TESTREPORT.txt",
+      "bytes": 1315,
+      "sha256": "ff4e4b7b859ad7e64527b769af2b69318cb07a9d77fb781a1b85dabaad9c32a9"
+    },
+    {
+      "path": "INSTALLATION-15.10.2.txt",
+      "bytes": 377,
+      "sha256": "17d37af812eb39c6b94c0104313934755b37addf06293c95022dcf06bf0c1c4f"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.2.cmd",
+      "bytes": 115,
+      "sha256": "a30c252308e702688c713b84b3eba1a1589fb29ded935097bdf95f5d489aeabb"
+    }
+  ]
+}
