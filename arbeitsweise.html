@@ -39,6 +39,51 @@
   .nav-scroll::-webkit-scrollbar { height: 6px; }
   .nav-scroll::-webkit-scrollbar-thumb { background: #E8D2BE; border-radius: 999px; }
 
+
+  /* BUILD 15.10.3 · editorial / newspaper treatment */
+  .bd-editorial-paper{
+    position:relative;
+    background-color:#F8EEDC;
+    background-image:
+      radial-gradient(circle at 20% 12%,rgba(47,38,35,.035) 0 1px,transparent 1.4px),
+      radial-gradient(circle at 78% 34%,rgba(201,107,75,.028) 0 1px,transparent 1.4px),
+      linear-gradient(90deg,rgba(255,255,255,.32),rgba(245,230,211,.18));
+    background-size:22px 22px,29px 29px,100% 100%;
+  }
+  .bd-editorial-paper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;background:repeating-linear-gradient(0deg,transparent 0 7px,rgba(47,38,35,.015) 7px 8px)}
+  .bd-news-wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto}
+  .bd-news-mast{display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:3px solid #2F2623;border-bottom:1px solid #2F2623;padding:10px 0 9px;font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:#5F504A;font-weight:700}
+  .bd-news-mast strong{font-family:Georgia,serif;font-size:14px;letter-spacing:.08em;color:#2F2623}
+  .bd-news-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:54px;align-items:start;padding:54px 0 46px;border-bottom:1px solid rgba(47,38,35,.45)}
+  .bd-news-kicker{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800;color:#C96B4B}
+  .bd-news-kicker::before{content:"";width:30px;height:2px;background:#C96B4B;transform:rotate(-2deg)}
+  .bd-news-title{font-family:Georgia,serif;font-size:clamp(43px,6vw,76px);line-height:.98;letter-spacing:-.035em;margin:18px 0 24px;color:#2F2623;max-width:850px}
+  .bd-news-deck{font-family:Georgia,serif;font-size:clamp(20px,2.3vw,28px);line-height:1.35;color:#5F504A;max-width:790px;margin:0}
+  .bd-testimonial-clip{position:relative;background:#FFFDF8;border:1px solid rgba(47,38,35,.2);box-shadow:9px 12px 0 rgba(47,38,35,.07);padding:28px 28px 24px;transform:rotate(.7deg);margin-top:22px}
+  .bd-testimonial-clip::before{content:"RÜCKMELDUNG";position:absolute;top:-11px;left:22px;background:#2F2623;color:#FFF7ED;font-size:10px;letter-spacing:.18em;padding:5px 9px;font-weight:800}
+  .bd-testimonial-clip blockquote{font-family:Georgia,serif;font-size:21px;line-height:1.45;margin:0;color:#2F2623}
+  .bd-testimonial-clip footer{margin-top:16px;padding-top:12px;border-top:1px solid #E8D2BE;color:#756B65;font-size:12px;line-height:1.5}
+  .bd-placeholder-note{display:inline-block;margin-top:9px;color:#A9543B;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+  .bd-news-lead{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:52px;padding:48px 0 42px;border-bottom:1px solid rgba(47,38,35,.35)}
+  .bd-news-lead h2{font-family:Georgia,serif;font-size:36px;line-height:1.08;margin:0;color:#2F2623}
+  .bd-news-lead-copy{font-size:18px;line-height:1.72;color:#5F504A;columns:2;column-gap:34px;column-rule:1px solid rgba(47,38,35,.17)}
+  .bd-news-lead-copy p{margin:0 0 1em;break-inside:avoid}
+  .bd-news-lead-copy p:first-child::first-letter{float:left;font-family:Georgia,serif;font-size:62px;line-height:.78;padding:8px 9px 0 0;color:#C96B4B}
+  .bd-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-bottom:1px solid rgba(47,38,35,.45)}
+  .bd-feature{padding:38px 30px 34px;border-right:1px solid rgba(47,38,35,.22);min-height:330px;background:rgba(255,253,248,.38)}
+  .bd-feature:first-child{padding-left:0;background:transparent}.bd-feature:last-child{border-right:0;padding-right:0;background:transparent}
+  .bd-feature .num{font:700 12px/1 Georgia,serif;color:#C96B4B;letter-spacing:.17em}.bd-feature h3{font-family:Georgia,serif;font-size:28px;line-height:1.08;margin:13px 0 18px;color:#2F2623}.bd-feature p{font-size:16px;line-height:1.68;color:#5F504A;margin:0}
+  .bd-feature .scribble{display:block;width:46px;height:8px;border-top:3px solid #C96B4B;border-radius:55%;transform:rotate(-3deg);margin:0 0 18px}
+  .bd-pullquote{display:grid;grid-template-columns:110px minmax(0,1fr);gap:28px;align-items:center;padding:48px 0;border-bottom:1px solid rgba(47,38,35,.35)}
+  .bd-pullquote-mark{font-family:Georgia,serif;font-size:110px;line-height:.6;color:#C96B4B;text-align:center;transform:translateY(8px)}
+  .bd-pullquote blockquote{font-family:Georgia,serif;font-size:clamp(27px,3.3vw,43px);line-height:1.16;letter-spacing:-.015em;margin:0;color:#2F2623}
+  .bd-pullquote cite{display:block;font-family:Arial,sans-serif;font-style:normal;font-size:12px;text-transform:uppercase;letter-spacing:.13em;color:#756B65;margin-top:16px}
+  .bd-news-bottom{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:46px;padding:44px 0 56px}
+  .bd-news-bottom h3{font-family:Georgia,serif;font-size:30px;line-height:1.12;margin:0 0 14px;color:#2F2623}.bd-news-bottom p{font-size:17px;line-height:1.7;color:#5F504A;margin:0 0 15px}
+  .bd-method-note{border-left:4px solid #C96B4B;padding:3px 0 3px 22px}.bd-method-note .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#C96B4B;margin-bottom:10px}.bd-method-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.bd-method-list span{border:1px solid #D9C8B9;background:rgba(255,255,255,.48);padding:7px 10px;border-radius:999px;font-size:12px;color:#5F504A}
+  @media(max-width:900px){.bd-news-hero,.bd-news-lead,.bd-news-bottom{grid-template-columns:1fr}.bd-news-hero{gap:24px}.bd-testimonial-clip{max-width:620px}.bd-news-lead-copy{columns:1}.bd-feature-grid{grid-template-columns:1fr}.bd-feature,.bd-feature:first-child,.bd-feature:last-child{padding:30px 0;border-right:0;border-bottom:1px solid rgba(47,38,35,.2);min-height:0;background:transparent}.bd-feature:last-child{border-bottom:0}.bd-pullquote{grid-template-columns:70px 1fr}.bd-pullquote-mark{font-size:82px}}
+  @media(max-width:600px){.bd-news-mast span:last-child{display:none}.bd-news-title{font-size:43px}.bd-news-deck{font-size:20px}.bd-news-hero{padding-top:38px}.bd-pullquote{grid-template-columns:1fr;gap:6px}.bd-pullquote-mark{text-align:left;font-size:70px}.bd-testimonial-clip{transform:none;box-shadow:6px 7px 0 rgba(47,38,35,.06)}}
+
   </style>
 <script src="site-mode15-5.js?v=15.5.0"></script>
 </head>
@@ -49,13 +94,81 @@
 <svg aria-hidden="true" fill="none" height="21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="21"><circle cx="9" cy="20" r="1"></circle><circle cx="19" cy="20" r="1"></circle><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 7H6"></path></svg>
 <span class="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#C96B4B] text-white text-[11px] font-bold leading-5 text-center" data-cart-count="" hidden="">0</span>
 </a><a class="border border-[#E8D2BE] text-[#5F504A] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#F5E6D3]" href="en.html">EN</a><a class="hidden sm:inline-block cta-nav px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm" href="booking.html">Termin vereinbaren</a></div></div><div class="border-t border-[#E8D2BE]/70 bg-[#FFF7ED]/95 overflow-x-auto nav-scroll"><ul class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-6 text-sm md:text-base text-[#5F504A] font-medium whitespace-nowrap"><li><a class="nav-link" href="index.html">Start</a></li><li><a class="nav-link" href="angebote.html">Angebot</a></li><li><a class="nav-link" href="#ablauf">Ablauf</a></li><li><a class="nav-link-active" href="arbeitsweise.html">Arbeitsweise</a></li><li><a class="nav-link" href="beziehungsvielfalt.html">Beziehungsvielfalt</a></li><li><a class="nav-link" href="about.html">Über mich</a></li><li><a class="nav-link" href="#kontakt">Kontakt</a></li></ul></div></nav>
-<section class="py-20 md:py-28 px-6 md:px-16 bg-[#FFF7ED]"><div class="max-w-6xl mx-auto"><p class="text-[#C96B4B] uppercase tracking-[.18em] text-sm font-bold mb-4">Meine Arbeitsweise</p><h1 class="text-4xl md:text-6xl font-bold text-[#2F2623] leading-[1.08] max-w-5xl">Mich interessieren die Momente, in denen es zwischen zwei Menschen kippt.</h1><p class="text-[#5F504A] text-xl md:text-2xl leading-relaxed max-w-4xl mt-7">Ein Satz, ein Blick, ein Schweigen – und plötzlich ist wieder diese alte Spannung da. Genau an solchen Stellen fange ich gerne an, weil dort mehr passiert, als man mitten im Streit noch mitbekommt.</p></div></section>
-<section class="px-6 md:px-16 bg-white"><div class="max-w-6xl mx-auto">
-<article class="grid md:grid-cols-[.72fr_1.28fr] gap-8 md:gap-16 py-16 md:py-20 border-t border-[#E8D2BE]"><div><span class="text-xs tracking-[.2em] font-bold text-[#C96B4B]">01</span><h2 class="text-3xl md:text-4xl font-bold text-[#2F2623] mt-3 leading-tight">Wenn ein Satz reicht und alles kippt</h2></div><div class="text-[#5F504A] text-lg leading-relaxed space-y-5"><p>Wenn eine Beziehung länger schwierig ist, verändert sich oft die ganze Atmosphäre zwischen zwei Menschen. Ein Satz reicht und du merkst sofort: Jetzt geht es wieder los. Einer wird lauter, der andere still. Einer will das Gespräch unbedingt zu Ende bringen, der andere möchte nur noch raus. Später liegt man nebeneinander im Bett und fühlt sich trotzdem weit weg.</p><p>Mich interessieren genau diese paar Minuten. Was war der Satz davor? Was hat dein Körper gemacht? Was dachtest du in diesem Moment über den anderen? Und was tust du dann fast automatisch? Da wird häufig sichtbar, wie sich zwei Reaktionen gegenseitig hochschaukeln.</p></div></article>
-<article class="grid md:grid-cols-[.72fr_1.28fr] gap-8 md:gap-16 py-16 md:py-20 border-t border-[#E8D2BE]"><div><span class="text-xs tracking-[.2em] font-bold text-[#C96B4B]">02</span><h2 class="text-3xl md:text-4xl font-bold text-[#2F2623] mt-3 leading-tight">Die Sachen, die lange liegen bleiben</h2></div><div class="text-[#5F504A] text-lg leading-relaxed space-y-5"><p>Manche Themen werden über Monate mitgetragen, ohne dass jemand richtig darüber spricht. Dass man sich nicht mehr begehrt fühlt. Dass Sex angespannt geworden ist. Dass Eifersucht längst den Alltag mitbestimmt. Dass man kontrolliert, obwohl man selbst merkt, dass es die Beziehung enger macht. Oder dass der Gedanke ans Gehen schon länger da ist.</p><p>Solche Dinge müssen nicht schön formuliert sein. Wut darf Wut heißen. Angst darf peinlich oder widersprüchlich sein. Wenn du deinem Gegenüber gerade am liebsten sagen würdest, dass du es nicht mehr aushältst, dann ist auch das etwas, womit wir arbeiten können.</p><p class="text-[#2F2623] font-medium">Wenn mir etwas auffällt, spreche ich es an. Wenn eine Geschichte sehr glatt klingt, frage ich meistens noch einmal nach. Wir müssen die unangenehmen Stellen nicht schnell hübsch machen.</p></div></article>
-<article class="grid md:grid-cols-[.72fr_1.28fr] gap-8 md:gap-16 py-16 md:py-20 border-t border-[#E8D2BE]"><div><span class="text-xs tracking-[.2em] font-bold text-[#C96B4B]">03</span><h2 class="text-3xl md:text-4xl font-bold text-[#2F2623] mt-3 leading-tight">Der eigene Anteil ist selten der angenehmste Teil</h2></div><div class="text-[#5F504A] text-lg leading-relaxed space-y-5"><p>Früher oder später taucht die Frage auf: Was mache ich selbst in diesem Kreislauf? Vielleicht jagst du einem Gespräch hinterher, obwohl dein Gegenüber längst dichtgemacht hat. Du verschwindest innerlich, sobald es emotional wird. Du sagst lange nichts und explodierst dann wegen einer Kleinigkeit. Oder du versuchst Nähe herzustellen, indem du Druck machst – und merkst erst später, warum der andere dadurch noch weiter weggeht.</p><p>Das ist selten angenehm. Genau an solchen Stellen wird die eigene Bewegung im Kreislauf sichtbar. Und damit taucht etwas auf, das du selbst beeinflussen kannst.</p></div></article>
-<article class="grid md:grid-cols-[.72fr_1.28fr] gap-8 md:gap-16 py-16 md:py-20 border-y border-[#E8D2BE]"><div><span class="text-xs tracking-[.2em] font-bold text-[#C96B4B]">04</span><h2 class="text-3xl md:text-4xl font-bold text-[#2F2623] mt-3 leading-tight">Und dann sitzt du wieder in derselben Küche</h2></div><div class="text-[#5F504A] text-lg leading-relaxed space-y-5"><p>Die eigentliche Probe kommt im Alltag. Du sitzt wieder in derselben Küche. Dein Partner sagt wieder diesen einen Satz. Dein Körper kennt die alte Reaktion schon. Alles in dir will den gewohnten Weg nehmen.</p><p>Und diesmal probierst du etwas anderes. Du sagst früher, dass du gerade Angst bekommst. Du gehst nicht sofort in den Angriff. Du bleibst im Gespräch, obwohl du sonst verschwinden würdest. Oder du setzt eine Grenze, bevor du innerlich schon längst über sie hinweggegangen bist.</p><p class="text-[#2F2623] font-medium">Für mich zeigt sich dort, ob Beratung etwas verändert. Der Maßstab ist der nächste echte Moment im Alltag – ob er ein kleines bisschen anders läuft.</p></div></article>
-</div></section><section class="relative w-full bg-[#C96B4B] py-28 px-6 md:px-16 overflow-hidden" id="kontakt"><div class="relative max-w-3xl mx-auto text-center text-white"><p class="text-white/80 uppercase tracking-wide mb-3 font-semibold">Kennenlernen</p><h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight">Du musst noch nicht wissen, wie es weitergeht.</h2><p class="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">Im Erstgespräch sortieren wir gemeinsam, was gerade los ist und welcher nächste Schritt sinnvoll sein könnte.</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4"><a class="px-10 py-4 bg-white text-[#2F2623] font-bold tracking-wide rounded-2xl shadow-xl hover:bg-[#FFF7ED] transition" href="booking.html" rel="noopener" target="_blank">Unverbindliches Erstgespräch anfragen</a><a class="px-10 py-4 bg-white/10 border border-white/40 text-white font-bold tracking-wide rounded-2xl hover:bg-white/20 transition" href="mailto:hallo@beziehungsdynamiken.at">Erst per E-Mail schreiben</a></div></div></section>
+<main class="bd-editorial-paper px-6 md:px-12 lg:px-16 py-10 md:py-14">
+  <div class="bd-news-wrap">
+    <div class="bd-news-mast" aria-label="Editoriale Seitenkennung">
+      <strong>Beziehungsdynamiken</strong>
+      <span>Arbeitsweise · Graz &amp; online · 2026</span>
+    </div>
+
+    <section class="bd-news-hero">
+      <div>
+        <span class="bd-news-kicker">Wie ich arbeite</span>
+        <h1 class="bd-news-title">Ich höre zu, frage nach und arbeite gern mit dem, was im Gespräch gerade spürbar wird.</h1>
+        <p class="bd-news-deck">Nicht alles lässt sich am besten erklären. Manches versteht man erst, wenn man eine Situation noch einmal näher heranholt und merkt, was dabei eigentlich in einem passiert.</p>
+      </div>
+      <aside class="bd-testimonial-clip" data-editorial-placeholder="client-testimonial">
+        <blockquote>„Bei Theo hatte ich viel Raum zu erzählen. Und dann kamen Fragen, bei denen ich plötzlich an Stellen gelandet bin, über die ich vorher immer hinweggegangen bin.“</blockquote>
+        <footer>Anonymisierte Rückmeldung aus einer Beratung</footer>
+        <span class="bd-placeholder-note">Platzhalter · vor Veröffentlichung durch echte Rückmeldung ersetzen</span>
+      </aside>
+    </section>
+
+    <section class="bd-news-lead">
+      <div>
+        <span class="bd-news-kicker">Am Anfang</span>
+        <h2>Wir nehmen eine Stelle, an der es wirklich passiert.</h2>
+      </div>
+      <div class="bd-news-lead-copy">
+        <p>Wenn Menschen zu mir kommen, ist meistens schon einiges passiert. Derselbe Streit taucht wieder auf. Nähe ist weniger geworden. Sex fühlt sich angespannt, routiniert oder weit weg an. Eifersucht nimmt mehr Platz ein, als einem lieb ist. Oder du merkst, dass du in der Beziehung fast nur noch reagierst.</p>
+        <p>Ich höre mir zunächst an, wie das bei dir aussieht. Dann gehen wir oft an eine konkrete Situation zurück: ein Gespräch, einen Moment, in dem du gemerkt hast, dass etwas kippt. Was war da? Was hast du gespürt? Was hast du getan? Und was ist danach zwischen euch passiert?</p>
+      </div>
+    </section>
+
+    <section class="bd-feature-grid" aria-label="Drei Einblicke in meine Arbeitsweise">
+      <article class="bd-feature">
+        <span class="num">01 · IM GESPRÄCH</span>
+        <h3>Ich frage nach.</h3>
+        <span class="scribble" aria-hidden="true"></span>
+        <p>Wenn jemand sagt: „Mit ihm kann man einfach nicht reden“, möchte ich irgendwann wissen, wie so ein Gespräch tatsächlich beginnt. Wer sagt was? Wo verändert sich etwas? Ich versuche nicht, möglichst schnell eine Erklärung darüberzulegen. Mich interessiert zuerst, was in dieser Situation für dich passiert.</p>
+      </article>
+      <article class="bd-feature">
+        <span class="num">02 · IM RAUM</span>
+        <h3>Manches darf man auch erleben.</h3>
+        <span class="scribble" aria-hidden="true"></span>
+        <p>Ich arbeite nicht ausschließlich über das Gespräch. Ein Rollenwechsel, ein leerer Stuhl, Figuren oder eine sichtbar gemachte Grenze können helfen, etwas anders wahrzunehmen. Nicht als Show. Eher dann, wenn Reden allein gerade nicht weiterführt und eine Situation spürbarer werden darf.</p>
+      </article>
+      <article class="bd-feature">
+        <span class="num">03 · ZWISCHEN UNS</span>
+        <h3>Du darfst mir widersprechen.</h3>
+        <span class="scribble" aria-hidden="true"></span>
+        <p>Natürlich habe ich Vermutungen und spreche sie auch aus. Wenn du sagst: „Nein, so ist es überhaupt nicht“, ist das für mich kein Problem. Dann interessiert mich, wie es für dich ist. Ich möchte nicht, dass du meine Erklärung übernimmst. Wir suchen nach etwas, das für dich tatsächlich Sinn ergibt.</p>
+      </article>
+    </section>
+
+    <section class="bd-pullquote">
+      <div class="bd-pullquote-mark" aria-hidden="true">“</div>
+      <blockquote>„Ich mag diese Momente, in denen jemand kurz still wird und merkt: Verdammt. Das mache ich wirklich immer so.“<cite>— Theophil Kroller</cite></blockquote>
+    </section>
+
+    <section class="bd-news-bottom">
+      <article>
+        <span class="bd-news-kicker">Und dann?</span>
+        <h3>Am Ende interessiert mich, was sich außerhalb der Sitzung verändert.</h3>
+        <p>Vielleicht merkst du in einem Streit ein paar Sekunden früher, was gerade passiert. Du setzt eine Grenze, bevor die Wut schon bei hundert ist. Oder du hast bei einer starken Emotion plötzlich mehr als nur die eine bekannte Reaktion zur Verfügung.</p>
+        <p>Das muss nicht spektakulär aussehen. Oft beginnt Veränderung damit, dass in einer bekannten Situation zum ersten Mal noch eine zweite Möglichkeit auftaucht.</p>
+      </article>
+      <aside class="bd-method-note">
+        <div class="eyebrow">Was in einer Sitzung vorkommen kann</div>
+        <p>Je nach Thema arbeite ich im Gespräch, erlebnisorientiert oder mit einem Modell, das hilft, etwas besser einzuordnen.</p>
+        <div class="bd-method-list" aria-label="Mögliche Arbeitsformen">
+          <span>Gespräch</span><span>Körperwahrnehmung</span><span>Rollenwechsel</span><span>Figuren &amp; Aufstellungen</span><span>Psychoedukation</span><span>konkrete Übungen</span>
+        </div>
+      </aside>
+    </section>
+  </div>
+</main>
+<section class="relative w-full bg-[#C96B4B] py-28 px-6 md:px-16 overflow-hidden" id="kontakt"><div class="relative max-w-3xl mx-auto text-center text-white"><p class="text-white/80 uppercase tracking-wide mb-3 font-semibold">Kennenlernen</p><h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight">Du musst noch nicht wissen, wie es weitergeht.</h2><p class="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">Im Erstgespräch sortieren wir gemeinsam, was gerade los ist und welcher nächste Schritt sinnvoll sein könnte.</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4"><a class="px-10 py-4 bg-white text-[#2F2623] font-bold tracking-wide rounded-2xl shadow-xl hover:bg-[#FFF7ED] transition" href="booking.html" rel="noopener" target="_blank">Unverbindliches Erstgespräch anfragen</a><a class="px-10 py-4 bg-white/10 border border-white/40 text-white font-bold tracking-wide rounded-2xl hover:bg-white/20 transition" href="mailto:hallo@beziehungsdynamiken.at">Erst per E-Mail schreiben</a></div></div></section>
 <!-- FOOTER -->
 <footer class="bg-[#2F2623] text-white py-16">
 <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-10">

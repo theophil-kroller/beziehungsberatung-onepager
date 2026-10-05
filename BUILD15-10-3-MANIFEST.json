@@ -1,0 +1,92 @@
+{
+  "build": "15.10.3",
+  "base": "15.10.2",
+  "scope": "Editoriale Arbeitsweise + aktiver Content-Fokus-Workflow",
+  "files": [
+    {
+      "path": "arbeitsweise.html",
+      "bytes": 20295,
+      "sha256": "1eb642381a42333db3e047242a702f11f14b1a824ee8698f4d7113f107757235"
+    },
+    {
+      "path": "hub.html",
+      "bytes": 57075,
+      "sha256": "06e4fb17571698b99b2f47213c41ce273d550126b7e28d9d8a4e3896655cf84a"
+    },
+    {
+      "path": "content-strategy-15-10.js",
+      "bytes": 23676,
+      "sha256": "600dd2a10b2f5c09c9489f6526836827b7fc8af4e000e5579df893b2eee01a9d"
+    },
+    {
+      "path": "content-strategy-15-10.css",
+      "bytes": 15169,
+      "sha256": "0b1050a3c05437bfe241b7b26390be6a8bdd13afe0e089f20a8d0fd3c980d370"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "4f78e7eba3a7b1bbc5c01a12b0e84a794f57c79ef8ba1a1dcb1427d5c444c851"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "0f164d5aa3e5b38e85bbb6023a1ee762d6f783c0be7654a3e2c3adcfcd441f19"
+    },
+    {
+      "path": "desktop/app/web/arbeitsweise.html",
+      "bytes": 20295,
+      "sha256": "1eb642381a42333db3e047242a702f11f14b1a824ee8698f4d7113f107757235"
+    },
+    {
+      "path": "desktop/app/web/hub.html",
+      "bytes": 57075,
+      "sha256": "06e4fb17571698b99b2f47213c41ce273d550126b7e28d9d8a4e3896655cf84a"
+    },
+    {
+      "path": "desktop/app/web/content-strategy-15-10.js",
+      "bytes": 23676,
+      "sha256": "600dd2a10b2f5c09c9489f6526836827b7fc8af4e000e5579df893b2eee01a9d"
+    },
+    {
+      "path": "desktop/app/web/content-strategy-15-10.css",
+      "bytes": 15169,
+      "sha256": "0b1050a3c05437bfe241b7b26390be6a8bdd13afe0e089f20a8d0fd3c980d370"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "4f78e7eba3a7b1bbc5c01a12b0e84a794f57c79ef8ba1a1dcb1427d5c444c851"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "0f164d5aa3e5b38e85bbb6023a1ee762d6f783c0be7654a3e2c3adcfcd441f19"
+    },
+    {
+      "path": "tests/test_build15_10_3_editorial_focus.py",
+      "bytes": 3146,
+      "sha256": "cd72fe34bbaf7a07830b063bfae79e527afc5b5df3237d012b1e7fcea47720f0"
+    },
+    {
+      "path": "BUILD15-10-3-NOTE.txt",
+      "bytes": 3538,
+      "sha256": "1a3cd9ffc1d28668ea6b2aaed646a41fd93631bf13c40bcc4c9eb9346d6d73d0"
+    },
+    {
+      "path": "BUILD15-10-3-TESTREPORT.txt",
+      "bytes": 1914,
+      "sha256": "ba1b508c98c5089639d62313dc6c4bfd6d3fe1b6e0f71aaea29a40b7ecadcded"
+    },
+    {
+      "path": "INSTALLATION-15.10.3.txt",
+      "bytes": 557,
+      "sha256": "05c3b90b868f6ebb4ab74d7ea30d4cdb4343bf6c5b133a5ee6d8fd3e70cb1fa4"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.3.cmd",
+      "bytes": 152,
+      "sha256": "137fc7e970f692e36947508aa6abb8a67bfcb64ed5fa4a9f4e1989f01c560951"
+    }
+  ]
+}
