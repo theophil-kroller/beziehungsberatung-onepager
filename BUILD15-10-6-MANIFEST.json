@@ -1,0 +1,162 @@
+{
+  "build": "15.10.6",
+  "base": "15.10.5",
+  "scope": "Public frontend voice pass, EN editorial parity, WhatsApp-first contact, process link removal",
+  "files": [
+    {
+      "path": "en.html",
+      "bytes": 30271,
+      "sha256": "b994979101a0fe0c1092f429d1b80bcb8a757c7ffcc6e681431ba4bda25ce5c7"
+    },
+    {
+      "path": "about.html",
+      "bytes": 26329,
+      "sha256": "f9fab1deac008800de79c545935efaf30a8a7d7a728241df2c7230af10ec7227"
+    },
+    {
+      "path": "relationship-diversity.html",
+      "bytes": 12901,
+      "sha256": "3b279ffbb663da080cb4add9a7a76b5e9dccf0408b486650bc5f41eeae0a5279"
+    },
+    {
+      "path": "beziehungsvielfalt.html",
+      "bytes": 13065,
+      "sha256": "647da0c4ce165c1112163049b8d8063ca96364170053b2ea07769057e8431803"
+    },
+    {
+      "path": "about-en.html",
+      "bytes": 24993,
+      "sha256": "7ddc6a836177916a85819114f6e4b9f99140476c30e332d6c3a607fe45ba51f9"
+    },
+    {
+      "path": "index.html",
+      "bytes": 31075,
+      "sha256": "f31fa5732cc2276fd7234d678a645a301e919605f686c594add0756b10124e6b"
+    },
+    {
+      "path": "approach.html",
+      "bytes": 19811,
+      "sha256": "c5c111e5619990aa6b165b2535265315d7dae7d9c4fc4ca4404f60b0343adcfa"
+    },
+    {
+      "path": "impressum.html",
+      "bytes": 10008,
+      "sha256": "e083ef23f3ce4d8da7da353362cf0d2d0c2165de48841feb2917cb20a4b140e7"
+    },
+    {
+      "path": "arbeitsweise.html",
+      "bytes": 20087,
+      "sha256": "133f965c817c00fb385e10cfb7d75770579fe4e7d4f26127f409ebe7b387af53"
+    },
+    {
+      "path": "orientierung.html",
+      "bytes": 11980,
+      "sha256": "630193dc880fc0a1a5484fa58a394afa935e382cc05c9bd394ca4e11b9aa6b67"
+    },
+    {
+      "path": "datenschutz.html",
+      "bytes": 19724,
+      "sha256": "daeacba571e7a0ed55147c415c1eb6bd55f29a566698aa1a4e68797bea4fa110"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.6.cmd",
+      "bytes": 152,
+      "sha256": "8f6ed9806b60eeb88ad6d021227317e3da1a37875317c0ab5a06e3e0529deceb"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "18f48dcad8bc1ba7fef45ebdf5e6a8c00394e02b3948da8b5b4f485dc2e1956b"
+    },
+    {
+      "path": "INSTALLATION-15.10.6.txt",
+      "bytes": 389,
+      "sha256": "2af388b95ba088f84f8cf8c319494f5b8c9d91c66dfe63b1bf6723f3ee95d5c4"
+    },
+    {
+      "path": "BUILD15-10-6-NOTE.txt",
+      "bytes": 1645,
+      "sha256": "054f06aed59290de53240c27be265f5b58b37c52531b3af7953ac59a5a81f72f"
+    },
+    {
+      "path": "BUILD15-10-6-TESTREPORT.txt",
+      "bytes": 914,
+      "sha256": "0e0664fd1be6d4c2298897fd66c8160fb4d1f3ee2794e691cff37f098a662a78"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "ace6cfb7b85e97caaa4cd3b7a3d648911eace608044e5688425f3527ed54837b"
+    },
+    {
+      "path": "tests/test_build15_10_6_public_frontend.py",
+      "bytes": 2532,
+      "sha256": "84657f05bbb2af5093d073f5a8bf17235160e079607ee9da632d47015d3d21aa"
+    },
+    {
+      "path": "desktop/app/web/en.html",
+      "bytes": 30271,
+      "sha256": "b994979101a0fe0c1092f429d1b80bcb8a757c7ffcc6e681431ba4bda25ce5c7"
+    },
+    {
+      "path": "desktop/app/web/about.html",
+      "bytes": 26329,
+      "sha256": "f9fab1deac008800de79c545935efaf30a8a7d7a728241df2c7230af10ec7227"
+    },
+    {
+      "path": "desktop/app/web/relationship-diversity.html",
+      "bytes": 12901,
+      "sha256": "3b279ffbb663da080cb4add9a7a76b5e9dccf0408b486650bc5f41eeae0a5279"
+    },
+    {
+      "path": "desktop/app/web/beziehungsvielfalt.html",
+      "bytes": 13065,
+      "sha256": "647da0c4ce165c1112163049b8d8063ca96364170053b2ea07769057e8431803"
+    },
+    {
+      "path": "desktop/app/web/about-en.html",
+      "bytes": 24993,
+      "sha256": "7ddc6a836177916a85819114f6e4b9f99140476c30e332d6c3a607fe45ba51f9"
+    },
+    {
+      "path": "desktop/app/web/index.html",
+      "bytes": 31075,
+      "sha256": "f31fa5732cc2276fd7234d678a645a301e919605f686c594add0756b10124e6b"
+    },
+    {
+      "path": "desktop/app/web/approach.html",
+      "bytes": 19811,
+      "sha256": "c5c111e5619990aa6b165b2535265315d7dae7d9c4fc4ca4404f60b0343adcfa"
+    },
+    {
+      "path": "desktop/app/web/impressum.html",
+      "bytes": 10008,
+      "sha256": "e083ef23f3ce4d8da7da353362cf0d2d0c2165de48841feb2917cb20a4b140e7"
+    },
+    {
+      "path": "desktop/app/web/arbeitsweise.html",
+      "bytes": 20087,
+      "sha256": "133f965c817c00fb385e10cfb7d75770579fe4e7d4f26127f409ebe7b387af53"
+    },
+    {
+      "path": "desktop/app/web/orientierung.html",
+      "bytes": 11980,
+      "sha256": "630193dc880fc0a1a5484fa58a394afa935e382cc05c9bd394ca4e11b9aa6b67"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "18f48dcad8bc1ba7fef45ebdf5e6a8c00394e02b3948da8b5b4f485dc2e1956b"
+    },
+    {
+      "path": "desktop/app/web/datenschutz.html",
+      "bytes": 19724,
+      "sha256": "daeacba571e7a0ed55147c415c1eb6bd55f29a566698aa1a4e68797bea4fa110"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "ace6cfb7b85e97caaa4cd3b7a3d648911eace608044e5688425f3527ed54837b"
+    }
+  ]
+}
