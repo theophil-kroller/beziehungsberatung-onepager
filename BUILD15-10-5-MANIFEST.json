@@ -1,0 +1,102 @@
+{
+  "build": "15.10.5",
+  "base": "15.10.4",
+  "scope": "Hook rail equals preview height + preferred testimonial wording",
+  "files": [
+    {
+      "path": ".pytest_cache/.gitignore",
+      "bytes": 37,
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd"
+    },
+    {
+      "path": ".pytest_cache/CACHEDIR.TAG",
+      "bytes": 191,
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4"
+    },
+    {
+      "path": ".pytest_cache/README.md",
+      "bytes": 302,
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad"
+    },
+    {
+      "path": ".pytest_cache/v/cache/nodeids",
+      "bytes": 358,
+      "sha256": "9b3478b3eeff8b2c344ea42d265724e5b3d256c0ad8ec86fb5719ae15eb1d2ea"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.5.cmd",
+      "bytes": 149,
+      "sha256": "85016eff42475cfb0a868bced17f9d2aec40ff8e2d47cc2eda01a9dba856ac3e"
+    },
+    {
+      "path": "BUILD15-10-5-NOTE.txt",
+      "bytes": 1224,
+      "sha256": "59d21fbb010472113a68ced1569c25e121182d1330ff0e3856481ecfdbcb704c"
+    },
+    {
+      "path": "BUILD15-10-5-TESTREPORT.txt",
+      "bytes": 643,
+      "sha256": "92040f59fad9cec8914eec6d89345f51bd783b05b888948cd93dd92f8513d4b8"
+    },
+    {
+      "path": "INSTALLATION-15.10.5.txt",
+      "bytes": 346,
+      "sha256": "389f13650d1094656d3b9675b1d9a5d946ba309813010ff8009070e80970f474"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "052d284f7bec26640457831edc4a8461b4f85751348c34d17b7ed73a529403ce"
+    },
+    {
+      "path": "arbeitsweise.html",
+      "bytes": 19971,
+      "sha256": "0b5919da5bfcca16c8882a17029e8dd86636730aef109c33911f6e091b9bfd4a"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "052d284f7bec26640457831edc4a8461b4f85751348c34d17b7ed73a529403ce"
+    },
+    {
+      "path": "desktop/app/web/arbeitsweise.html",
+      "bytes": 19971,
+      "sha256": "0b5919da5bfcca16c8882a17029e8dd86636730aef109c33911f6e091b9bfd4a"
+    },
+    {
+      "path": "desktop/app/web/hub.html",
+      "bytes": 57201,
+      "sha256": "12213fb3669f5edb5c32e84f3070b53b14861038394cfd7ac022ceceb6cbf406"
+    },
+    {
+      "path": "desktop/app/web/short-hook-15-10-5.css",
+      "bytes": 2594,
+      "sha256": "4eb7d4dbce0604dcf0f2ef69b3dda105b07e4e3e7f6435cd7d1574d61f54fb4b"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "b48a30e55189b98835ec64b82cedd700876b5cda944467980f1829570a035a9b"
+    },
+    {
+      "path": "hub.html",
+      "bytes": 57201,
+      "sha256": "12213fb3669f5edb5c32e84f3070b53b14861038394cfd7ac022ceceb6cbf406"
+    },
+    {
+      "path": "short-hook-15-10-5.css",
+      "bytes": 2594,
+      "sha256": "4eb7d4dbce0604dcf0f2ef69b3dda105b07e4e3e7f6435cd7d1574d61f54fb4b"
+    },
+    {
+      "path": "tests/test_build15_10_5_hookrail_quote.py",
+      "bytes": 1145,
+      "sha256": "8b381f2e960964e7b5d1e4442c41252d27b6db2bb4acf422db20aa5d940b114e"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "b48a30e55189b98835ec64b82cedd700876b5cda944467980f1829570a035a9b"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+/* BUILD 15.10.5 · Hook marker rail matches 9:16 preview height; no main rail scrolling */
+@media(min-width:1120px){
+  .short-hook-designer-grid1593{
+    grid-template-columns:360px 124px minmax(360px,1fr);
+  }
+  .short-hook-markup-rail15104{
+    height:640px;
+    max-height:640px;
+    overflow:hidden;
+    box-sizing:border-box;
+    padding:7px!important;
+    gap:5px!important;
+    scrollbar-width:none;
+  }
+  .short-hook-markup-rail15104::-webkit-scrollbar{display:none}
+  .short-hook-markup-rail15104 .short-hook-markup-head1598{gap:4px}
+  .short-hook-markup-rail15104 .short-hook-markup-head1598 strong{font-size:10.5px;line-height:1.1}
+  .short-hook-markup-rail15104 .short-hook-markup-mode1598{gap:3px;padding:2px}
+  .short-hook-markup-rail15104 .short-hook-markup-mode1598 button{
+    min-height:28px;
+    padding:4px 3px;
+    font-size:8.5px;
+    line-height:1.05;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-toolbar1598{gap:3px}
+  .short-hook-markup-rail15104 .short-hook-markup-toolbar1598 button{
+    height:31px;
+    min-height:31px;
+    border-radius:8px;
+    font-size:19px;
+    line-height:1;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-settings1598{gap:4px}
+  .short-hook-markup-rail15104 .short-hook-markup-settings1598>label{font-size:8px!important;gap:3px!important}
+  .short-hook-markup-rail15104 .short-hook-markup-settings1598 input[type=color]{width:30px;height:25px;border-radius:7px}
+  .short-hook-markup-rail15104 .short-hook-markup-swatches1598{gap:3px}
+  .short-hook-markup-rail15104 .short-hook-markup-swatches1598 button{width:19px;height:19px}
+  .short-hook-markup-rail15104 .short-hook-markup-stroke1598{gap:2px!important}
+  .short-hook-markup-rail15104 .short-hook-markup-stroke1598 input{height:18px}
+  .short-hook-markup-rail15104 .short-hook-markup-actions1598{gap:3px}
+  .short-hook-markup-rail15104 .short-hook-markup-actions1598 .kh-soft{
+    min-height:25px;
+    padding:4px 3px;
+    font-size:7.8px;
+    line-height:1.05;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-list1598{
+    max-height:38px;
+    overflow:auto;
+    gap:2px;
+    scrollbar-width:thin;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-list1598>button{padding:3px 4px;font-size:7.5px}
+  .short-hook-markup-rail15104 .short-hook-markup-selected1598{
+    max-height:84px;
+    overflow:auto;
+    padding:5px;
+    gap:3px;
+    scrollbar-width:thin;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-selected-grid1598{gap:2px}
+  .short-hook-markup-rail15104 .short-hook-markup-selected-grid1598 label{font-size:7.5px!important;gap:2px!important}
+}
