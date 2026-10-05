@@ -1,0 +1,72 @@
+{
+  "build": "15.10.7",
+  "base": "15.10.6",
+  "scope": "Warm editorial paper interlude on About / Über mich; English parity; no structural page redesign",
+  "files": [
+    {
+      "path": "about.html",
+      "bytes": 30931,
+      "sha256": "2a74bae720a93c30addf23e6c50ccdda5ae7aa67fd23849a111a5f974d8b582a"
+    },
+    {
+      "path": "about-en.html",
+      "bytes": 29462,
+      "sha256": "2a6fccb62e8e4474735e593cd536b6f4fa5f63ce1bea9a8e8ff51fc195f93822"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "6e8d8712fa6f8656dee4eaf06c0478fee536ff4478faaa89a26a9b92c80055a3"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "0ac6078b53a518e90fe8bc5f405dfd693cf711678ff054e28a12fdc1ef3555ec"
+    },
+    {
+      "path": "desktop/app/web/about.html",
+      "bytes": 30931,
+      "sha256": "2a74bae720a93c30addf23e6c50ccdda5ae7aa67fd23849a111a5f974d8b582a"
+    },
+    {
+      "path": "desktop/app/web/about-en.html",
+      "bytes": 29462,
+      "sha256": "2a6fccb62e8e4474735e593cd536b6f4fa5f63ce1bea9a8e8ff51fc195f93822"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "6e8d8712fa6f8656dee4eaf06c0478fee536ff4478faaa89a26a9b92c80055a3"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "0ac6078b53a518e90fe8bc5f405dfd693cf711678ff054e28a12fdc1ef3555ec"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.7.cmd",
+      "bytes": 152,
+      "sha256": "69f0c530619bd8b6d35c670feb983dace27b03b36a457164e8b5424c2be3f44e"
+    },
+    {
+      "path": "INSTALLATION-15.10.7.txt",
+      "bytes": 445,
+      "sha256": "6284b21f0a9e8ae19e365634cf94f557d25bdd1ced6e806f092597055bce1b97"
+    },
+    {
+      "path": "BUILD15-10-7-NOTE.txt",
+      "bytes": 1493,
+      "sha256": "60c59a3104fd5919ff00ec5247863b0fb38e195f9c2a1caaac12b1a99116714a"
+    },
+    {
+      "path": "BUILD15-10-7-TESTREPORT.txt",
+      "bytes": 1236,
+      "sha256": "efec284431da9e82d81a86cff6931825e84fc762657bbcf8239887e19b45abf5"
+    },
+    {
+      "path": "tests/test_build15_10_7_about_editorial.py",
+      "bytes": 2222,
+      "sha256": "0848adc0f6661f803197af14936aaea752a9c9e10235bd519d08853c14c04194"
+    }
+  ]
+}
