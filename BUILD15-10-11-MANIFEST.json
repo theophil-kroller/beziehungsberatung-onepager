@@ -1,0 +1,60 @@
+{
+  "build": "15.10.11",
+  "base": "15.10.10",
+  "vaultVersion": "3.40.1",
+  "scope": "Relationship-diversity topic 03 changed from multi-person sessions to New Relationship Energy (NRE); editorial styling preserved.",
+  "files": [
+    {
+      "path": "beziehungsvielfalt.html",
+      "sha256": "01b98f84e617d733c47a8e990c9405e87fbf9f365a5a2b6dd154aade1d6bcf15"
+    },
+    {
+      "path": "relationship-diversity.html",
+      "sha256": "24ef80546d34c57590f5838fa68bdc5b80de04c190f9eb78ecb84cb5a94efa87"
+    },
+    {
+      "path": "desktop/app/web/beziehungsvielfalt.html",
+      "sha256": "01b98f84e617d733c47a8e990c9405e87fbf9f365a5a2b6dd154aade1d6bcf15"
+    },
+    {
+      "path": "desktop/app/web/relationship-diversity.html",
+      "sha256": "24ef80546d34c57590f5838fa68bdc5b80de04c190f9eb78ecb84cb5a94efa87"
+    },
+    {
+      "path": "VERSION.txt",
+      "sha256": "588d5ee74bec5a8983076988d437db5de128a2375d1b25481be6aba3d463b024"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "sha256": "588d5ee74bec5a8983076988d437db5de128a2375d1b25481be6aba3d463b024"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "sha256": "32d6125137e86e9f3af654bbc687ace9a96c4954063688069e7d74ef70b4ede2"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "sha256": "32d6125137e86e9f3af654bbc687ace9a96c4954063688069e7d74ef70b4ede2"
+    },
+    {
+      "path": "BUILD15-10-11-NOTE.txt",
+      "sha256": "c347fd228dac294bdb2f6158d8de69b96e4eef43a110c7a81da85671fc2aa910"
+    },
+    {
+      "path": "BUILD15-10-11-TESTREPORT.txt",
+      "sha256": "d12e5080fba93891e835223fc67ef2dc0f5d0d4da50af4f267934196f4be7dd4"
+    },
+    {
+      "path": "INSTALLATION-15.10.11.txt",
+      "sha256": "78ea18c94f1bfeb24ed508740fd1f546d4bc1cd417d2dd1345cd52800c10e48c"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.11.cmd",
+      "sha256": "e16d1ee8cf9d57b6bcc7b6bc6450a383fd5304c672a844d57393dfeacf01d899"
+    },
+    {
+      "path": "tests/test_build15_10_11_relationship_diversity_nre.py",
+      "sha256": "17d6bb8399aa8cba7c60463893997d82e54708f8614279e4090f35ba0b2f9d53"
+    }
+  ]
+}
