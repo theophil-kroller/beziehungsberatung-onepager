@@ -1,0 +1,72 @@
+{
+  "build": "15.10.8",
+  "base": "15.10.7",
+  "scope": "Compact editorial quote typography on About / Über mich; remove generic subheading; DE/EN parity; no page restructure",
+  "files": [
+    {
+      "path": "about.html",
+      "bytes": 30818,
+      "sha256": "eaeb21cfc8d18eac73a213d920b2bf50347fe3546e17b0bc21ae94e2601d1fe7"
+    },
+    {
+      "path": "about-en.html",
+      "bytes": 29354,
+      "sha256": "f62159e282f13eafb8a5965a9de2af46f391fa647ad2c7f06610846e53238b0d"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "0372896af5e5d2765f8c8604ea67643e7de56575bd276781ae215a7219e22547"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "722b9d92d2dfade8acfe8810402ef0fda1b348d00ce1d2aac37ab953085a3ebf"
+    },
+    {
+      "path": "desktop/app/web/about.html",
+      "bytes": 30818,
+      "sha256": "eaeb21cfc8d18eac73a213d920b2bf50347fe3546e17b0bc21ae94e2601d1fe7"
+    },
+    {
+      "path": "desktop/app/web/about-en.html",
+      "bytes": 29354,
+      "sha256": "f62159e282f13eafb8a5965a9de2af46f391fa647ad2c7f06610846e53238b0d"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "0372896af5e5d2765f8c8604ea67643e7de56575bd276781ae215a7219e22547"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "722b9d92d2dfade8acfe8810402ef0fda1b348d00ce1d2aac37ab953085a3ebf"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.8.cmd",
+      "bytes": 152,
+      "sha256": "cd16cc3380056b596850c1eef77acf6e8f32cb8c65f55f21f32b437d421095e4"
+    },
+    {
+      "path": "INSTALLATION-15.10.8.txt",
+      "bytes": 468,
+      "sha256": "451db58ff3e504f006ec53d216919a4348e9ba8aa611b2168250b7e556b3fafb"
+    },
+    {
+      "path": "BUILD15-10-8-NOTE.txt",
+      "bytes": 1566,
+      "sha256": "62765640576a3787ecba0f0aae56d1a00d6f550b512cb4a85ab2bb08396cce8a"
+    },
+    {
+      "path": "BUILD15-10-8-TESTREPORT.txt",
+      "bytes": 1218,
+      "sha256": "69a43196afc803e97756fc239643a4228216b95a395d63a5121fbaa1ba258866"
+    },
+    {
+      "path": "tests/test_build15_10_8_about_editorial_refine.py",
+      "bytes": 1823,
+      "sha256": "eee480ea356993069fb5f18419c3f37c7657e792bc64ffa6059e8713d4ef1b62"
+    }
+  ]
+}
