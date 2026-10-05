@@ -1,0 +1,158 @@
+/* BUILD 15.10.4 · Hook marker rail beside the 9:16 preview */
+.short-hook-designer-grid1593{
+  grid-template-areas:"preview markup controls";
+  grid-template-columns:minmax(270px,360px) 124px minmax(360px,1fr);
+  gap:14px;
+  align-items:start;
+}
+.short-hook-preview-shell1593{grid-area:preview;min-width:0}
+.short-hook-markup-rail15104{grid-area:markup;min-width:0}
+.short-hook-controls1593{grid-area:controls;min-width:0}
+
+@media(min-width:1120px){
+  .short-hook-markup-rail15104{
+    position:sticky;
+    top:4px;
+    align-self:start;
+    max-height:calc(100vh - 245px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    margin:0!important;
+    padding:8px!important;
+    border:1px solid #e3d0c5!important;
+    border-radius:15px!important;
+    background:#fff!important;
+    box-shadow:0 8px 22px rgba(47,38,35,.07)!important;
+    gap:7px!important;
+    scrollbar-width:thin;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-head1598{
+    display:grid;
+    gap:6px;
+    align-items:start;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-head1598>div:first-child{display:grid;gap:1px}
+  .short-hook-markup-rail15104 .short-hook-markup-head1598 strong{font-size:11px}
+  .short-hook-markup-rail15104 .short-hook-markup-head1598 span{display:none}
+  .short-hook-markup-rail15104 .short-hook-markup-mode1598{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:4px;
+    width:100%;
+    padding:3px;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-mode1598 button{
+    width:100%;
+    min-height:34px;
+    padding:6px 4px;
+    font-size:9px;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-toolbar1598{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:5px;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-toolbar1598 button{
+    width:100%;
+    height:38px;
+    padding:0;
+    border-radius:9px;
+    font-size:21px;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-settings1598{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:7px;
+    align-items:stretch;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-settings1598>label{
+    display:grid!important;
+    grid-template-columns:1fr auto!important;
+    align-items:center!important;
+    gap:5px!important;
+    font-size:9px!important;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-settings1598 input[type=color]{
+    width:34px;
+    height:31px;
+    border-radius:8px;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-swatches1598{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:5px;
+    padding:0;
+    order:2;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-swatches1598 button{
+    width:24px;
+    height:24px;
+    justify-self:center;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-stroke1598{
+    grid-template-columns:auto 24px!important;
+    grid-template-rows:auto auto;
+    gap:4px!important;
+    order:3;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-stroke1598 input{
+    grid-column:1/-1;
+    width:100%;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-actions1598{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-actions1598 .kh-soft{
+    white-space:normal;
+    padding:6px 5px;
+    font-size:8.5px;
+    line-height:1.15;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-list1598{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:4px;
+    max-height:80px;
+    overflow:auto;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-list1598>button{
+    width:100%;
+    border-radius:8px;
+    padding:5px 6px;
+    font-size:8.5px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-list1598>button span{width:16px;height:16px;flex:0 0 16px}
+  .short-hook-markup-rail15104 .short-hook-markup-selected1598{padding:6px;gap:5px}
+  .short-hook-markup-rail15104 .short-hook-markup-selected-head1598 strong{font-size:9px}
+  .short-hook-markup-rail15104 .short-hook-markup-selected-grid1598{grid-template-columns:1fr;gap:4px}
+  .short-hook-markup-rail15104 .short-hook-markup-selected-grid1598 label{
+    grid-template-columns:1fr 28px!important;
+    grid-template-rows:auto auto;
+    gap:3px!important;
+    font-size:8px!important;
+  }
+  .short-hook-markup-rail15104 .short-hook-markup-selected-grid1598 input{grid-column:1/-1}
+  .short-hook-markup-rail15104 .short-hook-markup-hint1598{display:none}
+}
+
+@media(min-width:761px) and (max-width:1119px){
+  .short-hook-designer-grid1593{
+    grid-template-areas:"preview controls" "markup controls";
+    grid-template-columns:minmax(240px,320px) minmax(360px,1fr);
+    gap:14px 18px;
+  }
+  .short-hook-markup-rail15104{align-self:start}
+}
+
+@media(max-width:760px){
+  .short-hook-designer-grid1593{
+    grid-template-areas:"preview" "markup" "controls";
+    grid-template-columns:1fr;
+  }
+  .short-hook-markup-rail15104{width:100%;box-sizing:border-box}
+}

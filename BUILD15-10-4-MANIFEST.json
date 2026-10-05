@@ -1,0 +1,92 @@
+{
+  "build": "15.10.4",
+  "base": "15.10.3",
+  "scope": "Natural Voice Pass + Hook-Werkzeugleiste rechts neben Vorschau",
+  "files": [
+    {
+      "path": "arbeitsweise.html",
+      "bytes": 19908,
+      "sha256": "afd1bf52d856f098b749b1c3b5686c81ad6d6a8afa6aa104848f8c41678c8a9c"
+    },
+    {
+      "path": "hub.html",
+      "bytes": 57138,
+      "sha256": "9bf2944815995da8231263abd3f9302bebea7cc01becb267e6798e3f3ffd787f"
+    },
+    {
+      "path": "hub-build15-8.js",
+      "bytes": 112106,
+      "sha256": "4e56d327582cb1f033080f0dcb8946e96228079f76148c3a0bba867a4f40c57c"
+    },
+    {
+      "path": "short-hook-15-10-4.css",
+      "bytes": 4943,
+      "sha256": "2acf69c16c6dfb6c2716503aae1d7e1944d79fc6aa0675ad7b2c7f9f6dfdd69e"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "d2e40b65dda0401da259fdc3951da31e7e080c99f76b8b200b0fb93150334921"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "d7b26395bc5afd8ba099905c2b9d0ba1b6314c82cc62ae11c84ff170918bb414"
+    },
+    {
+      "path": "desktop/app/web/arbeitsweise.html",
+      "bytes": 19908,
+      "sha256": "afd1bf52d856f098b749b1c3b5686c81ad6d6a8afa6aa104848f8c41678c8a9c"
+    },
+    {
+      "path": "desktop/app/web/hub.html",
+      "bytes": 57138,
+      "sha256": "9bf2944815995da8231263abd3f9302bebea7cc01becb267e6798e3f3ffd787f"
+    },
+    {
+      "path": "desktop/app/web/hub-build15-8.js",
+      "bytes": 112106,
+      "sha256": "4e56d327582cb1f033080f0dcb8946e96228079f76148c3a0bba867a4f40c57c"
+    },
+    {
+      "path": "desktop/app/web/short-hook-15-10-4.css",
+      "bytes": 4943,
+      "sha256": "2acf69c16c6dfb6c2716503aae1d7e1944d79fc6aa0675ad7b2c7f9f6dfdd69e"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "d2e40b65dda0401da259fdc3951da31e7e080c99f76b8b200b0fb93150334921"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "d7b26395bc5afd8ba099905c2b9d0ba1b6314c82cc62ae11c84ff170918bb414"
+    },
+    {
+      "path": "tests/test_build15_10_4_voice_hookrail.py",
+      "bytes": 3015,
+      "sha256": "b36edcb4d7a747953f7dda2a7dbcc745b0ccbc5e26c5df39b99b82e5b03ae068"
+    },
+    {
+      "path": "BUILD15-10-4-NOTE.txt",
+      "bytes": 1660,
+      "sha256": "a2eec2d09a588d103a344786a92ef6ef9334932e29e17d284536f5dbf6e015ba"
+    },
+    {
+      "path": "BUILD15-10-4-TESTREPORT.txt",
+      "bytes": 1518,
+      "sha256": "fd8d1741ac90dad31fd9c2d6732dcae62df93d812031c2a0eeceefcd31e44dfe"
+    },
+    {
+      "path": "INSTALLATION-15.10.4.txt",
+      "bytes": 418,
+      "sha256": "4b99b09c56d04ac20e901056da0274d7ff511cabbc332419b2ceff239f54aad9"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.4.cmd",
+      "bytes": 152,
+      "sha256": "5c589e834104c2b742817528e1605016aad6bcc07f9e341db659b9e1116d0505"
+    }
+  ]
+}
