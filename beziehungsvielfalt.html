@@ -39,6 +39,73 @@
   .nav-scroll::-webkit-scrollbar { height: 6px; }
   .nav-scroll::-webkit-scrollbar-thumb { background: #E8D2BE; border-radius: 999px; }
 
+
+  /* BUILD 15.10.9 · editorial relationship-diversity topics */
+  .diversity-editorial-head {
+    display:grid;
+    grid-template-columns:minmax(0,.78fr) minmax(0,1.42fr);
+    gap:3rem;
+    align-items:end;
+    padding-bottom:2rem;
+    border-bottom:1px solid #2F2623;
+  }
+  .diversity-editorial-kicker {
+    color:#C96B4B;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:.78rem;
+    font-weight:700;
+  }
+  .diversity-editorial-title {
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:clamp(2rem,3.8vw,3.45rem);
+    line-height:1.02;
+    letter-spacing:-.025em;
+    font-weight:500;
+  }
+  .diversity-topic-row {
+    display:grid;
+    grid-template-columns:64px minmax(180px,.72fr) minmax(0,1.55fr);
+    gap:1.75rem;
+    align-items:start;
+    padding:2rem 0;
+    border-bottom:1px solid #E8D2BE;
+  }
+  .diversity-topic-no {
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:.95rem;
+    color:#A9543B;
+    letter-spacing:.08em;
+    padding-top:.22rem;
+  }
+  .diversity-topic-title {
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:1.48rem;
+    line-height:1.15;
+    font-weight:700;
+    color:#2F2623;
+  }
+  .diversity-topic-copy {
+    color:#5F504A;
+    font-size:1.03rem;
+    line-height:1.72;
+  }
+  .diversity-background-note {
+    margin-top:1.6rem;
+    padding:.9rem 0 .9rem 1.15rem;
+    border-left:3px solid #C96B4B;
+    color:#F5E6D3;
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:1.16rem;
+    line-height:1.55;
+  }
+  @media (max-width: 767px) {
+    .diversity-editorial-head { grid-template-columns:1fr; gap:.85rem; padding-bottom:1.5rem; }
+    .diversity-topic-row { grid-template-columns:42px 1fr; gap:.7rem 1rem; padding:1.6rem 0; }
+    .diversity-topic-copy { grid-column:2; font-size:1rem; }
+    .diversity-topic-title { font-size:1.3rem; }
+  }
+
   </style>
 <script src="site-mode15-5.js?v=15.5.0"></script>
 </head>
@@ -53,8 +120,8 @@
 <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
 <div>
 <p class="text-[#C96B4B] uppercase tracking-wide mb-3 font-semibold">Polyamorie, offene Beziehungen &amp; Beziehungsvielfalt</p>
-<h1 class="text-5xl md:text-6xl font-bold text-[#2F2623] mb-8 leading-tight">Komm so, wie du bist. Es gibt kein Richtig oder Falsch.</h1>
-<p class="text-[#5F504A] text-xl leading-relaxed max-w-3xl mb-8">Manche Menschen kommen in Beratung, weil sie eine offene oder polyamore Beziehung leben. Andere, weil sie darüber nachdenken. Wieder andere, weil Fragen von Freiheit, Verbindlichkeit, Eifersucht, Sexualität oder Ehrlichkeit gerade an Grenzen führen.</p>
+<h1 class="text-5xl md:text-6xl font-bold text-[#2F2623] mb-8 leading-tight">Offen, polyamor oder gerade erst am Herausfinden, was für euch passt.</h1>
+<p class="text-[#5F504A] text-xl leading-relaxed max-w-3xl mb-8">Eine Beziehung zu öffnen kann sich gleichzeitig aufregend und ziemlich verunsichernd anfühlen. Andere leben schon lange nicht-monogam und stoßen irgendwann trotzdem an einen Punkt, an dem es kompliziert wird. Eifersucht taucht auf. Eine Vereinbarung funktioniert plötzlich nicht mehr. Einer möchte mehr Freiheit als der andere. Oder eine neue Beziehung verändert etwas in der bestehenden.</p>
 <div class="flex flex-col sm:flex-row gap-4">
 <a class="inline-flex justify-center px-7 py-4 bg-[#C96B4B] text-white font-bold rounded-2xl shadow-lg hover:bg-[#A9543B] transition" href="booking.html" rel="noopener" target="_blank">Erstgespräch anfragen</a>
 <a class="inline-flex justify-center px-7 py-4 bg-white border border-[#E8D2BE] text-[#2F2623] font-bold rounded-2xl hover:bg-[#F5E6D3] transition" href="#themen">Mehr zu den Themen</a>
@@ -65,12 +132,57 @@
 <div class="relative bg-white/80 border border-[#E8D2BE] rounded-[2rem] p-3 shadow-2xl overflow-hidden">
 <img alt="Abstrakte Illustration verschiedener Beziehungskonstellationen mit verbundenen Figuren" class="w-full aspect-[16/9] object-cover rounded-[1.5rem]" src="./public/beziehungsvielfalt-konstellation.png"/>
 </div>
-<p class="mt-4 text-center text-sm text-[#5F504A]">Vielfalt bedeutet nicht Beliebigkeit — sondern bewusste Verbindung, Klarheit und gegenseitige Verantwortung.</p>
+<p class="mt-4 text-center text-sm text-[#5F504A]">Mehr Möglichkeiten bedeuten manchmal auch mehr Dinge, über die man wirklich miteinander reden muss.</p>
 </div>
 </div>
 </section>
-<section class="py-24 px-6 md:px-16 bg-white" id="themen"><div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8"><div class="bg-white rounded-3xl p-7 shadow-lg border border-[#E8D2BE]"><div class="text-3xl mb-4">✔</div><h3 class="text-xl font-bold mb-2 text-[#2F2623]">Konsens &amp; Vereinbarungen</h3><p class="text-[#5F504A]">Was gilt? Was verändert sich? Was braucht Sicherheit, Transparenz und gegenseitige Zustimmung?</p></div><div class="bg-white rounded-3xl p-7 shadow-lg border border-[#E8D2BE]"><div class="text-3xl mb-4">♥</div><h3 class="text-xl font-bold mb-2 text-[#2F2623]">Eifersucht &amp; Sicherheit</h3><p class="text-[#5F504A]">Eifersucht, Angst oder Scham sind nicht automatisch Zeichen, dass etwas falsch ist. Sie können Hinweise auf Bedürfnisse und Grenzen sein.</p></div><div class="bg-white rounded-3xl p-7 shadow-lg border border-[#E8D2BE]"><div class="text-3xl mb-4">☷</div><h3 class="text-xl font-bold mb-2 text-[#2F2623]">Mehrpersonensettings</h3><p class="text-[#5F504A]">Je nach Anliegen kann Beratung als Einzel-, Paar- oder Mehrpersonensetting sinnvoll sein.</p></div></div></section>
-<section class="py-24 px-6 md:px-16 bg-[#2F2623] text-white"><div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12"><div><p class="text-[#E8D2BE] uppercase tracking-wide mb-3 font-semibold">Mein Hintergrund</p><h2 class="text-4xl font-bold mb-6">Beziehung darf vielfältig sein — und trotzdem braucht sie Klarheit, Sicherheit und gute Vereinbarungen.</h2><p class="text-white/75 text-lg leading-relaxed">In meiner Masterarbeit habe ich mich mit Beratung im Kontext von Polyamorie beschäftigt: mit emotionalen Dynamiken, gesellschaftlichen Erwartungen, Unsicherheiten in Beratungssituationen und der Frage, was professionelle Begleitung braucht, damit Menschen sich nicht erklären oder rechtfertigen müssen.</p></div><div class="bg-white/10 rounded-3xl p-8 border border-white/10"><h3 class="text-2xl font-bold mb-6">Themen, mit denen du kommen kannst</h3><ul class="space-y-4 text-white/75 text-lg"><li>✔ Öffnung einer bestehenden Beziehung</li><li>✔ Eifersucht, Unsicherheit und Verlustangst</li><li>✔ Grenzen, Regeln, Vereinbarungen und Konsens</li><li>✔ Coming-out, Familie, Freundeskreis oder berufliches Umfeld</li><li>✔ Unterschiedliche Bedürfnisse nach Freiheit und Verbindlichkeit</li><li>✔ Konflikte in Dreiecken, Netzwerken oder Mehrpersonenkonstellationen</li></ul></div></div></section><section class="relative w-full bg-[#C96B4B] py-28 px-6 md:px-16 overflow-hidden" id="kontakt"><div class="relative max-w-3xl mx-auto text-center text-white"><p class="text-white/80 uppercase tracking-wide mb-3 font-semibold">Kennenlernen</p><h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight">Du musst noch nicht wissen, wie es weitergeht.</h2><p class="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">Im Erstgespräch sortieren wir gemeinsam, was gerade los ist und welcher nächste Schritt sinnvoll sein könnte.</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4"><a class="px-10 py-4 bg-white text-[#2F2623] font-bold tracking-wide rounded-2xl shadow-xl hover:bg-[#FFF7ED] transition" href="booking.html" rel="noopener" target="_blank">Unverbindliches Erstgespräch anfragen</a><a class="px-10 py-4 bg-white/10 border border-white/40 text-white font-bold tracking-wide rounded-2xl hover:bg-white/20 transition" href="https://wa.me/4366473878530?text=Hallo%20Theophil%2C%20ich%20w%C3%BCrde%20gerne%20ein%20unverbindliches%20Erstgespr%C3%A4ch%20anfragen." target="_blank" rel="noopener">Per WhatsApp schreiben</a></div></div></section>
+<section class="py-24 px-6 md:px-16 bg-white" id="themen">
+<div class="max-w-6xl mx-auto">
+<div class="diversity-editorial-head">
+<p class="diversity-editorial-kicker">Worüber wir sprechen</p>
+<h2 class="diversity-editorial-title">Drei Stellen, an denen es oft kompliziert wird.</h2>
+</div>
+<div class="diversity-topic-row">
+<div class="diversity-topic-no">01</div>
+<h3 class="diversity-topic-title">Konsens &amp;<br class="hidden md:block"/> Vereinbarungen</h3>
+<p class="diversity-topic-copy">Eine Vereinbarung kann auf dem Papier völlig eindeutig sein und sich im echten Leben trotzdem anders anfühlen. Was ist tatsächlich abgesprochen? Was wurde nur angenommen? Was braucht einer von euch, damit sich Freiheit noch gut anfühlt? Und was passiert, wenn sich Bedürfnisse verändern?</p>
+</div>
+<div class="diversity-topic-row">
+<div class="diversity-topic-no">02</div>
+<h3 class="diversity-topic-title">Eifersucht &amp;<br class="hidden md:block"/> Sicherheit</h3>
+<p class="diversity-topic-copy">Eifersucht kann laut sein, peinlich, wütend oder überraschend körperlich. Dann lohnt es sich, genauer hinzuschauen: Was passiert gerade? Wovor hast du Angst? Was versuchst du durch Kontrolle, Rückzug oder Regeln wieder in den Griff zu bekommen? Eifersucht muss nicht sofort verschwinden. Erst einmal können wir verstehen, was sie gerade mit dir und zwischen euch macht.</p>
+</div>
+<div class="diversity-topic-row">
+<div class="diversity-topic-no">03</div>
+<h3 class="diversity-topic-title">Mehrpersonen&shy;settings</h3>
+<p class="diversity-topic-copy">Bei manchen Themen reicht ein Gespräch zu zweit. Bei anderen gehört eine dritte oder vierte Person tatsächlich mit an den Tisch. Wer bei einer Sitzung dabei ist, richtet sich nach dem Thema und danach, wer davon betroffen ist.</p>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 md:px-16 bg-[#2F2623] text-white">
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+<div>
+<p class="text-[#E8D2BE] uppercase tracking-wide mb-3 font-semibold">Mein Hintergrund</p>
+<h2 class="text-4xl font-bold mb-6">Ich habe Menschen in polyamoren Beziehungen gefragt, was ihnen wirklich hilft.</h2>
+<p class="text-white/75 text-lg leading-relaxed">In meiner Masterarbeit habe ich mit Menschen in Österreich und den USA über ihr Leben in polyamoren Beziehungen gesprochen. Wir haben über Eifersucht, Compersion, Regeln und Grenzen, Reaktionen von Familie und Freundeskreis und Erfahrungen mit Beratung gesprochen. Besonders interessant war für mich, was Menschen tatsächlich als hilfreich erleben – und an welchen Stellen Beratung an ihrer Lebensrealität vorbeigeht.</p>
+<p class="diversity-background-note">Die Beziehungsform ist der Rahmen. Im Gespräch zählt, was zwischen den Beteiligten tatsächlich passiert.</p>
+</div>
+<div class="bg-white/10 rounded-3xl p-8 border border-white/10">
+<h3 class="text-2xl font-bold mb-6">Themen, mit denen du kommen kannst</h3>
+<ul class="space-y-4 text-white/75 text-lg">
+<li>✔ Ihr überlegt, eure Beziehung zu öffnen.</li>
+<li>✔ Eifersucht oder Verlustangst nimmt plötzlich sehr viel Raum ein.</li>
+<li>✔ Regeln und Vereinbarungen funktionieren im Alltag anders als gedacht.</li>
+<li>✔ Einer von euch möchte mehr Freiheit als der andere.</li>
+<li>✔ Eine neue Beziehung verändert eine bestehende.</li>
+<li>✔ Familie, Freundeskreis oder Arbeitsumfeld wissen nichts von eurer Beziehungsform.</li>
+<li>✔ In einem Netzwerk oder einer Mehrpersonenkonstellation ist ein Konflikt entstanden.</li>
+<li>✔ Ihr wisst selbst noch nicht genau, welches Beziehungsmodell zu euch passt.</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="relative w-full bg-[#C96B4B] py-28 px-6 md:px-16 overflow-hidden" id="kontakt"><div class="relative max-w-3xl mx-auto text-center text-white"><p class="text-white/80 uppercase tracking-wide mb-3 font-semibold">Kennenlernen</p><h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight">Du musst noch nicht wissen, wie es weitergeht.</h2><p class="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">Erzähl mir im Erstgespräch, was gerade passiert und wer daran beteiligt ist. Dann schauen wir gemeinsam, wo wir anfangen.</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4"><a class="px-10 py-4 bg-white text-[#2F2623] font-bold tracking-wide rounded-2xl shadow-xl hover:bg-[#FFF7ED] transition" href="booking.html" rel="noopener" target="_blank">Erstgespräch anfragen</a><a class="px-10 py-4 bg-white/10 border border-white/40 text-white font-bold tracking-wide rounded-2xl hover:bg-white/20 transition" href="https://wa.me/4366473878530?text=Hallo%20Theophil%2C%20ich%20w%C3%BCrde%20gerne%20ein%20unverbindliches%20Erstgespr%C3%A4ch%20anfragen." target="_blank" rel="noopener">Per WhatsApp schreiben</a></div></div></section>
 <!-- FOOTER -->
 <footer class="bg-[#2F2623] text-white py-16">
 <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-10">

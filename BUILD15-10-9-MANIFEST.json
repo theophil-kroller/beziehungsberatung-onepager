@@ -1,0 +1,72 @@
+{
+  "build": "15.10.9",
+  "base": "15.10.8",
+  "scope": "Relationship diversity DE/EN voice pass; first image block preserved; second block editorialized; dark block preserved and rewritten; CTA appointment + WhatsApp",
+  "files": [
+    {
+      "path": "BUILD-WINDOWS-15.10.9.cmd",
+      "bytes": 128,
+      "sha256": "f5aa6a0bc88aa15309d87b8579f7b802cc303c02eda55dc20e70d81410163547"
+    },
+    {
+      "path": "BUILD15-10-9-NOTE.txt",
+      "bytes": 1283,
+      "sha256": "04a246fbbccd8c9e999633427c270471379321248fdfee5d6d211b4c1046d2e4"
+    },
+    {
+      "path": "BUILD15-10-9-TESTREPORT.txt",
+      "bytes": 1294,
+      "sha256": "c52a159922fb40386daf3438615a6efe1502dec24263d4ef36f790314fcc458b"
+    },
+    {
+      "path": "INSTALLATION-15.10.9.txt",
+      "bytes": 481,
+      "sha256": "e5d9486249af0d9ebaaa1c48eb319cd1faa929a2bb2dd5a02a19bde0742e6513"
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 8,
+      "sha256": "c1a508252b01da35b47b592e1c24fcc37a9fe8700fe6a5861048103aa3491b20"
+    },
+    {
+      "path": "beziehungsvielfalt.html",
+      "bytes": 16245,
+      "sha256": "d2b25d547c93f776a6707127dfee403d7fbb8af7dbffcb4ea3ecd9e152f76d0d"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "bytes": 8,
+      "sha256": "c1a508252b01da35b47b592e1c24fcc37a9fe8700fe6a5861048103aa3491b20"
+    },
+    {
+      "path": "desktop/app/web/beziehungsvielfalt.html",
+      "bytes": 16245,
+      "sha256": "d2b25d547c93f776a6707127dfee403d7fbb8af7dbffcb4ea3ecd9e152f76d0d"
+    },
+    {
+      "path": "desktop/app/web/relationship-diversity.html",
+      "bytes": 15945,
+      "sha256": "bb351edb5707402189bd4e5686c7ce8b8ff90604a706231d4ca2a35804967418"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "eff684acee49c8d226c4107e620038d85d4d3c8fa03f2cb4374448b6d4980d4b"
+    },
+    {
+      "path": "relationship-diversity.html",
+      "bytes": 15945,
+      "sha256": "bb351edb5707402189bd4e5686c7ce8b8ff90604a706231d4ca2a35804967418"
+    },
+    {
+      "path": "tests/test_build15_10_9_relationship_diversity_editorial.py",
+      "bytes": 2156,
+      "sha256": "523ce00919ed3a365e8ee9eda3c594323b00d7fc41f7d3c0a8801ae5a68c7283"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "bytes": 642558,
+      "sha256": "eff684acee49c8d226c4107e620038d85d4d3c8fa03f2cb4374448b6d4980d4b"
+    }
+  ]
+}
