@@ -1,0 +1,56 @@
+{
+  "build": "15.10.10",
+  "base": "15.10.9",
+  "vaultVersion": "3.40.1",
+  "scope": "Relationship-diversity second block visual refinement only; content preserved from 15.10.9.",
+  "files": [
+    {
+      "path": "beziehungsvielfalt.html",
+      "sha256": "350162a197d2b909b351ae661f6f731b569e311018afdf3e927e67ae78ce15c4"
+    },
+    {
+      "path": "relationship-diversity.html",
+      "sha256": "634e248044de3e5fec4411d53aef75c521c5ab100a5e24ad5d0ba62ebc442876"
+    },
+    {
+      "path": "desktop/app/web/beziehungsvielfalt.html",
+      "sha256": "350162a197d2b909b351ae661f6f731b569e311018afdf3e927e67ae78ce15c4"
+    },
+    {
+      "path": "desktop/app/web/relationship-diversity.html",
+      "sha256": "634e248044de3e5fec4411d53aef75c521c5ab100a5e24ad5d0ba62ebc442876"
+    },
+    {
+      "path": "VERSION.txt",
+      "sha256": "35493293f447b9682ed37991a4c95401354ebbf3b86c2fadb6720402362c8126"
+    },
+    {
+      "path": "desktop/app/web/VERSION.txt",
+      "sha256": "35493293f447b9682ed37991a4c95401354ebbf3b86c2fadb6720402362c8126"
+    },
+    {
+      "path": "vault/vault_server.py",
+      "sha256": "7e16a9a44dd8cc1f547b2980685e27901a6ec0be10b92eb0d547ff73daa74e41"
+    },
+    {
+      "path": "desktop/app/web/vault/vault_server.py",
+      "sha256": "7e16a9a44dd8cc1f547b2980685e27901a6ec0be10b92eb0d547ff73daa74e41"
+    },
+    {
+      "path": "BUILD15-10-10-NOTE.txt",
+      "sha256": "ed5e83cc95ab6a65efddcc631183b170d0c8100a22e936dfa4f8e824bd801849"
+    },
+    {
+      "path": "INSTALLATION-15.10.10.txt",
+      "sha256": "741ae190a3c0f1c03e3235ac33bca95ebf49fa13a723a514e4cc43011830ae87"
+    },
+    {
+      "path": "BUILD-WINDOWS-15.10.10.cmd",
+      "sha256": "2d92beeb92de4a4d77696de357f9cde5291c3917e1eee35db57069fca4d25f09"
+    },
+    {
+      "path": "tests/test_build15_10_10_relationship_diversity_paper.py",
+      "sha256": "6b68aee310b47b88415aa2f9363f9b6e88c6d74be58634cdbcb399b6a4e38d51"
+    }
+  ]
+}

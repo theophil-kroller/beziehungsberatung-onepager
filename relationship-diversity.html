@@ -39,56 +39,103 @@
   .nav-scroll::-webkit-scrollbar { height: 6px; }
   .nav-scroll::-webkit-scrollbar-thumb { background: #E8D2BE; border-radius: 999px; }
 
-
-  /* BUILD 15.10.9 · editorial relationship-diversity topics */
+  /* BUILD 15.10.10 · torn-paper editorial relationship-diversity topics */
+  .diversity-paper-section {
+    padding:5.75rem 1.25rem 6.25rem;
+    background:#FFF7ED;
+    overflow:hidden;
+  }
+  .diversity-paper-shell {
+    position:relative;
+    max-width:86rem;
+    margin:0 auto;
+    background:#F1E1CD;
+    color:#2F2623;
+    clip-path:polygon(
+      .4% 1.6%, 5% .5%, 10% 1.25%, 16% .35%, 23% 1.35%, 31% .6%,
+      39% 1.2%, 47% .45%, 55% 1.4%, 63% .55%, 72% 1.25%, 80% .45%,
+      88% 1.3%, 95% .65%, 99.55% 1.35%, 99.25% 98.35%, 94% 99.35%,
+      87% 98.55%, 79% 99.5%, 71% 98.7%, 63% 99.45%, 55% 98.55%,
+      47% 99.4%, 38% 98.65%, 30% 99.45%, 22% 98.55%, 14% 99.4%,
+      7% 98.65%, .45% 99.35%
+    );
+    filter:drop-shadow(0 22px 34px rgba(47,38,35,.12));
+    isolation:isolate;
+  }
+  .diversity-paper-shell::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    opacity:.72;
+    background-image:
+      radial-gradient(circle at 11% 18%, rgba(255,255,255,.72) 0 1px, transparent 1.5px),
+      radial-gradient(circle at 76% 42%, rgba(120,82,58,.08) 0 .8px, transparent 1.4px),
+      radial-gradient(circle at 34% 77%, rgba(255,255,255,.58) 0 .9px, transparent 1.5px),
+      repeating-linear-gradient(0deg, rgba(89,61,45,.018) 0 1px, transparent 1px 4px);
+    background-size:29px 31px, 37px 35px, 43px 39px, auto;
+  }
+  .diversity-paper-inner {
+    max-width:72rem;
+    margin:0 auto;
+    padding:clamp(3.5rem,5vw,5.6rem) clamp(2rem,5.2vw,5.4rem) clamp(4rem,5.5vw,5.9rem);
+  }
   .diversity-editorial-head {
     display:grid;
-    grid-template-columns:minmax(0,.78fr) minmax(0,1.42fr);
-    gap:3rem;
+    grid-template-columns:minmax(0,.62fr) minmax(0,1.48fr);
+    gap:clamp(2rem,4vw,4.5rem);
     align-items:end;
-    padding-bottom:2rem;
-    border-bottom:1px solid #2F2623;
+    padding:.35rem 0 2rem;
+    border-top:1px solid rgba(47,38,35,.62);
+    border-bottom:1px solid rgba(47,38,35,.72);
   }
   .diversity-editorial-kicker {
-    color:#C96B4B;
+    color:#A9543B;
     text-transform:uppercase;
-    letter-spacing:.16em;
-    font-size:.78rem;
-    font-weight:700;
+    letter-spacing:.19em;
+    font-size:.76rem;
+    line-height:1.4;
+    font-weight:800;
+    padding-top:1.35rem;
   }
   .diversity-editorial-title {
     font-family:Georgia, 'Times New Roman', serif;
-    font-size:clamp(2rem,3.8vw,3.45rem);
+    font-size:clamp(2rem,3.25vw,3.1rem);
     line-height:1.02;
-    letter-spacing:-.025em;
+    letter-spacing:-.028em;
     font-weight:500;
+    max-width:17ch;
+    padding-top:1.15rem;
   }
   .diversity-topic-row {
     display:grid;
-    grid-template-columns:64px minmax(180px,.72fr) minmax(0,1.55fr);
-    gap:1.75rem;
+    grid-template-columns:54px minmax(190px,.78fr) minmax(0,1.52fr);
+    gap:clamp(1.2rem,2.5vw,2.3rem);
     align-items:start;
-    padding:2rem 0;
-    border-bottom:1px solid #E8D2BE;
+    padding:2rem 0 2.15rem;
+    border-bottom:1px solid rgba(122,91,72,.32);
   }
+  .diversity-topic-row:last-child { border-bottom:0; padding-bottom:.35rem; }
   .diversity-topic-no {
     font-family:Georgia, 'Times New Roman', serif;
-    font-size:.95rem;
+    font-size:.91rem;
     color:#A9543B;
-    letter-spacing:.08em;
-    padding-top:.22rem;
+    letter-spacing:.11em;
+    padding-top:.25rem;
   }
   .diversity-topic-title {
     font-family:Georgia, 'Times New Roman', serif;
-    font-size:1.48rem;
-    line-height:1.15;
+    font-size:1.43rem;
+    line-height:1.14;
     font-weight:700;
     color:#2F2623;
   }
   .diversity-topic-copy {
     color:#5F504A;
-    font-size:1.03rem;
+    font-size:1.02rem;
     line-height:1.72;
+    max-width:52rem;
   }
   .diversity-background-note {
     margin-top:1.6rem;
@@ -100,11 +147,19 @@
     line-height:1.55;
   }
   @media (max-width: 767px) {
-    .diversity-editorial-head { grid-template-columns:1fr; gap:.85rem; padding-bottom:1.5rem; }
-    .diversity-topic-row { grid-template-columns:42px 1fr; gap:.7rem 1rem; padding:1.6rem 0; }
-    .diversity-topic-copy { grid-column:2; font-size:1rem; }
-    .diversity-topic-title { font-size:1.3rem; }
+    .diversity-paper-section { padding:3.6rem .8rem 4rem; }
+    .diversity-paper-shell {
+      clip-path:polygon(.5% 1.2%, 12% .45%, 25% 1.15%, 39% .5%, 54% 1.25%, 69% .45%, 84% 1.15%, 99.4% .55%, 99.1% 98.7%, 84% 99.4%, 68% 98.8%, 51% 99.45%, 34% 98.8%, 17% 99.4%, .55% 98.8%);
+    }
+    .diversity-paper-inner { padding:3rem 1.45rem 3.4rem; }
+    .diversity-editorial-head { grid-template-columns:1fr; gap:.35rem; padding-bottom:1.45rem; }
+    .diversity-editorial-kicker { padding-top:1.05rem; }
+    .diversity-editorial-title { padding-top:.15rem; max-width:19ch; }
+    .diversity-topic-row { grid-template-columns:38px 1fr; gap:.65rem 1rem; padding:1.55rem 0 1.7rem; }
+    .diversity-topic-copy { grid-column:2; font-size:1rem; line-height:1.65; }
+    .diversity-topic-title { font-size:1.28rem; }
   }
+
 
   </style>
 <script src="site-mode15-5.js?v=15.5.0"></script>
@@ -136,8 +191,9 @@
 </div>
 </div>
 </section>
-<section class="py-24 px-6 md:px-16 bg-white" id="topics">
-<div class="max-w-6xl mx-auto">
+<section class="diversity-paper-section" id="topics">
+<div class="diversity-paper-shell">
+<div class="diversity-paper-inner">
 <div class="diversity-editorial-head">
 <p class="diversity-editorial-kicker">What we might talk about</p>
 <h2 class="diversity-editorial-title">Three places where things often get complicated.</h2>
@@ -156,6 +212,7 @@
 <div class="diversity-topic-no">03</div>
 <h3 class="diversity-topic-title">Multi-person sessions</h3>
 <p class="diversity-topic-copy">Some topics are best explored with two people in the room. For others, a third or fourth person needs to be part of the conversation. Who joins a session depends on the issue and on who is affected by it.</p>
+</div>
 </div>
 </div>
 </section>
