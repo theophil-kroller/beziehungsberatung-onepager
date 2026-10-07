@@ -1,0 +1,16 @@
+{
+  "build": "15.11.0",
+  "base": "15.10.16",
+  "vaultVersion": "3.41.0",
+  "scope": "Methods 2.0",
+  "migrationRequired": false,
+  "workerDeployRequired": false,
+  "changed": [
+    "methods.html",
+    "methods-build15-11.js",
+    "methods-build15-11.css",
+    "vault/vault_server.py",
+    "vault/methods_export.py",
+    "VERSION.txt"
+  ]
+}

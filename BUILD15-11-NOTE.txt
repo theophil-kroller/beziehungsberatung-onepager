@@ -1,0 +1,20 @@
+Beziehungsdynamiken Build 15.11.0 — Methods 2.0
+
+Basis: 15.10.16
+
+Enthalten:
+- erweitertes Methoden-Datenmodell ohne Datenverlust / ohne DB-Migration
+- lokale Inbox-Vorklassifizierung für Setting, Methodentyp, Prozessziel, Indikationen, Vorsicht, Phase, Ansatz, Hausübung und Routine
+- harte, kontrollierte Setting-Werte für spätere Method Intelligence
+- Schnellfilter: Alle, Einzel, Paar, Kleingruppe, Großgruppe, Hausübungen, Routinen
+- zusätzliche Filter für Methodentyp und Ansatz
+- Detailansicht bleibt vollständig editierbar
+- Einzelmethode drucken
+- Einzelmethode als echtes DOCX exportieren
+- aktuell gefilterte Methodensammlung als DOCX exportieren
+- Export bleibt lokal im Secure Practice Vault
+
+Nicht enthalten (spätere Builds):
+- Hausübungs-Zuweisung an Members / Atemtrainer (15.12)
+- KI-Methodenempfehlung aus Sitzungsbriefing (15.13)
+- Intake Forms (16.0)
