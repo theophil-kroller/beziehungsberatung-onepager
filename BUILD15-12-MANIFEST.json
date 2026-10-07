@@ -1,0 +1,21 @@
+{
+  "build": "15.12.0",
+  "base": "15.11.0",
+  "vaultVersion": "3.41.0",
+  "scope": "Member Practice & Hausuebungen",
+  "migrationRequired": false,
+  "workerDeployRequired": true,
+  "changed": [
+    "admin.html",
+    "admin-member-practice15-12.js",
+    "admin-member-practice15-12.css",
+    "zugang.html",
+    "access.html",
+    "member-practice15-12.js",
+    "member-practice15-12.css",
+    "booking.html",
+    "booking-en.html",
+    "cloudflare-worker/worker.js",
+    "VERSION.txt"
+  ]
+}
