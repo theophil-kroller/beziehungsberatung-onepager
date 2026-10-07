@@ -1,0 +1,22 @@
+{
+  "build": "15.10.16",
+  "base": "15.10.15",
+  "vaultVersion": "3.40.1",
+  "theme": "Program Editor Hotfix",
+  "changedFiles": [
+    "admin-build13-6.js",
+    "admin-build13-6-extras.js",
+    "admin-build13-6-2.js",
+    "admin.html",
+    "VERSION.txt",
+    "desktop/app/web/admin-build13-6.js",
+    "desktop/app/web/admin-build13-6-extras.js",
+    "desktop/app/web/admin-build13-6-2.js",
+    "desktop/app/web/admin.html",
+    "desktop/app/web/VERSION.txt",
+    "tests/test_build15_10_16_program_editor.py"
+  ],
+  "workerDeployRequired": false,
+  "d1MigrationRequired": false,
+  "notes": "BUILD15-10-16-NOTE.txt"
+}
