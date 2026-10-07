@@ -1,0 +1,19 @@
+{
+  "build": "15.12.1",
+  "base": "15.12.0",
+  "scope": "Member Preview, access-link audit UX, monthly accounting",
+  "migrationRequired": false,
+  "workerDeployRequired": true,
+  "changed": [
+    "admin.html",
+    "admin-build10.js",
+    "admin-build10.css",
+    "admin-member-practice15-12.js",
+    "admin-member-practice15-12.css",
+    "site-mode15-5.js",
+    "zugang.html",
+    "access.html",
+    "cloudflare-worker/worker.js",
+    "VERSION.txt"
+  ]
+}

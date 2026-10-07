@@ -8,7 +8,7 @@
 <!-- compatibility marker: BUILD 14.3.5.6 -->
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" href="admin-build9.css?v=20260921-build13">
-<link rel="stylesheet" href="admin-build10.css?v=20260921-build13">
+<link rel="stylesheet" href="admin-build10.css?v=15.12.1">
 <link rel="stylesheet" href="admin-build11.css?v=20260922-build13-7-5">
 <link rel="stylesheet" href="admin-build12.css?v=20260918-build12">
 <link rel="stylesheet" href="admin-build13-6.css?v=14.15.8">
@@ -58,7 +58,7 @@
 <link rel="stylesheet" href="admin-site-mode15-5.css?v=15.5.0">
 <link rel="stylesheet" href="admin-build15-5-traffic.css?v=15.5.0">
 <link rel="stylesheet" href="admin-client-cards15-9-5.css?v=15.9.5">
-<link rel="stylesheet" href="admin-member-practice15-12.css?v=15.12.0">
+<link rel="stylesheet" href="admin-member-practice15-12.css?v=15.12.1">
 </head>
 <body>
 <!-- Regression lineage: BUILD 14.3.5.8 -->
@@ -196,7 +196,7 @@
 
     <section class="view flow-manager-view" id="view-flow"><section class="panel flow-manager-shell"><div class="panel-head"><div><p class="eyebrow">Session Flow Manager</p><h2>Ein klarer Ablauf rund um jede Sitzung.</h2><p class="muted">Vorbereiten → Buchung &amp; Angebote → Nachbereiten. Offene Schritte bleiben sichtbar.</p></div><button class="btn ghost" id="flowRefresh" type="button">Aktualisieren</button></div><div class="flow-summary-grid"><article class="flow-mini-stat"><span>Vorbereitung offen</span><strong id="flowPrepCount">0</strong></article><article class="flow-mini-stat"><span>Nachbereitung offen</span><strong id="flowPostCount">0</strong></article><article class="flow-mini-stat"><span>Geparkt</span><strong id="flowParkCount">0</strong></article></div><div class="flow-board" style="margin-top:18px"><section><div class="panel-head"><div><p class="eyebrow">Jetzt relevant</p><h3>Offene Session Flows</h3></div></div><div id="flowMainList" class="flow-list"><div class="empty">Session Flow wird geladen …</div></div></section></div></section></section>
 
-    <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Buchhaltung</p><h2>Einnahmen, Forderungen und Zahlungswege.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt. Grafiken nutzen reale Daten – oder klar gekennzeichnete Sandbox/Testwerte, solange noch zu wenig Historie vorhanden ist.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Honorarnoten öffnen</button></div><div class="finance-stat-grid"><article><span>Eingegangen diesen Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div>
+    <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Buchhaltung</p><h2>Einnahmen, Forderungen und Zahlungswege.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt. Grafiken nutzen reale Daten – oder klar gekennzeichnete Sandbox/Testwerte, solange noch zu wenig Historie vorhanden ist.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Honorarnoten öffnen</button></div><div class="finance-month-toolbar"><button class="mini" id="financeMonthPrev" type="button" aria-label="Vorheriger Monat">‹</button><strong id="financeMonthLabel">—</strong><button class="mini" id="financeMonthNext" type="button" aria-label="Nächster Monat">›</button><button class="mini" id="financeMonthToday" type="button">Aktueller Monat</button><label class="micro muted finance-basis-label">Monatsansicht <select id="financeBasis"><option value="payment">Nach Zahlungseingang</option><option value="invoice">Nach Rechnungsdatum</option></select></label></div><div class="finance-stat-grid"><article><span id="financeMonthMetricLabel">Eingegangen im Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div>
       <section class="finance-box b143519-performance" id="financePerformanceOverview">
         <div class="b143519-performance-head">
           <div><p class="eyebrow">Leistung &amp; Verrechnung</p><h3>Jahresübersicht</h3><p class="micro muted">Erbrachte Sitzungen, Verrechnungsstand und tatsächlicher Zahlungsfluss – ergänzend zur bestehenden Buchhaltung.</p></div>
@@ -227,8 +227,8 @@
           <div class="finance-fixed-result"><span>Nach Fixkosten im aktuellen Monat</span><strong id="financeAfterFixed">—</strong></div>
         </section>
       </div>
-      <div class="finance-grid"><section class="finance-box finance-payment-mix"><div class="finance-visual-head"><div><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3></div><div id="financePaymentDonut" class="finance-donut" aria-label="Verteilung der Zahlungswege"><span>—</span></div></div><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><div class="finance-bottom-grid">
-        <section class="finance-box finance-recent-box"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section>
+      <div class="finance-grid"><section class="finance-box finance-payment-mix"><div class="finance-visual-head"><div><p class="eyebrow">Monatsansicht</p><h3 id="financeBreakdownTitle">Einnahmen nach Zahlungsweg</h3></div><div id="financePaymentDonut" class="finance-donut" aria-label="Verteilung der Zahlungswege"><span>—</span></div></div><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><div class="finance-bottom-grid">
+        <section class="finance-box finance-recent-box"><p class="eyebrow">Monatsdetails</p><h3 id="financeRecentTitle">Zahlungen im ausgewählten Monat</h3><div id="financeRecent"></div></section>
         <section class="finance-box finance-ea-box">
           <div class="finance-ea-head"><div><p class="eyebrow">Einnahmen-Ausgaben-Rechnung</p><h3>Ergebnis im gewählten Zeitraum</h3></div><span class="finance-demo-badge" id="financeEaMode">—</span></div>
           <div class="finance-period-tabs" id="financeEaRange" role="group" aria-label="Zeitraum der Einnahmen-Ausgaben-Rechnung">
@@ -309,7 +309,7 @@
 <script src="desktop-bridge.js?v=20260929-build14-10-1"></script>
 <script src="admin-build9.js?v=20260928-build14-4-1"></script>
 <script src="admin-vault.js?v=20260928-build14-4-1"></script>
-<script src="admin-build10.js?v=15.10.15"></script>
+<script src="admin-build10.js?v=15.12.1"></script>
 <script src="admin-build11.js?v=20260922-build13-7-5"></script>
 <script src="admin-build12.js?v=20260918-build12"></script>
 <script src="admin-build13-6.js?v=15.10.16"></script>
@@ -348,6 +348,6 @@
 <script src="admin-nav15-4-1.js?v=15.8.0"></script>
 <script src="admin-site-mode15-5.js?v=15.5.0"></script>
 <script src="admin-build15-10-15.js?v=15.10.15"></script>
-<script src="admin-member-practice15-12.js?v=15.12.0"></script>
+<script src="admin-member-practice15-12.js?v=15.12.1"></script>
 </body>
 </html>
