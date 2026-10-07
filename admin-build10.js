@@ -2,7 +2,7 @@
   'use strict';
   const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
   const SESSION_KEY='bd_admin_session_v1',VAULT='http://127.0.0.1:47831',VAULT_TOKEN_KEY='bd_vault_token_v1';
-  let session=sessionStorage.getItem(SESSION_KEY)||'',dashboard=null,flows=[],current=null,vaultData=null,refreshTimer=null,booted=false,lastRefreshAt=0;
+  let session=sessionStorage.getItem(SESSION_KEY)||'',dashboard=null,flows=[],current=null,vaultData=null,refreshTimer=null,booted=false,lastRefreshAt=0,financeMonthKey='',financeBasis='payment';
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const norm=s=>String(s||'').trim().toLowerCase();
@@ -19,32 +19,32 @@
   function pendingRows(){return relevantBookings().filter(b=>{const s=derivedState(b,flowFor(b));return s!=='completed'&&bookingEnd(b)<=now()})}
   function upcomingRows(){return relevantBookings().filter(b=>new Date(b.start).getTime()>=now())}
 
-  function sameViennaMonth(iso){
-    if(!iso)return false;
-    const f=x=>Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit'}).formatToParts(new Date(x)).map(p=>[p.type,p.value]));
-    const a=f(iso),b=f(new Date());
-    return a.year===b.year&&a.month===b.month;
-  }
-  function financeData(){
+  function financeMonthOf(value){if(!value)return'';try{const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit'}).formatToParts(new Date(value)).filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));return `${p.year}-${p.month}`}catch(_){return String(value).slice(0,7)}}
+  function currentFinanceMonth(){return financeMonthOf(new Date())}
+  function financeMonthLabel(key){const [y,m]=String(key||currentFinanceMonth()).split('-').map(Number);return new Intl.DateTimeFormat('de-AT',{month:'long',year:'numeric',timeZone:'Europe/Vienna'}).format(new Date(Date.UTC(y,m-1,15)))}
+  function shiftFinanceMonth(delta){const [y,m]=String(financeMonthKey||currentFinanceMonth()).split('-').map(Number),d=new Date(Date.UTC(y,m-1+delta,15));financeMonthKey=`${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}`;renderFinance()}
+  function financeData(month=financeMonthKey||currentFinanceMonth(),basis=financeBasis){
     // BUILD 13: cashflow is derived from the payment journal, never from an
     // invoice status. An invoice is a claim/document; an invoice_payment is
     // the actual money movement.
     const allInvoices=(dashboard?.invoices||[]),invoices=allInvoices.filter(x=>!x.isTest&&x.dbStatus!=='test');
     const allPayments=(dashboard?.payments||[]);
-    const paidMonth=allPayments.filter(x=>!x.isTest&&sameViennaMonth(x.paidAt));
-    const testPaidMonth=allPayments.filter(x=>x.isTest&&sameViennaMonth(x.paidAt));
-    const received=paidMonth.reduce((n,x)=>n+Number(x.amountCents||0),0);
-    const methods={stripe:0,bank_transfer:0,cash:0,sumup:0,other:0};
-    paidMonth.forEach(x=>{const k=['stripe','bank_transfer','cash','sumup'].includes(x.paymentMethod)?x.paymentMethod:'other';methods[k]+=Number(x.amountCents||0)});
+    const paidMonth=allPayments.filter(x=>!x.isTest&&financeMonthOf(x.paidAt)===month);
+    const testPaidMonth=allPayments.filter(x=>x.isTest&&financeMonthOf(x.paidAt)===month);
+    const invoiceMonth=invoices.filter(x=>financeMonthOf(x.invoiceDate)===month);
+    const received=basis==='invoice'?invoiceMonth.reduce((n,x)=>n+Number(x.totalCents||0),0):paidMonth.reduce((n,x)=>n+Number(x.amountCents||0),0);
+    const methods=basis==='invoice'?{paid:0,open:0,overdue:0,cancelled:0,other:0}:{stripe:0,bank_transfer:0,cash:0,sumup:0,other:0};
+    if(basis==='invoice')invoiceMonth.forEach(x=>{const k=['paid','open','overdue','cancelled'].includes(String(x.status||'').toLowerCase())?String(x.status).toLowerCase():'other';methods[k]+=Number(x.totalCents||0)});
+    else paidMonth.forEach(x=>{const k=['stripe','bank_transfer','cash','sumup'].includes(x.paymentMethod)?x.paymentMethod:'other';methods[k]+=Number(x.amountCents||0)});
     const horizon=Date.now()+30*86400000;
     const expectedInvoices=invoices.filter(x=>(x.status==='open'||x.status==='overdue')&&x.dueDate&&new Date(String(x.dueDate).slice(0,10)+'T23:59:59').getTime()<=horizon).reduce((n,x)=>n+Number(x.totalCents||0),0);
     const subs=(dashboard?.build9?.subscriptions||[]).filter(x=>['active','trialing'].includes(String(x.status||'').toLowerCase()));
     const recurring=subs.reduce((n,x)=>{const end=x.current_period_end||x.currentPeriodEnd;if(end&&new Date(end).getTime()>horizon)return n;return n+Number(x.amount_cents??x.amountCents??0)},0);
     const packages=(dashboard?.packages||[]).filter(x=>Number(x.remaining)>0&&!x.isSandboxProfile&&!['test','pending'].includes(String(x.purchaseStatus||'').toLowerCase()));
     const packageValue=packages.reduce((n,x)=>{const total=Math.max(1,Number(x.total||1)),remaining=Math.max(0,Number(x.remaining||0)),amount=Number(x.purchaseAmountCents||0);return n+Math.round(amount*remaining/total)},0);
-    return {received,methods,expected30:expectedInvoices+recurring,expectedInvoices,recurring,packageValue,paidMonth,testPaidMonth};
+    return {received,methods,expected30:expectedInvoices+recurring,expectedInvoices,recurring,packageValue,paidMonth,testPaidMonth,invoiceMonth,month,basis};
   }
-  function methodLabel(k){return ({stripe:'Stripe',bank_transfer:'Überweisung',cash:'Bar',sumup:'SumUp',other:'Sonstiges'})[k]||k}
+  function methodLabel(k){return ({stripe:'Stripe',bank_transfer:'Überweisung',cash:'Bar',sumup:'SumUp',paid:'Bezahlt',open:'Offen',overdue:'Überfällig',cancelled:'Storniert',other:'Sonstiges'})[k]||k}
   function openFinanceView(){
     $$('.nav-item[data-view], [data-build10-flow-nav], [data-build10-finance-nav]').forEach(b=>b.classList.toggle('active',b.hasAttribute('data-build10-finance-nav')));
     $$('.view').forEach(v=>v.classList.toggle('active',v.id==='view-finance'));
@@ -52,7 +52,13 @@
   }
   function renderFinance(){
     if(!dashboard||!$('#financeCockpit'))return;
+    if(!financeMonthKey)financeMonthKey=currentFinanceMonth();
     const f=financeData(),bi=dashboard?.build9?.bankImport||{},max=Math.max(1,...Object.values(f.methods));
+    if($('#financeMonthLabel'))$('#financeMonthLabel').textContent=financeMonthLabel(financeMonthKey);
+    if($('#financeBasis'))$('#financeBasis').value=financeBasis;
+    if($('#financeMonthMetricLabel'))$('#financeMonthMetricLabel').textContent=financeBasis==='invoice'?'Rechnungsvolumen im Monat':'Eingegangen im Monat';
+    if($('#financeBreakdownTitle'))$('#financeBreakdownTitle').textContent=financeBasis==='invoice'?'Honorarnoten im Monat':'Einnahmen nach Zahlungsweg';
+    if($('#financeRecentTitle'))$('#financeRecentTitle').textContent=financeBasis==='invoice'?'Honorarnoten im ausgewählten Monat':'Zahlungen im ausgewählten Monat';
     $('#financeMonthReceived').textContent=money(f.received);
     $('#financeExpected30').textContent=money(f.expected30);
     $('#financePackageValue').textContent=money(f.packageValue);
@@ -60,12 +66,17 @@
     $('#financeBreakdown').innerHTML=Object.entries(f.methods).map(([k,v])=>`<div class="finance-method"><div><strong>${esc(methodLabel(k))}</strong><span>${money(v)}</span></div><div class="finance-bar"><i style="width:${Math.round(v/max*100)}%"></i></div></div>`).join('');
     $('#financeProjectionCopy').innerHTML=`<strong>Nächste 30 Tage:</strong> ${money(f.expectedInvoices)} aus offenen Honorarnoten${f.recurring?` + ${money(f.recurring)} erwartete Abo-Zahlungen`:''}.<br><strong>Noch zu erbringender Package-Wert:</strong> ${money(f.packageValue)} – bereits verkauft, also keine zusätzliche offene Forderung.`;
     $('#financeBankStatus').textContent=bi.lastImportedAt?`Letzter Bank-CSV-Import: ${dt(bi.lastImportedAt)} · ${bi.importedCount||0} Zahlungen übernommen`:'Noch kein Bank-CSV-Import protokolliert.';
-    const realRows=f.paidMonth.slice(0,12).map(x=>`<div class="finance-payment"><div><strong>${esc(x.customerName)}</strong><span>${esc(x.invoiceNumber)} · ${esc(dt(x.paidAt))}</span></div><div><strong>${money(x.amountCents)}</strong><span>${esc(methodLabel(x.paymentMethod||'other'))}</span></div></div>`).join('');
-    const testRows=f.testPaidMonth.slice(0,8).map(x=>`<div class="finance-payment finance-payment-test"><div><strong>${esc(x.customerName)}</strong><span>${esc(x.invoiceNumber)} · ${esc(dt(x.paidAt))} · 🧪 Sandbox/Test</span></div><div><strong>${money(x.amountCents)}</strong><span>${esc(methodLabel(x.paymentMethod||'other'))} · nicht in Summen</span></div></div>`).join('');
-    $('#financeRecent').innerHTML=(realRows||testRows)?`${realRows}${testRows?`<div class="finance-test-separator">Sandbox/Testzahlungen – sichtbar, aber nicht in echten Einnahmen enthalten</div>${testRows}`:''}`:'<div class="empty">Diesen Monat noch keine Zahlungen verbucht.</div>';
-    const d=financeData();
-    if($('#statMonthIncome'))$('#statMonthIncome').textContent=money(d.received);
-    if($('#statExpected30'))$('#statExpected30').textContent=money(d.expected30);
+    if(financeBasis==='invoice'){
+      const rows=f.invoiceMonth.slice(0,40).map(x=>`<div class="finance-payment"><div><strong>${esc(x.customerName)}</strong><span>${esc(x.invoiceNumber)} · ${esc(String(x.invoiceDate||''))}</span></div><div><strong>${money(x.totalCents)}</strong><span>${esc(methodLabel(String(x.status||'other').toLowerCase()))}</span></div></div>`).join('');
+      $('#financeRecent').innerHTML=rows||'<div class="empty">In diesem Monat wurden keine Honorarnoten ausgestellt.</div>';
+    }else{
+      const realRows=f.paidMonth.slice(0,40).map(x=>`<div class="finance-payment"><div><strong>${esc(x.customerName)}</strong><span>${esc(x.invoiceNumber)} · ${esc(dt(x.paidAt))}</span></div><div><strong>${money(x.amountCents)}</strong><span>${esc(methodLabel(x.paymentMethod||'other'))}</span></div></div>`).join('');
+      const testRows=f.testPaidMonth.slice(0,8).map(x=>`<div class="finance-payment finance-payment-test"><div><strong>${esc(x.customerName)}</strong><span>${esc(x.invoiceNumber)} · ${esc(dt(x.paidAt))} · 🧪 Sandbox/Test</span></div><div><strong>${money(x.amountCents)}</strong><span>${esc(methodLabel(x.paymentMethod||'other'))} · nicht in Summen</span></div></div>`).join('');
+      $('#financeRecent').innerHTML=(realRows||testRows)?`${realRows}${testRows?`<div class="finance-test-separator">Sandbox/Testzahlungen – sichtbar, aber nicht in echten Einnahmen enthalten</div>${testRows}`:''}`:'<div class="empty">In diesem Monat wurden noch keine Zahlungen verbucht.</div>';
+    }
+    const current=financeData(currentFinanceMonth(),'payment');
+    if($('#statMonthIncome'))$('#statMonthIncome').textContent=money(current.received);
+    if($('#statExpected30'))$('#statExpected30').textContent=money(current.expected30);
   }
   function ensureUi(){
     const defs=$('.svg-defs');
@@ -77,7 +88,7 @@
     const workspace=$('.workspace');
     if(workspace&&!$('#view-flow')&&!$('#view-finance'))workspace.insertAdjacentHTML('beforeend',`
       <section class="view flow-manager-view" id="view-flow"><section class="panel flow-manager-shell"><div class="panel-head"><div><p class="eyebrow">Session Flow Manager</p><h2>Ein klarer Ablauf rund um jede Sitzung.</h2><p class="muted">Vorbereiten → Buchung & Angebote → Nachbereiten. Offene Schritte bleiben sichtbar.</p></div><button class="btn ghost" id="flowRefresh" type="button">Aktualisieren</button></div><div class="flow-summary-grid"><article class="flow-mini-stat"><span>Vorbereitung offen</span><strong id="flowPrepCount">0</strong></article><article class="flow-mini-stat"><span>Nachbereitung offen</span><strong id="flowPostCount">0</strong></article><article class="flow-mini-stat"><span>Geparkt</span><strong id="flowParkCount">0</strong></article></div><div class="flow-board" style="margin-top:18px"><section><div class="panel-head"><div><p class="eyebrow">Jetzt relevant</p><h3>Offene Session Flows</h3></div></div><div id="flowMainList" class="flow-list"></div></section></div></section></section>
-      <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Buchhaltung</p><h2>Einnahmen, Forderungen und Zahlungswege.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Honorarnoten öffnen</button></div><div class="finance-stat-grid"><article><span>Eingegangen diesen Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div><div class="finance-grid"><section class="finance-box"><p class="eyebrow">Zahlungswege</p><h3>Einnahmen diesen Monat</h3><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Aktuelle Zahlungen</p><h3>Diesen Monat verbucht</h3><div id="financeRecent"></div></section></section></section>`);
+      <section class="view" id="view-finance"><section class="panel" id="financeCockpit"><div class="panel-head"><div><p class="eyebrow">Buchhaltung</p><h2>Einnahmen, Forderungen und Zahlungswege.</h2><p class="muted">Cashflow und bereits verkaufte Leistung werden bewusst getrennt dargestellt.</p></div><button class="btn secondary" id="financeToInvoices" type="button">Honorarnoten öffnen</button></div><div class="finance-month-toolbar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:4px 0 18px"><button class="mini" id="financeMonthPrev" type="button" aria-label="Vorheriger Monat">‹</button><strong id="financeMonthLabel" style="min-width:150px;text-align:center">—</strong><button class="mini" id="financeMonthNext" type="button" aria-label="Nächster Monat">›</button><button class="mini" id="financeMonthToday" type="button">Aktueller Monat</button><label class="micro muted" style="margin-left:auto">Ansicht <select id="financeBasis"><option value="payment">Nach Zahlungseingang</option><option value="invoice">Nach Rechnungsdatum</option></select></label></div><div class="finance-stat-grid"><article><span id="financeMonthMetricLabel">Eingegangen im Monat</span><strong id="financeMonthReceived">—</strong></article><article><span>Erwartet nächste 30 Tage</span><strong id="financeExpected30">—</strong></article><article><span>Offene Forderungen</span><strong id="financeOpen">—</strong></article><article><span>Restwert aktiver Packages</span><strong id="financePackageValue">—</strong></article></div><div class="finance-grid"><section class="finance-box"><p class="eyebrow">Monatsansicht</p><h3 id="financeBreakdownTitle">Einnahmen nach Zahlungsweg</h3><div id="financeBreakdown"></div></section><section class="finance-box"><p class="eyebrow">Projektion</p><h3>Was als Nächstes kommt</h3><p id="financeProjectionCopy" class="finance-copy"></p><p id="financeBankStatus" class="finance-bank"></p><button class="mini" id="financeCsvJump" type="button">Bank-CSV importieren</button></section></div><section class="finance-box" style="margin-top:16px"><p class="eyebrow">Monatsdetails</p><h3 id="financeRecentTitle">Zahlungen im ausgewählten Monat</h3><div id="financeRecent"></div></section></section></section>`);
     const openCard=$('#statOpen')?.closest('.stat-card');
     if(openCard){
       openCard.classList.add('finance-stat-link','finance-open-card');
@@ -99,6 +110,7 @@
     $('[data-build10-flow-nav]')?.addEventListener('click',openFlowView);$('#flowOpenView')?.addEventListener('click',openFlowView);$('#flowRefresh')?.addEventListener('click',refresh);$('#flowClose')?.addEventListener('click',()=>$('#flowDialog').close());
     $('[data-build10-finance-nav]')?.addEventListener('click',openFinanceView);$$('[data-finance-open]').forEach(x=>x.addEventListener('click',openFinanceView));$$('.stat-finance-sub-link').forEach(x=>x.addEventListener('click',e=>{e.stopPropagation();openFinanceView()}));
     $('#financeToInvoices')?.addEventListener('click',()=>document.querySelector('.nav-item[data-view="invoices"]')?.click());
+    $('#financeMonthPrev')?.addEventListener('click',()=>shiftFinanceMonth(-1));$('#financeMonthNext')?.addEventListener('click',()=>shiftFinanceMonth(1));$('#financeMonthToday')?.addEventListener('click',()=>{financeMonthKey=currentFinanceMonth();renderFinance()});$('#financeBasis')?.addEventListener('change',e=>{financeBasis=e.target.value==='invoice'?'invoice':'payment';renderFinance()});
     $('#financeCsvJump')?.addEventListener('click',()=>{document.querySelector('.nav-item[data-view="invoices"]')?.click();setTimeout(()=>document.querySelector('#bankCsvInput')?.click(),80)});
     $$('[data-flow-tab]').forEach(b=>b.onclick=()=>setFlowTab(b.dataset.flowTab));
     $('#flowPrepDone').onclick=savePrep;$('#flowPrepToSales').onclick=()=>setFlowTab('sales');$('#flowSalesSkip').onclick=()=>setFlowTab('post');$('#flowSalesToPost').onclick=()=>setFlowTab('post');$('#flowPark').onclick=parkFlow;$('#flowSaveNotes').onclick=saveNotes;$('#flowDictateNotes').onclick=()=>openFlowDictation(current);$$('[data-flow-next]').forEach(b=>b.onclick=()=>nextAction(b.dataset.flowNext));

@@ -19,6 +19,14 @@
     },160);
   }
 
+  async function openSessionFlow(ref,booking=null){
+    try{
+      if(booking?.eventId&&window.BDFlowManager?.openFlow){await window.BDFlowManager.openFlow(String(booking.eventId));return true}
+      if(ref&&window.BDFlowManager?.openForClient){const ok=await window.BDFlowManager.openForClient(ref);if(ok)return true}
+    }catch(e){console.warn('Session Flow konnte nicht direkt geöffnet werden',e)}
+    openBriefing(ref,booking);return false
+  }
+
   async function injectPrepContext(){
     if(!prepContext)return;
     const host=$('#recordContent');if(!host)return;
@@ -44,7 +52,7 @@
       if(!eventId)return;
       const booking=(data().bookings||[]).find(x=>String(x.eventId)===String(eventId));if(!booking)return;
       const btn=document.createElement('button');btn.type='button';btn.className='btn primary compact b1438-prepare';btn.dataset.b1438Prepare=eventId;btn.textContent='Session vorbereiten';
-      btn.onclick=e=>{e.stopPropagation();openBriefing(refOf(booking),booking)};
+      btn.onclick=e=>{e.stopPropagation();openSessionFlow(refOf(booking),booking)};
       edit?.before(btn);
     });
   }
@@ -96,7 +104,7 @@
     const btn=e.target.closest?.('[data-client-flow-email]');if(!btn)return;
     e.preventDefault();e.stopImmediatePropagation();
     const ref=btn.dataset.clientFlowEmail;const booking=(data().bookings||[]).filter(b=>refOf(b).toLowerCase()===String(ref||'').toLowerCase()&&new Date(b.start).getTime()>=Date.now()).sort((a,b)=>new Date(a.start)-new Date(b.start))[0]||null;
-    openBriefing(ref,booking);
+    openSessionFlow(ref,booking);
   }
 
   function decorate(){decorateNextBookings();decorateClientButtons();recalcAttention();if(prepContext&&document.querySelector('[data-record-tab="case-summary"].active'))injectPrepContext()}
@@ -109,5 +117,5 @@
   function start(){observer.observe(document.body,{childList:true,subtree:true});decorate()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 
-  window.BDDocumentationUX={enrichInbox,openBriefing,decorate};
+  window.BDDocumentationUX={enrichInbox,openBriefing,openSessionFlow,decorate};
 })();

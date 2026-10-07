@@ -1,0 +1,29 @@
+{
+  "build": "15.10.15",
+  "base": "15.10.14",
+  "vaultVersion": "3.40.1",
+  "theme": "Stability & Finance UX",
+  "preservedFromBase": ["about.html", "about-en.html"],
+  "changedFiles": [
+    "cloudflare-worker/worker.js",
+    "site-mode15-5.js",
+    "programs-public.js",
+    "admin-build13-6.js",
+    "admin-build14-3-8.js",
+    "admin-build10.js",
+    "admin-build15-10-15.js",
+    "admin.html",
+    "zugang.html",
+    "access.html",
+    "index.html",
+    "angebote.html",
+    "offers.html",
+    "workshop.html",
+    "VERSION.txt",
+    "vault/vault_server.py",
+    "tests/test_build15_10_15_stability.py"
+  ],
+  "workerDeployRequired": true,
+  "d1MigrationRequired": false,
+  "notes": "BUILD15-10-15-NOTE.txt"
+}

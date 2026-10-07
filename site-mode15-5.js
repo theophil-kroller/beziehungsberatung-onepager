@@ -1,4 +1,4 @@
-/* BUILD 15.5.3 · static knowledge-about route compatibility */
+/* BUILD 15.5.4 · flat GitHub Pages knowledge-about route */
 (function(){
 'use strict';
 const pathname=String(location.pathname||'/').replace(/\/{2,}/g,'/');
@@ -20,13 +20,13 @@ function knowledgeClean(){
   document.querySelectorAll('[data-practice-only]').forEach(x=>x.remove());
 }
 function previewRibbon(mode){if(!preview)return;const b=document.createElement('div');b.className='bd-preview-ribbon';b.textContent='Vorschau · '+(mode==='practice'?'Praxis live':mode==='knowledge'?'Wissensmodus':'Privat');document.body.appendChild(b)}
-function enablePreviewPropagation(){if(!preview)return;const nativeFetch=window.fetch.bind(window);window.fetch=(input,init)=>{try{const raw=typeof input==='string'?input:input?.url||'',u=new URL(raw,location.href);if(u.origin===new URL(API).origin&&!u.searchParams.has('bd_preview'))u.searchParams.set('bd_preview',preview);if(typeof input==='string')return nativeFetch(u.toString(),init);if(input instanceof Request)return nativeFetch(new Request(u.toString(),input),init)}catch(_){}return nativeFetch(input,init)};const rewrite=()=>document.querySelectorAll('a[href]').forEach(a=>{try{const u=new URL(a.href,location.href);if(u.origin===location.origin&&!u.searchParams.has('bd_preview')){u.searchParams.set('bd_preview',preview);a.href=u.toString()}}catch(_){}});if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',rewrite,{once:true});else rewrite()}
+function enablePreviewPropagation(){if(!preview||window.__bdPreviewPropagationInstalled)return;window.__bdPreviewPropagationInstalled=true;const nativeFetch=window.fetch.bind(window);window.fetch=(input,init)=>{try{const raw=typeof input==='string'?input:input?.url||'',u=new URL(raw,location.href);if(u.origin===new URL(API).origin&&!u.searchParams.has('bd_preview')&&!u.searchParams.has('preview'))u.searchParams.set('bd_preview',preview);if(typeof input==='string')return nativeFetch(u.toString(),init);if(input instanceof Request)return nativeFetch(new Request(u.toString(),input),init)}catch(_){}return nativeFetch(input,init)};const rewrite=()=>document.querySelectorAll('a[href]').forEach(a=>{try{const u=new URL(a.href,location.href);if(u.origin===location.origin&&!u.searchParams.has('bd_preview')){u.searchParams.set('bd_preview',preview);a.href=u.toString()}}catch(_){}});const startObserver=()=>{rewrite();const o=new MutationObserver(()=>rewrite());o.observe(document.body,{childList:true,subtree:true})};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startObserver,{once:true});else startObserver()}
+enablePreviewPropagation();
 async function boot(){
   try{
     const q=preview?'?preview='+encodeURIComponent(preview):'';const r=await fetch(API+'/public/site-mode'+q,{cache:'no-store'});if(!r.ok)throw new Error();const x=await r.json(),mode=x.mode||'private';window.BD_SITE_MODE=x;document.documentElement.dataset.siteMode=mode;
-    enablePreviewPropagation();
     if(mode==='private'&&!LEGAL.has(path)){screen('private');return}
-    if(mode==='knowledge'&&(path==='about.html'||path==='about-en.html')){location.replace(carry('/wissen/ueber-mich/'));return}
+    if(mode==='knowledge'&&(path==='about.html'||path==='about-en.html')){location.replace(carry('/wissen/ueber-mich.html'));return}
     if(mode==='knowledge'&&PRACTICE_ONLY.has(path)){screen('knowledge');return}
     if(mode==='knowledge'&&isRoot){location.replace(carry('/wissen/'));return}
     if(mode==='knowledge')knowledgeClean();
