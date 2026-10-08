@@ -1,5 +1,5 @@
 {
-  "version": "15.12.12",
+  "version": "15.12.15",
   "language": "de",
   "basePath": "assets/audio/breath/de/",
   "format": "mp3",
@@ -629,6 +629,20 @@
       "status": "derived-recorded",
       "source": "soham_ham",
       "note": "Kurzclip aus bestehender Aufnahme für ruhige Wiederholungszyklen."
+    },
+    "und_ein": {
+      "file": "und_ein.mp3",
+      "text": "Und ein.",
+      "status": "derived-recorded",
+      "source": "und_aus + atme_ein",
+      "note": "Aus vorhandenen Originalaufnahmen mit kurzen Crossfades zusammengeschnitten."
+    },
+    "und_atme_wieder_ein": {
+      "file": "und_atme_wieder_ein.mp3",
+      "text": "Und atme wieder ein.",
+      "status": "derived-recorded",
+      "source": "und_aus + atme_wieder_ganz_normal_weiter + atme_ein",
+      "note": "Aus vorhandenen Originalaufnahmen mit kurzen Crossfades zusammengeschnitten."
     }
   }
 }
