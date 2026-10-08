@@ -1,0 +1,620 @@
+{
+  "version": "15.12.10",
+  "language": "de",
+  "basePath": "assets/audio/breath/de/",
+  "format": "mp3",
+  "sampleRate": 48000,
+  "channels": 1,
+  "bitrateKbps": 96,
+  "clips": {
+    "mach_es_dir_bequem": {
+      "file": "mach_es_dir_bequem.mp3",
+      "text": "Mach es dir bequem.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "atme_ein": {
+      "file": "atme_ein.mp3",
+      "text": "Atme ein.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "atme_aus": {
+      "file": "atme_aus.mp3",
+      "text": "Atme aus.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "atme_langsam_ein": {
+      "file": "atme_langsam_ein.mp3",
+      "text": "Atme langsam ein.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "atme_langsam_aus": {
+      "file": "atme_langsam_aus.mp3",
+      "text": "Atme langsam aus.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "halte": {
+      "file": "halte.mp3",
+      "text": "Halte.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "noch_einmal": {
+      "file": "noch_einmal.mp3",
+      "text": "Noch einmal.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "noch_einmal_ruhig_ein": {
+      "file": "noch_einmal_ruhig_ein.mp3",
+      "text": "Noch einmal ruhig ein.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "und_aus": {
+      "file": "und_aus.mp3",
+      "text": "Und aus.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "langsam_aus": {
+      "file": "langsam_aus.mp3",
+      "text": "Langsam aus.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "atme_ruhig_weiter": {
+      "file": "atme_ruhig_weiter.mp3",
+      "text": "Atme ruhig weiter.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "atme_wieder_ganz_normal_weiter": {
+      "file": "atme_wieder_ganz_normal_weiter.mp3",
+      "text": "Atme wieder ganz normal weiter.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "atme_noch_einmal_kurz_ein": {
+      "file": "atme_noch_einmal_kurz_ein.mp3",
+      "text": "Atme noch einmal kurz ein.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "noch_ein_kleines_stueck_ein": {
+      "file": "noch_ein_kleines_stueck_ein.mp3",
+      "text": "Noch ein kleines Stück ein.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "folge_einfach_dem_rhythmus": {
+      "file": "folge_einfach_dem_rhythmus.mp3",
+      "text": "Folge einfach dem Rhythmus.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "bleib_einfach_beim_atem": {
+      "file": "bleib_einfach_beim_atem.mp3",
+      "text": "Bleib einfach beim Atem.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "noch_einen_ruhigen_atemzug": {
+      "file": "noch_einen_ruhigen_atemzug.mp3",
+      "text": "Noch einen ruhigen Atemzug.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "eigenen_rhythmus_finden": {
+      "file": "eigenen_rhythmus_finden.mp3",
+      "text": "Dann lass deinen Atem wieder seinen eigenen Rhythmus finden.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_01": {
+      "file": "zahl_01.mp3",
+      "text": "Eins.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_02": {
+      "file": "zahl_02.mp3",
+      "text": "Zwei.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_03": {
+      "file": "zahl_03.mp3",
+      "text": "Drei.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_04": {
+      "file": "zahl_04.mp3",
+      "text": "Vier.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_05": {
+      "file": "zahl_05.mp3",
+      "text": "Fünf.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_06": {
+      "file": "zahl_06.mp3",
+      "text": "Sechs.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_07": {
+      "file": "zahl_07.mp3",
+      "text": "Sieben.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_08": {
+      "file": "zahl_08.mp3",
+      "text": "Acht.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_09": {
+      "file": "zahl_09.mp3",
+      "text": "Neun.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "zahl_10": {
+      "file": "zahl_10.mp3",
+      "text": "Zehn.",
+      "status": "recorded",
+      "source": "BD Voice De 01 Basis",
+      "take": 2
+    },
+    "bauch_hand": {
+      "file": "bauch_hand.mp3",
+      "text": "Wenn du möchtest, leg eine Hand auf deinen Bauch.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "bauch_hebt": {
+      "file": "bauch_hebt.mp3",
+      "text": "Spür, wie sich dein Bauch hebt.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "bauch_sinkt": {
+      "file": "bauch_sinkt.mp3",
+      "text": "Spür, wie er wieder sinkt.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "bauch_weiter": {
+      "file": "bauch_weiter.mp3",
+      "text": "Der Bauch wird etwas weiter.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "bauch_zurueck": {
+      "file": "bauch_zurueck.mp3",
+      "text": "Der Bauch sinkt wieder zurück.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "vier_sechs_intro": {
+      "file": "vier_sechs_intro.mp3",
+      "text": "Wir atmen vier Sekunden ein und sechs Sekunden aus.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "vier_sechs_hinweis": {
+      "file": "vier_sechs_hinweis.mp3",
+      "text": "Die Ausatmung ist etwas länger als die Einatmung.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "gleichmaessig_intro": {
+      "file": "gleichmaessig_intro.mp3",
+      "text": "Wir atmen jetzt gleichmäßig ein und aus.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "ruhig_und_gleichmaessig": {
+      "file": "ruhig_und_gleichmaessig.mp3",
+      "text": "Ruhig und gleichmäßig.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "box_intro": {
+      "file": "box_intro.mp3",
+      "text": "Wir gehen jetzt vier gleich lange Phasen durch.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "atem_so_lassen": {
+      "file": "atem_so_lassen.mp3",
+      "text": "Lass deinen Atem so, wie er gerade ist.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "beobachte_ihn_einfach": {
+      "file": "beobachte_ihn_einfach.mp3",
+      "text": "Beobachte ihn einfach.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "luft_einstroemt": {
+      "file": "luft_einstroemt.mp3",
+      "text": "Spür, wie die Luft einströmt.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "luft_ausstroemt": {
+      "file": "luft_ausstroemt.mp3",
+      "text": "Und wieder ausströmt.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "atemzug_wahrnehmen": {
+      "file": "atemzug_wahrnehmen.mp3",
+      "text": "Nimm noch einen Atemzug wahr.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "langsam_zurueck": {
+      "file": "langsam_zurueck.mp3",
+      "text": "Dann komm langsam wieder zurück.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "seufzer_intro": {
+      "file": "seufzer_intro.mp3",
+      "text": "Bei dieser Übung atmest du zweimal kurz hintereinander ein und danach lange aus.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "seufzer_runden": {
+      "file": "seufzer_runden.mp3",
+      "text": "Wir wiederholen jetzt denselben Atemrhythmus für einige Runden.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "sama_intro": {
+      "file": "sama_intro.mp3",
+      "text": "Einatmen und Ausatmen dauern gleich lang.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "setz_dich_bequem_hin": {
+      "file": "setz_dich_bequem_hin.mp3",
+      "text": "Setz dich bequem hin.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "tief_durch_nase_ein": {
+      "file": "tief_durch_nase_ein.mp3",
+      "text": "Atme tief durch die Nase ein.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "mund_oeffnen": {
+      "file": "mund_oeffnen.mp3",
+      "text": "Öffne den Mund.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "zunge_heraus": {
+      "file": "zunge_heraus.mp3",
+      "text": "Streck die Zunge heraus.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "haa_anweisung": {
+      "file": "haa_anweisung.mp3",
+      "text": "Atme kräftig mit einem „Haa“ aus.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "mund_schliessen": {
+      "file": "mund_schliessen.mp3",
+      "text": "Schließ den Mund wieder.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "ruhig_durch_nase": {
+      "file": "ruhig_durch_nase.mp3",
+      "text": "Atme ein paar Mal ruhig durch die Nase.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "krokodil_bauchlage": {
+      "file": "krokodil_bauchlage.mp3",
+      "text": "Leg dich auf den Bauch.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "krokodil_stirn": {
+      "file": "krokodil_stirn.mp3",
+      "text": "Leg deine Stirn auf deine Hände oder Arme.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "krokodil_druck": {
+      "file": "krokodil_druck.mp3",
+      "text": "Spür, wie sich dein Bauch gegen die Unterlage bewegt.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "krokodil_nachlassen": {
+      "file": "krokodil_nachlassen.mp3",
+      "text": "Spür, wie der Druck wieder nachlässt.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "krokodil_seiten": {
+      "file": "krokodil_seiten.mp3",
+      "text": "Spür die Bewegung im Bauch und an den Seiten deines Körpers.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "krokodil_liegen": {
+      "file": "krokodil_liegen.mp3",
+      "text": "Bleib noch einen Moment liegen.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "zaehlen_intro": {
+      "file": "zaehlen_intro.mp3",
+      "text": "Wir zählen die Atemzüge von eins bis zehn.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "wieder_bei_eins": {
+      "file": "wieder_bei_eins.mp3",
+      "text": "Beginn wieder bei eins.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "zaehlen_verloren": {
+      "file": "zaehlen_verloren.mp3",
+      "text": "Wenn du nicht mehr weißt, bei welcher Zahl du warst, beginn wieder bei eins.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "zaehlen_beenden": {
+      "file": "zaehlen_beenden.mp3",
+      "text": "Lass das Zählen jetzt weg.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "atem_beobachten_moment": {
+      "file": "atem_beobachten_moment.mp3",
+      "text": "Beobachte noch einen Moment deinen Atem.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "soham_intro": {
+      "file": "soham_intro.mp3",
+      "text": "Dein Atem bleibt ruhig und natürlich.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "soham_so": {
+      "file": "soham_so.mp3",
+      "text": "Denk beim Einatmen innerlich: So.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "soham_ham": {
+      "file": "soham_ham.mp3",
+      "text": "Denk beim Ausatmen innerlich: Ham.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "soham_ende": {
+      "file": "soham_ende.mp3",
+      "text": "Lass die beiden Worte wieder weg.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "ruhig_durch_nase_ein": {
+      "file": "ruhig_durch_nase_ein.mp3",
+      "text": "Atme ruhig durch die Nase ein.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "om_anweisung": {
+      "file": "om_anweisung.mp3",
+      "text": "Und mit der Ausatmung: Om.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "om_ende": {
+      "file": "om_ende.mp3",
+      "text": "Lass den letzten Ton ausklingen.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "lippen_formen": {
+      "file": "lippen_formen.mp3",
+      "text": "Forme deine Lippen locker, als würdest du eine Kerze ganz sanft ausblasen.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "lippen_aus": {
+      "file": "lippen_aus.mp3",
+      "text": "Atme langsam durch die Lippen aus.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "nase_ein": {
+      "file": "nase_ein.mp3",
+      "text": "Atme durch die Nase ein.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "dirga_hand": {
+      "file": "dirga_hand.mp3",
+      "text": "Wenn du möchtest, leg eine Hand auf deinen Bauch und eine auf deinen Brustkorb.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "dirga_bauch": {
+      "file": "dirga_bauch.mp3",
+      "text": "Zuerst hebt sich dein Bauch.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "dirga_brust": {
+      "file": "dirga_brust.mp3",
+      "text": "Dann wird dein Brustkorb weiter.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "dirga_oben": {
+      "file": "dirga_oben.mp3",
+      "text": "Und zum Schluss füllt sich der obere Brustbereich.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "dirga_aus": {
+      "file": "dirga_aus.mp3",
+      "text": "Lass die Luft ruhig wieder herausströmen.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "bauch": {
+      "file": "bauch.mp3",
+      "text": "Bauch.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "brustkorb": {
+      "file": "brustkorb.mp3",
+      "text": "Brustkorb.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "oberer_brustbereich": {
+      "file": "oberer_brustbereich.mp3",
+      "text": "Oberer Brustbereich.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "von_unten_nach_oben": {
+      "file": "von_unten_nach_oben.mp3",
+      "text": "Füll den Atem von unten nach oben.",
+      "status": "recorded",
+      "source": "BD Voice De 02 Uebungen",
+      "take": 2
+    },
+    "sound_om": {
+      "file": "sound_om.mp3",
+      "text": "Om – Klangaufnahme folgt",
+      "status": "placeholder",
+      "source": "BD Voice De 03 Klang (pending)",
+      "take": null
+    },
+    "sound_haa": {
+      "file": "sound_haa.mp3",
+      "text": "Haa – Klangaufnahme folgt",
+      "status": "placeholder",
+      "source": "BD Voice De 03 Klang (pending)",
+      "take": null
+    },
+    "sound_hum": {
+      "file": "sound_hum.mp3",
+      "text": "Summen – Klangaufnahme folgt",
+      "status": "placeholder",
+      "source": "BD Voice De 03 Klang (pending)",
+      "take": null
+    }
+  }
+}
