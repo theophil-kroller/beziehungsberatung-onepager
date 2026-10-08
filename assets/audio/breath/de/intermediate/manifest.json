@@ -1,0 +1,1537 @@
+{
+  "version": "15.12.17",
+  "source_files": [
+    "BD Voice De 05 Intermediate A.wav",
+    "BD Voice De 06 Intermediate B.wav"
+  ],
+  "techniques": {
+    "bhramari": [
+      {
+        "id": "int_bhramari_mund_locker_t1",
+        "clip_id": "mund_locker",
+        "take": 1,
+        "text": "Schließ den Mund locker.",
+        "file": "intermediate/bhramari__mund_locker__take1.mp3",
+        "duration_s": 1.97
+      },
+      {
+        "id": "int_bhramari_mund_locker_t2",
+        "clip_id": "mund_locker",
+        "take": 2,
+        "text": "Schließ den Mund locker.",
+        "file": "intermediate/bhramari__mund_locker__take2.mp3",
+        "duration_s": 2.32
+      },
+      {
+        "id": "int_bhramari_summe_ruhig_t1",
+        "clip_id": "summe_ruhig",
+        "take": 1,
+        "text": "Beim Ausatmen summe ruhig und gleichmäßig.",
+        "file": "intermediate/bhramari__summe_ruhig__take1.mp3",
+        "duration_s": 4.28
+      },
+      {
+        "id": "int_bhramari_summe_ruhig_t2",
+        "clip_id": "summe_ruhig",
+        "take": 2,
+        "text": "Beim Ausatmen summe ruhig und gleichmäßig.",
+        "file": "intermediate/bhramari__summe_ruhig__take2.mp3",
+        "duration_s": 4.36
+      },
+      {
+        "id": "int_bhramari_vibration_gesicht_t1",
+        "clip_id": "vibration_gesicht",
+        "take": 1,
+        "text": "Spür die Vibration im Gesicht.",
+        "file": "intermediate/bhramari__vibration_gesicht__take1.mp3",
+        "duration_s": 2.7
+      },
+      {
+        "id": "int_bhramari_vibration_gesicht_t2",
+        "clip_id": "vibration_gesicht",
+        "take": 2,
+        "text": "Spür die Vibration im Gesicht.",
+        "file": "intermediate/bhramari__vibration_gesicht__take2.mp3",
+        "duration_s": 3.25
+      },
+      {
+        "id": "int_bhramari_summend_aus_t1",
+        "clip_id": "summend_aus",
+        "take": 1,
+        "text": "Und summend aus.",
+        "file": "intermediate/bhramari__summend_aus__take1.mp3",
+        "duration_s": 2.1
+      },
+      {
+        "id": "int_bhramari_summend_aus_t2",
+        "clip_id": "summend_aus",
+        "take": 2,
+        "text": "Und summend aus.",
+        "file": "intermediate/bhramari__summend_aus__take2.mp3",
+        "duration_s": 2.38
+      },
+      {
+        "id": "int_bhramari_summen_ausklingen_t1",
+        "clip_id": "summen_ausklingen",
+        "take": 1,
+        "text": "Lass das Summen langsam ausklingen.",
+        "file": "intermediate/bhramari__summen_ausklingen__take1.mp3",
+        "duration_s": 3.49
+      },
+      {
+        "id": "int_bhramari_summen_ausklingen_t2",
+        "clip_id": "summen_ausklingen",
+        "take": 2,
+        "text": "Lass das Summen langsam ausklingen.",
+        "file": "intermediate/bhramari__summen_ausklingen__take2.mp3",
+        "duration_s": 3.87
+      }
+    ],
+    "nadi_shodhana": [
+      {
+        "id": "int_nadi_shodhana_hand_zur_nase_t1",
+        "clip_id": "hand_zur_nase",
+        "take": 1,
+        "text": "Bring deine rechte Hand zur Nase.",
+        "file": "intermediate/nadi_shodhana__hand_zur_nase__take1.mp3",
+        "duration_s": 2.9
+      },
+      {
+        "id": "int_nadi_shodhana_hand_zur_nase_t2",
+        "clip_id": "hand_zur_nase",
+        "take": 2,
+        "text": "Bring deine rechte Hand zur Nase.",
+        "file": "intermediate/nadi_shodhana__hand_zur_nase__take2.mp3",
+        "duration_s": 3.2
+      },
+      {
+        "id": "int_nadi_shodhana_rechtes_nasenloch_schliessen_t1",
+        "clip_id": "rechtes_nasenloch_schliessen",
+        "take": 1,
+        "text": "Schließ das rechte Nasenloch.",
+        "file": "intermediate/nadi_shodhana__rechtes_nasenloch_schliessen__take1.mp3",
+        "duration_s": 2.36
+      },
+      {
+        "id": "int_nadi_shodhana_rechtes_nasenloch_schliessen_t2",
+        "clip_id": "rechtes_nasenloch_schliessen",
+        "take": 2,
+        "text": "Schließ das rechte Nasenloch.",
+        "file": "intermediate/nadi_shodhana__rechtes_nasenloch_schliessen__take2.mp3",
+        "duration_s": 2.73
+      },
+      {
+        "id": "int_nadi_shodhana_links_ein_t1",
+        "clip_id": "links_ein",
+        "take": 1,
+        "text": "Atme links ein.",
+        "file": "intermediate/nadi_shodhana__links_ein__take1.mp3",
+        "duration_s": 1.93
+      },
+      {
+        "id": "int_nadi_shodhana_links_ein_t2",
+        "clip_id": "links_ein",
+        "take": 2,
+        "text": "Atme links ein.",
+        "file": "intermediate/nadi_shodhana__links_ein__take2.mp3",
+        "duration_s": 2.08
+      },
+      {
+        "id": "int_nadi_shodhana_links_schliessen_rechts_oeffnen_t1",
+        "clip_id": "links_schliessen_rechts_oeffnen",
+        "take": 1,
+        "text": "Schließ links und öffne rechts.",
+        "file": "intermediate/nadi_shodhana__links_schliessen_rechts_oeffnen__take1.mp3",
+        "duration_s": 3.0
+      },
+      {
+        "id": "int_nadi_shodhana_links_schliessen_rechts_oeffnen_t2",
+        "clip_id": "links_schliessen_rechts_oeffnen",
+        "take": 2,
+        "text": "Schließ links und öffne rechts.",
+        "file": "intermediate/nadi_shodhana__links_schliessen_rechts_oeffnen__take2.mp3",
+        "duration_s": 3.14
+      },
+      {
+        "id": "int_nadi_shodhana_rechts_aus_t1",
+        "clip_id": "rechts_aus",
+        "take": 1,
+        "text": "Atme rechts aus.",
+        "file": "intermediate/nadi_shodhana__rechts_aus__take1.mp3",
+        "duration_s": 1.91
+      },
+      {
+        "id": "int_nadi_shodhana_rechts_aus_t2",
+        "clip_id": "rechts_aus",
+        "take": 2,
+        "text": "Atme rechts aus.",
+        "file": "intermediate/nadi_shodhana__rechts_aus__take2.mp3",
+        "duration_s": 2.2
+      },
+      {
+        "id": "int_nadi_shodhana_rechts_ein_t1",
+        "clip_id": "rechts_ein",
+        "take": 1,
+        "text": "Atme rechts ein.",
+        "file": "intermediate/nadi_shodhana__rechts_ein__take1.mp3",
+        "duration_s": 2.78
+      },
+      {
+        "id": "int_nadi_shodhana_rechts_ein_t2",
+        "clip_id": "rechts_ein",
+        "take": 2,
+        "text": "Atme rechts ein.",
+        "file": "intermediate/nadi_shodhana__rechts_ein__take2.mp3",
+        "duration_s": 2.99
+      },
+      {
+        "id": "int_nadi_shodhana_rechts_schliessen_links_oeffnen_t1",
+        "clip_id": "rechts_schliessen_links_oeffnen",
+        "take": 1,
+        "text": "Schließ rechts und öffne links.",
+        "file": "intermediate/nadi_shodhana__rechts_schliessen_links_oeffnen__take1.mp3",
+        "duration_s": 2.78
+      },
+      {
+        "id": "int_nadi_shodhana_rechts_schliessen_links_oeffnen_t2",
+        "clip_id": "rechts_schliessen_links_oeffnen",
+        "take": 2,
+        "text": "Schließ rechts und öffne links.",
+        "file": "intermediate/nadi_shodhana__rechts_schliessen_links_oeffnen__take2.mp3",
+        "duration_s": 3.24
+      },
+      {
+        "id": "int_nadi_shodhana_links_aus_t1",
+        "clip_id": "links_aus",
+        "take": 1,
+        "text": "Atme links aus.",
+        "file": "intermediate/nadi_shodhana__links_aus__take1.mp3",
+        "duration_s": 2.33
+      },
+      {
+        "id": "int_nadi_shodhana_links_aus_t2",
+        "clip_id": "links_aus",
+        "take": 2,
+        "text": "Atme links aus.",
+        "file": "intermediate/nadi_shodhana__links_aus__take2.mp3",
+        "duration_s": 2.33
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_links_ein_t1",
+        "clip_id": "kurz_links_ein",
+        "take": 1,
+        "text": "Links ein.",
+        "file": "intermediate/nadi_shodhana__kurz_links_ein__take1.mp3",
+        "duration_s": 1.47
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_links_ein_t2",
+        "clip_id": "kurz_links_ein",
+        "take": 2,
+        "text": "Links ein.",
+        "file": "intermediate/nadi_shodhana__kurz_links_ein__take2.mp3",
+        "duration_s": 1.55
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_rechts_aus_t1",
+        "clip_id": "kurz_rechts_aus",
+        "take": 1,
+        "text": "Rechts aus.",
+        "file": "intermediate/nadi_shodhana__kurz_rechts_aus__take1.mp3",
+        "duration_s": 1.61
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_rechts_aus_t2",
+        "clip_id": "kurz_rechts_aus",
+        "take": 2,
+        "text": "Rechts aus.",
+        "file": "intermediate/nadi_shodhana__kurz_rechts_aus__take2.mp3",
+        "duration_s": 1.67
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_rechts_ein_t1",
+        "clip_id": "kurz_rechts_ein",
+        "take": 1,
+        "text": "Rechts ein.",
+        "file": "intermediate/nadi_shodhana__kurz_rechts_ein__take1.mp3",
+        "duration_s": 1.7
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_rechts_ein_t2",
+        "clip_id": "kurz_rechts_ein",
+        "take": 2,
+        "text": "Rechts ein.",
+        "file": "intermediate/nadi_shodhana__kurz_rechts_ein__take2.mp3",
+        "duration_s": 1.72
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_links_aus_t1",
+        "clip_id": "kurz_links_aus",
+        "take": 1,
+        "text": "Links aus.",
+        "file": "intermediate/nadi_shodhana__kurz_links_aus__take1.mp3",
+        "duration_s": 1.58
+      },
+      {
+        "id": "int_nadi_shodhana_kurz_links_aus_t2",
+        "clip_id": "kurz_links_aus",
+        "take": 2,
+        "text": "Links aus.",
+        "file": "intermediate/nadi_shodhana__kurz_links_aus__take2.mp3",
+        "duration_s": 1.68
+      },
+      {
+        "id": "int_nadi_shodhana_hand_sinken_t1",
+        "clip_id": "hand_sinken",
+        "take": 1,
+        "text": "Lass die Hand wieder sinken.",
+        "file": "intermediate/nadi_shodhana__hand_sinken__take1.mp3",
+        "duration_s": 2.51
+      },
+      {
+        "id": "int_nadi_shodhana_hand_sinken_t2",
+        "clip_id": "hand_sinken",
+        "take": 2,
+        "text": "Lass die Hand wieder sinken.",
+        "file": "intermediate/nadi_shodhana__hand_sinken__take2.mp3",
+        "duration_s": 2.69
+      },
+      {
+        "id": "int_nadi_shodhana_beide_nasenloecher_t1",
+        "clip_id": "beide_nasenloecher",
+        "take": 1,
+        "text": "Atme noch ein paar Mal durch beide Nasenlöcher.",
+        "file": "intermediate/nadi_shodhana__beide_nasenloecher__take1.mp3",
+        "duration_s": 3.86
+      },
+      {
+        "id": "int_nadi_shodhana_beide_nasenloecher_t2",
+        "clip_id": "beide_nasenloecher",
+        "take": 2,
+        "text": "Atme noch ein paar Mal durch beide Nasenlöcher.",
+        "file": "intermediate/nadi_shodhana__beide_nasenloecher__take2.mp3",
+        "duration_s": 3.75
+      }
+    ],
+    "ujjayi": [
+      {
+        "id": "int_ujjayi_kehlraum_leicht_t1",
+        "clip_id": "kehlraum_leicht",
+        "take": 1,
+        "text": "Vereng den Kehlraum ganz leicht.",
+        "file": "intermediate/ujjayi__kehlraum_leicht__take1.mp3",
+        "duration_s": 2.72
+      },
+      {
+        "id": "int_ujjayi_kehlraum_leicht_t2",
+        "clip_id": "kehlraum_leicht",
+        "take": 2,
+        "text": "Vereng den Kehlraum ganz leicht.",
+        "file": "intermediate/ujjayi__kehlraum_leicht__take2.mp3",
+        "duration_s": 2.67
+      },
+      {
+        "id": "int_ujjayi_spiegel_anhauchen_t1",
+        "clip_id": "spiegel_anhauchen",
+        "take": 1,
+        "text": "Stell dir vor, du würdest einen Spiegel anhauchen – nur mit geschlossenem Mund.",
+        "file": "intermediate/ujjayi__spiegel_anhauchen__take1.mp3",
+        "duration_s": 6.21
+      },
+      {
+        "id": "int_ujjayi_spiegel_anhauchen_t2",
+        "clip_id": "spiegel_anhauchen",
+        "take": 2,
+        "text": "Stell dir vor, du würdest einen Spiegel anhauchen – nur mit geschlossenem Mund.",
+        "file": "intermediate/ujjayi__spiegel_anhauchen__take2.mp3",
+        "duration_s": 6.23
+      },
+      {
+        "id": "int_ujjayi_rauschen_entstehen_t1",
+        "clip_id": "rauschen_entstehen",
+        "take": 1,
+        "text": "Lass ein leises Rauschen entstehen.",
+        "file": "intermediate/ujjayi__rauschen_entstehen__take1.mp3",
+        "duration_s": 3.22
+      },
+      {
+        "id": "int_ujjayi_rauschen_entstehen_t2",
+        "clip_id": "rauschen_entstehen",
+        "take": 2,
+        "text": "Lass ein leises Rauschen entstehen.",
+        "file": "intermediate/ujjayi__rauschen_entstehen__take2.mp3",
+        "duration_s": 3.32
+      },
+      {
+        "id": "int_ujjayi_nase_aus_t1",
+        "clip_id": "nase_aus",
+        "take": 1,
+        "text": "Atme durch die Nase aus.",
+        "file": "intermediate/ujjayi__nase_aus__take1.mp3",
+        "duration_s": 2.54
+      },
+      {
+        "id": "int_ujjayi_nase_aus_t2",
+        "clip_id": "nase_aus",
+        "take": 2,
+        "text": "Atme durch die Nase aus.",
+        "file": "intermediate/ujjayi__nase_aus__take2.mp3",
+        "duration_s": 2.53
+      },
+      {
+        "id": "int_ujjayi_weich_gleichmaessig_t1",
+        "clip_id": "weich_gleichmaessig",
+        "take": 1,
+        "text": "Der Atem bleibt weich und gleichmäßig.",
+        "file": "intermediate/ujjayi__weich_gleichmaessig__take1.mp3",
+        "duration_s": 3.2
+      },
+      {
+        "id": "int_ujjayi_weich_gleichmaessig_t2",
+        "clip_id": "weich_gleichmaessig",
+        "take": 2,
+        "text": "Der Atem bleibt weich und gleichmäßig.",
+        "file": "intermediate/ujjayi__weich_gleichmaessig__take2.mp3",
+        "duration_s": 3.33
+      },
+      {
+        "id": "int_ujjayi_rauschen_mitgehen_t1",
+        "clip_id": "rauschen_mitgehen",
+        "take": 1,
+        "text": "Lass das Rauschen ruhig mit dem Atem mitgehen.",
+        "file": "intermediate/ujjayi__rauschen_mitgehen__take1.mp3",
+        "duration_s": 4.21
+      },
+      {
+        "id": "int_ujjayi_rauschen_mitgehen_t2",
+        "clip_id": "rauschen_mitgehen",
+        "take": 2,
+        "text": "Lass das Rauschen ruhig mit dem Atem mitgehen.",
+        "file": "intermediate/ujjayi__rauschen_mitgehen__take2.mp3",
+        "duration_s": 4.48
+      }
+    ],
+    "brahma_mudra": [
+      {
+        "id": "int_brahma_mudra_aufrecht_bequem_t1",
+        "clip_id": "aufrecht_bequem",
+        "take": 1,
+        "text": "Setz dich aufrecht und bequem hin.",
+        "file": "intermediate/brahma_mudra__aufrecht_bequem__take1.mp3",
+        "duration_s": 3.27
+      },
+      {
+        "id": "int_brahma_mudra_aufrecht_bequem_t2",
+        "clip_id": "aufrecht_bequem",
+        "take": 2,
+        "text": "Setz dich aufrecht und bequem hin.",
+        "file": "intermediate/brahma_mudra__aufrecht_bequem__take2.mp3",
+        "duration_s": 3.43
+      },
+      {
+        "id": "int_brahma_mudra_kopf_mitte_t1",
+        "clip_id": "kopf_mitte",
+        "take": 1,
+        "text": "Dein Kopf bleibt zunächst in der Mitte.",
+        "file": "intermediate/brahma_mudra__kopf_mitte__take1.mp3",
+        "duration_s": 2.81
+      },
+      {
+        "id": "int_brahma_mudra_kopf_mitte_t2",
+        "clip_id": "kopf_mitte",
+        "take": 2,
+        "text": "Dein Kopf bleibt zunächst in der Mitte.",
+        "file": "intermediate/brahma_mudra__kopf_mitte__take2.mp3",
+        "duration_s": 3.0
+      },
+      {
+        "id": "int_brahma_mudra_aus_rechts_t1",
+        "clip_id": "aus_rechts",
+        "take": 1,
+        "text": "Atme aus und dreh den Kopf langsam nach rechts.",
+        "file": "intermediate/brahma_mudra__aus_rechts__take1.mp3",
+        "duration_s": 5.93
+      },
+      {
+        "id": "int_brahma_mudra_aus_rechts_t2",
+        "clip_id": "aus_rechts",
+        "take": 2,
+        "text": "Atme aus und dreh den Kopf langsam nach rechts.",
+        "file": "intermediate/brahma_mudra__aus_rechts__take2.mp3",
+        "duration_s": 4.79
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_t1",
+        "clip_id": "ein_mitte",
+        "take": 1,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte__take1.mp3",
+        "duration_s": 2.96
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_t2",
+        "clip_id": "ein_mitte",
+        "take": 2,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte__take2.mp3",
+        "duration_s": 3.16
+      },
+      {
+        "id": "int_brahma_mudra_aus_links_t1",
+        "clip_id": "aus_links",
+        "take": 1,
+        "text": "Atme aus und dreh den Kopf langsam nach links.",
+        "file": "intermediate/brahma_mudra__aus_links__take1.mp3",
+        "duration_s": 4.08
+      },
+      {
+        "id": "int_brahma_mudra_aus_links_t2",
+        "clip_id": "aus_links",
+        "take": 2,
+        "text": "Atme aus und dreh den Kopf langsam nach links.",
+        "file": "intermediate/brahma_mudra__aus_links__take2.mp3",
+        "duration_s": 4.27
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_2_t1",
+        "clip_id": "ein_mitte_2",
+        "take": 1,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte_2__take1.mp3",
+        "duration_s": 3.42
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_2_t2",
+        "clip_id": "ein_mitte_2",
+        "take": 2,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte_2__take2.mp3",
+        "duration_s": 3.14
+      },
+      {
+        "id": "int_brahma_mudra_aus_kinn_t1",
+        "clip_id": "aus_kinn",
+        "take": 1,
+        "text": "Atme aus und senk das Kinn Richtung Brust.",
+        "file": "intermediate/brahma_mudra__aus_kinn__take1.mp3",
+        "duration_s": 3.82
+      },
+      {
+        "id": "int_brahma_mudra_aus_kinn_t2",
+        "clip_id": "aus_kinn",
+        "take": 2,
+        "text": "Atme aus und senk das Kinn Richtung Brust.",
+        "file": "intermediate/brahma_mudra__aus_kinn__take2.mp3",
+        "duration_s": 3.64
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_3_t1",
+        "clip_id": "ein_mitte_3",
+        "take": 1,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte_3__take1.mp3",
+        "duration_s": 3.03
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_3_t2",
+        "clip_id": "ein_mitte_3",
+        "take": 2,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte_3__take2.mp3",
+        "duration_s": 3.06
+      },
+      {
+        "id": "int_brahma_mudra_aus_blick_hoch_t1",
+        "clip_id": "aus_blick_hoch",
+        "take": 1,
+        "text": "Atme aus und heb den Blick sanft nach oben.",
+        "file": "intermediate/brahma_mudra__aus_blick_hoch__take1.mp3",
+        "duration_s": 4.31
+      },
+      {
+        "id": "int_brahma_mudra_aus_blick_hoch_t2",
+        "clip_id": "aus_blick_hoch",
+        "take": 2,
+        "text": "Atme aus und heb den Blick sanft nach oben.",
+        "file": "intermediate/brahma_mudra__aus_blick_hoch__take2.mp3",
+        "duration_s": 4.21
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_4_t1",
+        "clip_id": "ein_mitte_4",
+        "take": 1,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte_4__take1.mp3",
+        "duration_s": 3.04
+      },
+      {
+        "id": "int_brahma_mudra_ein_mitte_4_t2",
+        "clip_id": "ein_mitte_4",
+        "take": 2,
+        "text": "Atme ein und komm zurück zur Mitte.",
+        "file": "intermediate/brahma_mudra__ein_mitte_4__take2.mp3",
+        "duration_s": 3.25
+      },
+      {
+        "id": "int_brahma_mudra_nur_angenehm_t1",
+        "clip_id": "nur_angenehm",
+        "take": 1,
+        "text": "Beweg den Kopf nur so weit, wie es angenehm ist.",
+        "file": "intermediate/brahma_mudra__nur_angenehm__take1.mp3",
+        "duration_s": 4.13
+      },
+      {
+        "id": "int_brahma_mudra_nur_angenehm_t2",
+        "clip_id": "nur_angenehm",
+        "take": 2,
+        "text": "Beweg den Kopf nur so weit, wie es angenehm ist.",
+        "file": "intermediate/brahma_mudra__nur_angenehm__take2.mp3",
+        "duration_s": 3.99
+      }
+    ],
+    "breathing_478": [
+      {
+        "id": "int_breathing_478_intro_t1",
+        "clip_id": "intro",
+        "take": 1,
+        "text": "Wir atmen vier Sekunden ein, halten sieben Sekunden und atmen acht Sekunden aus.",
+        "file": "intermediate/breathing_478__intro__take1.mp3",
+        "duration_s": 8.76
+      },
+      {
+        "id": "int_breathing_478_intro_t2",
+        "clip_id": "intro",
+        "take": 2,
+        "text": "Wir atmen vier Sekunden ein, halten sieben Sekunden und atmen acht Sekunden aus.",
+        "file": "intermediate/breathing_478__intro__take2.mp3",
+        "duration_s": 8.62
+      },
+      {
+        "id": "int_breathing_478_zungenspitze_t1",
+        "clip_id": "zungenspitze",
+        "take": 1,
+        "text": "Leg die Zungenspitze locker hinter die oberen Schneidezähne.",
+        "file": "intermediate/breathing_478__zungenspitze__take1.mp3",
+        "duration_s": 5.1
+      },
+      {
+        "id": "int_breathing_478_zungenspitze_t2",
+        "clip_id": "zungenspitze",
+        "take": 2,
+        "text": "Leg die Zungenspitze locker hinter die oberen Schneidezähne.",
+        "file": "intermediate/breathing_478__zungenspitze__take2.mp3",
+        "duration_s": 4.77
+      },
+      {
+        "id": "int_breathing_478_vollstaendig_aus_t1",
+        "clip_id": "vollstaendig_aus",
+        "take": 1,
+        "text": "Atme vollständig aus.",
+        "file": "intermediate/breathing_478__vollstaendig_aus__take1.mp3",
+        "duration_s": 2.69
+      },
+      {
+        "id": "int_breathing_478_vollstaendig_aus_t2",
+        "clip_id": "vollstaendig_aus",
+        "take": 2,
+        "text": "Atme vollständig aus.",
+        "file": "intermediate/breathing_478__vollstaendig_aus__take2.mp3",
+        "duration_s": 2.55
+      },
+      {
+        "id": "int_breathing_478_mund_aus_t1",
+        "clip_id": "mund_aus",
+        "take": 1,
+        "text": "Atme langsam durch den Mund aus.",
+        "file": "intermediate/breathing_478__mund_aus__take1.mp3",
+        "duration_s": 3.01
+      },
+      {
+        "id": "int_breathing_478_mund_aus_t2",
+        "clip_id": "mund_aus",
+        "take": 2,
+        "text": "Atme langsam durch den Mund aus.",
+        "file": "intermediate/breathing_478__mund_aus__take2.mp3",
+        "duration_s": 2.93
+      },
+      {
+        "id": "int_breathing_478_vier_ein_t1",
+        "clip_id": "vier_ein",
+        "take": 1,
+        "text": "Vier Sekunden ein.",
+        "file": "intermediate/breathing_478__vier_ein__take1.mp3",
+        "duration_s": 2.08
+      },
+      {
+        "id": "int_breathing_478_vier_ein_t2",
+        "clip_id": "vier_ein",
+        "take": 2,
+        "text": "Vier Sekunden ein.",
+        "file": "intermediate/breathing_478__vier_ein__take2.mp3",
+        "duration_s": 2.17
+      },
+      {
+        "id": "int_breathing_478_sieben_halten_t1",
+        "clip_id": "sieben_halten",
+        "take": 1,
+        "text": "Sieben Sekunden halten.",
+        "file": "intermediate/breathing_478__sieben_halten__take1.mp3",
+        "duration_s": 2.05
+      },
+      {
+        "id": "int_breathing_478_sieben_halten_t2",
+        "clip_id": "sieben_halten",
+        "take": 2,
+        "text": "Sieben Sekunden halten.",
+        "file": "intermediate/breathing_478__sieben_halten__take2.mp3",
+        "duration_s": 2.13
+      },
+      {
+        "id": "int_breathing_478_acht_aus_t1",
+        "clip_id": "acht_aus",
+        "take": 1,
+        "text": "Acht Sekunden aus.",
+        "file": "intermediate/breathing_478__acht_aus__take1.mp3",
+        "duration_s": 2.12
+      },
+      {
+        "id": "int_breathing_478_acht_aus_t2",
+        "clip_id": "acht_aus",
+        "take": 2,
+        "text": "Acht Sekunden aus.",
+        "file": "intermediate/breathing_478__acht_aus__take2.mp3",
+        "duration_s": 2.21
+      },
+      {
+        "id": "int_breathing_478_rhythmus_verkuerzen_t1",
+        "clip_id": "rhythmus_verkuerzen",
+        "take": 1,
+        "text": "Wenn dir die Atempause zu lang ist, verkürz den Rhythmus.",
+        "file": "intermediate/breathing_478__rhythmus_verkuerzen__take1.mp3",
+        "duration_s": 4.36
+      },
+      {
+        "id": "int_breathing_478_rhythmus_verkuerzen_t2",
+        "clip_id": "rhythmus_verkuerzen",
+        "take": 2,
+        "text": "Wenn dir die Atempause zu lang ist, verkürz den Rhythmus.",
+        "file": "intermediate/breathing_478__rhythmus_verkuerzen__take2.mp3",
+        "duration_s": 4.41
+      }
+    ],
+    "chandra_bhedana": [
+      {
+        "id": "int_chandra_bhedana_intro_t1",
+        "clip_id": "intro",
+        "take": 1,
+        "text": "Die Einatmung kommt immer links, die Ausatmung rechts.",
+        "file": "intermediate/chandra_bhedana__intro__take1.mp3",
+        "duration_s": 4.96
+      },
+      {
+        "id": "int_chandra_bhedana_intro_t2",
+        "clip_id": "intro",
+        "take": 2,
+        "text": "Die Einatmung kommt immer links, die Ausatmung rechts.",
+        "file": "intermediate/chandra_bhedana__intro__take2.mp3",
+        "duration_s": 4.77
+      },
+      {
+        "id": "int_chandra_bhedana_rechtes_schliessen_t1",
+        "clip_id": "rechtes_schliessen",
+        "take": 1,
+        "text": "Schließ das rechte Nasenloch.",
+        "file": "intermediate/chandra_bhedana__rechtes_schliessen__take1.mp3",
+        "duration_s": 2.16
+      },
+      {
+        "id": "int_chandra_bhedana_rechtes_schliessen_t2",
+        "clip_id": "rechtes_schliessen",
+        "take": 2,
+        "text": "Schließ das rechte Nasenloch.",
+        "file": "intermediate/chandra_bhedana__rechtes_schliessen__take2.mp3",
+        "duration_s": 2.14
+      },
+      {
+        "id": "int_chandra_bhedana_links_ein_t1",
+        "clip_id": "links_ein",
+        "take": 1,
+        "text": "Atme links ein.",
+        "file": "intermediate/chandra_bhedana__links_ein__take1.mp3",
+        "duration_s": 1.98
+      },
+      {
+        "id": "int_chandra_bhedana_links_ein_t2",
+        "clip_id": "links_ein",
+        "take": 2,
+        "text": "Atme links ein.",
+        "file": "intermediate/chandra_bhedana__links_ein__take2.mp3",
+        "duration_s": 1.98
+      },
+      {
+        "id": "int_chandra_bhedana_links_schliessen_rechts_oeffnen_t1",
+        "clip_id": "links_schliessen_rechts_oeffnen",
+        "take": 1,
+        "text": "Schließ links und öffne rechts.",
+        "file": "intermediate/chandra_bhedana__links_schliessen_rechts_oeffnen__take1.mp3",
+        "duration_s": 2.43
+      },
+      {
+        "id": "int_chandra_bhedana_links_schliessen_rechts_oeffnen_t2",
+        "clip_id": "links_schliessen_rechts_oeffnen",
+        "take": 2,
+        "text": "Schließ links und öffne rechts.",
+        "file": "intermediate/chandra_bhedana__links_schliessen_rechts_oeffnen__take2.mp3",
+        "duration_s": 2.64
+      },
+      {
+        "id": "int_chandra_bhedana_rechts_aus_t1",
+        "clip_id": "rechts_aus",
+        "take": 1,
+        "text": "Atme rechts aus.",
+        "file": "intermediate/chandra_bhedana__rechts_aus__take1.mp3",
+        "duration_s": 2.12
+      },
+      {
+        "id": "int_chandra_bhedana_rechts_aus_t2",
+        "clip_id": "rechts_aus",
+        "take": 2,
+        "text": "Atme rechts aus.",
+        "file": "intermediate/chandra_bhedana__rechts_aus__take2.mp3",
+        "duration_s": 2.05
+      },
+      {
+        "id": "int_chandra_bhedana_kurz_links_ein_t1",
+        "clip_id": "kurz_links_ein",
+        "take": 1,
+        "text": "Links ein.",
+        "file": "intermediate/chandra_bhedana__kurz_links_ein__take1.mp3",
+        "duration_s": 1.41
+      },
+      {
+        "id": "int_chandra_bhedana_kurz_links_ein_t2",
+        "clip_id": "kurz_links_ein",
+        "take": 2,
+        "text": "Links ein.",
+        "file": "intermediate/chandra_bhedana__kurz_links_ein__take2.mp3",
+        "duration_s": 1.56
+      },
+      {
+        "id": "int_chandra_bhedana_kurz_rechts_aus_t1",
+        "clip_id": "kurz_rechts_aus",
+        "take": 1,
+        "text": "Rechts aus.",
+        "file": "intermediate/chandra_bhedana__kurz_rechts_aus__take1.mp3",
+        "duration_s": 1.63
+      },
+      {
+        "id": "int_chandra_bhedana_kurz_rechts_aus_t2",
+        "clip_id": "kurz_rechts_aus",
+        "take": 2,
+        "text": "Rechts aus.",
+        "file": "intermediate/chandra_bhedana__kurz_rechts_aus__take2.mp3",
+        "duration_s": 1.7
+      },
+      {
+        "id": "int_chandra_bhedana_seiten_gleich_t1",
+        "clip_id": "seiten_gleich",
+        "take": 1,
+        "text": "Die Seiten bleiben in jeder Runde gleich.",
+        "file": "intermediate/chandra_bhedana__seiten_gleich__take1.mp3",
+        "duration_s": 2.96
+      },
+      {
+        "id": "int_chandra_bhedana_seiten_gleich_t2",
+        "clip_id": "seiten_gleich",
+        "take": 2,
+        "text": "Die Seiten bleiben in jeder Runde gleich.",
+        "file": "intermediate/chandra_bhedana__seiten_gleich__take2.mp3",
+        "duration_s": 3.29
+      }
+    ],
+    "surya_bhedana": [
+      {
+        "id": "int_surya_bhedana_intro_t1",
+        "clip_id": "intro",
+        "take": 1,
+        "text": "Die Einatmung kommt immer rechts, die Ausatmung links.",
+        "file": "intermediate/surya_bhedana__intro__take1.mp3",
+        "duration_s": 4.45
+      },
+      {
+        "id": "int_surya_bhedana_intro_t2",
+        "clip_id": "intro",
+        "take": 2,
+        "text": "Die Einatmung kommt immer rechts, die Ausatmung links.",
+        "file": "intermediate/surya_bhedana__intro__take2.mp3",
+        "duration_s": 4.29
+      },
+      {
+        "id": "int_surya_bhedana_linkes_schliessen_t1",
+        "clip_id": "linkes_schliessen",
+        "take": 1,
+        "text": "Schließ das linke Nasenloch.",
+        "file": "intermediate/surya_bhedana__linkes_schliessen__take1.mp3",
+        "duration_s": 2.1
+      },
+      {
+        "id": "int_surya_bhedana_linkes_schliessen_t2",
+        "clip_id": "linkes_schliessen",
+        "take": 2,
+        "text": "Schließ das linke Nasenloch.",
+        "file": "intermediate/surya_bhedana__linkes_schliessen__take2.mp3",
+        "duration_s": 2.27
+      },
+      {
+        "id": "int_surya_bhedana_rechts_ein_t1",
+        "clip_id": "rechts_ein",
+        "take": 1,
+        "text": "Atme rechts ein.",
+        "file": "intermediate/surya_bhedana__rechts_ein__take1.mp3",
+        "duration_s": 1.94
+      },
+      {
+        "id": "int_surya_bhedana_rechts_ein_t2",
+        "clip_id": "rechts_ein",
+        "take": 2,
+        "text": "Atme rechts ein.",
+        "file": "intermediate/surya_bhedana__rechts_ein__take2.mp3",
+        "duration_s": 1.98
+      },
+      {
+        "id": "int_surya_bhedana_rechts_schliessen_links_oeffnen_t1",
+        "clip_id": "rechts_schliessen_links_oeffnen",
+        "take": 1,
+        "text": "Schließ rechts und öffne links.",
+        "file": "intermediate/surya_bhedana__rechts_schliessen_links_oeffnen__take1.mp3",
+        "duration_s": 2.36
+      },
+      {
+        "id": "int_surya_bhedana_rechts_schliessen_links_oeffnen_t2",
+        "clip_id": "rechts_schliessen_links_oeffnen",
+        "take": 2,
+        "text": "Schließ rechts und öffne links.",
+        "file": "intermediate/surya_bhedana__rechts_schliessen_links_oeffnen__take2.mp3",
+        "duration_s": 2.68
+      },
+      {
+        "id": "int_surya_bhedana_links_aus_t1",
+        "clip_id": "links_aus",
+        "take": 1,
+        "text": "Atme links aus.",
+        "file": "intermediate/surya_bhedana__links_aus__take1.mp3",
+        "duration_s": 1.98
+      },
+      {
+        "id": "int_surya_bhedana_links_aus_t2",
+        "clip_id": "links_aus",
+        "take": 2,
+        "text": "Atme links aus.",
+        "file": "intermediate/surya_bhedana__links_aus__take2.mp3",
+        "duration_s": 2.03
+      },
+      {
+        "id": "int_surya_bhedana_kurz_rechts_ein_t1",
+        "clip_id": "kurz_rechts_ein",
+        "take": 1,
+        "text": "Rechts ein.",
+        "file": "intermediate/surya_bhedana__kurz_rechts_ein__take1.mp3",
+        "duration_s": 1.48
+      },
+      {
+        "id": "int_surya_bhedana_kurz_rechts_ein_t2",
+        "clip_id": "kurz_rechts_ein",
+        "take": 2,
+        "text": "Rechts ein.",
+        "file": "intermediate/surya_bhedana__kurz_rechts_ein__take2.mp3",
+        "duration_s": 1.55
+      },
+      {
+        "id": "int_surya_bhedana_kurz_links_aus_t1",
+        "clip_id": "kurz_links_aus",
+        "take": 1,
+        "text": "Links aus.",
+        "file": "intermediate/surya_bhedana__kurz_links_aus__take1.mp3",
+        "duration_s": 1.46
+      },
+      {
+        "id": "int_surya_bhedana_kurz_links_aus_t2",
+        "clip_id": "kurz_links_aus",
+        "take": 2,
+        "text": "Links aus.",
+        "file": "intermediate/surya_bhedana__kurz_links_aus__take2.mp3",
+        "duration_s": 1.52
+      },
+      {
+        "id": "int_surya_bhedana_seiten_gleich_t1",
+        "clip_id": "seiten_gleich",
+        "take": 1,
+        "text": "Die Seiten bleiben in jeder Runde gleich.",
+        "file": "intermediate/surya_bhedana__seiten_gleich__take1.mp3",
+        "duration_s": 2.86
+      },
+      {
+        "id": "int_surya_bhedana_seiten_gleich_t2",
+        "clip_id": "seiten_gleich",
+        "take": 2,
+        "text": "Die Seiten bleiben in jeder Runde gleich.",
+        "file": "intermediate/surya_bhedana__seiten_gleich__take2.mp3",
+        "duration_s": 3.14
+      }
+    ],
+    "sheetali": [
+      {
+        "id": "int_sheetali_zunge_heraus_t1",
+        "clip_id": "zunge_heraus",
+        "take": 1,
+        "text": "Streck die Zunge ein kleines Stück heraus.",
+        "file": "intermediate/sheetali__zunge_heraus__take1.mp3",
+        "duration_s": 3.01
+      },
+      {
+        "id": "int_sheetali_zunge_heraus_t2",
+        "clip_id": "zunge_heraus",
+        "take": 2,
+        "text": "Streck die Zunge ein kleines Stück heraus.",
+        "file": "intermediate/sheetali__zunge_heraus__take2.mp3",
+        "duration_s": 3.06
+      },
+      {
+        "id": "int_sheetali_zunge_rollen_t1",
+        "clip_id": "zunge_rollen",
+        "take": 1,
+        "text": "Roll die Seiten der Zunge nach oben, wenn das für dich geht.",
+        "file": "intermediate/sheetali__zunge_rollen__take1.mp3",
+        "duration_s": 4.27
+      },
+      {
+        "id": "int_sheetali_zunge_rollen_t2",
+        "clip_id": "zunge_rollen",
+        "take": 2,
+        "text": "Roll die Seiten der Zunge nach oben, wenn das für dich geht.",
+        "file": "intermediate/sheetali__zunge_rollen__take2.mp3",
+        "duration_s": 4.14
+      },
+      {
+        "id": "int_sheetali_ueber_zunge_ein_t1",
+        "clip_id": "ueber_zunge_ein",
+        "take": 1,
+        "text": "Atme langsam über die Zunge ein.",
+        "file": "intermediate/sheetali__ueber_zunge_ein__take1.mp3",
+        "duration_s": 2.83
+      },
+      {
+        "id": "int_sheetali_ueber_zunge_ein_t2",
+        "clip_id": "ueber_zunge_ein",
+        "take": 2,
+        "text": "Atme langsam über die Zunge ein.",
+        "file": "intermediate/sheetali__ueber_zunge_ein__take2.mp3",
+        "duration_s": 2.77
+      },
+      {
+        "id": "int_sheetali_zunge_zurueck_mund_zu_t1",
+        "clip_id": "zunge_zurueck_mund_zu",
+        "take": 1,
+        "text": "Zieh die Zunge zurück und schließ den Mund.",
+        "file": "intermediate/sheetali__zunge_zurueck_mund_zu__take1.mp3",
+        "duration_s": 2.87
+      },
+      {
+        "id": "int_sheetali_zunge_zurueck_mund_zu_t2",
+        "clip_id": "zunge_zurueck_mund_zu",
+        "take": 2,
+        "text": "Zieh die Zunge zurück und schließ den Mund.",
+        "file": "intermediate/sheetali__zunge_zurueck_mund_zu__take2.mp3",
+        "duration_s": 2.95
+      },
+      {
+        "id": "int_sheetali_nase_aus_t1",
+        "clip_id": "nase_aus",
+        "take": 1,
+        "text": "Atme langsam durch die Nase aus.",
+        "file": "intermediate/sheetali__nase_aus__take1.mp3",
+        "duration_s": 2.82
+      },
+      {
+        "id": "int_sheetali_nase_aus_t2",
+        "clip_id": "nase_aus",
+        "take": 2,
+        "text": "Atme langsam durch die Nase aus.",
+        "file": "intermediate/sheetali__nase_aus__take2.mp3",
+        "duration_s": 2.9
+      },
+      {
+        "id": "int_sheetali_wieder_zunge_ein_t1",
+        "clip_id": "wieder_zunge_ein",
+        "take": 1,
+        "text": "Und wieder über die Zunge ein.",
+        "file": "intermediate/sheetali__wieder_zunge_ein__take1.mp3",
+        "duration_s": 2.31
+      },
+      {
+        "id": "int_sheetali_wieder_zunge_ein_t2",
+        "clip_id": "wieder_zunge_ein",
+        "take": 2,
+        "text": "Und wieder über die Zunge ein.",
+        "file": "intermediate/sheetali__wieder_zunge_ein__take2.mp3",
+        "duration_s": 2.53
+      },
+      {
+        "id": "int_sheetali_nase_aus_kurz_t1",
+        "clip_id": "nase_aus_kurz",
+        "take": 1,
+        "text": "Und durch die Nase aus.",
+        "file": "intermediate/sheetali__nase_aus_kurz__take1.mp3",
+        "duration_s": 2.25
+      },
+      {
+        "id": "int_sheetali_nase_aus_kurz_t2",
+        "clip_id": "nase_aus_kurz",
+        "take": 2,
+        "text": "Und durch die Nase aus.",
+        "file": "intermediate/sheetali__nase_aus_kurz__take2.mp3",
+        "duration_s": 2.41
+      }
+    ],
+    "buteyko": [
+      {
+        "id": "int_buteyko_nase_ruhig_t1",
+        "clip_id": "nase_ruhig",
+        "take": 1,
+        "text": "Schließ den Mund und atme ruhig durch die Nase.",
+        "file": "intermediate/buteyko__nase_ruhig__take1.mp3",
+        "duration_s": 4.47
+      },
+      {
+        "id": "int_buteyko_nase_ruhig_t2",
+        "clip_id": "nase_ruhig",
+        "take": 2,
+        "text": "Schließ den Mund und atme ruhig durch die Nase.",
+        "file": "intermediate/buteyko__nase_ruhig__take2.mp3",
+        "duration_s": 4.27
+      },
+      {
+        "id": "int_buteyko_kleiner_atmen_t1",
+        "clip_id": "kleiner_atmen",
+        "take": 1,
+        "text": "Atme etwas kleiner als gewohnt.",
+        "file": "intermediate/buteyko__kleiner_atmen__take1.mp3",
+        "duration_s": 3.31
+      },
+      {
+        "id": "int_buteyko_kleiner_atmen_t2",
+        "clip_id": "kleiner_atmen",
+        "take": 2,
+        "text": "Atme etwas kleiner als gewohnt.",
+        "file": "intermediate/buteyko__kleiner_atmen__take2.mp3",
+        "duration_s": 3.28
+      },
+      {
+        "id": "int_buteyko_nicht_tief_t1",
+        "clip_id": "nicht_tief",
+        "take": 1,
+        "text": "Versuch nicht, besonders tief einzuatmen.",
+        "file": "intermediate/buteyko__nicht_tief__take1.mp3",
+        "duration_s": 4.12
+      },
+      {
+        "id": "int_buteyko_nicht_tief_t2",
+        "clip_id": "nicht_tief",
+        "take": 2,
+        "text": "Versuch nicht, besonders tief einzuatmen.",
+        "file": "intermediate/buteyko__nicht_tief__take2.mp3",
+        "duration_s": 4.01
+      },
+      {
+        "id": "int_buteyko_leise_leicht_t1",
+        "clip_id": "leise_leicht",
+        "take": 1,
+        "text": "Lass die Atmung leise und leicht werden.",
+        "file": "intermediate/buteyko__leise_leicht__take1.mp3",
+        "duration_s": 3.76
+      },
+      {
+        "id": "int_buteyko_leise_leicht_t2",
+        "clip_id": "leise_leicht",
+        "take": 2,
+        "text": "Lass die Atmung leise und leicht werden.",
+        "file": "intermediate/buteyko__leise_leicht__take2.mp3",
+        "duration_s": 3.94
+      },
+      {
+        "id": "int_buteyko_unauffaellig_t1",
+        "clip_id": "unauffaellig",
+        "take": 1,
+        "text": "Der Atem darf ganz unauffällig werden.",
+        "file": "intermediate/buteyko__unauffaellig__take1.mp3",
+        "duration_s": 3.9
+      },
+      {
+        "id": "int_buteyko_unauffaellig_t2",
+        "clip_id": "unauffaellig",
+        "take": 2,
+        "text": "Der Atem darf ganz unauffällig werden.",
+        "file": "intermediate/buteyko__unauffaellig__take2.mp3",
+        "duration_s": 3.79
+      },
+      {
+        "id": "int_buteyko_unangenehm_normal_t1",
+        "clip_id": "unangenehm_normal",
+        "take": 1,
+        "text": "Wenn es unangenehm wird, atme wieder ganz normal weiter.",
+        "file": "intermediate/buteyko__unangenehm_normal__take1.mp3",
+        "duration_s": 5.01
+      },
+      {
+        "id": "int_buteyko_unangenehm_normal_t2",
+        "clip_id": "unangenehm_normal",
+        "take": 2,
+        "text": "Wenn es unangenehm wird, atme wieder ganz normal weiter.",
+        "file": "intermediate/buteyko__unangenehm_normal__take2.mp3",
+        "duration_s": 4.95
+      }
+    ],
+    "papworth": [
+      {
+        "id": "int_papworth_schultern_sinken_t1",
+        "clip_id": "schultern_sinken",
+        "take": 1,
+        "text": "Lass die Schultern sinken.",
+        "file": "intermediate/papworth__schultern_sinken__take1.mp3",
+        "duration_s": 2.4
+      },
+      {
+        "id": "int_papworth_schultern_sinken_t2",
+        "clip_id": "schultern_sinken",
+        "take": 2,
+        "text": "Lass die Schultern sinken.",
+        "file": "intermediate/papworth__schultern_sinken__take2.mp3",
+        "duration_s": 2.4
+      },
+      {
+        "id": "int_papworth_kiefer_entspannen_t1",
+        "clip_id": "kiefer_entspannen",
+        "take": 1,
+        "text": "Entspann den Kiefer.",
+        "file": "intermediate/papworth__kiefer_entspannen__take1.mp3",
+        "duration_s": 2.1
+      },
+      {
+        "id": "int_papworth_kiefer_entspannen_t2",
+        "clip_id": "kiefer_entspannen",
+        "take": 2,
+        "text": "Entspann den Kiefer.",
+        "file": "intermediate/papworth__kiefer_entspannen__take2.mp3",
+        "duration_s": 2.29
+      },
+      {
+        "id": "int_papworth_nase_ruhig_t1",
+        "clip_id": "nase_ruhig",
+        "take": 1,
+        "text": "Atme ruhig durch die Nase.",
+        "file": "intermediate/papworth__nase_ruhig__take1.mp3",
+        "duration_s": 2.74
+      },
+      {
+        "id": "int_papworth_nase_ruhig_t2",
+        "clip_id": "nase_ruhig",
+        "take": 2,
+        "text": "Atme ruhig durch die Nase.",
+        "file": "intermediate/papworth__nase_ruhig__take2.mp3",
+        "duration_s": 2.78
+      },
+      {
+        "id": "int_papworth_bauch_statt_brust_t1",
+        "clip_id": "bauch_statt_brust",
+        "take": 1,
+        "text": "Spür die Bewegung eher im Bauch als oben im Brustkorb.",
+        "file": "intermediate/papworth__bauch_statt_brust__take1.mp3",
+        "duration_s": 4.59
+      },
+      {
+        "id": "int_papworth_bauch_statt_brust_t2",
+        "clip_id": "bauch_statt_brust",
+        "take": 2,
+        "text": "Spür die Bewegung eher im Bauch als oben im Brustkorb.",
+        "file": "intermediate/papworth__bauch_statt_brust__take2.mp3",
+        "duration_s": 4.83
+      },
+      {
+        "id": "int_papworth_keine_grossen_atemzuege_t1",
+        "clip_id": "keine_grossen_atemzuege",
+        "take": 1,
+        "text": "Atme ruhig, ohne besonders große Atemzüge zu machen.",
+        "file": "intermediate/papworth__keine_grossen_atemzuege__take1.mp3",
+        "duration_s": 4.33
+      },
+      {
+        "id": "int_papworth_keine_grossen_atemzuege_t2",
+        "clip_id": "keine_grossen_atemzuege",
+        "take": 2,
+        "text": "Atme ruhig, ohne besonders große Atemzüge zu machen.",
+        "file": "intermediate/papworth__keine_grossen_atemzuege__take2.mp3",
+        "duration_s": 4.67
+      },
+      {
+        "id": "int_papworth_gleichmaessiger_rhythmus_t1",
+        "clip_id": "gleichmaessiger_rhythmus",
+        "take": 1,
+        "text": "Bleib bei einem gleichmäßigen Rhythmus.",
+        "file": "intermediate/papworth__gleichmaessiger_rhythmus__take1.mp3",
+        "duration_s": 3.42
+      },
+      {
+        "id": "int_papworth_gleichmaessiger_rhythmus_t2",
+        "clip_id": "gleichmaessiger_rhythmus",
+        "take": 2,
+        "text": "Bleib bei einem gleichmäßigen Rhythmus.",
+        "file": "intermediate/papworth__gleichmaessiger_rhythmus__take2.mp3",
+        "duration_s": 3.32
+      }
+    ],
+    "oxygen_advantage": [
+      {
+        "id": "int_oxygen_advantage_nase_t1",
+        "clip_id": "nase",
+        "take": 1,
+        "text": "Schließ den Mund und atme durch die Nase.",
+        "file": "intermediate/oxygen_advantage__nase__take1.mp3",
+        "duration_s": 3.41
+      },
+      {
+        "id": "int_oxygen_advantage_nase_t2",
+        "clip_id": "nase",
+        "take": 2,
+        "text": "Schließ den Mund und atme durch die Nase.",
+        "file": "intermediate/oxygen_advantage__nase__take2.mp3",
+        "duration_s": 3.49
+      },
+      {
+        "id": "int_oxygen_advantage_ruhig_leise_t1",
+        "clip_id": "ruhig_leise",
+        "take": 1,
+        "text": "Atme ruhig und leise.",
+        "file": "intermediate/oxygen_advantage__ruhig_leise__take1.mp3",
+        "duration_s": 2.54
+      },
+      {
+        "id": "int_oxygen_advantage_ruhig_leise_t2",
+        "clip_id": "ruhig_leise",
+        "take": 2,
+        "text": "Atme ruhig und leise.",
+        "file": "intermediate/oxygen_advantage__ruhig_leise__take2.mp3",
+        "duration_s": 2.62
+      },
+      {
+        "id": "int_oxygen_advantage_weniger_luft_t1",
+        "clip_id": "weniger_luft",
+        "take": 1,
+        "text": "Nimm etwas weniger Luft als sonst.",
+        "file": "intermediate/oxygen_advantage__weniger_luft__take1.mp3",
+        "duration_s": 3.21
+      },
+      {
+        "id": "int_oxygen_advantage_weniger_luft_t2",
+        "clip_id": "weniger_luft",
+        "take": 2,
+        "text": "Nimm etwas weniger Luft als sonst.",
+        "file": "intermediate/oxygen_advantage__weniger_luft__take2.mp3",
+        "duration_s": 3.36
+      },
+      {
+        "id": "int_oxygen_advantage_leicht_bleiben_t1",
+        "clip_id": "leicht_bleiben",
+        "take": 1,
+        "text": "Der Atem soll leicht bleiben.",
+        "file": "intermediate/oxygen_advantage__leicht_bleiben__take1.mp3",
+        "duration_s": 2.69
+      },
+      {
+        "id": "int_oxygen_advantage_leicht_bleiben_t2",
+        "clip_id": "leicht_bleiben",
+        "take": 2,
+        "text": "Der Atem soll leicht bleiben.",
+        "file": "intermediate/oxygen_advantage__leicht_bleiben__take2.mp3",
+        "duration_s": 2.68
+      },
+      {
+        "id": "int_oxygen_advantage_mehr_luft_normal_t1",
+        "clip_id": "mehr_luft_normal",
+        "take": 1,
+        "text": "Wenn du merkst, dass du deutlich mehr Luft brauchst, atme wieder ganz normal.",
+        "file": "intermediate/oxygen_advantage__mehr_luft_normal__take1.mp3",
+        "duration_s": 5.27
+      },
+      {
+        "id": "int_oxygen_advantage_mehr_luft_normal_t2",
+        "clip_id": "mehr_luft_normal",
+        "take": 2,
+        "text": "Wenn du merkst, dass du deutlich mehr Luft brauchst, atme wieder ganz normal.",
+        "file": "intermediate/oxygen_advantage__mehr_luft_normal__take2.mp3",
+        "duration_s": 5.44
+      }
+    ],
+    "tonglen": [
+      {
+        "id": "int_tonglen_situation_erinnern_t1",
+        "clip_id": "situation_erinnern",
+        "take": 1,
+        "text": "Bring eine schwierige Situation oder einen Menschen in Erinnerung.",
+        "file": "intermediate/tonglen__situation_erinnern__take1.mp3",
+        "duration_s": 5.02
+      },
+      {
+        "id": "int_tonglen_situation_erinnern_t2",
+        "clip_id": "situation_erinnern",
+        "take": 2,
+        "text": "Bring eine schwierige Situation oder einen Menschen in Erinnerung.",
+        "file": "intermediate/tonglen__situation_erinnern__take2.mp3",
+        "duration_s": 4.9
+      },
+      {
+        "id": "int_tonglen_gut_aushaltbar_t1",
+        "clip_id": "gut_aushaltbar",
+        "take": 1,
+        "text": "Nimm etwas, das sich gerade gut aushalten lässt.",
+        "file": "intermediate/tonglen__gut_aushaltbar__take1.mp3",
+        "duration_s": 4.08
+      },
+      {
+        "id": "int_tonglen_gut_aushaltbar_t2",
+        "clip_id": "gut_aushaltbar",
+        "take": 2,
+        "text": "Nimm etwas, das sich gerade gut aushalten lässt.",
+        "file": "intermediate/tonglen__gut_aushaltbar__take2.mp3",
+        "duration_s": 4.14
+      },
+      {
+        "id": "int_tonglen_ein_schwer_t1",
+        "clip_id": "ein_schwer",
+        "take": 1,
+        "text": "Atme ein und nimm wahr, was daran schwer ist.",
+        "file": "intermediate/tonglen__ein_schwer__take1.mp3",
+        "duration_s": 4.25
+      },
+      {
+        "id": "int_tonglen_ein_schwer_t2",
+        "clip_id": "ein_schwer",
+        "take": 2,
+        "text": "Atme ein und nimm wahr, was daran schwer ist.",
+        "file": "intermediate/tonglen__ein_schwer__take2.mp3",
+        "duration_s": 4.54
+      },
+      {
+        "id": "int_tonglen_aus_erleichterung_t1",
+        "clip_id": "aus_erleichterung",
+        "take": 1,
+        "text": "Atme aus und stell dir vor, du gibst etwas Erleichterung zurück.",
+        "file": "intermediate/tonglen__aus_erleichterung__take1.mp3",
+        "duration_s": 5.35
+      },
+      {
+        "id": "int_tonglen_aus_erleichterung_t2",
+        "clip_id": "aus_erleichterung",
+        "take": 2,
+        "text": "Atme aus und stell dir vor, du gibst etwas Erleichterung zurück.",
+        "file": "intermediate/tonglen__aus_erleichterung__take2.mp3",
+        "duration_s": 4.94
+      },
+      {
+        "id": "int_tonglen_kurz_ein_schwierig_t1",
+        "clip_id": "kurz_ein_schwierig",
+        "take": 1,
+        "text": "Ein – das Schwierige wahrnehmen.",
+        "file": "intermediate/tonglen__kurz_ein_schwierig__take1.mp3",
+        "duration_s": 2.94
+      },
+      {
+        "id": "int_tonglen_kurz_ein_schwierig_t2",
+        "clip_id": "kurz_ein_schwierig",
+        "take": 2,
+        "text": "Ein – das Schwierige wahrnehmen.",
+        "file": "intermediate/tonglen__kurz_ein_schwierig__take2.mp3",
+        "duration_s": 2.94
+      },
+      {
+        "id": "int_tonglen_kurz_aus_erleichterung_t1",
+        "clip_id": "kurz_aus_erleichterung",
+        "take": 1,
+        "text": "Aus – Erleichterung geben.",
+        "file": "intermediate/tonglen__kurz_aus_erleichterung__take1.mp3",
+        "duration_s": 2.72
+      },
+      {
+        "id": "int_tonglen_kurz_aus_erleichterung_t2",
+        "clip_id": "kurz_aus_erleichterung",
+        "take": 2,
+        "text": "Aus – Erleichterung geben.",
+        "file": "intermediate/tonglen__kurz_aus_erleichterung__take2.mp3",
+        "duration_s": 2.9
+      },
+      {
+        "id": "int_tonglen_ein_paar_atemzuege_t1",
+        "clip_id": "ein_paar_atemzuege",
+        "take": 1,
+        "text": "Bleib für ein paar Atemzüge dabei.",
+        "file": "intermediate/tonglen__ein_paar_atemzuege__take1.mp3",
+        "duration_s": 3.11
+      },
+      {
+        "id": "int_tonglen_ein_paar_atemzuege_t2",
+        "clip_id": "ein_paar_atemzuege",
+        "take": 2,
+        "text": "Bleib für ein paar Atemzüge dabei.",
+        "file": "intermediate/tonglen__ein_paar_atemzuege__take2.mp3",
+        "duration_s": 3.44
+      },
+      {
+        "id": "int_tonglen_wenn_zu_viel_t1",
+        "clip_id": "wenn_zu_viel",
+        "take": 1,
+        "text": "Wenn es zu viel wird, lass das Bild los.",
+        "file": "intermediate/tonglen__wenn_zu_viel__take1.mp3",
+        "duration_s": 3.51
+      },
+      {
+        "id": "int_tonglen_wenn_zu_viel_t2",
+        "clip_id": "wenn_zu_viel",
+        "take": 2,
+        "text": "Wenn es zu viel wird, lass das Bild los.",
+        "file": "intermediate/tonglen__wenn_zu_viel__take2.mp3",
+        "duration_s": 3.48
+      },
+      {
+        "id": "int_tonglen_zurueck_zum_atem_t1",
+        "clip_id": "zurueck_zum_atem",
+        "take": 1,
+        "text": "Komm zurück zu deinem Atem.",
+        "file": "intermediate/tonglen__zurueck_zum_atem__take1.mp3",
+        "duration_s": 2.5
+      },
+      {
+        "id": "int_tonglen_zurueck_zum_atem_t2",
+        "clip_id": "zurueck_zum_atem",
+        "take": 2,
+        "text": "Komm zurück zu deinem Atem.",
+        "file": "intermediate/tonglen__zurueck_zum_atem__take2.mp3",
+        "duration_s": 2.58
+      },
+      {
+        "id": "int_tonglen_normal_weiter_t1",
+        "clip_id": "normal_weiter",
+        "take": 1,
+        "text": "Und atme wieder ganz normal weiter.",
+        "file": "intermediate/tonglen__normal_weiter__take1.mp3",
+        "duration_s": 2.98
+      },
+      {
+        "id": "int_tonglen_normal_weiter_t2",
+        "clip_id": "normal_weiter",
+        "take": 2,
+        "text": "Und atme wieder ganz normal weiter.",
+        "file": "intermediate/tonglen__normal_weiter__take2.mp3",
+        "duration_s": 3.42
+      }
+    ]
+  }
+}
