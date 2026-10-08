@@ -134,3 +134,6 @@
 
 /* 15.12.12 — audible soundscape + runtime feedback */
 .soundscape-status{flex-basis:100%;text-align:center;font-size:11px;color:#a9543b;margin-top:-6px}.soundscape-status[hidden]{display:none}
+
+/* Build 15.12.14 — Purpose-first prestart + natural voice flow */
+.practice-purpose{color:#6f5f58!important;font-size:13px!important;line-height:1.45!important}.focus-purpose{width:min(590px,100%);margin:4px auto 12px;padding:13px 16px 12px;background:rgba(255,255,255,.62);border:1px solid rgba(232,210,190,.72);border-radius:17px;text-align:left}.focus-purpose>span{display:block;color:#a9543b;font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}.focus-purpose p{margin:0;color:#4f423c;font-size:14px;line-height:1.5}.focus-purpose-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.focus-purpose-tags span{font-size:10px;font-weight:800;color:#735f55;background:#fff7ed;border:1px solid #ead6c3;border-radius:999px;padding:4px 7px}.focus-prestart{justify-content:flex-start;padding-top:12px}.focus-previsual{height:225px}.focus-intro{margin-top:2px}@media(max-width:700px){.focus-purpose{margin-top:2px;padding:11px 13px}.focus-purpose p{font-size:13px}.focus-previsual{height:185px}}
