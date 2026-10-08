@@ -1,5 +1,5 @@
 {
-  "version": "15.12.15",
+  "version": "15.12.16",
   "language": "de",
   "basePath": "assets/audio/breath/de/",
   "format": "mp3",
@@ -597,24 +597,27 @@
     },
     "sound_om": {
       "file": "sound_om.mp3",
-      "text": "Om – Klangaufnahme folgt",
-      "status": "placeholder",
-      "source": "BD Voice De 03 Klang (pending)",
-      "take": null
+      "text": "Ommmmmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 02 Mittel.wav",
+      "take": 1,
+      "durationSeconds": 6.6
     },
     "sound_haa": {
       "file": "sound_haa.mp3",
-      "text": "Haa – Klangaufnahme folgt",
-      "status": "placeholder",
-      "source": "BD Voice De 03 Klang (pending)",
-      "take": null
+      "text": "Haaa …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 1,
+      "durationSeconds": 2.64
     },
     "sound_hum": {
       "file": "sound_hum.mp3",
-      "text": "Summen – Klangaufnahme folgt",
-      "status": "placeholder",
-      "source": "BD Voice De 03 Klang (pending)",
-      "take": null
+      "text": "Mmmmm …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 1,
+      "durationSeconds": 12.528
     },
     "soham_so_short": {
       "file": "soham_so_short.mp3",
@@ -643,6 +646,285 @@
       "status": "derived-recorded",
       "source": "und_aus + atme_wieder_ganz_normal_weiter + atme_ein",
       "note": "Aus vorhandenen Originalaufnahmen mit kurzen Crossfades zusammengeschnitten."
+    },
+    "om_take_01": {
+      "file": "om_take_01.mp3",
+      "text": "Ommmm …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 1,
+      "durationSeconds": 7.296,
+      "category": "om"
+    },
+    "haa_take_01": {
+      "file": "haa_take_01.mp3",
+      "text": "Haaa …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 1,
+      "durationSeconds": 2.64,
+      "category": "haa"
+    },
+    "hum_take_01": {
+      "file": "hum_take_01.mp3",
+      "text": "Mmmmm …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 1,
+      "durationSeconds": 12.528,
+      "category": "hum"
+    },
+    "om_take_02": {
+      "file": "om_take_02.mp3",
+      "text": "Ommmm …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 2,
+      "durationSeconds": 6.528,
+      "category": "om"
+    },
+    "haa_take_02": {
+      "file": "haa_take_02.mp3",
+      "text": "Haaa …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 2,
+      "durationSeconds": 2.64,
+      "category": "haa"
+    },
+    "hum_take_02": {
+      "file": "hum_take_02.mp3",
+      "text": "Mmmmm …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 2,
+      "durationSeconds": 13.728,
+      "category": "hum"
+    },
+    "om_take_03": {
+      "file": "om_take_03.mp3",
+      "text": "Ommmm …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 3,
+      "durationSeconds": 9.984,
+      "category": "om"
+    },
+    "haa_take_03": {
+      "file": "haa_take_03.mp3",
+      "text": "Haaa …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 3,
+      "durationSeconds": 2.328,
+      "category": "haa"
+    },
+    "hum_take_03": {
+      "file": "hum_take_03.mp3",
+      "text": "Mmmmm …",
+      "status": "recorded",
+      "source": "Track-3.wav",
+      "take": 3,
+      "durationSeconds": 19.632,
+      "category": "hum"
+    },
+    "om_short_01": {
+      "file": "om_short_01.mp3",
+      "text": "Ommmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 01 kurz.wav",
+      "take": 1,
+      "durationSeconds": 3.648,
+      "category": "om"
+    },
+    "om_short_02": {
+      "file": "om_short_02.mp3",
+      "text": "Ommmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 01 kurz.wav",
+      "take": 2,
+      "durationSeconds": 4.464,
+      "category": "om"
+    },
+    "om_short_03": {
+      "file": "om_short_03.mp3",
+      "text": "Ommmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 01 kurz.wav",
+      "take": 3,
+      "durationSeconds": 4.056,
+      "category": "om"
+    },
+    "om_medium_01": {
+      "file": "om_medium_01.mp3",
+      "text": "Ommmmmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 02 Mittel.wav",
+      "take": 1,
+      "durationSeconds": 6.6,
+      "category": "om"
+    },
+    "om_medium_02": {
+      "file": "om_medium_02.mp3",
+      "text": "Ommmmmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 02 Mittel.wav",
+      "take": 2,
+      "durationSeconds": 5.328,
+      "category": "om"
+    },
+    "om_medium_03": {
+      "file": "om_medium_03.mp3",
+      "text": "Ommmmmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 02 Mittel.wav",
+      "take": 3,
+      "durationSeconds": 6.024,
+      "category": "om"
+    },
+    "om_long_01": {
+      "file": "om_long_01.mp3",
+      "text": "Ommmmmmmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 03 lang.wav",
+      "take": 1,
+      "durationSeconds": 9.552,
+      "category": "om"
+    },
+    "om_long_02": {
+      "file": "om_long_02.mp3",
+      "text": "Ommmmmmmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 03 lang.wav",
+      "take": 2,
+      "durationSeconds": 7.824,
+      "category": "om"
+    },
+    "om_long_03": {
+      "file": "om_long_03.mp3",
+      "text": "Ommmmmmmm …",
+      "status": "recorded",
+      "source": "BD Voice De Om 03 lang.wav",
+      "take": 3,
+      "durationSeconds": 7.248,
+      "category": "om"
+    },
+    "om_atme_tief_ein": {
+      "file": "om_atme_tief_ein.mp3",
+      "text": "Atme tief ein.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 1,
+      "durationSeconds": 5.208,
+      "category": "om_cue"
+    },
+    "om_langes_om_aus": {
+      "file": "om_langes_om_aus.mp3",
+      "text": "Und mit einem langen Om aus.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 2,
+      "durationSeconds": 5.064,
+      "category": "om_cue"
+    },
+    "om_atme_wieder_ein": {
+      "file": "om_atme_wieder_ein.mp3",
+      "text": "Atme wieder ein.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 3,
+      "durationSeconds": 3.384,
+      "category": "om_cue"
+    },
+    "om_noch_einmal_tief_ein": {
+      "file": "om_noch_einmal_tief_ein.mp3",
+      "text": "Noch einmal tief ein.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 4,
+      "durationSeconds": 3.648,
+      "category": "om_cue"
+    },
+    "om_atme_ruhig_ein": {
+      "file": "om_atme_ruhig_ein.mp3",
+      "text": "Atme ruhig ein.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 5,
+      "durationSeconds": 2.808,
+      "category": "om_cue"
+    },
+    "om_langes_om_aus_02": {
+      "file": "om_langes_om_aus_02.mp3",
+      "text": "Und mit einem langen Om aus.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 6,
+      "durationSeconds": 5.376,
+      "category": "om_cue"
+    },
+    "om_wieder_ein": {
+      "file": "om_wieder_ein.mp3",
+      "text": "Wieder ein.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 7,
+      "durationSeconds": 2.568,
+      "category": "om_cue"
+    },
+    "om_und_noch_einmal_ein": {
+      "file": "om_und_noch_einmal_ein.mp3",
+      "text": "Und noch einmal ein.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 8,
+      "durationSeconds": 3.144,
+      "category": "om_cue"
+    },
+    "om_lass_ton_ausklingen": {
+      "file": "om_lass_ton_ausklingen.mp3",
+      "text": "Lass den Ton ausklingen.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 9,
+      "durationSeconds": 3.192,
+      "category": "om_cue"
+    },
+    "om_spuer_kurz_nach": {
+      "file": "om_spuer_kurz_nach.mp3",
+      "text": "Spür kurz nach.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 10,
+      "durationSeconds": 2.4,
+      "category": "om_cue"
+    },
+    "om_dann_atme_wieder_ein": {
+      "file": "om_dann_atme_wieder_ein.mp3",
+      "text": "Und dann atme wieder ein.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 11,
+      "durationSeconds": 4.248,
+      "category": "om_cue"
+    },
+    "om_lass_letzten_ton_ausklingen": {
+      "file": "om_lass_letzten_ton_ausklingen.mp3",
+      "text": "Lass den letzten Ton langsam ausklingen.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 12,
+      "durationSeconds": 4.728,
+      "category": "om_cue"
+    },
+    "om_spuer_nach": {
+      "file": "om_spuer_nach.mp3",
+      "text": "Spür nach.",
+      "status": "recorded",
+      "source": "BD Voice De 04 Om Cues.wav",
+      "take": 13,
+      "durationSeconds": 1.8,
+      "category": "om_cue"
     }
   }
 }
