@@ -179,3 +179,30 @@
 #breathPrevisual[data-kind="lion"]{overflow:visible}
 @media(max-width:700px){.focus-lion-graphic{width:min(320px,100%);height:205px}.focus-lion-graphic .lion-nose-pulse{width:18px;height:18px;border-width:1.6px}.focus-lion-graphic .lion-breath-line{height:2.5px}.focus-lion-graphic .lion-breath-line:after{width:7px;height:7px;right:-6px;border-top-width:2px;border-right-width:2px}.focus-lion-graphic .lion-breath-line.l1{width:64px}.focus-lion-graphic .lion-breath-line.l2{width:78px}.focus-lion-graphic .lion-breath-line.l3{width:64px}}
 @media(prefers-reduced-motion:reduce){.focus-lion-graphic .lion-state,.focus-lion-graphic .lion-overlay,.focus-lion-graphic .lion-nose-pulse,.focus-lion-graphic .lion-breath-line{transition:none!important;animation:none!important}.focus-visual.inhale .focus-lion-graphic .lion-overlay-inhale,.focus-visual.exhale .focus-lion-graphic .lion-overlay-exhale{opacity:1}.focus-visual.exhale .focus-lion-graphic .lion-breath-line{opacity:.8;transform:translateY(var(--line-shift,0)) scaleX(1)}}
+
+/* 15.12.16 hotfix — calm lion pre-start + breathing demo inside Kurzanleitung */
+#breathPrevisual[data-kind="lion"]{height:195px;overflow:visible;margin-bottom:2px}
+#breathPrevisual[data-kind="lion"] .focus-lion-graphic{width:min(330px,92vw);height:195px}
+#breathPrevisual[data-kind="lion"] .lion-state-exhale,#breathPrevisual[data-kind="lion"] .lion-overlay-exhale{opacity:0!important}
+#breathPrevisual[data-kind="lion"] .lion-state-inhale{opacity:1!important;transform:scale(.98)!important}
+#breathPrevisual[data-kind="lion"] .lion-overlay-inhale{opacity:0!important}
+.lion-instruction-demo{display:grid!important;grid-template-columns:minmax(220px,340px) minmax(220px,1fr)!important;gap:18px!important;align-items:center!important}
+.lion-instruction-demo .focus-lion-graphic{width:100%;height:205px;overflow:visible}
+.lion-instruction-demo .lion-state-inhale{animation:lionDemoInhaleState 10s ease-in-out infinite}
+.lion-instruction-demo .lion-state-exhale{animation:lionDemoExhaleState 10s ease-in-out infinite}
+.lion-instruction-demo .lion-overlay-inhale{animation:lionDemoInhaleOverlay 10s ease-in-out infinite}
+.lion-instruction-demo .lion-overlay-exhale{animation:lionDemoExhaleOverlay 10s ease-in-out infinite}
+.lion-instruction-demo .lion-nose-pulse.p1{animation:lionDemoNose 10s ease-out infinite}
+.lion-instruction-demo .lion-nose-pulse.p2{animation:lionDemoNose 10s ease-out .55s infinite}
+.lion-instruction-demo .lion-nose-pulse.p3{animation:lionDemoNose 10s ease-out 1.1s infinite}
+.lion-instruction-demo .lion-breath-line{animation:lionDemoBreath 10s cubic-bezier(.22,.61,.36,1) infinite}
+.lion-instruction-demo .lion-breath-line.l2{animation-delay:.28s}
+.lion-instruction-demo .lion-breath-line.l3{animation-delay:.56s}
+@keyframes lionDemoInhaleState{0%,38%{opacity:1;transform:scale(.99)}43%,95%{opacity:0;transform:scale(.98)}100%{opacity:1;transform:scale(.99)}}
+@keyframes lionDemoExhaleState{0%,38%{opacity:0;transform:scale(1.01)}43%,95%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.01)}}
+@keyframes lionDemoInhaleOverlay{0%,36%{opacity:1}42%,100%{opacity:0}}
+@keyframes lionDemoExhaleOverlay{0%,40%{opacity:0}45%,94%{opacity:1}100%{opacity:0}}
+@keyframes lionDemoNose{0%{opacity:0;transform:translate(-50%,-50%) scale(.35)}8%{opacity:.42}35%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}36%,100%{opacity:0}}
+@keyframes lionDemoBreath{0%,43%{opacity:0;transform:translateY(var(--line-shift,0)) scaleX(.08)}50%{opacity:.95}92%{opacity:0;transform:translateY(var(--line-shift,0)) scaleX(1)}100%{opacity:0}}
+@media(max-width:700px){#breathPrevisual[data-kind="lion"]{height:165px}#breathPrevisual[data-kind="lion"] .focus-lion-graphic{height:165px;width:min(285px,90vw)}.lion-instruction-demo{grid-template-columns:1fr!important}.lion-instruction-demo .focus-lion-graphic{height:170px;max-width:290px;margin:auto}.lion-instruction-demo p{text-align:left}}
+@media(prefers-reduced-motion:reduce){.lion-instruction-demo .lion-state-inhale{opacity:1!important;animation:none!important}.lion-instruction-demo .lion-state-exhale,.lion-instruction-demo .lion-overlay{opacity:0!important;animation:none!important}}
