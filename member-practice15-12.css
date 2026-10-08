@@ -44,3 +44,83 @@
 .focus-previsual{overflow:visible;height:196px;padding:8px 0 14px}
 .focus-previsual .focus-box{transform:scale(.60);transform-origin:center}
 @media(max-width:700px){.focus-previsual{height:166px;padding:7px 0 12px}.focus-previsual .focus-box{transform:scale(.54)}}
+
+
+/* BUILD 15.12.9 — Beginner Visual Library + calmer pre-start */
+.focus-shell{width:min(860px,100%);padding:24px 30px 34px}
+.focus-prestart{flex:1;justify-content:center;margin:0 auto;padding:6px 0 24px;min-height:0}
+.focus-previsual{width:380px;height:255px;margin:2px auto 0;padding:0;overflow:visible;opacity:1}
+.focus-previsual>div{transform:scale(.82);transform-origin:center}
+.focus-previsual .focus-body{transform:scale(.70)}
+.focus-previsual .focus-box{transform:scale(.78)}
+.focus-previsual .focus-rhythm{transform:scale(.80)}
+.focus-previsual .focus-coherence{transform:scale(.84)}
+.focus-previsual .focus-mindful{transform:scale(.84)}
+.focus-visual-label{font:800 10px system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#9a7e70;margin:-5px 0 7px}
+.focus-intro{margin:0 auto 13px;max-width:590px}
+.focus-options{margin-bottom:14px}
+.focus-start{padding:13px 31px;box-shadow:none}
+
+/* resonance: one ring with a softer halo */
+.focus-resonance{width:250px;height:250px;display:grid;place-items:center;position:relative}
+.focus-resonance i,.focus-resonance span{position:absolute;border-radius:50%;transition:transform var(--phase-ms) ease-in-out,opacity var(--phase-ms) ease-in-out}
+.focus-resonance i{width:210px;height:210px;border:1.5px solid rgba(104,82,71,.38)}
+.focus-resonance span{width:126px;height:126px;background:rgba(201,107,75,.19);box-shadow:0 0 0 24px rgba(201,107,75,.055)}
+.focus-visual.inhale .focus-resonance span{transform:scale(1.24)}.focus-visual.exhale .focus-resonance span{transform:scale(.82)}
+.focus-visual.inhale .focus-resonance i{transform:scale(1.06)}.focus-visual.exhale .focus-resonance i{transform:scale(.96)}
+
+/* equal breathing: symmetric expansion/contraction */
+.focus-equal{width:250px;height:250px;display:grid;place-items:center;position:relative}
+.focus-equal span{width:150px;height:150px;border-radius:50%;background:rgba(201,107,75,.18);border:1.5px solid rgba(111,88,76,.35);transition:transform var(--phase-ms) ease-in-out}
+.focus-equal b{position:absolute;font:800 14px system-ui;color:#876f63;letter-spacing:.08em}
+.focus-visual.inhale .focus-equal span{transform:scale(1.22)}.focus-visual.exhale .focus-equal span{transform:scale(.82)}
+
+/* lion breath */
+.focus-lion{width:300px;height:240px;position:relative;display:grid;place-items:center}
+.lion-face{width:150px;height:150px;border:2px solid #725f54;border-radius:50%;position:relative;background:rgba(255,255,255,.18)}
+.lion-face .eye{position:absolute;top:52px;width:7px;height:7px;border-radius:50%;background:#725f54}.lion-face .e1{left:43px}.lion-face .e2{right:43px}
+.lion-face .mouth{position:absolute;left:51px;top:90px;width:48px;height:24px;border-bottom:2px solid #725f54;border-radius:0 0 50% 50%}
+.lion-face .tongue{position:absolute;left:61px;top:105px;width:28px;height:42px;border-radius:0 0 18px 18px;background:rgba(201,107,75,.28);transform:scaleY(.45);transform-origin:top;transition:transform var(--phase-ms) ease}
+.lion-air{position:absolute;left:218px;top:90px;width:78px;height:70px}.lion-air i{display:block;height:1.5px;background:#c96b4b;margin:15px 0;transform-origin:left;transform:scaleX(.15);opacity:.2;transition:transform var(--phase-ms) ease,opacity var(--phase-ms) ease}.lion-air i:first-child{transform:rotate(-14deg) scaleX(.15)}.lion-air i:last-child{transform:rotate(14deg) scaleX(.15)}
+.focus-visual.exhale .lion-face .tongue{transform:scaleY(1)}.focus-visual.exhale .lion-air i{transform:scaleX(1);opacity:.85}.focus-visual.exhale .lion-air i:first-child{transform:rotate(-14deg) scaleX(1)}.focus-visual.exhale .lion-air i:last-child{transform:rotate(14deg) scaleX(1)}
+
+/* crocodile breathing: prone body and abdominal expansion */
+.focus-crocodile{width:360px;height:210px;position:relative}
+.croc-ground{position:absolute;left:18px;right:18px;bottom:44px;height:1px;background:#d9c8bc}
+.croc-body{position:absolute;left:38px;top:72px;width:282px;height:72px;border:2px solid #705d52;border-radius:50% 50% 28px 28px;background:rgba(255,255,255,.18)}
+.croc-body:before{content:"";position:absolute;left:-25px;top:13px;width:44px;height:44px;border:2px solid #705d52;border-radius:50%;background:var(--bdp-cream)}
+.croc-belly{position:absolute;left:148px;top:110px;width:92px;height:52px;border-radius:50%;background:rgba(201,107,75,.22);transition:transform var(--phase-ms) ease,opacity var(--phase-ms) ease;transform:scale(.84)}
+.focus-visual.inhale .croc-belly{transform:scale(1.2);opacity:1}.focus-visual.exhale .croc-belly{transform:scale(.82);opacity:.65}
+
+/* breath counting */
+.focus-count{width:340px;height:220px;display:grid;place-items:center;position:relative}
+.count-dots{display:grid;grid-template-columns:repeat(5,44px);gap:13px 15px;justify-content:center}
+.count-dots i{width:44px;height:44px;border-radius:50%;border:1px solid #d7c5b8;display:grid;place-items:center;font:750 12px system-ui;color:#8a756b;background:rgba(255,255,255,.32);font-style:normal;transition:all .3s ease}
+.count-dots i.active{background:rgba(201,107,75,.22);border-color:#c96b4b;color:#82452f;transform:scale(1.12)}
+.focus-count strong{position:absolute;bottom:-8px;font:700 30px Georgia,serif;color:#6d584e}
+
+/* Soham */
+.focus-soham{width:320px;height:200px;display:flex;align-items:center;justify-content:center;gap:24px}
+.focus-soham span{font:700 45px Georgia,serif;color:#bca99f;transition:color var(--phase-ms) ease,transform var(--phase-ms) ease}.focus-soham i{width:58px;height:1px;background:#d7c4b8}
+.focus-visual.inhale .focus-soham span:first-child{color:#744f42;transform:scale(1.08)}.focus-visual.exhale .focus-soham span:last-child{color:#c96b4b;transform:scale(1.08)}
+
+/* chanting */
+.focus-chant{width:320px;height:220px;display:grid;place-items:center;position:relative}
+.focus-chant strong{font:700 48px Georgia,serif;color:#684f45;z-index:2}.focus-chant i{position:absolute;border:1.5px solid rgba(201,107,75,.35);border-radius:50%;width:90px;height:90px;opacity:.15;transform:scale(.75);transition:transform var(--phase-ms) ease,opacity var(--phase-ms) ease}.focus-chant i:nth-of-type(2){width:145px;height:145px}.focus-chant i:nth-of-type(3){width:205px;height:205px}
+.focus-visual.exhale .focus-chant i{transform:scale(1.05);opacity:.72}.focus-visual.inhale .focus-chant i{transform:scale(.72);opacity:.12}
+
+/* pursed lips */
+.focus-lips{width:360px;height:220px;position:relative}
+.lip-face{position:absolute;left:54px;top:28px;width:120px;height:165px;border:2px solid #6d594e;border-left-color:transparent;border-radius:42% 50% 48% 44%;transform:rotate(-2deg)}
+.lip-mouth{position:absolute;left:159px;top:111px;width:38px;height:10px;border-top:3px solid #c96b4b;border-radius:50%}
+.air-stream{position:absolute;left:201px;top:105px;width:125px;height:34px;display:flex;align-items:center;gap:15px}.air-stream i{width:8px;height:8px;border-radius:50%;background:rgba(201,107,75,.35);transform:translateX(-20px);opacity:0;transition:transform var(--phase-ms) linear,opacity var(--phase-ms) ease}.air-stream i:nth-child(2){transition-delay:.15s}.air-stream i:nth-child(3){transition-delay:.3s}.air-stream i:nth-child(4){transition-delay:.45s}.focus-visual.exhale .air-stream i{transform:translateX(34px);opacity:.9}
+
+/* Dirga: three body zones */
+.focus-threezone{width:260px;height:310px;position:relative}.tz-head{position:absolute;left:105px;top:4px;width:50px;height:50px;border:2px solid #6e5a50;border-radius:50%}.tz-torso{position:absolute;left:60px;top:66px;width:140px;height:220px;border:2px solid #6e5a50;border-radius:58px 58px 44px 44px;padding:27px 20px 22px;display:flex;flex-direction:column;gap:10px;justify-content:center}.tz-torso i{height:42px;border-radius:50%;background:rgba(201,107,75,.10);transition:background .3s ease,transform var(--phase-ms) ease;transform:scale(.9)}.focus-visual[data-phase-step="0"] .tz-torso i[data-zone="0"],.focus-visual[data-phase-step="1"] .tz-torso i[data-zone="1"],.focus-visual[data-phase-step="2"] .tz-torso i[data-zone="2"]{background:rgba(201,107,75,.30);transform:scale(1.08)}.focus-visual.exhale .tz-torso i{background:rgba(201,107,75,.10);transform:scale(.9)}
+
+/* physiological sigh: second inhale reads as a visible top-up */
+.focus-visual.topup .focus-sigh i:nth-child(2){transform:scaleY(1.22);background:rgba(201,107,75,.35)}
+.focus-sigh i{transition:transform var(--phase-ms) ease,background var(--phase-ms) ease}
+
+@media(max-width:700px){.focus-shell{padding:18px 18px 24px}.focus-prestart{justify-content:flex-start;padding-top:8px}.focus-previsual{width:300px;height:205px}.focus-previsual>div{transform:scale(.66)}.focus-previsual .focus-body{transform:scale(.56)}.focus-previsual .focus-box{transform:scale(.64)}.focus-header h2{font-size:30px}.focus-visual-label{margin-top:-4px}.focus-lion,.focus-crocodile,.focus-lips{transform:scale(.82)}.focus-threezone{transform:scale(.82)}}
+@media(prefers-reduced-motion:reduce){.focus-resonance span,.focus-resonance i,.focus-equal span,.lion-face .tongue,.lion-air i,.croc-belly,.focus-soham span,.focus-chant i,.air-stream i,.tz-torso i{transition:none!important}}
