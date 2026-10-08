@@ -2,3 +2,28 @@
 
 /* BUILD 15.12.1 */
 .member-access-status{font-size:12px;color:var(--muted,#6f5f58);padding:8px 0;flex-basis:100%}.member-access-status.sent{color:#4f6b50;font-weight:750}.member-config-actions{align-items:center}
+
+
+/* BUILD 15.12.7 — Atembibliothek Phase 1 */
+.member-config-shell{max-height:calc(100vh - 30px);overflow:auto}
+.breath-library-panel{background:#fffdf9}
+.breath-library-intro{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:14px}
+.breath-library-intro h3{margin-bottom:4px}
+.breath-library-count{font-size:12px;font-weight:800;color:#8b6d5f;white-space:nowrap;padding-top:5px}
+.breath-library-filters{display:grid;grid-template-columns:minmax(190px,1.4fr) repeat(6,minmax(110px,1fr));gap:8px;padding:12px 0 14px;border-top:1px solid #ead9cb;border-bottom:1px solid #ead9cb}
+.breath-library-filters label{font-size:10px;font-weight:850;color:#806a60;display:grid;gap:4px}
+.breath-library-filters input,.breath-library-filters select{width:100%;border:1px solid #dfcfc2;border-radius:9px;background:#fff;padding:8px 9px;color:#3e312c;font:600 11px system-ui;min-width:0}
+.breath-library-list{display:grid;margin-top:2px}
+.breath-library-row{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:18px;padding:16px 2px;border-bottom:1px solid #eadfd6}
+.breath-library-row[hidden]{display:none!important}
+.breath-library-titleline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.breath-library-titleline strong{font:700 18px Georgia,serif}
+.breath-level{font-size:9px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:4px 7px;border-radius:999px;background:#eef4ec;color:#416044}
+.breath-level.intermediate{background:#f5eadc;color:#7a583b}.breath-level.advanced{background:#f1e4e2;color:#8d463d}
+.breath-purpose{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}.breath-purpose span{font-size:10px;background:#f8efe6;color:#6c5145;padding:4px 7px;border-radius:999px}
+.breath-library-main p{margin:8px 0 7px;font-size:12px;line-height:1.48;color:#574943}
+.breath-facts{display:flex;flex-wrap:wrap;gap:6px 14px;color:#75645c;font-size:10.5px}.breath-facts b{color:#55463f}
+.breath-library-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right}.breath-library-side .pill{font-size:9px;border-radius:999px;padding:4px 7px;background:#f5e6d3;color:#6e4a3d;font-weight:900}.breath-library-side .pill.internal{background:#eee;color:#555}
+.breath-library-state{font-size:10.5px;line-height:1.35;color:#6a5a53;max-width:170px}.breath-library-state.planned{color:#927465}.breath-library-state.internal{color:#695c57}
+.breath-row-actions{justify-content:flex-end;flex-wrap:wrap;margin-top:0!important}.breath-row-actions button{font-size:10px;padding:6px 8px!important}
+@media(max-width:1100px){.breath-library-filters{grid-template-columns:repeat(4,minmax(120px,1fr))}.breath-search{grid-column:span 2}}
+@media(max-width:700px){.breath-library-intro{display:block}.breath-library-count{display:block;margin-top:5px}.breath-library-filters{grid-template-columns:1fr 1fr}.breath-search{grid-column:1/-1}.breath-library-row{grid-template-columns:1fr}.breath-library-side{align-items:flex-start;text-align:left}.breath-row-actions{justify-content:flex-start}}
