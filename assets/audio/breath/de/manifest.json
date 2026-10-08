@@ -1,5 +1,5 @@
 {
-  "version": "15.12.10",
+  "version": "15.12.11",
   "language": "de",
   "basePath": "assets/audio/breath/de/",
   "format": "mp3",
@@ -615,6 +615,20 @@
       "status": "placeholder",
       "source": "BD Voice De 03 Klang (pending)",
       "take": null
+    },
+    "soham_so_short": {
+      "file": "soham_so_short.mp3",
+      "text": "So.",
+      "status": "derived-recorded",
+      "source": "soham_so",
+      "note": "Kurzclip aus bestehender Aufnahme für ruhige Wiederholungszyklen."
+    },
+    "soham_ham_short": {
+      "file": "soham_ham_short.mp3",
+      "text": "Ham.",
+      "status": "derived-recorded",
+      "source": "soham_ham",
+      "note": "Kurzclip aus bestehender Aufnahme für ruhige Wiederholungszyklen."
     }
   }
 }
