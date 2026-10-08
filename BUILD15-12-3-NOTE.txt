@@ -1,0 +1,17 @@
+BUILD 15.12.3 — Member Finance + Breathing Focus UX
+
+Changes
+- Member area now receives real invoices from the invoices table, including date, due date, amount, effective status, paid timestamp and payment method.
+- Invoice tab renders real invoices rather than sales-order placeholders; authenticated member links can download invoice PDF.
+- Open invoice overview uses real invoice data.
+- Breathing UI changed from control-heavy modal to a full-screen focus flow.
+- Exercise list uses calm row navigation instead of repeated orange action buttons.
+- During an active breathing session, setup/explanation controls disappear; only visual, breath cue, remaining time and minimal pause/end controls remain.
+- Diaphragmatic breathing now uses a stylized human torso with visible abdominal expansion.
+- Extended exhale 4/6 now uses one central breathing form whose expansion/contraction follows the actual 4/6 timing.
+- Box breathing and mindful breathing retain their established visual language.
+
+Deployment
+- Frontend files must be uploaded.
+- cloudflare-worker/worker.js must be deployed.
+- No manual D1 migration required.

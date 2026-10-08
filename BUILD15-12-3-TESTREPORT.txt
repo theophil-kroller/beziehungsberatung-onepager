@@ -1,0 +1,36 @@
+Beziehungsdynamiken BUILD 15.12.3 TESTREPORT
+
+Static/regression checks: 21/21 passed
+
+PASS  DE tabs overview
+PASS  EN tabs overview
+PASS  DE invoices render from d.invoices
+PASS  EN invoices render from d.invoices
+PASS  No salesOrders used for open invoice counter
+PASS  Invoice PDF member link present
+PASS  Worker returns invoices collection
+PASS  Worker queries invoice payments
+PASS  Worker effective overdue state
+PASS  Focus dialog full screen class
+PASS  Running state hides prestart
+PASS  Running state shows session
+PASS  Exercise cards are calm rows
+PASS  No repeated Öffnen action in exercise list
+PASS  Diaphragm uses body visual
+PASS  Body has belly expansion
+PASS  4/6 uses rhythm visual
+PASS  Box visual retained
+PASS  Mindful visual retained
+PASS  Voice controls not shown in focus UI
+PASS  Version bumped
+
+Syntax checks:
+PASS  member-practice15-12.js (node --check)
+PASS  cloudflare-worker/worker.js (node --check)
+PASS  zugang.html inline JavaScript
+PASS  access.html inline JavaScript
+
+Deployment:
+- Upload frontend patch files.
+- Redeploy cloudflare-worker/worker.js.
+- No manual D1 migration required.
