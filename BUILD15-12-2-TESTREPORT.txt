@@ -1,0 +1,10 @@
+Beziehungsdynamiken BUILD 15.12.2 TESTREPORT
+
+- Memberbereich now uses tabs (Übersicht, Übungen, Termine, Rechnungen, Pakete)
+- Summary cards added above the tabs
+- Practice card + materials moved into Übungen
+- Appointments moved into Termine
+- Wallet + orders moved into Rechnungen
+- Packages + subscriptions moved into Pakete
+- Atemkarten now show symbolic preview graphics
+- Atemdialog now includes “Erklärung einblenden” with animated explainers
