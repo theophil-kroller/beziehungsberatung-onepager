@@ -1,0 +1,1419 @@
+{
+  "version": "15.12.21",
+  "base_build": "15.12.20",
+  "clips": [
+    {
+      "id": "A_CAND_001",
+      "file": "a_take_001.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_001.mp3"
+    },
+    {
+      "id": "A_CAND_002",
+      "file": "a_take_002.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_002.mp3"
+    },
+    {
+      "id": "A_CAND_003",
+      "file": "a_take_003.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_003.mp3"
+    },
+    {
+      "id": "A_CAND_004",
+      "file": "a_take_004.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_004.mp3"
+    },
+    {
+      "id": "A_CAND_005",
+      "file": "a_take_005.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_005.mp3"
+    },
+    {
+      "id": "A_CAND_006",
+      "file": "a_take_006.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_006.mp3"
+    },
+    {
+      "id": "A_CAND_007",
+      "file": "a_take_007.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_007.mp3"
+    },
+    {
+      "id": "A_CAND_008",
+      "file": "a_take_008.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_008.mp3"
+    },
+    {
+      "id": "A_CAND_009",
+      "file": "a_take_009.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_009.mp3"
+    },
+    {
+      "id": "A_CAND_010",
+      "file": "a_take_010.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_010.mp3"
+    },
+    {
+      "id": "A_CAND_011",
+      "file": "a_take_011.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_011.mp3"
+    },
+    {
+      "id": "A_CAND_012",
+      "file": "a_take_012.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_012.mp3"
+    },
+    {
+      "id": "A_CAND_013",
+      "file": "a_take_013.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_013.mp3"
+    },
+    {
+      "id": "A_CAND_014",
+      "file": "a_take_014.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_014.mp3"
+    },
+    {
+      "id": "A_CAND_015",
+      "file": "a_take_015.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_015.mp3"
+    },
+    {
+      "id": "A_CAND_016",
+      "file": "a_take_016.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_016.mp3"
+    },
+    {
+      "id": "A_CAND_017",
+      "file": "a_take_017.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_017.mp3"
+    },
+    {
+      "id": "A_CAND_018",
+      "file": "a_take_018.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_018.mp3"
+    },
+    {
+      "id": "A_CAND_019",
+      "file": "a_take_019.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_019.mp3"
+    },
+    {
+      "id": "A_CAND_020",
+      "file": "a_take_020.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_020.mp3"
+    },
+    {
+      "id": "A_CAND_021",
+      "file": "a_take_021.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_021.mp3"
+    },
+    {
+      "id": "A_CAND_022",
+      "file": "a_take_022.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_022.mp3"
+    },
+    {
+      "id": "A_CAND_023",
+      "file": "a_take_023.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_023.mp3"
+    },
+    {
+      "id": "A_CAND_024",
+      "file": "a_take_024.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_024.mp3"
+    },
+    {
+      "id": "A_CAND_025",
+      "file": "a_take_025.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_025.mp3"
+    },
+    {
+      "id": "A_CAND_026",
+      "file": "a_take_026.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_026.mp3"
+    },
+    {
+      "id": "A_CAND_027",
+      "file": "a_take_027.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_027.mp3"
+    },
+    {
+      "id": "A_CAND_028",
+      "file": "a_take_028.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_028.mp3"
+    },
+    {
+      "id": "A_CAND_029",
+      "file": "a_take_029.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_029.mp3"
+    },
+    {
+      "id": "A_CAND_030",
+      "file": "a_take_030.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_030.mp3"
+    },
+    {
+      "id": "A_CAND_031",
+      "file": "a_take_031.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_031.mp3"
+    },
+    {
+      "id": "A_CAND_032",
+      "file": "a_take_032.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_032.mp3"
+    },
+    {
+      "id": "A_CAND_033",
+      "file": "a_take_033.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_033.mp3"
+    },
+    {
+      "id": "A_CAND_034",
+      "file": "a_take_034.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_034.mp3"
+    },
+    {
+      "id": "A_CAND_035",
+      "file": "a_take_035.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_035.mp3"
+    },
+    {
+      "id": "A_CAND_036",
+      "file": "a_take_036.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_036.mp3"
+    },
+    {
+      "id": "A_CAND_037",
+      "file": "a_take_037.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_037.mp3"
+    },
+    {
+      "id": "A_CAND_038",
+      "file": "a_take_038.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_038.mp3"
+    },
+    {
+      "id": "A_CAND_039",
+      "file": "a_take_039.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_039.mp3"
+    },
+    {
+      "id": "A_CAND_040",
+      "file": "a_take_040.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_040.mp3"
+    },
+    {
+      "id": "A_CAND_041",
+      "file": "a_take_041.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_041.mp3"
+    },
+    {
+      "id": "A_CAND_042",
+      "file": "a_take_042.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_042.mp3"
+    },
+    {
+      "id": "A_CAND_043",
+      "file": "a_take_043.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_043.mp3"
+    },
+    {
+      "id": "A_CAND_044",
+      "file": "a_take_044.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_044.mp3"
+    },
+    {
+      "id": "A_CAND_045",
+      "file": "a_take_045.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_045.mp3"
+    },
+    {
+      "id": "A_CAND_046",
+      "file": "a_take_046.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_046.mp3"
+    },
+    {
+      "id": "A_CAND_047",
+      "file": "a_take_047.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_047.mp3"
+    },
+    {
+      "id": "A_CAND_048",
+      "file": "a_take_048.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_048.mp3"
+    },
+    {
+      "id": "A_CAND_049",
+      "file": "a_take_049.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_049.mp3"
+    },
+    {
+      "id": "A_CAND_050",
+      "file": "a_take_050.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_050.mp3"
+    },
+    {
+      "id": "A_CAND_051",
+      "file": "a_take_051.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_051.mp3"
+    },
+    {
+      "id": "A_CAND_052",
+      "file": "a_take_052.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_052.mp3"
+    },
+    {
+      "id": "A_CAND_053",
+      "file": "a_take_053.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_053.mp3"
+    },
+    {
+      "id": "A_CAND_054",
+      "file": "a_take_054.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_054.mp3"
+    },
+    {
+      "id": "A_CAND_055",
+      "file": "a_take_055.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_055.mp3"
+    },
+    {
+      "id": "A_CAND_056",
+      "file": "a_take_056.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_056.mp3"
+    },
+    {
+      "id": "A_CAND_057",
+      "file": "a_take_057.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_057.mp3"
+    },
+    {
+      "id": "A_CAND_058",
+      "file": "a_take_058.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_058.mp3"
+    },
+    {
+      "id": "A_CAND_059",
+      "file": "a_take_059.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_059.mp3"
+    },
+    {
+      "id": "A_CAND_060",
+      "file": "a_take_060.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_060.mp3"
+    },
+    {
+      "id": "A_CAND_061",
+      "file": "a_take_061.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_061.mp3"
+    },
+    {
+      "id": "A_CAND_062",
+      "file": "a_take_062.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_062.mp3"
+    },
+    {
+      "id": "A_CAND_063",
+      "file": "a_take_063.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_063.mp3"
+    },
+    {
+      "id": "A_CAND_064",
+      "file": "a_take_064.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_064.mp3"
+    },
+    {
+      "id": "A_CAND_065",
+      "file": "a_take_065.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_065.mp3"
+    },
+    {
+      "id": "A_CAND_066",
+      "file": "a_take_066.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_066.mp3"
+    },
+    {
+      "id": "A_CAND_067",
+      "file": "a_take_067.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_067.mp3"
+    },
+    {
+      "id": "A_CAND_068",
+      "file": "a_take_068.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_068.mp3"
+    },
+    {
+      "id": "A_CAND_069",
+      "file": "a_take_069.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_069.mp3"
+    },
+    {
+      "id": "A_CAND_070",
+      "file": "a_take_070.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_070.mp3"
+    },
+    {
+      "id": "A_CAND_071",
+      "file": "a_take_071.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_071.mp3"
+    },
+    {
+      "id": "A_CAND_072",
+      "file": "a_take_072.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_072.mp3"
+    },
+    {
+      "id": "A_CAND_073",
+      "file": "a_take_073.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_073.mp3"
+    },
+    {
+      "id": "A_CAND_074",
+      "file": "a_take_074.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_074.mp3"
+    },
+    {
+      "id": "A_CAND_075",
+      "file": "a_take_075.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_075.mp3"
+    },
+    {
+      "id": "A_CAND_076",
+      "file": "a_take_076.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_076.mp3"
+    },
+    {
+      "id": "A_CAND_077",
+      "file": "a_take_077.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_077.mp3"
+    },
+    {
+      "id": "A_CAND_078",
+      "file": "a_take_078.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_078.mp3"
+    },
+    {
+      "id": "A_CAND_079",
+      "file": "a_take_079.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_079.mp3"
+    },
+    {
+      "id": "A_CAND_080",
+      "file": "a_take_080.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_080.mp3"
+    },
+    {
+      "id": "A_CAND_081",
+      "file": "a_take_081.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_081.mp3"
+    },
+    {
+      "id": "A_CAND_082",
+      "file": "a_take_082.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_082.mp3"
+    },
+    {
+      "id": "A_CAND_083",
+      "file": "a_take_083.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_083.mp3"
+    },
+    {
+      "id": "A_CAND_084",
+      "file": "a_take_084.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_084.mp3"
+    },
+    {
+      "id": "A_CAND_085",
+      "file": "a_take_085.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_085.mp3"
+    },
+    {
+      "id": "A_CAND_086",
+      "file": "a_take_086.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_086.mp3"
+    },
+    {
+      "id": "A_CAND_087",
+      "file": "a_take_087.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_087.mp3"
+    },
+    {
+      "id": "A_CAND_088",
+      "file": "a_take_088.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_088.mp3"
+    },
+    {
+      "id": "A_CAND_089",
+      "file": "a_take_089.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_089.mp3"
+    },
+    {
+      "id": "A_CAND_090",
+      "file": "a_take_090.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_090.mp3"
+    },
+    {
+      "id": "A_CAND_091",
+      "file": "a_take_091.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_091.mp3"
+    },
+    {
+      "id": "A_CAND_092",
+      "file": "a_take_092.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_092.mp3"
+    },
+    {
+      "id": "A_CAND_093",
+      "file": "a_take_093.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_093.mp3"
+    },
+    {
+      "id": "A_CAND_094",
+      "file": "a_take_094.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_094.mp3"
+    },
+    {
+      "id": "A_CAND_095",
+      "file": "a_take_095.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_095.mp3"
+    },
+    {
+      "id": "A_CAND_096",
+      "file": "a_take_096.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_096.mp3"
+    },
+    {
+      "id": "A_CAND_097",
+      "file": "a_take_097.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_097.mp3"
+    },
+    {
+      "id": "A_CAND_098",
+      "file": "a_take_098.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_098.mp3"
+    },
+    {
+      "id": "A_CAND_099",
+      "file": "a_take_099.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_099.mp3"
+    },
+    {
+      "id": "A_CAND_100",
+      "file": "a_take_100.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_100.mp3"
+    },
+    {
+      "id": "A_CAND_101",
+      "file": "a_take_101.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_101.mp3"
+    },
+    {
+      "id": "A_CAND_102",
+      "file": "a_take_102.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_102.mp3"
+    },
+    {
+      "id": "A_CAND_103",
+      "file": "a_take_103.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_103.mp3"
+    },
+    {
+      "id": "A_CAND_104",
+      "file": "a_take_104.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_104.mp3"
+    },
+    {
+      "id": "A_CAND_105",
+      "file": "a_take_105.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_105.mp3"
+    },
+    {
+      "id": "A_CAND_106",
+      "file": "a_take_106.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_106.mp3"
+    },
+    {
+      "id": "A_CAND_107",
+      "file": "a_take_107.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_107.mp3"
+    },
+    {
+      "id": "A_CAND_108",
+      "file": "a_take_108.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_108.mp3"
+    },
+    {
+      "id": "A_CAND_109",
+      "file": "a_take_109.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_109.mp3"
+    },
+    {
+      "id": "A_CAND_110",
+      "file": "a_take_110.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_110.mp3"
+    },
+    {
+      "id": "A_CAND_111",
+      "file": "a_take_111.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_111.mp3"
+    },
+    {
+      "id": "A_CAND_112",
+      "file": "a_take_112.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_112.mp3"
+    },
+    {
+      "id": "A_CAND_113",
+      "file": "a_take_113.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_113.mp3"
+    },
+    {
+      "id": "A_CAND_114",
+      "file": "a_take_114.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_114.mp3"
+    },
+    {
+      "id": "A_CAND_115",
+      "file": "a_take_115.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_115.mp3"
+    },
+    {
+      "id": "A_CAND_116",
+      "file": "a_take_116.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_116.mp3"
+    },
+    {
+      "id": "A_CAND_117",
+      "file": "a_take_117.mp3",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/a_take_117.mp3"
+    },
+    {
+      "id": "B_CAND_001",
+      "file": "b_take_001.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_001.mp3"
+    },
+    {
+      "id": "B_CAND_002",
+      "file": "b_take_002.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_002.mp3"
+    },
+    {
+      "id": "B_CAND_003",
+      "file": "b_take_003.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_003.mp3"
+    },
+    {
+      "id": "B_CAND_004",
+      "file": "b_take_004.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_004.mp3"
+    },
+    {
+      "id": "B_CAND_005",
+      "file": "b_take_005.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_005.mp3"
+    },
+    {
+      "id": "B_CAND_006",
+      "file": "b_take_006.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_006.mp3"
+    },
+    {
+      "id": "B_CAND_007",
+      "file": "b_take_007.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_007.mp3"
+    },
+    {
+      "id": "B_CAND_008",
+      "file": "b_take_008.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_008.mp3"
+    },
+    {
+      "id": "B_CAND_009",
+      "file": "b_take_009.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_009.mp3"
+    },
+    {
+      "id": "B_CAND_010",
+      "file": "b_take_010.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_010.mp3"
+    },
+    {
+      "id": "B_CAND_011",
+      "file": "b_take_011.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_011.mp3"
+    },
+    {
+      "id": "B_CAND_012",
+      "file": "b_take_012.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_012.mp3"
+    },
+    {
+      "id": "B_CAND_013",
+      "file": "b_take_013.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_013.mp3"
+    },
+    {
+      "id": "B_CAND_014",
+      "file": "b_take_014.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_014.mp3"
+    },
+    {
+      "id": "B_CAND_015",
+      "file": "b_take_015.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_015.mp3"
+    },
+    {
+      "id": "B_CAND_016",
+      "file": "b_take_016.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_016.mp3"
+    },
+    {
+      "id": "B_CAND_017",
+      "file": "b_take_017.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_017.mp3"
+    },
+    {
+      "id": "B_CAND_018",
+      "file": "b_take_018.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_018.mp3"
+    },
+    {
+      "id": "B_CAND_019",
+      "file": "b_take_019.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_019.mp3"
+    },
+    {
+      "id": "B_CAND_020",
+      "file": "b_take_020.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_020.mp3"
+    },
+    {
+      "id": "B_CAND_021",
+      "file": "b_take_021.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_021.mp3"
+    },
+    {
+      "id": "B_CAND_022",
+      "file": "b_take_022.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_022.mp3"
+    },
+    {
+      "id": "B_CAND_023",
+      "file": "b_take_023.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_023.mp3"
+    },
+    {
+      "id": "B_CAND_024",
+      "file": "b_take_024.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_024.mp3"
+    },
+    {
+      "id": "B_CAND_025",
+      "file": "b_take_025.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_025.mp3"
+    },
+    {
+      "id": "B_CAND_026",
+      "file": "b_take_026.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_026.mp3"
+    },
+    {
+      "id": "B_CAND_027",
+      "file": "b_take_027.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_027.mp3"
+    },
+    {
+      "id": "B_CAND_028",
+      "file": "b_take_028.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_028.mp3"
+    },
+    {
+      "id": "B_CAND_029",
+      "file": "b_take_029.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_029.mp3"
+    },
+    {
+      "id": "B_CAND_030",
+      "file": "b_take_030.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_030.mp3"
+    },
+    {
+      "id": "B_CAND_031",
+      "file": "b_take_031.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_031.mp3"
+    },
+    {
+      "id": "B_CAND_032",
+      "file": "b_take_032.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_032.mp3"
+    },
+    {
+      "id": "B_CAND_033",
+      "file": "b_take_033.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_033.mp3"
+    },
+    {
+      "id": "B_CAND_034",
+      "file": "b_take_034.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_034.mp3"
+    },
+    {
+      "id": "B_CAND_035",
+      "file": "b_take_035.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_035.mp3"
+    },
+    {
+      "id": "B_CAND_036",
+      "file": "b_take_036.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_036.mp3"
+    },
+    {
+      "id": "B_CAND_037",
+      "file": "b_take_037.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_037.mp3"
+    },
+    {
+      "id": "B_CAND_038",
+      "file": "b_take_038.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_038.mp3"
+    },
+    {
+      "id": "B_CAND_039",
+      "file": "b_take_039.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_039.mp3"
+    },
+    {
+      "id": "B_CAND_040",
+      "file": "b_take_040.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_040.mp3"
+    },
+    {
+      "id": "B_CAND_041",
+      "file": "b_take_041.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_041.mp3"
+    },
+    {
+      "id": "B_CAND_042",
+      "file": "b_take_042.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_042.mp3"
+    },
+    {
+      "id": "B_CAND_043",
+      "file": "b_take_043.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_043.mp3"
+    },
+    {
+      "id": "B_CAND_044",
+      "file": "b_take_044.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_044.mp3"
+    },
+    {
+      "id": "B_CAND_045",
+      "file": "b_take_045.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_045.mp3"
+    },
+    {
+      "id": "B_CAND_046",
+      "file": "b_take_046.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_046.mp3"
+    },
+    {
+      "id": "B_CAND_047",
+      "file": "b_take_047.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_047.mp3"
+    },
+    {
+      "id": "B_CAND_048",
+      "file": "b_take_048.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_048.mp3"
+    },
+    {
+      "id": "B_CAND_049",
+      "file": "b_take_049.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_049.mp3"
+    },
+    {
+      "id": "B_CAND_050",
+      "file": "b_take_050.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_050.mp3"
+    },
+    {
+      "id": "B_CAND_051",
+      "file": "b_take_051.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_051.mp3"
+    },
+    {
+      "id": "B_CAND_052",
+      "file": "b_take_052.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_052.mp3"
+    },
+    {
+      "id": "B_CAND_053",
+      "file": "b_take_053.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_053.mp3"
+    },
+    {
+      "id": "B_CAND_054",
+      "file": "b_take_054.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_054.mp3"
+    },
+    {
+      "id": "B_CAND_055",
+      "file": "b_take_055.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_055.mp3"
+    },
+    {
+      "id": "B_CAND_056",
+      "file": "b_take_056.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_056.mp3"
+    },
+    {
+      "id": "B_CAND_057",
+      "file": "b_take_057.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_057.mp3"
+    },
+    {
+      "id": "B_CAND_058",
+      "file": "b_take_058.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_058.mp3"
+    },
+    {
+      "id": "B_CAND_059",
+      "file": "b_take_059.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_059.mp3"
+    },
+    {
+      "id": "B_CAND_060",
+      "file": "b_take_060.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_060.mp3"
+    },
+    {
+      "id": "B_CAND_061",
+      "file": "b_take_061.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_061.mp3"
+    },
+    {
+      "id": "B_CAND_062",
+      "file": "b_take_062.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_062.mp3"
+    },
+    {
+      "id": "B_CAND_063",
+      "file": "b_take_063.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_063.mp3"
+    },
+    {
+      "id": "B_CAND_064",
+      "file": "b_take_064.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_064.mp3"
+    },
+    {
+      "id": "B_CAND_065",
+      "file": "b_take_065.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_065.mp3"
+    },
+    {
+      "id": "B_CAND_066",
+      "file": "b_take_066.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_066.mp3"
+    },
+    {
+      "id": "B_CAND_067",
+      "file": "b_take_067.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_067.mp3"
+    },
+    {
+      "id": "B_CAND_068",
+      "file": "b_take_068.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_068.mp3"
+    },
+    {
+      "id": "B_CAND_069",
+      "file": "b_take_069.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_069.mp3"
+    },
+    {
+      "id": "B_CAND_070",
+      "file": "b_take_070.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_070.mp3"
+    },
+    {
+      "id": "B_CAND_071",
+      "file": "b_take_071.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_071.mp3"
+    },
+    {
+      "id": "B_CAND_072",
+      "file": "b_take_072.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_072.mp3"
+    },
+    {
+      "id": "B_CAND_073",
+      "file": "b_take_073.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_073.mp3"
+    },
+    {
+      "id": "B_CAND_074",
+      "file": "b_take_074.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_074.mp3"
+    },
+    {
+      "id": "B_CAND_075",
+      "file": "b_take_075.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_075.mp3"
+    },
+    {
+      "id": "B_CAND_076",
+      "file": "b_take_076.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_076.mp3"
+    },
+    {
+      "id": "B_CAND_077",
+      "file": "b_take_077.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_077.mp3"
+    },
+    {
+      "id": "B_CAND_078",
+      "file": "b_take_078.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_078.mp3"
+    },
+    {
+      "id": "B_CAND_079",
+      "file": "b_take_079.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_079.mp3"
+    },
+    {
+      "id": "B_CAND_080",
+      "file": "b_take_080.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_080.mp3"
+    },
+    {
+      "id": "B_CAND_081",
+      "file": "b_take_081.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_081.mp3"
+    },
+    {
+      "id": "B_CAND_082",
+      "file": "b_take_082.mp3",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/de/advanced/b_take_082.mp3"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "B_CAND_083",
+      "reason": "User identified interrupted sentence"
+    }
+  ],
+  "awaiting_recording": [
+    "B034",
+    "B035",
+    "B036",
+    "B037",
+    "B038",
+    "B039",
+    "B040"
+  ],
+  "cue_mapping": "unverified; no automatic assignment to breathing phases",
+  "recording_scripts": "assets/audio/breath/advanced/_review",
+  "notes": "User-reviewed raw candidates; spoken-text mapping not independently verified. B083 excluded. Original lossless master remains outside release. No automatic voice-to-phase mapping.",
+  "audio_format": "MP3 144kbps 44.1kHz",
+  "directory": "assets/audio/breath/de/advanced"
+}
