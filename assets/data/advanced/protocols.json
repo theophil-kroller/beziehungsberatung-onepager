@@ -1,0 +1,744 @@
+{
+  "microcosmic_orbit": {
+    "title": "Microcosmic Orbit · Aufmerksamkeitsreise",
+    "durationSeconds": 1470,
+    "phases": [
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_01",
+        "text": "Ankommen: Sitze aufrecht und spüre den Kontakt zum Boden.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_02",
+        "text": "Nimm den natürlichen Atem wahr, ohne ihn zu verändern.",
+        "durationSeconds": 150,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_03",
+        "text": "Richte deine Aufmerksamkeit auf den unteren Bauch.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_04",
+        "text": "Lass die Aufmerksamkeit langsam entlang des Rückens zum Scheitel wandern.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_05",
+        "text": "Verweile sanft im Bereich des Scheitels.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_06",
+        "text": "Folge mit der Aufmerksamkeit über die Vorderseite wieder nach unten.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_07",
+        "text": "Wiederhole diese innere Reise in deinem eigenen Tempo.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MICROCOSMIC_ORBIT_08",
+        "text": "Spüre den ganzen Körper und öffne die Aufmerksamkeit für den Raum.",
+        "durationSeconds": 120,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": false
+  },
+  "embryonic": {
+    "title": "Embryonale Atmung · stille Wahrnehmung",
+    "durationSeconds": 1080,
+    "phases": [
+      {
+        "cueId": "ADV_EMBRYONIC_01",
+        "text": "Finde eine ruhige, bequeme Position und spüre deine Unterlage.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_EMBRYONIC_02",
+        "text": "Der Atem darf von selbst kommen und gehen.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_EMBRYONIC_03",
+        "text": "Nimm das feine Entstehen der Einatmung wahr.",
+        "durationSeconds": 180,
+        "state": "inhale"
+      },
+      {
+        "cueId": "ADV_EMBRYONIC_04",
+        "text": "Spüre, wie die Ausatmung von selbst ausklingt.",
+        "durationSeconds": 180,
+        "state": "exhale"
+      },
+      {
+        "cueId": "ADV_EMBRYONIC_05",
+        "text": "Beobachte feine Bewegungen im Rumpf, ohne etwas zu erzwingen.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_EMBRYONIC_06",
+        "text": "Lass auch die Vorstellung eines bestimmten Rhythmus los.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_EMBRYONIC_07",
+        "text": "Kehre mit der Aufmerksamkeit in den Raum zurück.",
+        "durationSeconds": 120,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": false
+  },
+  "skin_breathing": {
+    "title": "Hautatmung · Körperwahrnehmung",
+    "durationSeconds": 1080,
+    "phases": [
+      {
+        "cueId": "ADV_SKIN_BREATHING_01",
+        "text": "Setz dich bequem hin und lass deinen Atem natürlich fließen.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SKIN_BREATHING_02",
+        "text": "Spüre den Kontakt der Kleidung mit deiner Haut.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SKIN_BREATHING_03",
+        "text": "Nimm Temperatur und Berührung an Händen und Gesicht wahr.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SKIN_BREATHING_04",
+        "text": "Stell dir sanfte Weite beim Einatmen vor.",
+        "durationSeconds": 180,
+        "state": "inhale"
+      },
+      {
+        "cueId": "ADV_SKIN_BREATHING_05",
+        "text": "Lass beim Ausatmen Schultern und Kiefer weich werden.",
+        "durationSeconds": 180,
+        "state": "exhale"
+      },
+      {
+        "cueId": "ADV_SKIN_BREATHING_06",
+        "text": "Nimm die Körpergrenzen als Ganzes wahr.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SKIN_BREATHING_07",
+        "text": "Lass die Vorstellung los und orientiere dich im Raum.",
+        "durationSeconds": 120,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": false
+  },
+  "murcha": {
+    "title": "Murcha Pranayama · begleitete Praxis",
+    "durationSeconds": 1380,
+    "phases": [
+      {
+        "cueId": "ADV_MURCHA_01",
+        "text": "Ankommen und aufrechten, stabilen Sitz finden.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MURCHA_02",
+        "text": "Kläre mit der anleitenden Person die persönliche Variante und den Ablauf.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MURCHA_03",
+        "text": "Beginne die persönlich angeleitete Praxis. Der Atemrhythmus wird durch die Fachperson gesteuert.",
+        "durationSeconds": 720,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MURCHA_04",
+        "text": "Nimm Empfindungen wahr; die Fachperson entscheidet über Übergänge.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_MURCHA_05",
+        "text": "Kehre zum normalen Atem zurück und bleibe einen Moment ruhig sitzen.",
+        "durationSeconds": 180,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "bhramari_kumbhaka": {
+    "title": "Bhramari Kumbhaka · begleitete Praxis",
+    "durationSeconds": 1380,
+    "phases": [
+      {
+        "cueId": "ADV_BHRAMARI_KUMBHAKA_01",
+        "text": "Finde einen stabilen, bequemen Sitz.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHRAMARI_KUMBHAKA_02",
+        "text": "Lass die Aufmerksamkeit auf Gesichts- und Halsraum ruhen.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHRAMARI_KUMBHAKA_03",
+        "text": "Beginne mit der fachlich angeleiteten Summ- und Atemsequenz.",
+        "durationSeconds": 540,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHRAMARI_KUMBHAKA_04",
+        "text": "Unterbrich für eine ruhige Wahrnehmungspause und spüre nach.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHRAMARI_KUMBHAKA_05",
+        "text": "Folge gegebenenfalls einer weiteren persönlich angeleiteten Runde.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHRAMARI_KUMBHAKA_06",
+        "text": "Atme frei und öffne langsam die Augen.",
+        "durationSeconds": 120,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "kapalabhati": {
+    "title": "Kapalabhati · begleitete Runden",
+    "durationSeconds": 1080,
+    "phases": [
+      {
+        "cueId": "ADV_KAPALABHATI_01",
+        "text": "Setz dich aufrecht hin und entspanne Gesicht und Schultern.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_KAPALABHATI_02",
+        "text": "Die Fachperson demonstriert das aktive Atemmuster und stimmt das Tempo ab.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_KAPALABHATI_03",
+        "text": "Beginne die erste persönlich angeleitete Runde.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_KAPALABHATI_04",
+        "text": "Pause: Atme natürlich und spüre den Rumpf.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_KAPALABHATI_05",
+        "text": "Beginne die zweite persönlich angeleitete Runde.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_KAPALABHATI_06",
+        "text": "Pause: Lass die Atembewegung wieder ruhig werden.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_KAPALABHATI_07",
+        "text": "Abschluss: Spüre nach und orientiere dich im Raum.",
+        "durationSeconds": 120,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "bhastrika": {
+    "title": "Bhastrika Pranayama · begleitete Runden",
+    "durationSeconds": 1020,
+    "phases": [
+      {
+        "cueId": "ADV_BHASTRIKA_01",
+        "text": "Nimm eine stabile Sitzposition ein.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHASTRIKA_02",
+        "text": "Stimme Tempo und individuelle Variante mit der Fachperson ab.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHASTRIKA_03",
+        "text": "Erste persönlich angeleitete Runde.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHASTRIKA_04",
+        "text": "Erholungspause mit normaler Atmung.",
+        "durationSeconds": 150,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHASTRIKA_05",
+        "text": "Zweite persönlich angeleitete Runde.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BHASTRIKA_06",
+        "text": "Ruhiger Ausklang und Nachspüren.",
+        "durationSeconds": 150,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "fire_breath": {
+    "title": "Feueratmung · begleitete Sequenz",
+    "durationSeconds": 960,
+    "phases": [
+      {
+        "cueId": "ADV_FIRE_BREATH_01",
+        "text": "Richte deinen Sitz auf und lass die Schultern los.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_FIRE_BREATH_02",
+        "text": "Die Fachperson erläutert den aktiven Atemimpuls.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_FIRE_BREATH_03",
+        "text": "Erste angeleitete Sequenz.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_FIRE_BREATH_04",
+        "text": "Atempause im Sinne einer normalen, unangestrengten Atmung.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_FIRE_BREATH_05",
+        "text": "Zweite angeleitete Sequenz.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_FIRE_BREATH_06",
+        "text": "Lass den Atem sich beruhigen und spüre nach.",
+        "durationSeconds": 120,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "tummo": {
+    "title": "Tummo · Meditation und begleitete Praxis",
+    "durationSeconds": 1800,
+    "phases": [
+      {
+        "cueId": "ADV_TUMMO_01",
+        "text": "Ankommen: Ruhe und stabile Sitzhaltung finden.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TUMMO_02",
+        "text": "Stimme Atemtechnik und innere Visualisierung mit der Fachperson ab.",
+        "durationSeconds": 240,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TUMMO_03",
+        "text": "Geführte Konzentrations- und Vorstellungsphase.",
+        "durationSeconds": 480,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TUMMO_04",
+        "text": "Persönlich angeleitete methodenspezifische Praxis.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TUMMO_05",
+        "text": "Zurück zum unangestrengten Atem und zur Körperwahrnehmung.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TUMMO_06",
+        "text": "Integration in Ruhe und Abschluss.",
+        "durationSeconds": 120,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "wim_hof": {
+    "title": "Wim-Hof-Atmung · angeleitete Runden",
+    "durationSeconds": 960,
+    "phases": [
+      {
+        "cueId": "ADV_WIM_HOF_01",
+        "text": "Setz oder leg dich in sicherer Umgebung bequem hin.",
+        "durationSeconds": 120,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_WIM_HOF_02",
+        "text": "Bereite dich auf die erste angeleitete Atemrunde vor.",
+        "durationSeconds": 60,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_WIM_HOF_03",
+        "text": "Erste geführte Runde: Folge der zuvor erlernten Atemführung.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_WIM_HOF_04",
+        "text": "Atemruhe und Erholung nach Vorgabe der anleitenden Person.",
+        "durationSeconds": 90,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_WIM_HOF_05",
+        "text": "Zweite geführte Runde.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_WIM_HOF_06",
+        "text": "Atemruhe und Erholung nach Vorgabe der anleitenden Person.",
+        "durationSeconds": 90,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_WIM_HOF_07",
+        "text": "Dritte geführte Runde.",
+        "durationSeconds": 180,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_WIM_HOF_08",
+        "text": "Kehre zur natürlichen Atmung zurück, spüre nach und orientiere dich.",
+        "durationSeconds": 60,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "holotropic": {
+    "title": "Holotropes Atmen · begleitete Sitzung",
+    "durationSeconds": 5400,
+    "phases": [
+      {
+        "cueId": "ADV_HOLOTROPIC_01",
+        "text": "Ankommen, Rahmen und Intention mit der Begleitperson klären.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_HOLOTROPIC_02",
+        "text": "Musikalischer Einstieg und Übergang in den begleiteten Prozess.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_HOLOTROPIC_03",
+        "text": "Prozessphase mit Musik. Die Leitung begleitet die individuelle Entwicklung.",
+        "durationSeconds": 3000,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_HOLOTROPIC_04",
+        "text": "Allmählicher Übergang in die Ruhe und Körperwahrnehmung.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_HOLOTROPIC_05",
+        "text": "Nachspüren und Integration mit der begleitenden Person.",
+        "durationSeconds": 600,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "biodynamic": {
+    "title": "Biodynamic Breathwork · begleitete Sitzung",
+    "durationSeconds": 3600,
+    "phases": [
+      {
+        "cueId": "ADV_BIODYNAMIC_01",
+        "text": "Kontakt zum Körper und zur Unterlage herstellen.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BIODYNAMIC_02",
+        "text": "Die Leitung vereinbart den körperorientierten Arbeitsrahmen.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BIODYNAMIC_03",
+        "text": "Persönlich angeleiteter Atem- und Körperprozess.",
+        "durationSeconds": 1800,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BIODYNAMIC_04",
+        "text": "Bewegung und Körperempfindungen bewusst integrieren.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_BIODYNAMIC_05",
+        "text": "Nachruhe und gemeinsame Reflexion.",
+        "durationSeconds": 600,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "clarity": {
+    "title": "Clarity Breathwork · begleitete Sitzung",
+    "durationSeconds": 3300,
+    "phases": [
+      {
+        "cueId": "ADV_CLARITY_01",
+        "text": "Ankommen, Intention und vereinbarter Ablauf.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_CLARITY_02",
+        "text": "Körper und Atem ohne Druck wahrnehmen.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_CLARITY_03",
+        "text": "Begleitete methodenspezifische Atemarbeit.",
+        "durationSeconds": 1800,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_CLARITY_04",
+        "text": "Verlangsamung und Nachspüren.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_CLARITY_05",
+        "text": "Integration und Abschluss.",
+        "durationSeconds": 300,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "rebirthing": {
+    "title": "Rebirthing · begleitete Sitzung",
+    "durationSeconds": 3300,
+    "phases": [
+      {
+        "cueId": "ADV_REBIRTHING_01",
+        "text": "Ankommen und persönlichen Prozessrahmen klären.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_REBIRTHING_02",
+        "text": "Den Atem zunächst natürlich wahrnehmen.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_REBIRTHING_03",
+        "text": "Individuell angeleiteter zusammenhängender Atemprozess.",
+        "durationSeconds": 1800,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_REBIRTHING_04",
+        "text": "Den Atem zur Ruhe kommen lassen.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_REBIRTHING_05",
+        "text": "Erlebtes gemeinsam integrieren.",
+        "durationSeconds": 300,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "somatic_breathwork": {
+    "title": "Somatic Breathwork · begleitete Sitzung",
+    "durationSeconds": 2700,
+    "phases": [
+      {
+        "cueId": "ADV_SOMATIC_BREATHWORK_01",
+        "text": "Im Körper ankommen und Orientierung finden.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SOMATIC_BREATHWORK_02",
+        "text": "Atem und Körperempfindungen beobachten.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SOMATIC_BREATHWORK_03",
+        "text": "Individuell begleiteter Atem- und Körperprozess.",
+        "durationSeconds": 1200,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SOMATIC_BREATHWORK_04",
+        "text": "Körperressourcen und Stabilität bewusst wahrnehmen.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SOMATIC_BREATHWORK_05",
+        "text": "Integration und Abschluss.",
+        "durationSeconds": 300,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "transformational": {
+    "title": "Transformational Breathwork · begleitete Sitzung",
+    "durationSeconds": 3300,
+    "phases": [
+      {
+        "cueId": "ADV_TRANSFORMATIONAL_01",
+        "text": "Ankommen und fachlich abgestimmten Arbeitsrahmen finden.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TRANSFORMATIONAL_02",
+        "text": "Kontakt zur Atembewegung herstellen.",
+        "durationSeconds": 300,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TRANSFORMATIONAL_03",
+        "text": "Begleiteter methodenspezifischer Atemprozess.",
+        "durationSeconds": 1800,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TRANSFORMATIONAL_04",
+        "text": "Übergang zu natürlicher Atmung und Entspannung.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_TRANSFORMATIONAL_05",
+        "text": "Integration und Abschluss.",
+        "durationSeconds": 300,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  },
+  "shamanic": {
+    "title": "Shamanic Breathwork · begleitete Sitzung",
+    "durationSeconds": 5400,
+    "phases": [
+      {
+        "cueId": "ADV_SHAMANIC_01",
+        "text": "Ankommen und ritualisierten Arbeitsrahmen klären.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SHAMANIC_02",
+        "text": "Musikalischer und körperlicher Einstieg.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SHAMANIC_03",
+        "text": "Begleitete Prozessphase mit musikalischem Rahmen.",
+        "durationSeconds": 3000,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SHAMANIC_04",
+        "text": "Ausklang und ruhiges Nachspüren.",
+        "durationSeconds": 600,
+        "state": "pause"
+      },
+      {
+        "cueId": "ADV_SHAMANIC_05",
+        "text": "Integration und Abschluss mit der Begleitperson.",
+        "durationSeconds": 600,
+        "state": "pause"
+      }
+    ],
+    "voiceStatus": "synthetic_demo",
+    "requiresFacilitator": true
+  }
+}
