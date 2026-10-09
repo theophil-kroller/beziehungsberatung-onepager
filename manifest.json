@@ -1,0 +1,1417 @@
+{
+  "version": "15.12.20",
+  "base_build": "15.12.19",
+  "clips": [
+    {
+      "id": "A_CAND_001",
+      "file": "a_take_001.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_001.flac"
+    },
+    {
+      "id": "A_CAND_002",
+      "file": "a_take_002.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_002.flac"
+    },
+    {
+      "id": "A_CAND_003",
+      "file": "a_take_003.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_003.flac"
+    },
+    {
+      "id": "A_CAND_004",
+      "file": "a_take_004.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_004.flac"
+    },
+    {
+      "id": "A_CAND_005",
+      "file": "a_take_005.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_005.flac"
+    },
+    {
+      "id": "A_CAND_006",
+      "file": "a_take_006.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_006.flac"
+    },
+    {
+      "id": "A_CAND_007",
+      "file": "a_take_007.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_007.flac"
+    },
+    {
+      "id": "A_CAND_008",
+      "file": "a_take_008.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_008.flac"
+    },
+    {
+      "id": "A_CAND_009",
+      "file": "a_take_009.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_009.flac"
+    },
+    {
+      "id": "A_CAND_010",
+      "file": "a_take_010.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_010.flac"
+    },
+    {
+      "id": "A_CAND_011",
+      "file": "a_take_011.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_011.flac"
+    },
+    {
+      "id": "A_CAND_012",
+      "file": "a_take_012.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_012.flac"
+    },
+    {
+      "id": "A_CAND_013",
+      "file": "a_take_013.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_013.flac"
+    },
+    {
+      "id": "A_CAND_014",
+      "file": "a_take_014.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_014.flac"
+    },
+    {
+      "id": "A_CAND_015",
+      "file": "a_take_015.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_015.flac"
+    },
+    {
+      "id": "A_CAND_016",
+      "file": "a_take_016.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_016.flac"
+    },
+    {
+      "id": "A_CAND_017",
+      "file": "a_take_017.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_017.flac"
+    },
+    {
+      "id": "A_CAND_018",
+      "file": "a_take_018.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_018.flac"
+    },
+    {
+      "id": "A_CAND_019",
+      "file": "a_take_019.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_019.flac"
+    },
+    {
+      "id": "A_CAND_020",
+      "file": "a_take_020.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_020.flac"
+    },
+    {
+      "id": "A_CAND_021",
+      "file": "a_take_021.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_021.flac"
+    },
+    {
+      "id": "A_CAND_022",
+      "file": "a_take_022.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_022.flac"
+    },
+    {
+      "id": "A_CAND_023",
+      "file": "a_take_023.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_023.flac"
+    },
+    {
+      "id": "A_CAND_024",
+      "file": "a_take_024.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_024.flac"
+    },
+    {
+      "id": "A_CAND_025",
+      "file": "a_take_025.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_025.flac"
+    },
+    {
+      "id": "A_CAND_026",
+      "file": "a_take_026.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_026.flac"
+    },
+    {
+      "id": "A_CAND_027",
+      "file": "a_take_027.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_027.flac"
+    },
+    {
+      "id": "A_CAND_028",
+      "file": "a_take_028.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_028.flac"
+    },
+    {
+      "id": "A_CAND_029",
+      "file": "a_take_029.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_029.flac"
+    },
+    {
+      "id": "A_CAND_030",
+      "file": "a_take_030.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_030.flac"
+    },
+    {
+      "id": "A_CAND_031",
+      "file": "a_take_031.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_031.flac"
+    },
+    {
+      "id": "A_CAND_032",
+      "file": "a_take_032.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_032.flac"
+    },
+    {
+      "id": "A_CAND_033",
+      "file": "a_take_033.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_033.flac"
+    },
+    {
+      "id": "A_CAND_034",
+      "file": "a_take_034.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_034.flac"
+    },
+    {
+      "id": "A_CAND_035",
+      "file": "a_take_035.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_035.flac"
+    },
+    {
+      "id": "A_CAND_036",
+      "file": "a_take_036.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_036.flac"
+    },
+    {
+      "id": "A_CAND_037",
+      "file": "a_take_037.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_037.flac"
+    },
+    {
+      "id": "A_CAND_038",
+      "file": "a_take_038.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_038.flac"
+    },
+    {
+      "id": "A_CAND_039",
+      "file": "a_take_039.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_039.flac"
+    },
+    {
+      "id": "A_CAND_040",
+      "file": "a_take_040.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_040.flac"
+    },
+    {
+      "id": "A_CAND_041",
+      "file": "a_take_041.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_041.flac"
+    },
+    {
+      "id": "A_CAND_042",
+      "file": "a_take_042.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_042.flac"
+    },
+    {
+      "id": "A_CAND_043",
+      "file": "a_take_043.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_043.flac"
+    },
+    {
+      "id": "A_CAND_044",
+      "file": "a_take_044.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_044.flac"
+    },
+    {
+      "id": "A_CAND_045",
+      "file": "a_take_045.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_045.flac"
+    },
+    {
+      "id": "A_CAND_046",
+      "file": "a_take_046.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_046.flac"
+    },
+    {
+      "id": "A_CAND_047",
+      "file": "a_take_047.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_047.flac"
+    },
+    {
+      "id": "A_CAND_048",
+      "file": "a_take_048.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_048.flac"
+    },
+    {
+      "id": "A_CAND_049",
+      "file": "a_take_049.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_049.flac"
+    },
+    {
+      "id": "A_CAND_050",
+      "file": "a_take_050.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_050.flac"
+    },
+    {
+      "id": "A_CAND_051",
+      "file": "a_take_051.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_051.flac"
+    },
+    {
+      "id": "A_CAND_052",
+      "file": "a_take_052.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_052.flac"
+    },
+    {
+      "id": "A_CAND_053",
+      "file": "a_take_053.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_053.flac"
+    },
+    {
+      "id": "A_CAND_054",
+      "file": "a_take_054.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_054.flac"
+    },
+    {
+      "id": "A_CAND_055",
+      "file": "a_take_055.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_055.flac"
+    },
+    {
+      "id": "A_CAND_056",
+      "file": "a_take_056.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_056.flac"
+    },
+    {
+      "id": "A_CAND_057",
+      "file": "a_take_057.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_057.flac"
+    },
+    {
+      "id": "A_CAND_058",
+      "file": "a_take_058.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_058.flac"
+    },
+    {
+      "id": "A_CAND_059",
+      "file": "a_take_059.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_059.flac"
+    },
+    {
+      "id": "A_CAND_060",
+      "file": "a_take_060.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_060.flac"
+    },
+    {
+      "id": "A_CAND_061",
+      "file": "a_take_061.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_061.flac"
+    },
+    {
+      "id": "A_CAND_062",
+      "file": "a_take_062.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_062.flac"
+    },
+    {
+      "id": "A_CAND_063",
+      "file": "a_take_063.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_063.flac"
+    },
+    {
+      "id": "A_CAND_064",
+      "file": "a_take_064.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_064.flac"
+    },
+    {
+      "id": "A_CAND_065",
+      "file": "a_take_065.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_065.flac"
+    },
+    {
+      "id": "A_CAND_066",
+      "file": "a_take_066.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_066.flac"
+    },
+    {
+      "id": "A_CAND_067",
+      "file": "a_take_067.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_067.flac"
+    },
+    {
+      "id": "A_CAND_068",
+      "file": "a_take_068.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_068.flac"
+    },
+    {
+      "id": "A_CAND_069",
+      "file": "a_take_069.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_069.flac"
+    },
+    {
+      "id": "A_CAND_070",
+      "file": "a_take_070.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_070.flac"
+    },
+    {
+      "id": "A_CAND_071",
+      "file": "a_take_071.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_071.flac"
+    },
+    {
+      "id": "A_CAND_072",
+      "file": "a_take_072.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_072.flac"
+    },
+    {
+      "id": "A_CAND_073",
+      "file": "a_take_073.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_073.flac"
+    },
+    {
+      "id": "A_CAND_074",
+      "file": "a_take_074.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_074.flac"
+    },
+    {
+      "id": "A_CAND_075",
+      "file": "a_take_075.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_075.flac"
+    },
+    {
+      "id": "A_CAND_076",
+      "file": "a_take_076.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_076.flac"
+    },
+    {
+      "id": "A_CAND_077",
+      "file": "a_take_077.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_077.flac"
+    },
+    {
+      "id": "A_CAND_078",
+      "file": "a_take_078.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_078.flac"
+    },
+    {
+      "id": "A_CAND_079",
+      "file": "a_take_079.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_079.flac"
+    },
+    {
+      "id": "A_CAND_080",
+      "file": "a_take_080.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_080.flac"
+    },
+    {
+      "id": "A_CAND_081",
+      "file": "a_take_081.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_081.flac"
+    },
+    {
+      "id": "A_CAND_082",
+      "file": "a_take_082.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_082.flac"
+    },
+    {
+      "id": "A_CAND_083",
+      "file": "a_take_083.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_083.flac"
+    },
+    {
+      "id": "A_CAND_084",
+      "file": "a_take_084.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_084.flac"
+    },
+    {
+      "id": "A_CAND_085",
+      "file": "a_take_085.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_085.flac"
+    },
+    {
+      "id": "A_CAND_086",
+      "file": "a_take_086.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_086.flac"
+    },
+    {
+      "id": "A_CAND_087",
+      "file": "a_take_087.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_087.flac"
+    },
+    {
+      "id": "A_CAND_088",
+      "file": "a_take_088.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_088.flac"
+    },
+    {
+      "id": "A_CAND_089",
+      "file": "a_take_089.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_089.flac"
+    },
+    {
+      "id": "A_CAND_090",
+      "file": "a_take_090.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_090.flac"
+    },
+    {
+      "id": "A_CAND_091",
+      "file": "a_take_091.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_091.flac"
+    },
+    {
+      "id": "A_CAND_092",
+      "file": "a_take_092.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_092.flac"
+    },
+    {
+      "id": "A_CAND_093",
+      "file": "a_take_093.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_093.flac"
+    },
+    {
+      "id": "A_CAND_094",
+      "file": "a_take_094.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_094.flac"
+    },
+    {
+      "id": "A_CAND_095",
+      "file": "a_take_095.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_095.flac"
+    },
+    {
+      "id": "A_CAND_096",
+      "file": "a_take_096.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_096.flac"
+    },
+    {
+      "id": "A_CAND_097",
+      "file": "a_take_097.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_097.flac"
+    },
+    {
+      "id": "A_CAND_098",
+      "file": "a_take_098.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_098.flac"
+    },
+    {
+      "id": "A_CAND_099",
+      "file": "a_take_099.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_099.flac"
+    },
+    {
+      "id": "A_CAND_100",
+      "file": "a_take_100.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_100.flac"
+    },
+    {
+      "id": "A_CAND_101",
+      "file": "a_take_101.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_101.flac"
+    },
+    {
+      "id": "A_CAND_102",
+      "file": "a_take_102.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_102.flac"
+    },
+    {
+      "id": "A_CAND_103",
+      "file": "a_take_103.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_103.flac"
+    },
+    {
+      "id": "A_CAND_104",
+      "file": "a_take_104.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_104.flac"
+    },
+    {
+      "id": "A_CAND_105",
+      "file": "a_take_105.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_105.flac"
+    },
+    {
+      "id": "A_CAND_106",
+      "file": "a_take_106.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_106.flac"
+    },
+    {
+      "id": "A_CAND_107",
+      "file": "a_take_107.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_107.flac"
+    },
+    {
+      "id": "A_CAND_108",
+      "file": "a_take_108.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_108.flac"
+    },
+    {
+      "id": "A_CAND_109",
+      "file": "a_take_109.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_109.flac"
+    },
+    {
+      "id": "A_CAND_110",
+      "file": "a_take_110.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_110.flac"
+    },
+    {
+      "id": "A_CAND_111",
+      "file": "a_take_111.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_111.flac"
+    },
+    {
+      "id": "A_CAND_112",
+      "file": "a_take_112.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_112.flac"
+    },
+    {
+      "id": "A_CAND_113",
+      "file": "a_take_113.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_113.flac"
+    },
+    {
+      "id": "A_CAND_114",
+      "file": "a_take_114.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_114.flac"
+    },
+    {
+      "id": "A_CAND_115",
+      "file": "a_take_115.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_115.flac"
+    },
+    {
+      "id": "A_CAND_116",
+      "file": "a_take_116.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_116.flac"
+    },
+    {
+      "id": "A_CAND_117",
+      "file": "a_take_117.flac",
+      "group": "A",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/a_take_117.flac"
+    },
+    {
+      "id": "B_CAND_001",
+      "file": "b_take_001.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_001.flac"
+    },
+    {
+      "id": "B_CAND_002",
+      "file": "b_take_002.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_002.flac"
+    },
+    {
+      "id": "B_CAND_003",
+      "file": "b_take_003.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_003.flac"
+    },
+    {
+      "id": "B_CAND_004",
+      "file": "b_take_004.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_004.flac"
+    },
+    {
+      "id": "B_CAND_005",
+      "file": "b_take_005.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_005.flac"
+    },
+    {
+      "id": "B_CAND_006",
+      "file": "b_take_006.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_006.flac"
+    },
+    {
+      "id": "B_CAND_007",
+      "file": "b_take_007.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_007.flac"
+    },
+    {
+      "id": "B_CAND_008",
+      "file": "b_take_008.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_008.flac"
+    },
+    {
+      "id": "B_CAND_009",
+      "file": "b_take_009.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_009.flac"
+    },
+    {
+      "id": "B_CAND_010",
+      "file": "b_take_010.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_010.flac"
+    },
+    {
+      "id": "B_CAND_011",
+      "file": "b_take_011.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_011.flac"
+    },
+    {
+      "id": "B_CAND_012",
+      "file": "b_take_012.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_012.flac"
+    },
+    {
+      "id": "B_CAND_013",
+      "file": "b_take_013.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_013.flac"
+    },
+    {
+      "id": "B_CAND_014",
+      "file": "b_take_014.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_014.flac"
+    },
+    {
+      "id": "B_CAND_015",
+      "file": "b_take_015.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_015.flac"
+    },
+    {
+      "id": "B_CAND_016",
+      "file": "b_take_016.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_016.flac"
+    },
+    {
+      "id": "B_CAND_017",
+      "file": "b_take_017.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_017.flac"
+    },
+    {
+      "id": "B_CAND_018",
+      "file": "b_take_018.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_018.flac"
+    },
+    {
+      "id": "B_CAND_019",
+      "file": "b_take_019.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_019.flac"
+    },
+    {
+      "id": "B_CAND_020",
+      "file": "b_take_020.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_020.flac"
+    },
+    {
+      "id": "B_CAND_021",
+      "file": "b_take_021.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_021.flac"
+    },
+    {
+      "id": "B_CAND_022",
+      "file": "b_take_022.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_022.flac"
+    },
+    {
+      "id": "B_CAND_023",
+      "file": "b_take_023.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_023.flac"
+    },
+    {
+      "id": "B_CAND_024",
+      "file": "b_take_024.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_024.flac"
+    },
+    {
+      "id": "B_CAND_025",
+      "file": "b_take_025.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_025.flac"
+    },
+    {
+      "id": "B_CAND_026",
+      "file": "b_take_026.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_026.flac"
+    },
+    {
+      "id": "B_CAND_027",
+      "file": "b_take_027.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_027.flac"
+    },
+    {
+      "id": "B_CAND_028",
+      "file": "b_take_028.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_028.flac"
+    },
+    {
+      "id": "B_CAND_029",
+      "file": "b_take_029.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_029.flac"
+    },
+    {
+      "id": "B_CAND_030",
+      "file": "b_take_030.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_030.flac"
+    },
+    {
+      "id": "B_CAND_031",
+      "file": "b_take_031.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_031.flac"
+    },
+    {
+      "id": "B_CAND_032",
+      "file": "b_take_032.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_032.flac"
+    },
+    {
+      "id": "B_CAND_033",
+      "file": "b_take_033.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_033.flac"
+    },
+    {
+      "id": "B_CAND_034",
+      "file": "b_take_034.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_034.flac"
+    },
+    {
+      "id": "B_CAND_035",
+      "file": "b_take_035.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_035.flac"
+    },
+    {
+      "id": "B_CAND_036",
+      "file": "b_take_036.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_036.flac"
+    },
+    {
+      "id": "B_CAND_037",
+      "file": "b_take_037.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_037.flac"
+    },
+    {
+      "id": "B_CAND_038",
+      "file": "b_take_038.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_038.flac"
+    },
+    {
+      "id": "B_CAND_039",
+      "file": "b_take_039.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_039.flac"
+    },
+    {
+      "id": "B_CAND_040",
+      "file": "b_take_040.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_040.flac"
+    },
+    {
+      "id": "B_CAND_041",
+      "file": "b_take_041.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_041.flac"
+    },
+    {
+      "id": "B_CAND_042",
+      "file": "b_take_042.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_042.flac"
+    },
+    {
+      "id": "B_CAND_043",
+      "file": "b_take_043.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_043.flac"
+    },
+    {
+      "id": "B_CAND_044",
+      "file": "b_take_044.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_044.flac"
+    },
+    {
+      "id": "B_CAND_045",
+      "file": "b_take_045.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_045.flac"
+    },
+    {
+      "id": "B_CAND_046",
+      "file": "b_take_046.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_046.flac"
+    },
+    {
+      "id": "B_CAND_047",
+      "file": "b_take_047.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_047.flac"
+    },
+    {
+      "id": "B_CAND_048",
+      "file": "b_take_048.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_048.flac"
+    },
+    {
+      "id": "B_CAND_049",
+      "file": "b_take_049.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_049.flac"
+    },
+    {
+      "id": "B_CAND_050",
+      "file": "b_take_050.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_050.flac"
+    },
+    {
+      "id": "B_CAND_051",
+      "file": "b_take_051.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_051.flac"
+    },
+    {
+      "id": "B_CAND_052",
+      "file": "b_take_052.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_052.flac"
+    },
+    {
+      "id": "B_CAND_053",
+      "file": "b_take_053.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_053.flac"
+    },
+    {
+      "id": "B_CAND_054",
+      "file": "b_take_054.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_054.flac"
+    },
+    {
+      "id": "B_CAND_055",
+      "file": "b_take_055.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_055.flac"
+    },
+    {
+      "id": "B_CAND_056",
+      "file": "b_take_056.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_056.flac"
+    },
+    {
+      "id": "B_CAND_057",
+      "file": "b_take_057.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_057.flac"
+    },
+    {
+      "id": "B_CAND_058",
+      "file": "b_take_058.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_058.flac"
+    },
+    {
+      "id": "B_CAND_059",
+      "file": "b_take_059.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_059.flac"
+    },
+    {
+      "id": "B_CAND_060",
+      "file": "b_take_060.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_060.flac"
+    },
+    {
+      "id": "B_CAND_061",
+      "file": "b_take_061.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_061.flac"
+    },
+    {
+      "id": "B_CAND_062",
+      "file": "b_take_062.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_062.flac"
+    },
+    {
+      "id": "B_CAND_063",
+      "file": "b_take_063.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_063.flac"
+    },
+    {
+      "id": "B_CAND_064",
+      "file": "b_take_064.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_064.flac"
+    },
+    {
+      "id": "B_CAND_065",
+      "file": "b_take_065.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_065.flac"
+    },
+    {
+      "id": "B_CAND_066",
+      "file": "b_take_066.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_066.flac"
+    },
+    {
+      "id": "B_CAND_067",
+      "file": "b_take_067.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_067.flac"
+    },
+    {
+      "id": "B_CAND_068",
+      "file": "b_take_068.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_068.flac"
+    },
+    {
+      "id": "B_CAND_069",
+      "file": "b_take_069.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_069.flac"
+    },
+    {
+      "id": "B_CAND_070",
+      "file": "b_take_070.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_070.flac"
+    },
+    {
+      "id": "B_CAND_071",
+      "file": "b_take_071.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_071.flac"
+    },
+    {
+      "id": "B_CAND_072",
+      "file": "b_take_072.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_072.flac"
+    },
+    {
+      "id": "B_CAND_073",
+      "file": "b_take_073.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_073.flac"
+    },
+    {
+      "id": "B_CAND_074",
+      "file": "b_take_074.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_074.flac"
+    },
+    {
+      "id": "B_CAND_075",
+      "file": "b_take_075.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_075.flac"
+    },
+    {
+      "id": "B_CAND_076",
+      "file": "b_take_076.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_076.flac"
+    },
+    {
+      "id": "B_CAND_077",
+      "file": "b_take_077.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_077.flac"
+    },
+    {
+      "id": "B_CAND_078",
+      "file": "b_take_078.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_078.flac"
+    },
+    {
+      "id": "B_CAND_079",
+      "file": "b_take_079.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_079.flac"
+    },
+    {
+      "id": "B_CAND_080",
+      "file": "b_take_080.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_080.flac"
+    },
+    {
+      "id": "B_CAND_081",
+      "file": "b_take_081.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_081.flac"
+    },
+    {
+      "id": "B_CAND_082",
+      "file": "b_take_082.flac",
+      "group": "B",
+      "status": "user_listened_candidate_unmapped",
+      "path": "assets/audio/breath/advanced/cues/b_take_082.flac"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "B_CAND_083",
+      "reason": "User identified interrupted sentence"
+    }
+  ],
+  "awaiting_recording": [
+    "B034",
+    "B035",
+    "B036",
+    "B037",
+    "B038",
+    "B039",
+    "B040"
+  ],
+  "cue_mapping": "unverified; no automatic assignment to breathing phases",
+  "recording_scripts": "assets/audio/breath/advanced/_review",
+  "notes": "User listened to candidates; authoring/cue-to-content matching still required."
+}
