@@ -246,7 +246,7 @@ if(b.level==='Advanced'){
  const available=new Set((data?.memberPractice?.breathAccess||[]).filter(x=>x.active!==0).map(x=>x.breath_id));
  if(!available.has(id)){alert('Diese Advanced-Übung wurde nicht für dich freigeschaltet.');return}
  const owner=token||previewEmail||'member', key='bd_advanced_ack_v1_'+owner+'_'+id;
- if(!sessionStorage.getItem(key)){
+ if(!window.BD_CAPTURE_PRACTITIONER&&!sessionStorage.getItem(key)){
   if(!confirm('Advanced · '+b.title+'\n\nDiese Übung darf nur nach persönlicher Einweisung angewendet werden. Ich bestätige, dass ich in diese Technik eingewiesen wurde und die Übung bei Beschwerden sofort abbreche. Die Atmung bleibt dabei natürlich.\n\nBestätigen und fortfahren?'))return;
   sessionStorage.setItem(key,'confirmed');
  }

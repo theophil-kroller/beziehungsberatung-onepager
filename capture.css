@@ -28,8 +28,23 @@
 .eink-device .idea-meta-section{background:#fff;border-radius:4px}
 
 .recent-transfers{margin-top:18px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:16px}.recent-transfers-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}.recent-transfers-head small,.recent-transfer-item small{color:var(--muted);font-size:.78rem}.recent-transfer-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 0;border-top:1px solid var(--line)}.recent-transfer-item>div{display:grid;gap:3px}.recent-transfer-item button{font:inherit;color:var(--terr);background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 11px;cursor:pointer}.resume-card.transferred{background:#f1f7ef;border-color:#d0e1ce}.resume-card.transferred .resume-kicker{color:#315c3a}
-/* BUILD 15.4.2 · discreet route from Capture to the mobile practice login */
-.praxis-login-link{width:34px;height:34px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.68);display:grid;place-items:center;color:#8a7b73;text-decoration:none;flex:0 0 auto;transition:.15s ease}
-.praxis-login-link:hover,.praxis-login-link:focus-visible{color:var(--ink);background:#fff;border-color:#d8ccc4;outline:none}
-.praxis-login-link svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7}
-@media(max-width:520px){.praxis-login-link{width:32px;height:32px}.praxis-login-link svg{width:15px;height:15px}.connection-pill{padding-inline:9px}}
+
+/* BUILD 15.12.28: breathing practice embedded in Capture without leaving the PWA */
+.capture-modes .breath-mode{border-color:#dcd8cc;background:linear-gradient(135deg,#fffdf9,#f2eee6)}
+.capture-modes .breath-mode .mode-icon{background:#ecf0e9;color:#315c3a;font-size:24px}
+.breath-stage-nav{margin-top:5px}
+.breath-stage-icon{color:#315c3a;background:#ecf0e9;border-radius:11px;width:36px;height:36px;display:grid;place-items:center;font-size:24px}
+.breath-stage-copy p:first-child{font-size:14px;line-height:1.5;color:#5f5650;margin:0 0 8px}
+.breath-access-state{font-size:12px;font-weight:650;line-height:1.5;color:#627466;margin:0 0 14px}
+.capture-breath-filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.capture-breath-filters button{font-size:13px;font-weight:750;padding:9px 13px;border:1px solid #e5ded7;border-radius:999px;background:#fff;color:#5d5049}
+.capture-breath-filters button.active{background:#2f2623;color:white;border-color:#2f2623}
+#captureBreaths [data-practice-tab="homework"],#captureBreaths .practice-subtabs{display:none!important}
+#captureBreaths .member-practice-card{margin:0}
+#captureBreaths .practice-row{grid-template-columns:54px 1fr auto 16px;gap:12px}
+#captureBreaths .practice-row[hidden]{display:none!important}
+#captureBreaths .practice-meta{display:block;font-variant-numeric:tabular-nums}
+#captureBreaths .practice-copy strong{font-size:16px}
+#captureBreaths .practice-copy small{font-size:12px}
+.breath-empty{font-size:14px;color:#776e69;background:#fff;padding:16px;border:1px solid #e5ded7;border-radius:13px}
+@media(max-width:640px){#captureBreaths .practice-row{grid-template-columns:47px 1fr 16px}#captureBreaths .practice-meta{display:none}#captureBreaths .practice-copy strong{font-size:16px}.capture-breath-filters{gap:6px}.capture-breath-filters button{padding:8px 10px;font-size:12px}}

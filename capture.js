@@ -192,7 +192,7 @@
   function meaningfulInk(){return (draft?.inkPages||[]).some(page=>(page.strokes||[]).length)}
   function hasCaptureContent(){return !!((draft?.audio||[]).length||String(draft?.noteText||'').trim()||(draft?.photos||[]).length||meaningfulInk()||(draft?.captureType==='method'&&String(draft.methodSourceUrl||'').trim()))}
   function captureCounts(){return{audio:(draft?.audio||[]).length,notes:String(draft?.noteText||'').trim()?1:0,photos:(draft?.photos||[]).length,pages:(draft?.inkPages||[]).filter(p=>(p.strokes||[]).length).length}}
-  function setStage(stage){const changed=renderedStage!==stage;uiStage=stage;renderedStage=stage;['captureHome','captureWork','captureReview','captureSuccess'].forEach(id=>$('#'+id)?.classList.toggle('active',id===({home:'captureHome',capture:'captureWork',review:'captureReview',success:'captureSuccess'}[stage]||'captureHome')));if(stage==='capture'&&changed)setTimeout(resizeCanvas,80);if(changed)window.scrollTo({top:0,behavior:'smooth'})}
+  function setStage(stage){const changed=renderedStage!==stage;uiStage=stage;renderedStage=stage;['captureHome','captureWork','captureReview','captureSuccess','captureBreaths'].forEach(id=>$('#'+id)?.classList.toggle('active',id===({home:'captureHome',capture:'captureWork',review:'captureReview',success:'captureSuccess',breaths:'captureBreaths'}[stage]||'captureHome')));if(stage==='capture'&&changed)setTimeout(resizeCanvas,80);if(changed)window.scrollTo({top:0,behavior:'smooth'})}
   function updateProductUI(){if(!draft)return;const has=hasCaptureContent(),counts=captureCounts(),sent=draft.status==='sent';if(sent&&uiStage==='capture')uiStage='home';setStage(uiStage);if($('#resumeCard'))$('#resumeCard').hidden=!has&&!sent;$('#resumeCard')?.classList.toggle('transferred',sent);if($('#resumeCard .resume-kicker'))$('#resumeCard .resume-kicker').textContent=sent?'✓ Übertragung abgeschlossen':'Letzte Erfassung';if($('#resumeTitle'))$('#resumeTitle').textContent=draft.label||modeLabel(draft.captureType);if($('#resumeMeta'))$('#resumeMeta').textContent=sent?`${fmt(draft.sentAt||draft.updatedAt)} · verschlüsselt übertragen. Du kannst jetzt etwas Neues erfassen, ohne diese Kopie zu löschen.`:`${fmt(draft.updatedAt||draft.createdAt)} · ${statusLabel(draft.status)}`;if($('#resumeDraft'))$('#resumeDraft').textContent=sent?'+ Neue Erfassung':'Fortsetzen';if($('#backToCapture'))$('#backToCapture').textContent=sent?'‹ Zur Übersicht':'‹ Bearbeiten';if($('#goToReview'))$('#goToReview').disabled=!has||!!recorder;const parts=[];if(counts.audio)parts.push(`${counts.audio} Audio`);if(counts.pages)parts.push(`${counts.pages} Handschriftseite${counts.pages===1?'':'n'}`);if(counts.notes)parts.push('Textnotiz');if(counts.photos)parts.push(`${counts.photos} Foto${counts.photos===1?'':'s'}`);if($('#reviewSummary'))$('#reviewSummary').innerHTML=`<div><span>Erfassung</span><strong>${esc(modeLabel(draft.captureType))}</strong></div><div><span>Inhalt</span><strong>${esc(parts.join(' · ')||'noch leer')}</strong></div><div><span>Status</span><strong>${esc(statusLabel(draft.status))}</strong></div>`;if($('#reviewPreview'))$('#reviewPreview').textContent=sent?'Diese Erfassung wurde verschlüsselt übertragen. Die lokale Kopie bleibt auf diesem Gerät.':draft.label?`Titel: ${draft.label}`:draft.captureType==='method'?'Die Übung wird lokal verarbeitet und später in der Methoden-Inbox geprüft.':draft.captureType==='idea'?'Die Idee wird lokal verarbeitet und später in der Ideen-Inbox geprüft.':'Du kannst die Zuordnung zur konkreten Sitzung später in der Dokumentations-Inbox vornehmen.';if($('#captureSuccessCopy'))$('#captureSuccessCopy').textContent=`Verschlüsselt an deine ${draft.captureType==='method'?'Methoden-Inbox':draft.captureType==='idea'?'Ideen-Inbox':'Dokumentations-Inbox'} übertragen. Die lokale Kopie bleibt auf diesem Gerät erhalten. Du kannst eine neue Erfassung beginnen, ohne sie zu löschen.`;if($('#workSaveState'))$('#workSaveState').textContent=draft.status==='queued'?'☁ Übertragung wartet · lokal sicher':'✓ Wird automatisch gespeichert';}
   async function storageInfo(){try{const persisted=await navigator.storage?.persist?.(),estimate=await navigator.storage?.estimate?.(),used=Number(estimate?.usage||0),quota=Number(estimate?.quota||0);$('#storageState').textContent=`${persisted?'Persistenter Gerätespeicher aktiv':'Lokaler Gerätespeicher aktiv'}${quota?` · ${Math.round(used/1048576)} MB von ${Math.round(quota/1048576)} MB verwendet`:''}. Cloudflare-Ausfälle löschen keine Erfassung.`}catch(_){ }}
   function updateNetwork(){const online=navigator.onLine;$('#networkState').textContent=online?'● online':'● offline · local-first';$('#networkState').className='status-pill '+(online?'online':'offline');if(online)setTimeout(()=>processQueue(false),800)}
@@ -221,6 +221,59 @@
   $('#photoInput').addEventListener('pointerdown',()=>saveNow());$('#photoInput').onchange=async event=>{try{const files=[...event.target.files];event.target.value='';for(const file of files){if(draft.photos.length>=LIMITS.photos){alert(`Maximal ${LIMITS.photos} Fotos pro Erfassung.`);break}$('#saveState').textContent='Foto wird verarbeitet und lokal gespeichert …';draft.photos.push(await compressPhoto(file));await saveNow()}renderPhotos()}catch(error){$('#saveState').textContent='Foto konnte nicht verarbeitet werden: '+error.message;$('#saveState').className='save-state err'}};
   if($('#ideaSourceType'))$('#ideaSourceType').onchange=e=>{draft.ideaSourceType=e.target.value;scheduleSave()};if($('#ideaSourceUrl'))$('#ideaSourceUrl').oninput=e=>{draft.ideaSourceUrl=e.target.value;scheduleSave()};
   $('#recordStart').onclick=startRecording;$('#recordStop').onclick=stopRecording;
+
+  // Atemraum: uses the existing Member breathing player in the same Capture PWA.
+  // The local Capture pairing selects the practitioner catalogue; client authorizations
+  // are left unchanged in the Member area and on the server.
+  let returnFromBreaths='home';
+  let breathLevelFilter='all';
+  function refreshBreathList(){
+    const lib=window.BDMemberPractice?.breaths||{};
+    const paired=!!(accessPairing?.pairId&&accessPairing?.token);
+    window.BD_CAPTURE_PRACTITIONER=paired;
+    const access=Object.values(lib).filter(b=>b?.phases?.length&&(paired||b.level!=='Advanced')).map(b=>({breath_id:b.id,active:1}));
+    window.__BD_MEMBER_DATA={memberPractice:{breathAccess:access,assignments:[]},materials:[]};
+    window.BDMemberPractice?.boot();
+    const info=$('#captureBreathAccess');
+    if(info)info.textContent=paired?'Praxisgerät verbunden · vollständige Übungsbibliothek (17 Advanced-Techniken)':'Ohne Praxis-Kopplung: Beginner und Intermediate. Für Advanced verbinde dieses Gerät mit deinem Praxis-Login.';
+    filterCaptureBreaths(breathLevelFilter);
+  }
+  function filterCaptureBreaths(level){
+    breathLevelFilter=level;
+    const lib=window.BDMemberPractice?.breaths||{};
+    let visible=0;
+    document.querySelectorAll('#captureBreaths [data-breath]').forEach(el=>{
+      const b=lib[el.dataset.breath];const show=level==='all'||(b?.level||'Beginner')===level;
+      el.hidden=!show;if(show)visible++;
+    });
+    const empty=$('#captureBreathEmpty');if(empty)empty.hidden=visible>0;
+    document.querySelectorAll('#captureBreaths [data-capture-breath-level]').forEach(btn=>{
+      const yes=btn.dataset.captureBreathLevel===level;btn.classList.toggle('active',yes);btn.setAttribute('aria-pressed',String(yes));
+    });
+  }
+  function openCaptureBreaths(){
+    if(recorder?.state==='recording'){
+      alert('Bitte beende zuerst die laufende Aufnahme. So geraten die Atemübungen nicht in deine Sitzungsaufnahme.');return;
+    }
+    if(!draft)return;
+    if(uiStage!=='breaths')returnFromBreaths=uiStage;
+    if(uiStage==='capture')saveNow({quiet:true}).catch(error=>console.warn('[Capture] Automatisches Speichern beim Wechsel zu Atemübungen',error));
+    breathLevelFilter='all';refreshBreathList();uiStage='breaths';updateProductUI();
+    if(!history.state?.bdCaptureBreaths)history.pushState({bdCaptureBreaths:true},'','#atemuebungen');
+    const menu=$('.app-menu');if(menu)menu.open=false;
+  }
+  function closeCaptureBreaths(fromHistory=false){
+    if(uiStage!=='breaths')return;
+    const dialog=$('#breathDialog');if(dialog?.open)window.BDMemberPractice?.closeBreath();
+    uiStage=returnFromBreaths||'home';updateProductUI();
+    if(!fromHistory&&history.state?.bdCaptureBreaths)history.back();
+  }
+  $('#openCaptureBreaths')?.addEventListener('click',openCaptureBreaths);
+  $('#menuCaptureBreaths')?.addEventListener('click',openCaptureBreaths);
+  $('#closeCaptureBreaths')?.addEventListener('click',()=>closeCaptureBreaths());
+  document.querySelectorAll('[data-capture-breath-level]').forEach(b=>b.addEventListener('click',()=>filterCaptureBreaths(b.dataset.captureBreathLevel)));
+  window.addEventListener('popstate',()=>{if(uiStage==='breaths')closeCaptureBreaths(true)});
+
   $('#adminMobileBtn')?.addEventListener('click',()=>{location.href='/mobile/?source=capture'});
   $('#newDraft').onclick=createNewDraft;$('#newCaptureAfterSend').onclick=createNewDraft;
   $('#deleteDraft').onclick=async()=>{if(recorder?.state==='recording')return;const warning=draft.status==='sent'?'Diese Erfassung wurde bereits verschlüsselt übertragen. Du musst die lokale Kopie für eine neue Aufnahme nicht löschen. Möchtest du sie auf diesem Gerät trotzdem löschen?':draft.status==='queued'||draft.pairing?'Diese gesamte Erfassung ist noch nicht sicher übernommen. Wirklich die lokale Kopie vollständig verwerfen?':'Diese gesamte aktuelle Erfassung wirklich verwerfen? Einzelne Audio-, Foto- oder Handschrift-Elemente kannst du direkt beim jeweiligen Element entfernen.';if(!confirm(warning))return;const id=draft.captureId;if(draft.pendingRecording?.id)await clearRecordingRows(id,draft.pendingRecording.id);await dbDelete('drafts',id);await clearInkJournalCapture(id);const rows=await allDrafts();await loadDraft(rows[0]?.captureId||null)};
