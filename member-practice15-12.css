@@ -327,3 +327,27 @@
  .breath-focus-dialog.is-running .focus-visual{max-height:26dvh;min-height:65px;}
  .breath-focus-dialog.is-running .focus-cue{height:clamp(66px,18vh,104px);min-height:clamp(66px,18vh,104px)}
 }
+
+/* 15.12.46 — Advanced prestart explanation stays accessible; session stays scroll-free. */
+.focus-prestart .focus-explainer{max-width:min(590px,100%);margin:4px auto 10px;line-height:1.48}
+.focus-prestart .focus-explainer[hidden]{display:none!important}
+.focus-prestart .focus-explainer .explainer-quiet{align-items:center;gap:10px}
+.focus-prestart .focus-explainer .explainer-quiet>p{margin:0;text-wrap:pretty}
+.breath-focus-dialog.is-running #breathExplainer{display:none!important}
+@media(max-width:700px){.focus-prestart .focus-explainer .explainer-quiet svg,.focus-prestart .focus-explainer .explainer-quiet .practice-icon{display:none}.focus-prestart .focus-explainer{font-size:13px}}
+
+
+/* 15.12.46 final — No cropped captions: adaptive paging uses actual text height. */
+.breath-focus-dialog.is-running .focus-cue strong{
+ display:block!important;-webkit-line-clamp:unset!important;line-clamp:unset!important;
+ overflow:visible!important;max-height:none!important;text-overflow:clip!important;
+ overflow-wrap:anywhere;word-break:normal;hyphens:auto;text-wrap:pretty;
+}
+.breath-focus-dialog.is-running .focus-cue strong.cue-layout-probe{
+ position:absolute!important;left:-200vw!important;top:-200vh!important;
+ height:auto!important;min-height:0!important;visibility:hidden!important;pointer-events:none!important;
+ display:block!important;overflow:visible!important;white-space:normal!important;
+}
+/* Include the current phase subtitle in the available layout budget. */
+.breath-focus-dialog.is-running .focus-cue{position:relative;flex-shrink:0;}
+@media(max-width:620px){.breath-focus-dialog.is-running .focus-cue strong{line-height:1.2;}}
