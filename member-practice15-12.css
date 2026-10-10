@@ -280,3 +280,22 @@
 .focus-purpose-research>span{display:block}
 .focus-purpose-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:5px}
 .focus-purpose-links a{color:#955439;text-decoration:underline;text-underline-offset:2px;font-weight:650;font-size:11px}
+
+/* 15.12.40 — stable guided-session layout: no absolutely-positioned controls. */
+.breath-focus-dialog .focus-session{display:none;position:relative;min-height:0;min-width:0;width:100%;height:100%;box-sizing:border-box;flex-direction:column;align-items:center;justify-content:space-between;gap:clamp(5px,1.1vh,14px);padding:clamp(6px,1.4vh,16px) clamp(12px,2vw,24px) 12px;overflow:hidden}
+.breath-focus-dialog.is-running .focus-session{display:flex}
+.breath-focus-dialog .focus-time{position:static;flex:0 0 auto;order:0;font-size:13px;opacity:1}
+.breath-focus-dialog .focus-visual{order:1;position:relative;flex:1 1 auto;min-height:90px;max-height:min(38vh,340px);height:auto;width:min(410px,75vw);overflow:hidden}
+.breath-focus-dialog .advanced-guide-progress{order:2;flex:0 0 auto;font:600 12px system-ui,-apple-system,sans-serif;text-align:center;color:#a6634a;letter-spacing:.025em}
+.breath-focus-dialog .focus-cue{order:3;flex:0 1 auto;min-height:0;max-height:29vh;width:min(800px,96%);margin:0;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:auto;scrollbar-width:thin;gap:4px;padding:0 8px;text-align:center}
+.breath-focus-dialog .focus-cue strong{display:block;position:static;font:600 clamp(16px,2.2vw,26px)/1.26 Georgia,serif;overflow-wrap:anywhere;max-width:100%;text-wrap:balance}
+.breath-focus-dialog .focus-cue span{margin:0;font-size:12px}
+.breath-focus-dialog .focus-session-controls{position:static;order:4;flex:0 0 auto;bottom:auto;padding:4px;gap:20px}
+.breath-focus-dialog .focus-session .advanced-art{max-height:100%}
+.breath-focus-dialog .focus-session .advanced-art svg{max-height:min(32vh,290px)}
+@media(max-height:660px){.breath-focus-dialog .focus-visual{max-height:26vh}.breath-focus-dialog .focus-cue{max-height:31vh}.breath-focus-dialog .focus-cue strong{font-size:clamp(15px,2vw,21px)}}
+@media(max-width:620px){.breath-focus-dialog .focus-session{gap:5px;padding:4px 12px 8px}.breath-focus-dialog .focus-visual{max-height:32vh}.breath-focus-dialog .focus-cue{max-height:29vh}.breath-focus-dialog .focus-cue strong{font-size:clamp(15px,4.4vw,23px)}}
+
+/* Final visual-height and bottom safe padding in compact windows */
+.breath-focus-dialog .focus-session{padding-bottom:clamp(18px,3vh,32px)}
+.breath-focus-dialog .focus-visual{overflow:visible}

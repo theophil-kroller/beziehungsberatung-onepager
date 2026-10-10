@@ -1,0 +1,272 @@
+MASTER E · 89 NEUE, NOCH NICHT AUFGENOMMENE SÄTZE
+
+Hinweis: 89 einzigartige Sprechertexte, teilweise mehrfach in Advanced-Abläufen verwendet.
+Die Atemzählung im sanften Wim-Hof-Solo-Protokoll erfolgt über Töne und benötigt nicht 144 individuelle Aufnahmen.
+
+E001  Lass deine Aufmerksamkeit zum Unterbauch wandern.
+  Übungen: microcosmic_orbit
+
+E002  Folge mit der Aufmerksamkeit langsam den Rücken hinauf.
+  Übungen: microcosmic_orbit
+
+E003  Verweile am Scheitel, ohne etwas zu erzwingen.
+  Übungen: microcosmic_orbit
+
+E004  Wandere mit der Aufmerksamkeit über die Vorderseite nach unten.
+  Übungen: microcosmic_orbit
+
+E005  Durchlaufe die Aufmerksamkeitsschleife in deinem eigenen Tempo.
+  Übungen: microcosmic_orbit
+
+E006  Spüre zunächst deine Sitzfläche und den Boden.
+  Übungen: microcosmic_orbit
+
+E007  Bemerke den Anfang der Einatmung.
+  Übungen: embryonic
+
+E008  Spüre, wie die Ausatmung von allein endet.
+  Übungen: embryonic
+
+E009  Beobachte feine Bewegungen in Bauch und Rippen.
+  Übungen: embryonic
+
+E010  Lass den Wunsch nach einer bestimmten Atmung los.
+  Übungen: embryonic
+
+E011  Öffne die Aufmerksamkeit wieder für deine Umgebung.
+  Übungen: embryonic
+
+E012  Werde im Sitzen oder Liegen bequem.
+  Übungen: embryonic
+
+E013  Nimm die Kleidung auf deiner Haut wahr.
+  Übungen: skin_breathing
+
+E014  Bemerke die Temperatur im Gesicht und an den Händen.
+  Übungen: skin_breathing
+
+E015  Stell dir sanfte Weite vor – atme weiter natürlich.
+  Übungen: skin_breathing
+
+E016  Spüre die Grenzen deines Körpers.
+  Übungen: skin_breathing
+
+E017  Spüre die Unterlage unter deinem Körper.
+  Übungen: skin_breathing
+
+E018  Bemerke kleine Pausen, ohne die Luft anzuhalten.
+  Übungen: murcha
+
+E019  Lass die Aufmerksamkeit wieder nach außen wandern.
+  Übungen: murcha
+
+E020  Entspanne Mund, Hals und Gesicht.
+  Übungen: bhramari_kumbhaka
+
+E021  Atme angenehm ein und aus; halte die Luft nicht an.
+  Übungen: bhramari_kumbhaka
+
+E022  Wenn es dir angenehm ist, lass ein leises Summen beim Ausatmen entstehen.
+  Übungen: bhramari_kumbhaka
+
+E023  Lass den Ton ausklingen und ruhe dich aus.
+  Übungen: bhramari_kumbhaka
+
+E024  Komm in eine bequeme Sitzposition.
+  Übungen: bhramari_kumbhaka
+
+E025  Bleib in der Solo-Version bei einem ruhigen, natürlichen Rhythmus.
+  Übungen: kapalabhati
+
+E026  Spüre Bauch und Rumpf ohne forcierte Atemstöße.
+  Übungen: kapalabhati
+
+E027  Finde einen aufrechten bequemen Sitz.
+  Übungen: kapalabhati
+
+E028  Atme weich und ohne Kraft oder Geschwindigkeit.
+  Übungen: bhastrika
+
+E029  Gönn dir eine ruhige Pause.
+  Übungen: bhastrika
+
+E030  Beobachte den Atem im Brustkorb.
+  Übungen: bhastrika
+
+E031  Schließe mit einem Moment des Nachspürens ab.
+  Übungen: bhastrika
+
+E032  Setz dich stabil und bequem hin.
+  Übungen: bhastrika
+
+E033  Atme in der Solo-Variante sanft, nicht stoßweise.
+  Übungen: fire_breath
+
+E034  Lass den Atem ein paar Momente frei fließen.
+  Übungen: fire_breath
+
+E035  Nimm die Atembewegung im Bauch wahr.
+  Übungen: fire_breath
+
+E036  Richte dich bequem auf.
+  Übungen: fire_breath
+
+E037  Atme gelassen und natürlich.
+  Übungen: tummo
+
+E038  Stell dir eine angenehme Wärme in der Körpermitte vor.
+  Übungen: tummo
+
+E039  Lass die Vorstellung entstehen, ohne Druck zu erzeugen.
+  Übungen: tummo
+
+E040  Richte die Aufmerksamkeit auf Körperkontakt und Umgebung.
+  Übungen: tummo
+
+E041  Lass die Wärmevorstellung ausklingen.
+  Übungen: tummo
+
+E042  Finde einen ruhigen und sicheren Sitz.
+  Übungen: tummo
+
+E043  Nimm eine stabile Liege- oder Sitzposition ein.
+  Übungen: holotropic
+
+E044  Werde dir deiner Umgebung bewusst.
+  Übungen: holotropic
+
+E045  Beobachte Gedanken und Körperempfindungen ohne sie zu steigern.
+  Übungen: holotropic
+
+E046  Nimm die Kontaktflächen unter deinem Körper wahr.
+  Übungen: holotropic
+
+E047  Spüre, wie Ein- und Ausatmung von selbst verlaufen.
+  Übungen: holotropic
+
+E048  Lass jeder Empfindung Raum, ohne sie festhalten zu müssen.
+  Übungen: holotropic
+
+E049  Orientiere dich bei Bedarf an Geräuschen im Raum.
+  Übungen: holotropic
+
+E050  Die Musik tritt in den Hintergrund.
+  Übungen: holotropic
+
+E051  Lass die Augen langsam offen werden.
+  Übungen: holotropic
+
+E052  Notiere eine Beobachtung für dein Nachspüren.
+  Übungen: holotropic
+
+E053  Bemerke deine Körperhaltung.
+  Übungen: biodynamic
+
+E054  Beobachte sanfte Bewegungen von Bauch und Brustkorb.
+  Übungen: biodynamic
+
+E055  Achte auf eine Körperempfindung.
+  Übungen: biodynamic
+
+E056  Lass kleine natürliche Bewegungen zu, ohne etwas zu erzwingen.
+  Übungen: biodynamic
+
+E057  Kehre zu ruhiger Atmung zurück.
+  Übungen: biodynamic
+
+E058  Richte dich neu aus und spüre nach.
+  Übungen: biodynamic
+
+E059  Formuliere für dich eine kleine Absicht.
+  Übungen: clarity
+
+E060  Spüre, wie sich der Atem gerade anfühlt.
+  Übungen: clarity
+
+E061  Bemerke deine Gefühle, ohne sie bewusst zu verstärken.
+  Übungen: clarity
+
+E062  Lass die Atmung wieder in den Vordergrund kommen.
+  Übungen: clarity
+
+E063  Komm mit deiner Aufmerksamkeit zurück.
+  Übungen: clarity
+
+E064  Lass dich in der Sitz- oder Liegeposition ankommen.
+  Übungen: clarity
+
+E065  Spüre, wo dein Körper getragen wird.
+  Übungen: rebirthing
+
+E066  Nimm den Atem wahr, ohne ihn zu beschleunigen.
+  Übungen: rebirthing
+
+E067  Lass Gedanken und Empfindungen auftauchen und wieder gehen.
+  Übungen: rebirthing
+
+E068  Nimm den Kontakt zur Unterlage wahr.
+  Übungen: rebirthing
+
+E069  Lass die Übung langsam ausklingen.
+  Übungen: rebirthing
+
+E070  Mach es dir im Sitzen oder Liegen bequem.
+  Übungen: rebirthing
+
+E071  Schau dich im Raum um und finde einen ruhigen Orientierungspunkt.
+  Übungen: somatic_breathwork
+
+E072  Nimm eine einzelne Körperempfindung wahr.
+  Übungen: somatic_breathwork
+
+E073  Spüre, wie du atmest, ohne etwas zu verändern.
+  Übungen: somatic_breathwork
+
+E074  Wechsle zwischen Atem und Bodenkontakt.
+  Übungen: somatic_breathwork
+
+E075  Richte die Aufmerksamkeit auf Stabilität und Halt.
+  Übungen: somatic_breathwork
+
+E076  Schließe mit einem ruhigen Nachspüren ab.
+  Übungen: somatic_breathwork
+
+E077  Komm in deinem Körper an.
+  Übungen: somatic_breathwork
+
+E078  Finde eine bequeme Haltung.
+  Übungen: transformational
+
+E079  Spüre die Bewegung in deinem Körper.
+  Übungen: transformational
+
+E080  Erlaube dir eine bewusste Pause.
+  Übungen: transformational
+
+E081  Beobachte eine Emotion, ohne sie bewusst zu verstärken.
+  Übungen: transformational
+
+E082  Kehre zu natürlicher Atmung zurück.
+  Übungen: transformational
+
+E083  Lass Musik oder Klänge auf dich wirken.
+  Übungen: shamanic
+
+E084  Beobachte die Wirkung von Klang und Rhythmus.
+  Übungen: shamanic
+
+E085  Spüre deine Hände und Füße.
+  Übungen: shamanic
+
+E086  Lass Bilder oder Gedanken vorüberziehen.
+  Übungen: shamanic
+
+E087  Richte dich wieder auf die Umgebung aus.
+  Übungen: shamanic
+
+E088  Lass die Musik ausklingen.
+  Übungen: shamanic
+
+E089  Spüre nach, was du mitnimmst.
+  Übungen: shamanic
+
