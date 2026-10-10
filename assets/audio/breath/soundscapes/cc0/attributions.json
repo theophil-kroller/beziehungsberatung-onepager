@@ -1,0 +1,126 @@
+{
+  "version": "15.12.45",
+  "license": "CC0 1.0 as advertised on OpenGameArt source pages; retain provenance before public deployment",
+  "tracks": [
+    {
+      "id": "revelation",
+      "title": "Revelation",
+      "suppliedFilename": "Revelation_0.mp3",
+      "mp3": "assets/audio/breath/soundscapes/cc0/revelation.mp3",
+      "sha256": "064721374cc7f533dddd3ab38ef8cefa8d1a2be887ea483f4fff1ee1c1e93d34"
+    },
+    {
+      "id": "ambient_tribal",
+      "title": "Tribal",
+      "suppliedFilename": "Of Far Different Nature - Tribal (CC0).mp3",
+      "mp3": "assets/audio/breath/soundscapes/cc0/ambient_tribal.mp3",
+      "sha256": "230ad5a452c0c3f2eae4ab58f9046e3544c92b6deffadfb4608ae30b6fe189f4"
+    },
+    {
+      "id": "frozen_desert",
+      "title": "Frozen Desert",
+      "suppliedFilename": "Frozen Desert_0.ogg",
+      "mp3": "assets/audio/breath/soundscapes/cc0/frozen_desert.mp3",
+      "sha256": "cd6cc497afce633a73e32acf0ba9bc9935ed59b45e86f8fe9a5ae3285f3aab80"
+    },
+    {
+      "id": "contemplation",
+      "title": "Contemplation",
+      "suppliedFilename": "Contemplation.mp3",
+      "mp3": "assets/audio/breath/soundscapes/cc0/contemplation.mp3",
+      "sha256": "3c070312b8276d598458eb67a01b9b27f6503c392cd392c4880bb84f996f4e02"
+    },
+    {
+      "id": "persistence",
+      "title": "Persistence",
+      "suppliedFilename": "persistence_0.mp3",
+      "mp3": "assets/audio/breath/soundscapes/cc0/persistence.mp3",
+      "sha256": "bcdaf4a8b799adb9d8202da9c3df8bfde985a0afe2e5c7c8a193150099ed32a5"
+    },
+    {
+      "id": "somnium",
+      "title": "Somnium",
+      "suppliedFilename": "somnium.mp3",
+      "mp3": "assets/audio/breath/soundscapes/cc0/somnium.mp3",
+      "sha256": "b9d0e9a21261fd631047b024ed828126092a44756db9117ad98aceb5f6472c1e"
+    },
+    {
+      "id": "calm_track",
+      "title": "Calm Track Loop",
+      "suppliedFilename": "calm_track-loop.ogg",
+      "mp3": "assets/audio/breath/soundscapes/cc0/calm_track.mp3",
+      "sha256": "fa7850c210dec01607ffe902144e39af8bdcfcd98ca87e1fe029ac56f9f7bbfe"
+    },
+    {
+      "id": "safe_space",
+      "title": "Safe Space Loop",
+      "suppliedFilename": "safe_space_loop.flac",
+      "mp3": "assets/audio/breath/soundscapes/cc0/safe_space.mp3",
+      "sha256": "7b96d87e19ba1c24a159502373587f951d5e8154e5138c78b73c7c74c349d8a9"
+    },
+    {
+      "id": "first_light",
+      "title": "First Light Particles",
+      "suppliedFilename": "first_light_particles_0.wav",
+      "mp3": "assets/audio/breath/soundscapes/cc0/first_light.mp3",
+      "sha256": "acf3a9334add4518cdd7c9e3d7ef8744751fd75a4291dba545af5e6cdcfd38a4"
+    },
+    {
+      "id": "budding",
+      "title": "Budding of Consciousness",
+      "suppliedFilename": "the_budding_of_consciousness.wav",
+      "mp3": "assets/audio/breath/soundscapes/cc0/budding.mp3",
+      "sha256": "dd73ff6b798675b2bcb703ad1c586b83debb0589d432b78c5d301e33be0d1e11"
+    },
+    {
+      "id": "cinematic_drums",
+      "title": "Cinematic Percussion Loop",
+      "suppliedFilename": "Cinematic percussion loop 2.wav",
+      "mp3": "assets/audio/breath/soundscapes/cc0/cinematic_drums.mp3",
+      "sha256": "84221b442a83a5938c42923d2758febb13ffd876f0cf76148a283e1642fd4ded"
+    },
+    {
+      "id": "synthwave",
+      "title": "Calm Ambient 2",
+      "suppliedFilename": "002_Synthwave_15k.mp3",
+      "mp3": "assets/audio/breath/soundscapes/cc0/synthwave.mp3",
+      "sha256": "aa301e747bed06a91495e5200db8d030183374aaa86cd816ede630753b39b8ea"
+    },
+    {
+      "id": "dream2",
+      "title": "Dream 2",
+      "suppliedFilename": "Dream 2 (Ambience)_0.mp3",
+      "mp3": "assets/audio/breath/soundscapes/cc0/dream2.mp3",
+      "sha256": "e8060ce20b2784f713369922ac1d015a35a19ac6a1ff247bd403a58cfead1808"
+    },
+    {
+      "id": "prehistoric_drums",
+      "title": "Prehistoric Drum Loop",
+      "suppliedFilename": "select.wav",
+      "mp3": "assets/audio/breath/soundscapes/cc0/prehistoric_drums.mp3",
+      "sha256": "0a97f867fbd3df9dc662d234f9b0b37d577f868fe06695f5a6b1c116bd0de794"
+    },
+    {
+      "id": "tribal_percussion",
+      "title": "Tribal Percussion",
+      "derivedFrom": [
+        "ambient_tribal",
+        "cinematic_drums"
+      ],
+      "mixOverlayDb": -16,
+      "mp3": "assets/audio/breath/soundscapes/cc0/tribal_percussion.mp3",
+      "sha256": "9010b658be3543af455b5b111e1f092768c060e8b9222378627b4737623c3921"
+    },
+    {
+      "id": "desert_ritual",
+      "title": "Desert Ritual",
+      "derivedFrom": [
+        "frozen_desert",
+        "prehistoric_drums"
+      ],
+      "mixOverlayDb": -17,
+      "mp3": "assets/audio/breath/soundscapes/cc0/desert_ritual.mp3",
+      "sha256": "848f5911878a8b1e2d534f8382fe148a761df5bb053c6d71509db0c4b0a67491"
+    }
+  ]
+}
