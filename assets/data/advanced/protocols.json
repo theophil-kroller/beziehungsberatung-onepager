@@ -19,31 +19,46 @@
         "cueId": "ADV_MICROCOSMIC_ORBIT_03",
         "text": "Richte deine Aufmerksamkeit auf den unteren Bauch.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D001",
+        "spokenText": "Richte deine Aufmerksamkeit jetzt auf den unteren Bauch.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_MICROCOSMIC_ORBIT_04",
         "text": "Lass die Aufmerksamkeit langsam entlang des Rückens zum Scheitel wandern.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D002",
+        "spokenText": "Lass die Aufmerksamkeit langsam entlang des Rückens nach oben zum Scheitel wandern.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_MICROCOSMIC_ORBIT_05",
         "text": "Verweile sanft im Bereich des Scheitels.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D003",
+        "spokenText": "Verweile mit deiner Aufmerksamkeit einen Moment am Scheitel.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_MICROCOSMIC_ORBIT_06",
         "text": "Folge mit der Aufmerksamkeit über die Vorderseite wieder nach unten.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D004",
+        "spokenText": "Folge mit der Aufmerksamkeit über die Vorderseite des Körpers wieder nach unten.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_MICROCOSMIC_ORBIT_07",
         "text": "Wiederhole diese innere Reise in deinem eigenen Tempo.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D005",
+        "spokenText": "Wiederhole diese innere Reise in deinem eigenen Tempo.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_MICROCOSMIC_ORBIT_08",
@@ -75,25 +90,37 @@
         "cueId": "ADV_EMBRYONIC_03",
         "text": "Nimm das feine Entstehen der Einatmung wahr.",
         "durationSeconds": 180,
-        "state": "inhale"
+        "state": "inhale",
+        "recordedCueId": "D006",
+        "spokenText": "Nimm wahr, wie die Einatmung ganz von selbst beginnt.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_EMBRYONIC_04",
         "text": "Spüre, wie die Ausatmung von selbst ausklingt.",
         "durationSeconds": 180,
-        "state": "exhale"
+        "state": "exhale",
+        "recordedCueId": "D007",
+        "spokenText": "Spüre, wie die Ausatmung von selbst ausklingt.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_EMBRYONIC_05",
         "text": "Beobachte feine Bewegungen im Rumpf, ohne etwas zu erzwingen.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D008",
+        "spokenText": "Beobachte die feinen Bewegungen im unteren Rumpf, ohne etwas zu verändern.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_EMBRYONIC_06",
         "text": "Lass auch die Vorstellung eines bestimmten Rhythmus los.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D009",
+        "spokenText": "Lass die Vorstellung eines bestimmten Atemrhythmus los.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_EMBRYONIC_07",
@@ -119,31 +146,46 @@
         "cueId": "ADV_SKIN_BREATHING_02",
         "text": "Spüre den Kontakt der Kleidung mit deiner Haut.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D010",
+        "spokenText": "Nimm den Kontakt deiner Kleidung auf der Haut wahr.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SKIN_BREATHING_03",
         "text": "Nimm Temperatur und Berührung an Händen und Gesicht wahr.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D011",
+        "spokenText": "Spüre Temperatur und Luftbewegung an deinen Händen und im Gesicht.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SKIN_BREATHING_04",
         "text": "Stell dir sanfte Weite beim Einatmen vor.",
         "durationSeconds": 180,
-        "state": "inhale"
+        "state": "inhale",
+        "recordedCueId": "D012",
+        "spokenText": "Stell dir beim Einatmen eine sanfte Weite im Körper vor.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SKIN_BREATHING_05",
         "text": "Lass beim Ausatmen Schultern und Kiefer weich werden.",
         "durationSeconds": 180,
-        "state": "exhale"
+        "state": "exhale",
+        "recordedCueId": "D013",
+        "spokenText": "Lass beim Ausatmen Schultern und Kiefer weich werden.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SKIN_BREATHING_06",
         "text": "Nimm die Körpergrenzen als Ganzes wahr.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D014",
+        "spokenText": "Nimm die Grenzen deines Körpers als Ganzes wahr.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SKIN_BREATHING_07",
@@ -163,13 +205,19 @@
         "cueId": "ADV_MURCHA_01",
         "text": "Ankommen und aufrechten, stabilen Sitz finden.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D015",
+        "spokenText": "Wir beginnen mit einem ruhigen Ankommen im Sitzen.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_MURCHA_02",
         "text": "Kläre mit der anleitenden Person die persönliche Variante und den Ablauf.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D016",
+        "spokenText": "Nimm dir einen Moment, bevor die nächste angeleitete Phase beginnt.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_MURCHA_03",
@@ -207,7 +255,10 @@
         "cueId": "ADV_BHRAMARI_KUMBHAKA_02",
         "text": "Lass die Aufmerksamkeit auf Gesichts- und Halsraum ruhen.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D017",
+        "spokenText": "Richte deine Aufmerksamkeit jetzt auf den Gesichts- und Halsraum.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BHRAMARI_KUMBHAKA_03",
@@ -219,13 +270,19 @@
         "cueId": "ADV_BHRAMARI_KUMBHAKA_04",
         "text": "Unterbrich für eine ruhige Wahrnehmungspause und spüre nach.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D018",
+        "spokenText": "Lass den Summton ausklingen und spüre einen Moment der Stille nach.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BHRAMARI_KUMBHAKA_05",
         "text": "Folge gegebenenfalls einer weiteren persönlich angeleiteten Runde.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D019",
+        "spokenText": "Wenn die nächste Runde beginnt, kehre mit der Aufmerksamkeit zu deinem Atem zurück.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BHRAMARI_KUMBHAKA_06",
@@ -257,25 +314,37 @@
         "cueId": "ADV_KAPALABHATI_03",
         "text": "Beginne die erste persönlich angeleitete Runde.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D020",
+        "spokenText": "Die erste angeleitete Runde beginnt jetzt.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_KAPALABHATI_04",
         "text": "Pause: Atme natürlich und spüre den Rumpf.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D021",
+        "spokenText": "Die erste Runde ist abgeschlossen. Lass deine Atmung zur Ruhe kommen.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_KAPALABHATI_05",
         "text": "Beginne die zweite persönlich angeleitete Runde.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D022",
+        "spokenText": "Die zweite angeleitete Runde beginnt jetzt.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_KAPALABHATI_06",
         "text": "Pause: Lass die Atembewegung wieder ruhig werden.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D023",
+        "spokenText": "Die zweite Runde ist abgeschlossen. Spüre die Bewegung in deinem Rumpf nach.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_KAPALABHATI_07",
@@ -307,19 +376,28 @@
         "cueId": "ADV_BHASTRIKA_03",
         "text": "Erste persönlich angeleitete Runde.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D024",
+        "spokenText": "Bereite dich auf die erste angeleitete Runde vor.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BHASTRIKA_04",
         "text": "Erholungspause mit normaler Atmung.",
         "durationSeconds": 150,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D025",
+        "spokenText": "Die erste Runde ist zu Ende. Atme wieder ruhig und natürlich.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BHASTRIKA_05",
         "text": "Zweite persönlich angeleitete Runde.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D026",
+        "spokenText": "Bereite dich auf die zweite angeleitete Runde vor.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BHASTRIKA_06",
@@ -351,19 +429,28 @@
         "cueId": "ADV_FIRE_BREATH_03",
         "text": "Erste angeleitete Sequenz.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D027",
+        "spokenText": "Wir beginnen jetzt mit der ersten angeleiteten Sequenz.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_FIRE_BREATH_04",
         "text": "Atempause im Sinne einer normalen, unangestrengten Atmung.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D028",
+        "spokenText": "Lass zwischen den Sequenzen deinen Atem wieder ganz natürlich werden.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_FIRE_BREATH_05",
         "text": "Zweite angeleitete Sequenz.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D029",
+        "spokenText": "Wir beginnen jetzt mit der zweiten angeleiteten Sequenz.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_FIRE_BREATH_06",
@@ -395,7 +482,10 @@
         "cueId": "ADV_TUMMO_03",
         "text": "Geführte Konzentrations- und Vorstellungsphase.",
         "durationSeconds": 480,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D030",
+        "spokenText": "Richte deine Aufmerksamkeit jetzt auf die vereinbarte innere Visualisierung.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_TUMMO_04",
@@ -407,7 +497,10 @@
         "cueId": "ADV_TUMMO_05",
         "text": "Zurück zum unangestrengten Atem und zur Körperwahrnehmung.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D031",
+        "spokenText": "Lass die Visualisierung langsam ausklingen und kehre zur Körperwahrnehmung zurück.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_TUMMO_06",
@@ -433,7 +526,10 @@
         "cueId": "ADV_WIM_HOF_02",
         "text": "Bereite dich auf die erste angeleitete Atemrunde vor.",
         "durationSeconds": 60,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D032",
+        "spokenText": "Bereite dich auf die erste Runde vor.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_WIM_HOF_03",
@@ -445,31 +541,46 @@
         "cueId": "ADV_WIM_HOF_04",
         "text": "Atemruhe und Erholung nach Vorgabe der anleitenden Person.",
         "durationSeconds": 90,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D033",
+        "spokenText": "Die erste Runde ist abgeschlossen. Nimm dir Zeit für die Erholung.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_WIM_HOF_05",
         "text": "Zweite geführte Runde.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D034",
+        "spokenText": "Bereite dich auf die zweite Runde vor.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_WIM_HOF_06",
         "text": "Atemruhe und Erholung nach Vorgabe der anleitenden Person.",
         "durationSeconds": 90,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D035",
+        "spokenText": "Die zweite Runde ist abgeschlossen. Spüre einen Moment nach.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_WIM_HOF_07",
         "text": "Dritte geführte Runde.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D036",
+        "spokenText": "Bereite dich auf die dritte Runde vor.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_WIM_HOF_08",
         "text": "Kehre zur natürlichen Atmung zurück, spüre nach und orientiere dich.",
         "durationSeconds": 60,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D037",
+        "spokenText": "Die dritte Runde ist abgeschlossen. Lass den Atem wieder seinen natürlichen Rhythmus finden.",
+        "voiceSource": "master_d_recorded_take2"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -489,19 +600,28 @@
         "cueId": "ADV_HOLOTROPIC_02",
         "text": "Musikalischer Einstieg und Übergang in den begleiteten Prozess.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D038",
+        "spokenText": "Wir beginnen jetzt mit der Musik und lassen uns Zeit, im Prozess anzukommen.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_HOLOTROPIC_03",
         "text": "Prozessphase mit Musik. Die Leitung begleitet die individuelle Entwicklung.",
         "durationSeconds": 3000,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D039",
+        "spokenText": "Die Musik begleitet nun die weitere Phase. Die individuelle Begleitung bleibt im Vordergrund.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_HOLOTROPIC_04",
         "text": "Allmählicher Übergang in die Ruhe und Körperwahrnehmung.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D040",
+        "spokenText": "Die Musik wird ruhiger. Nimm dir Zeit, die Aufmerksamkeit wieder nach außen zu richten.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_HOLOTROPIC_05",
@@ -533,13 +653,19 @@
         "cueId": "ADV_BIODYNAMIC_03",
         "text": "Persönlich angeleiteter Atem- und Körperprozess.",
         "durationSeconds": 1800,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D041",
+        "spokenText": "Nimm wahr, wie Atem und Körperbewegung zusammenwirken.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BIODYNAMIC_04",
         "text": "Bewegung und Körperempfindungen bewusst integrieren.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D042",
+        "spokenText": "Lass Bewegung und Körperempfindungen allmählich zur Ruhe kommen.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_BIODYNAMIC_05",
@@ -559,7 +685,10 @@
         "cueId": "ADV_CLARITY_01",
         "text": "Ankommen, Intention und vereinbarter Ablauf.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D043",
+        "spokenText": "Nimm einen Moment lang wahr, was dich heute in diese Sitzung führt.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_CLARITY_02",
@@ -577,7 +706,10 @@
         "cueId": "ADV_CLARITY_04",
         "text": "Verlangsamung und Nachspüren.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D044",
+        "spokenText": "Lass die Atemarbeit langsam ausklingen und spüre nach.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_CLARITY_05",
@@ -597,7 +729,10 @@
         "cueId": "ADV_REBIRTHING_01",
         "text": "Ankommen und persönlichen Prozessrahmen klären.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D045",
+        "spokenText": "Nimm dir einen Moment, um deine Absicht für diese Sitzung zu klären.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_REBIRTHING_02",
@@ -615,7 +750,10 @@
         "cueId": "ADV_REBIRTHING_04",
         "text": "Den Atem zur Ruhe kommen lassen.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D046",
+        "spokenText": "Kehre schrittweise zu einer natürlichen, unangestrengten Atmung zurück.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_REBIRTHING_05",
@@ -635,13 +773,19 @@
         "cueId": "ADV_SOMATIC_BREATHWORK_01",
         "text": "Im Körper ankommen und Orientierung finden.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D047",
+        "spokenText": "Spüre, an welcher Stelle dein Körper gerade Kontakt und Halt findet.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SOMATIC_BREATHWORK_02",
         "text": "Atem und Körperempfindungen beobachten.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D048",
+        "spokenText": "Nimm eine Körperempfindung wahr, ohne sie verändern zu müssen.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SOMATIC_BREATHWORK_03",
@@ -653,7 +797,10 @@
         "cueId": "ADV_SOMATIC_BREATHWORK_04",
         "text": "Körperressourcen und Stabilität bewusst wahrnehmen.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D049",
+        "spokenText": "Richte die Aufmerksamkeit zum Abschluss auf das, was dir Stabilität gibt.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SOMATIC_BREATHWORK_05",
@@ -679,7 +826,10 @@
         "cueId": "ADV_TRANSFORMATIONAL_02",
         "text": "Kontakt zur Atembewegung herstellen.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D050",
+        "spokenText": "Nimm zunächst die Atembewegung in deinem Körper wahr.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_TRANSFORMATIONAL_03",
@@ -691,7 +841,10 @@
         "cueId": "ADV_TRANSFORMATIONAL_04",
         "text": "Übergang zu natürlicher Atmung und Entspannung.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D051",
+        "spokenText": "Lass die heutige Erfahrung allmählich ausklingen.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_TRANSFORMATIONAL_05",
@@ -717,7 +870,10 @@
         "cueId": "ADV_SHAMANIC_02",
         "text": "Musikalischer und körperlicher Einstieg.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D052",
+        "spokenText": "Wir beginnen mit dem musikalischen Rahmen der Sitzung.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SHAMANIC_03",
@@ -729,7 +885,10 @@
         "cueId": "ADV_SHAMANIC_04",
         "text": "Ausklang und ruhiges Nachspüren.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "D053",
+        "spokenText": "Nimm wahr, wie du wieder im Hier und Jetzt ankommst.",
+        "voiceSource": "master_d_recorded_take2"
       },
       {
         "cueId": "ADV_SHAMANIC_05",
