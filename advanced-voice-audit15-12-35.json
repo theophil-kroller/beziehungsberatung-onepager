@@ -1,9 +1,9 @@
 {
-  "version": "15.12.35",
-  "baseVersion": "15.12.34",
-  "note": "Text matching only; A/B/C raw audio is not transcribed/verified. Player remains unchanged. Do not activate unverified audio automatically.",
+  "version": "15.12.36",
+  "baseVersion": "15.12.35",
+  "note": "19 A/B clips manually approved by user; now mapped to 30 phases. 53 Master D phases wired. 18 intentional silence. C audio remains not mapped.",
   "stats": {
-    "AB_TEXT_MATCH_AUDIO_UNVERIFIED": 30,
+    "AB_VERIFIED_IN_PLAYER": 30,
     "D_WIRED_PREVIOUS_BUILD": 53,
     "INTENTIONAL_SILENCE": 18
   },
@@ -1928,9 +1928,9 @@
       "exercise": "Microcosmic Orbit · Aufmerksamkeitsreise",
       "phase": 1,
       "phaseId": "ADV_MICROCOSMIC_ORBIT_01",
-      "displayText": "Ankommen: Sitze aufrecht und spüre den Kontakt zum Boden.",
+      "displayText": "Komm in eine bequeme, aufrechte Sitzposition.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_002",
       "sourceText": "Komm in eine bequeme, aufrechte Sitzposition.",
       "suggestedCandidateIds": [
@@ -1939,16 +1939,18 @@
         "A_CAND_003",
         "A_CAND_004",
         "A_CAND_005"
-      ]
+      ],
+      "clipId": "A_CAND_001",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_001.mp3"
     },
     {
       "exerciseId": "microcosmic_orbit",
       "exercise": "Microcosmic Orbit · Aufmerksamkeitsreise",
       "phase": 2,
       "phaseId": "ADV_MICROCOSMIC_ORBIT_02",
-      "displayText": "Nimm den natürlichen Atem wahr, ohne ihn zu verändern.",
+      "displayText": "Beobachte den Atem, ohne ihn zu beschleunigen.",
       "durationSeconds": 150,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "B020",
       "sourceText": "Beobachte den Atem, ohne ihn zu beschleunigen.",
       "suggestedCandidateIds": [
@@ -1960,7 +1962,9 @@
         "B_CAND_051",
         "B_CAND_053",
         "B_CAND_054"
-      ]
+      ],
+      "clipId": "B_CAND_050",
+      "audioPath": "assets/audio/breath/de/advanced/b_take_050.mp3"
     },
     {
       "exerciseId": "microcosmic_orbit",
@@ -2022,9 +2026,9 @@
       "exercise": "Microcosmic Orbit · Aufmerksamkeitsreise",
       "phase": 8,
       "phaseId": "ADV_MICROCOSMIC_ORBIT_08",
-      "displayText": "Spüre den ganzen Körper und öffne die Aufmerksamkeit für den Raum.",
+      "displayText": "Lass deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "B032",
       "sourceText": "Lass deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren.",
       "suggestedCandidateIds": [
@@ -2036,16 +2040,18 @@
         "B_CAND_080",
         "B_CAND_081",
         "B_CAND_082"
-      ]
+      ],
+      "clipId": "B_CAND_080",
+      "audioPath": "assets/audio/breath/de/advanced/b_take_080.mp3"
     },
     {
       "exerciseId": "embryonic",
       "exercise": "Embryonale Atmung · stille Wahrnehmung",
       "phase": 1,
       "phaseId": "ADV_EMBRYONIC_01",
-      "displayText": "Finde eine ruhige, bequeme Position und spüre deine Unterlage.",
+      "displayText": "Spüre, wie du gerade sitzt oder liegst.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_056",
       "sourceText": "Spüre, wie du gerade sitzt oder liegst.",
       "suggestedCandidateIds": [
@@ -2057,16 +2063,18 @@
         "A_CAND_095",
         "A_CAND_096",
         "A_CAND_097"
-      ]
+      ],
+      "clipId": "A_CAND_091",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_091.mp3"
     },
     {
       "exerciseId": "embryonic",
       "exercise": "Embryonale Atmung · stille Wahrnehmung",
       "phase": 2,
       "phaseId": "ADV_EMBRYONIC_02",
-      "displayText": "Der Atem darf von selbst kommen und gehen.",
+      "displayText": "Atme einige Male ganz natürlich durch die Nase.",
       "durationSeconds": 180,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_003",
       "sourceText": "Atme einige Male ganz natürlich durch die Nase.",
       "suggestedCandidateIds": [
@@ -2077,7 +2085,9 @@
         "A_CAND_005",
         "A_CAND_006",
         "A_CAND_007"
-      ]
+      ],
+      "clipId": "A_CAND_004",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_004.mp3"
     },
     {
       "exerciseId": "embryonic",
@@ -2128,9 +2138,9 @@
       "exercise": "Embryonale Atmung · stille Wahrnehmung",
       "phase": 7,
       "phaseId": "ADV_EMBRYONIC_07",
-      "displayText": "Kehre mit der Aufmerksamkeit in den Raum zurück.",
+      "displayText": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_068",
       "sourceText": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren.",
       "suggestedCandidateIds": [
@@ -2138,16 +2148,18 @@
         "A_CAND_115",
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_114",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_114.mp3"
     },
     {
       "exerciseId": "skin_breathing",
       "exercise": "Hautatmung · Körperwahrnehmung",
       "phase": 1,
       "phaseId": "ADV_SKIN_BREATHING_01",
-      "displayText": "Setz dich bequem hin und lass deinen Atem natürlich fließen.",
+      "displayText": "Lass den Atem frei fließen.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_035",
       "sourceText": "Lass den Atem frei fließen.",
       "suggestedCandidateIds": [
@@ -2159,7 +2171,9 @@
         "A_CAND_053",
         "A_CAND_054",
         "A_CAND_055"
-      ]
+      ],
+      "clipId": "A_CAND_051",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_051.mp3"
     },
     {
       "exerciseId": "skin_breathing",
@@ -2221,9 +2235,9 @@
       "exercise": "Hautatmung · Körperwahrnehmung",
       "phase": 7,
       "phaseId": "ADV_SKIN_BREATHING_07",
-      "displayText": "Lass die Vorstellung los und orientiere dich im Raum.",
+      "displayText": "Lass die Vorstellung langsam ausklingen.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_046",
       "sourceText": "Lass die Vorstellung langsam ausklingen.",
       "suggestedCandidateIds": [
@@ -2235,7 +2249,9 @@
         "A_CAND_075",
         "A_CAND_076",
         "A_CAND_077"
-      ]
+      ],
+      "clipId": "A_CAND_074",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_074.mp3"
     },
     {
       "exerciseId": "murcha",
@@ -2284,24 +2300,26 @@
       "exercise": "Murcha Pranayama · begleitete Praxis",
       "phase": 5,
       "phaseId": "ADV_MURCHA_05",
-      "displayText": "Kehre zum normalen Atem zurück und bleibe einen Moment ruhig sitzen.",
+      "displayText": "Atme jetzt wieder in deinem natürlichen Rhythmus.",
       "durationSeconds": 180,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "B038",
       "sourceText": "Atme jetzt wieder in deinem natürlichen Rhythmus.",
       "suggestedCandidateIds": [
         "B038_TAKE1",
         "B038_TAKE2"
-      ]
+      ],
+      "clipId": "B038_TAKE2",
+      "audioPath": "assets/audio/breath/de/advanced/b038__take2.mp3"
     },
     {
       "exerciseId": "bhramari_kumbhaka",
       "exercise": "Bhramari Kumbhaka · begleitete Praxis",
       "phase": 1,
       "phaseId": "ADV_BHRAMARI_KUMBHAKA_01",
-      "displayText": "Finde einen stabilen, bequemen Sitz.",
+      "displayText": "Finde einen stabilen Sitz.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_028",
       "sourceText": "Finde einen stabilen Sitz.",
       "suggestedCandidateIds": [
@@ -2313,7 +2331,9 @@
         "A_CAND_041",
         "A_CAND_042",
         "A_CAND_043"
-      ]
+      ],
+      "clipId": "A_CAND_041",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_041.mp3"
     },
     {
       "exerciseId": "bhramari_kumbhaka",
@@ -2363,9 +2383,9 @@
       "exercise": "Bhramari Kumbhaka · begleitete Praxis",
       "phase": 6,
       "phaseId": "ADV_BHRAMARI_KUMBHAKA_06",
-      "displayText": "Atme frei und öffne langsam die Augen.",
+      "displayText": "Öffne langsam wieder die Augen.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_009",
       "sourceText": "Öffne langsam wieder die Augen.",
       "suggestedCandidateIds": [
@@ -2377,16 +2397,18 @@
         "A_CAND_009",
         "A_CAND_010",
         "A_CAND_011"
-      ]
+      ],
+      "clipId": "A_CAND_007",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_007.mp3"
     },
     {
       "exerciseId": "kapalabhati",
       "exercise": "Kapalabhati · begleitete Runden",
       "phase": 1,
       "phaseId": "ADV_KAPALABHATI_01",
-      "displayText": "Setz dich aufrecht hin und entspanne Gesicht und Schultern.",
+      "displayText": "Komm in eine bequeme, aufrechte Sitzposition.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_002",
       "sourceText": "Komm in eine bequeme, aufrechte Sitzposition.",
       "suggestedCandidateIds": [
@@ -2395,7 +2417,9 @@
         "A_CAND_003",
         "A_CAND_004",
         "A_CAND_005"
-      ]
+      ],
+      "clipId": "A_CAND_001",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_001.mp3"
     },
     {
       "exerciseId": "kapalabhati",
@@ -2456,9 +2480,9 @@
       "exercise": "Kapalabhati · begleitete Runden",
       "phase": 7,
       "phaseId": "ADV_KAPALABHATI_07",
-      "displayText": "Abschluss: Spüre nach und orientiere dich im Raum.",
+      "displayText": "Komm bewusst im Raum an.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_050",
       "sourceText": "Komm bewusst im Raum an.",
       "suggestedCandidateIds": [
@@ -2470,16 +2494,18 @@
         "A_CAND_083",
         "A_CAND_084",
         "A_CAND_085"
-      ]
+      ],
+      "clipId": "A_CAND_080",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_080.mp3"
     },
     {
       "exerciseId": "bhastrika",
       "exercise": "Bhastrika Pranayama · begleitete Runden",
       "phase": 1,
       "phaseId": "ADV_BHASTRIKA_01",
-      "displayText": "Nimm eine stabile Sitzposition ein.",
+      "displayText": "Finde einen stabilen Sitz.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_028",
       "sourceText": "Finde einen stabilen Sitz.",
       "suggestedCandidateIds": [
@@ -2491,7 +2517,9 @@
         "A_CAND_041",
         "A_CAND_042",
         "A_CAND_043"
-      ]
+      ],
+      "clipId": "A_CAND_041",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_041.mp3"
     },
     {
       "exerciseId": "bhastrika",
@@ -2541,9 +2569,9 @@
       "exercise": "Bhastrika Pranayama · begleitete Runden",
       "phase": 6,
       "phaseId": "ADV_BHASTRIKA_06",
-      "displayText": "Ruhiger Ausklang und Nachspüren.",
+      "displayText": "Spüre das Nachklingen der Übung, ohne es bewerten zu müssen.",
       "durationSeconds": 150,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "B022",
       "sourceText": "Spüre das Nachklingen der Übung, ohne es bewerten zu müssen.",
       "suggestedCandidateIds": [
@@ -2555,16 +2583,18 @@
         "B_CAND_056",
         "B_CAND_057",
         "B_CAND_059"
-      ]
+      ],
+      "clipId": "B_CAND_055",
+      "audioPath": "assets/audio/breath/de/advanced/b_take_055.mp3"
     },
     {
       "exerciseId": "fire_breath",
       "exercise": "Feueratmung · begleitete Sequenz",
       "phase": 1,
       "phaseId": "ADV_FIRE_BREATH_01",
-      "displayText": "Richte deinen Sitz auf und lass die Schultern los.",
+      "displayText": "Richte dich bequem auf.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_030",
       "sourceText": "Richte dich bequem auf.",
       "suggestedCandidateIds": [
@@ -2576,7 +2606,9 @@
         "A_CAND_045",
         "A_CAND_046",
         "A_CAND_047"
-      ]
+      ],
+      "clipId": "A_CAND_044",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_044.mp3"
     },
     {
       "exerciseId": "fire_breath",
@@ -2626,9 +2658,9 @@
       "exercise": "Feueratmung · begleitete Sequenz",
       "phase": 6,
       "phaseId": "ADV_FIRE_BREATH_06",
-      "displayText": "Lass den Atem sich beruhigen und spüre nach.",
+      "displayText": "Lass die Atmung allmählich in ihr gewohntes Tempo zurückfinden.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "B021",
       "sourceText": "Lass die Atmung allmählich in ihr gewohntes Tempo zurückfinden.",
       "suggestedCandidateIds": [
@@ -2640,16 +2672,18 @@
         "B_CAND_054",
         "B_CAND_055",
         "B_CAND_056"
-      ]
+      ],
+      "clipId": "B_CAND_054",
+      "audioPath": "assets/audio/breath/de/advanced/b_take_054.mp3"
     },
     {
       "exerciseId": "tummo",
       "exercise": "Tummo · Meditation und begleitete Praxis",
       "phase": 1,
       "phaseId": "ADV_TUMMO_01",
-      "displayText": "Ankommen: Ruhe und stabile Sitzhaltung finden.",
+      "displayText": "Finde einen stabilen Sitz.",
       "durationSeconds": 240,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_028",
       "sourceText": "Finde einen stabilen Sitz.",
       "suggestedCandidateIds": [
@@ -2661,7 +2695,9 @@
         "A_CAND_041",
         "A_CAND_042",
         "A_CAND_043"
-      ]
+      ],
+      "clipId": "A_CAND_041",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_041.mp3"
     },
     {
       "exerciseId": "tummo",
@@ -2710,24 +2746,26 @@
       "exercise": "Tummo · Meditation und begleitete Praxis",
       "phase": 6,
       "phaseId": "ADV_TUMMO_06",
-      "displayText": "Integration in Ruhe und Abschluss.",
+      "displayText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_069",
       "sourceText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "suggestedCandidateIds": [
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_116",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_116.mp3"
     },
     {
       "exerciseId": "wim_hof",
       "exercise": "Wim-Hof-Atmung · angeleitete Runden",
       "phase": 1,
       "phaseId": "ADV_WIM_HOF_01",
-      "displayText": "Setz oder leg dich in sicherer Umgebung bequem hin.",
+      "displayText": "Setz oder leg dich an einen sicheren Ort.",
       "durationSeconds": 120,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_047",
       "sourceText": "Setz oder leg dich an einen sicheren Ort.",
       "suggestedCandidateIds": [
@@ -2739,7 +2777,9 @@
         "A_CAND_077",
         "A_CAND_078",
         "A_CAND_079"
-      ]
+      ],
+      "clipId": "A_CAND_075",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_075.mp3"
     },
     {
       "exerciseId": "wim_hof",
@@ -2865,24 +2905,26 @@
       "exercise": "Holotropes Atmen · begleitete Sitzung",
       "phase": 5,
       "phaseId": "ADV_HOLOTROPIC_05",
-      "displayText": "Nachspüren und Integration mit der begleitenden Person.",
+      "displayText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "durationSeconds": 600,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_069",
       "sourceText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "suggestedCandidateIds": [
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_116",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_116.mp3"
     },
     {
       "exerciseId": "biodynamic",
       "exercise": "Biodynamic Breathwork · begleitete Sitzung",
       "phase": 1,
       "phaseId": "ADV_BIODYNAMIC_01",
-      "displayText": "Kontakt zum Körper und zur Unterlage herstellen.",
+      "displayText": "Spüre den Kontakt zum Boden.",
       "durationSeconds": 300,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_031",
       "sourceText": "Spüre den Kontakt zum Boden.",
       "suggestedCandidateIds": [
@@ -2894,7 +2936,9 @@
         "A_CAND_047",
         "A_CAND_048",
         "A_CAND_049"
-      ]
+      ],
+      "clipId": "A_CAND_046",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_046.mp3"
     },
     {
       "exerciseId": "biodynamic",
@@ -2933,9 +2977,9 @@
       "exercise": "Biodynamic Breathwork · begleitete Sitzung",
       "phase": 5,
       "phaseId": "ADV_BIODYNAMIC_05",
-      "displayText": "Nachruhe und gemeinsame Reflexion.",
+      "displayText": "Spüre das Nachklingen der Übung, ohne es bewerten zu müssen.",
       "durationSeconds": 600,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "B022",
       "sourceText": "Spüre das Nachklingen der Übung, ohne es bewerten zu müssen.",
       "suggestedCandidateIds": [
@@ -2947,7 +2991,9 @@
         "B_CAND_056",
         "B_CAND_057",
         "B_CAND_059"
-      ]
+      ],
+      "clipId": "B_CAND_055",
+      "audioPath": "assets/audio/breath/de/advanced/b_take_055.mp3"
     },
     {
       "exerciseId": "clarity",
@@ -2965,9 +3011,9 @@
       "exercise": "Clarity Breathwork · begleitete Sitzung",
       "phase": 2,
       "phaseId": "ADV_CLARITY_02",
-      "displayText": "Körper und Atem ohne Druck wahrnehmen.",
+      "displayText": "Beobachte deinen Atem, ohne ihn zu verändern.",
       "durationSeconds": 300,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_041",
       "sourceText": "Beobachte deinen Atem, ohne ihn zu verändern.",
       "suggestedCandidateIds": [
@@ -2979,7 +3025,9 @@
         "A_CAND_065",
         "A_CAND_066",
         "A_CAND_067"
-      ]
+      ],
+      "clipId": "A_CAND_063",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_063.mp3"
     },
     {
       "exerciseId": "clarity",
@@ -3007,15 +3055,17 @@
       "exercise": "Clarity Breathwork · begleitete Sitzung",
       "phase": 5,
       "phaseId": "ADV_CLARITY_05",
-      "displayText": "Integration und Abschluss.",
+      "displayText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "durationSeconds": 300,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_069",
       "sourceText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "suggestedCandidateIds": [
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_116",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_116.mp3"
     },
     {
       "exerciseId": "rebirthing",
@@ -3033,9 +3083,9 @@
       "exercise": "Rebirthing · begleitete Sitzung",
       "phase": 2,
       "phaseId": "ADV_REBIRTHING_02",
-      "displayText": "Den Atem zunächst natürlich wahrnehmen.",
+      "displayText": "Beobachte deinen Atem, ohne ihn zu verändern.",
       "durationSeconds": 300,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_041",
       "sourceText": "Beobachte deinen Atem, ohne ihn zu verändern.",
       "suggestedCandidateIds": [
@@ -3047,7 +3097,9 @@
         "A_CAND_065",
         "A_CAND_066",
         "A_CAND_067"
-      ]
+      ],
+      "clipId": "A_CAND_063",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_063.mp3"
     },
     {
       "exerciseId": "rebirthing",
@@ -3075,15 +3127,17 @@
       "exercise": "Rebirthing · begleitete Sitzung",
       "phase": 5,
       "phaseId": "ADV_REBIRTHING_05",
-      "displayText": "Erlebtes gemeinsam integrieren.",
+      "displayText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "durationSeconds": 300,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_069",
       "sourceText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "suggestedCandidateIds": [
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_116",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_116.mp3"
     },
     {
       "exerciseId": "somatic_breathwork",
@@ -3133,15 +3187,17 @@
       "exercise": "Somatic Breathwork · begleitete Sitzung",
       "phase": 5,
       "phaseId": "ADV_SOMATIC_BREATHWORK_05",
-      "displayText": "Integration und Abschluss.",
+      "displayText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "durationSeconds": 300,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_069",
       "sourceText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "suggestedCandidateIds": [
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_116",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_116.mp3"
     },
     {
       "exerciseId": "transformational",
@@ -3190,15 +3246,17 @@
       "exercise": "Transformational Breathwork · begleitete Sitzung",
       "phase": 5,
       "phaseId": "ADV_TRANSFORMATIONAL_05",
-      "displayText": "Integration und Abschluss.",
+      "displayText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "durationSeconds": 300,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_069",
       "sourceText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "suggestedCandidateIds": [
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_116",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_116.mp3"
     },
     {
       "exerciseId": "shamanic",
@@ -3247,15 +3305,17 @@
       "exercise": "Shamanic Breathwork · begleitete Sitzung",
       "phase": 5,
       "phaseId": "ADV_SHAMANIC_05",
-      "displayText": "Integration und Abschluss mit der Begleitperson.",
+      "displayText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "durationSeconds": 600,
-      "status": "AB_TEXT_MATCH_AUDIO_UNVERIFIED",
+      "status": "AB_VERIFIED_IN_PLAYER",
       "sourceId": "ADV_069",
       "sourceText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
       "suggestedCandidateIds": [
         "A_CAND_116",
         "A_CAND_117"
-      ]
+      ],
+      "clipId": "A_CAND_116",
+      "audioPath": "assets/audio/breath/de/advanced/a_take_116.mp3"
     }
   ],
   "clips": [
@@ -5497,5 +5557,102 @@
       "path": "assets/audio/breath/de/advanced/master_d/d053__take2.mp3",
       "source": "D"
     }
-  ]
+  ],
+  "approvedSourceClips": {
+    "ADV_002": {
+      "clipId": "A_CAND_001",
+      "verified": true,
+      "sourceId": "ADV_002"
+    },
+    "B020": {
+      "clipId": "B_CAND_050",
+      "verified": true,
+      "sourceId": "B020"
+    },
+    "ADV_041": {
+      "clipId": "A_CAND_063",
+      "verified": true,
+      "sourceId": "ADV_041"
+    },
+    "ADV_031": {
+      "clipId": "A_CAND_046",
+      "verified": true,
+      "sourceId": "ADV_031"
+    },
+    "ADV_047": {
+      "clipId": "A_CAND_075",
+      "verified": true,
+      "sourceId": "ADV_047"
+    },
+    "ADV_069": {
+      "clipId": "A_CAND_116",
+      "verified": true,
+      "sourceId": "ADV_069"
+    },
+    "B021": {
+      "clipId": "B_CAND_054",
+      "verified": true,
+      "sourceId": "B021"
+    },
+    "ADV_030": {
+      "clipId": "A_CAND_044",
+      "verified": true,
+      "sourceId": "ADV_030"
+    },
+    "B022": {
+      "clipId": "B_CAND_055",
+      "verified": true,
+      "sourceId": "B022"
+    },
+    "ADV_050": {
+      "clipId": "A_CAND_080",
+      "verified": true,
+      "sourceId": "ADV_050"
+    },
+    "ADV_009": {
+      "clipId": "A_CAND_007",
+      "verified": true,
+      "sourceId": "ADV_009"
+    },
+    "ADV_028": {
+      "clipId": "A_CAND_041",
+      "verified": true,
+      "sourceId": "ADV_028"
+    },
+    "B038": {
+      "clipId": "B038_TAKE2",
+      "verified": true,
+      "sourceId": "B038"
+    },
+    "ADV_046": {
+      "clipId": "A_CAND_074",
+      "verified": true,
+      "sourceId": "ADV_046"
+    },
+    "ADV_035": {
+      "clipId": "A_CAND_051",
+      "verified": true,
+      "sourceId": "ADV_035"
+    },
+    "ADV_068": {
+      "clipId": "A_CAND_114",
+      "verified": true,
+      "sourceId": "ADV_068"
+    },
+    "ADV_003": {
+      "clipId": "A_CAND_004",
+      "verified": true,
+      "sourceId": "ADV_003"
+    },
+    "ADV_056": {
+      "clipId": "A_CAND_091",
+      "verified": true,
+      "sourceId": "ADV_056"
+    },
+    "B032": {
+      "clipId": "B_CAND_080",
+      "verified": true,
+      "sourceId": "B032"
+    }
+  }
 }
