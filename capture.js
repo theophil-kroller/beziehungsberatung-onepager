@@ -268,7 +268,6 @@
     uiStage=returnFromBreaths||'home';updateProductUI();
     if(!fromHistory&&history.state?.bdCaptureBreaths)history.back();
   }
-  $('#openCaptureBreaths')?.addEventListener('click',openCaptureBreaths);
   $('#menuCaptureBreaths')?.addEventListener('click',openCaptureBreaths);
   $('#closeCaptureBreaths')?.addEventListener('click',()=>closeCaptureBreaths());
   document.querySelectorAll('[data-capture-breath-level]').forEach(b=>b.addEventListener('click',()=>filterCaptureBreaths(b.dataset.captureBreathLevel)));
