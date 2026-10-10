@@ -22,6 +22,21 @@ async function exchangeLogin(token){
   await clientLog('login_token_received','handoff token received by desktop login');
   const r=await fetch('/desktop/cloud/admin/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token})});
   const x=await r.json().catch(()=>({}));
+  if(x?.mfaRequired){
+    handoff.textContent='Zusätzliche Authenticator-Bestätigung erforderlich.';
+    const box=document.createElement('div');box.style.marginTop='16px';
+    if(x.enrollmentRequired){const label=document.createElement('label');label.textContent='Authenticator-Einrichtungsschlüssel';const secret=document.createElement('input');secret.readOnly=true;secret.value=x.secret;label.append(secret);box.append(label)}
+    const label=document.createElement('label');label.textContent='Authenticator-Code oder Wiederherstellungscode';const code=document.createElement('input');code.maxLength=36;label.append(code);box.append(label);
+    const submit=document.createElement('button');submit.textContent='Anmeldung abschließen';box.append(submit);handoff.after(box);
+    const result=await new Promise((resolve,reject)=>{submit.onclick=async()=>{submit.disabled=true;try{const response=await fetch('/desktop/cloud/admin/mfa/complete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({challengeToken:x.challengeToken,code:code.value.trim()})});const value=await response.json();if(!response.ok||!value.sessionToken)throw Error(value.error||'Ungültiger Code');resolve(value)}catch(err){msg.textContent=err.message;msg.className='msg err';submit.disabled=false}}});box.remove();Object.assign(x,result);
+    if(x.recoveryCodes?.length){
+      handoff.textContent='Wiederherstellungscodes bitte jetzt sicher speichern. Sie erscheinen nicht erneut.';
+      const recovery=document.createElement('div');recovery.style.marginTop='16px';
+      const area=document.createElement('textarea');area.readOnly=true;area.rows=9;area.style.width='100%';area.value=x.recoveryCodes.join('\n');recovery.append(area);
+      const proceed=document.createElement('button');proceed.textContent='Codes gesichert – Anmeldung fortsetzen';recovery.append(proceed);handoff.after(recovery);
+      await new Promise(resolve=>{proceed.onclick=()=>resolve()});recovery.remove();
+    }
+  }
   if(!r.ok||!x?.ok||!x?.sessionToken)throw new Error(x?.error||'Login konnte nicht in eine Desktop-Sitzung umgewandelt werden.');
   sessionStorage.removeItem('bd_vault_token_v1');
   sessionStorage.setItem(SESSION_KEY,x.sessionToken);
