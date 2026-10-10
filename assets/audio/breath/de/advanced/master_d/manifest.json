@@ -1,0 +1,1387 @@
+{
+  "version": "15.12.34",
+  "source": "advanced voice master d.wav",
+  "segmentation": "106 ordered utterances; 2 takes per D001-D053; amplitude segmentation, word-level verification pending",
+  "defaultTake": 2,
+  "clips": [
+    {
+      "id": "D001",
+      "text": "Richte deine Aufmerksamkeit jetzt auf den unteren Bauch.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d001__take1.mp3",
+          "durationSeconds": 5.46,
+          "sourceStartSeconds": 1.82,
+          "sourceEndSeconds": 7.28,
+          "sha256": "4fd48c6d15ecc85fa80789306625b5aa5d515133b2ef29a5f139730e8d5392e7"
+        },
+        {
+          "file": "d001__take2.mp3",
+          "durationSeconds": 5.68,
+          "sourceStartSeconds": 10.64,
+          "sourceEndSeconds": 16.32,
+          "sha256": "82fef84d071cd4cd83a13faa96a07b131b28133765c4b6101f630f4943111149"
+        }
+      ],
+      "route": {
+        "exercise": "microcosmic_orbit",
+        "phase": 3,
+        "protocolCueId": "ADV_MICROCOSMIC_ORBIT_03"
+      }
+    },
+    {
+      "id": "D002",
+      "text": "Lass die Aufmerksamkeit langsam entlang des Rückens nach oben zum Scheitel wandern.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d002__take1.mp3",
+          "durationSeconds": 7.64,
+          "sourceStartSeconds": 19.16,
+          "sourceEndSeconds": 26.8,
+          "sha256": "0bf86551c096d89b1e0a6a9ac68793910729aad5c1c747c853e343a348859edf"
+        },
+        {
+          "file": "d002__take2.mp3",
+          "durationSeconds": 8.28,
+          "sourceStartSeconds": 29.42,
+          "sourceEndSeconds": 37.7,
+          "sha256": "6175c68fb641a0467bb21273f9a9d58b32c1ae9f92365f8d0ef0b3e3756a8e39"
+        }
+      ],
+      "route": {
+        "exercise": "microcosmic_orbit",
+        "phase": 4,
+        "protocolCueId": "ADV_MICROCOSMIC_ORBIT_04"
+      }
+    },
+    {
+      "id": "D003",
+      "text": "Verweile mit deiner Aufmerksamkeit einen Moment am Scheitel.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d003__take1.mp3",
+          "durationSeconds": 5.46,
+          "sourceStartSeconds": 40.08,
+          "sourceEndSeconds": 45.54,
+          "sha256": "7800fab9059dc500756e5360253f4dcad0f3f992dfd7fc75efaed4787c169e64"
+        },
+        {
+          "file": "d003__take2.mp3",
+          "durationSeconds": 5.62,
+          "sourceStartSeconds": 48.08,
+          "sourceEndSeconds": 53.7,
+          "sha256": "82dfb4301b747d879f959c129d91a6c72bcd06f172dc5bfd5b21ad6ba28847a1"
+        }
+      ],
+      "route": {
+        "exercise": "microcosmic_orbit",
+        "phase": 5,
+        "protocolCueId": "ADV_MICROCOSMIC_ORBIT_05"
+      }
+    },
+    {
+      "id": "D004",
+      "text": "Folge mit der Aufmerksamkeit über die Vorderseite des Körpers wieder nach unten.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d004__take1.mp3",
+          "durationSeconds": 7.34,
+          "sourceStartSeconds": 56.18,
+          "sourceEndSeconds": 63.52,
+          "sha256": "0ea97bd325729ad1db29873ab4f0d0920c3541e33718b55baf302f0d2658dea1"
+        },
+        {
+          "file": "d004__take2.mp3",
+          "durationSeconds": 7.28,
+          "sourceStartSeconds": 66.74,
+          "sourceEndSeconds": 74.02,
+          "sha256": "c31defd206b0babc5b4c35761a202241bc75c020d8947ba400060c6da32b0508"
+        }
+      ],
+      "route": {
+        "exercise": "microcosmic_orbit",
+        "phase": 6,
+        "protocolCueId": "ADV_MICROCOSMIC_ORBIT_06"
+      }
+    },
+    {
+      "id": "D005",
+      "text": "Wiederhole diese innere Reise in deinem eigenen Tempo.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d005__take1.mp3",
+          "durationSeconds": 6.5,
+          "sourceStartSeconds": 75.9,
+          "sourceEndSeconds": 82.4,
+          "sha256": "f8d82dfdcd50c69ad0f94a81765c7c0c765d03524be82cbb2f94154b9e6f2a1c"
+        },
+        {
+          "file": "d005__take2.mp3",
+          "durationSeconds": 5.26,
+          "sourceStartSeconds": 84.62,
+          "sourceEndSeconds": 89.88,
+          "sha256": "30a22514dbc1656c22c45fa31027802082929c03a539f2a864c1b78796d3d695"
+        }
+      ],
+      "route": {
+        "exercise": "microcosmic_orbit",
+        "phase": 7,
+        "protocolCueId": "ADV_MICROCOSMIC_ORBIT_07"
+      }
+    },
+    {
+      "id": "D006",
+      "text": "Nimm wahr, wie die Einatmung ganz von selbst beginnt.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d006__take1.mp3",
+          "durationSeconds": 5.44,
+          "sourceStartSeconds": 93.02,
+          "sourceEndSeconds": 98.46,
+          "sha256": "b19fc026b12a2fdcbef4d7906266626bc2ad0b94023fb5b45b44ce0d93cad686"
+        },
+        {
+          "file": "d006__take2.mp3",
+          "durationSeconds": 5.58,
+          "sourceStartSeconds": 101.18,
+          "sourceEndSeconds": 106.76,
+          "sha256": "942901d899b084bba9dd450c5121bdd406b9699606a1b3d3215f0e81d51a8873"
+        }
+      ],
+      "route": {
+        "exercise": "embryonic",
+        "phase": 3,
+        "protocolCueId": "ADV_EMBRYONIC_03"
+      }
+    },
+    {
+      "id": "D007",
+      "text": "Spüre, wie die Ausatmung von selbst ausklingt.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d007__take1.mp3",
+          "durationSeconds": 5.24,
+          "sourceStartSeconds": 109.08,
+          "sourceEndSeconds": 114.32,
+          "sha256": "d789bffedae3ed08992e961f378374d50dc8306936d253924e5489a54d2fe66c"
+        },
+        {
+          "file": "d007__take2.mp3",
+          "durationSeconds": 5.22,
+          "sourceStartSeconds": 117.0,
+          "sourceEndSeconds": 122.22,
+          "sha256": "e7f836cc0e14fe4d96bd774d6d91360429bb8a0fb99988efd4611040e5bb54c0"
+        }
+      ],
+      "route": {
+        "exercise": "embryonic",
+        "phase": 4,
+        "protocolCueId": "ADV_EMBRYONIC_04"
+      }
+    },
+    {
+      "id": "D008",
+      "text": "Beobachte die feinen Bewegungen im unteren Rumpf, ohne etwas zu verändern.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d008__take1.mp3",
+          "durationSeconds": 7.56,
+          "sourceStartSeconds": 124.96,
+          "sourceEndSeconds": 132.52,
+          "sha256": "00b6878d7c27d0a5e71aaeb5fb445f091c8e3344487492941e93f61c029bd380"
+        },
+        {
+          "file": "d008__take2.mp3",
+          "durationSeconds": 7.58,
+          "sourceStartSeconds": 135.54,
+          "sourceEndSeconds": 143.12,
+          "sha256": "84dafaa1fcc9e98194987c7ba826495459bab7ebbdce0a08a56592c4b1d59ea0"
+        }
+      ],
+      "route": {
+        "exercise": "embryonic",
+        "phase": 5,
+        "protocolCueId": "ADV_EMBRYONIC_05"
+      }
+    },
+    {
+      "id": "D009",
+      "text": "Lass die Vorstellung eines bestimmten Atemrhythmus los.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d009__take1.mp3",
+          "durationSeconds": 6.1,
+          "sourceStartSeconds": 145.5,
+          "sourceEndSeconds": 151.6,
+          "sha256": "84133b639a8640ebb6c82ecdcd244116331f4fe8ee268e50fb3e4bbc7cecb04b"
+        },
+        {
+          "file": "d009__take2.mp3",
+          "durationSeconds": 5.3,
+          "sourceStartSeconds": 154.24,
+          "sourceEndSeconds": 159.54,
+          "sha256": "e419f17212bc3d3dd05bca23e695caa29d311b040889a8d37b5f38dd263f92b0"
+        }
+      ],
+      "route": {
+        "exercise": "embryonic",
+        "phase": 6,
+        "protocolCueId": "ADV_EMBRYONIC_06"
+      }
+    },
+    {
+      "id": "D010",
+      "text": "Nimm den Kontakt deiner Kleidung auf der Haut wahr.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d010__take1.mp3",
+          "durationSeconds": 4.52,
+          "sourceStartSeconds": 162.26,
+          "sourceEndSeconds": 166.78,
+          "sha256": "339248e725c57ec68d35bc53f4a3f048aa83249f7e48496d597cb077521f1dac"
+        },
+        {
+          "file": "d010__take2.mp3",
+          "durationSeconds": 4.54,
+          "sourceStartSeconds": 169.7,
+          "sourceEndSeconds": 174.24,
+          "sha256": "87c11c44b140badefb153bdbbc8f8b74a855b58d98746e3ff900362ac28ed184"
+        }
+      ],
+      "route": {
+        "exercise": "skin_breathing",
+        "phase": 2,
+        "protocolCueId": "ADV_SKIN_BREATHING_02"
+      }
+    },
+    {
+      "id": "D011",
+      "text": "Spüre Temperatur und Luftbewegung an deinen Händen und im Gesicht.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d011__take1.mp3",
+          "durationSeconds": 6.68,
+          "sourceStartSeconds": 177.2,
+          "sourceEndSeconds": 183.88,
+          "sha256": "0fec456258511d07a7699a1871aed83b6893f657b46c2519da1a0265454e8a6d"
+        },
+        {
+          "file": "d011__take2.mp3",
+          "durationSeconds": 6.66,
+          "sourceStartSeconds": 186.36,
+          "sourceEndSeconds": 193.02,
+          "sha256": "b36c0e0aef0a4fac0e9f1855c1105084cc77a18227552c893694abd2969add58"
+        }
+      ],
+      "route": {
+        "exercise": "skin_breathing",
+        "phase": 3,
+        "protocolCueId": "ADV_SKIN_BREATHING_03"
+      }
+    },
+    {
+      "id": "D012",
+      "text": "Stell dir beim Einatmen eine sanfte Weite im Körper vor.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d012__take1.mp3",
+          "durationSeconds": 5.52,
+          "sourceStartSeconds": 195.44,
+          "sourceEndSeconds": 200.96,
+          "sha256": "60ddca64263ad93dac1602fa1b279ac14e2258d18fca5d0d8e074492033fa012"
+        },
+        {
+          "file": "d012__take2.mp3",
+          "durationSeconds": 5.36,
+          "sourceStartSeconds": 203.8,
+          "sourceEndSeconds": 209.16,
+          "sha256": "a603c8c2e7685ae5eebd1989fb15ba6b4ad2ee70e320b5bcd07d55e479525fdb"
+        }
+      ],
+      "route": {
+        "exercise": "skin_breathing",
+        "phase": 4,
+        "protocolCueId": "ADV_SKIN_BREATHING_04"
+      }
+    },
+    {
+      "id": "D013",
+      "text": "Lass beim Ausatmen Schultern und Kiefer weich werden.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d013__take1.mp3",
+          "durationSeconds": 5.5,
+          "sourceStartSeconds": 212.04,
+          "sourceEndSeconds": 217.54,
+          "sha256": "0131b9fc000296d1d04c5d5fc7d010427286bc7ee3d835661bfca522685696d2"
+        },
+        {
+          "file": "d013__take2.mp3",
+          "durationSeconds": 5.66,
+          "sourceStartSeconds": 220.04,
+          "sourceEndSeconds": 225.7,
+          "sha256": "9f7a66a2ceec30f53ea6c7d08f7bc417cadc73fa1a1598682c120e7e4168f6b6"
+        }
+      ],
+      "route": {
+        "exercise": "skin_breathing",
+        "phase": 5,
+        "protocolCueId": "ADV_SKIN_BREATHING_05"
+      }
+    },
+    {
+      "id": "D014",
+      "text": "Nimm die Grenzen deines Körpers als Ganzes wahr.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d014__take1.mp3",
+          "durationSeconds": 5.02,
+          "sourceStartSeconds": 228.2,
+          "sourceEndSeconds": 233.22,
+          "sha256": "9b7c3f8c75b701bd26e6a58c5a7e2caae245706035cdcec6b184bc13d9a76849"
+        },
+        {
+          "file": "d014__take2.mp3",
+          "durationSeconds": 4.78,
+          "sourceStartSeconds": 235.36,
+          "sourceEndSeconds": 240.14,
+          "sha256": "14c600e0548018052ad709300a3581d0bd9c5fff6299d7e72a978f6b2d4875f6"
+        }
+      ],
+      "route": {
+        "exercise": "skin_breathing",
+        "phase": 6,
+        "protocolCueId": "ADV_SKIN_BREATHING_06"
+      }
+    },
+    {
+      "id": "D015",
+      "text": "Wir beginnen mit einem ruhigen Ankommen im Sitzen.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d015__take1.mp3",
+          "durationSeconds": 5.32,
+          "sourceStartSeconds": 242.94,
+          "sourceEndSeconds": 248.26,
+          "sha256": "e5f456291a16e6173dabebf03f1bc3d0eb210c0caea94496c1c87830402f3172"
+        },
+        {
+          "file": "d015__take2.mp3",
+          "durationSeconds": 5.56,
+          "sourceStartSeconds": 250.02,
+          "sourceEndSeconds": 255.58,
+          "sha256": "a3c8e4b3337540189b718c1046a22f031124987ee72ccc1d1f74d5bdf33ea0f7"
+        }
+      ],
+      "route": {
+        "exercise": "murcha",
+        "phase": 1,
+        "protocolCueId": "ADV_MURCHA_01"
+      }
+    },
+    {
+      "id": "D016",
+      "text": "Nimm dir einen Moment, bevor die nächste angeleitete Phase beginnt.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d016__take1.mp3",
+          "durationSeconds": 5.64,
+          "sourceStartSeconds": 257.22,
+          "sourceEndSeconds": 262.86,
+          "sha256": "73c39c78c6375d1caeb1e68758b82d19ea92bb2dd6d2dd62eebadfc1b9f08ce9"
+        },
+        {
+          "file": "d016__take2.mp3",
+          "durationSeconds": 5.82,
+          "sourceStartSeconds": 265.42,
+          "sourceEndSeconds": 271.24,
+          "sha256": "2d93ac12b9805cdf6aa4bcf83b60cc548ff4cee0cb8abecb03f5a356be06adce"
+        }
+      ],
+      "route": {
+        "exercise": "murcha",
+        "phase": 2,
+        "protocolCueId": "ADV_MURCHA_02"
+      }
+    },
+    {
+      "id": "D017",
+      "text": "Richte deine Aufmerksamkeit jetzt auf den Gesichts- und Halsraum.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d017__take1.mp3",
+          "durationSeconds": 5.74,
+          "sourceStartSeconds": 273.94,
+          "sourceEndSeconds": 279.68,
+          "sha256": "37cdda4302fec532928061c8d86892a8e5bc3c4955a0e970f9ed5911f1258913"
+        },
+        {
+          "file": "d017__take2.mp3",
+          "durationSeconds": 5.52,
+          "sourceStartSeconds": 282.32,
+          "sourceEndSeconds": 287.84,
+          "sha256": "f4dfd1fca07e107290e85056d469ce77ddf91ec48cf6d8c261934f9addb7cf27"
+        }
+      ],
+      "route": {
+        "exercise": "bhramari_kumbhaka",
+        "phase": 2,
+        "protocolCueId": "ADV_BHRAMARI_KUMBHAKA_02"
+      }
+    },
+    {
+      "id": "D018",
+      "text": "Lass den Summton ausklingen und spüre einen Moment der Stille nach.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d018__take1.mp3",
+          "durationSeconds": 5.7,
+          "sourceStartSeconds": 290.46,
+          "sourceEndSeconds": 296.16,
+          "sha256": "8ca10421e2fa3b5b3a39fdace6f6f7bbb7a97a37327ebbb0102fb03801b0e31b"
+        },
+        {
+          "file": "d018__take2.mp3",
+          "durationSeconds": 6.0,
+          "sourceStartSeconds": 298.94,
+          "sourceEndSeconds": 304.94,
+          "sha256": "7bcd79ce9e4b5ff6e1639f3481eb55c61ebeb05658ceb030ddc02ab147eec2bd"
+        }
+      ],
+      "route": {
+        "exercise": "bhramari_kumbhaka",
+        "phase": 4,
+        "protocolCueId": "ADV_BHRAMARI_KUMBHAKA_04"
+      }
+    },
+    {
+      "id": "D019",
+      "text": "Wenn die nächste Runde beginnt, kehre mit der Aufmerksamkeit zu deinem Atem zurück.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d019__take1.mp3",
+          "durationSeconds": 6.86,
+          "sourceStartSeconds": 307.6,
+          "sourceEndSeconds": 314.46,
+          "sha256": "070c89c74c8c5b591a22bea2af751934a1efcbcaf7ff41f7cf27d3bc9ab26eaa"
+        },
+        {
+          "file": "d019__take2.mp3",
+          "durationSeconds": 7.72,
+          "sourceStartSeconds": 316.78,
+          "sourceEndSeconds": 324.5,
+          "sha256": "8778f93a2d35b114a706741ee54f211f44cc1ef23f025bbd1d37a3c09f6a782a"
+        }
+      ],
+      "route": {
+        "exercise": "bhramari_kumbhaka",
+        "phase": 5,
+        "protocolCueId": "ADV_BHRAMARI_KUMBHAKA_05"
+      }
+    },
+    {
+      "id": "D020",
+      "text": "Die erste angeleitete Runde beginnt jetzt.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d020__take1.mp3",
+          "durationSeconds": 3.8,
+          "sourceStartSeconds": 326.7,
+          "sourceEndSeconds": 330.5,
+          "sha256": "de4348fe2f2e6e7e528c5a7d837a0a32c8f5c9215d1de4700c78b9b13136678c"
+        },
+        {
+          "file": "d020__take2.mp3",
+          "durationSeconds": 4.18,
+          "sourceStartSeconds": 333.58,
+          "sourceEndSeconds": 337.76,
+          "sha256": "c739749b0d0fea320c128ea0e43a50dd3856989dd4d97a385005064f78f4ed20"
+        }
+      ],
+      "route": {
+        "exercise": "kapalabhati",
+        "phase": 3,
+        "protocolCueId": "ADV_KAPALABHATI_03"
+      }
+    },
+    {
+      "id": "D021",
+      "text": "Die erste Runde ist abgeschlossen. Lass deine Atmung zur Ruhe kommen.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d021__take1.mp3",
+          "durationSeconds": 7.08,
+          "sourceStartSeconds": 339.1,
+          "sourceEndSeconds": 346.18,
+          "sha256": "c1c3ede9111dc507406d5c911a21c25a256e9d741cec8e6a3ab7f96e8dc6da8e"
+        },
+        {
+          "file": "d021__take2.mp3",
+          "durationSeconds": 6.92,
+          "sourceStartSeconds": 347.54,
+          "sourceEndSeconds": 354.46,
+          "sha256": "76fe0049212ea03b33d5a57b0662586071f971a3b6156e8b398c1b6034525f81"
+        }
+      ],
+      "route": {
+        "exercise": "kapalabhati",
+        "phase": 4,
+        "protocolCueId": "ADV_KAPALABHATI_04"
+      }
+    },
+    {
+      "id": "D022",
+      "text": "Die zweite angeleitete Runde beginnt jetzt.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d022__take1.mp3",
+          "durationSeconds": 4.24,
+          "sourceStartSeconds": 357.12,
+          "sourceEndSeconds": 361.36,
+          "sha256": "927ed46e05865c6e25cb1aa350f4c0bac1172eca2f3518eedaf83b7d509b83c5"
+        },
+        {
+          "file": "d022__take2.mp3",
+          "durationSeconds": 4.54,
+          "sourceStartSeconds": 363.94,
+          "sourceEndSeconds": 368.48,
+          "sha256": "1ff59ef91f5998610315a6cdd9b3ce0097ecd66e0c246788fe08af42ad15db2f"
+        }
+      ],
+      "route": {
+        "exercise": "kapalabhati",
+        "phase": 5,
+        "protocolCueId": "ADV_KAPALABHATI_05"
+      }
+    },
+    {
+      "id": "D023",
+      "text": "Die zweite Runde ist abgeschlossen. Spüre die Bewegung in deinem Rumpf nach.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d023__take1.mp3",
+          "durationSeconds": 6.76,
+          "sourceStartSeconds": 371.18,
+          "sourceEndSeconds": 377.94,
+          "sha256": "b580335669072e46b3cd8809293fc5283b869e7da31308712bb64132fd010809"
+        },
+        {
+          "file": "d023__take2.mp3",
+          "durationSeconds": 6.42,
+          "sourceStartSeconds": 380.44,
+          "sourceEndSeconds": 386.86,
+          "sha256": "a83a683b1e26bbf8664f21d29098cd04d6a6432b70ee55ac7b7c2e89e9ff1f26"
+        }
+      ],
+      "route": {
+        "exercise": "kapalabhati",
+        "phase": 6,
+        "protocolCueId": "ADV_KAPALABHATI_06"
+      }
+    },
+    {
+      "id": "D024",
+      "text": "Bereite dich auf die erste angeleitete Runde vor.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d024__take1.mp3",
+          "durationSeconds": 4.5,
+          "sourceStartSeconds": 389.74,
+          "sourceEndSeconds": 394.24,
+          "sha256": "73518737808e0610fda5fac3f2b08c0399fc759efb330e9af4ad24fca40087c1"
+        },
+        {
+          "file": "d024__take2.mp3",
+          "durationSeconds": 4.48,
+          "sourceStartSeconds": 396.82,
+          "sourceEndSeconds": 401.3,
+          "sha256": "c4e96dc2df334d9a1cc381e25103dd9405520ae1b4b26b1183d08c73696d151e"
+        }
+      ],
+      "route": {
+        "exercise": "bhastrika",
+        "phase": 3,
+        "protocolCueId": "ADV_BHASTRIKA_03"
+      }
+    },
+    {
+      "id": "D025",
+      "text": "Die erste Runde ist zu Ende. Atme wieder ruhig und natürlich.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d025__take1.mp3",
+          "durationSeconds": 5.68,
+          "sourceStartSeconds": 404.32,
+          "sourceEndSeconds": 410.0,
+          "sha256": "3e5577137b9bbd02fc2d595cf6946f234b942f46b8d43adf9046cd249349f192"
+        },
+        {
+          "file": "d025__take2.mp3",
+          "durationSeconds": 5.68,
+          "sourceStartSeconds": 412.34,
+          "sourceEndSeconds": 418.02,
+          "sha256": "79c0de7238d079c8d3e2cea2b4a1d99eccae39b9240f0ff52f006f6b468cc5ab"
+        }
+      ],
+      "route": {
+        "exercise": "bhastrika",
+        "phase": 4,
+        "protocolCueId": "ADV_BHASTRIKA_04"
+      }
+    },
+    {
+      "id": "D026",
+      "text": "Bereite dich auf die zweite angeleitete Runde vor.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d026__take1.mp3",
+          "durationSeconds": 4.44,
+          "sourceStartSeconds": 420.14,
+          "sourceEndSeconds": 424.58,
+          "sha256": "af62e841e8d52a237b06d758a3488f8dbb80dd423b3ed2e7ef540ea7a63b635e"
+        },
+        {
+          "file": "d026__take2.mp3",
+          "durationSeconds": 4.42,
+          "sourceStartSeconds": 426.96,
+          "sourceEndSeconds": 431.38,
+          "sha256": "74896b73f40576c0c87eb5715f5582c593d80711b8d01d9e2d7b5a411979c795"
+        }
+      ],
+      "route": {
+        "exercise": "bhastrika",
+        "phase": 5,
+        "protocolCueId": "ADV_BHASTRIKA_05"
+      }
+    },
+    {
+      "id": "D027",
+      "text": "Wir beginnen jetzt mit der ersten angeleiteten Sequenz.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d027__take1.mp3",
+          "durationSeconds": 4.74,
+          "sourceStartSeconds": 434.92,
+          "sourceEndSeconds": 439.66,
+          "sha256": "0e95523a9f89e74242e578cca1373c619d259b733f7847644e6dc460a79207aa"
+        },
+        {
+          "file": "d027__take2.mp3",
+          "durationSeconds": 4.82,
+          "sourceStartSeconds": 441.86,
+          "sourceEndSeconds": 446.68,
+          "sha256": "96fd84eaae2b62bec902797887624eb2c8f89e82c2d1d866359d15d32dd130ce"
+        }
+      ],
+      "route": {
+        "exercise": "fire_breath",
+        "phase": 3,
+        "protocolCueId": "ADV_FIRE_BREATH_03"
+      }
+    },
+    {
+      "id": "D028",
+      "text": "Lass zwischen den Sequenzen deinen Atem wieder ganz natürlich werden.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d028__take1.mp3",
+          "durationSeconds": 5.34,
+          "sourceStartSeconds": 448.96,
+          "sourceEndSeconds": 454.3,
+          "sha256": "3a6610fdfe63cd280f640952987d3bbb3aef8fb7392dd49de1dfdff4ca3847c3"
+        },
+        {
+          "file": "d028__take2.mp3",
+          "durationSeconds": 5.64,
+          "sourceStartSeconds": 456.42,
+          "sourceEndSeconds": 462.06,
+          "sha256": "8a0bd1fbd1a6c3d7cdafc9c061411979aebdf0eec6234895a663181f576bff25"
+        }
+      ],
+      "route": {
+        "exercise": "fire_breath",
+        "phase": 4,
+        "protocolCueId": "ADV_FIRE_BREATH_04"
+      }
+    },
+    {
+      "id": "D029",
+      "text": "Wir beginnen jetzt mit der zweiten angeleiteten Sequenz.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d029__take1.mp3",
+          "durationSeconds": 4.72,
+          "sourceStartSeconds": 464.4,
+          "sourceEndSeconds": 469.12,
+          "sha256": "5626b01a4046a2cbe369dd7a149b208509924c34843833bb0b0f7a624030898c"
+        },
+        {
+          "file": "d029__take2.mp3",
+          "durationSeconds": 4.8,
+          "sourceStartSeconds": 471.62,
+          "sourceEndSeconds": 476.42,
+          "sha256": "3f7d2b617419f08d7a58c23079d89605b7d592066d88b4cbc7158d152b218b34"
+        }
+      ],
+      "route": {
+        "exercise": "fire_breath",
+        "phase": 5,
+        "protocolCueId": "ADV_FIRE_BREATH_05"
+      }
+    },
+    {
+      "id": "D030",
+      "text": "Richte deine Aufmerksamkeit jetzt auf die vereinbarte innere Visualisierung.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d030__take1.mp3",
+          "durationSeconds": 7.04,
+          "sourceStartSeconds": 479.12,
+          "sourceEndSeconds": 486.16,
+          "sha256": "d2f5f2bd010eab532ed22322581cf0901e2661e1ae3d6bf40dd8a3b407b1a5e8"
+        },
+        {
+          "file": "d030__take2.mp3",
+          "durationSeconds": 6.58,
+          "sourceStartSeconds": 488.82,
+          "sourceEndSeconds": 495.4,
+          "sha256": "4e074ea9ee0390b8575fc4a3b5f0a0891177ad5b71ea363183745ab8b1ad422e"
+        }
+      ],
+      "route": {
+        "exercise": "tummo",
+        "phase": 3,
+        "protocolCueId": "ADV_TUMMO_03"
+      }
+    },
+    {
+      "id": "D031",
+      "text": "Lass die Visualisierung langsam ausklingen und kehre zur Körperwahrnehmung zurück.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d031__take1.mp3",
+          "durationSeconds": 6.84,
+          "sourceStartSeconds": 497.96,
+          "sourceEndSeconds": 504.8,
+          "sha256": "2e22e8bd5e6085db975a91a04918847404712266202147c789a73c57a328ebc3"
+        },
+        {
+          "file": "d031__take2.mp3",
+          "durationSeconds": 7.08,
+          "sourceStartSeconds": 507.42,
+          "sourceEndSeconds": 514.5,
+          "sha256": "736ef66360dcb644693fe90af442122a32faa510319f5fac45ded288307c15e7"
+        }
+      ],
+      "route": {
+        "exercise": "tummo",
+        "phase": 5,
+        "protocolCueId": "ADV_TUMMO_05"
+      }
+    },
+    {
+      "id": "D032",
+      "text": "Bereite dich auf die erste Runde vor.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d032__take1.mp3",
+          "durationSeconds": 3.36,
+          "sourceStartSeconds": 516.66,
+          "sourceEndSeconds": 520.02,
+          "sha256": "d32d1d87130216277302163db2ef51f38769c4fe92a09c0cc30facea3e332b1e"
+        },
+        {
+          "file": "d032__take2.mp3",
+          "durationSeconds": 3.22,
+          "sourceStartSeconds": 522.54,
+          "sourceEndSeconds": 525.76,
+          "sha256": "1341cd513fddf3c70cd11c82f537df2d3073b3a4e60e715d37a51997936d4448"
+        }
+      ],
+      "route": {
+        "exercise": "wim_hof",
+        "phase": 2,
+        "protocolCueId": "ADV_WIM_HOF_02"
+      }
+    },
+    {
+      "id": "D033",
+      "text": "Die erste Runde ist abgeschlossen. Nimm dir Zeit für die Erholung.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d033__take1.mp3",
+          "durationSeconds": 4.84,
+          "sourceStartSeconds": 528.28,
+          "sourceEndSeconds": 533.12,
+          "sha256": "872e4a408930d16ea34d975ec20428be9cfc8d32f444c54c82edf376fb7c3565"
+        },
+        {
+          "file": "d033__take2.mp3",
+          "durationSeconds": 5.12,
+          "sourceStartSeconds": 535.52,
+          "sourceEndSeconds": 540.64,
+          "sha256": "0cf9fed64497f7f93815b472a941106ed09f008e3af0a5511b37a4d0ec2ad8fb"
+        }
+      ],
+      "route": {
+        "exercise": "wim_hof",
+        "phase": 4,
+        "protocolCueId": "ADV_WIM_HOF_04"
+      }
+    },
+    {
+      "id": "D034",
+      "text": "Bereite dich auf die zweite Runde vor.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d034__take1.mp3",
+          "durationSeconds": 2.96,
+          "sourceStartSeconds": 543.06,
+          "sourceEndSeconds": 546.02,
+          "sha256": "5d08df692e3d5a51322266fe99739bcdbc6190c1f9aa633e52c62df38b33a5d9"
+        },
+        {
+          "file": "d034__take2.mp3",
+          "durationSeconds": 3.2,
+          "sourceStartSeconds": 548.44,
+          "sourceEndSeconds": 551.64,
+          "sha256": "e258acee75239d08acb06ace77c9f68ec6ce1c74417ebc73deac1c90ae3e342c"
+        }
+      ],
+      "route": {
+        "exercise": "wim_hof",
+        "phase": 5,
+        "protocolCueId": "ADV_WIM_HOF_05"
+      }
+    },
+    {
+      "id": "D035",
+      "text": "Die zweite Runde ist abgeschlossen. Spüre einen Moment nach.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d035__take1.mp3",
+          "durationSeconds": 5.22,
+          "sourceStartSeconds": 553.94,
+          "sourceEndSeconds": 559.16,
+          "sha256": "dfe41724206d5cea9c05b28260cda8f367866b7c5cb6f5efb7d774cfd6a9789c"
+        },
+        {
+          "file": "d035__take2.mp3",
+          "durationSeconds": 5.54,
+          "sourceStartSeconds": 561.46,
+          "sourceEndSeconds": 567.0,
+          "sha256": "0793bc20f27bbaebcb0946945fa852b880aef5ab6db6f4f0ac777276e3373f9a"
+        }
+      ],
+      "route": {
+        "exercise": "wim_hof",
+        "phase": 6,
+        "protocolCueId": "ADV_WIM_HOF_06"
+      }
+    },
+    {
+      "id": "D036",
+      "text": "Bereite dich auf die dritte Runde vor.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d036__take1.mp3",
+          "durationSeconds": 3.08,
+          "sourceStartSeconds": 568.94,
+          "sourceEndSeconds": 572.02,
+          "sha256": "604131eb750b9668e83a523a5347b66b07f66060e1366a4f17252332f64451b6"
+        },
+        {
+          "file": "d036__take2.mp3",
+          "durationSeconds": 3.18,
+          "sourceStartSeconds": 574.3,
+          "sourceEndSeconds": 577.48,
+          "sha256": "424e941b019e7046a4d197f9d6527d9c91f1df39da74480c6db2077fe55365ab"
+        }
+      ],
+      "route": {
+        "exercise": "wim_hof",
+        "phase": 7,
+        "protocolCueId": "ADV_WIM_HOF_07"
+      }
+    },
+    {
+      "id": "D037",
+      "text": "Die dritte Runde ist abgeschlossen. Lass den Atem wieder seinen natürlichen Rhythmus finden.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d037__take1.mp3",
+          "durationSeconds": 7.26,
+          "sourceStartSeconds": 580.04,
+          "sourceEndSeconds": 587.3,
+          "sha256": "41aee4c55d60ffc52085ff74c1730a95bdc8cd687caa41860c4f05005cf82877"
+        },
+        {
+          "file": "d037__take2.mp3",
+          "durationSeconds": 6.94,
+          "sourceStartSeconds": 589.22,
+          "sourceEndSeconds": 596.16,
+          "sha256": "9fa91f7e1962e18313ccc33e865b3f855186e11bcabb4c276312f1a845a4e33a"
+        }
+      ],
+      "route": {
+        "exercise": "wim_hof",
+        "phase": 8,
+        "protocolCueId": "ADV_WIM_HOF_08"
+      }
+    },
+    {
+      "id": "D038",
+      "text": "Wir beginnen jetzt mit der Musik und lassen uns Zeit, im Prozess anzukommen.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d038__take1.mp3",
+          "durationSeconds": 6.4,
+          "sourceStartSeconds": 598.64,
+          "sourceEndSeconds": 605.04,
+          "sha256": "bcd61f962659b0f4f433be6299972b0b70f46a2fc5ee4cd6e0ada783dd1273ba"
+        },
+        {
+          "file": "d038__take2.mp3",
+          "durationSeconds": 6.52,
+          "sourceStartSeconds": 607.4,
+          "sourceEndSeconds": 613.92,
+          "sha256": "c39a914cb466ebe3d47c6b064cc0b444cbb68e582fb7cdecdc8f3e790723033b"
+        }
+      ],
+      "route": {
+        "exercise": "holotropic",
+        "phase": 2,
+        "protocolCueId": "ADV_HOLOTROPIC_02"
+      }
+    },
+    {
+      "id": "D039",
+      "text": "Die Musik begleitet nun die weitere Phase. Die individuelle Begleitung bleibt im Vordergrund.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d039__take1.mp3",
+          "durationSeconds": 7.74,
+          "sourceStartSeconds": 616.02,
+          "sourceEndSeconds": 623.76,
+          "sha256": "033a20542bfb63c9ed3c073d07d5d9880814bf035ab6b03e9c8a2fdbe0786adf"
+        },
+        {
+          "file": "d039__take2.mp3",
+          "durationSeconds": 7.58,
+          "sourceStartSeconds": 626.28,
+          "sourceEndSeconds": 633.86,
+          "sha256": "f05e42cefbee04ebcfae8f653261dac5608b25cf10cc4a9824611c59aa02b22a"
+        }
+      ],
+      "route": {
+        "exercise": "holotropic",
+        "phase": 3,
+        "protocolCueId": "ADV_HOLOTROPIC_03"
+      }
+    },
+    {
+      "id": "D040",
+      "text": "Die Musik wird ruhiger. Nimm dir Zeit, die Aufmerksamkeit wieder nach außen zu richten.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d040__take1.mp3",
+          "durationSeconds": 7.28,
+          "sourceStartSeconds": 635.94,
+          "sourceEndSeconds": 643.22,
+          "sha256": "df27fe50913f37b8a5951e6f586151f706280517b949e5174e7b9f8f2de1cbb8"
+        },
+        {
+          "file": "d040__take2.mp3",
+          "durationSeconds": 7.02,
+          "sourceStartSeconds": 645.16,
+          "sourceEndSeconds": 652.18,
+          "sha256": "4cd5777e52240a834e40f7b8e6d6418750b06668082c92b9161cc37c47bb0b6b"
+        }
+      ],
+      "route": {
+        "exercise": "holotropic",
+        "phase": 4,
+        "protocolCueId": "ADV_HOLOTROPIC_04"
+      }
+    },
+    {
+      "id": "D041",
+      "text": "Nimm wahr, wie Atem und Körperbewegung zusammenwirken.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d041__take1.mp3",
+          "durationSeconds": 4.66,
+          "sourceStartSeconds": 654.6,
+          "sourceEndSeconds": 659.26,
+          "sha256": "079e386b4468de3825fb1c3b08e59432d16fa5dbfe314b8637a20110fbc5afb1"
+        },
+        {
+          "file": "d041__take2.mp3",
+          "durationSeconds": 4.74,
+          "sourceStartSeconds": 661.28,
+          "sourceEndSeconds": 666.02,
+          "sha256": "0a750d5d4870ee7e2cc8cd760d1d54f5ff60e3baca1c091f715b60c2f71c90f5"
+        }
+      ],
+      "route": {
+        "exercise": "biodynamic",
+        "phase": 3,
+        "protocolCueId": "ADV_BIODYNAMIC_03"
+      }
+    },
+    {
+      "id": "D042",
+      "text": "Lass Bewegung und Körperempfindungen allmählich zur Ruhe kommen.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d042__take1.mp3",
+          "durationSeconds": 5.3,
+          "sourceStartSeconds": 668.16,
+          "sourceEndSeconds": 673.46,
+          "sha256": "8c7f967a3e216db3679fce0f81cce650520fd6e01b23b96075d647c0580835e6"
+        },
+        {
+          "file": "d042__take2.mp3",
+          "durationSeconds": 5.82,
+          "sourceStartSeconds": 675.84,
+          "sourceEndSeconds": 681.66,
+          "sha256": "758bb26da404f8fda0aadb8ab2cd1f562e05d168782210588fbb45b3894aa00b"
+        }
+      ],
+      "route": {
+        "exercise": "biodynamic",
+        "phase": 4,
+        "protocolCueId": "ADV_BIODYNAMIC_04"
+      }
+    },
+    {
+      "id": "D043",
+      "text": "Nimm einen Moment lang wahr, was dich heute in diese Sitzung führt.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d043__take1.mp3",
+          "durationSeconds": 5.52,
+          "sourceStartSeconds": 683.8,
+          "sourceEndSeconds": 689.32,
+          "sha256": "d2e24cfc6cc4d744ffcbd72ac3956750e2724472b307824283ac40fefadbdda5"
+        },
+        {
+          "file": "d043__take2.mp3",
+          "durationSeconds": 5.24,
+          "sourceStartSeconds": 691.8,
+          "sourceEndSeconds": 697.04,
+          "sha256": "afd26680beafaaf87e398f1bc9b09b51c2f31ae08a66288fd439e5b70e27f1c5"
+        }
+      ],
+      "route": {
+        "exercise": "clarity",
+        "phase": 1,
+        "protocolCueId": "ADV_CLARITY_01"
+      }
+    },
+    {
+      "id": "D044",
+      "text": "Lass die Atemarbeit langsam ausklingen und spüre nach.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d044__take1.mp3",
+          "durationSeconds": 5.86,
+          "sourceStartSeconds": 699.42,
+          "sourceEndSeconds": 705.28,
+          "sha256": "8e4da7388d7305e5e56411360dff1933786562c65f49a17c6e2f54b65c52ada5"
+        },
+        {
+          "file": "d044__take2.mp3",
+          "durationSeconds": 5.34,
+          "sourceStartSeconds": 707.12,
+          "sourceEndSeconds": 712.46,
+          "sha256": "ded45b143d900b945bdfca397a3d645cd6721cff757aecf8b6b9d623e55e313e"
+        }
+      ],
+      "route": {
+        "exercise": "clarity",
+        "phase": 4,
+        "protocolCueId": "ADV_CLARITY_04"
+      }
+    },
+    {
+      "id": "D045",
+      "text": "Nimm dir einen Moment, um deine Absicht für diese Sitzung zu klären.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d045__take1.mp3",
+          "durationSeconds": 5.02,
+          "sourceStartSeconds": 714.94,
+          "sourceEndSeconds": 719.96,
+          "sha256": "ba67f4f2eeb23a9a2ea8b566142e3fdf5011378bc1831297a862dd24402324cc"
+        },
+        {
+          "file": "d045__take2.mp3",
+          "durationSeconds": 5.3,
+          "sourceStartSeconds": 722.44,
+          "sourceEndSeconds": 727.74,
+          "sha256": "b5f99029369793ee31079cb41a712c10c86e04cf81ebf2a7e30e9fdc2db9f54b"
+        }
+      ],
+      "route": {
+        "exercise": "rebirthing",
+        "phase": 1,
+        "protocolCueId": "ADV_REBIRTHING_01"
+      }
+    },
+    {
+      "id": "D046",
+      "text": "Kehre schrittweise zu einer natürlichen, unangestrengten Atmung zurück.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d046__take1.mp3",
+          "durationSeconds": 6.2,
+          "sourceStartSeconds": 730.02,
+          "sourceEndSeconds": 736.22,
+          "sha256": "74d0261bad2c2c85f0bb6648d45619b787270dec3ef2d25ee88d8e106785a368"
+        },
+        {
+          "file": "d046__take2.mp3",
+          "durationSeconds": 5.8,
+          "sourceStartSeconds": 738.18,
+          "sourceEndSeconds": 743.98,
+          "sha256": "175e9982d380b380788b2e058b15d51c95dc7fe8cb7a803bd04be6af274ec7e2"
+        }
+      ],
+      "route": {
+        "exercise": "rebirthing",
+        "phase": 4,
+        "protocolCueId": "ADV_REBIRTHING_04"
+      }
+    },
+    {
+      "id": "D047",
+      "text": "Spüre, an welcher Stelle dein Körper gerade Kontakt und Halt findet.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d047__take1.mp3",
+          "durationSeconds": 5.78,
+          "sourceStartSeconds": 746.5,
+          "sourceEndSeconds": 752.28,
+          "sha256": "edd6e21e364dd7fd7b27533a5580f9d0531ec81f4d0e6ab88bd4b7a71b666039"
+        },
+        {
+          "file": "d047__take2.mp3",
+          "durationSeconds": 5.84,
+          "sourceStartSeconds": 754.32,
+          "sourceEndSeconds": 760.16,
+          "sha256": "a748ca02085abe5b2e33420d128d924ca90fcf9deac06987c4d0785c5bab9c9f"
+        }
+      ],
+      "route": {
+        "exercise": "somatic_breathwork",
+        "phase": 1,
+        "protocolCueId": "ADV_SOMATIC_BREATHWORK_01"
+      }
+    },
+    {
+      "id": "D048",
+      "text": "Nimm eine Körperempfindung wahr, ohne sie verändern zu müssen.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d048__take1.mp3",
+          "durationSeconds": 4.78,
+          "sourceStartSeconds": 762.38,
+          "sourceEndSeconds": 767.16,
+          "sha256": "1f5a2e17e025d215260c3604d8351f21f8d9fd05ebb403c5d84f22c538793a5b"
+        },
+        {
+          "file": "d048__take2.mp3",
+          "durationSeconds": 5.24,
+          "sourceStartSeconds": 769.5,
+          "sourceEndSeconds": 774.74,
+          "sha256": "4fa9ab3fff3635eae2c596308d8742dc845b686b966d1790779008b88805fb63"
+        }
+      ],
+      "route": {
+        "exercise": "somatic_breathwork",
+        "phase": 2,
+        "protocolCueId": "ADV_SOMATIC_BREATHWORK_02"
+      }
+    },
+    {
+      "id": "D049",
+      "text": "Richte die Aufmerksamkeit zum Abschluss auf das, was dir Stabilität gibt.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d049__take1.mp3",
+          "durationSeconds": 5.82,
+          "sourceStartSeconds": 776.76,
+          "sourceEndSeconds": 782.58,
+          "sha256": "934fdb3c956b1a0f16506bee16bbe2526dc9551ae780836e301327ad7b00bcc3"
+        },
+        {
+          "file": "d049__take2.mp3",
+          "durationSeconds": 6.26,
+          "sourceStartSeconds": 785.18,
+          "sourceEndSeconds": 791.44,
+          "sha256": "55e8d506fb6303ee99295a6f04da36636169b8a4eca67c11c489641b5870c207"
+        }
+      ],
+      "route": {
+        "exercise": "somatic_breathwork",
+        "phase": 4,
+        "protocolCueId": "ADV_SOMATIC_BREATHWORK_04"
+      }
+    },
+    {
+      "id": "D050",
+      "text": "Nimm zunächst die Atembewegung in deinem Körper wahr.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d050__take1.mp3",
+          "durationSeconds": 4.54,
+          "sourceStartSeconds": 793.28,
+          "sourceEndSeconds": 797.82,
+          "sha256": "25567a757b0ab0d22ad7cf94f5ecfbc3d3ca1d1851bb723388d58e407ba87ad3"
+        },
+        {
+          "file": "d050__take2.mp3",
+          "durationSeconds": 4.04,
+          "sourceStartSeconds": 800.04,
+          "sourceEndSeconds": 804.08,
+          "sha256": "0aadfa5dfd46fcdf8d6f48a6c2c971fe326782b7ec3874802032807a8324f739"
+        }
+      ],
+      "route": {
+        "exercise": "transformational",
+        "phase": 2,
+        "protocolCueId": "ADV_TRANSFORMATIONAL_02"
+      }
+    },
+    {
+      "id": "D051",
+      "text": "Lass die heutige Erfahrung allmählich ausklingen.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d051__take1.mp3",
+          "durationSeconds": 4.06,
+          "sourceStartSeconds": 806.66,
+          "sourceEndSeconds": 810.72,
+          "sha256": "1316855cf23f868e53c7fcfcfbb7b517b3d9096cd9ec5caddb34419742546514"
+        },
+        {
+          "file": "d051__take2.mp3",
+          "durationSeconds": 4.64,
+          "sourceStartSeconds": 813.12,
+          "sourceEndSeconds": 817.76,
+          "sha256": "ee3b8d974232121c298bccecdde5dbea7748400dfce6336063181e899d562661"
+        }
+      ],
+      "route": {
+        "exercise": "transformational",
+        "phase": 4,
+        "protocolCueId": "ADV_TRANSFORMATIONAL_04"
+      }
+    },
+    {
+      "id": "D052",
+      "text": "Wir beginnen mit dem musikalischen Rahmen der Sitzung.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d052__take1.mp3",
+          "durationSeconds": 3.66,
+          "sourceStartSeconds": 820.28,
+          "sourceEndSeconds": 823.94,
+          "sha256": "99aa5f100cd99c55e2e32a37f3fec2852baeadb69f3a70de5e99cd518b891f62"
+        },
+        {
+          "file": "d052__take2.mp3",
+          "durationSeconds": 3.9,
+          "sourceStartSeconds": 826.58,
+          "sourceEndSeconds": 830.48,
+          "sha256": "19318f78fd9c77cbb529d986764c2be466948425b143d9e297de7b73599a1485"
+        }
+      ],
+      "route": {
+        "exercise": "shamanic",
+        "phase": 2,
+        "protocolCueId": "ADV_SHAMANIC_02"
+      }
+    },
+    {
+      "id": "D053",
+      "text": "Nimm wahr, wie du wieder im Hier und Jetzt ankommst.",
+      "selectedTake": 2,
+      "takes": [
+        {
+          "file": "d053__take1.mp3",
+          "durationSeconds": 5.04,
+          "sourceStartSeconds": 832.44,
+          "sourceEndSeconds": 837.48,
+          "sha256": "c8177795f40010329b1d8e5bfbb3f3b4d717ea0466fea26940f3b413e5a0cb4c"
+        },
+        {
+          "file": "d053__take2.mp3",
+          "durationSeconds": 4.44,
+          "sourceStartSeconds": 838.8,
+          "sourceEndSeconds": 843.24,
+          "sha256": "85e82fe9a770613adbedb071b23d4317a30a3d6d0736a9f33ef6c8f8b0adb579"
+        }
+      ],
+      "route": {
+        "exercise": "shamanic",
+        "phase": 4,
+        "protocolCueId": "ADV_SHAMANIC_04"
+      }
+    }
+  ],
+  "routes": {}
+}
