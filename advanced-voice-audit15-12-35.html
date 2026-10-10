@@ -10,4 +10,4 @@ if(f==='AB_TEXT_MATCH_AUDIO_UNVERIFIED'){
  }
 }else{q('count').textContent=rows.length+' angezeigte Phasen';rows.forEach(p=>el.append(row(p)));}
 }q('filter').onchange=render;q('search').oninput=render;q('reset').onclick=()=>{if(confirm('Lokale Prüfmarkierungen wirklich löschen?')){approved={};save();render()}};q('export').onclick=()=>{const payload={version:data.version,exportedAt:new Date().toISOString(),approved,source:'manual audio audition; only verified=true rows may be routed after separate release review'};const a=document.createElement('a');const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.href=url;a.download='ADVANCED_ABCD_VERIFIZIERTE_CLIPS_15.12.35.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)};save();render();})();
-</script></body></html>
+</script><p style="padding:14px"><a href="advanced-voice-library15-12-38.html">Zur aktuellen A/B-Sprachbibliothek 15.12.38 mit deinen CSV-Korrekturen →</a></p></body></html>
