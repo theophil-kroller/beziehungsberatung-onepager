@@ -1,0 +1,175 @@
+{
+  "version": "15.12.36",
+  "baseVersion": "15.12.35",
+  "mappingSource": "manual audio audition; only verified=true rows may be routed after separate release review",
+  "approvedAt": "2026-10-10T16:38:46.619Z",
+  "counts": {
+    "manualABsources": 19,
+    "manualABphases": 30,
+    "masterDphases": 53,
+    "silentPhases": 18
+  },
+  "approved": {
+    "ADV_002": {
+      "clipId": "A_CAND_001",
+      "verified": true,
+      "sourceId": "ADV_002"
+    },
+    "B020": {
+      "clipId": "B_CAND_050",
+      "verified": true,
+      "sourceId": "B020"
+    },
+    "ADV_041": {
+      "clipId": "A_CAND_063",
+      "verified": true,
+      "sourceId": "ADV_041"
+    },
+    "ADV_031": {
+      "clipId": "A_CAND_046",
+      "verified": true,
+      "sourceId": "ADV_031"
+    },
+    "ADV_047": {
+      "clipId": "A_CAND_075",
+      "verified": true,
+      "sourceId": "ADV_047"
+    },
+    "ADV_069": {
+      "clipId": "A_CAND_116",
+      "verified": true,
+      "sourceId": "ADV_069"
+    },
+    "B021": {
+      "clipId": "B_CAND_054",
+      "verified": true,
+      "sourceId": "B021"
+    },
+    "ADV_030": {
+      "clipId": "A_CAND_044",
+      "verified": true,
+      "sourceId": "ADV_030"
+    },
+    "B022": {
+      "clipId": "B_CAND_055",
+      "verified": true,
+      "sourceId": "B022"
+    },
+    "ADV_050": {
+      "clipId": "A_CAND_080",
+      "verified": true,
+      "sourceId": "ADV_050"
+    },
+    "ADV_009": {
+      "clipId": "A_CAND_007",
+      "verified": true,
+      "sourceId": "ADV_009"
+    },
+    "ADV_028": {
+      "clipId": "A_CAND_041",
+      "verified": true,
+      "sourceId": "ADV_028"
+    },
+    "B038": {
+      "clipId": "B038_TAKE2",
+      "verified": true,
+      "sourceId": "B038"
+    },
+    "ADV_046": {
+      "clipId": "A_CAND_074",
+      "verified": true,
+      "sourceId": "ADV_046"
+    },
+    "ADV_035": {
+      "clipId": "A_CAND_051",
+      "verified": true,
+      "sourceId": "ADV_035"
+    },
+    "ADV_068": {
+      "clipId": "A_CAND_114",
+      "verified": true,
+      "sourceId": "ADV_068"
+    },
+    "ADV_003": {
+      "clipId": "A_CAND_004",
+      "verified": true,
+      "sourceId": "ADV_003"
+    },
+    "ADV_056": {
+      "clipId": "A_CAND_091",
+      "verified": true,
+      "sourceId": "ADV_056"
+    },
+    "B032": {
+      "clipId": "B_CAND_080",
+      "verified": true,
+      "sourceId": "B032"
+    }
+  },
+  "routes": {
+    "microcosmic_orbit": {
+      "0": "ADV_002",
+      "1": "B020",
+      "7": "B032"
+    },
+    "embryonic": {
+      "0": "ADV_056",
+      "1": "ADV_003",
+      "6": "ADV_068"
+    },
+    "skin_breathing": {
+      "0": "ADV_035",
+      "6": "ADV_046"
+    },
+    "murcha": {
+      "4": "B038"
+    },
+    "bhramari_kumbhaka": {
+      "0": "ADV_028",
+      "5": "ADV_009"
+    },
+    "kapalabhati": {
+      "0": "ADV_002",
+      "6": "ADV_050"
+    },
+    "bhastrika": {
+      "0": "ADV_028",
+      "5": "B022"
+    },
+    "fire_breath": {
+      "0": "ADV_030",
+      "5": "B021"
+    },
+    "tummo": {
+      "0": "ADV_028",
+      "5": "ADV_069"
+    },
+    "wim_hof": {
+      "0": "ADV_047"
+    },
+    "holotropic": {
+      "4": "ADV_069"
+    },
+    "biodynamic": {
+      "0": "ADV_031",
+      "4": "B022"
+    },
+    "clarity": {
+      "1": "ADV_041",
+      "4": "ADV_069"
+    },
+    "rebirthing": {
+      "1": "ADV_041",
+      "4": "ADV_069"
+    },
+    "somatic_breathwork": {
+      "4": "ADV_069"
+    },
+    "transformational": {
+      "4": "ADV_069"
+    },
+    "shamanic": {
+      "4": "ADV_069"
+    }
+  }
+}

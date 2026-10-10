@@ -7,13 +7,19 @@
         "cueId": "ADV_MICROCOSMIC_ORBIT_01",
         "text": "Ankommen: Sitze aufrecht und spüre den Kontakt zum Boden.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_002",
+        "spokenText": "Komm in eine bequeme, aufrechte Sitzposition.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_MICROCOSMIC_ORBIT_02",
         "text": "Nimm den natürlichen Atem wahr, ohne ihn zu verändern.",
         "durationSeconds": 150,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "B020",
+        "spokenText": "Beobachte den Atem, ohne ihn zu beschleunigen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_MICROCOSMIC_ORBIT_03",
@@ -64,7 +70,10 @@
         "cueId": "ADV_MICROCOSMIC_ORBIT_08",
         "text": "Spüre den ganzen Körper und öffne die Aufmerksamkeit für den Raum.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "B032",
+        "spokenText": "Lass deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -78,13 +87,19 @@
         "cueId": "ADV_EMBRYONIC_01",
         "text": "Finde eine ruhige, bequeme Position und spüre deine Unterlage.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_056",
+        "spokenText": "Spüre, wie du gerade sitzt oder liegst.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_EMBRYONIC_02",
         "text": "Der Atem darf von selbst kommen und gehen.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_003",
+        "spokenText": "Atme einige Male ganz natürlich durch die Nase.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_EMBRYONIC_03",
@@ -126,7 +141,10 @@
         "cueId": "ADV_EMBRYONIC_07",
         "text": "Kehre mit der Aufmerksamkeit in den Raum zurück.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_068",
+        "spokenText": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -140,7 +158,10 @@
         "cueId": "ADV_SKIN_BREATHING_01",
         "text": "Setz dich bequem hin und lass deinen Atem natürlich fließen.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_035",
+        "spokenText": "Lass den Atem frei fließen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_SKIN_BREATHING_02",
@@ -191,7 +212,10 @@
         "cueId": "ADV_SKIN_BREATHING_07",
         "text": "Lass die Vorstellung los und orientiere dich im Raum.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_046",
+        "spokenText": "Lass die Vorstellung langsam ausklingen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -235,7 +259,10 @@
         "cueId": "ADV_MURCHA_05",
         "text": "Kehre zum normalen Atem zurück und bleibe einen Moment ruhig sitzen.",
         "durationSeconds": 180,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "B038",
+        "spokenText": "Atme jetzt wieder in deinem natürlichen Rhythmus.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -249,7 +276,10 @@
         "cueId": "ADV_BHRAMARI_KUMBHAKA_01",
         "text": "Finde einen stabilen, bequemen Sitz.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_028",
+        "spokenText": "Finde einen stabilen Sitz.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_BHRAMARI_KUMBHAKA_02",
@@ -288,7 +318,10 @@
         "cueId": "ADV_BHRAMARI_KUMBHAKA_06",
         "text": "Atme frei und öffne langsam die Augen.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_009",
+        "spokenText": "Öffne langsam wieder die Augen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -302,7 +335,10 @@
         "cueId": "ADV_KAPALABHATI_01",
         "text": "Setz dich aufrecht hin und entspanne Gesicht und Schultern.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_002",
+        "spokenText": "Komm in eine bequeme, aufrechte Sitzposition.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_KAPALABHATI_02",
@@ -350,7 +386,10 @@
         "cueId": "ADV_KAPALABHATI_07",
         "text": "Abschluss: Spüre nach und orientiere dich im Raum.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_050",
+        "spokenText": "Komm bewusst im Raum an.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -364,7 +403,10 @@
         "cueId": "ADV_BHASTRIKA_01",
         "text": "Nimm eine stabile Sitzposition ein.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_028",
+        "spokenText": "Finde einen stabilen Sitz.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_BHASTRIKA_02",
@@ -403,7 +445,10 @@
         "cueId": "ADV_BHASTRIKA_06",
         "text": "Ruhiger Ausklang und Nachspüren.",
         "durationSeconds": 150,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "B022",
+        "spokenText": "Spüre das Nachklingen der Übung, ohne es bewerten zu müssen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -417,7 +462,10 @@
         "cueId": "ADV_FIRE_BREATH_01",
         "text": "Richte deinen Sitz auf und lass die Schultern los.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_030",
+        "spokenText": "Richte dich bequem auf.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_FIRE_BREATH_02",
@@ -456,7 +504,10 @@
         "cueId": "ADV_FIRE_BREATH_06",
         "text": "Lass den Atem sich beruhigen und spüre nach.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "B021",
+        "spokenText": "Lass die Atmung allmählich in ihr gewohntes Tempo zurückfinden.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -470,7 +521,10 @@
         "cueId": "ADV_TUMMO_01",
         "text": "Ankommen: Ruhe und stabile Sitzhaltung finden.",
         "durationSeconds": 240,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_028",
+        "spokenText": "Finde einen stabilen Sitz.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_TUMMO_02",
@@ -506,7 +560,10 @@
         "cueId": "ADV_TUMMO_06",
         "text": "Integration in Ruhe und Abschluss.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_069",
+        "spokenText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -520,7 +577,10 @@
         "cueId": "ADV_WIM_HOF_01",
         "text": "Setz oder leg dich in sicherer Umgebung bequem hin.",
         "durationSeconds": 120,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_047",
+        "spokenText": "Setz oder leg dich an einen sicheren Ort.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_WIM_HOF_02",
@@ -627,7 +687,10 @@
         "cueId": "ADV_HOLOTROPIC_05",
         "text": "Nachspüren und Integration mit der begleitenden Person.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_069",
+        "spokenText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -641,7 +704,10 @@
         "cueId": "ADV_BIODYNAMIC_01",
         "text": "Kontakt zum Körper und zur Unterlage herstellen.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_031",
+        "spokenText": "Spüre den Kontakt zum Boden.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_BIODYNAMIC_02",
@@ -671,7 +737,10 @@
         "cueId": "ADV_BIODYNAMIC_05",
         "text": "Nachruhe und gemeinsame Reflexion.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "B022",
+        "spokenText": "Spüre das Nachklingen der Übung, ohne es bewerten zu müssen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -694,7 +763,10 @@
         "cueId": "ADV_CLARITY_02",
         "text": "Körper und Atem ohne Druck wahrnehmen.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_041",
+        "spokenText": "Beobachte deinen Atem, ohne ihn zu verändern.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_CLARITY_03",
@@ -715,7 +787,10 @@
         "cueId": "ADV_CLARITY_05",
         "text": "Integration und Abschluss.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_069",
+        "spokenText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -738,7 +813,10 @@
         "cueId": "ADV_REBIRTHING_02",
         "text": "Den Atem zunächst natürlich wahrnehmen.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_041",
+        "spokenText": "Beobachte deinen Atem, ohne ihn zu verändern.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       },
       {
         "cueId": "ADV_REBIRTHING_03",
@@ -759,7 +837,10 @@
         "cueId": "ADV_REBIRTHING_05",
         "text": "Erlebtes gemeinsam integrieren.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_069",
+        "spokenText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -806,7 +887,10 @@
         "cueId": "ADV_SOMATIC_BREATHWORK_05",
         "text": "Integration und Abschluss.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_069",
+        "spokenText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -850,7 +934,10 @@
         "cueId": "ADV_TRANSFORMATIONAL_05",
         "text": "Integration und Abschluss.",
         "durationSeconds": 300,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_069",
+        "spokenText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
@@ -894,7 +981,10 @@
         "cueId": "ADV_SHAMANIC_05",
         "text": "Integration und Abschluss mit der Begleitperson.",
         "durationSeconds": 600,
-        "state": "pause"
+        "state": "pause",
+        "recordedCueId": "ADV_069",
+        "spokenText": "Nimm dir Zeit, das Erlebte nachwirken zu lassen.",
+        "voiceSource": "manual_verified_AB_15.12.35"
       }
     ],
     "voiceStatus": "synthetic_demo",
