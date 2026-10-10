@@ -1,0 +1,317 @@
+{
+  "version": "15.12.44",
+  "purpose": "Music dramaturgy timing and future playlist track slots. No new licensed music included. Existing single soundscape continues until tracks are selected.",
+  "trackBase": "assets/audio/breath/soundscapes/",
+  "availableDefault": "celestial-drift-loop.mp3",
+  "note": "Each track is null until a reviewed/licensed local file is supplied; no 404 requests or fake track changes.",
+  "sessions": {
+    "holotropic": {
+      "durationSeconds": 10800,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "ruhig, weit, getragen",
+          "track": null,
+          "fadeSeconds": 0
+        },
+        {
+          "atSeconds": 900,
+          "label": "Aktivierung",
+          "mood": "rhythmisch, aktivierend",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 3300,
+          "label": "Intensiver Prozess",
+          "mood": "dynamisch, offen",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 5400,
+          "label": "Wendepunkt",
+          "mood": "emotional, atmosphärisch",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 7200,
+          "label": "Abklingen",
+          "mood": "beruhigend, weich",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 9000,
+          "label": "Integration",
+          "mood": "stille, meditativ",
+          "track": null,
+          "fadeSeconds": 8
+        }
+      ]
+    },
+    "rebirthing": {
+      "durationSeconds": 3300,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "ruhig, warm",
+          "track": null,
+          "fadeSeconds": 0
+        },
+        {
+          "atSeconds": 300,
+          "label": "Verbundenes Atmen",
+          "mood": "gleichmäßig, fließend",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 840,
+          "label": "Prozessraum",
+          "mood": "offen, wenig rhythmische Ablenkung",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2280,
+          "label": "Rückkehr",
+          "mood": "sanfter Übergang",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2760,
+          "label": "Integration",
+          "mood": "ruhig, minimalistisch",
+          "track": null,
+          "fadeSeconds": 8
+        }
+      ]
+    },
+    "clarity": {
+      "durationSeconds": 3300,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "warm, weit",
+          "track": null,
+          "fadeSeconds": 0
+        },
+        {
+          "atSeconds": 360,
+          "label": "Atemfluss",
+          "mood": "leichter gleichmäßiger Puls",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 960,
+          "label": "Prozessraum",
+          "mood": "zurückhaltend, fließend",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2100,
+          "label": "Stabilisieren",
+          "mood": "weich, erdend",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2700,
+          "label": "Integration",
+          "mood": "still, nachklingend",
+          "track": null,
+          "fadeSeconds": 8
+        }
+      ]
+    },
+    "transformational": {
+      "durationSeconds": 3300,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Intention",
+          "mood": "ruhig, getragen",
+          "track": null,
+          "fadeSeconds": 0
+        },
+        {
+          "atSeconds": 600,
+          "label": "Öffnen",
+          "mood": "fließend, zurückhaltend",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 1320,
+          "label": "Reflexionsraum",
+          "mood": "offen und reduziert",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2040,
+          "label": "Erdung",
+          "mood": "gleichmäßig, ruhig",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2640,
+          "label": "Integration",
+          "mood": "minimalistisch, weich",
+          "track": null,
+          "fadeSeconds": 8
+        }
+      ]
+    },
+    "biodynamic": {
+      "durationSeconds": 3600,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Orientierung",
+          "mood": "sicher, erdend",
+          "track": null,
+          "fadeSeconds": 0
+        },
+        {
+          "atSeconds": 420,
+          "label": "Atemwahrnehmung",
+          "mood": "weicher Puls",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 780,
+          "label": "Bewegung",
+          "mood": "behutsam rhythmisch",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 1140,
+          "label": "Ausdruck",
+          "mood": "offen, durchlässig",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 1800,
+          "label": "Regulation",
+          "mood": "stabilisierend",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2580,
+          "label": "Integration",
+          "mood": "ruhig, ausklingend",
+          "track": null,
+          "fadeSeconds": 8
+        }
+      ]
+    },
+    "somatic_breathwork": {
+      "durationSeconds": 2700,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "ruhig, bodenständig",
+          "track": null,
+          "fadeSeconds": 0
+        },
+        {
+          "atSeconds": 360,
+          "label": "Körperwahrnehmung",
+          "mood": "klar, fein",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 840,
+          "label": "Erkundung",
+          "mood": "offen, sparsamer Klang",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 1380,
+          "label": "Pendeln",
+          "mood": "gleichmäßig, neutral",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 1980,
+          "label": "Nachspüren",
+          "mood": "ruhig, wenig Impulse",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2280,
+          "label": "Integration",
+          "mood": "reduziert, weich",
+          "track": null,
+          "fadeSeconds": 8
+        }
+      ]
+    },
+    "shamanic": {
+      "durationSeconds": 5400,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "erdend, zurückhaltend",
+          "track": null,
+          "fadeSeconds": 0
+        },
+        {
+          "atSeconds": 720,
+          "label": "Eröffnung",
+          "mood": "organisch, zeremoniell",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 1500,
+          "label": "Rhythmus",
+          "mood": "percussiv, repetitiv",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 2700,
+          "label": "Wandel",
+          "mood": "intensiver, offen",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 3900,
+          "label": "Rückkehr",
+          "mood": "langsamer, geerdet",
+          "track": null,
+          "fadeSeconds": 8
+        },
+        {
+          "atSeconds": 4800,
+          "label": "Ausklang",
+          "mood": "ruhig, integrierend",
+          "track": null,
+          "fadeSeconds": 8
+        }
+      ]
+    }
+  }
+}
