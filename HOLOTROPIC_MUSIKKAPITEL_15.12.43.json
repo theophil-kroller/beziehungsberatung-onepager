@@ -1,0 +1,53 @@
+{
+  "version": "15.12.43",
+  "sessionSeconds": 10800,
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "startMinute": 0,
+      "chapter": "Ankommen",
+      "character": "ruhig",
+      "status": "music track not yet provided; existing single soundscape remains unchanged"
+    },
+    {
+      "startSeconds": 900,
+      "startMinute": 15,
+      "chapter": "Aktivierung",
+      "character": "rhythmisch",
+      "status": "music track not yet provided; existing single soundscape remains unchanged"
+    },
+    {
+      "startSeconds": 3300,
+      "startMinute": 55,
+      "chapter": "Prozess",
+      "character": "intensiv",
+      "status": "music track not yet provided; existing single soundscape remains unchanged"
+    },
+    {
+      "startSeconds": 5400,
+      "startMinute": 90,
+      "chapter": "Wendepunkt",
+      "character": "emotional",
+      "status": "music track not yet provided; existing single soundscape remains unchanged"
+    },
+    {
+      "startSeconds": 7200,
+      "startMinute": 120,
+      "chapter": "Abklingen",
+      "character": "beruhigend",
+      "status": "music track not yet provided; existing single soundscape remains unchanged"
+    },
+    {
+      "startSeconds": 9000,
+      "startMinute": 150,
+      "chapter": "Integration",
+      "character": "meditativ",
+      "status": "music track not yet provided; existing single soundscape remains unchanged"
+    }
+  ],
+  "source": "Master E Final Regie",
+  "currentlyInstalledTracks": [
+    "assets/audio/breath/soundscapes/celestial-drift-loop.mp3"
+  ],
+  "note": "Needs six distinct, licensed music assets to realize soundtrack. No missing paths injected into player."
+}
