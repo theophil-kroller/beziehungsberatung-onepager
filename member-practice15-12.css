@@ -272,3 +272,11 @@
 .focus-visual[data-phase-step]:not([data-phase-step="0"]) .breath-state-img.breath-state-0{opacity:0!important;visibility:hidden}
 .focus-previsual .breath-state-img:not(.breath-state-0){opacity:0!important;visibility:hidden}
 @media(min-width:780px){.breath-focus-dialog{max-height:calc(100dvh - 12px)!important}.focus-shell{max-height:calc(100dvh - 24px)!important;overflow:auto}.focus-illustration{max-height:min(36dvh,320px)}}
+
+/* 15.12.37 - Purpose first, evidence linked without crowding the preview */
+.focus-purpose-research{border-top:1px solid rgba(125,93,73,.14);margin-top:12px;padding-top:10px;font-size:11px;color:#74645a;line-height:1.48}
+.focus-purpose-research[hidden]{display:none!important}
+.focus-purpose-research>strong{display:block;font-size:11px;color:#5b463c;margin-bottom:2px}
+.focus-purpose-research>span{display:block}
+.focus-purpose-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:5px}
+.focus-purpose-links a{color:#955439;text-decoration:underline;text-underline-offset:2px;font-weight:650;font-size:11px}
