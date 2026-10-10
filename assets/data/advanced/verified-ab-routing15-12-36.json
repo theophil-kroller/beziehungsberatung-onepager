@@ -13,62 +13,74 @@
     "ADV_002": {
       "clipId": "A_CAND_001",
       "verified": true,
-      "sourceId": "ADV_002"
+      "sourceId": "ADV_002",
+      "spokenTextVerified": "Komm in eine bequeme aufrechte Sitzposition"
     },
     "B020": {
       "clipId": "B_CAND_050",
       "verified": true,
-      "sourceId": "B020"
+      "sourceId": "B020",
+      "spokenTextVerified": "Beobachte den Atem ohne ihn zu beschleunigen"
     },
     "ADV_041": {
       "clipId": "A_CAND_063",
       "verified": true,
-      "sourceId": "ADV_041"
+      "sourceId": "ADV_041",
+      "spokenTextVerified": "Beobachte Deinen Atem ohne ihn zu Verändern"
     },
     "ADV_031": {
       "clipId": "A_CAND_046",
       "verified": true,
-      "sourceId": "ADV_031"
+      "sourceId": "ADV_031",
+      "spokenTextVerified": "Spüre den Kontakt zum Boden"
     },
     "ADV_047": {
       "clipId": "A_CAND_075",
       "verified": true,
-      "sourceId": "ADV_047"
+      "sourceId": "ADV_047",
+      "spokenTextVerified": "Setz oder leg Dich an einen sicheren Ort. Setz oder leg Dich an einen sicheren Ort."
     },
     "ADV_069": {
       "clipId": "A_CAND_116",
       "verified": true,
-      "sourceId": "ADV_069"
+      "sourceId": "ADV_069",
+      "spokenTextVerified": "Nimm Dir Zeit das erlebt Nachwirken zu lassen"
     },
     "B021": {
       "clipId": "B_CAND_054",
       "verified": true,
-      "sourceId": "B021"
+      "sourceId": "B021",
+      "spokenTextVerified": "Lass die Atmung allmählich in Ihr gewohntes Tempo zurücfinden"
     },
     "ADV_030": {
       "clipId": "A_CAND_044",
       "verified": true,
-      "sourceId": "ADV_030"
+      "sourceId": "ADV_030",
+      "spokenTextVerified": "Richte Dich bequem auf."
     },
     "B022": {
       "clipId": "B_CAND_055",
       "verified": true,
-      "sourceId": "B022"
+      "sourceId": "B022",
+      "spokenTextVerified": "Spüre das Nachklingen der Übung ohne es Bewerten zu müssen"
     },
     "ADV_050": {
       "clipId": "A_CAND_080",
       "verified": true,
-      "sourceId": "ADV_050"
+      "sourceId": "ADV_050",
+      "spokenTextVerified": "Komm bewusst im Raum an"
     },
     "ADV_009": {
       "clipId": "A_CAND_007",
       "verified": true,
-      "sourceId": "ADV_009"
+      "sourceId": "ADV_009",
+      "spokenTextVerified": "Öffne langsam wieder die Augen."
     },
     "ADV_028": {
       "clipId": "A_CAND_041",
       "verified": true,
-      "sourceId": "ADV_028"
+      "sourceId": "ADV_028",
+      "spokenTextVerified": "Finde einen stabilen Sitz"
     },
     "B038": {
       "clipId": "B038_TAKE2",
@@ -78,32 +90,38 @@
     "ADV_046": {
       "clipId": "A_CAND_074",
       "verified": true,
-      "sourceId": "ADV_046"
+      "sourceId": "ADV_046",
+      "spokenTextVerified": "Lass die Vorstellung langsam ausklingen"
     },
     "ADV_035": {
       "clipId": "A_CAND_051",
       "verified": true,
-      "sourceId": "ADV_035"
+      "sourceId": "ADV_035",
+      "spokenTextVerified": "Lass den Atem frei fließen"
     },
     "ADV_068": {
       "clipId": "A_CAND_114",
       "verified": true,
-      "sourceId": "ADV_068"
+      "sourceId": "ADV_068",
+      "spokenTextVerified": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren"
     },
     "ADV_003": {
       "clipId": "A_CAND_004",
       "verified": true,
-      "sourceId": "ADV_003"
+      "sourceId": "ADV_003",
+      "spokenTextVerified": "Atme einige Male ganz natürlich durch die Nase"
     },
     "ADV_056": {
       "clipId": "A_CAND_091",
       "verified": true,
-      "sourceId": "ADV_056"
+      "sourceId": "ADV_056",
+      "spokenTextVerified": "Spüre wie Du gerade sitzt oder liegst"
     },
     "B032": {
       "clipId": "B_CAND_080",
       "verified": true,
-      "sourceId": "B032"
+      "sourceId": "B032",
+      "spokenTextVerified": "Lass Deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren"
     }
   },
   "routes": {
@@ -171,5 +189,7 @@
     "shamanic": {
       "4": "ADV_069"
     }
-  }
+  },
+  "additionalReviewVersion": "15.12.38",
+  "fullReviewFile": "assets/data/advanced/verified-voice-library15-12-38.json"
 }

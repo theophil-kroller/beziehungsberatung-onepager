@@ -1,0 +1,2064 @@
+{
+  "version": "15.12.38",
+  "source": "ADVANCED_VOICE_REVIEW_15.12.22.csv",
+  "sourceNote": "User hearing review is authoritative; unchecked clips are never routed; multisentence takes are indivisible MP3s.",
+  "counts": {
+    "reviewed": 199,
+    "verified": 176,
+    "rejected": 23,
+    "alreadyVoicedPhases": 83,
+    "deliberatelyQuietPhases": 18,
+    "companionCueInstances": 53,
+    "additionalUniqueClips": 28
+  },
+  "clips": [
+    {
+      "id": "A_CAND_001",
+      "text": "Komm in eine bequeme aufrechte Sitzposition",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_001.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 1,
+          "kind": "main"
+        },
+        {
+          "exercise": "kapalabhati",
+          "phase": 1,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_002",
+      "text": "Komm in eine bequeme aufrechte Sitzposition",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_002.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_003",
+      "text": "Atme einige Male ganz natürlich durch die Nase",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_003.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_004",
+      "text": "Atme einige Male ganz natürlich durch die Nase",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_004.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 2,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_005",
+      "text": "Spüre einen Moment nach.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_005.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_006",
+      "text": "Spüre einen Moment nach.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_006.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_007",
+      "text": "Öffne langsam wieder die Augen.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_007.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 6,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_008",
+      "text": "Öffne langsam wieder die Augen. Wenn Dir schwindelig wird, stoppe die Übung, und atme normal weiter",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_008.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_009",
+      "text": "Wenn Dir schwindelig wird, stoppe die Übung, und atme normal weiter",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_009.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "fire_breath",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "wim_hof",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_010",
+      "text": "Du darfst jederzeit eine Pause machen.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_010.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_011",
+      "text": "Du darfst jederzeit eine Pause machen.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_011.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_012",
+      "text": "Erzwinge keine Atempausen.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_012.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_013",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/a_take_013.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_014",
+      "text": "Erzwinge keine Atempausen. Übe niemals im Wasser, beim Autofahren oder in einer anderen gefährlichen Situation",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_014.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_015",
+      "text": "Übe niemals im Wasser, beim Autofahren oder in einer anderen gefährlichen Situation",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_015.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "wim_hof",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_016",
+      "text": "Lass Dein Schultern locker werden.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_016.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_017",
+      "text": "Lass Dein Schultern locker werden.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_017.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_018",
+      "text": "Schließe sanft die Augen, wenn das für Dich angenehm ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_018.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_019",
+      "text": "Schließe sanft die Augen, wenn das für Dich angenehm ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_019.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_020",
+      "text": "Lass den Atem wieder ganz natürlich fließen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_020.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "rebirthing",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "transformational",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_021",
+      "text": "Lass den Atem wieder ganz natürlich fließen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_021.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_022",
+      "text": "Diese Advanced Technik erfordert eine vorherige Einweisung. Die folgenden Hinweise ersetzen keine persönliche Anleitung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_022.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "murcha",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_023",
+      "text": "Diese Advanced Technik erfordert eine vorherige Einweisung. Die folgenden Hinweise ersetzen keine persönliche Anleitung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_023.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_024",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/a_take_024.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_025",
+      "text": "Richte Deine Aufmerksamkeit nach Innen.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_025.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_026",
+      "text": "Richte Deine Aufmerksamkeit nach Innen.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_026.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_027",
+      "text": "Nimm wahr wie sich die Atmung von selbst verändert.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_027.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_028",
+      "text": "Nimm wahr wie sich die Atmung von selbst verändert.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_028.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_029",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/a_take_029.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_030",
+      "text": "Verzichte hier auf lange Atempausen oder das erzeugen von Benommenheit.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_030.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_031",
+      "text": "Verzichte hier auf lange Atempausen oder das erzeugen von Benommenheit.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_031.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_032",
+      "text": "Lass den Atem dannach wieder natürlich fließen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_032.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_033",
+      "text": "Lass den Atem dannach wieder natürlich fließen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_033.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_034",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/a_take_034.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_035",
+      "text": "Spüre zuerst wie Dein Atem im Sitzen fließt.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_035.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_036",
+      "text": "Spüre zuerst wie Dein Atem im Sitzen fließt.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_036.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_037",
+      "text": "Entspanne Kiefer und Schultern.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_037.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_038",
+      "text": "Entspanne Kiefer und Schultern.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_038.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_039",
+      "text": "Wenn Du Beschwerden bemerkst beende die Praxis und atme natürlich weiter.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_039.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "transformational",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_040",
+      "text": "Wenn Du Beschwerden bemerkst beende die Praxis und atme natürlich weiter. Finde einen stabilen Sitz",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_040.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_041",
+      "text": "Finde einen stabilen Sitz",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_041.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 1,
+          "kind": "main"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 1,
+          "kind": "main"
+        },
+        {
+          "exercise": "tummo",
+          "phase": 1,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_042",
+      "text": "Bleib mit Deiner Aufmerksamkeit beim Körper",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_042.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "biodynamic",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_043",
+      "text": "Bleib mit Deiner Aufmerksamkeit beim Körper",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_043.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_044",
+      "text": "Richte Dich bequem auf.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_044.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "fire_breath",
+          "phase": 1,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_045",
+      "text": "Richte Dich bequem auf. Spüre den Kontakt zum Boden",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_045.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_046",
+      "text": "Spüre den Kontakt zum Boden",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_046.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "biodynamic",
+          "phase": 1,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_047",
+      "text": "Kehre zur natürlichen Atmung zurück",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_047.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_048",
+      "text": "Kehre zur natürlichen Atmung zurück",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_048.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_049",
+      "text": "Nimm Wärme und Körperempfindungen wahr ohne sie erzwingen zu wollen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_049.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_050",
+      "text": "Nimm Wärme und Körperempfindungen wahr ohne sie erzwingen zu wollen. Lass den Atem frei fließen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_050.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_051",
+      "text": "Lass den Atem frei fließen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_051.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 1,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_052",
+      "text": "Nimm den Kontakt zum Boden wahr",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_052.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "tummo",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_053",
+      "text": "Nimm den Kontakt zum Boden wahr",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_053.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_054",
+      "text": "Lenke Deine Aufmerksamkeit sanft entlang Deiner Körpermitte.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_054.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_055",
+      "text": "Lenke Deine Aufmerksamkeit sanft entlang Deiner Körpermitte. Lass die Vorstellung weiterziehen ohne etwas zu erzwingen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_055.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_056",
+      "text": "Lass die Vorstellung weiterziehen ohne etwas zu erzwingen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_056.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_057",
+      "text": "Kehre mit Deiner Aufmerksamkeit zum Atem zurück",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_057.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "tummo",
+          "phase": 5,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_058",
+      "text": "Kehre mit Deiner Aufmerksamkeit zum Atem zurück",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_058.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_059",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/a_take_059.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_060",
+      "text": "Komm zur Ruhe",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_060.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_061",
+      "text": "Komm zur Ruhe",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_061.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_062",
+      "text": "Beobachte Deinen Atem ohne ihn zu Verändern",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_062.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_063",
+      "text": "Beobachte Deinen Atem ohne ihn zu Verändern",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_063.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "clarity",
+          "phase": 2,
+          "kind": "main"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 2,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_064",
+      "text": "Lass die Bewegung kleiner und stiller werden, wenn es von selbst geschieht",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_064.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_065",
+      "text": "Lass die Bewegung kleiner und stiller werden, wenn es von selbst geschieht",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_065.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_066",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/a_take_066.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_067",
+      "text": "Nimm die Berührung der Luft auf Deiner Haut wahr",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_067.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 3,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_068",
+      "text": "Nimm die Berührung der Luft auf Deiner Haut wahr",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_068.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_069",
+      "text": "Stell Dir vor Dein Körper wird mit jedem Atemzug etwas weiter",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_069.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_070",
+      "text": "Stell Dir vor Dein Körper wird mit jedem Atemzug etwas weiter",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_070.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_071",
+      "text": "Deine tatsächliche Atmung bleibt ganz natürlich",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_071.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_072",
+      "text": "Deine tatsächliche Atmung bleibt ganz natürlich",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_072.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_073",
+      "text": "Lass die Vorstellung langsam ausklingen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_073.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_074",
+      "text": "Lass die Vorstellung langsam ausklingen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_074.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 7,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_075",
+      "text": "Setz oder leg Dich an einen sicheren Ort. Setz oder leg Dich an einen sicheren Ort.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_075.mp3",
+      "sentencesCombined": true,
+      "routes": [
+        {
+          "exercise": "wim_hof",
+          "phase": 1,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_076",
+      "text": "Achte aud jedes Zeichen von Schwindel oder Unwohlsein",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_076.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_077",
+      "text": "Achte aud jedes Zeichen von Schwindel oder Unwohlsein",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_077.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_078",
+      "text": "Beende die Übung sofort, wenn Du dich nicht wohlfühlst.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_078.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_079",
+      "text": "Beende die Übung sofort, wenn Du dich nicht wohlfühlst. Komm bewusst im Raum an",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_079.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_080",
+      "text": "Komm bewusst im Raum an",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_080.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 7,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_081",
+      "text": "Spüre den Boden unter Deinem Körper",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_081.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "wim_hof",
+          "phase": 8,
+          "kind": "companion"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_082",
+      "text": "Spüre den Boden unter Deinem Körper",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_082.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_083",
+      "text": "Du kannst jeder Zeit eine Pause machen oder Unerstützung anfordern",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_083.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "holotropic",
+          "phase": 2,
+          "kind": "companion"
+        },
+        {
+          "exercise": "clarity",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_084",
+      "text": "Du kannst jeder Zeit eine Pause machen oder Unerstützung anfordern",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_084.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_085",
+      "text": "Nimm wahr was gerade da ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_085.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "clarity",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_086",
+      "text": "Nimm wahr was gerade da ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_086.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_087",
+      "text": "Du musst nichts verstärken.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_087.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "biodynamic",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_088",
+      "text": "Du musst nichts verstärken.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_088.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_089",
+      "text": "Öffne die Augen und orientiere Dich im Raum wenn es Dir zuzviel wird",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_089.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_090",
+      "text": "Öffne die Augen und orientiere Dich im Raum wenn es Dir zuzviel wird",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_090.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_091",
+      "text": "Spüre wie Du gerade sitzt oder liegst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_091.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 1,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_092",
+      "text": "Spüre wie Du gerade sitzt oder liegst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_092.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_093",
+      "text": "Bleib in Kontakt mit dem Raum",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_093.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "holotropic",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_094",
+      "text": "Bleib in Kontakt mit dem Raum",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_094.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_095",
+      "text": "Wenn Du Unterstützung brauchst, sag es Deiner Begleitperson",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_095.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_096",
+      "text": "Wenn Du Unterstützung brauchst, sag es Deiner Begleitperson",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_096.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_097",
+      "text": "Nimm wahr wie es Dir gerade geht",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_097.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "clarity",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_098",
+      "text": "Nimm wahr wie es Dir gerade geht",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_098.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_099",
+      "text": "Du kannst jeder Zeit langsamer werden oder aufhören.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_099.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_100",
+      "text": "Du kannst jeder Zeit langsamer werden oder aufhören. Lass den Atem wieder seinen natürlichen Weg finden. Lass den Atem wieder seinen natürlichen Weg finden.",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_100.mp3",
+      "sentencesCombined": true,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_101",
+      "text": "Bemerke Empfindungen ohne sie bewerten zu müssen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_101.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_102",
+      "text": "Bewerte Empfindungen ohne sie bewerten zu müssen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_102.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_103",
+      "text": "Orientiere Dich wieder an Deiner Umgebung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_103.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_104",
+      "text": "Orientiere Dich wieder an Deiner Umgebung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_104.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_105",
+      "text": "Nimm einen Moment lang wahr wie du Dich fühlst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_105.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 7,
+          "kind": "companion"
+        },
+        {
+          "exercise": "skin_breathing",
+          "phase": 7,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "fire_breath",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "tummo",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "holotropic",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "biodynamic",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "transformational",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 5,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_106",
+      "text": "Nimm einen Moment lang wahr wie du Dich fühlst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_106.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_107",
+      "text": "Bleib in Kontakt mit Deinem Körper",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_107.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_108",
+      "text": "Bleib in Kontakt mit Deinem Körper",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_108.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_109",
+      "text": "Du darfst jederzeit pausieren und Unterstützung holen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_109.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_110",
+      "text": "Du darfst jederzeit pausieren und Unterstützung holen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_110.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_111",
+      "text": "Spüre den Boden unter Dir",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_111.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_112",
+      "text": "Spüre den Boden unter Dir",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_112.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_113",
+      "text": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_113.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_114",
+      "text": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_114.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 7,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_115",
+      "text": "Nimm Dir Zeit das erlebt Nachwirken zu lassen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_115.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "A_CAND_116",
+      "text": "Nimm Dir Zeit das erlebt Nachwirken zu lassen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/a_take_116.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "tummo",
+          "phase": 6,
+          "kind": "main"
+        },
+        {
+          "exercise": "holotropic",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "clarity",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "transformational",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 5,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "A_CAND_117",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/a_take_117.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_001",
+      "text": "Bleib bei einem Atemrhythmus der sich angenehm anfühlt",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_001.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "rebirthing",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_002",
+      "text": "Bleib bei einem Atemrhythmus der sich angenehm anfühlt",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_002.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_003",
+      "text": "Verkürze die Übung wenn Du Anspannung bemerkst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_003.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_004",
+      "text": "Verkürze die Übung wenn Du Anspannung bemerkst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_004.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_005",
+      "text": "Lass das Atemhalten aus wenn es für Dich nicht passend ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_005.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_006",
+      "text": "Lass das Atemhalten aus wenn es für Dich nicht passend ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_006.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_007",
+      "text": "Eine längere Atempause ist hier kein Ziel",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_007.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_008",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_008.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_009",
+      "text": "Eine längere Atempause ist hier kein Ziel",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_009.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_010",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_010.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_011",
+      "text": "Atme ohn Druck und ohne zu pressen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_011.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_012",
+      "text": "Atme ohn Druck und ohne zu pressen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_012.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_013",
+      "text": "Spüre die Bewegung Deines Brustkorbes",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_013.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_014",
+      "text": "Spüre die Bewegung Deines Brustkorbes",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_014.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_015",
+      "text": "Beobachte wie sich Dein Bauch beim Atmen bewegt",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_015.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_016",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_016.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_017",
+      "text": "Beobachte wie sich Dein Bauch beim Atmen bewegt",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_017.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_018",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_018.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_019",
+      "text": "Nimm wahr ob Dein Atem heute ruhig oder unruhig ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_019.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_020",
+      "text": "Nimm wahr ob Dein Atem heute ruhig oder unruhig ist",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_020.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_021",
+      "text": "Spüre Deine Füße auf dem Boden",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_021.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_022",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_022.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_023",
+      "text": "Spüre Deine Füße auf dem Boden",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_023.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_024",
+      "text": "Öffne die Augen und orientiere Dich an drei Dingen im Raum",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_024.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_025",
+      "text": "Öffne die Augen und orientiere Dich an drei Dingen im Raum",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_025.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_026",
+      "text": "Löse die Spannung im Gesicht",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_026.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_027",
+      "text": "Löse die Spannung im Gesicht",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_027.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_028",
+      "text": "Lass die Zunge locker im Mund liegen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_028.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_029",
+      "text": "Lass die Zunge locker im Mund liegen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_029.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_030",
+      "text": "Gönn Dir zwischen den Runden eine normale Atmung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_030.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "fire_breath",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "wim_hof",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_031",
+      "text": "Gönn Dir zwischen den Runden eine normale Atmung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_031.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_032",
+      "text": "Überprüfe ob Du Dich noch wohlfühlst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_032.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "wim_hof",
+          "phase": 6,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_033",
+      "text": "Überprüfe ob Du Dich noch wohlfühlst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_033.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_034",
+      "text": "Wenn Du Dich benommen fühlst beende die Übung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_034.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_035",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_035.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_036",
+      "text": "Wenn Du Dich benommen fühlst beende die Übung",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_036.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_037",
+      "text": "Wenn Kribbeln, Druck oder Unruhe unangenehm werden, kehre zur natürlöichen Atmung zurück",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_037.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_038",
+      "text": "Wenn Kribbeln, Druck oder Unruhe unangenehm werden, kehre zur natürlöichen Atmung zurück",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_038.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_039",
+      "text": "Nach der Einatmung folgt eine ruhige Übergangsphase",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_039.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_040",
+      "text": "Nach der Einatmung folgt eine ruhige Übergangsphase",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_040.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_041",
+      "text": "Nach der Ausatmung darf eine kurze natürliuche Pause entstehen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_041.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_042",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_042.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_043",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_043.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_044",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_044.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_045",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_045.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_046",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_046.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_047",
+      "text": "Nach der Ausatmung darf eine kurze natürliuche Pause entstehen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_047.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_048",
+      "text": "Halte die Schultern dabei entspannt",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_048.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_049",
+      "text": "Halte die Schultern dabei entspannt",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_049.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_050",
+      "text": "Beobachte den Atem ohne ihn zu beschleunigen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_050.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 2,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_051",
+      "text": "Beobachte den Atem ohne ihn zu beschleunigen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_051.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_052",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_052.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_053",
+      "text": "Lass die Atmung allmählich in Ihr gewohntes Tempo zurücfinden",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_053.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_054",
+      "text": "Lass die Atmung allmählich in Ihr gewohntes Tempo zurücfinden",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_054.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "fire_breath",
+          "phase": 6,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_055",
+      "text": "Spüre das Nachklingen der Übung ohne es Bewerten zu müssen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_055.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "bhastrika",
+          "phase": 6,
+          "kind": "main"
+        },
+        {
+          "exercise": "biodynamic",
+          "phase": 5,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_056",
+      "text": "Spüre das Nachklingen der Übung ohne es Bewerten zu müssen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_056.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_057",
+      "text": "Beende die Übung und setz dich ruhig hin wenn Du dich unsicher fühlst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_057.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "murcha",
+          "phase": 5,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_058",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_058.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_059",
+      "text": "Beende die Übung und setz dich ruhig hin wenn Du dich unsicher fühlst",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_059.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_060",
+      "text": "Ein leichter Summton darf beim Ausatmen entstehen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_060.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_061",
+      "text": "Ein leichter Summton darf beim Ausatmen entstehen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_061.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_062",
+      "text": "Lass den Summton sanft ausklingen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_062.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_063",
+      "text": "Lass den Summton sanft ausklingen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_063.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_064",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_064.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_065",
+      "text": "Nimm die Vibration im Gesicht wahr",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_065.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_066",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_066.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_067",
+      "text": "Nimm die Vibration im Gesicht wahr",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_067.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_068",
+      "text": "Richte Deine Aufmerksamkeit auf den Bereich zwischen den Augenbrauen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_068.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_069",
+      "text": "Richte Deine Aufmerksamkeit auf den Bereich zwischen den Augenbrauen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_069.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_070",
+      "text": "Stell Dir einen ruhigen Weg entlang Deiner Wirbelsäule vor",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_070.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_071",
+      "text": "Stell Dir einen ruhigen Weg entlang Deiner Wirbelsäule vor",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_071.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_072",
+      "text": "Lass das innere Bild mit Deinem normalen Atem mitwandern",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_072.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_073",
+      "text": "Lass das innere Bild mit Deinem normalen Atem mitwandern",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_073.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_074",
+      "text": "Spüre die Luft an Deiner Nasespitze",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_074.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_075",
+      "text": "",
+      "verified": false,
+      "path": "assets/audio/breath/de/advanced/b_take_075.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_076",
+      "text": "Spüre die Luft an Deiner Nasespitze",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_076.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_077",
+      "text": "Stell Dir Vor Dein Körper wird mit der Ausatmung Weicher",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_077.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_078",
+      "text": "Stell Dir Vor Dein Körper wird mit der Ausatmung Weicher",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_078.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_079",
+      "text": "Lass Deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_079.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_080",
+      "text": "Lass Deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_080.mp3",
+      "sentencesCombined": false,
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 8,
+          "kind": "main"
+        }
+      ]
+    },
+    {
+      "id": "B_CAND_081",
+      "text": "Diese Übung ist nur im dafür vorgesehenen begleiteten Rahmen durchzuführen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_081.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    },
+    {
+      "id": "B_CAND_082",
+      "text": "Diese Übung ist nur im dafür vorgesehenen begleiteten Rahmen durchzuführen",
+      "verified": true,
+      "path": "assets/audio/breath/de/advanced/b_take_082.mp3",
+      "sentencesCombined": false,
+      "routes": []
+    }
+  ]
+}
