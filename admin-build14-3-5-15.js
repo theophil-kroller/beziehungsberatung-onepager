@@ -95,7 +95,8 @@
     offerTabs($('#view-packages'),'packages');offerTabs($('#view-programs'),'programs');
   }
 
-  function updateRoadmap(){const p=$('.roadmap-current strong'),value='Aktuell: BUILD 14.3.5.16';if(p&&p.textContent!==value)p.textContent=value}
+  // Legacy feature widgets must not fight over the current build label.
+  function updateRoadmap(){}
   function sync(){if(applying)return;applying=true;try{polishDashboard();ensureNewClient();setupOffers();updateRoadmap()}finally{applying=false}}
   let syncQueued=false;
   function scheduleSync(){if(syncQueued)return;syncQueued=true;requestAnimationFrame(()=>{syncQueued=false;sync()})}

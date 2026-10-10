@@ -76,10 +76,15 @@
   }
   function polishClientOpeners(){$$('#clientsTable button').forEach(b=>{if(b.textContent.trim().toLowerCase()==='akte öffnen'){b.classList.add('b143514-open-record');b.innerHTML=icons.open;b.title='Akte öffnen';b.setAttribute('aria-label','Akte öffnen')}})}
   function polishVault(){const map=[['#vaultLockBtn','lock','Vault sperren'],['#vaultRefreshBtn','refresh','Vault-Status prüfen'],['#vaultUnlockBtn','unlock','Vault entsperren']];map.forEach(([s,i,l])=>{const b=$(s);if(!b||b.classList.contains('b143514-vault-icon'))return;b.classList.add('b143514-vault-icon');b.innerHTML=icons[i];b.title=l;b.setAttribute('aria-label',l)})}
-  function updateRoadmap(){const p=$('.roadmap-current strong');if(p)p.textContent='Aktuell: BUILD 14.3.6.1'}
+  // Version labels are owned by the current release UI; legacy dashboard must not rewrite them.
+  function updateRoadmap(){}
 
-  function apply(){syncDashClass();quickActions();ensureCockpitDialog();ensureDashboardFinance();applyCockpitPrefs();bindWeatherExpand();polishInvoices();polishClientOpeners();polishVault();updateRoadmap()}
-  const mo=new MutationObserver(()=>queueMicrotask(apply));mo.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+  // No dashboard decoration is needed before login. Limit observer to appShell
+  // and run at most once per animation frame; never self-trigger an endless microtask loop.
+  function apply(){if($('#appShell')?.classList.contains('hidden'))return;syncDashClass();quickActions();ensureCockpitDialog();ensureDashboardFinance();applyCockpitPrefs();bindWeatherExpand();polishInvoices();polishClientOpeners();polishVault();updateRoadmap()}
+  let applyQueued=false;
+  const mo=new MutationObserver(()=>{if(applyQueued)return;applyQueued=true;requestAnimationFrame(()=>{applyQueued=false;apply()})});
+  const appShell=$('#appShell');if(appShell)mo.observe(appShell,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
   document.addEventListener('click',()=>setTimeout(apply,0),true);
   window.BDDashboardFinanceRefresh=renderDashboardFinance;
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{apply();setTimeout(renderDashboardFinance,250)},{once:true});else{apply();setTimeout(renderDashboardFinance,250)}
