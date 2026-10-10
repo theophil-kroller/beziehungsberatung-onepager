@@ -299,3 +299,31 @@
 /* Final visual-height and bottom safe padding in compact windows */
 .breath-focus-dialog .focus-session{padding-bottom:clamp(18px,3vh,32px)}
 .breath-focus-dialog .focus-visual{overflow:visible}
+
+/* 15.12.45 - Breathing practice: never require scrolling a spoken instruction. */
+.breath-focus-dialog.is-running{overflow:hidden!important}
+.breath-focus-dialog.is-running .focus-shell{height:100dvh!important;min-height:0!important;max-height:100dvh!important;overflow:hidden!important;box-sizing:border-box;padding:clamp(8px,1.5vh,16px) clamp(12px,2.5vw,26px)!important;}
+.breath-focus-dialog.is-running .focus-header{flex:0 0 auto;padding:0 2px 2px;align-items:center;}
+.breath-focus-dialog.is-running .focus-header h2{font:650 clamp(15px,2.2vw,19px)/1.22 system-ui,-apple-system,sans-serif;margin:0;}
+.breath-focus-dialog.is-running .focus-header .icon-close{font-size:27px;}
+.breath-focus-dialog.is-running .focus-session{flex:1 1 auto;height:auto!important;min-height:0!important;gap:clamp(3px,.65vh,9px);justify-content:space-between;padding:clamp(4px,.8vh,8px) 8px max(7px,env(safe-area-inset-bottom));overflow:hidden!important;}
+.breath-focus-dialog.is-running .focus-time{font-size:clamp(15px,2.5vh,20px);line-height:1.2;margin:0;}
+.breath-focus-dialog.is-running .focus-visual{flex:1 1 28vh;min-height:80px;max-height:35dvh;width:min(460px,91vw);order:1;overflow:hidden;}
+.breath-focus-dialog.is-running .advanced-music-chapter{order:2;flex:0 0 auto;margin:0;line-height:1.2;}
+.breath-focus-dialog.is-running .advanced-guide-progress{order:3;flex:0 0 auto;margin:0;line-height:1.2;}
+.breath-focus-dialog.is-running .focus-cue{order:4;flex:0 0 auto;min-height:clamp(76px,16vh,126px);height:clamp(76px,16vh,126px);max-height:none;overflow:hidden!important;scrollbar-width:none;box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:min(700px,96%);padding:6px 12px;gap:5px;border-radius:16px;background:rgba(255,247,237,.65);}
+.breath-focus-dialog.is-running .focus-cue strong{font:600 clamp(17px,2.6vw,24px)/1.27 Georgia,serif;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden;overflow-wrap:normal;hyphens:auto;max-width:100%;}
+.breath-focus-dialog.is-running .focus-cue strong.cue-compact{font-size:clamp(16px,2.2vw,21px)}
+.breath-focus-dialog.is-running .focus-cue strong.cue-tiny{font-size:clamp(15px,2vw,19px)}
+.breath-focus-dialog.is-running .focus-cue span{font-size:11px;line-height:1.2;margin:0;}
+.breath-focus-dialog.is-running .focus-session-controls{order:5;flex:0 0 auto;position:static;gap:18px;padding:3px 0 5px;margin:0;}
+@media(max-width:620px){
+ .breath-focus-dialog.is-running .focus-visual{max-height:31dvh;min-height:74px;width:min(420px,92vw)}
+ .breath-focus-dialog.is-running .focus-cue{height:clamp(80px,18vh,120px);min-height:clamp(80px,18vh,120px);padding:5px 9px;}
+ .breath-focus-dialog.is-running .focus-cue strong{font-size:clamp(16px,4vw,19px);line-height:1.22;}
+ .breath-focus-dialog.is-running .focus-cue strong.cue-tiny{font-size:15px;}
+}
+@media(max-height:640px){
+ .breath-focus-dialog.is-running .focus-visual{max-height:26dvh;min-height:65px;}
+ .breath-focus-dialog.is-running .focus-cue{height:clamp(66px,18vh,104px);min-height:clamp(66px,18vh,104px)}
+}

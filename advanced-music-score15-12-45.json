@@ -1,0 +1,542 @@
+{
+  "version": "15.12.45",
+  "purpose": "Locally bundled CC0 music library with playable 39-chapter score and crossfade controls.",
+  "trackBase": "assets/audio/breath/soundscapes/",
+  "availableDefault": "celestial-drift-loop.mp3",
+  "note": "Every track path points to a bundled playable MP3; percussion loops embedded in two additional layered stems.",
+  "sessions": {
+    "holotropic": {
+      "durationSeconds": 10800,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "ruhig, weit, getragen",
+          "track": "cc0/somnium.mp3",
+          "fadeSeconds": 0,
+          "sourceTrack": "somnium",
+          "tracks": [
+            "cc0/somnium.mp3",
+            "cc0/first_light.mp3",
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 900,
+          "label": "Aktivierung",
+          "mood": "rhythmisch, aktivierend",
+          "track": "cc0/ambient_tribal.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "ambient_tribal",
+          "tracks": [
+            "cc0/ambient_tribal.mp3",
+            "cc0/synthwave.mp3",
+            "cc0/tribal_percussion.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 3300,
+          "label": "Intensiver Prozess",
+          "mood": "dynamisch, offen",
+          "track": "cc0/tribal_percussion.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "tribal_percussion",
+          "tracks": [
+            "cc0/tribal_percussion.mp3",
+            "cc0/desert_ritual.mp3",
+            "cc0/ambient_tribal.mp3",
+            "cc0/frozen_desert.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 5400,
+          "label": "Wendepunkt",
+          "mood": "emotional, atmosphärisch",
+          "track": "cc0/dream2.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "dream2",
+          "tracks": [
+            "cc0/dream2.mp3",
+            "cc0/budding.mp3",
+            "cc0/persistence.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 7200,
+          "label": "Abklingen",
+          "mood": "beruhigend, weich",
+          "track": "cc0/safe_space.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "safe_space",
+          "tracks": [
+            "cc0/safe_space.mp3",
+            "cc0/revelation.mp3",
+            "cc0/first_light.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 9000,
+          "label": "Integration",
+          "mood": "stille, meditativ",
+          "track": "cc0/contemplation.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "contemplation",
+          "tracks": [
+            "cc0/contemplation.mp3",
+            "cc0/budding.mp3",
+            "cc0/calm_track.mp3"
+          ],
+          "rotateSeconds": 480
+        }
+      ]
+    },
+    "rebirthing": {
+      "durationSeconds": 3300,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "ruhig, warm",
+          "track": "cc0/first_light.mp3",
+          "fadeSeconds": 0,
+          "sourceTrack": "first_light",
+          "tracks": [
+            "cc0/first_light.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 300,
+          "label": "Verbundenes Atmen",
+          "mood": "gleichmäßig, fließend",
+          "track": "cc0/calm_track.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "calm_track",
+          "tracks": [
+            "cc0/calm_track.mp3",
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 840,
+          "label": "Prozessraum",
+          "mood": "offen, wenig rhythmische Ablenkung",
+          "track": "cc0/persistence.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "persistence",
+          "tracks": [
+            "cc0/persistence.mp3",
+            "cc0/safe_space.mp3",
+            "cc0/contemplation.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2280,
+          "label": "Rückkehr",
+          "mood": "sanfter Übergang",
+          "track": "cc0/safe_space.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "safe_space",
+          "tracks": [
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2760,
+          "label": "Integration",
+          "mood": "ruhig, minimalistisch",
+          "track": "cc0/budding.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "budding",
+          "tracks": [
+            "cc0/budding.mp3"
+          ],
+          "rotateSeconds": 480
+        }
+      ]
+    },
+    "clarity": {
+      "durationSeconds": 3300,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "warm, weit",
+          "track": "cc0/somnium.mp3",
+          "fadeSeconds": 0,
+          "sourceTrack": "somnium",
+          "tracks": [
+            "cc0/somnium.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 360,
+          "label": "Atemfluss",
+          "mood": "leichter gleichmäßiger Puls",
+          "track": "cc0/calm_track.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "calm_track",
+          "tracks": [
+            "cc0/calm_track.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 960,
+          "label": "Prozessraum",
+          "mood": "zurückhaltend, fließend",
+          "track": "cc0/safe_space.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "safe_space",
+          "tracks": [
+            "cc0/safe_space.mp3",
+            "cc0/persistence.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2100,
+          "label": "Stabilisieren",
+          "mood": "weich, erdend",
+          "track": "cc0/persistence.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "persistence",
+          "tracks": [
+            "cc0/persistence.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2700,
+          "label": "Integration",
+          "mood": "still, nachklingend",
+          "track": "cc0/revelation.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "revelation",
+          "tracks": [
+            "cc0/revelation.mp3"
+          ],
+          "rotateSeconds": 480
+        }
+      ]
+    },
+    "transformational": {
+      "durationSeconds": 3300,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Intention",
+          "mood": "ruhig, getragen",
+          "track": "cc0/first_light.mp3",
+          "fadeSeconds": 0,
+          "sourceTrack": "first_light",
+          "tracks": [
+            "cc0/first_light.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 600,
+          "label": "Öffnen",
+          "mood": "fließend, zurückhaltend",
+          "track": "cc0/synthwave.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "synthwave",
+          "tracks": [
+            "cc0/synthwave.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 1320,
+          "label": "Reflexionsraum",
+          "mood": "offen und reduziert",
+          "track": "cc0/dream2.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "dream2",
+          "tracks": [
+            "cc0/dream2.mp3",
+            "cc0/persistence.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2040,
+          "label": "Erdung",
+          "mood": "gleichmäßig, ruhig",
+          "track": "cc0/persistence.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "persistence",
+          "tracks": [
+            "cc0/persistence.mp3",
+            "cc0/contemplation.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2640,
+          "label": "Integration",
+          "mood": "minimalistisch, weich",
+          "track": "cc0/budding.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "budding",
+          "tracks": [
+            "cc0/budding.mp3"
+          ],
+          "rotateSeconds": 480
+        }
+      ]
+    },
+    "biodynamic": {
+      "durationSeconds": 3600,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Orientierung",
+          "mood": "sicher, erdend",
+          "track": "cc0/somnium.mp3",
+          "fadeSeconds": 0,
+          "sourceTrack": "somnium",
+          "tracks": [
+            "cc0/somnium.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 420,
+          "label": "Atemwahrnehmung",
+          "mood": "weicher Puls",
+          "track": "cc0/calm_track.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "calm_track",
+          "tracks": [
+            "cc0/calm_track.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 780,
+          "label": "Bewegung",
+          "mood": "behutsam rhythmisch",
+          "track": "cc0/synthwave.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "synthwave",
+          "tracks": [
+            "cc0/synthwave.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 1140,
+          "label": "Ausdruck",
+          "mood": "offen, durchlässig",
+          "track": "cc0/frozen_desert.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "frozen_desert",
+          "tracks": [
+            "cc0/frozen_desert.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 1800,
+          "label": "Regulation",
+          "mood": "stabilisierend",
+          "track": "cc0/revelation.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "revelation",
+          "tracks": [
+            "cc0/revelation.mp3",
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2580,
+          "label": "Integration",
+          "mood": "ruhig, ausklingend",
+          "track": "cc0/contemplation.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "contemplation",
+          "tracks": [
+            "cc0/contemplation.mp3"
+          ],
+          "rotateSeconds": 480
+        }
+      ]
+    },
+    "somatic_breathwork": {
+      "durationSeconds": 2700,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "ruhig, bodenständig",
+          "track": "cc0/safe_space.mp3",
+          "fadeSeconds": 0,
+          "sourceTrack": "safe_space",
+          "tracks": [
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 360,
+          "label": "Körperwahrnehmung",
+          "mood": "klar, fein",
+          "track": "cc0/contemplation.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "contemplation",
+          "tracks": [
+            "cc0/contemplation.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 840,
+          "label": "Erkundung",
+          "mood": "offen, sparsamer Klang",
+          "track": "cc0/persistence.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "persistence",
+          "tracks": [
+            "cc0/persistence.mp3",
+            "cc0/calm_track.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 1380,
+          "label": "Pendeln",
+          "mood": "gleichmäßig, neutral",
+          "track": "cc0/calm_track.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "calm_track",
+          "tracks": [
+            "cc0/calm_track.mp3",
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 1980,
+          "label": "Nachspüren",
+          "mood": "ruhig, wenig Impulse",
+          "track": "cc0/first_light.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "first_light",
+          "tracks": [
+            "cc0/first_light.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2280,
+          "label": "Integration",
+          "mood": "reduziert, weich",
+          "track": "cc0/budding.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "budding",
+          "tracks": [
+            "cc0/budding.mp3"
+          ],
+          "rotateSeconds": 480
+        }
+      ]
+    },
+    "shamanic": {
+      "durationSeconds": 5400,
+      "chapters": [
+        {
+          "atSeconds": 0,
+          "label": "Ankommen",
+          "mood": "erdend, zurückhaltend",
+          "track": "cc0/somnium.mp3",
+          "fadeSeconds": 0,
+          "sourceTrack": "somnium",
+          "tracks": [
+            "cc0/somnium.mp3",
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 720,
+          "label": "Eröffnung",
+          "mood": "organisch, zeremoniell",
+          "track": "cc0/ambient_tribal.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "ambient_tribal",
+          "tracks": [
+            "cc0/ambient_tribal.mp3",
+            "cc0/synthwave.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 1500,
+          "label": "Rhythmus",
+          "mood": "percussiv, repetitiv",
+          "track": "cc0/tribal_percussion.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "tribal_percussion",
+          "tracks": [
+            "cc0/tribal_percussion.mp3",
+            "cc0/ambient_tribal.mp3",
+            "cc0/desert_ritual.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 2700,
+          "label": "Wandel",
+          "mood": "intensiver, offen",
+          "track": "cc0/desert_ritual.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "desert_ritual",
+          "tracks": [
+            "cc0/desert_ritual.mp3",
+            "cc0/frozen_desert.mp3",
+            "cc0/tribal_percussion.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 3900,
+          "label": "Rückkehr",
+          "mood": "langsamer, geerdet",
+          "track": "cc0/revelation.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "revelation",
+          "tracks": [
+            "cc0/revelation.mp3",
+            "cc0/safe_space.mp3"
+          ],
+          "rotateSeconds": 480
+        },
+        {
+          "atSeconds": 4800,
+          "label": "Ausklang",
+          "mood": "ruhig, integrierend",
+          "track": "cc0/safe_space.mp3",
+          "fadeSeconds": 8,
+          "sourceTrack": "safe_space",
+          "tracks": [
+            "cc0/safe_space.mp3",
+            "cc0/contemplation.mp3"
+          ],
+          "rotateSeconds": 480
+        }
+      ]
+    }
+  }
+}
