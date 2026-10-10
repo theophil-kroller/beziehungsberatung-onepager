@@ -1,1399 +1,2651 @@
 {
-  "version": "15.12.36",
+  "version": "15.12.38",
   "base_build": "15.12.35",
   "clips": [
     {
       "id": "A_CAND_001",
       "file": "a_take_001.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_001.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_001.mp3",
+      "verified": true,
+      "spokenText": "Komm in eine bequeme aufrechte Sitzposition",
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 1,
+          "kind": "main"
+        },
+        {
+          "exercise": "kapalabhati",
+          "phase": 1,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_002",
       "file": "a_take_002.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_002.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_002.mp3",
+      "verified": true,
+      "spokenText": "Komm in eine bequeme aufrechte Sitzposition",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_003",
       "file": "a_take_003.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_003.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_003.mp3",
+      "verified": true,
+      "spokenText": "Atme einige Male ganz natürlich durch die Nase",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_004",
       "file": "a_take_004.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_004.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_004.mp3",
+      "verified": true,
+      "spokenText": "Atme einige Male ganz natürlich durch die Nase",
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 2,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_005",
       "file": "a_take_005.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_005.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_005.mp3",
+      "verified": true,
+      "spokenText": "Spüre einen Moment nach.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_006",
       "file": "a_take_006.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_006.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_006.mp3",
+      "verified": true,
+      "spokenText": "Spüre einen Moment nach.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_007",
       "file": "a_take_007.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_007.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_007.mp3",
+      "verified": true,
+      "spokenText": "Öffne langsam wieder die Augen.",
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 6,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_008",
       "file": "a_take_008.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_008.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_008.mp3",
+      "verified": true,
+      "spokenText": "Öffne langsam wieder die Augen. Wenn Dir schwindelig wird, stoppe die Übung, und atme normal weiter",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_009",
       "file": "a_take_009.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_009.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_009.mp3",
+      "verified": true,
+      "spokenText": "Wenn Dir schwindelig wird, stoppe die Übung, und atme normal weiter",
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "fire_breath",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "wim_hof",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_010",
       "file": "a_take_010.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_010.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_010.mp3",
+      "verified": true,
+      "spokenText": "Du darfst jederzeit eine Pause machen.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_011",
       "file": "a_take_011.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_011.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_011.mp3",
+      "verified": true,
+      "spokenText": "Du darfst jederzeit eine Pause machen.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_012",
       "file": "a_take_012.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_012.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_012.mp3",
+      "verified": true,
+      "spokenText": "Erzwinge keine Atempausen.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_013",
       "file": "a_take_013.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_013.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/a_take_013.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_014",
       "file": "a_take_014.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_014.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_014.mp3",
+      "verified": true,
+      "spokenText": "Erzwinge keine Atempausen. Übe niemals im Wasser, beim Autofahren oder in einer anderen gefährlichen Situation",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_015",
       "file": "a_take_015.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_015.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_015.mp3",
+      "verified": true,
+      "spokenText": "Übe niemals im Wasser, beim Autofahren oder in einer anderen gefährlichen Situation",
+      "routes": [
+        {
+          "exercise": "wim_hof",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_016",
       "file": "a_take_016.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_016.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_016.mp3",
+      "verified": true,
+      "spokenText": "Lass Dein Schultern locker werden.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_017",
       "file": "a_take_017.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_017.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_017.mp3",
+      "verified": true,
+      "spokenText": "Lass Dein Schultern locker werden.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_018",
       "file": "a_take_018.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_018.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_018.mp3",
+      "verified": true,
+      "spokenText": "Schließe sanft die Augen, wenn das für Dich angenehm ist",
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_019",
       "file": "a_take_019.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_019.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_019.mp3",
+      "verified": true,
+      "spokenText": "Schließe sanft die Augen, wenn das für Dich angenehm ist",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_020",
       "file": "a_take_020.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_020.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_020.mp3",
+      "verified": true,
+      "spokenText": "Lass den Atem wieder ganz natürlich fließen",
+      "routes": [
+        {
+          "exercise": "rebirthing",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "transformational",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_021",
       "file": "a_take_021.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_021.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_021.mp3",
+      "verified": true,
+      "spokenText": "Lass den Atem wieder ganz natürlich fließen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_022",
       "file": "a_take_022.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_022.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_022.mp3",
+      "verified": true,
+      "spokenText": "Diese Advanced Technik erfordert eine vorherige Einweisung. Die folgenden Hinweise ersetzen keine persönliche Anleitung",
+      "routes": [
+        {
+          "exercise": "murcha",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_023",
       "file": "a_take_023.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_023.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_023.mp3",
+      "verified": true,
+      "spokenText": "Diese Advanced Technik erfordert eine vorherige Einweisung. Die folgenden Hinweise ersetzen keine persönliche Anleitung",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_024",
       "file": "a_take_024.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_024.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/a_take_024.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_025",
       "file": "a_take_025.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_025.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_025.mp3",
+      "verified": true,
+      "spokenText": "Richte Deine Aufmerksamkeit nach Innen.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_026",
       "file": "a_take_026.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_026.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_026.mp3",
+      "verified": true,
+      "spokenText": "Richte Deine Aufmerksamkeit nach Innen.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_027",
       "file": "a_take_027.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_027.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_027.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr wie sich die Atmung von selbst verändert.",
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_028",
       "file": "a_take_028.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_028.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_028.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr wie sich die Atmung von selbst verändert.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_029",
       "file": "a_take_029.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_029.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/a_take_029.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_030",
       "file": "a_take_030.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_030.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_030.mp3",
+      "verified": true,
+      "spokenText": "Verzichte hier auf lange Atempausen oder das erzeugen von Benommenheit.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_031",
       "file": "a_take_031.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_031.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_031.mp3",
+      "verified": true,
+      "spokenText": "Verzichte hier auf lange Atempausen oder das erzeugen von Benommenheit.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_032",
       "file": "a_take_032.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_032.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_032.mp3",
+      "verified": true,
+      "spokenText": "Lass den Atem dannach wieder natürlich fließen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_033",
       "file": "a_take_033.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_033.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_033.mp3",
+      "verified": true,
+      "spokenText": "Lass den Atem dannach wieder natürlich fließen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_034",
       "file": "a_take_034.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_034.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/a_take_034.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_035",
       "file": "a_take_035.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_035.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_035.mp3",
+      "verified": true,
+      "spokenText": "Spüre zuerst wie Dein Atem im Sitzen fließt.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_036",
       "file": "a_take_036.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_036.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_036.mp3",
+      "verified": true,
+      "spokenText": "Spüre zuerst wie Dein Atem im Sitzen fließt.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_037",
       "file": "a_take_037.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_037.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_037.mp3",
+      "verified": true,
+      "spokenText": "Entspanne Kiefer und Schultern.",
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_038",
       "file": "a_take_038.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_038.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_038.mp3",
+      "verified": true,
+      "spokenText": "Entspanne Kiefer und Schultern.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_039",
       "file": "a_take_039.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_039.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_039.mp3",
+      "verified": true,
+      "spokenText": "Wenn Du Beschwerden bemerkst beende die Praxis und atme natürlich weiter.",
+      "routes": [
+        {
+          "exercise": "transformational",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_040",
       "file": "a_take_040.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_040.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_040.mp3",
+      "verified": true,
+      "spokenText": "Wenn Du Beschwerden bemerkst beende die Praxis und atme natürlich weiter. Finde einen stabilen Sitz",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_041",
       "file": "a_take_041.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_041.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_041.mp3",
+      "verified": true,
+      "spokenText": "Finde einen stabilen Sitz",
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 1,
+          "kind": "main"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 1,
+          "kind": "main"
+        },
+        {
+          "exercise": "tummo",
+          "phase": 1,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_042",
       "file": "a_take_042.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_042.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_042.mp3",
+      "verified": true,
+      "spokenText": "Bleib mit Deiner Aufmerksamkeit beim Körper",
+      "routes": [
+        {
+          "exercise": "biodynamic",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_043",
       "file": "a_take_043.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_043.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_043.mp3",
+      "verified": true,
+      "spokenText": "Bleib mit Deiner Aufmerksamkeit beim Körper",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_044",
       "file": "a_take_044.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_044.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_044.mp3",
+      "verified": true,
+      "spokenText": "Richte Dich bequem auf.",
+      "routes": [
+        {
+          "exercise": "fire_breath",
+          "phase": 1,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_045",
       "file": "a_take_045.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_045.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_045.mp3",
+      "verified": true,
+      "spokenText": "Richte Dich bequem auf. Spüre den Kontakt zum Boden",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_046",
       "file": "a_take_046.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_046.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_046.mp3",
+      "verified": true,
+      "spokenText": "Spüre den Kontakt zum Boden",
+      "routes": [
+        {
+          "exercise": "biodynamic",
+          "phase": 1,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_047",
       "file": "a_take_047.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_047.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_047.mp3",
+      "verified": true,
+      "spokenText": "Kehre zur natürlichen Atmung zurück",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_048",
       "file": "a_take_048.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_048.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_048.mp3",
+      "verified": true,
+      "spokenText": "Kehre zur natürlichen Atmung zurück",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_049",
       "file": "a_take_049.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_049.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_049.mp3",
+      "verified": true,
+      "spokenText": "Nimm Wärme und Körperempfindungen wahr ohne sie erzwingen zu wollen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_050",
       "file": "a_take_050.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_050.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_050.mp3",
+      "verified": true,
+      "spokenText": "Nimm Wärme und Körperempfindungen wahr ohne sie erzwingen zu wollen. Lass den Atem frei fließen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_051",
       "file": "a_take_051.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_051.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_051.mp3",
+      "verified": true,
+      "spokenText": "Lass den Atem frei fließen",
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 1,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_052",
       "file": "a_take_052.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_052.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_052.mp3",
+      "verified": true,
+      "spokenText": "Nimm den Kontakt zum Boden wahr",
+      "routes": [
+        {
+          "exercise": "tummo",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_053",
       "file": "a_take_053.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_053.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_053.mp3",
+      "verified": true,
+      "spokenText": "Nimm den Kontakt zum Boden wahr",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_054",
       "file": "a_take_054.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_054.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_054.mp3",
+      "verified": true,
+      "spokenText": "Lenke Deine Aufmerksamkeit sanft entlang Deiner Körpermitte.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_055",
       "file": "a_take_055.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_055.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_055.mp3",
+      "verified": true,
+      "spokenText": "Lenke Deine Aufmerksamkeit sanft entlang Deiner Körpermitte. Lass die Vorstellung weiterziehen ohne etwas zu erzwingen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_056",
       "file": "a_take_056.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_056.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_056.mp3",
+      "verified": true,
+      "spokenText": "Lass die Vorstellung weiterziehen ohne etwas zu erzwingen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_057",
       "file": "a_take_057.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_057.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_057.mp3",
+      "verified": true,
+      "spokenText": "Kehre mit Deiner Aufmerksamkeit zum Atem zurück",
+      "routes": [
+        {
+          "exercise": "tummo",
+          "phase": 5,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_058",
       "file": "a_take_058.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_058.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_058.mp3",
+      "verified": true,
+      "spokenText": "Kehre mit Deiner Aufmerksamkeit zum Atem zurück",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_059",
       "file": "a_take_059.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_059.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/a_take_059.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_060",
       "file": "a_take_060.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_060.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_060.mp3",
+      "verified": true,
+      "spokenText": "Komm zur Ruhe",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_061",
       "file": "a_take_061.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_061.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_061.mp3",
+      "verified": true,
+      "spokenText": "Komm zur Ruhe",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_062",
       "file": "a_take_062.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_062.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_062.mp3",
+      "verified": true,
+      "spokenText": "Beobachte Deinen Atem ohne ihn zu Verändern",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_063",
       "file": "a_take_063.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_063.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_063.mp3",
+      "verified": true,
+      "spokenText": "Beobachte Deinen Atem ohne ihn zu Verändern",
+      "routes": [
+        {
+          "exercise": "clarity",
+          "phase": 2,
+          "kind": "main"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 2,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_064",
       "file": "a_take_064.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_064.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_064.mp3",
+      "verified": true,
+      "spokenText": "Lass die Bewegung kleiner und stiller werden, wenn es von selbst geschieht",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_065",
       "file": "a_take_065.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_065.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_065.mp3",
+      "verified": true,
+      "spokenText": "Lass die Bewegung kleiner und stiller werden, wenn es von selbst geschieht",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_066",
       "file": "a_take_066.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_066.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/a_take_066.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_067",
       "file": "a_take_067.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_067.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_067.mp3",
+      "verified": true,
+      "spokenText": "Nimm die Berührung der Luft auf Deiner Haut wahr",
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 3,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_068",
       "file": "a_take_068.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_068.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_068.mp3",
+      "verified": true,
+      "spokenText": "Nimm die Berührung der Luft auf Deiner Haut wahr",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_069",
       "file": "a_take_069.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_069.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_069.mp3",
+      "verified": true,
+      "spokenText": "Stell Dir vor Dein Körper wird mit jedem Atemzug etwas weiter",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_070",
       "file": "a_take_070.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_070.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_070.mp3",
+      "verified": true,
+      "spokenText": "Stell Dir vor Dein Körper wird mit jedem Atemzug etwas weiter",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_071",
       "file": "a_take_071.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_071.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_071.mp3",
+      "verified": true,
+      "spokenText": "Deine tatsächliche Atmung bleibt ganz natürlich",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_072",
       "file": "a_take_072.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_072.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_072.mp3",
+      "verified": true,
+      "spokenText": "Deine tatsächliche Atmung bleibt ganz natürlich",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_073",
       "file": "a_take_073.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_073.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_073.mp3",
+      "verified": true,
+      "spokenText": "Lass die Vorstellung langsam ausklingen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_074",
       "file": "a_take_074.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_074.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_074.mp3",
+      "verified": true,
+      "spokenText": "Lass die Vorstellung langsam ausklingen",
+      "routes": [
+        {
+          "exercise": "skin_breathing",
+          "phase": 7,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_075",
       "file": "a_take_075.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_075.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_075.mp3",
+      "verified": true,
+      "spokenText": "Setz oder leg Dich an einen sicheren Ort. Setz oder leg Dich an einen sicheren Ort.",
+      "routes": [
+        {
+          "exercise": "wim_hof",
+          "phase": 1,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": true
     },
     {
       "id": "A_CAND_076",
       "file": "a_take_076.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_076.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_076.mp3",
+      "verified": true,
+      "spokenText": "Achte aud jedes Zeichen von Schwindel oder Unwohlsein",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_077",
       "file": "a_take_077.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_077.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_077.mp3",
+      "verified": true,
+      "spokenText": "Achte aud jedes Zeichen von Schwindel oder Unwohlsein",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_078",
       "file": "a_take_078.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_078.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_078.mp3",
+      "verified": true,
+      "spokenText": "Beende die Übung sofort, wenn Du dich nicht wohlfühlst.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_079",
       "file": "a_take_079.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_079.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_079.mp3",
+      "verified": true,
+      "spokenText": "Beende die Übung sofort, wenn Du dich nicht wohlfühlst. Komm bewusst im Raum an",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_080",
       "file": "a_take_080.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_080.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_080.mp3",
+      "verified": true,
+      "spokenText": "Komm bewusst im Raum an",
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 7,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_081",
       "file": "a_take_081.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_081.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_081.mp3",
+      "verified": true,
+      "spokenText": "Spüre den Boden unter Deinem Körper",
+      "routes": [
+        {
+          "exercise": "wim_hof",
+          "phase": 8,
+          "kind": "companion"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_082",
       "file": "a_take_082.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_082.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_082.mp3",
+      "verified": true,
+      "spokenText": "Spüre den Boden unter Deinem Körper",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_083",
       "file": "a_take_083.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_083.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_083.mp3",
+      "verified": true,
+      "spokenText": "Du kannst jeder Zeit eine Pause machen oder Unerstützung anfordern",
+      "routes": [
+        {
+          "exercise": "holotropic",
+          "phase": 2,
+          "kind": "companion"
+        },
+        {
+          "exercise": "clarity",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 1,
+          "kind": "companion"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_084",
       "file": "a_take_084.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_084.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_084.mp3",
+      "verified": true,
+      "spokenText": "Du kannst jeder Zeit eine Pause machen oder Unerstützung anfordern",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_085",
       "file": "a_take_085.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_085.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_085.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr was gerade da ist",
+      "routes": [
+        {
+          "exercise": "clarity",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_086",
       "file": "a_take_086.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_086.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_086.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr was gerade da ist",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_087",
       "file": "a_take_087.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_087.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_087.mp3",
+      "verified": true,
+      "spokenText": "Du musst nichts verstärken.",
+      "routes": [
+        {
+          "exercise": "biodynamic",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_088",
       "file": "a_take_088.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_088.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_088.mp3",
+      "verified": true,
+      "spokenText": "Du musst nichts verstärken.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_089",
       "file": "a_take_089.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_089.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_089.mp3",
+      "verified": true,
+      "spokenText": "Öffne die Augen und orientiere Dich im Raum wenn es Dir zuzviel wird",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_090",
       "file": "a_take_090.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_090.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_090.mp3",
+      "verified": true,
+      "spokenText": "Öffne die Augen und orientiere Dich im Raum wenn es Dir zuzviel wird",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_091",
       "file": "a_take_091.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_091.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_091.mp3",
+      "verified": true,
+      "spokenText": "Spüre wie Du gerade sitzt oder liegst",
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 1,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_092",
       "file": "a_take_092.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_092.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_092.mp3",
+      "verified": true,
+      "spokenText": "Spüre wie Du gerade sitzt oder liegst",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_093",
       "file": "a_take_093.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_093.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_093.mp3",
+      "verified": true,
+      "spokenText": "Bleib in Kontakt mit dem Raum",
+      "routes": [
+        {
+          "exercise": "holotropic",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_094",
       "file": "a_take_094.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_094.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_094.mp3",
+      "verified": true,
+      "spokenText": "Bleib in Kontakt mit dem Raum",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_095",
       "file": "a_take_095.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_095.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_095.mp3",
+      "verified": true,
+      "spokenText": "Wenn Du Unterstützung brauchst, sag es Deiner Begleitperson",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_096",
       "file": "a_take_096.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_096.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_096.mp3",
+      "verified": true,
+      "spokenText": "Wenn Du Unterstützung brauchst, sag es Deiner Begleitperson",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_097",
       "file": "a_take_097.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_097.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_097.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr wie es Dir gerade geht",
+      "routes": [
+        {
+          "exercise": "clarity",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_098",
       "file": "a_take_098.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_098.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_098.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr wie es Dir gerade geht",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_099",
       "file": "a_take_099.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_099.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_099.mp3",
+      "verified": true,
+      "spokenText": "Du kannst jeder Zeit langsamer werden oder aufhören.",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_100",
       "file": "a_take_100.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_100.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_100.mp3",
+      "verified": true,
+      "spokenText": "Du kannst jeder Zeit langsamer werden oder aufhören. Lass den Atem wieder seinen natürlichen Weg finden. Lass den Atem wieder seinen natürlichen Weg finden.",
+      "routes": [],
+      "multipleSentencesSameFile": true
     },
     {
       "id": "A_CAND_101",
       "file": "a_take_101.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_101.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_101.mp3",
+      "verified": true,
+      "spokenText": "Bemerke Empfindungen ohne sie bewerten zu müssen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_102",
       "file": "a_take_102.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_102.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_102.mp3",
+      "verified": true,
+      "spokenText": "Bewerte Empfindungen ohne sie bewerten zu müssen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_103",
       "file": "a_take_103.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_103.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_103.mp3",
+      "verified": true,
+      "spokenText": "Orientiere Dich wieder an Deiner Umgebung",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_104",
       "file": "a_take_104.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_104.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_104.mp3",
+      "verified": true,
+      "spokenText": "Orientiere Dich wieder an Deiner Umgebung",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_105",
       "file": "a_take_105.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_105.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_105.mp3",
+      "verified": true,
+      "spokenText": "Nimm einen Moment lang wahr wie du Dich fühlst",
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 7,
+          "kind": "companion"
+        },
+        {
+          "exercise": "skin_breathing",
+          "phase": 7,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "fire_breath",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "tummo",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "holotropic",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "biodynamic",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "transformational",
+          "phase": 5,
+          "kind": "companion"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 5,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_106",
       "file": "a_take_106.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_106.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_106.mp3",
+      "verified": true,
+      "spokenText": "Nimm einen Moment lang wahr wie du Dich fühlst",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_107",
       "file": "a_take_107.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_107.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_107.mp3",
+      "verified": true,
+      "spokenText": "Bleib in Kontakt mit Deinem Körper",
+      "routes": [
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_108",
       "file": "a_take_108.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_108.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_108.mp3",
+      "verified": true,
+      "spokenText": "Bleib in Kontakt mit Deinem Körper",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_109",
       "file": "a_take_109.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_109.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_109.mp3",
+      "verified": true,
+      "spokenText": "Du darfst jederzeit pausieren und Unterstützung holen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_110",
       "file": "a_take_110.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_110.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_110.mp3",
+      "verified": true,
+      "spokenText": "Du darfst jederzeit pausieren und Unterstützung holen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_111",
       "file": "a_take_111.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_111.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_111.mp3",
+      "verified": true,
+      "spokenText": "Spüre den Boden unter Dir",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_112",
       "file": "a_take_112.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_112.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_112.mp3",
+      "verified": true,
+      "spokenText": "Spüre den Boden unter Dir",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_113",
       "file": "a_take_113.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_113.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_113.mp3",
+      "verified": true,
+      "spokenText": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_114",
       "file": "a_take_114.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_114.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_114.mp3",
+      "verified": true,
+      "spokenText": "Lass die Aufmerksamkeit wieder in den Raum zurückkehren",
+      "routes": [
+        {
+          "exercise": "embryonic",
+          "phase": 7,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_115",
       "file": "a_take_115.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_115.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_115.mp3",
+      "verified": true,
+      "spokenText": "Nimm Dir Zeit das erlebt Nachwirken zu lassen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_116",
       "file": "a_take_116.mp3",
       "group": "A",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/a_take_116.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/a_take_116.mp3",
+      "verified": true,
+      "spokenText": "Nimm Dir Zeit das erlebt Nachwirken zu lassen",
+      "routes": [
+        {
+          "exercise": "tummo",
+          "phase": 6,
+          "kind": "main"
+        },
+        {
+          "exercise": "holotropic",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "clarity",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "rebirthing",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "somatic_breathwork",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "transformational",
+          "phase": 5,
+          "kind": "main"
+        },
+        {
+          "exercise": "shamanic",
+          "phase": 5,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "A_CAND_117",
       "file": "a_take_117.mp3",
       "group": "A",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/a_take_117.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/a_take_117.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_001",
       "file": "b_take_001.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_001.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_001.mp3",
+      "verified": true,
+      "spokenText": "Bleib bei einem Atemrhythmus der sich angenehm anfühlt",
+      "routes": [
+        {
+          "exercise": "rebirthing",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_002",
       "file": "b_take_002.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_002.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_002.mp3",
+      "verified": true,
+      "spokenText": "Bleib bei einem Atemrhythmus der sich angenehm anfühlt",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_003",
       "file": "b_take_003.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_003.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_003.mp3",
+      "verified": true,
+      "spokenText": "Verkürze die Übung wenn Du Anspannung bemerkst",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_004",
       "file": "b_take_004.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_004.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_004.mp3",
+      "verified": true,
+      "spokenText": "Verkürze die Übung wenn Du Anspannung bemerkst",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_005",
       "file": "b_take_005.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_005.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_005.mp3",
+      "verified": true,
+      "spokenText": "Lass das Atemhalten aus wenn es für Dich nicht passend ist",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_006",
       "file": "b_take_006.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_006.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_006.mp3",
+      "verified": true,
+      "spokenText": "Lass das Atemhalten aus wenn es für Dich nicht passend ist",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_007",
       "file": "b_take_007.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_007.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_007.mp3",
+      "verified": true,
+      "spokenText": "Eine längere Atempause ist hier kein Ziel",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_008",
       "file": "b_take_008.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_008.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_008.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_009",
       "file": "b_take_009.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_009.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_009.mp3",
+      "verified": true,
+      "spokenText": "Eine längere Atempause ist hier kein Ziel",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_010",
       "file": "b_take_010.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_010.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_010.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_011",
       "file": "b_take_011.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_011.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_011.mp3",
+      "verified": true,
+      "spokenText": "Atme ohn Druck und ohne zu pressen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_012",
       "file": "b_take_012.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_012.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_012.mp3",
+      "verified": true,
+      "spokenText": "Atme ohn Druck und ohne zu pressen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_013",
       "file": "b_take_013.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_013.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_013.mp3",
+      "verified": true,
+      "spokenText": "Spüre die Bewegung Deines Brustkorbes",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_014",
       "file": "b_take_014.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_014.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_014.mp3",
+      "verified": true,
+      "spokenText": "Spüre die Bewegung Deines Brustkorbes",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_015",
       "file": "b_take_015.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_015.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_015.mp3",
+      "verified": true,
+      "spokenText": "Beobachte wie sich Dein Bauch beim Atmen bewegt",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_016",
       "file": "b_take_016.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_016.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_016.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_017",
       "file": "b_take_017.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_017.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_017.mp3",
+      "verified": true,
+      "spokenText": "Beobachte wie sich Dein Bauch beim Atmen bewegt",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_018",
       "file": "b_take_018.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_018.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_018.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_019",
       "file": "b_take_019.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_019.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_019.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr ob Dein Atem heute ruhig oder unruhig ist",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_020",
       "file": "b_take_020.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_020.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_020.mp3",
+      "verified": true,
+      "spokenText": "Nimm wahr ob Dein Atem heute ruhig oder unruhig ist",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_021",
       "file": "b_take_021.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_021.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_021.mp3",
+      "verified": true,
+      "spokenText": "Spüre Deine Füße auf dem Boden",
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 1,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_022",
       "file": "b_take_022.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_022.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_022.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_023",
       "file": "b_take_023.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_023.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_023.mp3",
+      "verified": true,
+      "spokenText": "Spüre Deine Füße auf dem Boden",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_024",
       "file": "b_take_024.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_024.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_024.mp3",
+      "verified": true,
+      "spokenText": "Öffne die Augen und orientiere Dich an drei Dingen im Raum",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_025",
       "file": "b_take_025.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_025.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_025.mp3",
+      "verified": true,
+      "spokenText": "Öffne die Augen und orientiere Dich an drei Dingen im Raum",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_026",
       "file": "b_take_026.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_026.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_026.mp3",
+      "verified": true,
+      "spokenText": "Löse die Spannung im Gesicht",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_027",
       "file": "b_take_027.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_027.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_027.mp3",
+      "verified": true,
+      "spokenText": "Löse die Spannung im Gesicht",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_028",
       "file": "b_take_028.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_028.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_028.mp3",
+      "verified": true,
+      "spokenText": "Lass die Zunge locker im Mund liegen",
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 2,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_029",
       "file": "b_take_029.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_029.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_029.mp3",
+      "verified": true,
+      "spokenText": "Lass die Zunge locker im Mund liegen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_030",
       "file": "b_take_030.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_030.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_030.mp3",
+      "verified": true,
+      "spokenText": "Gönn Dir zwischen den Runden eine normale Atmung",
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "bhastrika",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "fire_breath",
+          "phase": 4,
+          "kind": "companion"
+        },
+        {
+          "exercise": "wim_hof",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_031",
       "file": "b_take_031.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_031.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_031.mp3",
+      "verified": true,
+      "spokenText": "Gönn Dir zwischen den Runden eine normale Atmung",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_032",
       "file": "b_take_032.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_032.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_032.mp3",
+      "verified": true,
+      "spokenText": "Überprüfe ob Du Dich noch wohlfühlst",
+      "routes": [
+        {
+          "exercise": "kapalabhati",
+          "phase": 6,
+          "kind": "companion"
+        },
+        {
+          "exercise": "wim_hof",
+          "phase": 6,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_033",
       "file": "b_take_033.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_033.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_033.mp3",
+      "verified": true,
+      "spokenText": "Überprüfe ob Du Dich noch wohlfühlst",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_034",
       "file": "b_take_034.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_034.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_034.mp3",
+      "verified": true,
+      "spokenText": "Wenn Du Dich benommen fühlst beende die Übung",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_035",
       "file": "b_take_035.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_035.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_035.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_036",
       "file": "b_take_036.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_036.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_036.mp3",
+      "verified": true,
+      "spokenText": "Wenn Du Dich benommen fühlst beende die Übung",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_037",
       "file": "b_take_037.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_037.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_037.mp3",
+      "verified": true,
+      "spokenText": "Wenn Kribbeln, Druck oder Unruhe unangenehm werden, kehre zur natürlöichen Atmung zurück",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_038",
       "file": "b_take_038.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_038.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_038.mp3",
+      "verified": true,
+      "spokenText": "Wenn Kribbeln, Druck oder Unruhe unangenehm werden, kehre zur natürlöichen Atmung zurück",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_039",
       "file": "b_take_039.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_039.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_039.mp3",
+      "verified": true,
+      "spokenText": "Nach der Einatmung folgt eine ruhige Übergangsphase",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_040",
       "file": "b_take_040.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_040.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_040.mp3",
+      "verified": true,
+      "spokenText": "Nach der Einatmung folgt eine ruhige Übergangsphase",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_041",
       "file": "b_take_041.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_041.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_041.mp3",
+      "verified": true,
+      "spokenText": "Nach der Ausatmung darf eine kurze natürliuche Pause entstehen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_042",
       "file": "b_take_042.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_042.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_042.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_043",
       "file": "b_take_043.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_043.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_043.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_044",
       "file": "b_take_044.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_044.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_044.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_045",
       "file": "b_take_045.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_045.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_045.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_046",
       "file": "b_take_046.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_046.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_046.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_047",
       "file": "b_take_047.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_047.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_047.mp3",
+      "verified": true,
+      "spokenText": "Nach der Ausatmung darf eine kurze natürliuche Pause entstehen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_048",
       "file": "b_take_048.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_048.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_048.mp3",
+      "verified": true,
+      "spokenText": "Halte die Schultern dabei entspannt",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_049",
       "file": "b_take_049.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_049.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_049.mp3",
+      "verified": true,
+      "spokenText": "Halte die Schultern dabei entspannt",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_050",
       "file": "b_take_050.mp3",
       "group": "B",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/b_take_050.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_050.mp3",
+      "verified": true,
+      "spokenText": "Beobachte den Atem ohne ihn zu beschleunigen",
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 2,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_051",
       "file": "b_take_051.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_051.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_051.mp3",
+      "verified": true,
+      "spokenText": "Beobachte den Atem ohne ihn zu beschleunigen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_052",
       "file": "b_take_052.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_052.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_052.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_053",
       "file": "b_take_053.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_053.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_053.mp3",
+      "verified": true,
+      "spokenText": "Lass die Atmung allmählich in Ihr gewohntes Tempo zurücfinden",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_054",
       "file": "b_take_054.mp3",
       "group": "B",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/b_take_054.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_054.mp3",
+      "verified": true,
+      "spokenText": "Lass die Atmung allmählich in Ihr gewohntes Tempo zurücfinden",
+      "routes": [
+        {
+          "exercise": "fire_breath",
+          "phase": 6,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_055",
       "file": "b_take_055.mp3",
       "group": "B",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/b_take_055.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_055.mp3",
+      "verified": true,
+      "spokenText": "Spüre das Nachklingen der Übung ohne es Bewerten zu müssen",
+      "routes": [
+        {
+          "exercise": "bhastrika",
+          "phase": 6,
+          "kind": "main"
+        },
+        {
+          "exercise": "biodynamic",
+          "phase": 5,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_056",
       "file": "b_take_056.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_056.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_056.mp3",
+      "verified": true,
+      "spokenText": "Spüre das Nachklingen der Übung ohne es Bewerten zu müssen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_057",
       "file": "b_take_057.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_057.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_057.mp3",
+      "verified": true,
+      "spokenText": "Beende die Übung und setz dich ruhig hin wenn Du dich unsicher fühlst",
+      "routes": [
+        {
+          "exercise": "murcha",
+          "phase": 5,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_058",
       "file": "b_take_058.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_058.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_058.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_059",
       "file": "b_take_059.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_059.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_059.mp3",
+      "verified": true,
+      "spokenText": "Beende die Übung und setz dich ruhig hin wenn Du dich unsicher fühlst",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_060",
       "file": "b_take_060.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_060.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_060.mp3",
+      "verified": true,
+      "spokenText": "Ein leichter Summton darf beim Ausatmen entstehen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_061",
       "file": "b_take_061.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_061.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_061.mp3",
+      "verified": true,
+      "spokenText": "Ein leichter Summton darf beim Ausatmen entstehen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_062",
       "file": "b_take_062.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_062.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_062.mp3",
+      "verified": true,
+      "spokenText": "Lass den Summton sanft ausklingen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_063",
       "file": "b_take_063.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_063.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_063.mp3",
+      "verified": true,
+      "spokenText": "Lass den Summton sanft ausklingen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_064",
       "file": "b_take_064.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_064.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_064.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_065",
       "file": "b_take_065.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_065.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_065.mp3",
+      "verified": true,
+      "spokenText": "Nimm die Vibration im Gesicht wahr",
+      "routes": [
+        {
+          "exercise": "bhramari_kumbhaka",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_066",
       "file": "b_take_066.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_066.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_066.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_067",
       "file": "b_take_067.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_067.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_067.mp3",
+      "verified": true,
+      "spokenText": "Nimm die Vibration im Gesicht wahr",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_068",
       "file": "b_take_068.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_068.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_068.mp3",
+      "verified": true,
+      "spokenText": "Richte Deine Aufmerksamkeit auf den Bereich zwischen den Augenbrauen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_069",
       "file": "b_take_069.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_069.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_069.mp3",
+      "verified": true,
+      "spokenText": "Richte Deine Aufmerksamkeit auf den Bereich zwischen den Augenbrauen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_070",
       "file": "b_take_070.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_070.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_070.mp3",
+      "verified": true,
+      "spokenText": "Stell Dir einen ruhigen Weg entlang Deiner Wirbelsäule vor",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_071",
       "file": "b_take_071.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_071.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_071.mp3",
+      "verified": true,
+      "spokenText": "Stell Dir einen ruhigen Weg entlang Deiner Wirbelsäule vor",
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 4,
+          "kind": "companion"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_072",
       "file": "b_take_072.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_072.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_072.mp3",
+      "verified": true,
+      "spokenText": "Lass das innere Bild mit Deinem normalen Atem mitwandern",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_073",
       "file": "b_take_073.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_073.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_073.mp3",
+      "verified": true,
+      "spokenText": "Lass das innere Bild mit Deinem normalen Atem mitwandern",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_074",
       "file": "b_take_074.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_074.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_074.mp3",
+      "verified": true,
+      "spokenText": "Spüre die Luft an Deiner Nasespitze",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_075",
       "file": "b_take_075.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_075.mp3"
+      "status": "excluded_unchecked_user_review_15.12.22",
+      "path": "assets/audio/breath/de/advanced/b_take_075.mp3",
+      "verified": false,
+      "spokenText": "",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_076",
       "file": "b_take_076.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_076.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_076.mp3",
+      "verified": true,
+      "spokenText": "Spüre die Luft an Deiner Nasespitze",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_077",
       "file": "b_take_077.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_077.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_077.mp3",
+      "verified": true,
+      "spokenText": "Stell Dir Vor Dein Körper wird mit der Ausatmung Weicher",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_078",
       "file": "b_take_078.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_078.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_078.mp3",
+      "verified": true,
+      "spokenText": "Stell Dir Vor Dein Körper wird mit der Ausatmung Weicher",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_079",
       "file": "b_take_079.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_079.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_079.mp3",
+      "verified": true,
+      "spokenText": "Lass Deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_080",
       "file": "b_take_080.mp3",
       "group": "B",
-      "status": "manually_verified_user_15.12.35",
-      "path": "assets/audio/breath/de/advanced/b_take_080.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_080.mp3",
+      "verified": true,
+      "spokenText": "Lass Deine Aufmerksamkeit wieder in den ganzen Körper zurückkehren",
+      "routes": [
+        {
+          "exercise": "microcosmic_orbit",
+          "phase": 8,
+          "kind": "main"
+        }
+      ],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_081",
       "file": "b_take_081.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_081.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_081.mp3",
+      "verified": true,
+      "spokenText": "Diese Übung ist nur im dafür vorgesehenen begleiteten Rahmen durchzuführen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     },
     {
       "id": "B_CAND_082",
       "file": "b_take_082.mp3",
       "group": "B",
-      "status": "user_listened_candidate_unmapped",
-      "path": "assets/audio/breath/de/advanced/b_take_082.mp3"
+      "status": "user_verified_review_15.12.22_csv",
+      "path": "assets/audio/breath/de/advanced/b_take_082.mp3",
+      "verified": true,
+      "spokenText": "Diese Übung ist nur im dafür vorgesehenen begleiteten Rahmen durchzuführen",
+      "routes": [],
+      "multipleSentencesSameFile": false
     }
   ],
   "excluded": [
@@ -1411,9 +2663,9 @@
     "B039",
     "B040"
   ],
-  "cue_mapping": "19 user-audition-approved A/B source clips mapped to 30 phases; 53 D phases retained; 18 silent phases retained.",
+  "cue_mapping": "83 existing main-voice phases (53 D, 30 A/B), plus 53 context-matched companion cue instances; 18 intentionally quiet phases remain silent. Other verified candidates only in library.",
   "recording_scripts": "assets/audio/breath/advanced/_review",
-  "notes": "19 A/B sources manually listened to and verified by user (2026-10-10); 30 phase reuses. Other A/B/C candidate clips are NOT automatically mapped. Master D 53 phase cues retained. 18 intentional silent phases.",
+  "notes": "Each clip status now follows full user-edited review CSV; unchecked rejected. Combined sentences are one MP3 and are not subdivided. Unused validated recordings are archived for future reviewed protocol matches.",
   "audio_format": "MP3 144kbps 44.1kHz",
   "directory": "assets/audio/breath/de/advanced",
   "approved_sources": {
@@ -1513,5 +2765,9 @@
       "userVerified": true
     }
   },
-  "mapping_approved_at": "2026-10-10T16:38:46.619Z"
+  "mapping_approved_at": "2026-10-10T16:38:46.619Z",
+  "verificationSource": "ADVANCED_VOICE_REVIEW_15.12.22.csv",
+  "reviewedCount": 199,
+  "verifiedCount": 176,
+  "excludedUncheckedCount": 23
 }
