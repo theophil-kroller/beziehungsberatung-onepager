@@ -1,0 +1,50 @@
+BEZIEHUNGSDYNAMIKEN – HOTFIX 15.12.55d
+====================================
+
+UMFANG
+A) Newsletter auf Ilonas Mac: Der lokale App-Ursprung http://127.0.0.1:47832
+   wurde vom Cloudflare Worker für Newsletter-Anfragen bei CORS abgewiesen.
+   Der Worker erlaubt nun NUR die beiden festen lokalen Origins (127.0.0.1 und
+   localhost, Port 47832) für /admin/newsletter sowie Unterpfade. Die
+   bestehende Bearer-Sessionprüfung bleibt unverändert.
+   Newsletter-Browsercode für künftige Desktop-Builds: gleiche Origin über
+   /desktop/cloud (Proxypfad des Desktop Launchers); bei unerreichbarem Dienst
+   statt endlosem Spinner ein Fehlertext und ein Wiederholen-Button.
+
+B) Cockpit: organische Seifenblasen statt kurzem Aufsteigeffekt; 24 Sekunden
+   in sanften Terrakotta-/Sandfarben, langsames Schweben, Größen- und
+   Formveränderungen, vereinzeltes lautloses Platzen. Bei JEDEM Cockpit-Besuch
+   erneut; respektiert reduzierte Animationen und blockiert keine Bedienung.
+
+INSTALLIEREN
+1) Im Cloudflare Worker (beziehungsdynamiken-booking) die Datei
+   cloudflare-worker/worker.js als neuen Source veröffentlichen. Vorher
+   bestehenden produktiven Worker sichern. D1-Migration nicht erneut ausführen.
+   Bestehende Secrets/Bindings nicht verändern.
+2) Auf GitHub Pages im Repository-ROOT ersetzen:
+   admin.html
+   cockpit-bubbles15-12-55.js
+   cockpit-bubbles15-12-55.css
+   newsletter-admin.html
+   newsletter-admin.js
+   Nach Deployment hart neu laden (Windows Strg+Umschalt+R, Mac Cmd+Umschalt+R).
+3) Die Blasen lassen sich ohne Login in VORSCHAU.html betrachten (Datei lokal
+   öffnen). Im realen Cockpit die Navigation verlassen und wieder auf das
+   Dashboard klicken, um sie erneut für 24 Sekunden zu starten.
+4) Newsletter-Test auf Ilonas Mac: App BEIBEHALTEN, ggf. Newsletter-Seite
+   neu laden. Anmeldung weiterhin nötig. Die lokalen und öffentlichen
+   Sitzungen sind getrennt. Wenn Newsletter weiterhin scheitert, bitte
+   konkrete Fehlermeldung und Browser-Konsole/Netzwerkstatus prüfen –
+   keine Account- oder Vault-Neuanlage und kein Versuch, Berechtigungen
+   pauschal zu erhöhen.
+
+RISIKEN & STATUS
+- Keine Änderung an Vault-Keys, Klientendaten, Worker DB oder Methode-Sync.
+- Ein CORS-Fix hebt keine Autorisierung auf, aber ermöglicht damit Browsern
+  von dem definierten localhost-Ursprung authentifizierte Requests.
+- Getestet: JS-Syntax, OPTIONS-CORS für lokale Newsletter-Pfade und keine
+  CORS-Freigabe für andere Admin-Pfade, bestehende Newsletter-Worker-Tests.
+- NICHT bestätigt: echter Mac-Browser-/Cloudflare-Livetest.
+- Die eingebettete Mac/Windows App enthält noch die bisherige Bubble-Datei;
+  der Hotfix erscheint sofort auf der Website. Für App-Fenster beim nächsten
+  echten Desktop-Build einbetten (kein neuer Desktop-Release für Hotfix nötig).

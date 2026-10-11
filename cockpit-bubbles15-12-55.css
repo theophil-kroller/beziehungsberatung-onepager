@@ -1,6 +1,9 @@
-/* Calm cockpit welcome — no sound, no network request, pointer events remain free. */
-#view-dashboard .cockpit-attention{position:relative;isolation:isolate}
-#view-dashboard .bd1555-bubbles{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none;border-radius:20px}
-#view-dashboard .bd1555-bubble{position:absolute;bottom:-46px;left:var(--x);width:var(--size);height:var(--size);border-radius:50%;opacity:0;background:radial-gradient(circle at 31% 27%,rgba(255,247,237,.85),var(--tint) 57%,rgba(201,107,75,.10) 100%);border:1px solid rgba(201,107,75,.18);box-shadow:inset 0 0 8px rgba(255,255,255,.54),0 2px 9px rgba(201,107,75,.10);animation:bd1555-bubble-rise var(--dur) ease-out var(--delay) both}
-@keyframes bd1555-bubble-rise{0%{opacity:0;transform:translate3d(0,14px,0) scale(.8)}18%{opacity:.67}60%{opacity:.57}100%{opacity:0;transform:translate3d(var(--drift),-265px,0) scale(1.08)}}
-@media(prefers-reduced-motion:reduce){#view-dashboard .bd1555-bubbles{display:none!important}}
+/* 15.12.55c: slow organic soap bubbles in the airy Cockpit. Canvas is decorative. */
+#view-dashboard{position:relative;isolation:isolate}
+#view-dashboard>.bd1555-bubbles{
+  position:absolute;top:0;left:0;width:100%;display:block;
+  z-index:3;pointer-events:none!important;user-select:none!important;
+  -webkit-user-select:none!important;contain:paint;
+  opacity:.96;
+}
+@media(prefers-reduced-motion:reduce){#view-dashboard>.bd1555-bubbles{display:none!important}}
