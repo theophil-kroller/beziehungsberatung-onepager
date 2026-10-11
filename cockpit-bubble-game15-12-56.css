@@ -26,3 +26,6 @@
 #bd1556GameDialog .bd1556-restart:hover{background:#fff1e8}
 @media(max-width:660px){.bd1556-bubble-trigger span{display:none}#bd1556GameDialog .bd1556-top{padding:12px;gap:8px}#bd1556GameDialog .bd1556-stats{gap:8px}#bd1556GameDialog .bd1556-stat{min-width:50px}#bd1556GameDialog .bd1556-stat strong{font-size:19px}#bd1556GameDialog .bd1556-bottom{padding:10px;gap:6px}#bd1556GameDialog .bd1556-bottom p{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#bd1556GameDialog::backdrop{backdrop-filter:none}}
+
+/* Icon-only trigger at all screen widths, accessible name stays on button. */
+.bd1556-bubble-trigger{min-width:46px;padding-inline:11px!important}.bd1556-bubble-trigger span{display:none!important}

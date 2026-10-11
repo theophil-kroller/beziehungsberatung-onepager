@@ -16,7 +16,36 @@ const memberPreviewAllowed=(path==='zugang.html'||path==='access.html')&&!!membe
 const style=document.createElement('style');style.id='bdSiteModeBoot';style.textContent='html.bd-site-pending body{visibility:hidden!important}.bd-site-mode-screen{min-height:100vh;background:#fff7ed;color:#2f2623;font-family:Arial,sans-serif;display:grid;place-items:center;padding:28px}.bd-site-mode-card{max-width:720px;background:white;border:1px solid #ead4c0;border-radius:24px;padding:clamp(28px,6vw,58px);box-shadow:0 22px 60px rgba(47,38,35,.08)}.bd-site-mode-card .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:#aa543d}.bd-site-mode-card h1{font-family:Georgia,serif;font-size:clamp(2.3rem,7vw,4.8rem);line-height:1.02;margin:.25em 0}.bd-site-mode-card p{font-size:17px;line-height:1.65;color:#6d5a53}.bd-site-mode-card a{display:inline-block;margin-top:10px;color:#aa543d;font-weight:800;text-decoration:none}.bd-preview-ribbon{position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:99999;background:#2f2623;color:#fff7ed;padding:7px 12px;border-radius:999px;font:700 11px/1 Arial,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.18)}';document.head.appendChild(style);document.documentElement.classList.add('bd-site-pending');
 function robots(value){let m=document.querySelector('meta[name="robots"]');if(!m){m=document.createElement('meta');m.name='robots';document.head.appendChild(m)}m.content=value}
 function carry(url){if(!preview)return url;const u=new URL(url,location.href);u.searchParams.set('bd_preview',preview);return u.href}
-function screen(kind){document.documentElement.classList.remove('bd-site-pending');robots('noindex,nofollow');const privateMode=kind==='private';document.body.innerHTML=`<main class="bd-site-mode-screen"><section class="bd-site-mode-card"><div class="eyebrow">Beziehungsdynamiken</div><h1>${privateMode?'Hier entsteht etwas.':'Diese Seite ist noch nicht öffentlich.'}</h1><p>${privateMode?'Die Website befindet sich derzeit in Vorbereitung.':'Der Wissensbereich ist bereits geöffnet. Beratung, Angebote und Buchung werden erst mit dem Praxisstart freigeschaltet.'}</p>${privateMode?'':`<a href="${carry('/wissen/')}">Zum Wissensbereich →</a>`}</section></main>`}
+function screen(kind){
+  document.documentElement.classList.remove('bd-site-pending');robots('noindex,nofollow');
+  const privateMode=kind==='private';
+  if(privateMode){
+    document.body.innerHTML=`<main class="bd1557-preview" aria-label="Beziehungsdynamiken – Vorschauseite">
+      <div class="bd1557-grain" aria-hidden="true"></div>
+      <header class="bd1557-bar"><a class="bd1557-wordmark" href="/" aria-label="Beziehungsdynamiken Startseite"><span class="bd1557-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="23" r="13" stroke="currentColor" stroke-width="1.6"/><circle cx="29" cy="23" r="13" stroke="#C96B4B" stroke-width="1.6"/><path d="M13 32c6 6 16 6 22 0" stroke="#C96B4B" stroke-width="1.5" stroke-linecap="round"/></svg></span><span>beziehungsdynamiken<span class="bd1557-wordmark-dot">.</span></span></a><span class="bd1557-status"><span class="bd1557-status-dot"></span> IM ENTSTEHEN</span></header>
+      <div class="bd1557-main">
+        <div class="bd1557-copy"><div class="bd1557-eyebrow"><span class="bd1557-line"></span> NEUE PERSPEKTIVEN AUF BEZIEHUNGEN</div>
+          <h1>Was zwischen<br>uns <em>passiert.</em></h1>
+          <p class="bd1557-lead">Manchmal braucht es einen anderen Blick, damit wieder Bewegung möglich wird.</p>
+          <p class="bd1557-support">Hier entsteht gerade ein Ort für ehrliche Fragen, neue Perspektiven und alles, was Beziehungen lebendig macht.</p>
+          <div class="bd1557-coming"><span class="bd1557-coming-line"></span><span>BALD MEHR VON BEZIEHUNGSDYNAMIKEN</span></div>
+        </div>
+        <div class="bd1557-art" aria-label="Interaktive Seifenblasen. Blasen anklicken oder antippen, um sie platzen zu lassen.">
+          <span class="bd1557-halo bd1557-halo-one" aria-hidden="true"></span><span class="bd1557-halo bd1557-halo-two" aria-hidden="true"></span>
+          <canvas id="bd1557PreviewCanvas" aria-label="Seifenblasen zum Platzen bringen" role="img"></canvas>
+          <div class="bd1557-art-footer"><span>Ein kleiner Moment Leichtigkeit.</span><button type="button" class="bd1557-replay" id="bd1557PreviewReplay" aria-label="Seifenblasen noch einmal starten">↻ Noch einmal</button></div>
+        </div>
+      </div>
+      <footer class="bd1557-footer"><span>© Beziehungsdynamiken</span><div><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div></footer>
+    </main>`;
+    if(!document.querySelector('#bd1557-preview-styles')){
+      const l=document.createElement('link');l.id='bd1557-preview-styles';l.rel='stylesheet';l.href='./private-preview15-12-57.css?v=15.12.57';document.head.appendChild(l);
+    }
+    const b=document.createElement('script');b.src='./private-preview15-12-57.js?v=15.12.57';b.async=true;document.head.appendChild(b);
+    return;
+  }
+  document.body.innerHTML=`<main class="bd-site-mode-screen"><section class="bd-site-mode-card"><div class="eyebrow">Beziehungsdynamiken</div><h1>Diese Seite ist noch nicht öffentlich.</h1><p>Der Wissensbereich ist bereits geöffnet. Beratung, Angebote und Buchung werden erst mit dem Praxisstart freigeschaltet.</p><a href="${carry('/wissen/')}">Zum Wissensbereich →</a></section></main>`;
+}
 function knowledgeClean(){
   document.querySelectorAll('a').forEach(a=>{let p='';try{p=(new URL(a.href,location.href).pathname.split('/').pop()||'index.html').toLowerCase()}catch(_){return}if(PRACTICE_ONLY.has(p)){const li=a.closest('li');if(li&&li.children.length===1)li.remove();else a.remove()}});
   document.querySelectorAll('.wa-premium,a[href*="wa.me/"],a[href*="api.whatsapp.com/"],a[aria-label="Warenkorb"],a[title="Warenkorb"],[role="note"][aria-label="Praxisinformation"]').forEach(x=>x.remove());

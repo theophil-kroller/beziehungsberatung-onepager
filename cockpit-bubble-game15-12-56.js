@@ -36,13 +36,16 @@
  function newRound(){
    stop();if(!ctx)return;
    scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0};
-   resize();scoreEl.textContent='0';clockEl.textContent='0:00';bestEl.textContent=String(best());
+   resize();
+   // A lively starting group, already inside the playing field – no waiting at the nozzle.
+   for(let i=0;i<6;i++){spawn(scene,true);const b=scene.bubbles[scene.bubbles.length-1];b.x=scene.width*(.15+i*.096);b.y=scene.height*(.25+(i%4)*.155);b.life=.8+i*.2;}
+   scoreEl.textContent='0';clockEl.textContent='0:00';bestEl.textContent=String(best());
    scene.raf=requestAnimationFrame(frame);
  }
- function spawn(s){
-   const size=rand(15,43),speed=rand(26,68);
+ function spawn(s,initial=false){
+   const size=rand(15,43),speed=rand(43,104);
    const gentle=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-   s.bubbles.push({x:42,y:s.height*.5+rand(-26,26),r:size,speed:gentle?speed*.55:speed,
+   s.bubbles.push({x:42,y:s.height*.5+rand(-s.height*.27,s.height*.27),r:size,speed:gentle?speed*.55:speed,
      vY:rand(-24,21),phase:rand(0,TAU),life:0,tone:Math.floor(rand(0,PALETTE.length)),warp:rand(.02,.055)});
  }
  function paint(b,s,now){
@@ -68,18 +71,29 @@
    ctx.restore();
  }
  function popAt(b,s){
-   s.bursts.push({x:b.x,y:b.y,r:b.r,life:0,tone:b.tone,phase:b.phase});
+   s.bursts.push({x:b.x,y:b.y,r:b.r,life:0,tone:b.tone,phase:b.phase,points:b.r<24?3:b.r<34?2:1});
  }
  function paintBurst(p){
-   const v=p.life/.54;if(v>=1)return false;
-   const rgb=PALETTE[p.tone].join(',');ctx.save();ctx.globalAlpha=1-v;
-   ctx.strokeStyle=`rgba(${rgb},.8)`;ctx.lineWidth=2.4*(1-v)+.2;
-   ctx.beginPath();ctx.arc(p.x,p.y,p.r*(.45+v*.68),0,TAU);ctx.stroke();
-   for(let i=0;i<8;i++){
-     const a=i*TAU/8+p.phase;const rr=p.r*(.5+v*.92);
-     ctx.beginPath();ctx.arc(p.x+Math.cos(a)*rr,p.y+Math.sin(a)*rr,Math.max(.4,(i%3+1)*1.2*(1-v)),0,TAU);
-     ctx.fillStyle=i%2?`rgba(${rgb},.72)`:'rgba(255,255,255,.96)';ctx.fill();
-   }ctx.restore();return true;
+   const v=p.life/.78;if(v>=1)return false;
+   const rgb=PALETTE[p.tone].join(',');ctx.save();ctx.globalAlpha=Math.pow(1-v,1.35);
+   // Expanding double-film rings + glowing fragments like a real soap film breaking.
+   for(let layer=0;layer<2;layer++){
+     ctx.strokeStyle=layer?`rgba(255,255,255,.88)`:`rgba(${rgb},.87)`;
+     ctx.lineWidth=(layer?2:3.7)*(1-v)+.3;
+     ctx.beginPath();ctx.arc(p.x,p.y,p.r*(.23+v*(layer?.94:1.18)),0,TAU);ctx.stroke();
+   }
+   for(let i=0;i<15;i++){
+     const a=i*TAU/15+p.phase,dist=p.r*(.46+v*(1.05+(i%3)*.11));
+     const x=p.x+Math.cos(a)*dist,y=p.y+Math.sin(a)*dist;
+     const rad=Math.max(.5,(i%3+1)*1.65*(1-v));
+     ctx.shadowColor=`rgba(${rgb},.75)`;ctx.shadowBlur=6*(1-v);
+     ctx.beginPath();ctx.arc(x,y,rad,0,TAU);
+     ctx.fillStyle=i%3===0?'rgba(255,255,255,.99)':`rgba(${rgb},.83)`;ctx.fill();
+   }
+   ctx.restore();
+   // Score rises briefly as the film breaks; no extra DOM nodes.
+   if(v<.85){ctx.save();ctx.globalAlpha=clamp(1-v*1.18,0,.95);ctx.fillStyle='#a55f48';ctx.font='700 15px system-ui,sans-serif';ctx.textAlign='center';ctx.fillText('+'+p.points,p.x,p.y-p.r*.6-v*37);ctx.restore()}
+   return true;
  }
  function frame(t){
    const s=scene;if(!s||s.dead||!dialog.open)return;
@@ -87,7 +101,7 @@
    const dt=clamp((t-s.last)/1000,0,.06);s.last=t;
    if(document.hidden){s.raf=requestAnimationFrame(frame);return;}
    s.seconds+=dt;s.spawn+=dt;
-   const interval=.65;
+   const interval=s.seconds<4?.27:s.seconds<10?.45:.66;
    while(s.spawn>=interval){s.spawn-=interval;if(s.bubbles.length<24)spawn(s)}
    ctx.clearRect(0,0,s.width,s.height);
    const slow=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
