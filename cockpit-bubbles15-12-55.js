@@ -45,10 +45,45 @@
       tilt:random(-.5,.5),tone:Math.floor(random(0,4)),
       born:delay,popAt:delay+random(5.2,14.4),pops:Math.random()<.58,dead:false};
   }
+  const FORMATIONS=['heart','free','star','moon','sun','cloud'];
+  let formationVisit=0;
+  try{formationVisit=Number(sessionStorage.getItem('bd1558_cockpit_formation')||0)||0}catch{}
+  // The sequence is intentional: a recognizable new silhouette on each dashboard visit.
+  function formationPoints(name,w,h){
+    const count=name==='sun'?38:30,points=[];
+    const cx=w*.51,cy=h*.40,sx=Math.min(w*.27,210),sy=Math.min(h*.30,155);
+    for(let i=0;i<count;i++){
+      const t=i/count,a=t*TAU;
+      let x=0,y=0;
+      if(name==='heart'){
+        x=16*Math.pow(Math.sin(a),3)/18;
+        y=-(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a))/18;
+      }else if(name==='star'){
+        const seg=t*10,k=Math.floor(seg),f=seg-k;
+        const corner=j=>{const radius=j%2===0?1:.43,ang=j*TAU/10-Math.PI/2;return {x:Math.cos(ang)*radius,y:Math.sin(ang)*radius}};
+        const q=corner(k),r=corner((k+1)%10);x=q.x+(r.x-q.x)*f;y=q.y+(r.y-q.y)*f;
+      }else if(name==='moon'){
+        const p=t<.53?t/.53:(t-.53)/.47;
+        x=.26-(t<.53?.96:.23)*Math.sin(Math.PI*p);
+        y=t<.53?-1+2*p:1-2*p;
+      }else if(name==='sun'){
+        if(i<24){const ringAngle=i*TAU/24;x=Math.cos(ringAngle)*.55;y=Math.sin(ringAngle)*.55;}
+        else{const q=(i-24)/14*TAU;x=Math.cos(q)*(i%2?.90:1.03);y=Math.sin(q)*(i%2?.90:1.03);}
+      }else if(name==='cloud'){
+        // Two overlapping puffs that drift across the cockpit as a gentle cloudbank.
+        const j=i%15,cl=Math.floor(i/15),ang=j*TAU/15;
+        const r=cl===0?.6:.48;
+        x=(cl===0?-.39:.4)+Math.cos(ang)*r;
+        y=(cl===0?.12:-.10)+Math.sin(ang)*(cl===0?.42:.45);
+      }
+      points.push({x:cx+x*sx,y:cy+y*sy});
+    }
+    return points;
+  }
   function position(b,t,scene){
     const age=t-b.born;
     const drift=age;
-    const x=b.x+b.vx*drift+Math.sin(age*b.freqX*TAU+b.phase)*b.swayX;
+    const x=b.x+b.vx*drift+Math.sin(age*b.freqX*TAU+b.phase)*b.swayX+(scene.formation==='cloud'?age*16:0);
     const y=b.y+b.vy*drift+Math.cos(age*b.freqY*TAU+b.phase)*b.swayY;
     // Soft reflections at the canvas boundaries, never crossing into side navigation.
     const margin=b.r+7;
@@ -175,6 +210,20 @@
     };
     // Dashboard greeting remains non-interactive. Game clicks belong exclusively to the overlay.
     for(let i=0;i<13;i++)scene.bubbles.push(bubble(scene.width,scene.height,-random(0,1.8)));
+    // Silhouettes are drawn by many individual bubbles, not a background image.
+    scene.formation=FORMATIONS[formationVisit++ % FORMATIONS.length];
+    try{sessionStorage.setItem('bd1558_cockpit_formation',String(formationVisit))}catch{}
+    if(scene.formation!=='free'){
+      const pts=formationPoints(scene.formation,scene.width,scene.height);
+      scene.bubbles=pts.map((pt,i)=>{
+        const b=bubble(scene.width,scene.height,0);
+        b.x=pt.x;b.y=pt.y;b.r=random(9,18);
+        b.vx=random(-1.8,1.8);b.vy=random(-1.8,1.8);
+        b.swayX=random(2.5,7);b.swayY=random(2.5,7);
+        b.born=-.25;b.pops=false;b.popAt=10;
+        return b;
+      });
+    }
     // Limit total pops: meaningful, occasional bubbles bursting rather than confetti.
     let lastPop=-1e9;
     const ordered=scene.bubbles.filter(b=>b.pops).sort((a,b)=>a.popAt-b.popAt);
@@ -191,7 +240,7 @@
       const time=(now-startAt)/1000;
       scene.time=time;
       // Fade IN only. At the END, all remaining bubbles burst; none fade away.
-      const fade=clamp(time/1.15,0,1);
+      const fade=clamp(time/.65,0,1);
       ctx.clearRect(0,0,scene.width,scene.height);
       if(time>=DURATION_MS/1000){stop();return;}
       if(time>=FINALE_START_SEC&&!scene.finaleScheduled){

@@ -5,20 +5,60 @@
  const rand=(a,b)=>a+Math.random()*(b-a);
  const PALETTE=[[201,107,75],[175,153,197],[139,179,182],[205,167,125]];
  let dialog,canvas,ctx,scoreEl,clockEl,bestEl,scene=null,lastFocused=null;
+ let audioCtx=null,soundButton=null,soundEnabled=true;
+ try{soundEnabled=localStorage.getItem('bd1558_bubble_sound')!=='off'}catch{}
+ const AudioCtor=window.AudioContext||window.webkitAudioContext;
+ function enableAudio(){
+   if(!AudioCtor||!soundEnabled)return;
+   try{if(!audioCtx)audioCtx=new AudioCtor();if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});}catch{}
+ }
+ function audioUi(){
+   if(!soundButton)return;
+   soundButton.textContent=soundEnabled?'Ton an':'Ton aus';
+   soundButton.setAttribute('aria-pressed',String(soundEnabled));
+   soundButton.title=soundEnabled?'Plopp-Ton ausschalten':'Plopp-Ton einschalten';
+ }
+ function playPop(radius){
+   if(!soundEnabled||!audioCtx||audioCtx.state!=='running')return;
+   try{
+     const t=audioCtx.currentTime, duration=.105;
+     const note=audioCtx.createOscillator(),gain=audioCtx.createGain();
+     note.type='sine';
+     const pitch=370+Math.min(170,Math.max(0,44-radius)*4.2);
+     note.frequency.setValueAtTime(pitch,t);
+     note.frequency.exponentialRampToValueAtTime(Math.max(120,pitch*.43),t+.079);
+     gain.gain.setValueAtTime(.0001,t);
+     gain.gain.exponentialRampToValueAtTime(.105,t+.007);
+     gain.gain.exponentialRampToValueAtTime(.0001,t+duration);
+     note.connect(gain).connect(audioCtx.destination);note.start(t);note.stop(t+duration+.005);
+     note.onended=()=>{try{note.disconnect();gain.disconnect()}catch{}};
+     // A tiny airy film break, generated offline with no external audio asset.
+     const buffer=audioCtx.createBuffer(1,Math.ceil(audioCtx.sampleRate*.037),audioCtx.sampleRate);
+     const data=buffer.getChannelData(0);
+     for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/data.length,2);
+     const noise=audioCtx.createBufferSource(),filter=audioCtx.createBiquadFilter(),ng=audioCtx.createGain();
+     noise.buffer=buffer;filter.type='bandpass';filter.frequency.value=1350;filter.Q.value=.85;
+     ng.gain.setValueAtTime(.014,t);ng.gain.exponentialRampToValueAtTime(.0001,t+.035);
+     noise.connect(filter).connect(ng).connect(audioCtx.destination);noise.start(t);noise.stop(t+.037);
+     noise.onended=()=>{try{noise.disconnect();filter.disconnect();ng.disconnect()}catch{}};
+   }catch{}
+ }
+
  function makeDialog(){
    const btn=document.getElementById('bdBubbleGameOpen');
    if(!btn||document.getElementById('bd1556GameDialog'))return;
    dialog=document.createElement('dialog');dialog.id='bd1556GameDialog';dialog.setAttribute('aria-labelledby','bd1556GameTitle');
-   dialog.innerHTML=`<div class="bd1556-shell"><div class="bd1556-top"><div><div class="bd1556-kicker">Eine kleine Auszeit</div><h2 id="bd1556GameTitle">Seifenblasen-Pause</h2></div><div class="bd1556-stats"><span class="bd1556-stat"><strong id="bd1556Score">0</strong><small>Punkte</small></span><span class="bd1556-stat"><strong id="bd1556Time">0:00</strong><small>Spielzeit</small></span><span class="bd1556-stat"><strong id="bd1556Best">0</strong><small>Rekord</small></span></div><button type="button" class="bd1556-close" aria-label="Seifenblasen-Pause schließen" title="Schließen">×</button></div><div class="bd1556-field" id="bd1556Field" aria-label="Spielfeld: Blasen durch Klicken oder Tippen platzen lassen"><canvas id="bd1556Canvas" aria-hidden="true"></canvas><div class="bd1556-nozzle" aria-hidden="true"></div><span class="bd1556-field-hint">Blasen anklicken oder antippen · kein Zeitlimit</span></div><div class="bd1556-bottom"><p>Einfach ausprobieren. Keine Eile, kein Ton.</p><button type="button" class="bd1556-restart">Neue Runde</button></div></div>`;
+   dialog.innerHTML=`<div class="bd1556-shell"><div class="bd1556-top"><div><div class="bd1556-kicker">Eine kleine Auszeit</div><h2 id="bd1556GameTitle">Seifenblasen-Pause</h2></div><div class="bd1556-stats"><span class="bd1556-stat"><strong id="bd1556Score">0</strong><small>Punkte</small></span><span class="bd1556-stat"><strong id="bd1556Time">0:00</strong><small>Spielzeit</small></span><span class="bd1556-stat"><strong id="bd1556Best">0</strong><small>Rekord</small></span></div><button type="button" class="bd1556-close" aria-label="Seifenblasen-Pause schließen" title="Schließen">×</button></div><div class="bd1556-field" id="bd1556Field" aria-label="Spielfeld: Blasen durch Klicken oder Tippen platzen lassen"><canvas id="bd1556Canvas" aria-hidden="true"></canvas><div class="bd1556-nozzle" aria-hidden="true"></div><span class="bd1556-field-hint">Blasen anklicken oder antippen · kein Zeitlimit</span></div><div class="bd1556-bottom"><p>Einfach ausprobieren. Keine Eile.</p><div class="bd1558-controls"><button type="button" class="bd1558-sound" aria-pressed="true">Ton an</button><button type="button" class="bd1556-restart">Neue Runde</button></div></div></div>`;
    document.body.appendChild(dialog);
    canvas=dialog.querySelector('canvas');ctx=canvas.getContext('2d',{alpha:true});
-   scoreEl=dialog.querySelector('#bd1556Score');clockEl=dialog.querySelector('#bd1556Time');bestEl=dialog.querySelector('#bd1556Best');
+   scoreEl=dialog.querySelector('#bd1556Score');clockEl=dialog.querySelector('#bd1556Time');bestEl=dialog.querySelector('#bd1556Best');soundButton=dialog.querySelector('.bd1558-sound');audioUi();
    dialog.querySelector('.bd1556-close').addEventListener('click',()=>dialog.close());
-   dialog.querySelector('.bd1556-restart').addEventListener('click',()=>newRound());
+   dialog.querySelector('.bd1556-restart').addEventListener('click',()=>{enableAudio();newRound()});
+   soundButton?.addEventListener('click',()=>{soundEnabled=!soundEnabled;try{localStorage.setItem('bd1558_bubble_sound',soundEnabled?'on':'off')}catch{};audioUi();if(soundEnabled)enableAudio();});
    dialog.addEventListener('close',()=>{stop();lastFocused?.focus?.();});
    dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
    canvas.addEventListener('pointerdown',onPointer);
-   btn.addEventListener('click',()=>{if(!dialog.open){lastFocused=btn;dialog.showModal();newRound();}});
+   btn.addEventListener('click',()=>{if(!dialog.open){lastFocused=btn;enableAudio();dialog.showModal();newRound();}});
    window.addEventListener('resize',()=>{if(scene)resize()},{passive:true});
  }
  function best(){try{return Number(localStorage.getItem('bd1556_bubble_best')||0)||0;}catch{return 0}}
@@ -126,7 +166,7 @@
    for(let i=s.bubbles.length-1;i>=0;i--){const b=s.bubbles[i];
      if(Math.hypot(b.x-x,b.y-y)<b.r*1.16){index=i;break;}}
    if(index<0)return;
-   const b=s.bubbles.splice(index,1)[0];popAt(b,s);
+   const b=s.bubbles.splice(index,1)[0];enableAudio();playPop(b.r);popAt(b,s);
    const points=b.r<24?3:b.r<34?2:1;
    s.score+=points;scoreEl.textContent=String(s.score);
    if(s.score>best()){saveBest(s.score);bestEl.textContent=String(s.score)}

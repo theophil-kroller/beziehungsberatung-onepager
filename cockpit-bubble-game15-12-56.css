@@ -29,3 +29,10 @@
 
 /* Icon-only trigger at all screen widths, accessible name stays on button. */
 .bd1556-bubble-trigger{min-width:46px;padding-inline:11px!important}.bd1556-bubble-trigger span{display:none!important}
+
+/* 15.12.58: sound control, no audio files or background playback */
+.bd1558-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:10px}
+.bd1558-sound{border:1px solid rgba(181,123,94,.36);border-radius:14px;padding:10px 15px;color:#856958;background:rgba(255,253,250,.85);font:650 13px system-ui,sans-serif;cursor:pointer;min-height:40px}
+.bd1558-sound[aria-pressed="true"]{border-color:rgba(201,107,75,.65);color:#a55236}
+.bd1558-sound:hover,.bd1558-sound:focus-visible{background:#fff;outline-offset:2px}
+@media(max-width:500px){.bd1558-controls{gap:6px}.bd1558-sound{padding:8px 11px}}

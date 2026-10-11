@@ -22,26 +22,25 @@ function screen(kind){
   if(privateMode){
     document.body.innerHTML=`<main class="bd1557-preview" aria-label="Beziehungsdynamiken – Vorschauseite">
       <div class="bd1557-grain" aria-hidden="true"></div>
-      <header class="bd1557-bar"><a class="bd1557-wordmark" href="/" aria-label="Beziehungsdynamiken Startseite"><span class="bd1557-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="23" r="13" stroke="currentColor" stroke-width="1.6"/><circle cx="29" cy="23" r="13" stroke="#C96B4B" stroke-width="1.6"/><path d="M13 32c6 6 16 6 22 0" stroke="#C96B4B" stroke-width="1.5" stroke-linecap="round"/></svg></span><span>beziehungsdynamiken<span class="bd1557-wordmark-dot">.</span></span></a><span class="bd1557-status"><span class="bd1557-status-dot"></span> IM ENTSTEHEN</span></header>
+      <header class="bd1557-bar"><a class="bd1557-wordmark" href="/" aria-label="Beziehungsdynamiken Startseite"><span class="bd1557-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="23" r="13" stroke="currentColor" stroke-width="1.6"/><circle cx="29" cy="23" r="13" stroke="#C96B4B" stroke-width="1.6"/><path d="M13 32c6 6 16 6 22 0" stroke="#C96B4B" stroke-width="1.5" stroke-linecap="round"/></svg></span><span>beziehungsdynamiken<span class="bd1557-wordmark-dot">.</span></span></a></header>
       <div class="bd1557-main">
-        <div class="bd1557-copy"><div class="bd1557-eyebrow"><span class="bd1557-line"></span> NEUE PERSPEKTIVEN AUF BEZIEHUNGEN</div>
-          <h1>Was zwischen<br>uns <em>passiert.</em></h1>
-          <p class="bd1557-lead">Manchmal braucht es einen anderen Blick, damit wieder Bewegung möglich wird.</p>
-          <p class="bd1557-support">Hier entsteht gerade ein Ort für ehrliche Fragen, neue Perspektiven und alles, was Beziehungen lebendig macht.</p>
-          <div class="bd1557-coming"><span class="bd1557-coming-line"></span><span>BALD MEHR VON BEZIEHUNGSDYNAMIKEN</span></div>
+        <div class="bd1557-copy">
+          <h1>Was zwischen uns <em>wirklich</em> los ist.</h1>
+          <p class="bd1557-lead">Warum Gespräche kippen. Warum wir uns zurückziehen, obwohl wir Nähe wollen. Warum Eifersucht, Streit und Verletzungen oft mehr mit unseren Mustern zu tun haben, als uns lieb ist.</p>
+          <p class="bd1557-support">Hier entsteht Beziehungsdynamiken. Bald gibt es mehr zu entdecken.</p>
         </div>
         <div class="bd1557-art" aria-label="Interaktive Seifenblasen. Blasen anklicken oder antippen, um sie platzen zu lassen.">
           <span class="bd1557-halo bd1557-halo-one" aria-hidden="true"></span><span class="bd1557-halo bd1557-halo-two" aria-hidden="true"></span>
           <canvas id="bd1557PreviewCanvas" aria-label="Seifenblasen zum Platzen bringen" role="img"></canvas>
-          <div class="bd1557-art-footer"><span>Ein kleiner Moment Leichtigkeit.</span><button type="button" class="bd1557-replay" id="bd1557PreviewReplay" aria-label="Seifenblasen noch einmal starten">↻ Noch einmal</button></div>
+          <div class="bd1557-art-footer"><span>Hier darf auch mal etwas platzen.</span><button type="button" class="bd1557-replay" id="bd1557PreviewReplay" aria-label="Seifenblasen noch einmal starten">↻ Noch einmal</button></div>
         </div>
       </div>
       <footer class="bd1557-footer"><span>© Beziehungsdynamiken</span><div><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div></footer>
     </main>`;
     if(!document.querySelector('#bd1557-preview-styles')){
-      const l=document.createElement('link');l.id='bd1557-preview-styles';l.rel='stylesheet';l.href='./private-preview15-12-57.css?v=15.12.57';document.head.appendChild(l);
+      const l=document.createElement('link');l.id='bd1557-preview-styles';l.rel='stylesheet';l.href='./private-preview15-12-57.css?v=15.12.58';document.head.appendChild(l);
     }
-    const b=document.createElement('script');b.src='./private-preview15-12-57.js?v=15.12.57';b.async=true;document.head.appendChild(b);
+    const b=document.createElement('script');b.src='./private-preview15-12-57.js?v=15.12.58';b.async=true;document.head.appendChild(b);
     return;
   }
   document.body.innerHTML=`<main class="bd-site-mode-screen"><section class="bd-site-mode-card"><div class="eyebrow">Beziehungsdynamiken</div><h1>Diese Seite ist noch nicht öffentlich.</h1><p>Der Wissensbereich ist bereits geöffnet. Beratung, Angebote und Buchung werden erst mit dem Praxisstart freigeschaltet.</p><a href="${carry('/wissen/')}">Zum Wissensbereich →</a></section></main>`;
@@ -51,6 +50,39 @@ function knowledgeClean(){
   document.querySelectorAll('.wa-premium,a[href*="wa.me/"],a[href*="api.whatsapp.com/"],a[aria-label="Warenkorb"],a[title="Warenkorb"],[role="note"][aria-label="Praxisinformation"]').forEach(x=>x.remove());
   document.querySelectorAll('[data-practice-only]').forEach(x=>x.remove());
 }
+async function showPrivateLegal(){
+  // Keep legally required content accessible in Private Preview, without rendering the live site's navigation.
+  if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
+  const original=document.querySelector('main');
+  const sections=original?[...original.querySelectorAll('.legal-card')]:[];
+  if(!sections.length){screen('private');return;}
+  const headline=path==='impressum.html'?'Impressum':'Datenschutz';
+  const wrap=document.createElement('main');wrap.className='bd1558-legal';
+  const header=document.createElement('header');header.className='bd1558-legal-header';
+  const back=document.createElement('a');back.href='/';back.textContent='← Zur Startseite';header.append(back);
+  const content=document.createElement('article');content.className='bd1558-legal-content';
+  const label=document.createElement('p');label.className='bd1558-legal-eyebrow';label.textContent='BEZIEHUNGSDYNAMIKEN · RECHTLICHES';
+  const title=document.createElement('h1');title.textContent=headline;
+  content.append(label,title);
+  for(const section of sections){
+    const copy=section.cloneNode(true);
+    for(const link of copy.querySelectorAll('a[href]')){
+      const href=link.getAttribute('href')||'';
+      if(href.startsWith('mailto:')||href.startsWith('tel:'))continue;
+      if(href.startsWith('https://')){
+        try{const u=new URL(href,location.href);if(u.hostname==='beziehungsdynamiken.at'||u.hostname==='www.beziehungsdynamiken.at')link.href='/';else{link.target='_blank';link.rel='noopener noreferrer'}}catch(_){link.removeAttribute('href')}
+        continue;
+      }
+      if(!href.startsWith('#'))link.removeAttribute('href');
+    }
+    content.append(copy);
+  }
+  wrap.append(header,content);document.body.replaceChildren(wrap);
+  if(!document.getElementById('bd1558-legal-style')){
+    const style=document.createElement('style');style.id='bd1558-legal-style';style.textContent='.bd1558-legal{box-sizing:border-box;min-height:100svh;background:linear-gradient(120deg,#fffdf8,#fff7ed);color:#2f2623;font:16px/1.65 system-ui,sans-serif;padding:24px max(24px,calc((100vw - 900px)/2)) 72px}.bd1558-legal *{box-sizing:border-box}.bd1558-legal-header{padding:10px 0 24px;border-bottom:1px solid #e8d2be}.bd1558-legal-header a{font-size:14px;text-decoration:none;color:#a9543b;font-weight:700}.bd1558-legal-content{padding-top:42px}.bd1558-legal-eyebrow{color:#b55e41;font-size:11px;letter-spacing:.14em;font-weight:800}.bd1558-legal-content h1{font:400 clamp(42px,7vw,68px)/1.1 Georgia,serif;margin:16px 0 32px}.bd1558-legal .legal-card{margin:20px 0;padding:clamp(22px,5vw,42px);box-shadow:none}.bd1558-legal .legal-card h2{font-size:21px;line-height:1.3}.bd1558-legal .legal-card p,.bd1558-legal .legal-card li{overflow-wrap:anywhere}.bd1558-legal .legal-card a{color:#a9543b}';document.head.appendChild(style);
+  }
+  robots('noindex,nofollow');document.documentElement.classList.remove('bd-site-pending');
+}
 function previewRibbon(mode){if(!preview&&!memberPreviewAllowed)return;const b=document.createElement('div');b.className='bd-preview-ribbon';b.textContent=memberPreviewAllowed?'Kundenansicht · Vorschau':'Vorschau · '+(mode==='practice'?'Praxis live':mode==='knowledge'?'Wissensmodus':'Privat');document.body.appendChild(b)}
 function enablePreviewPropagation(){if(!preview||window.__bdPreviewPropagationInstalled)return;window.__bdPreviewPropagationInstalled=true;const nativeFetch=window.fetch.bind(window);window.fetch=(input,init)=>{try{const raw=typeof input==='string'?input:input?.url||'',u=new URL(raw,location.href);if(u.origin===new URL(API).origin&&!u.searchParams.has('bd_preview')&&!u.searchParams.has('preview'))u.searchParams.set('bd_preview',preview);if(typeof input==='string')return nativeFetch(u.toString(),init);if(input instanceof Request)return nativeFetch(new Request(u.toString(),input),init)}catch(_){}return nativeFetch(input,init)};const rewrite=()=>document.querySelectorAll('a[href]').forEach(a=>{try{const u=new URL(a.href,location.href);if(u.origin===location.origin&&!u.searchParams.has('bd_preview')){u.searchParams.set('bd_preview',preview);a.href=u.toString()}}catch(_){}});const startObserver=()=>{rewrite();const o=new MutationObserver(()=>rewrite());o.observe(document.body,{childList:true,subtree:true})};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startObserver,{once:true});else startObserver()}
 enablePreviewPropagation();
@@ -58,14 +90,14 @@ async function boot(){
   try{
     const q=preview?'?preview='+encodeURIComponent(preview):'';const r=await fetch(API+'/public/site-mode'+q,{cache:'no-store'});if(!r.ok)throw new Error();const x=await r.json(),mode=x.mode||'private';window.BD_SITE_MODE=x;document.documentElement.dataset.siteMode=mode;
     if(memberPreviewAllowed){robots('noindex,nofollow');document.documentElement.classList.remove('bd-site-pending');previewRibbon(mode);return}
-    if(mode==='private'&&!LEGAL.has(path)){screen('private');return}
+    if(mode==='private'){if(LEGAL.has(path))await showPrivateLegal();else screen('private');return}
     if(mode==='knowledge'&&(path==='about.html'||path==='about-en.html')){location.replace(carry('/wissen/ueber-mich.html'));return}
     if(mode==='knowledge'&&PRACTICE_ONLY.has(path)){screen('knowledge');return}
     if(mode==='knowledge'&&isRoot){location.replace(carry('/wissen/'));return}
     if(mode==='knowledge')knowledgeClean();
     robots(preview?'noindex,nofollow':mode==='practice'?'index,follow':'index,follow');
     document.documentElement.classList.remove('bd-site-pending');previewRibbon(mode);
-  }catch(_){if(memberPreviewAllowed){robots('noindex,nofollow');document.documentElement.classList.remove('bd-site-pending');previewRibbon('private')}else if(LEGAL.has(path))document.documentElement.classList.remove('bd-site-pending');else screen('private')}
+  }catch(_){if(memberPreviewAllowed){robots('noindex,nofollow');document.documentElement.classList.remove('bd-site-pending');previewRibbon('private')}else if(LEGAL.has(path))await showPrivateLegal();else screen('private')}
 }
 boot();
 })();
