@@ -409,61 +409,81 @@ function resumeSoundscape(){
  updateMusicMix();
 }
 function duckSoundscape(on){soundscapeDucked=!!on;updateMusicMix()}
-function stopVoice(){voiceToken++;if(run?.b?.advancedSession)setCueText('');if(voiceAudio){try{voiceAudio.pause();voiceAudio.currentTime=0}catch(_){ }voiceAudio=null}stopSpeech();duckSoundscape(false)}
+function stopVoice(){voiceToken++;if(run?.b?.advancedSession)setCueText('');if(voiceAudio){const a=voiceAudio;try{a.pause();a.currentTime=0;a._finish?.(false)}catch(_){ }voiceAudio=null}stopSpeech();duckSoundscape(false)}
 let speechToken=0;
 function stopSpeech(){speechToken++;try{if(window.speechSynthesis)window.speechSynthesis.cancel()}catch(_){}duckSoundscape(false)}
 /* Advanced uses verified MP3 cues only; phases without recording display text silently. */
 
-// 15.12.46: Fit each cue page to the REAL rendered space; never ellipsize spoken instructions.
-function cuePages(text){
- const raw=String(text||'').replace(/\s+/g,' ').trim();if(!raw)return [''];
+// 15.12.47: A caption belongs to one entire recording. Never switch mid-sentence
+// using estimated elapsed time: those estimates cannot follow a human speaker.
+let cueFitFrame=0;
+function fitCurrentCue(){
  const el=$('#breathPhase'),box=el?.closest('.focus-cue');
- const fallback=()=>{const max=window.innerWidth<=620?42:70,words=raw.split(' '),result=[];let part='';for(const word of words){const next=part?part+' '+word:word;if(next.length>max&&part){result.push(part);part=word}else part=next}if(part)result.push(part);return result};
- if(!box||!box.clientWidth||!box.clientHeight)return fallback();
- const style=getComputedStyle(box),paddingX=(parseFloat(style.paddingLeft)||0)+(parseFloat(style.paddingRight)||0),paddingY=(parseFloat(style.paddingTop)||0)+(parseFloat(style.paddingBottom)||0);
- const width=Math.max(105,box.clientWidth-paddingX-12);
- const remaining=$('#breathPhaseSeconds'),secondary=remaining&&remaining.textContent.trim()?(remaining.getBoundingClientRect().height+8):0;
- // Include a guard band for font rendering and browser text metrics.
- const available=Math.max(31,box.clientHeight-paddingY-secondary-9);
- const measure=document.createElement('strong');measure.className='cue-layout-probe';
- measure.style.width=width+'px';measure.style.maxWidth='none';box.append(measure);
- const fits=t=>{measure.textContent=t;return measure.scrollHeight<=available+.5&&measure.scrollWidth<=width+1};
- const words=raw.split(' '),pages=[];let page='';
- for(const word of words){
-  const candidate=page?page+' '+word:word;
-  if(page&&!fits(candidate)){pages.push(page);page=word}else page=candidate;
+ if(!el||!box||!el.textContent||!$('#breathDialog')?.classList.contains('is-running'))return;
+ el.style.fontSize='';el.style.lineHeight='';
+ const other=$('#breathPhaseSeconds'),otherHeight=other?.textContent.trim()?other.getBoundingClientRect().height+7:0;
+ const css=getComputedStyle(box),pad=(parseFloat(css.paddingTop)||0)+(parseFloat(css.paddingBottom)||0);
+ let available=Math.max(36,box.clientHeight-otherHeight-pad-5);
+ const mobile=window.innerWidth<=620;
+ const max=mobile?20:24,min=mobile?12.5:14;
+ for(let font=max;font>=min;font-=.5){
+  el.style.fontSize=font+'px';el.style.lineHeight='1.23';
+  if(el.scrollHeight<=available+2)break;
  }
- if(page)pages.push(page);measure.remove();return pages.length?pages:[raw];
+ // The long transcript stays with its recording, but never grows into controls.
+ if(el.scrollHeight>available+3){box.classList.add('cue-long')}else box.classList.remove('cue-long');
 }
-function setCueText(t,start=false,pageIndex=0){
+function setCueText(t,start=false){
  const el=$('#breathPhase');if(!el)return;
- const pages=cuePages(t),idx=Math.max(0,Math.min(pages.length-1,pageIndex));
- el.textContent=pages[idx];el.dataset.cuePage=String(idx+1);el.dataset.cuePages=String(pages.length);
+ el.textContent=String(t||'').replace(/\s+/g,' ').trim();
  el.classList.toggle('start-cue',!!start);
- el.classList.toggle('cue-compact',pages[idx].length>55);
- el.classList.toggle('cue-tiny',pages[idx].length>83);
+ el.classList.remove('cue-compact','cue-tiny');
+ const box=el.closest('.focus-cue');box?.classList.remove('cue-long');
+ el.style.fontSize='';el.style.lineHeight='';
+ if(cueFitFrame)cancelAnimationFrame(cueFitFrame);
+ if(el.textContent)cueFitFrame=requestAnimationFrame(()=>{cueFitFrame=0;fitCurrentCue()});
 }
-
-function playVoice(id,{interrupt=false,showText=true}={}){return new Promise(resolve=>{if(!voiceEnabled||!id){resolve(false);return}if(voiceAudio&&!voiceAudio.paused){if(!interrupt){resolve(false);return}try{voiceAudio.pause();voiceAudio.currentTime=0}catch(_){}}const spokenText=MASTER_E_LIBRARY[id]?.text||VOICE_TEXT[id]||'';const token=++voiceToken,src=MASTER_E_LIBRARY[id]?(VOICE_BASE+MASTER_E_LIBRARY[id].file):MASTER_D_VOICE_FILES[id]?(VOICE_BASE+MASTER_D_VOICE_FILES[id]):MASTER_AB_APPROVED_FILES[id]?(VOICE_BASE+MASTER_AB_APPROVED_FILES[id]):ADVANCED_EXTRA_FILES[id]?(VOICE_BASE+ADVANCED_EXTRA_FILES[id]):INTERMEDIATE_VOICE_FILES[id]?(VOICE_BASE+INTERMEDIATE_VOICE_FILES[id]):(VOICE_BASE+encodeURIComponent(id)+'.mp3'),a=new Audio(src.includes('/advanced/') ? (src+'?v='+(MASTER_E_LIBRARY[id]?'15.12.44':'15.12.41')) : src);a.preload='auto';a.volume=.88;voiceAudio=a;duckSoundscape(true);
-if(showText){const pages=cuePages(spokenText);let last=-1;
- a.ontimeupdate=()=>{if(token!==voiceToken||paused||!run||pages.length<2)return;
-  const index=Math.max(0,Math.min(pages.length-1,Math.floor((a.currentTime/Math.max(.1,a.duration||1))*pages.length)));
-  if(index!==last){last=index;setCueText(spokenText,false,index)}};
-}
-const done=()=>{if(token!==voiceToken){resolve(false);return}if(voiceAudio===a)voiceAudio=null;if(showText&&run?.b?.advancedSession)setCueText('');duckSoundscape(false);resolve(true)};a.onended=done;a.onerror=done;a.play().then(()=>{if(token===voiceToken&&showText)setCueText(spokenText)}).catch(done)})}
+// The caption belongs to the PLAYING MP3, not to the enclosing exercise phase.
+// The verified source catalogs are authoritative for A/B/D and supplemental clips.
+function transcriptForVoice(id){return MASTER_E_LIBRARY[id]?.text||MASTER_D_TEXT[id]||MASTER_AB_APPROVED_TEXT[id]||ADVANCED_EXTRA_TEXT[id]||VOICE_TEXT[id]||''}
+function playVoice(id,{interrupt=false,showText=true}={}){return new Promise(resolve=>{
+ if(!voiceEnabled||!id){resolve(false);return}
+ if(voiceAudio&&!voiceAudio.paused){
+  if(!interrupt){resolve(false);return}
+  const previous=voiceAudio;try{previous.pause();previous._finish?.(false)}catch(_){}
+ }
+ const spokenText=transcriptForVoice(id);
+ const token=++voiceToken,src=MASTER_E_LIBRARY[id]?(VOICE_BASE+MASTER_E_LIBRARY[id].file):MASTER_D_VOICE_FILES[id]?(VOICE_BASE+MASTER_D_VOICE_FILES[id]):MASTER_AB_APPROVED_FILES[id]?(VOICE_BASE+MASTER_AB_APPROVED_FILES[id]):ADVANCED_EXTRA_FILES[id]?(VOICE_BASE+ADVANCED_EXTRA_FILES[id]):INTERMEDIATE_VOICE_FILES[id]?(VOICE_BASE+INTERMEDIATE_VOICE_FILES[id]):(VOICE_BASE+encodeURIComponent(id)+'.mp3');
+ const a=new Audio(src.includes('/advanced/')?(src+'?v='+(MASTER_E_LIBRARY[id]?'15.12.44':'15.12.41')):src);
+ a.preload='auto';a.volume=.88;a.dataset.cueId=id;voiceAudio=a;duckSoundscape(true);
+ let completed=false;
+ const done=(ok=true)=>{
+  if(completed)return;completed=true;
+  if(voiceAudio===a){voiceAudio=null;if(showText)setCueText('')}
+  duckSoundscape(false);resolve(ok)
+ };
+ a._finish=done;a.onended=()=>done(true);a.onerror=()=>done(false);
+ a.play().then(()=>{
+  if(token===voiceToken&&voiceAudio===a&&showText&&!paused&&run)setCueText(spokenText);
+ }).catch(()=>done(false));
+})}
 function delay(ms){return new Promise(r=>setTimeout(r,ms))}
 function applyPreparingVisualCue(id){if(!run?.b)return;const v=$('#breathVisual');if(!v)return;if(run.b.id==='oxygen_advantage'){const step=id.includes('weniger_luft')?2:id.includes('leicht_bleiben')?3:id.includes('ruhig_leise')?1:0;v.dataset.phaseStep=String(step)}else if(run.b.id==='sheetali'){v.dataset.phaseStep=String(id.includes('zunge_heraus')||id.includes('zunge_rollen')?0:1)}if(run.b.id==='lion'){const exhaleCue=['mund_oeffnen','zunge_heraus','haa_anweisung'].includes(id),inhaleCue=['tief_durch_nase_ein','ruhig_durch_nase_ein','atme_ein'].includes(id);if(!exhaleCue&&!inhaleCue)return;v.classList.remove('inhale','exhale','hold','pause','topup','count');v.style.setProperty('--phase-ms',(exhaleCue?5200:3400)+'ms');void v.offsetWidth;v.classList.add(exhaleCue?'exhale':'inhale')}}
 async function playVoiceSequence(ids,sessionToken){for(const id of ids||[]){if(!run||run.token!==sessionToken)return false;applyPreparingVisualCue(id);await playVoice(id,{interrupt:false,showText:true});if(!run||run.token!==sessionToken)return false;await delay(INTRO_GAPS[id]||INTERMEDIATE_INTRO_GAPS[id]||650)}return true}
 async function playAdvancedPhaseSequence(sessionToken,phaseIndex,mainCue,extras){
  if(!run||run.token!==sessionToken||run.index!==phaseIndex||paused)return;
- if(mainCue)await playVoice(mainCue,{interrupt:true,showText:true});
- for(const extra of extras||[]){
-  if(!run||run.token!==sessionToken||run.index!==phaseIndex||paused||!voiceEnabled)return;
-  await delay(500);
-  if(!run||run.token!==sessionToken||run.index!==phaseIndex||paused||!voiceEnabled)return;
-  await playVoice(extra,{interrupt:false,showText:true});
+ run.voiceSequenceActive=true;
+ try{
+  if(mainCue)await playVoice(mainCue,{interrupt:true,showText:true});
+  for(const extra of extras||[]){
+   if(!run||run.token!==sessionToken||run.index!==phaseIndex||paused||!voiceEnabled)return;
+   await delay(500);
+   if(!run||run.token!==sessionToken||run.index!==phaseIndex||paused||!voiceEnabled)return;
+   await playVoice(extra,{interrupt:false,showText:true});
+  }
+ }finally{
+  if(run&&run.token===sessionToken&&run.index===phaseIndex){run.voiceSequenceActive=false;if(!paused)setCueText('')}
  }
- if(run&&run.token===sessionToken&&run.index===phaseIndex&&!paused)setCueText('');
 }
 function phaseVoiceCue(){if(!run||!voiceEnabled||run.preparing)return;if(run.b.advancedTextOnly){
  const main=run.b.advancedRecordedCues?.[run.index];
@@ -597,7 +617,7 @@ function ensureUi(){if($('#memberPractice'))return;
   const materials=$('#cardMaterials'),resources=$('#memberHomeworkResources');if(materials&&resources&&!resources.contains(materials))resources.appendChild(materials);
   const dlg=document.createElement('dialog');dlg.id='breathDialog';dlg.className='breath-focus-dialog';dlg.innerHTML='<div class="focus-shell"><header class="focus-header"><div><div class="eyebrow">Atemraum</div><h2 id="breathTitle">Atemübung</h2></div><button id="breathClose" class="icon-close" type="button" aria-label="Schließen">×</button></header><div class="focus-prestart" id="focusPrestart"><div class="focus-previsual" id="breathPrevisual" aria-hidden="true"></div><div class="focus-visual-label" id="breathVisualLabel"></div><p class="focus-intro" id="breathIntro"></p><div class="focus-options"><label class="duration-choice"><span>Dauer</span><select id="breathDuration"><option value="1">1 Minute</option><option value="3">3 Minuten</option><option value="5">5 Minuten</option><option value="10">10 Minuten</option></select></label><label class="duration-choice visual-choice" id="breathVisualChoice" hidden><span>Darstellung</span><select id="breathVisualMode"><option value="body">Körper</option><option value="bubbles">Bubbles</option></select></label><label class="quiet-toggle" id="breathVoiceChoice"><input id="breathVoiceToggle" type="checkbox"> <span>Stimme</span></label><label class="quiet-toggle"><input id="breathSoundscapeToggle" type="checkbox"> <span>Soundscape</span></label><label class="soundscape-volume" id="breathSoundscapeVolumeWrap"><span>Leise</span><input id="breathSoundscapeVolume" type="range" min="5" max="80" step="1" aria-label="Soundscape Lautstärke"><span>Lauter</span></label><span id="breathSoundscapeStatus" class="soundscape-status" hidden></span><label class="quiet-toggle"><input id="breathExplainToggle" type="checkbox"> <span>Kurzanleitung</span></label></div><div id="breathExplainer" class="focus-explainer" hidden></div><button id="breathStart" class="focus-start" type="button">Starten</button><details class="focus-purpose" id="breathPurposeWrap"><summary>Wofür diese Übung?</summary><div class="focus-purpose-body"><button id="breathPurposeClose" class="purpose-close" type="button" aria-label="Wofür schließen">×</button><p id="breathPurpose"></p><div class="focus-purpose-tags" id="breathPurposeTags"></div><div class="focus-purpose-research" id="breathPurposeResearch" hidden></div></div></details></div><div class="focus-session" id="focusSession"><div class="focus-time" id="breathCountdown">03:00</div><div class="focus-visual" id="breathVisual"></div><div id="advancedMusicChapter" class="advanced-music-chapter" hidden></div><div id="advancedGuideProgress" class="advanced-guide-progress" hidden></div><div class="focus-cue"><strong id="breathPhase">Bereit</strong><span id="breathPhaseSeconds"></span></div><div class="focus-session-controls"><button id="breathPause" class="round-control" type="button" aria-label="Pausieren">Ⅱ</button><button id="breathEnd" class="text-control" type="button">Beenden</button></div></div></div>';document.body.appendChild(dlg);
   $('#breathClose').onclick=closeBreath;$('#breathEnd').onclick=closeBreath;$('#breathStart').onclick=startBreath;const pc=$('#breathPurposeClose');if(pc)pc.onclick=e=>{e.preventDefault();const d=$('#breathPurposeWrap');if(d)d.open=false};$('#breathPause').onclick=togglePause;$('#breathExplainToggle').onchange=e=>{$('#breathExplainer').hidden=!e.target.checked};$('#breathVoiceToggle').onchange=e=>setVoiceEnabled(e.target.checked);$('#breathSoundscapeToggle').onchange=e=>setSoundscapeEnabled(e.target.checked);$('#breathSoundscapeVolume').oninput=e=>setSoundscapeVolume(Number(e.target.value)/100);$('#breathVisualMode').onchange=()=>{const b=BREATHS[$('#breathDialog')?.dataset.breath];if(b)renderBreathVisuals(b)};const vc=$('#breathVoiceChoice');if(vc)vc.hidden=!VOICE_AVAILABLE;setVoiceEnabled(voiceEnabled);setSoundscapeEnabled(soundscapeEnabled);$('#breathSoundscapeVolume').value=String(Math.round(soundscapeVolume*100));
-  if(preview&&!$('.member-preview-banner'))document.body.insertAdjacentHTML('afterbegin','<div class="member-preview-banner">PREVIEW · Memberbereich <small>Fortschritt ist schreibgeschützt. · Atemraum 15.12.46</small></div>')}
+  if(preview&&!$('.member-preview-banner'))document.body.insertAdjacentHTML('afterbegin','<div class="member-preview-banner">PREVIEW · Memberbereich <small>Fortschritt ist schreibgeschützt. · Atemraum 15.12.47</small></div>')}
 function standardBreaths(){const extra=new Set((data?.memberPractice?.breathAccess||[]).filter(x=>x.active!==0).map(x=>x.breath_id));return Object.values(BREATHS).filter(x=>x.access==='standard'||extra.has(x.id)).filter(x=>x.selfGuided!==false)}
 function breathLevel(b){return b.level||'Beginner'}
 function levelClass(b){return String(breathLevel(b)).toLowerCase().replace(/[^a-z]+/g,'-')}
@@ -624,7 +644,8 @@ window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data?.typ
 let breathWakeLock=null;async function acquireBreathWakeLock(){try{if(navigator.wakeLock?.request)breathWakeLock=await navigator.wakeLock.request('screen')}catch(_){}}
 function releaseBreathWakeLock(){if(breathWakeLock){const lock=breathWakeLock;breathWakeLock=null;try{void lock.release()}catch(_){}}}
 async function startBreath(){const dlg=$('#breathDialog'),b=BREATHS[dlg?.dataset.breath];if(!b?.phases?.length)return;if(b.level==='Advanced'&&!new Set((data?.memberPractice?.breathAccess||[]).filter(x=>x.active!==0).map(x=>x.breath_id)).has(b.id))return;stopRun(false);void acquireBreathWakeLock();const total=b.advancedSession?b.sessionSeconds:Number($('#breathDuration').value||b.defaultMinutes||3)*60;const token=Date.now()+Math.random();run={b,index:0,total,remaining:total,phaseRemaining:0,timer:null,lastTick:Date.now(),preparing:true,token,musicChapterIndex:-1,musicChapterTrack:null};paused=false;dlg.classList.add('is-running','is-preparing');$('#breathPause').textContent='Ⅱ';$('#breathPause').disabled=true;setCueText(b.advancedTextOnly?(voiceEnabled?'Bereit':'Bereit'):(voiceEnabled?'Kurzanleitung':'Bereit'));$('#breathPhaseSeconds').textContent='';startSoundscape();if(voiceEnabled&&!b.advancedSession){await delay(520);await playVoiceSequence(b.introCues||INTRO_CUES[b.id]||['mach_es_dir_bequem'],token)}if(!run||run.token!==token)return;await delay(520);if(!run||run.token!==token)return;if(b.id==='lion'){const v=$('#breathVisual');if(v){v.classList.remove('inhale','exhale','hold','pause','topup','count');v.style.setProperty('--phase-ms','700ms');void v.offsetWidth;v.classList.add('inhale')}}setCueText('Start',true);await delay(1050);if(!run||run.token!==token)return;setCueText('',false);run.preparing=false;dlg.classList.remove('is-preparing');$('#breathPause').disabled=false;advancePhase()}
-function togglePause(){if(!run||run.preparing)return;paused=!paused;$('#breathPause').textContent=paused?'▶':'Ⅱ';if(paused){if(run.b.advancedSession){if(voiceAudio&&!voiceAudio.paused)voiceAudio.pause();stopSpeech()}else stopVoice();pauseSoundscape()}else{run.lastTick=Date.now();resumeSoundscape();if(run.b.advancedSession&&voiceAudio&&voiceAudio.paused){voiceAudio.play().then(()=>duckSoundscape(true)).catch(err=>console.warn('[Advanced Master D] Audio konnte nicht fortgesetzt werden',err))}scheduleTick()}}
+function textForActiveAudio(a){setCueText(transcriptForVoice(a?.dataset?.cueId||''))}
+function togglePause(){if(!run||run.preparing)return;paused=!paused;$('#breathPause').textContent=paused?'▶':'Ⅱ';if(paused){if(run.b.advancedSession){if(voiceAudio&&!voiceAudio.paused)voiceAudio.pause();setCueText('',false);stopSpeech()}else stopVoice();pauseSoundscape()}else{run.lastTick=Date.now();resumeSoundscape();if(run.b.advancedSession&&voiceAudio&&voiceAudio.paused){const a=voiceAudio;textForActiveAudio(a);a.play().then(()=>duckSoundscape(true)).catch(err=>{setCueText('',false);console.warn('[Advanced Master D] Audio konnte nicht fortgesetzt werden',err)})}scheduleTick()}}
 function stopRun(reset=true){releaseBreathWakeLock();if(run?.timer)clearTimeout(run.timer);stopVoice();stopSoundscape(true);setCueText('');run=null;paused=false;if(reset){$('#breathDialog')?.classList.remove('is-running','is-preparing');const mc=$('#advancedMusicChapter');if(mc)mc.hidden=true}}
 function scheduleTick(){if(!run||paused||run.preparing)return;run.timer=setTimeout(tick,150)}
 
@@ -657,7 +678,7 @@ function syncAdvancedMusicChapter(){
 }
 function phaseDefaultText(b,step,phaseClass,label){if(b.advancedPhases)return label;if(Array.isArray(b.phaseCueSets)&&b.phaseCueSets.length){const set=b.phaseCueSets[0]||[],id=set[step];if(id&&VOICE_TEXT[id])return VOICE_TEXT[id]}if(b.id==='lion')return step===0?'Atme ein':'Haaa';if(b.id==='soham')return step===0?'So':'Ham';if(b.id==='physiological_sigh'||b.id==='cyclic_sighing'){if(phaseClass==='inhale')return'Atme ein';if(phaseClass==='topup')return'Atme noch einmal kurz ein';if(phaseClass==='exhale')return'Atme langsam aus'}if(b.id==='box'){return ['Atme ein','Halte','Atme aus','Halte'][step]||label}if(phaseClass==='inhale')return'Atme ein';if(phaseClass==='exhale')return'Atme aus';if(phaseClass==='hold')return'Halte';if(phaseClass==='pause')return b.id==='mindful'?'Beobachte deinen Atem':'Pause';return label}
 function applyPhase(){if(!run)return;const v=$('#breathVisual'),step=run.index%run.b.phases.length;v.classList.remove('inhale','exhale','hold','pause','topup','count');v.dataset.phaseStep=String(step);if(run.b.advancedSession&&window.BDAdvancedVisuals)window.BDAdvancedVisuals.setPhase(v,step,run.b.phases.length);v.style.setProperty('--phase-ms',Math.max(.2,run.phaseRemaining)*1000+'ms');void v.offsetWidth;v.classList.add(run.phaseClass);let label=phaseDefaultText(run.b,step,run.phaseClass,run.phaseLabel);if(run.b.visual==='count'){const n=(run.index%10)+1;label='Atemzug '+n;const strong=v.querySelector('.focus-count strong');if(strong)strong.textContent=n;v.querySelectorAll('.count-dots i').forEach((x,i)=>x.classList.toggle('active',i===n-1))}if(run.b.visual==='soham'){const w=v.querySelector('.soham-word');if(w)w.textContent=step===0?'SO':'HAM'}setCueText(run.b.advancedSession?'':label,false);const guide=$('#advancedGuideProgress');if(guide){guide.hidden=!run.b.soloCoached;const st=run.b.soloStages?.[run.index];if(st)guide.textContent=st.breathNo?'Runde '+st.section+' · Atemzug '+st.breathNo+' / 24':'Abschnitt '+(st.chapter||1)+' von '+(st.chapterCount||run.b.phases.length)+' · Phase '+(run.index+1)+' / '+run.b.phases.length}$('#breathPhaseSeconds').textContent=Math.ceil(run.phaseRemaining)+' Sek.'}
-function tick(){if(!run||paused)return;const now=Date.now(),delta=(now-run.lastTick)/1000;run.lastTick=now;run.remaining=Math.max(0,run.remaining-delta);run.phaseRemaining=Math.max(0,run.phaseRemaining-delta);$('#breathCountdown').textContent=Math.floor(run.remaining/60).toString().padStart(2,'0')+':'+Math.ceil(run.remaining%60).toString().padStart(2,'0');$('#breathPhaseSeconds').textContent=Math.ceil(run.phaseRemaining)+' Sek.';if(run.remaining<=0){const dlg=$('#breathDialog');stopRun(false);dlg.classList.remove('is-running');$('#breathIntro').textContent='Fertig. Nimm noch einen Moment wahr, wie es dir jetzt geht.';return}if(run.phaseRemaining<=0){run.index++;advancePhase();return}syncAdvancedMusicChapter();scheduleTick()}
+function tick(){if(!run||paused)return;const now=Date.now(),delta=(now-run.lastTick)/1000;run.lastTick=now;run.remaining=Math.max(0,run.remaining-delta);run.phaseRemaining=Math.max(0,run.phaseRemaining-delta);$('#breathCountdown').textContent=Math.floor(run.remaining/60).toString().padStart(2,'0')+':'+Math.ceil(run.remaining%60).toString().padStart(2,'0');$('#breathPhaseSeconds').textContent=Math.ceil(run.phaseRemaining)+' Sek.';if(run.remaining<=0){const dlg=$('#breathDialog');stopRun(false);dlg.classList.remove('is-running');$('#breathIntro').textContent='Fertig. Nimm noch einen Moment wahr, wie es dir jetzt geht.';return}if(run.phaseRemaining<=0){if(run.b.advancedSession&&(run.voiceSequenceActive||(voiceAudio&&!voiceAudio.paused))){run.remaining=Math.min(run.total,run.remaining+delta);scheduleTick();return}run.index++;advancePhase();return}syncAdvancedMusicChapter();scheduleTick()}
 function boot(){ensureUi();if(window.__BD_MEMBER_DATA){data=window.__BD_MEMBER_DATA;renderPractice();return}document.addEventListener('bd:member-data',e=>{data=e.detail;renderPractice()},{once:true})}
-window.BDMemberPractice={boot,breaths:BREATHS,openBreath,closeBreath,breathLevel,voiceArchitecture:{recordedMasterD:'15.12.34',recordedMasterAB:'15.12.38',verifiedABSources:19,verifiedRawABClips:176,excludedRawABClips:23,additionalCompanionCueUses:53,recordedAdvancedPhases:83,advancedFallback:'text-only',enabled:true,available:VOICE_AVAILABLE,basePath:VOICE_BASE,manifest:VOICE_BASE+'manifest.json'},soundscapeArchitecture:{enabled:true,file:SOUNDSCAPE_FILE,ducking:true,domAudio:true,loopVersion:'15.12.13',naturalVoiceFlow:'15.12.15',purposeUx:true,cueTextSync:true,introPauseClasses:true,lionVisual:'15.12.16-image-overlay-demo',omVoiceLibrary:'15.12.16',haaVoiceLibrary:'15.12.16',humVoiceLibrary:'15.12.16',soundVariants:'15.12.16-recorded',omAdaptiveTiming:true}};boot();
+window.BDMemberPractice={boot,breaths:BREATHS,openBreath,closeBreath,breathLevel,transcriptForVoice,voiceArchitecture:{recordedMasterD:'15.12.34',recordedMasterAB:'15.12.38',verifiedABSources:19,verifiedRawABClips:176,excludedRawABClips:23,additionalCompanionCueUses:53,recordedAdvancedPhases:83,advancedFallback:'text-only',enabled:true,available:VOICE_AVAILABLE,basePath:VOICE_BASE,manifest:VOICE_BASE+'manifest.json'},soundscapeArchitecture:{enabled:true,file:SOUNDSCAPE_FILE,ducking:true,domAudio:true,loopVersion:'15.12.13',naturalVoiceFlow:'15.12.15',purposeUx:true,cueTextSync:true,introPauseClasses:true,lionVisual:'15.12.16-image-overlay-demo',omVoiceLibrary:'15.12.16',haaVoiceLibrary:'15.12.16',humVoiceLibrary:'15.12.16',soundVariants:'15.12.16-recorded',omAdaptiveTiming:true}};boot();
 })();
