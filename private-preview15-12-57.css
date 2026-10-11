@@ -48,3 +48,8 @@ html:has(.bd1557-preview),body:has(.bd1557-preview){margin:0;min-height:100%;bac
  .bd1557-art-footer>span{font-size:11px}
 }
 @media(min-width:901px) and (max-height:560px){html:has(.bd1557-preview),body:has(.bd1557-preview){height:auto;overflow:auto}.bd1557-preview{height:auto;min-height:560px}.bd1557-main{height:auto;min-height:460px}}
+
+/* 15.12.59 — restrained editorial balance; bubbles stay small, not balloon-size. */
+.bd1557-halo{opacity:.52;box-shadow:0 0 70px 36px rgba(244,208,182,.09)}
+.bd1557-halo-two{opacity:.30;box-shadow:none}
+.bd1557-art canvas{filter:saturate(.82)}

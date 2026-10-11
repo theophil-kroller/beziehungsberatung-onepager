@@ -4,6 +4,7 @@
  const TAU=Math.PI*2,clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
  const rand=(a,b)=>a+Math.random()*(b-a);
  const PALETTE=[[201,107,75],[175,153,197],[139,179,182],[205,167,125]];
+ const SPECIAL_BONUS=12;
  let dialog,canvas,ctx,scoreEl,clockEl,bestEl,scene=null,lastFocused=null;
  let audioCtx=null,soundButton=null,soundEnabled=true;
  try{soundEnabled=localStorage.getItem('bd1558_bubble_sound')!=='off'}catch{}
@@ -44,6 +45,28 @@
    }catch{}
  }
 
+
+ // Distinct reward: short, airy three-tone glass chime (Web Audio, offline, no samples).
+ function playSpecialChime(){
+   if(!soundEnabled||!audioCtx||audioCtx.state!=='running')return;
+   try{
+     const t=audioCtx.currentTime;
+     // C6 + E6 + G6 with faint bell partials; gentle transient, long bright tail.
+     [1046.50,1318.51,1567.98].forEach((f,i)=>{
+       const at=t+i*.077;
+       [1,2.01].forEach((h,j)=>{
+         const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+         osc.type='sine';osc.frequency.setValueAtTime(f*h,at);
+         gain.gain.setValueAtTime(.0001,at);
+         gain.gain.exponentialRampToValueAtTime(j?.012:.055,at+.012);
+         gain.gain.exponentialRampToValueAtTime(.0001,at+(j?.35:.78));
+         osc.connect(gain).connect(audioCtx.destination);osc.start(at);osc.stop(at+(j?.37:.81));
+         osc.onended=()=>{try{osc.disconnect();gain.disconnect()}catch{}};
+       });
+     });
+   }catch{}
+ }
+
  function makeDialog(){
    const btn=document.getElementById('bdBubbleGameOpen');
    if(!btn||document.getElementById('bd1556GameDialog'))return;
@@ -75,7 +98,7 @@
  }
  function newRound(){
    stop();if(!ctx)return;
-   scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0};
+   scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0,spawnTotal:0,nextSpecial:Math.floor(rand(15,23)),specialActive:false};
    resize();
    // A lively starting group, already inside the playing field – no waiting at the nozzle.
    for(let i=0;i<6;i++){spawn(scene,true);const b=scene.bubbles[scene.bubbles.length-1];b.x=scene.width*(.15+i*.096);b.y=scene.height*(.25+(i%4)*.155);b.life=.8+i*.2;}
@@ -83,10 +106,12 @@
    scene.raf=requestAnimationFrame(frame);
  }
  function spawn(s,initial=false){
-   const size=rand(15,43),speed=rand(43,104);
+   const isSpecial=!initial && !s.specialActive && (++s.spawnTotal>=s.nextSpecial);
+   if(isSpecial){s.specialActive=true;s.spawnTotal=0;s.nextSpecial=Math.floor(rand(17,24));}
+   const size=isSpecial?rand(20,29):rand(15,43),speed=rand(43,104);
    const gentle=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
    s.bubbles.push({x:42,y:s.height*.5+rand(-s.height*.27,s.height*.27),r:size,speed:gentle?speed*.55:speed,
-     vY:rand(-24,21),phase:rand(0,TAU),life:0,tone:Math.floor(rand(0,PALETTE.length)),warp:rand(.02,.055)});
+     vY:rand(-24,21),phase:rand(0,TAU),life:0,tone:Math.floor(rand(0,PALETTE.length)),warp:rand(.02,.055),special:isSpecial});
  }
  function paint(b,s,now){
    const t=b.life,p=PALETTE[b.tone];
@@ -96,14 +121,22 @@
    ctx.save();ctx.globalAlpha=opacity;ctx.translate(cx,cy);ctx.rotate(Math.sin(now*.00028+b.phase)*.15);
    ctx.beginPath();const segments=44;
    for(let i=0;i<=segments;i++){const a=i/segments*TAU;
-     const r=radius*(1+b.warp*Math.sin(3*a+t*.8+b.phase));
+     const rim=b.special?(.048*Math.sin(11*a+t*.34+b.phase)+.022*Math.sin(22*a+t*.2)):b.warp*Math.sin(3*a+t*.8+b.phase);
+     const r=radius*(1+rim);
      const x=Math.cos(a)*r,y=Math.sin(a)*r;
      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
    }ctx.closePath();
    const g=ctx.createRadialGradient(-radius*.39,-radius*.48,1,0,0,radius*1.16);
    g.addColorStop(0,'rgba(255,255,255,.34)');
    g.addColorStop(.57,`rgba(${p.join(',')},.075)`);g.addColorStop(.88,`rgba(${p.join(',')},.18)`);g.addColorStop(1,`rgba(${p.join(',')},.27)`);
-   ctx.fillStyle=g;ctx.fill();ctx.strokeStyle=`rgba(${p.join(',')},.78)`;ctx.lineWidth=1.6;ctx.stroke();
+   ctx.fillStyle=g;ctx.fill();ctx.strokeStyle=b.special?'rgba(191,149,89,.85)':`rgba(${p.join(',')},.78)`;ctx.lineWidth=b.special?1.8:1.6;ctx.stroke();
+   if(b.special){
+     ctx.save();ctx.setLineDash([1.2,5]);ctx.rotate(-.03);ctx.beginPath();ctx.arc(0,0,radius*.78,0,TAU);
+     ctx.strokeStyle='rgba(231,184,111,.50)';ctx.lineWidth=.8;ctx.stroke();ctx.restore();
+     const glimmer=Math.sin(t*3.1+b.phase)*.5+.5;
+     ctx.fillStyle=`rgba(255,244,208,${.32+glimmer*.48})`;
+     ctx.beginPath();ctx.arc(radius*.42,-radius*.37,2.6+glimmer*1.7,0,TAU);ctx.fill();
+   }
    ctx.beginPath();ctx.ellipse(-radius*.19,-radius*.35,radius*.50,radius*.23,-.55,3.25,5.65);
    ctx.strokeStyle='rgba(255,255,255,.93)';ctx.lineWidth=Math.max(1.8,radius*.053);ctx.stroke();
    ctx.beginPath();ctx.ellipse(radius*.30,radius*.34,radius*.47,radius*.23,-.6,.13,1.42);
@@ -111,19 +144,19 @@
    ctx.restore();
  }
  function popAt(b,s){
-   s.bursts.push({x:b.x,y:b.y,r:b.r,life:0,tone:b.tone,phase:b.phase,points:b.r<24?3:b.r<34?2:1});
+   s.bursts.push({x:b.x,y:b.y,r:b.r,life:0,tone:b.tone,phase:b.phase,points:b.special?SPECIAL_BONUS:b.r<24?3:b.r<34?2:1,special:!!b.special});
  }
  function paintBurst(p){
-   const v=p.life/.78;if(v>=1)return false;
-   const rgb=PALETTE[p.tone].join(',');ctx.save();ctx.globalAlpha=Math.pow(1-v,1.35);
+   const v=p.life/(p.special?1.18:.78);if(v>=1)return false;
+   const rgb=p.special?'207,163,86':PALETTE[p.tone].join(',');ctx.save();ctx.globalAlpha=Math.pow(1-v,1.35);
    // Expanding double-film rings + glowing fragments like a real soap film breaking.
    for(let layer=0;layer<2;layer++){
      ctx.strokeStyle=layer?`rgba(255,255,255,.88)`:`rgba(${rgb},.87)`;
      ctx.lineWidth=(layer?2:3.7)*(1-v)+.3;
      ctx.beginPath();ctx.arc(p.x,p.y,p.r*(.23+v*(layer?.94:1.18)),0,TAU);ctx.stroke();
    }
-   for(let i=0;i<15;i++){
-     const a=i*TAU/15+p.phase,dist=p.r*(.46+v*(1.05+(i%3)*.11));
+   for(let i=0;i<(p.special?22:15);i++){
+     const a=i*TAU/(p.special?22:15)+p.phase,dist=p.r*(.46+v*(1.05+(i%3)*.11));
      const x=p.x+Math.cos(a)*dist,y=p.y+Math.sin(a)*dist;
      const rad=Math.max(.5,(i%3+1)*1.65*(1-v));
      ctx.shadowColor=`rgba(${rgb},.75)`;ctx.shadowBlur=6*(1-v);
@@ -150,7 +183,7 @@
      b.y+=b.vY*dt+(slow?0:Math.sin(b.life*1.35+b.phase)*9*dt);
      if(b.y<b.r+5){b.y=b.r+5;b.vY=Math.abs(b.vY)}
      if(b.y>s.height-b.r-5){b.y=s.height-b.r-5;b.vY=-Math.abs(b.vY)}
-     if(b.x-b.r>s.width+30){s.bubbles.splice(i,1);continue;}
+     if(b.x-b.r>s.width+30){if(b.special){s.specialActive=false;s.spawnTotal=0;}s.bubbles.splice(i,1);continue;}
      paint(b,s,t);
    }
    for(let i=s.bursts.length-1;i>=0;i--){let b=s.bursts[i];b.life+=dt;if(!paintBurst(b))s.bursts.splice(i,1)}
@@ -166,8 +199,8 @@
    for(let i=s.bubbles.length-1;i>=0;i--){const b=s.bubbles[i];
      if(Math.hypot(b.x-x,b.y-y)<b.r*1.16){index=i;break;}}
    if(index<0)return;
-   const b=s.bubbles.splice(index,1)[0];enableAudio();playPop(b.r);popAt(b,s);
-   const points=b.r<24?3:b.r<34?2:1;
+   const b=s.bubbles.splice(index,1)[0];enableAudio();if(b.special){s.specialActive=false;s.spawnTotal=0;playSpecialChime();}else playPop(b.r);popAt(b,s);
+   const points=b.special?SPECIAL_BONUS:b.r<24?3:b.r<34?2:1;
    s.score+=points;scoreEl.textContent=String(s.score);
    if(s.score>best()){saveBest(s.score);bestEl.textContent=String(s.score)}
    // Keep touches within the dedicated playfield, never the app underneath.

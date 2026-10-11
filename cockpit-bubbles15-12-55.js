@@ -3,8 +3,10 @@
  * Offline-only canvas effect. No cloud calls, no new permissions, no user data.
  */
 (()=>{'use strict';
-  const DURATION_MS=5200;
-  const FINALE_START_SEC=3.25;
+  const FREE_DURATION_SEC=7.2;
+  const FORM_DURATION_SEC=14.4;
+  const FORM_HOLD_SEC=7.0;
+  const FREE_FINALE_SEC=4.2;
   const reduceMotion=()=>{
     let preference=false;try{preference=localStorage.getItem('bd_reduce_motion')==='1';}catch{}
     return !!(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||preference);
@@ -134,8 +136,9 @@
   }
   function pop(ctx,e,t,fade){
     const age=t-e.born;
-    if(age<0||age>.72)return false;
-    const v=age/.72,alpha=(1-v)*fade;
+    const popDuration=e.slow?1.12:.78;
+    if(age<0||age>popDuration)return false;
+    const v=age/popDuration,alpha=(1-v)*fade;
     ctx.save();ctx.globalAlpha=alpha;
     // The soap film contracts into a fleeting ring and sparkling droplets.
     ctx.beginPath();ctx.arc(e.x,e.y,e.r*(.36+v*.75),0,TAU);
@@ -180,7 +183,7 @@
       if(b.dead||t<b.born)return false;
       const p=position(b,t,scene);
       b.dead=true;
-      scene.pops.push({x:p.x,y:p.y,r:b.r,tone:b.tone,phase:b.phase,born:t});
+      scene.pops.push({x:p.x,y:p.y,r:b.r,tone:b.tone,phase:b.phase,born:t,slow:scene.formation!=='free'});
       // A clicked bubble can be replaced gently until the finale begins.
       if(replace&&!scene.finaleScheduled&&t<2.5){
         scene.bubbles.push(bubble(scene.width,scene.height,t+random(.8,1.7)));
@@ -212,6 +215,9 @@
     for(let i=0;i<13;i++)scene.bubbles.push(bubble(scene.width,scene.height,-random(0,1.8)));
     // Silhouettes are drawn by many individual bubbles, not a background image.
     scene.formation=FORMATIONS[formationVisit++ % FORMATIONS.length];
+    const slowForm=scene.formation!=='free';
+    const duration=slowForm?FORM_DURATION_SEC:FREE_DURATION_SEC;
+    const finaleStart=slowForm?FORM_HOLD_SEC:FREE_FINALE_SEC;
     try{sessionStorage.setItem('bd1558_cockpit_formation',String(formationVisit))}catch{}
     if(scene.formation!=='free'){
       const pts=formationPoints(scene.formation,scene.width,scene.height);
@@ -242,14 +248,14 @@
       // Fade IN only. At the END, all remaining bubbles burst; none fade away.
       const fade=clamp(time/.65,0,1);
       ctx.clearRect(0,0,scene.width,scene.height);
-      if(time>=DURATION_MS/1000){stop();return;}
-      if(time>=FINALE_START_SEC&&!scene.finaleScheduled){
+      if(time>=duration){stop();return;}
+      if(time>=finaleStart&&!scene.finaleScheduled){
         scene.finaleScheduled=true;
         const alive=scene.bubbles.filter(b=>!b.dead&&time>=b.born);
-        // A gentle wave of pops over ~1.8 s, with time for every ring to finish.
+        // A clearly readable silhouette first, then a staggered pop cascade with room to enjoy each burst.
         alive.sort((a,b)=>position(a,time,scene).x-position(b,time,scene).x);
         alive.forEach((b,i)=>{
-          b.endPopAt=FINALE_START_SEC+.09+(alive.length===1?0:i/(alive.length-1)*1.04);
+          b.endPopAt=finaleStart+.12+(alive.length===1?0:i/(alive.length-1)*(slowForm?5.35:1.95));
         });
       }
       for(const b of scene.bubbles){

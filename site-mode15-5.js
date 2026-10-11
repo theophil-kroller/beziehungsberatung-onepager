@@ -38,9 +38,9 @@ function screen(kind){
       <footer class="bd1557-footer"><span>© Beziehungsdynamiken</span><div><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div></footer>
     </main>`;
     if(!document.querySelector('#bd1557-preview-styles')){
-      const l=document.createElement('link');l.id='bd1557-preview-styles';l.rel='stylesheet';l.href='./private-preview15-12-57.css?v=15.12.58';document.head.appendChild(l);
+      const l=document.createElement('link');l.id='bd1557-preview-styles';l.rel='stylesheet';l.href='./private-preview15-12-57.css?v=15.12.59';document.head.appendChild(l);
     }
-    const b=document.createElement('script');b.src='./private-preview15-12-57.js?v=15.12.58';b.async=true;document.head.appendChild(b);
+    const b=document.createElement('script');b.src='./private-preview15-12-57.js?v=15.12.59';b.async=true;document.head.appendChild(b);
     return;
   }
   document.body.innerHTML=`<main class="bd-site-mode-screen"><section class="bd-site-mode-card"><div class="eyebrow">Beziehungsdynamiken</div><h1>Diese Seite ist noch nicht öffentlich.</h1><p>Der Wissensbereich ist bereits geöffnet. Beratung, Angebote und Buchung werden erst mit dem Praxisstart freigeschaltet.</p><a href="${carry('/wissen/')}">Zum Wissensbereich →</a></section></main>`;
