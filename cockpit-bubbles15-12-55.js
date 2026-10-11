@@ -1,10 +1,10 @@
-/* Beziehungsdynamiken 15.12.55e — interactive 24 s soap-bubble welcome.
- * Click a bubble to pop it; final living bubbles burst in a short cascade.
+/* Beziehungsdynamiken 15.12.55e — 5 s quiet cockpit welcome.
+ * Watch the bubbles drift, then pop in a short sequence. The game is separate.
  * Offline-only canvas effect. No cloud calls, no new permissions, no user data.
  */
 (()=>{'use strict';
-  const DURATION_MS=24000;
-  const FINALE_START_SEC=21.20;
+  const DURATION_MS=5200;
+  const FINALE_START_SEC=3.25;
   const reduceMotion=()=>{
     let preference=false;try{preference=localStorage.getItem('bd_reduce_motion')==='1';}catch{}
     return !!(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||preference);
@@ -26,7 +26,7 @@
     scene.stopped=true;
     if(scene.raf)cancelAnimationFrame(scene.raf);
     window.removeEventListener('resize',scene.resize);
-    document.removeEventListener('click',scene.clickBubble,true);
+    // No dashboard click handlers to remove.
     scene.canvas.remove();
   }
   function color(tone,alpha){
@@ -147,7 +147,7 @@
       b.dead=true;
       scene.pops.push({x:p.x,y:p.y,r:b.r,tone:b.tone,phase:b.phase,born:t});
       // A clicked bubble can be replaced gently until the finale begins.
-      if(replace&&!scene.finaleScheduled&&t<18){
+      if(replace&&!scene.finaleScheduled&&t<2.5){
         scene.bubbles.push(bubble(scene.width,scene.height,t+random(.8,1.7)));
       }
       return true;
@@ -173,8 +173,8 @@
       }
       if(hit)burst(hit,t,true);
     };
-    document.addEventListener('click',scene.clickBubble,{capture:true,passive:true});
-    for(let i=0;i<17;i++)scene.bubbles.push(bubble(scene.width,scene.height,-random(0,4)));
+    // Dashboard greeting remains non-interactive. Game clicks belong exclusively to the overlay.
+    for(let i=0;i<13;i++)scene.bubbles.push(bubble(scene.width,scene.height,-random(0,1.8)));
     // Limit total pops: meaningful, occasional bubbles bursting rather than confetti.
     let lastPop=-1e9;
     const ordered=scene.bubbles.filter(b=>b.pops).sort((a,b)=>a.popAt-b.popAt);
@@ -200,7 +200,7 @@
         // A gentle wave of pops over ~1.8 s, with time for every ring to finish.
         alive.sort((a,b)=>position(a,time,scene).x-position(b,time,scene).x);
         alive.forEach((b,i)=>{
-          b.endPopAt=FINALE_START_SEC+.12+(alive.length===1?0:i/(alive.length-1)*1.73);
+          b.endPopAt=FINALE_START_SEC+.09+(alive.length===1?0:i/(alive.length-1)*1.04);
         });
       }
       for(const b of scene.bubbles){
