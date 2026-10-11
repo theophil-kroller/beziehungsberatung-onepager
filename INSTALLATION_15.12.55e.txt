@@ -1,0 +1,22 @@
+BEZIEHUNGSDYNAMIKEN – COCKPIT BUBBLES HOTFIX 15.12.55e
+
+NEU
+- Klick auf sichtbare Seifenblase lässt sie direkt platzen, samt leisem, visuellem Ring und Tröpfchen (ohne Ton).
+- Nach rund 24 Sekunden zerplatzen die verbliebenen Blasen nacheinander, statt auszublenden.
+- Beim erneuten Aufruf des Cockpits beginnt der Effekt wieder.
+- Dashboard-Buttons, Links und Eingabefelder werden nicht blockiert.
+- Reduzierte-Bewegung-Einstellung wird respektiert.
+
+INSTALLATION (NUR WEBSITE / GITHUB PAGES)
+1) Im Repository-Stamm diese drei Dateien ersetzen:
+   - cockpit-bubbles15-12-55.js
+   - cockpit-bubbles15-12-55.css
+   - admin.html (NUR wenn seit 15.12.55d keine anderen Änderungen an admin.html vorgenommen wurden; andernfalls darin lediglich die zwei ?v=...c Endungen auf ?v=15.12.55e setzen).
+2) GitHub Pages Deployment abwarten, dann Strg+Umschalt+R (Mac: Cmd+Umschalt+R).
+3) VORSCHAU.html kann lokal im Browser geöffnet werden; Bubble anklicken und 24 Sekunden warten.
+
+KEIN Worker-DEPLOYMENT, KEINE D1-MIGRATION, KEINE NEUE Desktop-APP notwendig für Website.
+Die eingebettete Offline-Desktop-Oberfläche bekommt die Änderung erst mit einem späteren Desktop-Build.
+Dieser reine UI-Hotfix verändert weder Newsletter noch Methodenabgleich, Vault-Keys, Cloud-Backups oder Klientendaten.
+
+TESTS: siehe ggf. separate manuelle Vorschau auf dem Zielgerät; keine Freigabe als signierte Desktop-App.

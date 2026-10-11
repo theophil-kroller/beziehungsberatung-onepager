@@ -1,8 +1,10 @@
-/* Beziehungsdynamiken 15.12.55c — organic soap bubbles, 24 s per Cockpit visit.
+/* Beziehungsdynamiken 15.12.55e — interactive 24 s soap-bubble welcome.
+ * Click a bubble to pop it; final living bubbles burst in a short cascade.
  * Offline-only canvas effect. No cloud calls, no new permissions, no user data.
  */
 (()=>{'use strict';
   const DURATION_MS=24000;
+  const FINALE_START_SEC=21.20;
   const reduceMotion=()=>{
     let preference=false;try{preference=localStorage.getItem('bd_reduce_motion')==='1';}catch{}
     return !!(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||preference);
@@ -24,6 +26,7 @@
     scene.stopped=true;
     if(scene.raf)cancelAnimationFrame(scene.raf);
     window.removeEventListener('resize',scene.resize);
+    document.removeEventListener('click',scene.clickBubble,true);
     scene.canvas.remove();
   }
   function color(tone,alpha){
@@ -125,7 +128,8 @@
     const ctx=canvas.getContext('2d',{alpha:true});
     if(!ctx){canvas.remove();return;}
     const scene={canvas,ctx,raf:0,stopped:false,width:0,height:0,
-      bubbles:[],pops:[],remaining:0,lastFrame:0,start:0,pausedFor:0,hiddenAt:0};
+      bubbles:[],pops:[],remaining:0,lastFrame:0,start:0,pausedFor:0,hiddenAt:0,
+      time:0,finaleScheduled:false,clickBubble:null};
     current=scene;
     scene.resize=()=>{
       const width=Math.max(300,view.clientWidth);
@@ -137,6 +141,39 @@
       ctx.setTransform(dpr,0,0,dpr,0,0);
     };
     scene.resize();window.addEventListener('resize',scene.resize,{passive:true});
+    function burst(b,t,replace=false){
+      if(b.dead||t<b.born)return false;
+      const p=position(b,t,scene);
+      b.dead=true;
+      scene.pops.push({x:p.x,y:p.y,r:b.r,tone:b.tone,phase:b.phase,born:t});
+      // A clicked bubble can be replaced gently until the finale begins.
+      if(replace&&!scene.finaleScheduled&&t<18){
+        scene.bubbles.push(bubble(scene.width,scene.height,t+random(.8,1.7)));
+      }
+      return true;
+    }
+    scene.clickBubble=event=>{
+      if(!current||current!==scene||scene.stopped||!visibleCockpit())return;
+      if(event.defaultPrevented||event.button!==0||reduceMotion())return;
+      // Never hijack a dashboard control. The canvas is pointer-transparent.
+      if(event.target?.closest?.('a,button,input,textarea,select,label,[role="button"],[contenteditable="true"]'))return;
+      const rect=canvas.getBoundingClientRect();
+      if(rect.width<=0||rect.height<=0)return;
+      const x=(event.clientX-rect.left)*scene.width/rect.width;
+      const y=(event.clientY-rect.top)*scene.height/rect.height;
+      if(x<0||y<0||x>scene.width||y>scene.height)return;
+      const t=scene.time;
+      let hit=null,best=Infinity;
+      for(const b of scene.bubbles){
+        if(b.dead||t<b.born)continue;
+        const p=position(b,t,scene),age=t-b.born;
+        const r=b.r*(1+Math.sin(age*b.breathe*TAU+b.breathPhase)*.115);
+        const d=Math.hypot(x-p.x,y-p.y);
+        if(d<=r*1.05&&d<best){best=d;hit=b;}
+      }
+      if(hit)burst(hit,t,true);
+    };
+    document.addEventListener('click',scene.clickBubble,{capture:true,passive:true});
     for(let i=0;i<17;i++)scene.bubbles.push(bubble(scene.width,scene.height,-random(0,4)));
     // Limit total pops: meaningful, occasional bubbles bursting rather than confetti.
     let lastPop=-1e9;
@@ -152,16 +189,24 @@
       if(now-scene.lastFrame<30){scene.raf=requestAnimationFrame(tick);return;}
       scene.lastFrame=now;
       const time=(now-startAt)/1000;
-      const fade=clamp(time/1.15,0,1)*clamp((DURATION_MS/1000-time)/2.1,0,1);
+      scene.time=time;
+      // Fade IN only. At the END, all remaining bubbles burst; none fade away.
+      const fade=clamp(time/1.15,0,1);
       ctx.clearRect(0,0,scene.width,scene.height);
       if(time>=DURATION_MS/1000){stop();return;}
+      if(time>=FINALE_START_SEC&&!scene.finaleScheduled){
+        scene.finaleScheduled=true;
+        const alive=scene.bubbles.filter(b=>!b.dead&&time>=b.born);
+        // A gentle wave of pops over ~1.8 s, with time for every ring to finish.
+        alive.sort((a,b)=>position(a,time,scene).x-position(b,time,scene).x);
+        alive.forEach((b,i)=>{
+          b.endPopAt=FINALE_START_SEC+.12+(alive.length===1?0:i/(alive.length-1)*1.73);
+        });
+      }
       for(const b of scene.bubbles){
-        if(!b.dead&&b.pops&&time>b.popAt){
-          const p=position(b,time,scene);
-          scene.pops.push({x:p.x,y:p.y,r:b.r,tone:b.tone,phase:b.phase,born:time});
-          b.dead=true;
-          // A new soap bubble joins gracefully so the scene remains lively.
-          if(time<18)scene.bubbles.push(bubble(scene.width,scene.height,time+random(.9,2.0)));
+        if(b.dead)continue;
+        if((b.endPopAt!==undefined&&time>=b.endPopAt)|| (b.pops&&time>=b.popAt)){
+          burst(b,time,!scene.finaleScheduled);
         }else drawBubble(ctx,b,time,scene,fade);
       }
       scene.pops=scene.pops.filter(p=>pop(ctx,p,time,fade));

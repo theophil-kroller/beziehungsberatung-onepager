@@ -1,4 +1,4 @@
-/* 15.12.55c: slow organic soap bubbles in the airy Cockpit. Canvas is decorative. */
+/* 15.12.55e: interactive soap bubbles (click hit-test on document; canvas never blocks controls). */
 #view-dashboard{position:relative;isolation:isolate}
 #view-dashboard>.bd1555-bubbles{
   position:absolute;top:0;left:0;width:100%;display:block;
