@@ -19,6 +19,7 @@
    const x=await response.json().catch(()=>({}));
    if(!response.ok||x.ok===false){
      if(response.status===401)throw Error('Praxisanmeldung abgelaufen. Bitte erneut anmelden.');
+     if(response.status===404&&path.startsWith('/admin/workspace/methods/'))throw Error('Cloud-Methodenabgleich nicht installiert: Worker 15.12.54 veröffentlichen.');
      if(/no such table/i.test(x.error||''))throw Error('Cloudflare D1: Migration 015_12_30_workspace_methods.sql fehlt.');
      throw Error(x.error||'Cloud-Verbindung fehlgeschlagen ('+response.status+').');
    }
@@ -30,8 +31,11 @@
    if(!h?.ok)throw Error('Vault-Server läuft nicht. Bitte die Desktop-App starten.');
    if(!window.BDVault.status().unlocked)throw Error('Vault gesperrt. Bitte in der Praxisverwaltung entsperren.');
    if(!authenticated())throw Error('Praxisanmeldung fehlt. Im gleichen Desktop-Browser anmelden.');
-   try{return await window.BDVault.request('/workspace/methods/status');}
-   catch(e){if(/Workspace-Schlüssel|Workspace-Key/i.test(e.message||''))throw Error('Einmalige Workspace-Kopplung fehlt: In der Praxisverwaltung → Secure Vault den BDW1-Code des Owners einlösen.');throw e}
+   try{const local=await window.BDVault.request('/workspace/methods/status');
+     const cloud=await api('/admin/workspace/methods/status');
+     if(cloud.transport!=='workspace-methods-v1')throw Error('Cloud-Methodenabgleich hat eine unerwartete Version.');
+     return local;}
+   catch(e){if(/Workspace-Schlüssel|Workspace-Key|gemeinsamen Workspace/i.test(e.message||''))throw Error('Einmalige Workspace-Kopplung fehlt: In der Praxisverwaltung → Secure Vault den BDW1-Code des Owners einlösen.');throw e}
  }
  async function run({manual=false,urgent=false}={}){
    if(active)return active;
@@ -44,7 +48,7 @@
        const local=await prerequisites();cursor=Number(local.cursor||0);
        // Inbound first: never overwrite an unacknowledged local change silently.
        for(let p=0;p<200;p++){
-         const remote=await api('/admin/workspace/methods/delta?cursor='+encodeURIComponent(cursor));
+         const remote=await api('/admin/workspace/methods/delta?cursor='+encodeURIComponent(cursor)+'&workspaceKeyId='+encodeURIComponent(local.workspaceKeyId));
          if(!remote.items?.length)break;
          const result=await window.BDVault.post('/workspace/methods/apply',{workspaceKeyId:local.workspaceKeyId,items:remote.items});
          received+=Number(result.applied||0);skipped+=Number(result.skipped||0);
@@ -74,7 +78,7 @@
        update({status:'ok',message:`Synchronisiert: ${received} empfangen · ${sent} übertragen`,received,sent,cursor,lastSuccess});
        if(received)document.dispatchEvent(new CustomEvent('bd:methods-synced',{detail:{received,sent}}));
        return {...state};
-     }catch(e){lastError=String(e.message||e);stopAuto=!!e.conflict||/Workspace-Kopplung|Migration/.test(lastError);
+     }catch(e){lastError=String(e.message||e);stopAuto=!!e.conflict||/Workspace-Kopplung|Workspace-Zugang fehlt|Migration|nicht installiert/.test(lastError);
        update({status:stopAuto?'needs-setup':'error',message:lastError,received,sent,cursor});
        if(manual)throw e;return {...state};
      }
@@ -90,6 +94,7 @@
  document.addEventListener('DOMContentLoaded',()=>schedule({delay:1800}));
  document.addEventListener('bd:vault-unlocked',()=>schedule({urgent:true,delay:600}));
  document.addEventListener('bd:method-changed',()=>schedule({urgent:true,delay:1100}));
+ document.addEventListener('bd:workspace-linked',()=>schedule({manual:true,urgent:true,delay:800}));
  document.addEventListener('visibilitychange',refresh);
  window.addEventListener('online',refresh);
  window.addEventListener('focus',()=>{if(Date.now()-lastAttempt>60000)refresh()});

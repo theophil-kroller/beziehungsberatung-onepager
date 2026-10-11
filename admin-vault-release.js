@@ -1,4 +1,4 @@
-/* BUILD 15.12.30 – Update & encrypted workspace-method delta sync. */
+/* BUILD 15.12.54 – Update & encrypted workspace-method delta sync. */
 (()=>{'use strict';
  const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
  const $=s=>document.querySelector(s);
@@ -38,7 +38,7 @@
   try{const s=await status();display(s);
     const h=await window.BDVault?.checkHealth?.();
     if(h?.unlocked&&s.configured&&Date.now()-lastAutoCheck>30*60*1000){lastAutoCheck=Date.now();updateCheck(false).catch(()=>{});}
-    if(h?.unlocked){try{const x=await window.BDVault.request('/workspace/methods/status');$('#bdVault30SyncStatus').textContent=`Workspace verbunden · ${x.linkedMethods} synchronisierte Methoden · Cursor ${x.cursor}`;}catch(e){$('#bdVault30SyncStatus').textContent=e.message;}}
+    if(h?.unlocked){try{const x=await window.BDVault.request('/workspace/methods/status');$('#bdVault30SyncStatus').textContent=`Lokaler Schlüssel bereit · ${x.linkedMethods} synchronisierte Methoden · Cursor ${x.cursor}`;}catch(e){$('#bdVault30SyncStatus').textContent='Einrichtung ausständig: '+e.message;}}
   }catch(e){if($('#bdVault30UpdateStatus'))$('#bdVault30UpdateStatus').textContent='Lokaler Vault nicht erreichbar.'}
  }
  async function updateCheck(force){
