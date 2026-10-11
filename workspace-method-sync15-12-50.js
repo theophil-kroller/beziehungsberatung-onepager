@@ -5,8 +5,8 @@
  if(window.BDMethodSync)return;
  const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
  const key='bd_admin_session_v1';
- const INTERVAL=5*60*1000;
- let active=null,lastAttempt=0,lastSuccess=0,lastError='',stopAuto=false,timeout=null;
+ const INTERVAL=5*60*1000; const MAX_BACKOFF=30*60*1000;
+ let active=null,lastAttempt=0,lastSuccess=0,lastError='',stopAuto=false,timeout=null,failedRuns=0,nextAttemptAt=0;
  const listeners=new Set();
  let state={status:'waiting',message:'Warte auf persönlichen Praxiszugang und entsperrten Vault.',received:0,sent:0,lastSuccess:0};
  function update(next){state={...state,...next};for(const l of listeners){try{l({...state})}catch(_){}}document.dispatchEvent(new CustomEvent('bd:method-sync-status',{detail:{...state}}));}
@@ -39,7 +39,7 @@
  }
  async function run({manual=false,urgent=false}={}){
    if(active)return active;
-   if(!manual&&(stopAuto||document.hidden||(!urgent&&Date.now()-lastAttempt<60000)))return state;
+   if(!manual&&(stopAuto||document.hidden||Date.now()<nextAttemptAt||(!urgent&&Date.now()-lastAttempt<60000)))return state;
    lastAttempt=Date.now();
    const work=(async()=>{
      update({status:'running',message:'Verschlüsselte Methoden werden abgeglichen …'});
@@ -74,11 +74,11 @@
          if(conflict){const error=new Error('Methodenkonflikt bei '+conflict.methodId+' ('+conflict.conflict+'). Kein automatisches Überschreiben.');error.conflict=true;throw error;}
          if(b===199)throw Error('Weitere Methoden warten auf Upload. Bitte erneut synchronisieren.');
        }
-       lastError='';stopAuto=false;lastSuccess=Date.now();
+       lastError='';stopAuto=false;failedRuns=0;nextAttemptAt=0;lastSuccess=Date.now();
        update({status:'ok',message:`Synchronisiert: ${received} empfangen · ${sent} übertragen`,received,sent,cursor,lastSuccess});
        if(received)document.dispatchEvent(new CustomEvent('bd:methods-synced',{detail:{received,sent}}));
        return {...state};
-     }catch(e){lastError=String(e.message||e);stopAuto=!!e.conflict||/Workspace-Kopplung|Workspace-Zugang fehlt|Migration|nicht installiert/.test(lastError);
+     }catch(e){lastError=String(e.message||e);stopAuto=!!e.conflict||/Workspace-Kopplung|Workspace-Zugang fehlt|Migration|nicht installiert/.test(lastError);failedRuns+=1;nextAttemptAt=Date.now()+Math.min(MAX_BACKOFF,60_000*Math.pow(2,Math.min(failedRuns,5)));if(/Cloud ist momentan nicht erreichbar|Cloud-Verbindung|Failed to fetch|Load failed/i.test(lastError))lastError='Cloud-Verbindung derzeit nicht möglich. Der Workspace-Schlüssel bleibt erhalten; automatischer neuer Versuch später. Wenn andere Cloud-Funktionen ebenfalls ausfallen, Netzwerk oder Desktop-Proxy prüfen.';
        update({status:stopAuto?'needs-setup':'error',message:lastError,received,sent,cursor});
        if(manual)throw e;return {...state};
      }

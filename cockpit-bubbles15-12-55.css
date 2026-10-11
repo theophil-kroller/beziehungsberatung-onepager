@@ -1,0 +1,6 @@
+/* Warm, non-interactive 3-second cockpit welcome. 100% offline; no extra media. */
+#view-dashboard .cockpit-attention{position:relative;isolation:isolate}
+#view-dashboard .bd1555-bubbles{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none;border-radius:20px}
+#view-dashboard .bd1555-bubble{position:absolute;bottom:-45px;left:var(--x);width:var(--size);height:var(--size);border-radius:50%;opacity:0;background:radial-gradient(circle at 34% 30%,rgba(255,247,237,.73) 0%,var(--tint) 55%,rgba(255,247,237,.08) 100%);border:1px solid rgba(201,107,75,.09);box-shadow:inset 1px 1px 7px rgba(255,255,255,.42);animation:bd1555-bubble-rise var(--dur) ease-out var(--delay) both}
+@keyframes bd1555-bubble-rise{0%{opacity:0;transform:translate3d(0,14px,0) scale(.85)}18%{opacity:.45}65%{opacity:.3}100%{opacity:0;transform:translate3d(var(--drift),-240px,0) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){#view-dashboard .bd1555-bubbles{display:none!important}}

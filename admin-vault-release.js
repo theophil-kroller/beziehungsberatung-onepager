@@ -1,9 +1,9 @@
-/* BUILD 15.12.54 – Update & encrypted workspace-method delta sync. */
+/* BUILD 15.12.55 – Update & encrypted workspace-method delta sync. */
 (()=>{'use strict';
  const API=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');
  const $=s=>document.querySelector(s);
  const VAULT='http://127.0.0.1:47831';
- let isBusy=false,lastAutoCheck=0;
+ let isBusy=false,lastAutoCheck=0,desktopRunningVersion='';
  async function api(path,opts={}){
    const token=sessionStorage.getItem('bd_admin_session_v1')||'';
    if(!API||!token)throw Error('Bitte zuerst mit dem persönlichen Praxiszugang anmelden.');
@@ -21,24 +21,24 @@
    <p class="micro muted" id="bdVault30UpdateMsg" role="status"></p></div>
    <div><strong>Gemeinsame Methoden &amp; Hausübungen</strong><p id="bdVault30SyncStatus" class="micro muted">Gemeinsamer Schlüssel und Vault erforderlich.</p>
    <button type="button" class="btn secondary" id="bdVault30Sync">Änderungen jetzt synchronisieren</button>
-   <p class="micro muted" id="bdVault30SyncMsg" role="status">Automatischer Abgleich bei aktiver Sitzung und nach Änderungen. Kein Klartext in Cloudflare.</p></div></div>`;
+   <p class="micro muted" id="bdVault30SyncMsg" role="status">Automatischer Abgleich bei aktiver Sitzung und nach Änderungen. Kein Klartext in Cloudflare.</p><button type="button" class="btn ghost" id="bdVault30Diagnose">Verbindung prüfen</button><p class="micro muted" id="bdVault30Diagnostic" role="status"></p></div></div>`;
   const before=$('#b1441BackupPanel');before?.before(el)||parent.appendChild(el);
   $('#bdVault30Check').onclick=()=>updateCheck(true);
   $('#bdVault30Install').onclick=updateInstall;
-  $('#bdVault30Sync').onclick=syncMethods;
+  $('#bdVault30Sync').onclick=syncMethods;$('#bdVault30Diagnose').onclick=diagnose;
   refresh().catch(()=>{});
  }
  async function status(){const r=await fetch(VAULT+'/update/status',{cache:'no-store'});return r.json()}
  function display(s){
   const txt=$('#bdVault30UpdateStatus');if(!txt)return;
-  txt.textContent=s.ok?(s.configured?(s.available?`Version ${s.installed} · Version ${s.releaseVersion} verfügbar`:`Installiert: ${s.installed} · ${s.lastChecked?'geprüft '+s.lastChecked:'Noch keine Prüfung'}`):`Version ${s.installed} · GitHub-Releasequelle noch nicht konfiguriert`):'Lokaler Update-Dienst nicht erreichbar';
+  txt.textContent=s.ok?((desktopRunningVersion?'Desktop '+desktopRunningVersion+' · ':'')+'Vault-Code '+s.installed+(s.configured?(s.available?' · Vault-Update '+s.releaseVersion+' verfügbar':s.lastChecked?' · geprüft '+s.lastChecked:' · Vault-Update nicht geprüft'):' · Vault-Updatequelle noch nicht konfiguriert')):'Lokaler Vault-Update-Dienst nicht erreichbar';
   $('#bdVault30Install').hidden=!(s.configured&&s.available);
  }
  async function refresh(){
-  try{const s=await status();display(s);
+  try{if(location.port==='47832'&&!desktopRunningVersion){try{const d=await fetch('/desktop/status',{cache:'no-store'}).then(r=>r.json());desktopRunningVersion=d?.version||''}catch(_){}}const s=await status();display(s);
     const h=await window.BDVault?.checkHealth?.();
     if(h?.unlocked&&s.configured&&Date.now()-lastAutoCheck>30*60*1000){lastAutoCheck=Date.now();updateCheck(false).catch(()=>{});}
-    if(h?.unlocked){try{const x=await window.BDVault.request('/workspace/methods/status');$('#bdVault30SyncStatus').textContent=`Lokaler Schlüssel bereit · ${x.linkedMethods} synchronisierte Methoden · Cursor ${x.cursor}`;}catch(e){$('#bdVault30SyncStatus').textContent='Einrichtung ausständig: '+e.message;}}
+    if(h?.unlocked){try{const x=await window.BDVault.request('/workspace/methods/status');$('#bdVault30SyncStatus').textContent=`Lokaler Schlüssel bereit · ${x.linkedMethods} synchronisierte Methoden · Cursor ${x.cursor}`;}catch(e){$('#bdVault30SyncStatus').textContent=(/Load failed|Failed to fetch/i.test(e.message)?'Lokalen Vault-Verbindungsweg prüfen (Schlüssel bleibt erhalten).':'Einrichtung ausständig: '+e.message);}}
   }catch(e){if($('#bdVault30UpdateStatus'))$('#bdVault30UpdateStatus').textContent='Lokaler Vault nicht erreichbar.'}
  }
  async function updateCheck(force){
@@ -59,6 +59,22 @@
     msg.textContent=`Update ${x.target} vorbereitet. Vault startet neu; diese Seite danach erneut öffnen.`;
     $('#bdVault30Install').disabled=true;
   }catch(e){msg.textContent='Update fehlgeschlagen: '+e.message}finally{isBusy=false}
+ }
+ async function diagnose(){
+   const label=$('#bdVault30Diagnostic');if(!label)return;
+   label.textContent='Prüfe lokale und Cloud-Verbindung …';
+   try{
+     const h=await window.BDVault?.checkHealth?.();
+     if(!h?.ok){label.textContent='Lokaler Vault nicht erreichbar. Bitte Desktop-Anwendung starten.';return}
+     if(!h?.unlocked){label.textContent='Lokaler Vault gesperrt. Bitte entsperren.';return}
+     const path='/admin/workspace/methods/status';
+     const token=sessionStorage.getItem('bd_admin_session_v1');
+     if(!token){label.textContent='Praxisanmeldung fehlt. Bitte in der Desktop-App anmelden.';return}
+     const response=await fetch(API+path,{headers:{Authorization:'Bearer '+token},cache:'no-store'});
+     const value=await response.json().catch(()=>({}));
+     if(response.ok&&value.ok){const rec=window.BDCloudMethodRecovery?.stats?.();label.textContent='Cloud erreichbar'+(rec?.usedFallback?' (Ausweichverbindung aktiv).':' über den Desktop-Proxy.')+' Methoden-Transport bereit.';return}
+     label.textContent=response.status===401?'Praxisanmeldung abgelaufen. Erneut anmelden.':String(value.error||'Cloud antwortet mit HTTP '+response.status);
+   }catch(e){label.textContent='Verbindung nicht erreichbar: '+String(e.message||e)+'. Der Vault bleibt lokal verfügbar.'}
  }
  async function syncMethods(){
    const btn=$('#bdVault30Sync'),msg=$('#bdVault30SyncMsg');if(!window.BDMethodSync){msg.textContent='Synchronisationsmodul fehlt.';return;}
