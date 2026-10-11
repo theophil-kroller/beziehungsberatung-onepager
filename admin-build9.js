@@ -122,7 +122,7 @@
     });
   }
   async function consumeMagicLink(){const u=new URL(location.href),token=u.searchParams.get("login");if(!token)return false;history.replaceState({},document.title,location.pathname);try{const r=await fetch(API+"/admin/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});const x=await r.json();if(!r.ok||!x.ok)throw new Error(x.error||"Login-Link ungültig.");if(x.mfaRequired)return await promptTotpMfa(x);session=x.sessionToken;sessionStorage.removeItem("bd_vault_token_v1");sessionStorage.setItem(SESSION_KEY,session);return true}catch(err){showLogin();message($("#loginMsg"),err.message,"err");return false}}
-  $("#logoutBtn").addEventListener("click",async()=>{try{await api("/admin/logout",{method:"POST"})}catch(e){}session="";sessionStorage.removeItem(SESSION_KEY);sessionStorage.removeItem("bd_vault_token_v1");sessionStorage.removeItem("bd_admin_identity_v1");showLogin()});
+  $("#logoutBtn").addEventListener("click",async()=>{try{await api("/admin/logout",{method:"POST"})}catch(e){}session="";sessionStorage.removeItem(SESSION_KEY);sessionStorage.removeItem("bd_vault_token_v1");sessionStorage.removeItem("bd_admin_identity_v1");window.BDDesktopSession?.logout();showLogin()});
   $("#refreshBtn").addEventListener("click",()=>{clearCloudBackoff();load(true)});
 
   const viewMeta={
