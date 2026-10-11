@@ -36,3 +36,27 @@
 .bd1558-sound[aria-pressed="true"]{border-color:rgba(201,107,75,.65);color:#a55236}
 .bd1558-sound:hover,.bd1558-sound:focus-visible{background:#fff;outline-offset:2px}
 @media(max-width:500px){.bd1558-controls{gap:6px}.bd1558-sound{padding:8px 11px}}
+
+/* Build 15.12.60: tempo slider and gentle word-fragment reveal */
+#bd1556GameDialog .bd1556-bottom{align-items:center;gap:18px;flex-wrap:wrap}
+#bd1556GameDialog .bd1560-speed-label{display:flex;flex-direction:column;gap:5px;min-width:210px;flex:1 1 245px;max-width:345px;color:#6b5549;font:600 12px system-ui,sans-serif}
+#bd1556GameDialog .bd1560-speed-label #bd1560SpeedValue{color:#b3664b;font-weight:700;margin-left:5px}
+#bd1556GameDialog #bd1560Speed{width:100%;height:20px;cursor:pointer;accent-color:#c96b4b;touch-action:pan-x;margin:0}
+#bd1556GameDialog #bd1560Speed:focus-visible{outline:2px solid #c96b4b;outline-offset:3px}
+#bd1556GameDialog .bd1560-speed-ends{display:flex;justify-content:space-between;color:#9d887e;font:400 10px system-ui,sans-serif}
+#bd1556GameDialog .bd1560-phrase{position:absolute;z-index:2;pointer-events:none;top:9px;left:70px;right:70px;text-align:center;display:flex;flex-direction:column;gap:5px;align-items:center}
+#bd1556GameDialog .bd1560-phrase-parts{display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%;flex-wrap:wrap}
+#bd1556GameDialog .bd1560-phrase-part{display:inline-block;min-width:29px;border:1px solid rgba(204,155,122,.25);border-radius:17px;padding:5px 10px;background:rgba(255,252,248,.43);font:italic 500 clamp(12px,1.35vw,16px) Georgia,serif;color:rgba(100,74,62,.32);transition:background .25s ease,color .25s ease}
+#bd1556GameDialog .bd1560-phrase-part.is-revealed{color:#99513e;background:rgba(255,251,247,.86);border-color:rgba(201,107,75,.36)}
+#bd1556GameDialog .bd1560-phrase-hint{font:400 10px system-ui,sans-serif;color:#aa9387;letter-spacing:.015em}
+@media(max-width:650px){#bd1556GameDialog .bd1556-bottom{gap:9px}#bd1556GameDialog .bd1560-speed-label{max-width:none;flex-basis:100%}#bd1556GameDialog .bd1560-phrase{left:32px;right:18px}#bd1556GameDialog .bd1560-phrase-part{padding:4px 7px;font-size:12px}#bd1556GameDialog .bd1556-field-hint{font-size:10px}#bd1556GameDialog .bd1556-field{height:clamp(220px,44vh,390px)}}
+
+/* 15.12.60: optional, low-volume Atemraum soundscape while the game is open. */
+#bd1556GameDialog .bd1560-music-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+#bd1556GameDialog .bd1560-music{border:1px solid rgba(181,123,94,.36);border-radius:13px;padding:9px 13px;background:#fff;color:#856958;min-height:40px;font:650 13px system-ui,sans-serif;cursor:pointer}
+#bd1556GameDialog .bd1560-music[aria-pressed="true"]{border-color:#c96b4b;color:#a55236}
+#bd1556GameDialog .bd1560-music-choice,#bd1556GameDialog .bd1560-music-level{display:flex;align-items:center;gap:5px;font:500 11px system-ui,sans-serif;color:#8d7769}
+#bd1556GameDialog .bd1560-music-choice select{max-width:112px;min-height:36px;border:1px solid #e3cec2;border-radius:9px;background:#fffaf6;color:#6b5549;padding:4px}
+#bd1556GameDialog .bd1560-music-level input{width:70px;accent-color:#c96b4b}
+#bd1556GameDialog .bd1560-music-status{font-size:11px;color:#9d664c;max-width:180px}
+@media(max-width:650px){#bd1556GameDialog .bd1560-music-choice,#bd1556GameDialog .bd1560-music-level{font-size:10px}#bd1556GameDialog .bd1560-music-level input{width:54px}}

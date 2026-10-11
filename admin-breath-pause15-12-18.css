@@ -8,3 +8,12 @@
 .breath-pause-thumb svg{width:84%;height:84%;display:block}
 
 .breath-pause-review-btn{border:1px solid #b9d0e1;border-radius:12px;background:#e5f1f9;color:#3d6178;padding:9px 14px;font-size:12px;font-weight:750;cursor:pointer}.breath-pause-review-btn:hover{background:#d8e9f5}
+
+/* 15.12.60 final — compact top-level Atemraum and nested iframe without double scrollbars. */
+.breath-pause-head{flex-shrink:0}
+.breath-pause-frame{display:block;min-height:0!important;height:100%;overflow:hidden}
+.breath-pause-player{min-height:0!important;overflow:hidden}
+.breath-pause-dialog .breath-pause-playerbar{flex:0 0 auto;padding:6px 18px}
+.breath-pause-thumb img{object-fit:contain;background:#fff7ed}
+.breath-pause-thumb svg{width:90%;height:90%}
+@media(min-width:701px){.breath-pause-dialog{height:min(94dvh,850px);max-height:94dvh}.breath-pause-shell{height:100%;min-height:0!important;max-height:100%!important}.breath-pause-head{padding:10px 22px 9px}.breath-pause-head h2{font-size:26px}.breath-pause-head p{font-size:12px}.breath-pause-playerbar{padding:5px 16px}}
