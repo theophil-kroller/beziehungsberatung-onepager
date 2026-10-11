@@ -19,18 +19,18 @@ async function renderVault(){const host=$('#bd151VaultGrid'),pill=$('#bd151Vault
 function ensureMfaSettingsPanel(){
   const grid=$('#view-settings .settings-grid');if(!grid||$('#bdMfaPanel'))return;
   const panel=document.createElement('section');panel.className='panel';panel.id='bdMfaPanel';panel.style.cssText='grid-column:1/-1;padding:22px;';
-  panel.innerHTML=`<p class="eyebrow">Sicherheit · Praxis-Login</p><h2>Zwei-Faktor-Authentifizierung</h2><p class="muted">Zusätzlicher sechsstelliger Code aus einer Authenticator-App, nach Bestätigung des persönlichen E-Mail-Login-Links. Die Owner-Pflicht ist zunächst ausgeschaltet. Kein fortlaufendes Cloudflare-Polling.</p><button class="btn secondary" id="bdMfaOpen" type="button">2FA-Einstellungen öffnen</button><div id="bdMfaControls" hidden style="margin-top:18px"><p id="bdMfaStatus" class="muted"></p><div id="bdMfaEnrollment" hidden><button class="btn secondary" id="bdMfaStart" type="button">Authenticator einrichten</button><div id="bdMfaSecretWrap" hidden><p class="micro muted">Diesen Schlüssel einmalig in einer Authenticator-App als zeitbasiertes Konto hinterlegen. Bitte privat aufbewahren.</p><label class="edit-field">Einrichtungsschlüssel<input id="bdMfaSecret" readonly></label><label class="edit-field">Sechsstelligen Code eingeben<input id="bdMfaEnrollCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" pattern="[0-9]{6}"></label><button class="btn primary" id="bdMfaConfirm" type="button">Authenticator bestätigen</button></div></div><label class="edit-field" id="bdMfaOwnerPolicy" hidden style="margin-top:18px"><span><input id="bdMfaRequired" type="checkbox"> Zwei-Faktor-Anmeldung für das Praxis-Team verpflichtend machen</span></label><button class="btn primary" id="bdMfaSave" hidden type="button">Sicherheitseinstellung speichern</button><p id="bdMfaMessage" role="status" class="micro muted"></p></div>`;
+  panel.innerHTML=`<p class="eyebrow">Sicherheit · Praxis-Login</p><h2>Zwei-Faktor-Authentifizierung</h2><p class="muted">Zusätzlicher sechsstelliger Code aus einer Authenticator-App, nach Bestätigung des persönlichen E-Mail-Login-Links. Die Owner-Pflicht ist zunächst ausgeschaltet. Kein fortlaufendes Cloudflare-Polling.</p><button class="btn secondary" id="bdMfaOpen" type="button">2FA-Einstellungen öffnen</button><div id="bdMfaControls" hidden style="margin-top:18px"><p id="bdMfaStatus" class="muted"></p><div id="bdMfaEnrollment" hidden><button class="btn secondary" id="bdMfaStart" type="button">Authenticator einrichten</button><div id="bdMfaSecretWrap" hidden><p class="micro muted">Diesen Schlüssel einmalig in einer Authenticator-App als zeitbasiertes Konto hinterlegen. Bitte privat aufbewahren.</p><div style="margin:14px 0"><p class="micro muted">QR-Code mit der Authenticator-App scannen (nur auf diesem Gerät anzeigen; nicht teilen).</p><div style="background:white;border-radius:12px;padding:14px;display:inline-block"><canvas id="bdMfaQr" role="img" aria-label="Einrichtungs-QR-Code für die Authenticator-App"></canvas></div></div><label class="edit-field">Einrichtungsschlüssel (Alternative)<input id="bdMfaSecret" readonly autocomplete="off"></label><label class="edit-field">Sechsstelligen Code eingeben<input id="bdMfaEnrollCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" pattern="[0-9]{6}"></label><button class="btn primary" id="bdMfaConfirm" type="button">Authenticator bestätigen</button></div></div><label class="edit-field" id="bdMfaPersonalPolicy" hidden style="margin-top:18px"><span><input id="bdMfaPersonalRequired" type="checkbox"> Zwei-Faktor-Anmeldung für mein Konto verpflichtend machen</span></label><button class="btn secondary" id="bdMfaSavePersonal" hidden type="button">Meine 2FA-Einstellung speichern</button><label class="edit-field" id="bdMfaOwnerPolicy" hidden style="margin-top:18px"><span><input id="bdMfaRequired" type="checkbox"> Zwei-Faktor-Anmeldung für das Praxis-Team verpflichtend machen</span></label><button class="btn primary" id="bdMfaSave" hidden type="button">Sicherheitseinstellung speichern</button><p id="bdMfaMessage" role="status" class="micro muted"></p></div>`;
   grid.append(panel);
-  $('#bdMfaOpen').onclick=()=>loadMfaSettings();$('#bdMfaStart').onclick=startMfaEnroll;$('#bdMfaConfirm').onclick=confirmMfaEnroll;$('#bdMfaSave').onclick=saveMfaPolicy;
+  $('#bdMfaOpen').onclick=()=>loadMfaSettings();$('#bdMfaStart').onclick=startMfaEnroll;$('#bdMfaConfirm').onclick=confirmMfaEnroll;$('#bdMfaSave').onclick=saveMfaPolicy;$('#bdMfaSavePersonal').onclick=savePersonalMfaPolicy;
 }
 async function loadMfaSettings(){
   const controls=$('#bdMfaControls'),msg=$('#bdMfaMessage'),status=$('#bdMfaStatus');controls.hidden=false;msg.textContent='';status.textContent='Lade Sicherheitsstatus …';
   try{
     const m=await req('/admin/mfa/status');
-    status.textContent=`2FA ist ${m.required?'aktiv':'ausgeschaltet'} · Dein Authenticator: ${m.enrolled?'eingerichtet':'noch nicht eingerichtet'}${m.configured?'':' · Server-Schlüssel fehlt noch'}`;
+    status.textContent=`2FA ist ${m.required||m.personalRequired?'aktiv':'ausgeschaltet'} · Dein Authenticator: ${m.enrolled?'eingerichtet':'noch nicht eingerichtet'}${m.configured?'':' · Server-Schlüssel fehlt noch'}`;
     $('#bdMfaEnrollment').hidden=!!m.enrolled||!m.configured;
     $('#bdMfaOwnerPolicy').hidden=!m.owner;$('#bdMfaSave').hidden=!m.owner||!m.configured;
-    $('#bdMfaRequired').checked=!!m.required;
+    $('#bdMfaRequired').checked=!!m.required;$('#bdMfaPersonalPolicy').hidden=!m.enrolled;$('#bdMfaSavePersonal').hidden=!m.enrolled||!m.configured;$('#bdMfaPersonalRequired').checked=!!m.personalRequired;$('#bdMfaPersonalRequired').disabled=!!m.required;$('#bdMfaSavePersonal').disabled=!!m.required;
     if(m.owner&&m.notEnrolled?.length)msg.textContent='Vor der Aktivierung fehlen noch Authenticator-Registrierungen: '+m.notEnrolled.join(', ');
     if(!m.configured)msg.textContent='Vorbereitung abgeschlossen. Für die Aktivierung muss der Owner zuerst das Cloudflare-Secret BD_MFA_MASTER_KEY setzen und die 2FA-D1-Migration ausführen.';
     return m;
@@ -44,8 +44,27 @@ function showMfaRecoveryCodes(codes){
   const button=document.createElement('button');button.type='button';button.className='btn primary';button.textContent='Codes gesichert – schließen';button.onclick=()=>dlg.close();dlg.append(button);
   dlg.addEventListener('close',()=>dlg.remove(),{once:true});document.body.append(dlg);dlg.showModal();
 }
-async function startMfaEnroll(){try{const m=await req('/admin/mfa/enroll/start',{method:'POST',body:JSON.stringify({})});$('#bdMfaSecret').value=m.secret;$('#bdMfaSecretWrap').hidden=false;$('#bdMfaEnrollCode').value='';$('#bdMfaEnrollCode').focus();$('#bdMfaMessage').textContent='Den angezeigten Schlüssel zur Authenticator-App hinzufügen und den aktuellen sechsstelligen Code bestätigen.'}catch(err){$('#bdMfaMessage').textContent=err.message}}
-async function confirmMfaEnroll(){try{const code=$('#bdMfaEnrollCode').value.trim();if(!/^\d{6}$/.test(code))throw Error('Bitte sechs Ziffern eingeben.');const confirmed=await req('/admin/mfa/enroll/confirm',{method:'POST',body:JSON.stringify({code})});if(confirmed.recoveryCodes?.length)showMfaRecoveryCodes(confirmed.recoveryCodes);$('#bdMfaSecret').value='';$('#bdMfaSecretWrap').hidden=true;await loadMfaSettings();$('#bdMfaMessage').textContent='✓ Authenticator wurde eingerichtet. Die Owner-Pflicht ist davon unabhängig weiterhin ausgeschaltet.'}catch(err){$('#bdMfaMessage').textContent=err.message}}
+async function loadMfaQrLibrary(){
+  if(window.QRCode?.toCanvas)return window.QRCode;
+  return new Promise((resolve,reject)=>{const el=document.createElement('script');el.src='qrcode-local.js?v=15.12.48';el.dataset.bdMfaQr='1';el.onload=()=>window.QRCode?.toCanvas?resolve(window.QRCode):reject(Error('QR-Bibliothek nicht verfügbar.'));el.onerror=()=>reject(Error('Lokale QR-Bibliothek konnte nicht geladen werden.'));document.head.appendChild(el)});
+}
+async function startMfaEnroll(){try{
+  const m=await req('/admin/mfa/enroll/start',{method:'POST',body:JSON.stringify({})});
+  $('#bdMfaSecret').value=m.secret;$('#bdMfaSecretWrap').hidden=false;$('#bdMfaEnrollCode').value='';
+  try{const qr=await loadMfaQrLibrary();await qr.toCanvas($('#bdMfaQr'),m.otpauthUrl,{width:220,margin:4})}
+  catch(err){$('#bdMfaQr').hidden=true;$('#bdMfaMessage').textContent='QR-Code nicht verfügbar: Bitte den Einrichtungsschlüssel manuell verwenden.'}
+  $('#bdMfaEnrollCode').focus();if(!$('#bdMfaQr').hidden)$('#bdMfaMessage').textContent='QR-Code scannen und den sechsstelligen Code bestätigen.';
+}catch(err){$('#bdMfaMessage').textContent=err.message}}
+async function savePersonalMfaPolicy(){
+  const required=$('#bdMfaPersonalRequired').checked,btn=$('#bdMfaSavePersonal');
+  if(!confirm(required?'2FA für dein persönliches Konto aktivieren? Deine aktuellen Logins werden beendet. Wiederherstellungscodes müssen sicher aufbewahrt sein.':'Persönliche 2FA-Pflicht deaktivieren?'))return;
+  btn.disabled=true;
+  try{const r=await req('/admin/mfa/personal-policy',{method:'POST',body:JSON.stringify({required})});
+    if(r.sessionsRevoked){sessionStorage.removeItem(SESSION_KEY);location.reload();return}
+    await loadMfaSettings();$('#bdMfaMessage').textContent='Persönliche 2FA-Einstellung gespeichert.';
+  }catch(e){$('#bdMfaMessage').textContent=e.message;await loadMfaSettings()}finally{btn.disabled=false}
+}
+async function confirmMfaEnroll(){try{const code=$('#bdMfaEnrollCode').value.trim();if(!/^\d{6}$/.test(code))throw Error('Bitte sechs Ziffern eingeben.');const confirmed=await req('/admin/mfa/enroll/confirm',{method:'POST',body:JSON.stringify({code})});if(confirmed.recoveryCodes?.length)showMfaRecoveryCodes(confirmed.recoveryCodes);$('#bdMfaSecret').value='';$('#bdMfaSecretWrap').hidden=true;const qr=$('#bdMfaQr');qr.width=1;qr.height=1;await loadMfaSettings();$('#bdMfaMessage').textContent='✓ Authenticator wurde eingerichtet. Die Owner-Pflicht ist davon unabhängig weiterhin ausgeschaltet.'}catch(err){$('#bdMfaMessage').textContent=err.message}}
 async function saveMfaPolicy(){
   const checked=$('#bdMfaRequired').checked,btn=$('#bdMfaSave');if(!confirm(checked?'2FA für alle Praxis-Logins aktivieren? Alle aktuellen Sessions werden beendet. Zuerst müssen alle aktiven Teammitglieder ihren Authenticator eingerichtet haben.':'2FA-Pflicht wirklich ausschalten?'))return;
   btn.disabled=true;
