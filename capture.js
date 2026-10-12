@@ -280,7 +280,7 @@
     if(recorder?.state==='recording'||draft?.pendingRecording){alert('Beende zuerst die laufende Aufnahme. Danach kannst du ins Training wechseln.');return}
     const modal=$('#bdCaptureTrainerDialog'),frame=$('#bd166TrainingFrame');
     if(!modal||!frame)return;
-    if(!frame.getAttribute('src'))frame.src='bindungsstile-trainer15-12-68.html';
+    if(!frame.getAttribute('src'))frame.src='bindungsstile-trainer15-12-69.html';
     const menu=$('.app-menu');if(menu)menu.open=false;
     if(!modal.open)modal.showModal();
   }
