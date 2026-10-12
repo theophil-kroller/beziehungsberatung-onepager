@@ -35,3 +35,27 @@
 .di-book-actions button:disabled{opacity:.4;cursor:default}
 .di-book-extra{font-size:12px;color:#cbc3d0}
 @media(max-width:650px){.di-book-panel{padding:13px}.di-book-options{grid-template-columns:1fr}.di-book-option{min-height:0;padding:9px;font-size:14px}.di-book-actions{flex-wrap:wrap}}
+
+/* Deep Mastery 15.12.81: modaler Wissenstrainer ohne Webseiten-Scroll während einzelner Aufgaben */
+.di-book-panel{width:min(920px,calc(100vw - 20px));max-height:calc(100dvh - 28px)}
+.di-book-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 10px}
+.di-book-tabs button{border:1px solid #8a697a;background:#29253e;color:#f8dfd7;padding:8px 10px;border-radius:9px;font-size:12px;cursor:pointer}
+.di-book-tabs button[aria-pressed=true]{border-color:#e8ae8e;background:#5b3445;color:white}
+.di-book-overview{max-height:min(66dvh,610px);overflow:auto;overscroll-behavior:contain;padding-right:4px}
+.di-book-overview h3{font:700 22px Georgia,serif;color:#ffe1c2;margin:14px 0 8px}
+.di-book-overview p{color:#dcc9d8;font-size:13px;line-height:1.5}
+.di-compass-stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:10px 0}
+.di-compass-stat div{padding:13px;border:1px solid #705772;border-radius:13px;background:#12182e}
+.di-compass-stat strong{display:block;font:700 23px Georgia,serif;color:#ffcbab}
+.di-compass-stat small{color:#ddcad6;font-size:11px}
+.di-chapter-row{display:flex;gap:9px;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #674d656e}
+.di-chapter-row b{font-size:13px}.di-chapter-row small{display:block;font-size:11px;color:#cabcc7;margin-top:4px}
+.di-chapter-row button,.di-book-overview .di-master-action{border:1px solid #ab847f;background:#513747;color:#ffe4d3;border-radius:9px;padding:8px 11px;white-space:nowrap;cursor:pointer}
+.di-chapter-row button:hover,.di-book-overview .di-master-action:hover{background:#794858}
+.di-exam-item{padding:9px 0;border-bottom:1px solid #6f586fa8}.di-exam-item b{color:#f7c9aa;font-size:12px}.di-exam-item p{margin:4px 0 5px;font-size:12px}
+.di-book-panel .di-book-feedback{max-height:18dvh;overflow-y:auto}
+.di-book-panel .di-book-options{margin-bottom:8px}.di-book-panel .di-book-option{font-size:clamp(12px,1.2vw,14px);min-height:66px}
+.di-book-panel .di-book-question{margin:8px 0 10px;font-size:clamp(16px,1.7vw,21px)}
+.di-book-chapter{line-height:1.4}
+@media(max-height:680px) and (min-width:651px){.di-book-panel{padding:12px 20px}.di-book-top h2{font-size:24px}.di-book-tabs{margin:6px 0}.di-book-options{gap:6px}.di-book-panel .di-book-option{min-height:55px;padding:8px 10px}.di-book-panel .di-book-question{font-size:17px;margin:6px 0}.di-book-top{margin-bottom:4px}.di-book-feedback{padding:8px}}
+@media(max-width:650px){.di-book-tabs{display:grid;grid-template-columns:1fr 1fr}.di-book-tabs button{padding:7px 5px;font-size:11px}.di-book-overview{max-height:58dvh}.di-book-panel .di-book-option{font-size:12px;padding:7px 8px}}
