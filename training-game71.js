@@ -7,12 +7,14 @@ const K='bd_bindung_skill_v1',XP='bd_binding_game_xp_v2',SETS='bd_binding_game_s
 const NAME={anxiety:'Bindungsangst erkennen',avoidance:'Vermeidung erkennen',secure:'Sichere Regulation',uncertainty:'Mehrdeutigkeit erkennen',dynamics:'Paardynamiken einordnen',questions:'Beraterfragen wählen'};
 const KIND={choice:'Hypothesen-Blasen',clue:'Hinweisjagd',sort:'Zuordnen',followup:'Nächste Frage'};
 const BIN={anxiety:'Bindungsangst',avoidance:'Vermeidung',secure:'Sicheres Verhalten',uncertainty:'Noch unklar'};
+const STATE78='bd-binding78-state';
 let hist={},xp=0,settings={course:'mixed',listenFirst:false,sound:false};
 try{hist=JSON.parse(localStorage.getItem(K)||'{}')||{}}catch{}
 try{xp=Number(localStorage.getItem(XP)||0)||0}catch{}
 try{const o=JSON.parse(localStorage.getItem(SETS)||'{}');settings={...settings,...o}}catch{}
+try{const saved=JSON.parse(localStorage.getItem(STATE78)||'null');if(saved&&typeof saved==='object'){hist=saved.hist||hist;xp=Number(saved.xp??xp);settings={...settings,...(saved.settings||{})}}}catch{}
 let tasks=[],current=0,roundXp=0,hits=0,roundLog=[],answered=false,active=null,activeChoices=[],picked=new Set(),placements=[],sortOpts=[],dragState=null,toastTimer=0;
-function persist(){try{localStorage.setItem(K,JSON.stringify(hist));localStorage.setItem(XP,String(xp));localStorage.setItem(SETS,JSON.stringify(settings))}catch{}}
+function persist(){try{localStorage.setItem(K,JSON.stringify(hist));localStorage.setItem(XP,String(xp));localStorage.setItem(SETS,JSON.stringify(settings));localStorage.setItem(STATE78,JSON.stringify({hist,xp,settings}));window.BDCloud78?.onSaved('binding',STATE78)}catch{}}
 function syncOverlayLock(){const active=[...document.querySelectorAll('.shade')].some(x=>!x.classList.contains('hidden'));document.documentElement.classList.toggle('bd70-overlay-open',active)}
 function popup(id){$(id).classList.remove('hidden');syncOverlayLock()}
 function hide(id){$(id).classList.add('hidden');syncOverlayLock()}
@@ -96,7 +98,7 @@ function rewardAudio(ok){if(!settings.sound||!ok)return;try{const A=window.Audio
 function brief(s,max=215){s=String(s||'').trim();return s.length>max?s.slice(0,max).replace(/\s+\S*$/,'')+' …':s}
 function renderSortResults(arr){const root=$('sortResults');root.replaceChildren();root.classList.toggle('hidden',!arr);if(!arr)return;for(const [i,p] of arr.entries()){const details=el('details','sort-row '+(p.ok?'right':p.partial?'half':'miss'));const mark=p.ok?'✓ Richtig':p.partial?'◐ Teilweise richtig':'× Noch nicht richtig';const summary=el('summary','sort-result-line');const a=el('strong','',mark);const b=el('span','',brief(p.item.text,85));summary.append(a,b);const more=el('div','sort-more');more.append(el('div','',`Deine Zuordnung: ${p.chosen.map(k=>BIN[k]).join(' + ')}`),el('div','',`Passender: ${sortLabels(p.item).map(k=>BIN[k]).join(' + ')}`));details.append(summary,more);root.append(details)}}
 function grade(q,result,user,expected,whyWrong,decisive){
- if(answered)return;answered=true;const correct=result==='correct',partial=result==='partial';if(correct)hits++;roundLog[current]={mode:q.mode,result, title:q.mode==='sort'?q.title||'Zuordnung':(q.context||q.question||'Übung')};
+ if(answered)return;answered=true;const correct=result==='correct',partial=result==='partial';if(!correct&&(q.mode==='choice'||q.mode==='followup')){const options=q.mode==='choice'?activeChoices.map(x=>x.label):q.choices;const ci=q.mode==='choice'?activeChoices.findIndex(x=>x.ok):q.answer;if(ci>=0){window.BDMuscle78?.record({module:'binding',caseId:q.id,stage:0,question:q.question||q.prompt,options,correct:[ci],explanation:q.explanation||q.nuance||'',context:q.prompt||q.context||''})}}if(correct)hits++;roundLog[current]={mode:q.mode,result, title:q.mode==='sort'?q.title||'Zuordnung':(q.context||q.question||'Übung')};
  const old=hist[q.id]||{},now=Date.now();let reps=Number(old.reps||0),interval=Number(old.interval||0);
  if(correct){if(!old.dueAt||old.dueAt<=now){reps++;interval=reps===1?1:Math.min(100,Math.max(1,Math.round((interval||1)*2.15)))}}else{reps=0;interval=0}
  const gained=correct?(old.seen?10:16):partial?6:3;xp+=gained;roundXp+=gained;
