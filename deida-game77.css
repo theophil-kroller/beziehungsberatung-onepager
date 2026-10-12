@@ -5,3 +5,12 @@
 @media(max-height:680px) and (min-width:761px){.di-context{margin:4px 0 8px}.di-scene{padding:11px}.di-statement{padding:8px 10px}.di-statement blockquote{font-size:17px}.di-choices{gap:6px}.di-choice{padding:8px 10px;font-size:12px}.di-question h2{font-size:23px}}
 @media(max-height:610px) and (max-width:760px){.di-top{min-height:43px}.di-scene{padding:6px}.di-context{display:none}.di-face{display:none}.di-couple{display:block}.di-lines{display:grid;grid-template-columns:1fr 1fr;gap:4px}.di-voice-actions{grid-column:1/-1}.di-training-head h1{font-size:17px}.di-statement blockquote{font-size:12px}.di-statement blockquote.di-reply{font-size:12px}.di-question h2{font-size:17px}.di-instruction{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* 15.12.79 – comparison rather than generic self-assessment disclaimer */
+.di-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.di-compare-col{min-width:0;border:1px solid #9c7e9866;background:#101728b0;border-radius:12px;padding:11px}
+.di-compare-col b{display:block;color:#f0a57d;font-size:11px;margin-bottom:6px}
+.di-compare-col p{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font-size:13px;line-height:1.38;max-height:105px;overflow-y:auto}
+.di-why{font-size:12px!important;color:#ddd2df;margin-top:10px!important;max-height:85px;overflow:auto}
+.di-review-note{color:#f6b8a1;font-size:12px!important}
+@media(max-width:580px){.di-compare{grid-template-columns:1fr}.di-compare-col p{max-height:75px}}
