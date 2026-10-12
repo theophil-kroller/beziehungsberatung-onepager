@@ -1,0 +1,1 @@
+15.12.84 · Gottman Betrayal Assessment – 120 Dialoge, 72 Wissensfragen, 7 Entscheidungen je Fall, 20 Levels, 💪, getrennte lokale Konten und optionale Cloud-Freigaben. Originalmanual nur privat als Quelle, nicht im Build.
