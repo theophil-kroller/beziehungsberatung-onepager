@@ -94,3 +94,6 @@
 @media(max-width:650px){.capture-pauses-choices{gap:12px}.capture-pauses-choices button{width:56px;height:56px;min-height:56px}.bd166-trainer-dialog{width:100vw;height:100dvh;border-radius:0;inset:0}.bd166-trainer-head{padding:5px 12px}}
 
 .capture-pauses-choices .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important;display:block!important}
+
+/* 15.12.67 trainer uses its own fully responsive viewport */
+@media(max-width:650px){.bd166-trainer-head{min-height:49px;padding:5px 12px}.bd166-trainer-head strong{font-size:13px}.bd166-trainer-head button{min-width:39px;min-height:39px}}
