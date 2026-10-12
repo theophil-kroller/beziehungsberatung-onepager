@@ -10,8 +10,9 @@
   <link rel="manifest" href="capture-manifest.webmanifest">
   <link rel="icon" href="capture-icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="capture-icon-192.png">
-  <link rel="stylesheet" href="capture.css?v=15-12-29">
-  <link rel="stylesheet" href="advanced-visuals15-12-39.css?v=15.12.46"><link rel="stylesheet" href="member-practice15-12.css?v=15.12.47">
+  <link rel="stylesheet" href="capture.css?v=15-12-65">
+  <link rel="stylesheet" href="cockpit-bubble-game15-12-56.css?v=15.12.65">
+  <link rel="stylesheet" href="advanced-visuals15-12-39.css?v=15.12.46"><link rel="stylesheet" href="member-practice15-12.css?v=15.12.46">
 </head>
 <body>
 <main class="capture-app">
@@ -27,6 +28,7 @@
         <div class="app-menu-popover">
           <button id="installBtn" type="button" hidden>App installieren</button>
           <button id="menuCaptureBreaths" type="button">◉ Atemübungen öffnen</button>
+          <button id="menuCaptureBubbles" type="button">◌ Seifenblasen spielen</button>
           <button id="adminMobileBtn" type="button">Praxisverwaltung öffnen</button>
           <button id="inkMode" type="button">E‑Ink-Modus</button>
           <div class="menu-divider"></div>
@@ -50,6 +52,14 @@
       <button type="button" data-mode="idea" class="idea-mode" aria-label="Idee oder Inspiration"><span class="mode-icon">💡</span><span><strong>Idee / Inspiration</strong><small>Geistesblitz, Reddit-/YouTube-Fundstück, Screenshot oder Content-Idee</small></span><b>›</b></button>
       <button type="button" data-mode="method" class="idea-mode" aria-label="Übung oder Methode"><span class="mode-icon">🧩</span><span><strong>Übung / Methode</strong><small>Audio, Text, Foto, Screenshot oder Link schnell festhalten</small></span><b>›</b></button>
     </div>
+
+    <section class="capture-pauses" aria-labelledby="capturePausesTitle">
+      <div class="capture-pauses-head"><span class="overline">Eine kleine Pause</span><h2 id="capturePausesTitle">Kurz raus aus dem Alltag.</h2></div>
+      <div class="capture-pauses-choices">
+        <button id="capturePauseBreaths" type="button"><span class="pause-art" aria-hidden="true">◉</span><span><strong>Atemraum</strong><small>Zur Ruhe kommen</small></span><span aria-hidden="true">›</span></button>
+        <button id="bdBubbleGameOpen" type="button"><span class="pause-art pause-bubble-icon" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>Seifenblasen</strong><small>Ein bisschen Unsinn</small></span><span aria-hidden="true">›</span></button>
+      </div>
+    </section>
 
     <section id="resumeCard" class="resume-card" hidden>
       <div><span class="resume-kicker">Letzte Erfassung</span><strong id="resumeTitle">Erfassung</strong><small id="resumeMeta">✓ sicher auf diesem Gerät</small></div>
@@ -184,8 +194,9 @@
 </dialog>
 
 <script src="booking-config.js?v=20260918-build8"></script>
-  <script src="capture.js?v=15-12-29"></script>
+  <script src="capture.js?v=15-12-65"></script>
   <script>window.BD_CAPTURE_MODE=true;</script>
-  <script src="advanced-visuals15-12-39.js?v=15.12.46"></script><script src="member-practice15-12.js?v=15.12.47"></script>
+  <script src="advanced-visuals15-12-39.js?v=15.12.46"></script><script src="member-practice15-12.js?v=15.12.46-captionfix"></script>
+  <script src="cockpit-bubble-game15-12-56.js?v=15.12.65"></script>
 </body>
 </html>

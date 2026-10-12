@@ -27,9 +27,10 @@
   const btn=elem('button','Versionen prüfen','btn secondary');btn.type='button';btn.id='bdDesktopCheckNow';
   controls.append(btn);addLink(controls,'Alle GitHub-Releases ↗',releaseHome);
   const downloads=elem('div',null,'bdUpdatesDownloads');downloads.id='bdUpdatesDownloads';
+  const prepared=elem('div',null,'bdUpdatesPrepared');prepared.id='bdUpdatesPrepared';prepared.setAttribute('role','status');
   const history=elem('details',null,'bdUpdatesHistory');history.append(elem('summary','Veröffentlichungen & Versionshistorie'));const list=elem('div',null);list.id='bdUpdatesHistoryList';history.append(list);
-  const note=elem('p','Sicherheitsstatus: Die Mac-App ist derzeit nicht Apple-notarisiert. Für unbeaufsichtigte Selbstinstallation fehlen außerdem signierte Desktop-Releases. Deshalb wird kein ungeprüftes Paket automatisch installiert.','micro muted');
-  card.append(kicker,h,p,state,controls,downloads,history,note);
+  const note=elem('p','Automatische Prüfung und SHA-256-geprüfter Download sind aktiv. Der Download ist keine Herausgeber-Signatur! Eine automatische Installation bleibt deaktiviert, bis Desktop-Releases kryptografisch signiert und die Mac-App signiert/notarisiert sind.','micro muted');
+  card.append(kicker,h,p,state,controls,prepared,downloads,history,note);
   const before=$('#b1441BackupPanel');if(before)before.parentNode.insertBefore(card,before);else section.append(card);
   btn.addEventListener('click',()=>check(true));
   // Compact download/navigation block in the admin cockpit without another large card.
@@ -42,6 +43,25 @@
     dashboard.append(mini);
   }
   refresh();
+  refreshPrepared();
+  // Only poll localhost state; GitHub requests remain rate-limited by the Go launcher.
+  window.setInterval(()=>{if(!document.hidden)refreshPrepared()},30000);
+ }
+ async function refreshPrepared(){
+  const element=$('#bdUpdatesPrepared');if(!element)return;
+  if(location.origin!==host){element.textContent='Automatische Desktop-Downloads nur in der installierten App verfügbar.';return}
+  try{
+   const result=await fetch(host+'/desktop/updates/prepared',{cache:'no-store',credentials:'omit'});
+   if(!result.ok)throw Error('Update-Dienst nicht verfügbar');
+   const data=await result.json();const state=data.package||{};
+   element.replaceChildren();
+   if(state.Downloading||state.downloading){element.append(elem('p',`Lade Desktop ${norm(state.version)} automatisch herunter und prüfe SHA-256 …`,'micro muted'));return}
+   if(state.ready){
+    element.append(elem('p',`Desktop ${norm(state.version)} ist heruntergeladen und als ZIP geprüft. Installation nach Bestätigung – es wird nichts selbstständig ausgeführt.`,'micro'));
+    addLink(element,`Geprüftes ${norm(state.version)}-Paket herunterladen ↗`,host+'/desktop/updates/package');
+   }else if(state.error){element.append(elem('p','Automatische Vorbereitung fehlgeschlagen: '+norm(state.error),'micro muted'))}
+   else element.append(elem('p','Automatische Download-Vorbereitung ist aktiv, sobald ein neueres Release mit SHA-256-Prüfsumme veröffentlicht ist.','micro muted'));
+  }catch(_){element.textContent='Desktop-Downloadstatus derzeit nicht erreichbar.'}
  }
  const archive=(e)=>e&&typeof e==='object'&&Array.isArray(e.releases);
  const norm=(s)=>String(s||'').replace(/[^\w.\- ]/g,'').slice(0,150);
@@ -91,11 +111,12 @@
     if(location.origin!==host){return}
     if(manual){await fetch(host+'/desktop/updates/check',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},body:'{}'});}
     await refresh();
+    await refreshPrepared();
     // Network fetching is asynchronous, no tight polling.
-    if(manual)setTimeout(refresh,1800);
+    if(manual)setTimeout(()=>{refresh();refreshPrepared()},1800);
   }catch(e){const st=$('#bdDesktopUpdateState');if(st)st.textContent='GitHub-Prüfung derzeit nicht erreichbar.'}
   finally{inProgress=false;if(btn)btn.disabled=false}
  }
- const css=document.createElement('style');css.textContent=`#bdDesktopUpdates52 .bdUpdatesAssets{margin:12px 0;display:flex;flex-wrap:wrap;gap:12px}#bdDesktopUpdates52 .bdUpdateLink{font-weight:600;color:var(--accent,#a75d44);text-decoration:underline;text-underline-offset:3px}#bdDesktopUpdates52 .bdUpdatesHistory{margin-top:12px;padding:12px 0}#bdDesktopUpdates52 .bdUpdateHistoryItem{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid rgba(120,110,100,.17);font-size:.9rem}#bdDesktopUpdates52 summary{cursor:pointer;font-weight:650}`;document.head.append(css);
+ const css=document.createElement('style');css.textContent=`#bdDesktopUpdates52 .bdUpdatesPrepared{margin:12px 0;padding:10px 12px;border:1px solid rgba(120,110,100,.17);border-radius:12px;background:rgba(255,252,247,.75)}#bdDesktopUpdates52 .bdUpdatesAssets{margin:12px 0;display:flex;flex-wrap:wrap;gap:12px}#bdDesktopUpdates52 .bdUpdateLink{font-weight:600;color:var(--accent,#a75d44);text-decoration:underline;text-underline-offset:3px}#bdDesktopUpdates52 .bdUpdatesHistory{margin-top:12px;padding:12px 0}#bdDesktopUpdates52 .bdUpdateHistoryItem{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid rgba(120,110,100,.17);font-size:.9rem}#bdDesktopUpdates52 summary{cursor:pointer;font-weight:650}`;document.head.append(css);
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

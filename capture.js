@@ -268,6 +268,20 @@
     uiStage=returnFromBreaths||'home';updateProductUI();
     if(!fromHistory&&history.state?.bdCaptureBreaths)history.back();
   }
+  $('#capturePauseBreaths')?.addEventListener('click',openCaptureBreaths);
+  // The same canvas game is mounted in Capture, without a second score/game engine.
+  // Block the entry while a session audio recording is active or finalizing.
+  // Capture's handler runs in capture phase, before the game's own click handler.
+  $('#bdBubbleGameOpen')?.addEventListener('click',event=>{
+    if(recorder?.state==='recording'||draft?.pendingRecording){
+      event.preventDefault();event.stopImmediatePropagation();
+      alert('Beende zuerst die laufende Aufnahme. Danach kannst du in die Seifenblasen-Pause wechseln.');
+    }
+  },true);
+  $('#menuCaptureBubbles')?.addEventListener('click',()=>{
+    const menu=$('.app-menu');if(menu)menu.open=false;
+    $('#bdBubbleGameOpen')?.click();
+  });
   $('#menuCaptureBreaths')?.addEventListener('click',openCaptureBreaths);
   $('#closeCaptureBreaths')?.addEventListener('click',()=>closeCaptureBreaths());
   document.querySelectorAll('[data-capture-breath-level]').forEach(b=>b.addEventListener('click',()=>filterCaptureBreaths(b.dataset.captureBreathLevel)));

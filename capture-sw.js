@@ -1,8 +1,8 @@
 // previous cache migrated from bd-capture-14-3-8
-const CACHE='bd-capture-15-12-36';
-const SHELL=['/capture.html','/capture.css?v=15-12-29','/capture.js?v=15-12-29','/member-practice15-12.css?v=15-12-29','/member-practice15-12.js?v=15-12-36','/capture-manifest.webmanifest','/booking-config.js?v=20260918-build8','/capture-icon-192.png','/capture-icon-512.png'];
-const CAPTURE_PATHS=new Set(['/capture.html','/capture.css','/capture.js','/member-practice15-12.css','/member-practice15-12.js','/capture-manifest.webmanifest','/booking-config.js','/capture-icon-192.png','/capture-icon-512.png']);
-self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
+const CACHE='bd-capture-15-12-65';
+const SHELL=['/capture.html','/capture.css?v=15-12-65','/capture.js?v=15-12-65','/member-practice15-12.css?v=15-12-29','/member-practice15-12.js?v=15-12-36','/cockpit-bubble-game15-12-56.css?v=15.12.65','/cockpit-bubble-game15-12-56.js?v=15.12.65','/capture-manifest.webmanifest','/booking-config.js?v=20260918-build8','/capture-icon-192.png','/capture-icon-512.png'];
+const CAPTURE_PATHS=new Set(['/capture.html','/capture.css','/capture.js','/member-practice15-12.css','/member-practice15-12.js','/cockpit-bubble-game15-12-56.css','/cockpit-bubble-game15-12-56.js','/capture-manifest.webmanifest','/booking-config.js','/capture-icon-192.png','/capture-icon-512.png','/assets/audio/breath/soundscapes/cc0/first_light.mp3','/assets/audio/breath/soundscapes/cc0/calm_track.mp3']);
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL).then(()=>Promise.allSettled(['/assets/audio/breath/soundscapes/cc0/first_light.mp3','/assets/audio/breath/soundscapes/cc0/calm_track.mp3'].map(asset=>cache.add(asset))))).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE&&key.startsWith('bd-capture-')).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
