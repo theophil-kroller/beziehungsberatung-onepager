@@ -10,8 +10,8 @@
   <link rel="manifest" href="capture-manifest.webmanifest">
   <link rel="icon" href="capture-icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="capture-icon-192.png">
-  <link rel="stylesheet" href="capture.css?v=15-12-65">
-  <link rel="stylesheet" href="cockpit-bubble-game15-12-56.css?v=15.12.65">
+  <link rel="stylesheet" href="capture.css?v=15-12-66">
+  <link rel="stylesheet" href="cockpit-bubble-game15-12-56.css?v=15.12.66">
   <link rel="stylesheet" href="advanced-visuals15-12-39.css?v=15.12.46"><link rel="stylesheet" href="member-practice15-12.css?v=15.12.46">
 </head>
 <body>
@@ -27,8 +27,9 @@
         <summary aria-label="Weitere Optionen">•••</summary>
         <div class="app-menu-popover">
           <button id="installBtn" type="button" hidden>App installieren</button>
-          <button id="menuCaptureBreaths" type="button">◉ Atemübungen öffnen</button>
+          <button id="menuCaptureBreaths" type="button">☕ Atemraum öffnen</button>
           <button id="menuCaptureBubbles" type="button">◌ Seifenblasen spielen</button>
+          <button id="menuCaptureTraining" type="button">🧠 Bindungsstile trainieren</button>
           <button id="adminMobileBtn" type="button">Praxisverwaltung öffnen</button>
           <button id="inkMode" type="button">E‑Ink-Modus</button>
           <div class="menu-divider"></div>
@@ -53,11 +54,11 @@
       <button type="button" data-mode="method" class="idea-mode" aria-label="Übung oder Methode"><span class="mode-icon">🧩</span><span><strong>Übung / Methode</strong><small>Audio, Text, Foto, Screenshot oder Link schnell festhalten</small></span><b>›</b></button>
     </div>
 
-    <section class="capture-pauses" aria-labelledby="capturePausesTitle">
-      <div class="capture-pauses-head"><span class="overline">Eine kleine Pause</span><h2 id="capturePausesTitle">Kurz raus aus dem Alltag.</h2></div>
+    <section class="capture-pauses" aria-label="Pause und Training">
       <div class="capture-pauses-choices">
-        <button id="capturePauseBreaths" type="button"><span class="pause-art" aria-hidden="true">◉</span><span><strong>Atemraum</strong><small>Zur Ruhe kommen</small></span><span aria-hidden="true">›</span></button>
-        <button id="bdBubbleGameOpen" type="button"><span class="pause-art pause-bubble-icon" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>Seifenblasen</strong><small>Ein bisschen Unsinn</small></span><span aria-hidden="true">›</span></button>
+        <button id="capturePauseBreaths" type="button" aria-label="Atemraum öffnen" title="Atemraum"><span class="pause-art bd166-cup" aria-hidden="true">☕</span><span class="visually-hidden">Atemraum</span></button>
+        <button id="bdBubbleGameOpen" type="button" aria-label="Seifenblasen spielen" title="Seifenblasen"><span class="pause-art pause-bubble-icon" aria-hidden="true"><i></i><i></i><i></i></span><span class="visually-hidden">Seifenblasen</span></button>
+        <button id="captureOpenTraining" type="button" aria-label="Bindungsstile trainieren" title="Bindungsstile trainieren"><span class="pause-art bd166-brain" aria-hidden="true">🧠</span><span class="visually-hidden">Training</span></button>
       </div>
     </section>
 
@@ -193,10 +194,15 @@
   <div class="scanner-shell"><button id="scannerClose" class="scanner-close" type="button">×</button><p class="overline" id="scannerEyebrow">Verbindung</p><h2 id="scannerTitle">Gerät verbinden</h2><p id="scannerCopy">Scanne den QR-Code aus dem CRM.</p><div class="scanner-frame"><video id="scannerVideo" playsinline muted></video><div class="scanner-guide"></div></div><p id="scannerState">Kamera wird gestartet …</p><details><summary>Kamera funktioniert nicht?</summary><p>Die Erfassung ist bereits lokal gespeichert. Du kannst den QR-Code mit der normalen Kamera öffnen oder den Link unter Problembehandlung einfügen.</p></details></div>
 </dialog>
 
+<dialog id="bdCaptureTrainerDialog" class="bd166-trainer-dialog" aria-labelledby="bd166TrainerHeading">
+  <div class="bd166-trainer-shell"><div class="bd166-trainer-head"><strong id="bd166TrainerHeading">🧠 Bindungsstile trainieren</strong><button id="bd166TrainingClose" type="button" aria-label="Training schließen">×</button></div>
+  <iframe id="bd166TrainingFrame" title="Bindungsstile – Trainingslabor" loading="lazy" referrerpolicy="same-origin"></iframe></div>
+</dialog>
+
 <script src="booking-config.js?v=20260918-build8"></script>
-  <script src="capture.js?v=15-12-65"></script>
+  <script src="capture.js?v=15-12-66"></script>
   <script>window.BD_CAPTURE_MODE=true;</script>
   <script src="advanced-visuals15-12-39.js?v=15.12.46"></script><script src="member-practice15-12.js?v=15.12.46-captionfix"></script>
-  <script src="cockpit-bubble-game15-12-56.js?v=15.12.65"></script>
+  <script src="cockpit-bubble-game15-12-56.js?v=15.12.66"></script>
 </body>
 </html>

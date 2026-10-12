@@ -231,11 +231,11 @@
     const lib=window.BDMemberPractice?.breaths||{};
     const paired=!!(accessPairing?.pairId&&accessPairing?.token);
     window.BD_CAPTURE_PRACTITIONER=paired;
-    const access=Object.values(lib).filter(b=>b?.phases?.length&&(paired||b.level!=='Advanced')).map(b=>({breath_id:b.id,active:1}));
+    const access=Object.values(lib).filter(b=>b?.phases?.length&&paired).map(b=>({breath_id:b.id,active:1}));
     window.__BD_MEMBER_DATA={memberPractice:{breathAccess:access,assignments:[]},materials:[]};
     window.BDMemberPractice?.boot();
     const info=$('#captureBreathAccess');
-    if(info)info.textContent=paired?'Praxisgerät verbunden · vollständige Übungsbibliothek (17 Advanced-Techniken)':'Ohne Praxis-Kopplung: Beginner und Intermediate. Für Advanced verbinde dieses Gerät mit deinem Praxis-Login.';
+    if(info)info.textContent=paired?'Praxisgerät verbunden · vollständige Übungsbibliothek (17 Advanced-Techniken)':'Atemraum nur auf gekoppelten Praxisgeräten nutzbar.';
     filterCaptureBreaths(breathLevelFilter);
   }
   function filterCaptureBreaths(level){
@@ -243,7 +243,7 @@
     const lib=window.BDMemberPractice?.breaths||{};
     let visible=0;
     document.querySelectorAll('#captureBreaths [data-breath]').forEach(el=>{
-      const b=lib[el.dataset.breath];const show=level==='all'||(b?.level||'Beginner')===level;
+      const b=lib[el.dataset.breath];const show=hasCapturePracticeAccess()&&(level==='all'||(b?.level||'Beginner')===level);
       el.hidden=!show;if(show)visible++;
     });
     const empty=$('#captureBreathEmpty');if(empty)empty.hidden=visible>0;
@@ -252,6 +252,7 @@
     });
   }
   function openCaptureBreaths(){
+    if(!hasCapturePracticeAccess()){alert('Atemraum nur für gekoppelte Praxisgeräte. Bitte zuerst Capture verbinden.');return;}
     if(recorder?.state==='recording'){
       alert('Bitte beende zuerst die laufende Aufnahme. So geraten die Atemübungen nicht in deine Sitzungsaufnahme.');return;
     }
@@ -268,21 +269,47 @@
     uiStage=returnFromBreaths||'home';updateProductUI();
     if(!fromHistory&&history.state?.bdCaptureBreaths)history.back();
   }
-  $('#capturePauseBreaths')?.addEventListener('click',openCaptureBreaths);
-  // The same canvas game is mounted in Capture, without a second score/game engine.
-  // Block the entry while a session audio recording is active or finalizing.
-  // Capture's handler runs in capture phase, before the game's own click handler.
-  $('#bdBubbleGameOpen')?.addEventListener('click',event=>{
-    if(recorder?.state==='recording'||draft?.pendingRecording){
-      event.preventDefault();event.stopImmediatePropagation();
-      alert('Beende zuerst die laufende Aufnahme. Danach kannst du in die Seifenblasen-Pause wechseln.');
-    }
-  },true);
-  $('#menuCaptureBubbles')?.addEventListener('click',()=>{
+  const hasCapturePracticeAccess=()=>!!(accessPairing?.pairId&&accessPairing?.token);
+  function requirePairedPractice(){
+    if(hasCapturePracticeAccess())return true;
+    alert('Atemraum und Training sind für verbundene Praxisgeräte vorgesehen. Bitte zuerst dieses Capture-Gerät mit deinem Praxis-Login koppeln.');
+    return false;
+  }
+  function openTraining(){
+    if(!requirePairedPractice())return;
+    if(recorder?.state==='recording'||draft?.pendingRecording){alert('Beende zuerst die laufende Aufnahme. Danach kannst du ins Training wechseln.');return}
+    const modal=$('#bdCaptureTrainerDialog'),frame=$('#bd166TrainingFrame');
+    if(!modal||!frame)return;
+    if(!frame.getAttribute('src'))frame.src='bindungsstile-trainer15-12-66.html';
     const menu=$('.app-menu');if(menu)menu.open=false;
-    $('#bdBubbleGameOpen')?.click();
+    if(!modal.open)modal.showModal();
+  }
+  function closeTraining(){
+    const modal=$('#bdCaptureTrainerDialog'),frame=$('#bd166TrainingFrame');
+    if(modal?.open)modal.close();
+    if(frame)frame.removeAttribute('src'); // stop voice and preserve local learning progress
+  }
+  // Delegation: reliably handles both static buttons and PWA menu clicks.
+  document.addEventListener('click',event=>{
+    const btn=event.target.closest?.('#capturePauseBreaths,#menuCaptureBreaths,#captureOpenTraining,#menuCaptureTraining,#menuCaptureBubbles');
+    if(!btn)return;
+    if(btn.id==='capturePauseBreaths'||btn.id==='menuCaptureBreaths'){
+      event.preventDefault(); if(!requirePairedPractice())return;
+      openCaptureBreaths();
+    }else if(btn.id==='captureOpenTraining'||btn.id==='menuCaptureTraining'){
+      event.preventDefault();openTraining();
+    }else if(btn.id==='menuCaptureBubbles'){
+      event.preventDefault();const menu=$('.app-menu');if(menu)menu.open=false;
+      if(recorder?.state==='recording'||draft?.pendingRecording){alert('Beende zuerst die laufende Aufnahme.');return}
+      if(typeof window.BDOpenBubbleGame==='function')window.BDOpenBubbleGame();
+      else $('#bdBubbleGameOpen')?.click();
+    }
   });
-  $('#menuCaptureBreaths')?.addEventListener('click',openCaptureBreaths);
+  $('#bd166TrainingClose')?.addEventListener('click',closeTraining);
+  $('#bdCaptureTrainerDialog')?.addEventListener('close',()=>{$('#bd166TrainingFrame')?.removeAttribute('src')});
+  $('#bdBubbleGameOpen')?.addEventListener('click',event=>{
+    if(recorder?.state==='recording'||draft?.pendingRecording){event.preventDefault();event.stopImmediatePropagation();alert('Beende zuerst die laufende Aufnahme.');}
+  },true);
   $('#closeCaptureBreaths')?.addEventListener('click',()=>closeCaptureBreaths());
   document.querySelectorAll('[data-capture-breath-level]').forEach(b=>b.addEventListener('click',()=>filterCaptureBreaths(b.dataset.captureBreathLevel)));
   window.addEventListener('popstate',()=>{if(uiStage==='breaths')closeCaptureBreaths(true)});

@@ -757,7 +757,9 @@
    dialog.addEventListener('close',()=>{flushBest();stop();stopMusic();lastFocused?.focus?.();});
    dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
    canvas.addEventListener('pointerdown',onPointer);
-   btn.addEventListener('click',()=>{if(!dialog.open){lastFocused=btn;recordFetchFailed=false;recordUserId=null;recordPending=0;enableAudio();dialog.showModal();newRound();startMusic();syncBest();}});
+   const openGame=()=>{if(!dialog.open){lastFocused=btn;recordFetchFailed=false;recordUserId=null;recordPending=0;enableAudio();dialog.showModal();newRound();startMusic();syncBest();}};
+   btn.addEventListener('click',openGame);
+   window.BDOpenBubbleGame=openGame;
    window.addEventListener('resize',()=>{if(scene)resize()},{passive:true});
    document.addEventListener('visibilitychange',()=>{
      if(document.hidden){clearMusicFade();if(musicEl)musicEl.pause();}
