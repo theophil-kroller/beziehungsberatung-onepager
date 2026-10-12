@@ -577,13 +577,22 @@
  }
 ];
  const speedNames=n=>n<20?'Sehr ruhig':n<45?'Entspannt':n<70?'Lebendig':n<90?'Schnell':'Herausfordernd';
- let saboteursEnabled=false;
- try{saboteursEnabled=localStorage.getItem('bd1561_bubble_saboteurs')==='on'}catch{}
+ // Zero disables the mode. First upgrade imports the previous checkbox preference.
+ let saboteurLevel=0;
+ try{
+   const saved=localStorage.getItem('bd1562_bubble_saboteur_level');
+   saboteurLevel=saved!==null?clamp(Math.round(Number(saved)||0),0,5):(localStorage.getItem('bd1561_bubble_saboteurs')==='on'?2:0);
+ }catch{}
+ let motionEffects=true;
+ try{motionEffects=localStorage.getItem('bd1562_bubble_motion')!=='off'}catch{}
+ const enemiesOn=()=>saboteurLevel>0;
+ // 1 = an occasional thought; 5 = five simultaneous, swiftly replenished.
+ const enemyInterval=()=>[Infinity,15,8.5,5.5,3.8,2.5][saboteurLevel];
  let speedSetting=35;
  try{const n=Number(localStorage.getItem('bd1560_bubble_speed'));if(Number.isFinite(n)&&localStorage.getItem('bd1560_bubble_speed')!==null)speedSetting=clamp(Math.round(n),0,100)}catch{}
  const speedFactor=()=>.38+speedSetting*1.8/100;
 
- let dialog,canvas,ctx,scoreEl,clockEl,bestEl,wordLineEl,wordHintEl,speedInput,speedValue,saboteurSwitch,phraseBox,scene=null,lastFocused=null;
+ let dialog,canvas,ctx,scoreEl,clockEl,bestEl,wordLineEl,wordHintEl,speedInput,speedValue,saboteurSlider,saboteurValue,motionSwitch,phraseBox,scene=null,lastFocused=null;
  let audioCtx=null,soundButton=null,soundEnabled=true;
  // Separate background atmosphere: never carries personal records or auth tokens.
  // Explicit opening of the game is the user gesture that permits playback.
@@ -707,13 +716,32 @@
    const btn=document.getElementById('bdBubbleGameOpen');
    if(!btn||document.getElementById('bd1556GameDialog'))return;
    dialog=document.createElement('dialog');dialog.id='bd1556GameDialog';dialog.setAttribute('aria-labelledby','bd1556GameTitle');
-   dialog.innerHTML=`<div class="bd1556-shell"><div class="bd1556-top"><div><div class="bd1556-kicker">Eine kleine Auszeit</div><h2 id="bd1556GameTitle">Seifenblasen-Pause</h2></div><div class="bd1556-stats"><span class="bd1556-stat"><strong id="bd1556Score">0</strong><small>Punkte</small></span><span class="bd1556-stat"><strong id="bd1556Time">0:00</strong><small>Spielzeit</small></span><span class="bd1556-stat"><strong id="bd1556Best">0</strong><small>Rekord</small></span></div><button type="button" class="bd1556-close" aria-label="Seifenblasen-Pause schließen" title="Schließen">×</button></div><div class="bd1561-phrase" id="bd1561Phrase" role="status" aria-live="polite"><div class="bd1560-phrase-parts" id="bd1560PhraseParts"></div></div><div class="bd1556-field" id="bd1556Field" aria-label="Spielfeld: Blasen durch Klicken oder Tippen platzen lassen"><canvas id="bd1556Canvas" aria-hidden="true"></canvas><div class="bd1556-nozzle" aria-hidden="true"></div></div><div class="bd1556-bottom"><label class="bd1560-speed-label" for="bd1560Speed">Tempo <span id="bd1560SpeedValue">35 · Entspannt</span><input id="bd1560Speed" type="range" min="0" max="100" step="1" value="35" aria-label="Geschwindigkeit der Seifenblasen von 0 bis 100"><span class="bd1560-speed-ends"><small>0 · Ganz ruhig</small><small>100 · Schnell</small></span></label><div class="bd1558-controls"><label class="bd1561-saboteur-toggle" title="Innere Saboteure optional zuschalten"><input type="checkbox" id="bd1561Saboteurs"><span>Innere Saboteure</span></label><div class="bd1560-music-controls"><button type="button" class="bd1560-music" aria-pressed="true">Musik an</button><label class="bd1560-music-choice">Hintergrund<select id="bd1560MusicTrack" aria-label="Musik im Hintergrund"><option value="light">First Light</option><option value="calm">Calm Track</option></select></label><label class="bd1560-music-level" title="Lautstärke Hintergrundmusik">Lautstärke<input type="range" min="0" max="25" step="1" value="10" id="bd1560MusicLevel" aria-label="Lautstärke der Hintergrundmusik (0 bis 25 Prozent)"></label></div><span class="bd1560-music-status" aria-live="polite"></span><button type="button" class="bd1558-sound" aria-pressed="true">Plopp-Ton an</button><button type="button" class="bd1556-restart">Neue Runde</button></div></div></div>`;
+   dialog.innerHTML=`<div class="bd1556-shell"><div class="bd1556-top"><div><div class="bd1556-kicker">Eine kleine Auszeit</div><h2 id="bd1556GameTitle">Seifenblasen-Pause</h2></div><div class="bd1556-stats"><span class="bd1556-stat"><strong id="bd1556Score">0</strong><small>Punkte</small></span><span class="bd1556-stat"><strong id="bd1556Time">0:00</strong><small>Spielzeit</small></span><span class="bd1556-stat"><strong id="bd1556Best">0</strong><small>Rekord</small></span></div><button type="button" class="bd1556-close" aria-label="Seifenblasen-Pause schließen" title="Schließen">×</button></div><div class="bd1561-phrase" id="bd1561Phrase" role="status" aria-live="polite"><div class="bd1560-phrase-parts" id="bd1560PhraseParts"></div></div><div class="bd1556-field" id="bd1556Field" aria-label="Spielfeld: Blasen durch Klicken oder Tippen platzen lassen"><canvas id="bd1556Canvas" aria-hidden="true"></canvas><div class="bd1556-nozzle" aria-hidden="true"></div></div><div class="bd1556-bottom"><label class="bd1560-speed-label" for="bd1560Speed">Tempo <span id="bd1560SpeedValue">35 · Entspannt</span><input id="bd1560Speed" type="range" min="0" max="100" step="1" value="35" aria-label="Geschwindigkeit der Seifenblasen von 0 bis 100"><span class="bd1560-speed-ends"><small>0 · Ganz ruhig</small><small>100 · Schnell</small></span></label><div class="bd1558-controls"><label class="bd1562-enemy-level" for="bd1562EnemyLevel">Saboteure <output id="bd1562EnemyValue">0 · Aus</output><input type="range" id="bd1562EnemyLevel" min="0" max="5" step="1" value="0" aria-label="Anzahl der Saboteure gleichzeitig, 0 schaltet sie aus"></label><label class="bd1562-shake-choice" title="Kurzer Wackeleffekt beim Auflösen innerer Saboteure"><input type="checkbox" id="bd1562Shake" checked><span>Wackeln</span></label><div class="bd1560-music-controls"><button type="button" class="bd1560-music" aria-pressed="true">Musik an</button><label class="bd1560-music-choice">Hintergrund<select id="bd1560MusicTrack" aria-label="Musik im Hintergrund"><option value="light">First Light</option><option value="calm">Calm Track</option></select></label><label class="bd1560-music-level" title="Lautstärke Hintergrundmusik">Lautstärke<input type="range" min="0" max="25" step="1" value="10" id="bd1560MusicLevel" aria-label="Lautstärke der Hintergrundmusik (0 bis 25 Prozent)"></label></div><span class="bd1560-music-status" aria-live="polite"></span><button type="button" class="bd1558-sound" aria-pressed="true">Plopp-Ton an</button><button type="button" class="bd1556-restart">Neue Runde</button></div></div></div>`;
    document.body.appendChild(dialog);
    canvas=dialog.querySelector('canvas');ctx=canvas.getContext('2d',{alpha:true});
    scoreEl=dialog.querySelector('#bd1556Score');clockEl=dialog.querySelector('#bd1556Time');bestEl=dialog.querySelector('#bd1556Best');soundButton=dialog.querySelector('.bd1558-sound');audioUi();
    wordLineEl=dialog.querySelector('#bd1560PhraseParts');phraseBox=dialog.querySelector('#bd1561Phrase');
-   saboteurSwitch=dialog.querySelector('#bd1561Saboteurs');saboteurSwitch.checked=saboteursEnabled;
-   saboteurSwitch.addEventListener('change',()=>{saboteursEnabled=saboteurSwitch.checked;try{localStorage.setItem('bd1561_bubble_saboteurs',saboteursEnabled?'on':'off')}catch{};if(scene){if(!saboteursEnabled)scene.bubbles=scene.bubbles.filter(b=>!b.enemy);else scene.nextEnemy=scene.spawnTotal+3;}});
+   saboteurSlider=dialog.querySelector('#bd1562EnemyLevel');saboteurValue=dialog.querySelector('#bd1562EnemyValue');
+   motionSwitch=dialog.querySelector('#bd1562Shake');motionSwitch.checked=motionEffects;
+   saboteurSlider.value=String(saboteurLevel);updateEnemyUi();
+   saboteurSlider.addEventListener('input',()=>{
+     const prev=saboteurLevel;saboteurLevel=clamp(Math.round(Number(saboteurSlider.value)||0),0,5);
+     try{localStorage.setItem('bd1562_bubble_saboteur_level',String(saboteurLevel));localStorage.setItem('bd1561_bubble_saboteurs',enemiesOn()?'on':'off')}catch{}
+     updateEnemyUi();
+     if(scene){
+       if(!enemiesOn()){
+         scene.bubbles=scene.bubbles.filter(b=>!b.enemy);scene.enemyResolve=null;
+         scene.antiMessage='';scene.antiUntil=0;scene.pauseUntil=0;
+         dialog.querySelector('.bd1556-shell')?.classList.remove('bd1562-shudder');renderPhrase(scene);
+       }else{
+         // Drop oldest excess enemies when reducing the density; none are spawned immediately at 0.
+         let count=0;scene.bubbles=scene.bubbles.filter(b=>!b.enemy||++count<=saboteurLevel);
+         scene.enemyTimer=(prev===0||saboteurLevel>prev)?Math.min(scene.enemyTimer,0.12):Math.min(scene.enemyTimer,enemyInterval());
+       }
+     }
+   });
+   motionSwitch.addEventListener('change',()=>{motionEffects=motionSwitch.checked;try{localStorage.setItem('bd1562_bubble_motion',motionEffects?'on':'off')}catch{};
+     if(!motionEffects)dialog.querySelector('.bd1556-shell')?.classList.remove('bd1562-shudder');});
    speedInput=dialog.querySelector('#bd1560Speed');speedValue=dialog.querySelector('#bd1560SpeedValue');
    musicButton=dialog.querySelector('.bd1560-music');musicSelect=dialog.querySelector('#bd1560MusicTrack');musicSlider=dialog.querySelector('#bd1560MusicLevel');
    musicNote=dialog.querySelector('.bd1560-music-status');musicUi();
@@ -735,6 +763,17 @@
      else if(dialog?.open&&musicEnabled)startMusic();
    });
  }
+ function updateEnemyUi(){
+   if(!saboteurValue)return;
+   saboteurValue.textContent=saboteurLevel?`bis zu ${saboteurLevel}`:'0 · Aus';
+   if(saboteurSlider){saboteurSlider.style.setProperty('--progress',(saboteurLevel*20)+'%');saboteurSlider.setAttribute('aria-valuetext',saboteurLevel?`bis zu ${saboteurLevel} Saboteure gleichzeitig`:'Aus');}
+ }
+ function reducedMotion(){return !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches}
+ function shudder(){
+   if(!motionEffects||reducedMotion()||!dialog?.open)return;
+   const shell=dialog.querySelector('.bd1556-shell');if(!shell)return;
+   shell.classList.remove('bd1562-shudder');void shell.offsetWidth;shell.classList.add('bd1562-shudder');
+ }
  function updateSpeedUi(){
    if(!speedValue)return;
    speedValue.textContent=speedSetting+' · '+speedNames(speedSetting);
@@ -743,13 +782,14 @@
  function renderPhrase(s){
    if(!wordLineEl||!phraseBox)return;
    wordLineEl.replaceChildren();
-   const showAnswer=s.antiMessage&&performance.now()<s.antiUntil&&s.partIndex<3;
+   const showAnswer=s.antiMessage&&performance.now()<s.antiUntil;
    if(showAnswer){const el=document.createElement('span');el.className='bd1561-counterword';el.textContent=s.antiMessage;wordLineEl.appendChild(el);}
    else for(let i=0;i<3;i++){
      const el=document.createElement('span');el.className='bd1560-phrase-part'+(i<s.partIndex?' is-revealed':'');
      el.textContent=i<s.partIndex?s.phrase[i]:'·';wordLineEl.appendChild(el);
    }
-   phraseBox.classList.toggle('is-celebrating',s.partIndex===3);
+   phraseBox.classList.toggle('is-celebrating',s.partIndex===3&&!showAnswer);
+   phraseBox.classList.toggle('is-antidote',!!showAnswer);
    const oldOrigin=phraseBox.querySelector('.bd1561-origin');if(oldOrigin)oldOrigin.remove();
    const origin=s.partIndex===3&&ORIGINS[s.phrase.join(' ')];
    if(origin){const note=document.createElement('small');note.className='bd1561-origin';note.textContent=origin;phraseBox.appendChild(note);}
@@ -801,7 +841,7 @@
    }catch{recordPending=Math.max(recordPending,n);recordFetchFailed=true}
    finally{recordSyncing=false}
  }
- function stop(){if(scene){scene.dead=true;cancelAnimationFrame(scene.raf);scene=null;}}
+ function stop(){if(scene){scene.dead=true;cancelAnimationFrame(scene.raf);scene=null;}dialog?.querySelector('.bd1556-shell')?.classList.remove('bd1562-shudder');}
  function resize(){
    if(!scene||!canvas)return;
    const rect=canvas.parentElement.getBoundingClientRect(),oldW=scene.width||rect.width,oldH=scene.height||rect.height;
@@ -813,7 +853,7 @@
  }
  function newRound(){
    stop();if(!ctx)return;
-   scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0,spawnTotal:0,nextSpecial:Math.floor(rand(15,23)),specialActive:false,nextEnemy:Math.floor(rand(8,15)),enemyCount:0,pauseUntil:0,antiMessage:'',antiUntil:0,
+   scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0,spawnTotal:0,nextSpecial:Math.floor(rand(15,23)),specialActive:false,nextEnemy:Math.floor(rand(8,15)),enemyCount:0,enemyTimer:1.2,enemyResolve:null,pauseUntil:0,antiMessage:'',antiUntil:0,
      pops:0,nextWordPop:5,phrase:PHRASES[Math.floor(rand(0,PHRASES.length))],partIndex:0,lastPhraseIndex:-1};
    renderPhrase(scene);
    resize();
@@ -823,9 +863,6 @@
    scene.raf=requestAnimationFrame(frame);
  }
  function spawn(s,initial=false){
-   if(!initial&&saboteursEnabled&&s.spawnTotal>=s.nextEnemy&&s.bubbles.filter(b=>b.enemy).length<2){
-     spawnEnemy(s);s.nextEnemy=s.spawnTotal+Math.floor(rand(13,23));return;
-   }
    const isSpecial=!initial && !s.specialActive && (++s.spawnTotal>=s.nextSpecial);
    if(isSpecial){s.specialActive=true;s.spawnTotal=0;s.nextSpecial=Math.floor(rand(17,24));}
    const size=isSpecial?rand(20,29):rand(15,43),speed=rand(43,104);
@@ -905,6 +942,46 @@
      else if(v.enemy.kind==='spike')b.x-=30*influence;
    }
  }
+ // A staged, tactile unravelling with a restrained, generated crackle-to-chime sound.
+ function enemySound(release=false){
+   if(!soundEnabled||!audioCtx||audioCtx.state!=='running')return;
+   try{
+     const t=audioCtx.currentTime;
+     if(!release){
+       const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+       o.type='triangle';o.frequency.setValueAtTime(240,t);o.frequency.exponentialRampToValueAtTime(115,t+.35);
+       g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.045,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+.39);
+       o.connect(g).connect(audioCtx.destination);o.start(t);o.stop(t+.4);o.onended=()=>{o.disconnect();g.disconnect()};
+     }else{
+       [523.25,659.25,783.99].forEach((f,i)=>{
+         const o=audioCtx.createOscillator(),g=audioCtx.createGain(),at=t+i*.105;
+         o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,at);
+         g.gain.exponentialRampToValueAtTime(.055,at+.018);g.gain.exponentialRampToValueAtTime(.0001,at+1);
+         o.connect(g).connect(audioCtx.destination);o.start(at);o.stop(at+1.02);o.onended=()=>{o.disconnect();g.disconnect()};
+       });
+     }
+   }catch{}
+ }
+ function paintEnemyFracture(e,t){
+   const u=clamp((t-e.started)/800,0,1),x=e.x,y=e.y,r=e.r;
+   const fade=Math.pow(1-u,1.2);
+   ctx.save();ctx.translate(x,y);
+   // Film turns into irregular glass-like curved fragments; no violent/sharp explosion.
+   for(let i=0;i<12;i++){
+     const a=(i/12)*TAU+e.phase,spread=u*(18+(i%4)*7);
+     const dx=Math.cos(a)*spread,dy=Math.sin(a)*spread;
+     ctx.save();ctx.translate(dx,dy);ctx.rotate(u*((i%2)?-.35:.3));ctx.globalAlpha=fade*.9;
+     ctx.beginPath();ctx.arc(0,0,r*(.73+u*.13),a-.22,a+.22);
+     ctx.strokeStyle=i%3===0?'rgba(205,159,124,.9)':'rgba(135,117,143,.82)';ctx.lineWidth=2.2*(1-u)+.3;ctx.stroke();
+     ctx.beginPath();ctx.moveTo(Math.cos(a-.15)*r*.62,Math.sin(a-.15)*r*.62);
+     ctx.lineTo(Math.cos(a)*r*(.38-.12*u),Math.sin(a)*r*(.38-.12*u));
+     ctx.lineTo(Math.cos(a+.16)*r*.7,Math.sin(a+.16)*r*.7);
+     ctx.strokeStyle='rgba(169,133,148,.57)';ctx.lineWidth=1.4;ctx.stroke();ctx.restore();
+   }
+   ctx.strokeStyle=`rgba(233,195,157,${(1-u)*.65})`;ctx.lineWidth=2;
+   ctx.beginPath();ctx.arc(0,0,r*(.4+u*1.35),0,TAU);ctx.stroke();
+   ctx.restore();
+ }
  function popAt(b,s){
    s.bursts.push({x:b.x,y:b.y,r:b.r,life:0,tone:b.tone,phase:b.phase,points:b.enemy?8:b.special?SPECIAL_BONUS:b.r<24?3:b.r<34?2:1,special:!!b.special,enemy:!!b.enemy});
  }
@@ -938,6 +1015,20 @@
    const frozen=s.pauseUntil&&t<s.pauseUntil;
    const step=frozen?0:dt;
    s.seconds+=step;s.spawn+=step;
+   // Spawn based on elapsed active time, not the ordinary bubble counter (which resets on specials).
+   if(enemiesOn()&&!frozen){
+     s.enemyTimer-=step;
+     if(s.enemyTimer<=0){
+       const count=s.bubbles.filter(b=>b.enemy).length;
+       if(count<saboteurLevel){spawnEnemy(s);s.enemyTimer=enemyInterval();}
+       else s.enemyTimer=.8;
+     }
+   }
+   if(s.enemyResolve&&!s.enemyResolve.released&&t-s.enemyResolve.started>=(reducedMotion()?50:800)){
+     s.enemyResolve.released=true;s.antiMessage=s.enemyResolve.answer;
+     s.antiUntil=s.enemyResolve.started+4100;renderPhrase(s);enemySound(true);shudder();
+   }
+
    if(s.antiMessage&&t>=s.antiUntil){s.antiMessage='';renderPhrase(s)}
    if(s.partIndex===3&&s.pauseUntil&&t>s.pauseUntil+650){
      s.partIndex=0;s.pauseUntil=0;
@@ -953,11 +1044,15 @@
    for(let i=s.bubbles.length-1;i>=0;i--){
      const b=s.bubbles[i];b.life+=step*factor;b.x+=b.speed*step*factor;
      b.y+=b.vY*step*factor+(slow?0:Math.sin(b.life*1.35+b.phase)*9*step);
-     if(!b.enemy&&saboteursEnabled)enemyInfluence(b,s,step);
+     if(!b.enemy&&enemiesOn())enemyInfluence(b,s,step);
      if(b.y<b.r+5){b.y=b.r+5;b.vY=Math.abs(b.vY)}
      if(b.y>s.height-b.r-5){b.y=s.height-b.r-5;b.vY=-Math.abs(b.vY)}
      if(b.x-b.r>s.width+30){if(b.special){s.specialActive=false;s.spawnTotal=0;}s.bubbles.splice(i,1);continue;}
      if(b.enemy)paintEnemy(b,s,t);else paint(b,s,t);
+   }
+   if(s.enemyResolve){
+     if(!s.enemyResolve.released)paintEnemyFracture(s.enemyResolve,t);
+     if(t>s.enemyResolve.started+1000)s.enemyResolve=null;
    }
    for(let i=s.bursts.length-1;i>=0;i--){let b=s.bursts[i];b.life+=step;if(!paintBurst(b))s.bursts.splice(i,1)}
    const secs=Math.floor(s.seconds);clockEl.textContent=Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0');
@@ -973,11 +1068,18 @@
    for(let i=0;i<s.bubbles.length;i++){const b=s.bubbles[i];
      if(Math.hypot(b.x-x,b.y-y)<b.r*1.16){index=i;break;}}
    if(index<0)return;
-   const b=s.bubbles.splice(index,1)[0];enableAudio();if(b.special){s.specialActive=false;s.spawnTotal=0;playSpecialChime();}else playPop(b.r);popAt(b,s);
+   const b=s.bubbles.splice(index,1)[0];enableAudio();
    s.pops++;
    if(b.enemy){
-     s.antiMessage=b.enemy.answer;s.antiUntil=performance.now()+2400;renderPhrase(s);
-   }else if(s.pops>=s.nextWordPop&&s.partIndex<3){
+     const now=performance.now();
+     s.enemyResolve={x:b.x,y:b.y,r:b.r,phase:b.phase,kind:b.enemy.kind,answer:b.enemy.answer,started:now,released:false};
+     s.pauseUntil=now+4100;s.enemyTimer=Math.min(s.enemyTimer,.65);
+     enemySound(false);
+   }else{
+     if(b.special){s.specialActive=false;s.spawnTotal=0;playSpecialChime();}else playPop(b.r);
+     popAt(b,s);
+   }
+   if(!b.enemy&&s.pops>=s.nextWordPop&&s.partIndex<3){
      s.partIndex++;s.nextWordPop=s.pops+Math.floor(rand(4,8));
      if(s.partIndex===3){s.pauseUntil=performance.now()+3400;playSentenceChime();}
      renderPhrase(s);
