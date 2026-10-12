@@ -4,7 +4,8 @@ const $=id=>document.getElementById(id);
 const STORAGE='bd-mastery72-v1';const LEGACY='bd-mastery72-v1';
 const chars=D.characters,skills=D.skills;
 const maxLevel=20;let state=restore();
-let currentSkill=0,viewLevel=1,session=null,voiceEnabled=false,activeSpeech=null,roleRefresh=0;
+const PARAMS=new URLSearchParams(location.search);const chosen=skills.findIndex(x=>x.id===PARAMS.get('skill'));
+let currentSkill=Math.max(0,chosen),viewLevel=1,session=null,voiceEnabled=false,activeSpeech=null,roleRefresh=0;
 const EXPERT_TRAPS={
  alliance:['Ich bestätige die Kritik vollständig und verzichte zunächst auf Nachfragen, um Vertrauen zu gewinnen.','Ich erläutere ausführlich mein Neutralitätskonzept, bevor ich nach dem konkreten Moment frage.','Ich erkläre mehrere Methoden und lasse das Ziel erst später bestimmen.','Ich gebe jeder Person exakt gleich viel Zeit, ohne mögliche Machtunterschiede zu prüfen.'],
  self:['Ich atme unauffällig durch, ignoriere die spürbare eigene Reaktion und mache sofort wie geplant weiter.','Ich setze direkt eine harte Ton-Grenze, ohne zuvor die Wirkung meines Beitrags zu überprüfen.','Ich benenne ausführlich meine Verletzung, um authentisch zu wirken.','Ich führe einfach mit derselben Frage weiter, damit die professionelle Struktur gewahrt bleibt.'],
@@ -55,7 +56,7 @@ s.lastLeadLine=leadLine;d.append(displayBubble(s.lead,leadLine));
 if(s.level>=16&&(beat===1||beat===3)){const secondLine=beat===1?`Moment. Ich komme hier überhaupt nicht mehr vor. ${s.second.pressure}`:`Jetzt reicht es mir. ${s.second.shift}`;s.lastSecondLine=secondLine;d.append(displayBubble(s.second,secondLine,'secondary'));if(beat===3)d.append(displayBubble(s.lead,'Unterbrechen Sie mich nicht! Ich will erst wissen, ob Sie mich hier ernst nehmen.'))}else{s.lastSecondLine=null}
 if(last){d.append(displayBubble({id:s.lead.id,name:'Du als beratende Person'},last.text,'yours'))}
 }
-function speak(role,text,after){if(!('speechSynthesis'in window)||!voiceEnabled||!text)return;stopSpeaking();let utter=new SpeechSynthesisUtterance(text);let voices=window.speechSynthesis.getVoices().filter(x=>/^(de|German)/i.test(x.lang||'')||/german/i.test(x.name||''));let idx=chars.findIndex(c=>c.id===role.id);if(voices.length){utter.voice=voices[Math.abs((idx*5+1)%voices.length)]}else{utter.lang='de-DE'}utter.rate=role.voice.rate;utter.pitch=role.voice.pitch;utter.volume=1;utter.onend=()=>{if(typeof after==='function'&&voiceEnabled&&session&&!session.ended)after()};activeSpeech=utter;try{window.speechSynthesis.speak(utter)}catch(e){console.warn('TTS nicht verfügbar',e)}}
+function speak(role,text,after){if(!voiceEnabled||!text)return;stopSpeaking();const ok=window.BDVoice73?.speak(role.id,text,{rate:role.voice.rate,pitch:role.voice.pitch,after:()=>{if(typeof after==='function'&&voiceEnabled&&session&&!session.ended)after()}});if(!ok){voiceEnabled=false;updateVoiceButton();const hint=document.getElementById('bd73VoiceHint')||document.createElement('p');hint.id='bd73VoiceHint';hint.style.cssText='padding:9px 12px;color:#A4563D;font-size:12px;margin:0;background:#FFF4EB';hint.textContent=window.BDVoice73?.status()||'Keine passende Stimme vorhanden. Bitte im Stimmenmanager zuordnen.';document.getElementById('playSection')?.prepend(hint)}}
 function stopSpeaking(){try{window.speechSynthesis?.cancel()}catch(e){}activeSpeech=null}
 function updateVoiceButton(){const b=$('voiceSwitch');b.textContent=voiceEnabled?'◖ Stimmen: an':'◖ Stimmen: aus';b.setAttribute('aria-pressed',String(voiceEnabled))}
 function speakerAuto(){if(!voiceEnabled)return;const s=session;if(!s)return;speak(s.lead,s.lastLeadLine,s.lastSecondLine?()=>speak(s.second,s.lastSecondLine):null)}
@@ -86,5 +87,7 @@ $('rosterOpen').addEventListener('click',()=>{renderRoster();$('rosterDialog').s
 window.addEventListener('pagehide',stopSpeaking);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSpeaking()});
 // Developer smoke-test hooks, local read-only state plus controlled skill/level switching.
 window.BDMasteryTest={getState:()=>({skill:skills[currentSkill].id,level:viewLevel,beat:session?.beat,lead:session?.lead.id,second:session?.second.id,pass:session?.pass,answers:session?.answers.length,xp:state.xp,unlocked:progress().level}),getProgress:()=>JSON.parse(JSON.stringify(progress())),selectSkill:(id)=>{let i=skills.findIndex(x=>x.id===id);if(i>=0){currentSkill=i;viewLevel=progress().level;render()}},setLevelForTest:(lvl)=>{viewLevel=Math.max(1,Math.min(20,Number(lvl)||1));session=null;begin()}};
+viewLevel=progress().level;
 render();
+if(PARAMS.get('roster')==='1'){renderRoster();$('rosterDialog').showModal()}
 })();
