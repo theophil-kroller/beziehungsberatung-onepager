@@ -4,7 +4,7 @@
  const btn=document.getElementById('bd168CockpitTraining');
  if(!btn)return;
  let dlg=null,frame=null;
- const trainUrl='bindungsstile-trainer15-12-69.html';
+ const trainUrl='bindungsstile-trainer15-12-70.html';
  function makeDialog(){
    if(dlg)return;
    dlg=document.createElement('dialog');dlg.id='bd168CockpitTrainerDialog';
