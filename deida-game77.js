@@ -16,9 +16,23 @@ function isPassed(n){return completed(n).length>=quota(n)&&new Set(completed(n).
 function hash(s){return [...s].reduce((a,x)=>(a*31+x.charCodeAt(0))%10000,11)}
 function rotate(arr,n){const k=((n%arr.length)+arr.length)%arr.length;return [...arr.slice(k),...arr.slice(0,k)]}
 function paintLevels(){const host=$('diLevels');host.replaceChildren();for(let n=1;n<=LEVELS;n++){const btn=document.createElement('button');btn.type='button';btn.textContent=n<state.level?'✓':n;btn.className=n===level?'current':n<state.level?'done':'';btn.title=`Level ${n} – ${data.levels[n-1]} (${quota(n)} verschiedene Fälle)`;btn.disabled=n>state.level;btn.onclick=()=>{level=n;$('diLevelsPanel').close();begin();};host.append(btn)}const rec=completed(level);$('diQuota').textContent=`${rec.length} / ${quota(level)} Fälle`;$('diDiversity').textContent=`${new Set(rec.map(x=>x.lead)).size} / ${diversity(level)} Personen`;$('diLevelTitle').textContent=`Level ${level} / 20 · ${data.levels[level-1]}`;$('diXp').textContent=`${state.xp} XP`;$('diFill').style.width=`${Math.min(100,rec.length/quota(level)*100)}%`}
-function nextEncounter(){const seen=new Set(completed(level).map(x=>x.id));const order=rotate(data.cases,level*11+turns*7);let c=order.find(c=>!seen.has(c.id))||order[0];const counter={};completed(level).forEach(x=>counter[x.lead]=(counter[x.lead]||0)+1);
-const ranked=rotate(chars,level+turns).sort((a,b)=>(counter[a.id]||0)-(counter[b.id]||0));const a=ranked[0],b=chars[(chars.findIndex(x=>x.id===a.id)+5+(turns%4))%chars.length];return {c,a,b:a.id===b.id?chars[(chars.findIndex(x=>x.id===a.id)+1)%chars.length]:b};}
-function presentDialogue(){const {c,a,b}=encounter;$('diSceneTitle').textContent=c.topic;$('diContext').textContent=`${c.categoryTitle} · Gespräch mit ${a.name} und ${b.name} · fiktiver Trainingsfall`;$('diAImg').src=`training-assets/characters/${a.id}.webp`;$('diBImg').src=`training-assets/characters/${b.id}.webp`;$('diAImg').alt=`Illustration von ${a.name}`;$('diBImg').alt=`Illustration von ${b.name}`;$('diAName').textContent=a.name;$('diBName').textContent=b.name;$('diASpeaker').textContent=a.name.toUpperCase();$('diBSpeaker').textContent=b.name.toUpperCase();const variant=window.BDExercise79?.dialogue(c,a,dialogueVariant)||{line:c.line,reply:c.reply};$('diALine').textContent=variant.line;$('diBLine').textContent=variant.reply;}
+function nextEncounter(){
+ // 15.12.80: alte Lernstände behalten; über alle Level zuerst noch unbekannte Szenen,
+ // danach gleichmäßige Wiederholung. Die aktuelle Szene bei "Anderer Fall" meiden.
+ const seenLevel=new Set(completed(level).map(x=>x.id));
+ const freq=new Map();for(const h of state.history||[])freq.set(h.id,(freq.get(h.id)||0)+1);
+ let options=data.cases.filter(c=>!seenLevel.has(c.id));if(!options.length)options=data.cases.slice();
+ const least=Math.min(...options.map(c=>freq.get(c.id)||0));options=options.filter(c=>(freq.get(c.id)||0)===least);
+ const groupFreq=new Map();for(const h of state.history||[]){const c=data.cases.find(x=>x.id===h.id);if(!c)continue;const t=c.theme||c.category;groupFreq.set(t,(groupFreq.get(t)||0)+1)}
+ const ng=Math.min(...options.map(c=>groupFreq.get(c.theme||c.category)||0));options=options.filter(c=>(groupFreq.get(c.theme||c.category)||0)===ng);
+ if(encounter&&options.length>1){const fresh=options.filter(c=>c.id!==encounter.c.id);if(fresh.length)options=fresh}
+ const c=options[Math.floor(Math.random()*options.length)];
+ const counter={};completed(level).forEach(x=>counter[x.lead]=(counter[x.lead]||0)+1);
+ const ranked=rotate(chars,level+turns).sort((a,b)=>(counter[a.id]||0)-(counter[b.id]||0));
+ const a=ranked[0],b=chars[(chars.findIndex(x=>x.id===a.id)+5+(turns%4))%chars.length];
+ return {c,a,b:a.id===b.id?chars[(chars.findIndex(x=>x.id===a.id)+1)%chars.length]:b};
+}
+function presentDialogue(){const {c,a,b}=encounter;$('diSceneTitle').textContent=c.topic;$('diContext').textContent=`${c.categoryTitle} · Gespräch mit ${a.name} und ${b.name} · ${c.bookChapters?`Buch Kap. ${c.bookChapters}`:"fiktiver Trainingsfall"}`;$('diAImg').src=`training-assets/characters/${a.id}.webp`;$('diBImg').src=`training-assets/characters/${b.id}.webp`;$('diAImg').alt=`Illustration von ${a.name}`;$('diBImg').alt=`Illustration von ${b.name}`;$('diAName').textContent=a.name;$('diBName').textContent=b.name;$('diASpeaker').textContent=a.name.toUpperCase();$('diBSpeaker').textContent=b.name.toUpperCase();const variant=window.BDExercise79?.dialogue(c,a,dialogueVariant)||{line:c.line,reply:c.reply};$('diALine').textContent=variant.line;$('diBLine').textContent=variant.reply;}
 function choiceTask(question,kind,correct,wrong,explainer){return {question,kind,options:[{text:correct,good:true},...wrong.map(text=>({text,good:false}))],explainer,kindId:'choice'};}
 function freeTask(c){return {question:'Wie würdest du die Situation jetzt in eigenen Worten ansprechen?',kind:'Freie Intervention · Selbstvergleich',options:[],explainer:`Eine mögliche Formulierung lautet: „${c.question}“\n${c.theory}\nFreitexte werden nicht automatisch fachlich bewertet. Die strukturierte Erstaufgabe musste korrekt bearbeitet sein; deine Formulierung dient der Selbstreflexion.`,kindId:'free'};}
 function makeTask(c,m,step){const category=data.groups[c.category];
