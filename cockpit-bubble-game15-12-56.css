@@ -60,3 +60,54 @@
 #bd1556GameDialog .bd1560-music-level input{width:70px;accent-color:#c96b4b}
 #bd1556GameDialog .bd1560-music-status{font-size:11px;color:#9d664c;max-width:180px}
 @media(max-width:650px){#bd1556GameDialog .bd1560-music-choice,#bd1556GameDialog .bd1560-music-level{font-size:10px}#bd1556GameDialog .bd1560-music-level input{width:54px}}
+
+
+/* 15.12.61 – generous game stage with a separate sentence moment */
+#bd1556GameDialog{width:min(1550px,97vw);max-width:none;max-height:96dvh;padding:0;overflow:hidden}
+#bd1556GameDialog .bd1556-shell{height:min(930px,94dvh);max-height:94dvh;min-height:0;border-radius:24px}
+#bd1556GameDialog .bd1556-top{flex:0 0 auto;padding:12px 22px 8px}
+#bd1556GameDialog .bd1556-kicker{font-size:9px}
+#bd1556GameDialog .bd1556-top h2{font-size:clamp(22px,2.2vw,29px)}
+#bd1556GameDialog .bd1561-phrase{flex:0 0 auto;min-height:56px;padding:8px 14px 10px;display:flex;align-items:center;justify-content:center;background:#fffaf3;position:relative;z-index:2;transition:background .4s ease,box-shadow .4s ease;pointer-events:none}
+#bd1556GameDialog .bd1561-phrase .bd1560-phrase-parts{gap:9px;max-width:100%;flex-wrap:wrap}
+#bd1556GameDialog .bd1561-phrase .bd1560-phrase-part{border:0;background:transparent;padding:3px 5px;min-width:16px;font:italic 500 clamp(14px,1.6vw,22px)/1.25 Georgia,serif;color:#cbbab0}
+#bd1556GameDialog .bd1561-phrase .bd1560-phrase-part.is-revealed{background:transparent;color:#aa604c}
+#bd1556GameDialog .bd1561-phrase.is-celebrating{background:radial-gradient(ellipse at 50% 50%,#fff4d9 0%,#fffaf3 71%);box-shadow:inset 0 0 22px rgba(228,182,114,.17)}
+#bd1556GameDialog .bd1561-phrase.is-celebrating .bd1560-phrase-part{animation:bd1561shine 3.3s ease-out both;font-size:clamp(17px,1.95vw,29px);color:#96523e;text-shadow:0 0 13px rgba(238,181,113,.54)}
+#bd1556GameDialog .bd1561-counterword{font:italic 500 clamp(15px,1.5vw,23px) Georgia,serif;color:#94729d}
+@keyframes bd1561shine{0%{opacity:.5;transform:scale(.97);text-shadow:0 0 2px rgba(238,181,113,.2)}30%{opacity:1;transform:scale(1.04);text-shadow:0 0 18px rgba(238,181,113,.75)}100%{opacity:1;transform:scale(1);text-shadow:0 0 5px rgba(238,181,113,.20)}}
+#bd1556GameDialog .bd1556-field{flex:1 1 0;min-height:160px;height:auto;background:radial-gradient(ellipse at 72% 18%,#fffefc 0%,transparent 45%),linear-gradient(155deg,#fbf4eb,#f6ede3 55%,#f5e7dd)}
+#bd1556GameDialog .bd1556-bottom{flex:0 0 auto;gap:10px;padding:10px 18px 12px;flex-wrap:wrap}
+#bd1556GameDialog .bd1560-speed-label{max-width:220px;min-width:155px;flex:1 1 180px;gap:2px}
+#bd1556GameDialog .bd1560-speed-ends{font-size:9px}
+#bd1556GameDialog .bd1558-controls{flex:1 1 600px;gap:7px;justify-content:flex-end}
+#bd1556GameDialog .bd1561-saboteur-toggle{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;cursor:pointer;font:600 12px system-ui,sans-serif;color:#6d5660}
+#bd1556GameDialog .bd1561-saboteur-toggle input{width:17px;height:17px;accent-color:#ac826c;cursor:pointer}
+#bd1556GameDialog .bd1560-music-controls{gap:6px}
+#bd1556GameDialog .bd1558-sound,#bd1556GameDialog .bd1560-music,#bd1556GameDialog .bd1556-restart{min-height:35px;padding:7px 10px;font-size:12px;border-radius:10px}
+#bd1556GameDialog .bd1556-field-hint,#bd1556GameDialog .bd1560-phrase-hint{display:none!important}
+@media(max-width:800px){
+ #bd1556GameDialog{width:100vw;max-height:100dvh}
+ #bd1556GameDialog .bd1556-shell{height:100dvh;max-height:100dvh;border-radius:0}
+ #bd1556GameDialog .bd1556-top{padding:10px}
+ #bd1556GameDialog .bd1556-stats{gap:8px}
+ #bd1556GameDialog .bd1556-stat{min-width:40px}
+ #bd1556GameDialog .bd1556-stat strong{font-size:17px}
+ #bd1556GameDialog .bd1561-phrase{min-height:48px;padding:5px 9px}
+ #bd1556GameDialog .bd1561-phrase .bd1560-phrase-part{font-size:13px}
+ #bd1556GameDialog .bd1556-bottom{padding:8px;gap:6px}
+ #bd1556GameDialog .bd1560-speed-label{max-width:none;flex:1 1 100%;min-width:0}
+ #bd1556GameDialog .bd1558-controls{flex:1 1 100%;justify-content:center;gap:5px}
+ #bd1556GameDialog .bd1556-field{height:auto;min-height:145px}
+ #bd1556GameDialog .bd1560-music-controls{gap:4px}
+ #bd1556GameDialog .bd1560-music-choice select{max-width:94px}
+ #bd1556GameDialog .bd1560-music-level input{width:45px}
+}
+@media(max-height:620px){#bd1556GameDialog .bd1556-top{padding-block:5px}#bd1556GameDialog .bd1561-phrase{min-height:34px;padding:3px}#bd1556GameDialog .bd1556-bottom{padding:4px 10px}#bd1556GameDialog .bd1556-field{min-height:110px}#bd1556GameDialog .bd1560-speed-ends{display:none}}
+@media(prefers-reduced-motion:reduce){#bd1556GameDialog .bd1561-phrase.is-celebrating .bd1560-phrase-part{animation:none}}
+
+#bd1556GameDialog .bd1560-music-status{font-size:10px;max-width:135px;line-height:1.2}
+@media(max-width:500px){#bd1556GameDialog .bd1560-music-status{max-width:160px;flex:1 1 100%;text-align:center}#bd1556GameDialog .bd1561-phrase .bd1560-phrase-parts{gap:3px}}
+
+#bd1556GameDialog .bd1561-origin{position:absolute;bottom:0;right:18px;font:400 10px system-ui,sans-serif;color:#a18b7b;opacity:.8}
+@media(max-width:650px){#bd1556GameDialog .bd1561-origin{font-size:8px;right:8px}}
