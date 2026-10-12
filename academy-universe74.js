@@ -12,7 +12,7 @@ function showProgress(){const root=$('progressBody'); root.replaceChildren(); co
 function closeProgress(){ $('progressDrawer').hidden=true; document.body.style.overflow=''; }
 $('overviewOpen').addEventListener('click',showProgress); $('progressClose').addEventListener('click',closeProgress); $('progressDrawer').addEventListener('click',e=>{if(e.target===e.currentTarget)closeProgress()}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('progressDrawer').hidden)closeProgress()});
 $('voicesOpen').addEventListener('click',()=>window.BDVoice73?.showManager());
-$('continueTraining').addEventListener('click',()=>{const href=settings.lastTraining||firstActive()?.href; if(href)go(href)});
+$('continueTraining')?.addEventListener('click',()=>{const href=settings.lastTraining||firstActive()?.href; if(href)go(href)});
 document.querySelectorAll('.mobile-tabbar button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.mobile-tabbar button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); const tab=btn.dataset.tab; if(tab==='resume'){const href=settings.lastTraining||firstActive()?.href; if(href)go(href)} else if(tab==='progress') showProgress(); else window.scrollTo({top:document.getElementById('universeGrid').offsetTop-72,behavior:'smooth'})}));
 render();
 })();

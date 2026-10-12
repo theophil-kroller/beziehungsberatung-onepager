@@ -53,3 +53,6 @@ html:has(.bd1557-preview),body:has(.bd1557-preview){margin:0;min-height:100%;bac
 .bd1557-halo{opacity:.52;box-shadow:0 0 70px 36px rgba(244,208,182,.09)}
 .bd1557-halo-two{opacity:.30;box-shadow:none}
 .bd1557-art canvas{filter:saturate(.82)}
+
+/* Build 15.12.77 · resonance circles behind the public preview headline. */
+.bd1557-copy{position:relative;isolation:isolate}.bd1557-copy>*:not(.bd1577-resonance){position:relative;z-index:1}.bd1577-resonance{position:absolute;z-index:0;pointer-events:none;width:min(680px,70vw);height:min(680px,70vw);top:50%;left:45%;transform:translate(-50%,-50%);border-radius:50%;opacity:.53;background:repeating-radial-gradient(circle,transparent 0,transparent 57px,rgba(198,117,93,.12) 58px,rgba(198,117,93,.12) 60px,transparent 61px,transparent 95px);filter:blur(.7px)}@media(max-width:640px){.bd1577-resonance{width:390px;height:390px;left:50%;opacity:.34}}@media(prefers-reduced-motion:reduce){.bd1577-resonance{animation:none!important}}

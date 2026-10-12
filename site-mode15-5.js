@@ -25,6 +25,7 @@ function screen(kind){
       <header class="bd1557-bar"><a class="bd1557-wordmark" href="/" aria-label="Beziehungsdynamiken Startseite"><span class="bd1557-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="23" r="13" stroke="currentColor" stroke-width="1.6"/><circle cx="29" cy="23" r="13" stroke="#C96B4B" stroke-width="1.6"/><path d="M13 32c6 6 16 6 22 0" stroke="#C96B4B" stroke-width="1.5" stroke-linecap="round"/></svg></span><span>beziehungsdynamiken<span class="bd1557-wordmark-dot">.</span></span></a></header>
       <div class="bd1557-main">
         <div class="bd1557-copy">
+          <span class="bd1577-resonance" aria-hidden="true"></span>
           <h1>Was zwischen uns <em>wirklich</em> los ist.</h1>
           <p class="bd1557-lead">Warum Gespräche kippen. Warum wir uns zurückziehen, obwohl wir Nähe wollen. Warum Eifersucht, Streit und Verletzungen oft mehr mit unseren Mustern zu tun haben, als uns lieb ist.</p>
           <p class="bd1557-support">Hier entsteht Beziehungsdynamiken. Bald gibt es mehr zu entdecken.</p>
@@ -38,7 +39,7 @@ function screen(kind){
       <footer class="bd1557-footer"><span>© Beziehungsdynamiken</span><div><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div></footer>
     </main>`;
     if(!document.querySelector('#bd1557-preview-styles')){
-      const l=document.createElement('link');l.id='bd1557-preview-styles';l.rel='stylesheet';l.href='./private-preview15-12-57.css?v=15.12.61';document.head.appendChild(l);
+      const l=document.createElement('link');l.id='bd1557-preview-styles';l.rel='stylesheet';l.href='./private-preview15-12-57.css?v=15.12.77';document.head.appendChild(l);
     }
     const b=document.createElement('script');b.src='./private-preview15-12-57.js?v=15.12.61';b.async=true;document.head.appendChild(b);
     return;
