@@ -125,3 +125,28 @@
 #bd1556GameDialog .bd1556-shell.bd1562-shudder{animation:bd1562-shell-shudder .38s ease-out 1}
 @media(max-width:800px){#bd1556GameDialog .bd1562-enemy-level{min-width:90px;max-width:130px;flex:0 1 115px}#bd1556GameDialog .bd1562-shake-choice{font-size:10px}#bd1556GameDialog .bd1561-phrase.is-antidote .bd1561-counterword{font-size:clamp(18px,5vw,26px)}}
 @media(prefers-reduced-motion:reduce){#bd1556GameDialog .bd1556-shell.bd1562-shudder,#bd1556GameDialog .bd1561-phrase.is-antidote .bd1561-counterword{animation:none!important}}
+
+/* 15.12.63 – clear thought -> counterperspective, accessible and calm */
+#bd1556GameDialog .bd1561-phrase.is-antidote{min-height:91px;padding:10px 20px;background:radial-gradient(ellipse at 50% 50%,#fff5e8,#fffaf3 84%)}
+#bd1556GameDialog .bd1561-phrase .bd1560-phrase-parts:has(.bd1563-reframe){width:100%}
+#bd1556GameDialog .bd1563-reframe{display:flex;align-items:center;justify-content:center;gap:clamp(10px,2vw,25px);width:100%;flex-wrap:wrap;min-height:62px}
+#bd1556GameDialog .bd1563-thought{font:500 clamp(13px,1.5vw,20px)/1.3 Georgia,serif;color:#77636a;text-align:center;max-width:40%;transition:opacity .6s ease}
+#bd1556GameDialog .bd1563-bridge{font:400 22px/1 Georgia,serif;color:#cb9a79;opacity:.68}
+#bd1556GameDialog .bd1563-answer{font:italic 600 clamp(20px,2.25vw,34px)/1.2 Georgia,serif;color:#b26346;text-align:center;max-width:48%;text-shadow:0 0 11px rgba(235,173,116,.3)}
+#bd1556GameDialog .bd1563-reframe.is-unraveling .bd1563-answer{opacity:.18;filter:blur(2px)}
+#bd1556GameDialog .bd1563-reframe.has-answer .bd1563-thought{opacity:.67;text-decoration:line-through;text-decoration-color:rgba(169,125,118,.55);text-decoration-thickness:1px}
+#bd1556GameDialog .bd1563-reframe.has-answer .bd1563-answer{animation:bd1562-antidote-in .65s ease-out both}
+@media(max-width:650px){
+ #bd1556GameDialog .bd1561-phrase.is-antidote{min-height:108px;padding:5px 12px}
+ #bd1556GameDialog .bd1563-reframe{gap:3px;flex-direction:column;min-height:92px}
+ #bd1556GameDialog .bd1563-thought,#bd1556GameDialog .bd1563-answer{max-width:100%;line-height:1.14}
+ #bd1556GameDialog .bd1563-thought{font-size:clamp(12px,3.4vw,15px)}
+ #bd1556GameDialog .bd1563-answer{font-size:clamp(19px,5.4vw,25px)}
+ #bd1556GameDialog .bd1563-bridge{font-size:17px;line-height:1}
+}
+@media(max-height:640px){#bd1556GameDialog .bd1561-phrase.is-antidote{min-height:74px;padding:5px}#bd1556GameDialog .bd1563-reframe{min-height:52px}}
+@media(prefers-reduced-motion:reduce){#bd1556GameDialog .bd1563-reframe.has-answer .bd1563-answer{animation:none!important}}
+/* Fit within the exact mobile viewport, including the 1px border. Keep the
+   original thought legible while the stronger counterperspective arrives. */
+#bd1556GameDialog,#bd1556GameDialog .bd1556-shell{box-sizing:border-box}
+#bd1556GameDialog .bd1563-reframe.has-answer .bd1563-thought{opacity:.94;color:#75636a;text-decoration-color:rgba(166,110,103,.43)}

@@ -587,7 +587,8 @@
  try{motionEffects=localStorage.getItem('bd1562_bubble_motion')!=='off'}catch{}
  const enemiesOn=()=>saboteurLevel>0;
  // 1 = an occasional thought; 5 = five simultaneous, swiftly replenished.
- const enemyInterval=()=>[Infinity,15,8.5,5.5,3.8,2.5][saboteurLevel];
+ const enemyInterval=()=>[Infinity,20,12,8.5,6.5,5][saboteurLevel];
+ const enemyDelay=()=>enemyInterval()*rand(.85,1.38); // irregular, never machine-gun waves
  let speedSetting=35;
  try{const n=Number(localStorage.getItem('bd1560_bubble_speed'));if(Number.isFinite(n)&&localStorage.getItem('bd1560_bubble_speed')!==null)speedSetting=clamp(Math.round(n),0,100)}catch{}
  const speedFactor=()=>.38+speedSetting*1.8/100;
@@ -731,12 +732,12 @@
      if(scene){
        if(!enemiesOn()){
          scene.bubbles=scene.bubbles.filter(b=>!b.enemy);scene.enemyResolve=null;
-         scene.antiMessage='';scene.antiUntil=0;scene.pauseUntil=0;
+         scene.antiMessage='';scene.antiThought='';scene.antiUntil=0;scene.pauseUntil=0;
          dialog.querySelector('.bd1556-shell')?.classList.remove('bd1562-shudder');renderPhrase(scene);
        }else{
          // Drop oldest excess enemies when reducing the density; none are spawned immediately at 0.
          let count=0;scene.bubbles=scene.bubbles.filter(b=>!b.enemy||++count<=saboteurLevel);
-         scene.enemyTimer=(prev===0||saboteurLevel>prev)?Math.min(scene.enemyTimer,0.12):Math.min(scene.enemyTimer,enemyInterval());
+         scene.enemyTimer=(prev===0||saboteurLevel>prev)?Math.min(scene.enemyTimer,1.0):Math.max(scene.enemyTimer,enemyInterval()*.45);
        }
      }
    });
@@ -782,18 +783,25 @@
  function renderPhrase(s){
    if(!wordLineEl||!phraseBox)return;
    wordLineEl.replaceChildren();
-   const showAnswer=s.antiMessage&&performance.now()<s.antiUntil;
-   if(showAnswer){const el=document.createElement('span');el.className='bd1561-counterword';el.textContent=s.antiMessage;wordLineEl.appendChild(el);}
-   else for(let i=0;i<3;i++){
+   const activeThought=!!(s.antiThought&&performance.now()<s.antiUntil);
+   const showAnswer=activeThought&&!!s.antiMessage;
+   if(activeThought){
+     const wrap=document.createElement('div');wrap.className='bd1563-reframe'+(showAnswer?' has-answer':' is-unraveling');
+     const thought=document.createElement('span');thought.className='bd1563-thought';thought.textContent=s.antiThought;
+     wrap.appendChild(thought);
+     const bridge=document.createElement('span');bridge.className='bd1563-bridge';bridge.textContent='→';bridge.setAttribute('aria-hidden','true');wrap.appendChild(bridge);
+     const answer=document.createElement('span');answer.className='bd1563-answer';answer.textContent=showAnswer?s.antiMessage:'· · ·';wrap.appendChild(answer);
+     wordLineEl.appendChild(wrap);
+   }else for(let i=0;i<3;i++){
      const el=document.createElement('span');el.className='bd1560-phrase-part'+(i<s.partIndex?' is-revealed':'');
      el.textContent=i<s.partIndex?s.phrase[i]:'·';wordLineEl.appendChild(el);
    }
-   phraseBox.classList.toggle('is-celebrating',s.partIndex===3&&!showAnswer);
-   phraseBox.classList.toggle('is-antidote',!!showAnswer);
+   phraseBox.classList.toggle('is-celebrating',s.partIndex===3&&!activeThought);
+   phraseBox.classList.toggle('is-antidote',activeThought);
    const oldOrigin=phraseBox.querySelector('.bd1561-origin');if(oldOrigin)oldOrigin.remove();
    const origin=s.partIndex===3&&ORIGINS[s.phrase.join(' ')];
    if(origin){const note=document.createElement('small');note.className='bd1561-origin';note.textContent=origin;phraseBox.appendChild(note);}
-   wordLineEl.setAttribute('aria-label',s.partIndex===3?s.phrase.join(' '):(showAnswer?s.antiMessage:'Satz wird gesammelt'));
+   wordLineEl.setAttribute('aria-label',activeThought?`${s.antiThought} – ${s.antiMessage||'wird aufgelöst'}`:(s.partIndex===3?s.phrase.join(' '):'Satz wird gesammelt'));
  }
  // New users have separate cloud records. Legacy local scores are imported once.
  let recordUserId=null,recordPending=0,recordLastSent=0,recordFetchFailed=false,recordSyncing=false;
@@ -853,7 +861,7 @@
  }
  function newRound(){
    stop();if(!ctx)return;
-   scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0,spawnTotal:0,nextSpecial:Math.floor(rand(15,23)),specialActive:false,nextEnemy:Math.floor(rand(8,15)),enemyCount:0,enemyTimer:1.2,enemyResolve:null,pauseUntil:0,antiMessage:'',antiUntil:0,
+   scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0,spawnTotal:0,nextSpecial:Math.floor(rand(15,23)),specialActive:false,nextEnemy:Math.floor(rand(8,15)),enemyCount:0,enemyTimer:rand(3,6),lastEnemyKind:'',lastEnemyThought:'',enemyResolve:null,pauseUntil:0,antiMessage:'',antiThought:'',antiUntil:0,
      pops:0,nextWordPop:5,phrase:PHRASES[Math.floor(rand(0,PHRASES.length))],partIndex:0,lastPhraseIndex:-1};
    renderPhrase(scene);
    resize();
@@ -901,36 +909,61 @@
    ctx.restore();
  }
  function spawnEnemy(s){
-   const v=SABOTEURS[Math.floor(rand(0,SABOTEURS.length))];
-   const r=v.kind==='stone'?59:v.kind==='vortex'?63:65;
-   s.bubbles.push({x:30,y:clamp(s.height*.2+rand(0,s.height*.55),r+6,s.height-r-6),r,speed:rand(16,34),vY:rand(-8,8),phase:rand(0,TAU),life:0,enemy:v,warp:0,tone:0,special:false});
+   // A new thought should feel discovered rather than arrive in an identical wave.
+   const options=SABOTEURS.filter(v=>v.kind!==s.lastEnemyKind&&v.thought!==s.lastEnemyThought);
+   const v=options[Math.floor(rand(0,options.length))]||SABOTEURS[0];
+   s.lastEnemyKind=v.kind;s.lastEnemyThought=v.thought;
+   const variant=Math.floor(rand(0,4)),r=clamp(rand(48,65),43,Math.min(65,s.height*.19));
+   const y=clamp(rand(r+12,s.height-r-12),r+5,s.height-r-5);
+   // A few curved translucent looks, not a recurring dark gray identical token.
+   s.bubbles.push({x:-r*.2,y,r,speed:rand(22,46),vY:rand(-9,9),phase:rand(0,TAU),life:0,
+     enemy:v,variant,warp:rand(.02,.065),tone:Math.floor(rand(0,PALETTE.length)),special:false});
  }
  function paintEnemy(b,s,t){
-   const x=b.x,y=b.y,r=b.r,k=b.enemy.kind;ctx.save();ctx.translate(x,y);
-   ctx.rotate(k==='vortex'?Math.sin(t*.0007+b.phase)*.19:Math.sin(t*.00035+b.phase)*.06);
-   ctx.shadowColor='rgba(90,77,88,.12)';ctx.shadowBlur=12;
-   const fill=ctx.createRadialGradient(-r*.27,-r*.33,4,0,0,r*1.06);
-   fill.addColorStop(0,'rgba(252,250,250,.94)');fill.addColorStop(1,k==='stone'?'rgba(128,117,116,.68)':'rgba(162,150,166,.56)');
+   const x=b.x,y=b.y,r=b.r,k=b.enemy.kind,v=b.variant||0;
+   const hue=PALETTE[b.tone]||PALETTE[0],tint=hue.join(',');
+   ctx.save();ctx.translate(x,y);
+   ctx.rotate(Math.sin(t*.00031+b.phase)*(.055+v*.018));
+   ctx.shadowColor=`rgba(${tint},.16)`;ctx.shadowBlur=9;
+   const fill=ctx.createRadialGradient(-r*.3,-r*.34,3,0,0,r*1.07);
+   fill.addColorStop(0,'rgba(255,255,253,.86)');fill.addColorStop(.7,`rgba(${tint},.11)`);
+   fill.addColorStop(1,`rgba(${tint},.25)`);
    ctx.beginPath();
-   if(k==='spike'){
-     for(let i=0;i<48;i++){const a=i/48*TAU,rr=r*(i%3===1?1.16:.85);i?ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr)}ctx.closePath();
-   }else if(k==='fog'){
-     for(let i=0;i<48;i++){const a=i/48*TAU,rr=r*(.92+.11*Math.sin(a*6+Math.sin(t*.001)*.2));i?ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr)}ctx.closePath();
-   }else if(k==='stone'){
-     for(let i=0;i<9;i++){const a=i/9*TAU,rr=r*(i%2?.95:1.03);i?ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr)}ctx.closePath();
-   }else{
-     for(let i=0;i<64;i++){const a=i/64*TAU,rr=r*(1+.04*Math.sin(a*7+t*.001));i?ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr)}ctx.closePath();
+   const N=96;
+   for(let i=0;i<=N;i++){
+     const a=i/N*TAU, wobble=Math.sin(a*(4+v)+b.phase)*.02;
+     let rr=r*(1+wobble);
+     if(k==='spike')rr*=1+(.055+v*.009)*Math.cos((10+v*3)*a); // fine thorns
+     if(k==='fog')rr*=.94+.065*Math.sin(a*(5+v)+b.phase)+.024*Math.sin(a*11);
+     if(k==='stone')rr*=.97+.055*Math.cos(a*(7+v*2)+b.phase);
+     if(k==='knot')rr*=.91+.09*Math.sin(a*(3+v)+b.phase);
+     if(k==='vortex')rr*=.96+.045*Math.sin(a*(6+v)+b.phase+t*.001);
+     const px=Math.cos(a)*rr,py=Math.sin(a)*rr*(k==='stone'?.89:1);
+     i?ctx.lineTo(px,py):ctx.moveTo(px,py);
    }
-   ctx.fillStyle=fill;ctx.fill();ctx.lineWidth=1.8;ctx.strokeStyle=k==='stone'?'rgba(109,93,89,.8)':'rgba(132,113,132,.78)';ctx.stroke();
-   ctx.shadowBlur=0;
-   if(k==='knot'){ctx.strokeStyle='rgba(114,91,117,.30)';ctx.lineWidth=4;for(let i=0;i<3;i++){ctx.beginPath();ctx.ellipse(0,0,r*.69,r*.25,TAU*i/3,0,TAU);ctx.stroke()}}
-   if(k==='vortex'){ctx.beginPath();for(let i=0;i<65;i++){const a=i/64*TAU*2.3,rr=5+i/64*r*.78;i?ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr)}ctx.strokeStyle='rgba(120,98,134,.26)';ctx.lineWidth=3;ctx.stroke()}
-   if(k==='fog'){ctx.fillStyle='rgba(220,218,226,.24)';ctx.beginPath();ctx.arc(0,0,r*1.15,0,TAU);ctx.fill()}
+   ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.lineWidth=1.55;
+   ctx.strokeStyle=`rgba(${tint},.63)`;ctx.stroke();ctx.shadowBlur=0;
+   // Each kind has a distinct but delicate inner signature; each variant changes it.
+   if(k==='knot'){
+     ctx.strokeStyle=`rgba(${tint},.38)`;ctx.lineWidth=2.0;
+     for(let i=0;i<3;i++){ctx.beginPath();ctx.ellipse(0,0,r*.65,r*(.18+.018*v),b.phase+i*TAU/3,0,TAU);ctx.stroke()}
+   }
+   if(k==='vortex'){
+     ctx.beginPath();for(let i=0;i<70;i++){const a=i/69*TAU*(1.9+.13*v),rr=3+i/69*r*.67;i?ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr)}
+     ctx.strokeStyle=`rgba(${tint},.38)`;ctx.lineWidth=2.2;ctx.stroke();
+   }
+   if(k==='fog'){
+     ctx.fillStyle='rgba(255,255,255,.16)';ctx.beginPath();ctx.ellipse(r*.06,-r*.22,r*.78,r*.24,b.phase*.1,0,TAU);ctx.fill();
+   }
+   if(k==='stone'){
+     ctx.beginPath();ctx.moveTo(-r*.34,-r*.5);ctx.lineTo(-r*.08,-r*.32);ctx.lineTo(r*.26,-r*.39);
+     ctx.strokeStyle=`rgba(${tint},.25)`;ctx.lineWidth=2;ctx.stroke();
+   }
    const words=b.enemy.thought.replace(/[.!?]$/,'').split(' '),lines=[];let line='';
-   for(const w of words){if((line+' '+w).length>17&&line){lines.push(line);line=w}else line+=(line?' ':'')+w}if(line)lines.push(line);
-   ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='600 '+(lines.length>3?'11':'12')+'px system-ui,sans-serif';
-   const h=lines.length>3?13:15;ctx.fillStyle=k==='stone'?'#fffaf8':'#584958';ctx.shadowColor=k==='stone'?'#6e6061':'#fffdf9';ctx.shadowBlur=4;
-   lines.forEach((line,i)=>ctx.fillText(line,0,(i-(lines.length-1)/2)*h,r*1.6));
+   for(const w of words){if((line+' '+w).length>16&&line){lines.push(line);line=w}else line+=(line?' ':'')+w}if(line)lines.push(line);
+   ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='600 '+(lines.length>3?'10.5':'11.5')+'px system-ui,sans-serif';
+   const h=lines.length>3?12.5:14;ctx.fillStyle='#69595a';ctx.shadowColor='rgba(255,253,248,.9)';ctx.shadowBlur=3.5;
+   lines.forEach((line,i)=>ctx.fillText(line,0,(i-(lines.length-1)/2)*h,r*1.55));
    ctx.restore();
  }
  function enemyInfluence(b,s,dt){
@@ -1020,16 +1053,16 @@
      s.enemyTimer-=step;
      if(s.enemyTimer<=0){
        const count=s.bubbles.filter(b=>b.enemy).length;
-       if(count<saboteurLevel){spawnEnemy(s);s.enemyTimer=enemyInterval();}
+       if(count<saboteurLevel){spawnEnemy(s);s.enemyTimer=enemyDelay();}
        else s.enemyTimer=.8;
      }
    }
    if(s.enemyResolve&&!s.enemyResolve.released&&t-s.enemyResolve.started>=(reducedMotion()?50:800)){
      s.enemyResolve.released=true;s.antiMessage=s.enemyResolve.answer;
-     s.antiUntil=s.enemyResolve.started+4100;renderPhrase(s);enemySound(true);shudder();
+     s.antiUntil=s.enemyResolve.started+5150;renderPhrase(s);enemySound(true);shudder();
    }
 
-   if(s.antiMessage&&t>=s.antiUntil){s.antiMessage='';renderPhrase(s)}
+   if(s.antiThought&&t>=s.antiUntil){s.antiMessage='';s.antiThought='';renderPhrase(s)}
    if(s.partIndex===3&&s.pauseUntil&&t>s.pauseUntil+650){
      s.partIndex=0;s.pauseUntil=0;
      let pick=Math.floor(rand(0,PHRASES.length));if(pick===s.lastPhraseIndex)pick=(pick+1)%PHRASES.length;
@@ -1073,7 +1106,9 @@
    if(b.enemy){
      const now=performance.now();
      s.enemyResolve={x:b.x,y:b.y,r:b.r,phase:b.phase,kind:b.enemy.kind,answer:b.enemy.answer,started:now,released:false};
-     s.pauseUntil=now+4100;s.enemyTimer=Math.min(s.enemyTimer,.65);
+     s.antiThought=b.enemy.thought;s.antiMessage='';s.antiUntil=now+5150;
+     s.pauseUntil=now+5150;s.enemyTimer=Math.max(s.enemyTimer,enemyInterval()*.8);
+     renderPhrase(s);
      enemySound(false);
    }else{
      if(b.special){s.specialActive=false;s.spawnTotal=0;playSpecialChime();}else playPop(b.r);
