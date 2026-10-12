@@ -280,7 +280,7 @@
     if(recorder?.state==='recording'||draft?.pendingRecording){alert('Beende zuerst die laufende Aufnahme. Danach kannst du ins Training wechseln.');return}
     const modal=$('#bdCaptureTrainerDialog'),frame=$('#bd166TrainingFrame');
     if(!modal||!frame)return;
-    if(!frame.getAttribute('src'))frame.src='academy-journey15-12-73.html';
+    if(!frame.getAttribute('src'))frame.src='academy-journey15-12-74.html';
     const menu=$('.app-menu');if(menu)menu.open=false;
     if(!modal.open)modal.showModal();
   }

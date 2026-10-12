@@ -4,7 +4,7 @@
  const btn=document.getElementById('bd168CockpitTraining');
  if(!btn)return;
  let dlg=null,frame=null;
- const trainUrl='academy-journey15-12-73.html';
+ const trainUrl='academy-journey15-12-74.html';
  function makeDialog(){
    if(dlg)return;
    dlg=document.createElement('dialog');dlg.id='bd168CockpitTrainerDialog';
