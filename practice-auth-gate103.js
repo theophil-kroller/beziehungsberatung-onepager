@@ -2,7 +2,7 @@
 (()=>{'use strict';
  const host=location.hostname.toLowerCase(),isLocal=host==='127.0.0.1'||host==='localhost';
  const target=location.pathname.split('/').pop().toLowerCase();
- const allowed=new Set(['hub.html','message-center.html','methods.html','workshops.html','newsletter-admin.html']);
+ const allowed=new Set(['hub.html','message-center.html','methods.html','workshops.html','newsletter-admin.html','assessments.html']);
  if(!allowed.has(target))return;
  const tokenKey='bd_admin_session_v1';
  const API=(window.BD_BOOKING_CONFIG?.apiBaseUrl||'').replace(/\/$/,'');

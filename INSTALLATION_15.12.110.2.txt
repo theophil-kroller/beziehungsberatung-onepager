@@ -1,0 +1,29 @@
+# Beziehungsdynamiken – Hotfix 15.12.110.2
+
+## Behebung: Assessments zeigt nur leeren cremefarbenen Hintergrund
+
+Die Seite `assessments.html` wurde mit der Klasse `bd103-guard-pending` ausgeliefert.
+Die Seite fehlte in der erlaubten Liste des Session-Pruefskripts `practice-auth-gate103.js`.
+Damit blieb das komplette Dokument dauerhaft verborgen.
+
+Dieser Hotfix erweitert die Liste um `assessments.html` und aktualisiert die
+Cache-Version in `assessments.html`, damit der Browser die neue Datei abruft.
+
+## Installation (Website, Stand 15.12.110.1)
+
+Beide Dateien aus dem ZIP in den GitHub-Pages-Stamm kopieren und alte
+Dateien ueberschreiben:
+- assessments.html
+- practice-auth-gate103.js
+
+Die Datei INSTALLATION_15.12.110.2.txt muss nicht deployed werden.
+Anschliessend /assessments.html in einem bereits angemeldeten Browser-Tab
+neu aufrufen (Strg + Umschalt + R).
+
+Wenn keine CRM-Sitzung besteht, folgt eine Weiterleitung zum Admin-Login.
+Nach erfolgreicher CRM-Sitzungspruefung wird der Arbeitsbereich sichtbar.
+Ist der lokale Vault nicht erreichbar, erscheint eine Meldung bzw. die
+Vault-Entsperrung, aber keine komplett leere Seite.
+
+Keine Datenbankmigration, kein Vault-Update und keine Cloudflare-Worker-
+Aenderung erforderlich. Original-Gottman-Frageboegen sind nicht im ZIP.
