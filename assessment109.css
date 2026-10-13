@@ -72,3 +72,8 @@ body.as-page main{max-width:1160px;margin:56px auto 110px;padding:18px 35px 24px
 @media(max-width:560px){body.as-page main{padding:16px 14px 25px 72px}.as-home-hero{padding:21px}.as-how{grid-template-columns:1fr;gap:2px}.as-how>div{padding:12px}.as-home-glance{gap:6px}.as-home-glance>div{padding:10px}.as-home-glance strong{font-size:24px}.as-nav{width:100%;justify-content:space-between}.as-nav button{padding:10px;font-size:12px}.as-question{padding:20px}.as-question-nav{flex-direction:column;align-items:flex-start}.as-question-nav-bottom{flex-direction:column}.as-question-nav-bottom>div{align-self:stretch;justify-content:space-between}#as-editor{padding:22px 17px}}
 @media(prefers-reduced-motion:reduce){.as-option,.as-template-launch{transition:none!important}}
 .as-pass-tools{display:flex;gap:5px;flex-wrap:wrap;align-items:center}.as-pass-tools button{font-size:11px!important;padding:8px 9px!important;box-shadow:none!important}.as-pass-tools .as-generate{background:#f5e7df;color:#714438}
+
+/* 15.12.113: solo-first and invitation layout */
+.as-run-actions{flex-wrap:wrap;justify-content:flex-start}.as-run-actions .as-danger-link{margin-left:auto}.as-run-actions .as-soft{font-size:12px;padding:10px 12px}
+#as-invite-code,#as-join-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;word-break:break-all}
+.as-pass-tools{display:flex;flex-wrap:wrap;gap:8px}.as-pass-tools button{font-size:12px}
