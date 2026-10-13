@@ -1,0 +1,12 @@
+/* Optional local-only Academy reflection. No controls when the local AI is offline. */
+.bd115-dialog{width:min(650px,calc(100vw - 24px));max-height:min(85dvh,800px);overflow:auto;border:1px solid #dac6bb;border-radius:24px;padding:0;background:#fffcf9;color:#332925;box-shadow:0 25px 90px #110f1a8c}
+.bd115-dialog::backdrop{background:rgba(13,16,31,.78);backdrop-filter:blur(6px)}
+.bd115-content{padding:clamp(22px,4vw,38px);color:#332925}
+.bd115-eyebrow{font-size:11px;letter-spacing:.14em;color:#985c45;font-weight:800}
+.bd115-content h2{font:700 clamp(24px,4vw,34px)/1.1 Georgia,serif;color:#2f2623;margin:16px 0}
+.bd115-intro{font-size:15px;line-height:1.65;color:#4f443f}.bd115-privacy{border-left:3px solid #b17b63;background:#faf2eb;border-radius:6px;padding:12px;font-size:12px;line-height:1.5;color:#665047}
+.bd115-state{font-size:13px;line-height:1.5;color:#706159;min-height:20px}.bd115-result{white-space:pre-wrap;border:1px solid #e6d7ca;background:#fff7f0;padding:17px;border-radius:14px;line-height:1.6;color:#362d28;font-size:15px}
+.bd115-actions{display:flex;flex-wrap:wrap;justify-content:end;gap:10px;margin-top:24px}
+.bd115-actions button{cursor:pointer;border-radius:12px;padding:12px 18px;font:600 14px system-ui}
+.bd115-skip{border:1px solid #d6c3b7;color:#6c5145;background:#fffaf7}.bd115-start{border:1px solid #ac543c;color:#fff;background:#a85d44}.bd115-start:disabled{opacity:.5;cursor:wait}
+@media(max-width:600px){.bd115-content{padding:20px}.bd115-actions button{flex:1}}
