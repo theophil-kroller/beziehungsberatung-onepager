@@ -88,3 +88,12 @@ body.as-page main{max-width:1160px;margin:56px auto 110px;padding:18px 35px 24px
 .as-template-launch .as-template-action{padding-top:13px;font-size:13px}
 @media(max-width:1020px){.as-instrument-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:630px){.as-instrument-grid{grid-template-columns:minmax(0,1fr)}.as-template-launch.as-card{min-height:205px;padding:22px}}
+
+/* 15.12.113.2: unambiguous local database counts. Never silently hide catalog entries. */
+.as-local-inventory{margin:6px 0 20px;padding:16px 19px;border:1px solid #e8d8cc;border-radius:16px;background:#fffaf6;color:#53453c}
+.as-local-inventory .as-inventory-metrics{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.as-local-inventory .as-inventory-metrics strong{font-size:13px}
+.as-local-inventory .as-inventory-metrics span{font-size:12px;color:#817369}
+.as-local-inventory p{font-size:13px;line-height:1.65;color:#775f50;margin:10px 0 0}
+.as-local-inventory .as-inventory-toggle{display:inline-block;border:1px solid #d7b9a6;background:#fff;color:#9b583f;border-radius:9px;padding:7px 11px;font-size:12px;margin-top:10px;cursor:pointer}
+.as-local-inventory .as-inventory-toggle:hover{background:#f7ece4}

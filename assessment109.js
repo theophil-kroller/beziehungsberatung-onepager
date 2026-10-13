@@ -6,10 +6,13 @@ let lastQuestionSession='';
 const notify=(msg,bad=false)=>{const n=$('#assessmentNotice');n.textContent=msg;n.className='as-notice'+(bad?' error':'')};
 const ready=async()=>{if(!window.BDVault?.ensureUnlocked)throw Error('Assessment-Vault-Client nicht geladen.');if(!await window.BDVault.ensureUnlocked())throw Error('Vault-Verbindung wurde abgebrochen. Du kannst sie über „Vault-Verbindung erneut prüfen“ neu starten.');};
 // 15.12.113.1 – Human-readable instrument cards. Public code contains metadata only, no instrument questions.
-// Imported versions remain untouched in the Vault. For the selection UI, collapse identical re-imports.
+// Imported versions remain untouched in the Vault. Source of truth: live local catalog API.
+// Never infer from a packaged list which instruments are installed.
+const rawImportedInstruments=()=>catalog.filter(t=>t.questionsAvailable&&t.versionId);
+let showAllImportedVersions=false;
 function availableInstruments(){
  const seen=new Set();
- return catalog.filter(t=>t.questionsAvailable&&t.versionId).filter(t=>{
+ return rawImportedInstruments().filter(t=>{
    const key=String(t.title||'').normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('de')+'\u0000'+String(t.questionCount||0);
    if(seen.has(key))return false;
    seen.add(key);return true;
@@ -81,13 +84,16 @@ async function unlockPrivateInstrument(f,password){
   }catch{throw Error('Instrumenten-Passphrase falsch oder Paket beschädigt.');}
 }
 function drawCatalog(){
-const e=$('#as-library'),available=availableInstruments();
-e.innerHTML=`<div class="as-sectionhead"><div><p class="as-eyebrow">BIBLIOTHEK</p><h2>Wähle einen Fragebogen</h2><p>Klicke auf ein Instrument, um die Durchführung einzurichten.</p></div></div><div class="as-grid as-instrument-grid">${available.map(t=>{const info=instrumentInfo(t);return `<button type="button" class="as-card as-template-launch" data-start-version="${esc(t.versionId)}" aria-label="${esc(info.title)} – Durchführung beginnen"><span class="as-template-category">${esc(info.category)}</span><strong class="as-template-title">${esc(info.title)}</strong><span class="as-template-description">${esc(info.description)}</span><span class="as-template-metadata">${t.questionCount?esc(t.questionCount)+' Fragen · ':''}DE / EN</span><span class="as-template-action">Durchführung beginnen <span aria-hidden="true">↗</span></span></button>`}).join('')||'<div class="as-empty"><h3>Hier ist noch Platz für deine Fragebögen.</h3><p>Importiere zuerst dein verschlüsseltes Instrumentenpaket.</p></div>'}</div>
+const e=$('#as-library'),allImported=rawImportedInstruments(),distinct=availableInstruments(),available=showAllImportedVersions?allImported:distinct;
+const extraEntries=allImported.length-distinct.length;
+const diagnosis=`<div class="as-local-inventory" role="status"><div class="as-inventory-metrics"><strong>${distinct.length} verschiedene Fragebögen im verbundenen Vault</strong><span>${allImported.length} gespeicherte Import-Einträge</span></div>${extraEntries>0?`<button id="as-toggle-versions" type="button" class="as-inventory-toggle">${showAllImportedVersions?'Mehrfachimporte ausblenden':'Alle '+allImported.length+' Imports anzeigen'}</button>`:''}${distinct.length<15?`<p>Hinweis: Der verbundene Vault meldet derzeit nur ${distinct.length} unterschiedliche Instrumente. Die Zusatzpakete 15.12.111 (8 Tests) und 15.12.112 (3 Tests) müssen separat lokal importiert worden sein. Falls du sie bereits importiert hattest, prüfen wir zuerst die verbundene Vault-Datenbank – bitte nichts löschen oder auf Verdacht neu importieren.</p>`:''}</div>`;
+e.innerHTML=`<div class="as-sectionhead"><div><p class="as-eyebrow">BIBLIOTHEK</p><h2>Wähle einen Fragebogen</h2><p>Klicke auf ein Instrument, um die Durchführung einzurichten.</p></div></div>${diagnosis}<div class="as-grid as-instrument-grid">${available.map(t=>{const info=instrumentInfo(t);return `<button type="button" class="as-card as-template-launch" data-start-version="${esc(t.versionId)}" aria-label="${esc(info.title)} – Durchführung beginnen"><span class="as-template-category">${esc(info.category)}</span><strong class="as-template-title">${esc(info.title)}</strong><span class="as-template-description">${esc(info.description)}</span><span class="as-template-metadata">${t.questionCount?esc(t.questionCount)+' Fragen · ':''}DE / EN</span><span class="as-template-action">Durchführung beginnen <span aria-hidden="true">↗</span></span></button>`}).join('')||'<div class="as-empty"><h3>Hier ist noch Platz für deine Fragebögen.</h3><p>Importiere zuerst dein verschlüsseltes Instrumentenpaket.</p></div>'}</div>
 <details class="as-import-panel" ${available.length?'':'open'}><summary><span class="as-import-icon">＋</span><span><strong>Privates Instrument hinzufügen</strong><small>Verschlüsselte .bdinstrument-Datei lokal importieren</small></span><span aria-hidden="true">⌄</span></summary><div class="as-import-content"><p>Das Paket wird nur in deinem Browser entschlüsselt und anschließend im lokalen Vault gespeichert. Lade diese Datei niemals auf GitHub hoch.</p>
 <label>Instrumentendatei<input id="as-import" type="file" accept=".bdinstrument,.json,application/json"></label>
 <label>Paket-Passphrase<input id="as-import-secret" type="password" minlength="12" autocomplete="off" placeholder="Nicht das Vault- oder Teilnehmer-Passwort"></label>
 <label class="as-option"><input type="checkbox" id="as-license-ok"><span>Ich bestätige die Berechtigung zur privaten Nutzung und Übersetzung.</span></label>
 <button type="button" id="as-import-btn">Sicher in meinen Vault importieren</button><p class="as-muted">Die deutschen Arbeitsübersetzungen sind nicht psychometrisch validiert. Der offizielle Relationship Checkup ist nicht Bestandteil dieser Bibliothek.</p></div></details>`;
+e.querySelector('#as-toggle-versions')?.addEventListener('click',()=>{showAllImportedVersions=!showAllImportedVersions;drawCatalog()});
 e.querySelectorAll('[data-start-version]').forEach(b=>b.onclick=()=>createView(b.dataset.startVersion));
 $('#as-import-btn').onclick=async()=>{
  try{
