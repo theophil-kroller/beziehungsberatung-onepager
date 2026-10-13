@@ -56,3 +56,9 @@ html:has(.bd1557-preview),body:has(.bd1557-preview){margin:0;min-height:100%;bac
 
 /* Build 15.12.77 · resonance circles behind the public preview headline. */
 .bd1557-copy{position:relative;isolation:isolate}.bd1557-copy>*:not(.bd1577-resonance){position:relative;z-index:1}.bd1577-resonance{position:absolute;z-index:0;pointer-events:none;width:min(680px,70vw);height:min(680px,70vw);top:50%;left:45%;transform:translate(-50%,-50%);border-radius:50%;opacity:.53;background:repeating-radial-gradient(circle,transparent 0,transparent 57px,rgba(198,117,93,.12) 58px,rgba(198,117,93,.12) 60px,transparent 61px,transparent 95px);filter:blur(.7px)}@media(max-width:640px){.bd1577-resonance{width:390px;height:390px;left:50%;opacity:.34}}@media(prefers-reduced-motion:reduce){.bd1577-resonance{animation:none!important}}
+
+/* 15.12.103: same actual graphic logo as admin.html */
+.bd1557-wordmark.bd103-logo{gap:9px;font-family:Arial,system-ui,sans-serif;letter-spacing:-.04em;font-size:clamp(16px,1.55vw,20px);font-weight:750}
+.bd103-logo-icon{display:block;width:44px;height:44px;object-fit:contain;border:0;flex-shrink:0}
+.bd103-logo-text{color:#2f2623;white-space:nowrap}
+@media(max-width:600px){.bd103-logo-icon{width:35px;height:35px}.bd1557-wordmark.bd103-logo{font-size:16px}}

@@ -80,7 +80,13 @@ body{background:#FFF7ED;}
 .login-card{position:relative;z-index:1;background:rgba(255,255,255,.96);backdrop-filter:blur(4px);}
 @media (max-width:900px){#loginView::before{width:min(110vw,760px);height:min(110vw,760px);box-shadow:0 0 0 52px rgba(201,107,75,.09),0 0 0 104px rgba(201,107,75,.05),0 0 0 156px rgba(201,107,75,.03);}#loginView::after{width:min(48vw,250px);height:min(48vw,250px);}}
 </style>
-</head>
+<style id="bd103-admin-rail-guard">html.bd103-admin-unverified .bd1541-rail,html.bd103-admin-unverified .bd153-rail,html.bd103-admin-unverified .suite-rail{display:none!important;visibility:hidden!important}html.bd103-admin-unverified #appShell{display:none!important}</style>
+<script>(function(){document.documentElement.classList.add('bd103-admin-unverified');
+ document.addEventListener('bd:cloud-snapshot',()=>document.documentElement.classList.remove('bd103-admin-unverified'));
+ // Desktop intentionally preserves existing local-offline snapshot rules.
+ document.addEventListener('bd:desktop-ready',()=>{if(location.hostname==='127.0.0.1'||location.hostname==='localhost')document.documentElement.classList.remove('bd103-admin-unverified')});
+ document.addEventListener('click',e=>{if(e.target.closest('#logoutBtn'))document.documentElement.classList.add('bd103-admin-unverified')});
+})();</script><script src="practice-login-return103.js?v=15.12.103"></script><link rel="stylesheet" href="practice-portal103.css?v=15.12.103"><script defer src="practice-portal103.js?v=15.12.103"></script></head>
 <body>
 <!-- Regression lineage: BUILD 14.3.5.8 -->
 <!-- regression asset: admin-build14-3-5.js?v=20260924-build14-3-5-8 -->
@@ -369,7 +375,7 @@ body{background:#FFF7ED;}
 <script src="admin-build15-2-1.js?v=15.2.1"></script>
 <script src="admin-build15-3.js?v=15.12.31"></script>
 <script src="admin-nav15-4-1.js?v=15.8.0"></script>
-<script src="admin-site-mode15-5.js?v=15.5.0"></script>
+<script src="admin-site-mode15-5.js?v=15.12.103"></script>
 <script src="admin-build15-10-15.js?v=15.10.15"></script>
 <script src="admin-member-practice15-12.js?v=15.12.45"></script>
 <script src="breath-catalog15-12-18.js?v=15.12.18"></script>

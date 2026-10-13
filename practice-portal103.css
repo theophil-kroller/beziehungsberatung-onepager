@@ -1,0 +1,7 @@
+/* 15.12.103 · Ripple Gate: calm water on entering the practice */
+#loginView::before{animation:bd103-water-breathe 16s ease-in-out infinite;will-change:opacity,transform}
+#loginView::after{animation:bd103-water-breathe 19s ease-in-out infinite reverse;will-change:opacity,transform}
+#loginView.bd103-ripple::after{animation:bd103-drop 2.6s cubic-bezier(.19,.73,.25,1) 1!important;border-color:rgba(201,107,75,.31);box-shadow:0 0 0 2px rgba(201,107,75,.07)}
+@keyframes bd103-water-breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.77}50%{transform:translate(-50%,-50%) scale(1.018);opacity:1}}
+@keyframes bd103-drop{0%{transform:translate(-50%,-50%) scale(.68);opacity:.45}30%{opacity:.65}100%{transform:translate(-50%,-50%) scale(2.8);opacity:0}}
+@media(prefers-reduced-motion:reduce){#loginView::before,#loginView::after,#loginView.bd103-ripple::after{animation:none!important;will-change:auto}}
