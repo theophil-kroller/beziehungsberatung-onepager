@@ -17,6 +17,7 @@ const icons={
  methods:'<path d="M8 3h8v5h5v8h-5v5H8v-5H3V8h5V3Z"/><path d="M10 8h4m-4 8h4"/>',
  workshops:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18M7 14h3m4 0h3m-10 4h3"/>',
  newsletter:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>',
+ assessments:'<rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>',
  messages:'<path d="M4 5h12a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H9l-5 3v-3a4 4 0 0 1-2-4V9a4 4 0 0 1 2-4Z"/>',
  vault:'<path d="M7 10V7a5 5 0 0 1 10 0v3m-11 0h12a2 2 0 0 1 2 2v8H4v-8a2 2 0 0 1 2-2Zm6 4v3"/>',
  settings:'<circle cx="12" cy="12" r="3.2"/><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/>'
@@ -25,7 +26,7 @@ const svg=k=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[k]}</svg>`;
 function activeStandalone(key){
  if(page==='hub.html'){if(key==='creator')return location.hash==='#creator';if(key==='hub')return location.hash!=='#creator'}
  const map={
-  'methods.html':'methods','workshops.html':'workshops','newsletter-admin.html':'newsletter','message-center.html':'messages'
+  'assessments.html':'assessments','methods.html':'methods','workshops.html':'workshops','newsletter-admin.html':'newsletter','message-center.html':'messages'
  };
  return map[page]===key;
 }
@@ -98,6 +99,7 @@ function mount(){
  nav.append(
   navAction({key:'dashboard',label:'Dashboard',icon:'dashboard',view:'dashboard'}),
   navAction({key:'clients',label:'Klient:innen',icon:'clients',view:'clients'}),
+  navAction({key:'assessments',label:'Assessments',icon:'assessments',href:'assessments.html'}),
   navAction({key:'bookings',label:'Termine',icon:'calendar',view:'bookings'}),
   group({key:'finance-group',label:'Finanzen',icon:'finance',items:[
    {key:'invoices',label:'Honorarnoten',icon:'invoice',view:'invoices'},
