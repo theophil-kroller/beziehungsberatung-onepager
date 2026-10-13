@@ -1,0 +1,12 @@
+Beziehungsdynamiken Assessment Navigation Hotfix 15.12.110.1
+
+Basis: bereits installierte WEBSITE 15.12.110 (bzw. 109 + 110).
+Im GitHub-Pages-Stamm entpacken; enthaltene Dateien ersetzen.
+Wichtig: ZIP-Inhalt im Root hochladen, KEINEN zusätzlichen Ordner erzeugen.
+Dieser Hotfix erneuert den Cache-Parameter für admin-nav15-4-1.js in sieben Praxisseiten.
+Die korrekte aktuelle admin-nav15-4-1.js ist ebenfalls enthalten.
+Kein Vault-Patch, keine Migration, keine Worker-Änderung.
+Danach einmal hart neu laden (Windows: Strg + Umschalt + R).
+Test: CRM anmelden, in Praxis linke Rail nach Assessments suchen;
+direkt /assessments.html aufrufen. Falls 404, Deployment-Pfad kontrollieren.
+Bei EXE/Desktop: Website-Hotfix aktualisiert die gebuendelte Desktop-Anwendung nicht.
