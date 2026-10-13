@@ -5,10 +5,43 @@ let list=[],catalog=[],activeId='',schema=null,participant=null,phrase='',answer
 let lastQuestionSession='';
 const notify=(msg,bad=false)=>{const n=$('#assessmentNotice');n.textContent=msg;n.className='as-notice'+(bad?' error':'')};
 const ready=async()=>{if(!window.BDVault?.ensureUnlocked)throw Error('Assessment-Vault-Client nicht geladen.');if(!await window.BDVault.ensureUnlocked())throw Error('Vault-Verbindung wurde abgebrochen. Du kannst sie über „Vault-Verbindung erneut prüfen“ neu starten.');};
+// 15.12.113.1 – Human-readable instrument cards. Public code contains metadata only, no instrument questions.
+// Imported versions remain untouched in the Vault. For the selection UI, collapse identical re-imports.
+function availableInstruments(){
+ const seen=new Set();
+ return catalog.filter(t=>t.questionsAvailable&&t.versionId).filter(t=>{
+   const key=String(t.title||'').normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('de')+'\u0000'+String(t.questionCount||0);
+   if(seen.has(key))return false;
+   seen.add(key);return true;
+ });
+}
+const instrumentDescriptions=[
+ [/sound relationship house|beziehungshaus/i,'Sound Relationship House','Freundschaft, emotionale Verbundenheit, Konfliktumgang und gemeinsame Werte.','Beziehungsqualität'],
+ [/cage[\s-]*aid/i,'CAGE-AID','Vier Screening-Fragen zu möglichen Problemen im Umgang mit Alkohol oder Drogen.','Gesundheit & Belastung'],
+ [/vertrauen|\btrust\b/i,'Vertrauen','Wie sicher, verlässlich und vertrauensvoll wird die Beziehung erlebt?','Vertrauen & Sicherheit'],
+ [/verbindlichkeit|commitment/i,'Verbindlichkeit','Wie stark sind Bindung, Engagement und das Festhalten an der Beziehung?','Bindung & Engagement'],
+ [/locke[\s-]*wallace/i,'Locke-Wallace','Wie zufrieden und gut aufeinander abgestimmt wird die Beziehung erlebt?','Beziehungszufriedenheit'],
+ [/weiss[\s-]*cerretto/i,'Weiss-Cerretto','Erkundet Beziehungsstabilität und mögliche Gedanken an eine Trennung.','Stabilität & Trennung'],
+ [/\bchaos\b/i,'Chaos – Detour Scale','Fragt nach erlebter Unvorhersehbarkeit und chaotischen Mustern. Experimentelle Skala.','Experimentelle Skala'],
+ [/\bb[\s-]*mast\b|brief michigan/i,'b-MAST','Kurzes Screening auf mögliche Probleme im Zusammenhang mit Alkoholkonsum.','Gesundheit & Belastung'],
+ [/emotional abuse|emotionale[rn]? missbrauch/i,'Emotional Abuse Questionnaire','Fragt nach emotional verletzenden oder abwertenden Verhaltensweisen.','Vertrauliches Screening'],
+ [/\bcontrol\b|kontrollverhalten/i,'Kontrollverhalten','Erkundet Kontrolle, Einschränkungen und Machtverhältnisse.','Vertrauliches Screening'],
+ [/\bfear\b|\bangst\b/i,'Angst','Erkundet Angst und Unsicherheit im Umgang miteinander.','Vertrauliches Screening'],
+ [/physical aggression|körperliche aggression/i,'Körperliche Aggression','Fragt nach körperlichen Übergriffen und möglichen Verletzungen.','Vertrauliches Screening'],
+ [/quality of sex|sex, romance|sex.*romance|romance.*passion/i,'Quality of Sex, Romance and Passion','Wie werden Sexualität, romantische Nähe und Leidenschaft in der Beziehung erlebt?','Sexualität & Nähe'],
+ [/meta[\s-]*emotions/i,'Meta-Emotions','Erkundet Einstellungen zu Gefühlen und den Umgang mit ihnen. Experimentelle Skala.','Emotionen & Umgang'],
+ [/family history|familiengeschichte|my family/i,'My Family History','Reflektiert emotionale Erfahrungen in der Herkunftsfamilie. Experimentelle Skala.','Herkunft & Prägung']
+];
+function instrumentInfo(t){
+ const raw=String(t.title||'Privater Fragebogen');
+ const rule=instrumentDescriptions.find(([rx])=>rx.test(raw));
+ if(rule)return {title:rule[1],description:rule[2],category:rule[3]};
+ return {title:raw.replace(/\s*\((?:aus\s+)?Level\s+\d+(?:\s*[/&]\s*\d+)?\s*Manual\)/ig,'').replace(/\s*\(Manual\)/ig,'').replace(/\s*[–-]\s*Manual$/i,'').trim(),description:'Weitere Informationen zu den Themen und Antwortformaten erhältst du beim Start.',category:'Privater Fragebogen'};
+}
 const display=(id)=>{['runs','library','results'].forEach(x=>$('#as-'+x).hidden=x!==id);$('#as-nav').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));tab=id};
 async function refresh(){await ready();const [l,c]=await Promise.all([api('/assessments/instances'),api('/assessments/catalog')]);list=l.instances;catalog=c.templates;drawRuns();drawCatalog();drawResults();}
 function drawRuns(){
- const e=$('#as-runs'),approved=catalog.filter(t=>t.questionsAvailable),open=list.filter(x=>x.participants.some(p=>!p.completedAt)).length;
+ const e=$('#as-runs'),approved=availableInstruments(),open=list.filter(x=>x.participants.some(p=>!p.completedAt)).length;
  e.innerHTML=`<div class="as-home-hero"><div class="as-home-copy"><p class="as-eyebrow">DEIN ASSESSMENT-BEREICH</p><h2>Was möchtest du heute tun?</h2><p>Wähle einen Fragebogen, beginne allein und füge weitere Personen später hinzu. Jede Person legt die eigene Passphrase fest.</p><div class="as-hero-actions"><button id="as-new" class="as-primary" type="button">+ Neues Assessment beginnen <span aria-hidden="true">→</span></button><button id="as-to-library" class="as-linkbutton" type="button">Alle Fragebögen ansehen</button><button id="as-join-home" class="as-linkbutton" type="button">Ich habe einen Einladungscode ↗</button></div></div><div class="as-home-glance"><div><strong>${approved.length}</strong><span>Fragebögen verfügbar</span></div><div><strong>${open}</strong><span>in Bearbeitung</span></div><div><strong>${list.length}</strong><span>Durchführungen</span></div></div></div>
  <div class="as-how"><div><span class="as-stepno">01</span><strong>Fragebogen wählen</strong><small>Dein persönlicher Einstieg ohne zweite Person</small></div><div><span class="as-stepno">02</span><strong>Getrennt beantworten</strong><small>Weitere Personen können später mit Einladungscode hinzukommen</small></div><div><span class="as-stepno">03</span><strong>Gemeinsam ansehen</strong><small>Nur nach gesonderter Freigabe der Beteiligten</small></div></div>
  <div class="as-sectionhead"><div><p class="as-eyebrow">DEIN VERLAUF</p><h2>Deine Durchführungen</h2></div></div>
@@ -48,8 +81,8 @@ async function unlockPrivateInstrument(f,password){
   }catch{throw Error('Instrumenten-Passphrase falsch oder Paket beschädigt.');}
 }
 function drawCatalog(){
-const e=$('#as-library'),available=catalog.filter(t=>t.questionsAvailable&&t.versionId);
-e.innerHTML=`<div class="as-sectionhead"><div><p class="as-eyebrow">BIBLIOTHEK</p><h2>Wähle einen Fragebogen</h2><p>Klicke auf ein Instrument, um die Durchführung einzurichten.</p></div></div><div class="as-grid as-instrument-grid">${available.map(t=>`<button type="button" class="as-card as-template-launch" data-start-version="${esc(t.versionId)}" aria-label="${esc(t.title)} – private Durchführung starten"><span class="as-status">Lokal verfügbar</span><strong class="as-template-title">${esc(t.title)}</strong><span class="as-muted">${t.questionCount?esc(t.questionCount)+' Fragen · ':''}Deutsch und Englisch</span><span class="as-template-action">Durchführung beginnen <span aria-hidden="true">↗</span></span></button>`).join('')||'<div class="as-empty"><h3>Hier ist noch Platz für deine Fragebögen.</h3><p>Importiere zuerst dein verschlüsseltes Instrumentenpaket.</p></div>'}</div>
+const e=$('#as-library'),available=availableInstruments();
+e.innerHTML=`<div class="as-sectionhead"><div><p class="as-eyebrow">BIBLIOTHEK</p><h2>Wähle einen Fragebogen</h2><p>Klicke auf ein Instrument, um die Durchführung einzurichten.</p></div></div><div class="as-grid as-instrument-grid">${available.map(t=>{const info=instrumentInfo(t);return `<button type="button" class="as-card as-template-launch" data-start-version="${esc(t.versionId)}" aria-label="${esc(info.title)} – Durchführung beginnen"><span class="as-template-category">${esc(info.category)}</span><strong class="as-template-title">${esc(info.title)}</strong><span class="as-template-description">${esc(info.description)}</span><span class="as-template-metadata">${t.questionCount?esc(t.questionCount)+' Fragen · ':''}DE / EN</span><span class="as-template-action">Durchführung beginnen <span aria-hidden="true">↗</span></span></button>`}).join('')||'<div class="as-empty"><h3>Hier ist noch Platz für deine Fragebögen.</h3><p>Importiere zuerst dein verschlüsseltes Instrumentenpaket.</p></div>'}</div>
 <details class="as-import-panel" ${available.length?'':'open'}><summary><span class="as-import-icon">＋</span><span><strong>Privates Instrument hinzufügen</strong><small>Verschlüsselte .bdinstrument-Datei lokal importieren</small></span><span aria-hidden="true">⌄</span></summary><div class="as-import-content"><p>Das Paket wird nur in deinem Browser entschlüsselt und anschließend im lokalen Vault gespeichert. Lade diese Datei niemals auf GitHub hoch.</p>
 <label>Instrumentendatei<input id="as-import" type="file" accept=".bdinstrument,.json,application/json"></label>
 <label>Paket-Passphrase<input id="as-import-secret" type="password" minlength="12" autocomplete="off" placeholder="Nicht das Vault- oder Teilnehmer-Passwort"></label>
@@ -72,12 +105,12 @@ $('#as-import-btn').onclick=async()=>{
 function drawResults(){const e=$('#as-results');e.innerHTML=`<div class="as-sectionhead"><div><h2>Auswertungen</h2><p>Für gemeinsame Vergleiche sind mindestens zwei Personen und deren Freigaben nötig. Deine eigene Auswertung öffnest du mit deiner Passphrase direkt aus der Durchführung.</p></div></div><div class="as-grid">${list.map(x=>`<article class="as-card"><h3>${esc(x.title)}</h3><p class="as-muted">${x.participants.map(p=>esc(p.name)).join(' · ')}</p><button class="as-soft" data-result="${esc(x.id)}">Freigaben prüfen / Auswertung</button></article>`).join('')||'<div class="as-empty">Keine Durchführungen.</div>'}</div><div id="as-report"></div>`;e.querySelectorAll('[data-result]').forEach(b=>b.onclick=()=>showResults(b.dataset.result))}
 async function createView(selectedVersionId=''){
  try{
-  await ready();const available=catalog.filter(t=>t.questionsAvailable&&t.versionId);
+  await ready();const available=availableInstruments();
   if(!available.length){display('library');notify('Bitte zuerst ein privates Instrument importieren.',true);return}
   display('runs');const box=$('#as-editor');box.hidden=false;
   box.innerHTML=`<div class="as-edithead"><div><p class="as-eyebrow">DEIN EIGENER START</p><h2>Assessment beginnen</h2></div><button class="as-soft" id="as-close-editor">Schließen</button></div>
   <p class="as-muted">Du kannst ganz alleine beginnen und den Fragebogen in deinem Tempo ausfüllen. Weitere Personen kommen später dazu und legen ihre Passphrase selbst fest.</p>
-  <label>Welchen Fragebogen möchtest du ausfüllen?<select id="as-which">${available.map(t=>`<option value="${esc(t.versionId)}">${esc(t.title)} · ${esc(t.version)}</option>`).join('')}</select></label>
+  <label>Welchen Fragebogen möchtest du ausfüllen?<select id="as-which">${available.map(t=>`<option value="${esc(t.versionId)}">${esc(instrumentInfo(t).title)} · ${esc(t.questionCount||0)} Fragen</option>`).join('')}</select></label>
   <label>Bezeichnung (nur für dich)<input id="as-group" maxlength="160" value="Meine Selbsterfahrung"></label>
   <div class="as-personrow"><label>Dein Name<input id="as-my-name" maxlength="160" autocomplete="name" placeholder="Dein Name"></label>
   <label>Deine persönliche Passphrase<input id="as-my-phrase" type="password" minlength="12" autocomplete="new-password" placeholder="Mindestens 12 Zeichen"></label>

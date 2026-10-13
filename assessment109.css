@@ -77,3 +77,14 @@ body.as-page main{max-width:1160px;margin:56px auto 110px;padding:18px 35px 24px
 .as-run-actions{flex-wrap:wrap;justify-content:flex-start}.as-run-actions .as-danger-link{margin-left:auto}.as-run-actions .as-soft{font-size:12px;padding:10px 12px}
 #as-invite-code,#as-join-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;word-break:break-all}
 .as-pass-tools{display:flex;flex-wrap:wrap;gap:8px}.as-pass-tools button{font-size:12px}
+
+/* 15.12.113.1 – Clear outcomes instead of manual provenance, calm readable cards */
+.as-instrument-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.as-template-launch.as-card{gap:0;min-height:246px;padding:25px 27px;justify-content:flex-start}
+.as-template-launch .as-template-category{color:#a16a55;font-size:11px;letter-spacing:.065em;font-weight:750;text-transform:uppercase;line-height:1.5}
+.as-template-launch .as-template-title{font:600 clamp(19px,2vw,22px)/1.23 Georgia,'Iowan Old Style',serif;letter-spacing:-.018em;margin:13px 0 9px;max-width:100%;overflow-wrap:anywhere}
+.as-template-launch .as-template-description{display:block;color:#665a53;font-size:14px;line-height:1.55;max-width:34ch;margin:0 0 16px}
+.as-template-launch .as-template-metadata{font-size:12px;color:#887a71;letter-spacing:.01em;margin-top:auto}
+.as-template-launch .as-template-action{padding-top:13px;font-size:13px}
+@media(max-width:1020px){.as-instrument-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:630px){.as-instrument-grid{grid-template-columns:minmax(0,1fr)}.as-template-launch.as-card{min-height:205px;padding:22px}}
