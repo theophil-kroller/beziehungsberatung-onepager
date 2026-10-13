@@ -1,0 +1,6 @@
+/* 15.12.107 · Ripple Gate 2.0: pointer-responsive water. Does not affect authentication. */
+#loginView{isolation:isolate}
+#loginView>.bd107-water-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;opacity:.92;transform:translateZ(0)}
+#loginView .login-card{position:relative;z-index:1}
+.bd107-water-layer path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
+@media(prefers-reduced-motion:reduce){#loginView>.bd107-water-layer{display:none!important}}
