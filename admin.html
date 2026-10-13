@@ -61,6 +61,16 @@
 <link rel="stylesheet" href="admin-member-practice15-12.css?v=15.12.45">
 <link rel="stylesheet" href="admin-breath-pause15-12-18.css?v=15.12.60">
 <link rel="stylesheet" href="admin-skill-training15-12-68.css?v=15.12.68">
+
+<style id="bd1512101-login-rings">
+body{background:#FFF7ED;}
+#loginView{position:relative;overflow:hidden;isolation:isolate;min-height:calc(100vh - 34px);}
+#loginView::before{content:"";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:min(86vw,880px);height:min(86vw,880px);border-radius:50%;border:1px solid rgba(201,107,75,.18);box-shadow:0 0 0 72px rgba(201,107,75,.10),0 0 0 144px rgba(201,107,75,.06),0 0 0 216px rgba(201,107,75,.035);pointer-events:none;z-index:0;}
+#loginView::after{content:"";position:absolute;left:calc(50% + 42px);top:calc(52% - 12px);transform:translate(-50%,-50%);width:min(36vw,340px);height:min(36vw,340px);border-radius:50%;border:1px solid rgba(47,38,35,.08);pointer-events:none;z-index:0;}
+.login-card{position:relative;z-index:1;background:rgba(255,255,255,.96);backdrop-filter:blur(4px);}
+.login-brand img,.security-brand img{background:rgba(255,255,255,.85);}
+@media (max-width:900px){#loginView::before{width:min(110vw,760px);height:min(110vw,760px);box-shadow:0 0 0 52px rgba(201,107,75,.09),0 0 0 104px rgba(201,107,75,.05),0 0 0 156px rgba(201,107,75,.03);}#loginView::after{width:min(48vw,250px);height:min(48vw,250px);}}
+</style>
 </head>
 <body>
 <!-- Regression lineage: BUILD 14.3.5.8 -->
