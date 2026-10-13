@@ -1,0 +1,1 @@
+Nur die Website-Dateien des Assessment-Moduls ausrollen. Keine Originalfragen enthalten. Ohne lokalen aktualisierten Vault-Dienst nicht funktionsfähig. Private .bdinstrument-Datei NIEMALS im öffentlichen Web-Repository bereitstellen. Keine D1-Migration.
