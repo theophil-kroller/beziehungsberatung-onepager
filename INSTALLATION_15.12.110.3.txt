@@ -1,0 +1,20 @@
+HOTFIX 15.12.110.3 – Assessments: lokaler Vault-Zugang und sachliche Überschrift
+
+Für bestehendes Website-Deployment ab 15.12.110.2.
+
+1. Diese drei Dateien in den GitHub-Pages-Stamm hochladen und überschreiben:
+   - assessments.html
+   - assessment-vault109.js
+   - assessment109.js
+2. Einmal Strg + Umschalt + R auf /assessments.html.
+3. Zur Probe die Assessment-Seite über die Praxisnavigation im SELBEN Browsertab öffnen,
+   in dem der Vault entsperrt wurde.
+4. Wenn eine neue Browser-Registerkarte verwendet wird: eigener Vault-Zugang nötig.
+   Das erneute Entsperren ersetzt auf dem lokalen Dienst den bisherigen Token.
+5. Wenn HTTP 404 erscheint, läuft sehr wahrscheinlich noch die alte Vault-Anwendung.
+   Website-Dateien allein können die neuen Vault-Endpunkte nicht bereitstellen.
+6. Falls "HTTP 500" erscheint, genaue Fehlermeldung und lokalen Dienststand prüfen.
+
+Dieser Hotfix enthält KEINE Gottman-Fragen, KEINE Datenbankmigration und KEINE
+Änderungen an gespeicherten Antworten. Er ändert nur die Website-Seite und die
+Fehlerbehandlung des Assessment-Vault-Clients. Cloudflare Worker unverändert.
