@@ -54,3 +54,9 @@
  .head-actions a[href*="academy-access"]::before{content:'⚙';font-size:16px}
  .head-actions .exit{width:30px;height:32px}
 }
+
+/* 15.12.104: coherent chronological learning chapters, with no change to saved IDs. */
+.learning-chapter{position:relative;z-index:3;display:flex;align-items:center;gap:14px;margin:38px auto 23px;width:min(575px,90%);padding:17px 22px;border:1px solid #e4c9b9;border-radius:22px;background:#fffaf5ed;box-shadow:0 14px 38px #47302218;backdrop-filter:blur(11px);color:#352c2a}
+.learning-chapter-index{font:700 29px/1 Georgia,serif;color:#C96B4B;border-right:1px solid #e8ccbc;padding-right:15px}
+.learning-chapter strong,.learning-chapter small{display:block}.learning-chapter strong{font:700 23px/1.2 Georgia,serif}.learning-chapter small{font-size:12px;color:#857068;margin-top:5px}
+@media(max-width:720px){.learning-chapter{margin:24px 0 17px 63px;width:calc(100% - 63px);padding:13px 15px;gap:11px}.learning-chapter strong{font-size:17px}.learning-chapter-index{font-size:23px;padding-right:10px}.learning-chapter small{font-size:11px}}
