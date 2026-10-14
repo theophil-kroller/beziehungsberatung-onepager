@@ -1,0 +1,66 @@
+/* Beziehungsdynamiken 15.12.122 · Gesprächsführung-Lab 2.0. Fiktive Daten, kein KI-/Vault-Zugriff. */
+(()=>{'use strict';
+const cases=window.BDTalk121Cases||[],$=id=>document.getElementById(id);
+if(!cases.length||!cases.every(c=>c.person?.name&&c.person?.image&&c.rounds?.length===8&&c.rounds.every(r=>r.options?.length===4)&&c.repair?.options?.length===4)){$('cards').textContent='Die Gesprächsfälle konnten nicht vollständig geladen werden.';return;}
+const categories={kontakt:['vorwurf','wut','scham','schweigen','abwertung','trauer'],beziehung:['affaire','druck','grenze','poly','geheimnis','trennung'],risiko:['suizid','kontrolle','panik','drohung']};
+const grades=['Besonders passend','Gut vertretbar','Mit wichtiger Einschränkung','Im aktuellen Moment riskant oder unpassend'];
+const scores=[3,2,1,0];
+const clamp=x=>Math.max(0,Math.min(100,Math.round(x)));
+const skillChange=[7,4,-2,-6],contactChange=[5,1,-5,-9];
+const key=()=>`bd-talklab121-${$('profile').value}`;
+const blank=()=>({schema:1,done:{},attempts:{}});
+let current=null,run=null,progress=load(),filter='alle';
+function load(){try{const v=JSON.parse(localStorage.getItem(key())||'null');return v?.schema===1&&v.done&&v.attempts?v:blank()}catch{return blank()}}
+function save(){try{localStorage.setItem(key(),JSON.stringify(progress))}catch{}}
+function hash(s){let x=2166136261;for(const ch of s)x=Math.imul(x^ch.charCodeAt(0),16777619);return x>>>0}
+function order(c,round,repair){const seed=`${c.id}:${round}:${repair}:${progress.attempts[c.id]||0}`;return [0,1,2,3].sort((a,b)=>hash(seed+':'+a)-hash(seed+':'+b))}
+function el(tag,cls,value){const x=document.createElement(tag);if(cls)x.className=cls;if(value!==undefined)x.textContent=value;return x}
+function button(t,klass,cb){const x=el('button',klass,t);x.type='button';x.addEventListener('click',cb);return x}
+function avatar(person,klass='portrait'){const img=document.createElement('img');img.src=person.image;img.alt=`Porträt von ${person.name} (fiktive Figur)`;img.loading='lazy';img.className=klass;img.onerror=()=>img.style.display='none';return img}
+function cue(text){if(!text)return null;const p=el('div','nonverbal',text);p.setAttribute('aria-label','Beobachtung, keine gesprochene Aussage');return p}
+function activeRound(){if(!run||run.index>=current.rounds.length)return null;const last=run.history.at(-1);const needsRepair=last&&last.choice>=2&&!last.isRepair&&run.repairCount<2&&run.index-run.lastRepairIndex>=2&&run.index<current.rounds.length-1;return needsRepair?{...current.repair,isRepair:true}:{...current.rounds[run.index],isRepair:false}}
+function scrollChoice(){ $('decision').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+function total(){let n=0;for(const c of cases)if(progress.done[c.id])n++;return n}
+function updateTotals(){const n=total();$('countDone').textContent=`${n} von ${cases.length} Fällen bearbeitet`;$('finished').textContent=`${n}/${cases.length}`}
+function showHome(){current=null;run=null;$('simulation').hidden=true;$('overview').hidden=false;drawCards();window.scrollTo({top:0,behavior:'auto'})}
+function drawCards(){updateTotals();$('cards').replaceChildren();cases.filter(c=>filter==='alle'||(categories[filter]||[]).includes(c.id)).forEach(c=>{
+const card=el('button','case-card');card.type='button';const top=el('div','case-top');top.append(el('span','case-tag',c.category));if(c.level===4)top.append(el('span','danger-tag','⛨ Sicherheit'));card.append(top);
+const identity=el('div','card-identity');identity.append(avatar(c.person,'card-portrait'));const names=el('div','card-identity-copy');names.append(el('h3','',c.title),el('span','case-name',`${c.person.name} · ${c.person.role}`));identity.append(names);card.append(identity,el('div','description',c.goal));
+const bottom=el('div','card-bottom'),done=progress.done[c.id];bottom.append(el('span','',done?'↻ Erneut trainieren':'Gespräch starten ↗'),el('small','',done?`✓ Bestwert ${done.best}/${done.scoreMax||12}`:'8 Runden · dynamische Reaktionen'));card.append(bottom);card.setAttribute('aria-label',`${c.title}, Fall mit ${c.person.name} starten`);card.addEventListener('click',()=>start(c));$('cards').append(card);
+});}
+function start(c){current=c;run={index:0,history:[],chosen:null,score:0,unsafe:false,repairCount:0,lastRepairIndex:-9,skill:50,contact:55,showFullHistory:false};$('overview').hidden=true;$('simulation').hidden=false;render();window.scrollTo({top:0,behavior:'auto'})}
+function utterance(parent,speaker,text,kind,cueText,person){const node=el('div','turn '+kind);const content=el('div','turn-content');content.append(el('span','speaker',speaker),el('p','',text));const signal=cue(cueText);if(signal)content.append(signal);if(person)node.append(avatar(person));node.append(content);parent.append(node)}
+function markHistory(){const turns=$('turns');turns.replaceChildren();const cut=run.showFullHistory?0:Math.max(0,run.history.length-2);
+ if(cut){turns.append(el('div','history-note',`${cut} frühere Gesprächsrunden eingeklappt · vollständiger Verlauf weiterhin verfügbar`))}else{utterance(turns,`${current.person.name} · ${current.person.role}`,current.opening,'client',current.openingCue,current.person)}
+ for(const rec of run.history.slice(cut)){utterance(turns,`DU ALS BERATER:IN · RUNDE ${rec.round}`,rec.option.say,'advisor',null,null);utterance(turns,`${current.person.name} · REAKTION`,rec.option.reply,'client',rec.option.cue,current.person)}
+ $('toggleHistory').hidden=run.history.length<=2;$('toggleHistory').textContent=run.showFullHistory?'Frühere Runden einklappen':'Vollständigen Verlauf anzeigen';
+}
+function updateMeters(skill=run.skill,contact=run.contact){$('skillScore').textContent=`${clamp(skill)} / 100`;$('contactScore').textContent=`${clamp(contact)} / 100`;$('skillFill').style.width=clamp(skill)+'%';$('contactFill').style.width=clamp(contact)+'%'}
+function deltas(ix,isRepair){let skill=skillChange[ix],contact=contactChange[ix];if(isRepair){skill+=[1,1,0,0][ix];contact+=[4,2,0,0][ix]}return {skill,contact}}
+function render(){if(!current||!run)return;const c=current,idx=run.index,end=idx>=c.rounds.length;
+$('stepLabel').textContent=end?'Gespräch abgeschlossen':`Runde ${idx+1} von ${c.rounds.length}`;
+$('progressTrack').setAttribute('aria-valuenow',String(idx));$('progressFill').style.width=`${100*idx/c.rounds.length}%`;updateMeters();
+$('caseCategory').textContent=c.category+' · '+c.goal;$('caseTitle').textContent=c.title;$('caseContext').textContent=c.context;$('caseAnchor').textContent=c.anchor;
+$('safety').hidden=c.level!==4;if(c.level===4)$('safetyText').textContent=c.guard;
+const identity=$('caseCharacter');identity.replaceChildren();identity.append(avatar(c.person,'case-portrait'));
+const identityCopy=el('div','case-person-label');identityCopy.append(el('strong','',c.person.name),el('small','',`Fiktive Person · ${c.person.role}`));identity.append(identityCopy);
+markHistory();const stage=$('stage');stage.replaceChildren();if(end){renderResults(stage);return;}
+const r=activeRound();stage.append(el('span','eyebrow',`RUNDE ${idx+1} / ${c.rounds.length} · ${r.focus}`),el('h2','',r.isRepair?'Wie reparierst du den Kontakt?':idx===0?'Was antwortest du jetzt?':'Wie führst du das Gespräch weiter?'));
+let prompt=idx===0?`Lies ${c.person.name}s Aussage und beachte die Körpersprache. Wähle deine Intervention.`:r.isRepair?'Die vorige Intervention hat den Kontakt belastet. Die nächsten vier Möglichkeiten sind auf diese Reaktion zugeschnitten.':`Die vorige Antwort hat ${c.person.name}s Reaktion beeinflusst. Beachte Gesprochenes und Körpersignale.`;
+stage.append(el('p','prompt',prompt));
+const options=el('div','options');for(const [i,o] of order(c,idx,r.isRepair).entries()) {const entry=r.options[o],btn=button('','option',()=>choose(o));btn.append(el('span','letter',String.fromCharCode(65+i)),el('span','',entry.say));btn.dataset.choice=String(o);options.append(btn)}stage.append(options);
+if(run.chosen!==null){options.querySelectorAll('button').forEach(x=>{x.disabled=true;x.classList.toggle('selected',Number(x.dataset.choice)===run.chosen)});const picked=r.options[run.chosen],change=deltas(run.chosen,r.isRepair),reaction=el('div','reaction'),heading=el('div','reaction-heading');heading.append(avatar(c.person,'reaction-portrait'),el('strong','',`${c.person.name} reagiert auf deine Worte`));reaction.append(heading,el('p','',picked.reply));const signal=cue(picked.cue);if(signal)reaction.append(signal);reaction.append(el('div','deltas',`Deine Handlungsqualität ${change.skill>=0?'+':''}${change.skill} · Gesprächskontakt ${change.contact>=0?'+':''}${change.contact}`));stage.append(reaction);updateMeters(run.skill+change.skill,run.contact+change.contact);
+if(c.level===4&&run.chosen>=2)stage.append(el('div','warn','Sicherheitsrelevante Entscheidung: Reale Schutz- und Notfallschritte dürfen nicht verzögert werden. Dies ist keine Krisenanleitung.'));
+stage.append(button(idx===c.rounds.length-1?'Gespräch auswerten →':'Nächste Gesprächsrunde →','primary next',advance));}
+}
+function choose(ix){if(!current||run?.chosen!==null||run.index>=current.rounds.length)return;run.chosen=ix;render();$('stage').querySelector('.reaction')?.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function advance(){if(run.chosen===null)return;const r=activeRound(),ix=run.chosen,chosen=r.options[ix];const change=deltas(ix,r.isRepair);run.skill=clamp(run.skill+change.skill);run.contact=clamp(run.contact+change.contact);run.history.push({round:run.index+1,choice:ix,option:chosen,isRepair:r.isRepair,best:r.options[0].say,skill:run.skill,contact:run.contact});run.score+=scores[ix];if(r.isRepair){run.repairCount++;run.lastRepairIndex=run.index}if(current.level===4&&ix>=2)run.unsafe=true;run.index++;run.chosen=null;
+if(run.index===current.rounds.length){const old=progress.done[current.id],oldValue=old?.scoreMax===24?old.best:0;progress.done[current.id]={best:Math.max(run.score,oldValue),scoreMax:24,last:run.score,lastAt:new Date().toISOString()};progress.attempts[current.id]=(progress.attempts[current.id]||0)+1;save()}
+render();scrollChoice()}
+function renderResults(host){let headline='';if(current.level===4&&run.unsafe)headline='Sicherheitskritische Entscheidung – bitte den Fall erneut prüfen';else if(run.score>=20)headline='Sehr stimmige Gesprächsführung';else if(run.score>=15)headline='Gute Gesprächsbasis';else headline='Gezielte Übung lohnt sich';
+host.append(el('span','eyebrow','FACHLICHE REFLEXION'),el('h2','',headline));const scorebox=el('div','result-score');scorebox.append(el('strong','',`${run.score} / ${current.rounds.length*3}`),el('p','',current.level===4?'Didaktischer Wert – keine Bestätigung von Krisenkompetenz. Riskante Entscheidungen lassen sich nicht mit anderen Punkten ausgleichen.':'Didaktischer Vergleichswert, keine validierte Kompetenzmessung.'));host.append(scorebox);
+const list=el('div','review');run.history.forEach((item,i)=>{const box=el('div','review-item');box.append(el('b','',`Runde ${i+1}${item.isRepair?' · Kontaktreparatur':''}: ${grades[item.choice]}`),el('p','',`Deine Antwort: ${item.option.say}`),el('p','',`Reaktion von ${current.person.name}: ${item.option.reply}`));if(item.option.cue)box.append(cue(item.option.cue));box.append(el('p','',item.option.why));if(item.choice!==0)box.append(el('p','best',`Hier besonders passend: ${item.best}`));box.append(el('small','meter-history',`Nach dieser Runde: Handlungsqualität ${item.skill}/100 · Gesprächskontakt ${item.contact}/100`));list.append(box)});host.append(list);
+const act=el('div','result-actions');act.append(button('Anderen Verlauf versuchen ↻','primary',()=>start(current)),button('Alle Fälle ansehen','secondary',showHome));const next=cases.find(x=>!progress.done[x.id]&&x.id!==current.id);if(next)act.append(button('Nächster untrainierter Fall ↗','secondary',()=>start(next)));host.append(act);host.append(el('p','prompt',`Theoriekompass: ${current.anchor}`));$('progressFill').style.width='100%';}
+$('startFirst').addEventListener('click',()=>start(cases.find(c=>!progress.done[c.id])||cases[0]));$('toOverview').addEventListener('click',showHome);$('restart').addEventListener('click',()=>{if(current)start(current)});$('jumpChoice').addEventListener('click',scrollChoice);$('profile').addEventListener('change',()=>{progress=load();showHome()});
+$('toggleHistory').addEventListener('click',()=>{if(run){run.showFullHistory=!run.showFullHistory;markHistory()}});$('filters').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;$('filters').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));drawCards()}));showHome();
+})();
