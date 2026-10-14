@@ -1,0 +1,28 @@
+/* 15.12.125 · compact conversation-state panels */
+.dyn125{grid-column:1/-1;color:#322a2a;border:1px solid #dcc7b7;border-radius:19px;background:#fbf5ef;padding:12px 16px;min-width:0}
+.dyn125 summary{font-weight:750;cursor:pointer;color:#854831;line-height:1.45;list-style-position:inside}
+.dyn125-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin:14px 0 7px}
+.dyn125-person{border:1px solid #e5d9d0;border-radius:13px;padding:12px 14px;background:#fffdfb;min-width:0}
+.dyn125-person h4{font:700 1rem/1.4 system-ui,sans-serif;color:#3f312c;margin:0 0 8px}
+.dyn125-bar{display:grid;grid-template-columns:minmax(72px,1fr) minmax(50px,2fr) 24px;align-items:center;gap:7px;margin:8px 0;font:500 0.76rem/1.3 system-ui,sans-serif;color:#554942}
+.dyn125-bar b{text-align:right;font-variant-numeric:tabular-nums;font-size:.75rem}
+.dyn125-track{height:7px;border-radius:99px;background:#e9e6e1;overflow:hidden;display:block}
+.dyn125-track i{height:100%;display:block;border-radius:99px;background:#92afa7}
+.dyn125-track i.tension{background:#c77b65}
+.dyn125-track i.opening{background:#b29a65}
+.dyn125-debt{font:500 .73rem/1.5 system-ui,sans-serif;color:#9b523b;margin-top:6px}
+.dyn125-disclaimer{font:400 .75rem/1.5 system-ui,sans-serif;color:#756b65;margin:6px 0 0}
+.dyn125-memory{margin:10px 0 16px;padding:12px 14px;border-left:3px solid #bd8067;border-radius:8px;background:#fff4ea;color:#674738;font:500 .86rem/1.55 system-ui,sans-serif}
+.dyn125-signal{padding:7px 0 2px;color:#80685f;font-style:italic;font-size:.84rem;line-height:1.55}
+.dyn125-report-title{font-family:Georgia,serif!important;font-size:1.45rem!important;margin:28px 0 8px!important}
+.dyn125-report-intro{color:#6e5f57;line-height:1.65}
+.dyn125-timeline{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin:16px 0}
+.dyn125-moment{min-width:0;text-align:center;padding:9px 1px;border-radius:8px;background:#e5e2d7;color:#3b3531;font:700 .81rem system-ui,sans-serif}
+.dyn125-moment.strong{background:#d3e3dc}.dyn125-moment.difficult{background:#efc9c0}.dyn125-moment.repaired{background:#dcd4f0}
+.dyn125-lessons{background:#fff8f2;border:1px solid #edd9c9;border-radius:16px;padding:12px 20px;color:#4f3e36;line-height:1.6}
+.dyn125-lessons ul{margin:0;padding-left:18px}.dyn125-lessons li+li{margin-top:8px}
+@media(max-width:680px){.dyn125{padding:10px}.dyn125-grid{grid-template-columns:1fr}.dyn125-timeline{gap:3px}.dyn125-moment{padding:8px 0}.dyn125-report-title{font-size:1.15rem!important}}
+
+.dyn125-echo{border:1px solid #cfbfae;border-left:4px solid #b86b51;background:#fffdf9;border-radius:12px;color:#44312b;padding:13px 16px;margin:14px 0;line-height:1.55}
+.dyn125-echo strong{display:block;color:#984f38;font:700 .76rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.dyn125-echo p{margin:0;font:500 .93rem/1.55 system-ui,sans-serif}
