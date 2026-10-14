@@ -1,0 +1,22 @@
+/* Academy 15.12.117.1: all content must remain reachable in an iframe on short laptop screens. */
+html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior-y:contain}
+body{scrollbar-gutter:stable}
+.ga-app{height:auto!important;min-height:100dvh!important;overflow:visible!important}
+.ga-stage{flex:1 0 auto;align-items:start;grid-template-columns:minmax(0,47fr) minmax(0,53fr);min-height:0;height:auto}
+.ga-case,.ga-task{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+.ga-people{flex:0 0 auto;min-height:0}
+.ga-talk{min-height:0;max-height:none!important;overflow:visible!important;overscroll-behavior:auto!important}
+.ga-options{flex:0 0 auto!important;grid-template-rows:repeat(2,minmax(86px,auto));min-height:0!important}
+.ga-choice{min-height:86px;align-items:center;overflow-wrap:anywhere}
+.ga-task-actions{flex:0 0 auto;margin-top:14px}
+.ga-note{margin-top:17px}
+#bd116Conversation{flex:0 0 auto}
+/* The task stays visible alongside a long scene only when it actually fits the viewport.
+   When it is taller, the entire Academy page scrolls normally. */
+.ga-task.bd118-sticky{position:sticky;top:10px;align-self:start}
+.bd118-scene-actions{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 4px}
+.bd118-jump{font:700 13px/1.4 system-ui,-apple-system,sans-serif;border:1px solid #9b777c;background:#332738;color:#fff0e7;padding:10px 14px;border-radius:12px;cursor:pointer}
+.bd118-jump:hover,.bd118-jump:focus-visible{background:#513648;outline-offset:2px}
+@media(max-width:690px){.ga-stage{grid-template-columns:minmax(0,1fr);align-items:stretch}.ga-case,.ga-task{max-height:none!important}.ga-options{grid-template-rows:auto}.ga-choice{min-height:76px}.ga-task.bd118-sticky{position:static}}
+@media(max-width:850px){.ga-talk{max-height:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
