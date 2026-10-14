@@ -7,3 +7,44 @@
 
 /* RLT lens laboratory, independent of episode labels */
 .em-lens-scene{font:20px/1.45 Georgia,serif;padding:16px;background:#1a1c37;border:1px solid #6e6088;border-radius:13px}.em-lens-reply{font:16px/1.4 Georgia,serif;color:#e6c8b5}.em-lens-options{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.em-lens-options button{border:1px solid #79677f;background:#29243f;border-radius:10px;color:#fff;text-align:left;padding:11px}.em-lens-options button:disabled{opacity:.7}.em-lens-options button.correct{border-color:#6fbf9e;background:#244c47}.em-lens-options button.wrong{border-color:#e59f93;background:#563544}.em-lens-options button:focus-visible{outline:3px solid #e6ba87}@media(max-width:590px){.em-lens-options{grid-template-columns:1fr}}
+
+/* 15.12.118 RLT Deep Practice — readable, scrollable embedded Academy */
+html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
+.em-app{height:auto;min-height:100dvh;overflow:visible}
+.em-main{display:block;flex:1 0 auto;min-height:0;overflow:visible;padding:14px}
+.em-training{height:auto;min-height:calc(100dvh - 112px);margin:0 auto;align-items:start;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.em-scene,.em-task{min-height:0;height:auto;overflow:visible}
+.em-task{position:sticky;top:12px}
+.em-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:minmax(96px,auto);flex:none}
+.em-choice{white-space:normal;overflow-wrap:anywhere;min-height:96px;padding:13px 15px;line-height:1.45}
+.em-actions{margin-top:16px}
+.em-couple{grid-template-columns:44px minmax(0,1fr) 44px;gap:6px}
+.em-person img{width:44px;max-width:100%;height:44px}
+.em-person b{color:#d3eae7}
+.em-bubble>span{font-size:10px;line-height:1.4;display:block}
+.em-bubble p{font:16px/1.55 system-ui,sans-serif;color:#f3f7f6}
+.em-bubble.second p{color:#f3f7f6}
+.rlt118-case-label,.rlt118-tag{font-size:11px;letter-spacing:.12em;font-weight:800;color:#eecf9d;margin:12px 0 9px}
+.rlt118-case-label{margin-top:18px}
+.rlt118-extended{border-top:1px solid #77939a99;margin-top:16px;padding-top:9px}
+.rlt118-turns{display:flex;flex-direction:column;gap:10px}
+.rlt118-turn{max-width:90%;padding:12px 15px;border:1px solid #66838c;border-radius:17px;background:#1b3b49;color:#f5faf7}
+.rlt118-turn.b{align-self:flex-end;background:#28414c}
+.rlt118-turn strong{display:block;font-size:11px;color:#f0d0a0;margin-bottom:5px}
+.rlt118-turn p{margin:0;font:15px/1.6 system-ui,sans-serif;color:#f5faf7;overflow-wrap:anywhere}
+.rlt118-origin{font-size:11px;line-height:1.55;color:#bdd2d2;margin:10px 0 0}
+.rlt118-safety{font-size:14px;line-height:1.6;border-left:3px solid #e8bb91;background:#36404b;border-radius:7px;padding:14px;color:#fff}
+.rlt118-jump{display:block;margin:18px 0 2px auto;padding:10px 14px;border-radius:12px;color:#0d2d36;background:#efcf9c;border:0;font-weight:750}
+.rlt118-feedback-choice{padding:10px;border:1px solid #73958f;border-radius:11px;background:#244653}
+.rlt118-feedback-why,.rlt118-feedback-next{padding:12px;border:1px solid #648f8c;border-radius:12px;margin:12px 0;background:#133541}
+.rlt118-feedback-why h3,.rlt118-feedback-next h3{font-size:13px;color:#ffdaa3;margin:0 0 8px}
+.rlt118-feedback-why p,.rlt118-feedback-next p{font-size:14px;line-height:1.6;margin:0}
+.rlt118-feedback-caveat{font-size:12px;color:#c8dedd;line-height:1.5}
+@media(max-height:830px){.em-task{position:static}}
+@media(max-width:900px){.em-training{grid-template-columns:minmax(0,1fr)}.em-task{position:static}.em-choices{grid-auto-rows:minmax(76px,auto)}.em-choice{min-height:76px}.em-scene,.em-task{padding:15px}}
+@media(max-width:520px){.em-training{display:flex;flex-direction:column;min-height:0;gap:12px}.em-main{padding:8px}.em-choices{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:auto}.em-choice{min-height:64px}.em-couple{grid-template-columns:30px minmax(0,1fr) 30px}.em-person img{width:30px;height:30px}.em-person b{font-size:9px}.em-bubble p{font-size:14px}.rlt118-turn{max-width:97%}.rlt118-turn p{font-size:14px}}
+
+/* Reported source material is not attributed to randomly chosen avatars. */
+.em-couple{display:block}.em-couple .em-person{display:none}.em-dialogue{width:100%}.em-bubble{padding:14px 16px}.em-speech{margin-top:4px}
+
+.rlt118-feedback-signal{padding:12px;border:1px solid #557d87;border-radius:12px;background:#1b3a49;margin:12px 0}.rlt118-feedback-signal h3{color:#f0d3a6;font-size:13px;margin:0 0 7px}.rlt118-feedback-signal p{font-size:13px;line-height:1.55;margin:0;color:#e2f1ec}
