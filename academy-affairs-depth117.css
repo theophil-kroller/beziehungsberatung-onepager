@@ -1,0 +1,21 @@
+/* 15.12.117: dialog turns, observation and new-information stages */
+.ga-talk{justify-content:flex-start;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#775d6b transparent;overscroll-behavior:contain;padding:2px 3px 4px;gap:7px}
+.ga117-tag{font-size:10px;font-weight:850;letter-spacing:.09em;color:#ffbd93;padding:4px 0 2px}
+.ga117-extra{border-radius:13px;padding:8px 11px;color:#f7eee8;background:#262438;border:1px solid #594c62;line-height:1.35;max-width:97%}
+.ga117-extra b{font-size:11px;letter-spacing:.03em;color:#facaa5}
+.ga117-extra p{font-size:clamp(12px,.94vw,15px);line-height:1.4;margin:3px 0 0;color:#f8eee8}
+.ga117-right{margin-left:8%;background:#29363f;border-color:#52727a}
+.ga117-left{margin-right:8%}
+.ga117-foot{font-size:10px;color:#d5bdb3;opacity:.92;border:0;background:none;padding:2px 1px}
+.ga117-guard{padding:10px 11px;border:1px solid #ccad91;border-radius:13px;background:#3a3034;color:#ffe2cf;font-size:12px;line-height:1.4}
+.ga-twist.ga117-new{position:relative;margin-top:10px;padding-top:25px;line-height:1.45;background:#3c2c36;color:#fff1e6}
+.ga-twist.ga117-new::before{content:"SZENE 2 · SPÄTER BEKANNT GEWORDEN";position:absolute;top:8px;left:12px;font-size:10px;font-weight:800;color:#ffc4a0;letter-spacing:.06em}
+.ga-line p{font-size:clamp(13px,1.12vw,18px);color:#fff5ec}
+.ga-note{flex-shrink:0}
+.ga-feedback-body{max-width:min(850px,96vw)}
+#gaYourChoice{line-height:1.55}
+@media(max-width:850px){.ga-person{display:none}.ga-people{grid-template-columns:minmax(0,1fr)}.ga-case{max-height:none}.ga-talk{max-height:55vh}.ga-line p,.ga117-extra p{font-size:14px}}
+@media(max-height:760px) and (min-width:851px){.ga-case h1{font-size:24px}.ga-small{margin-bottom:6px}.ga-talk{gap:5px}.ga117-extra{padding:5px 9px}.ga117-extra p{font-size:12px}.ga-line{padding:7px}}
+/* Compact, top-aligned choices: options can be compared by their arguments, not by their position inside an empty tile. */
+.ga-choice{align-items:flex-start;justify-content:flex-start;font-size:clamp(12px,1vw,15px);line-height:1.48;padding:clamp(13px,1.3vw,18px)}
+.ga-choice[aria-pressed="true"]{padding:clamp(12px,1.2vw,17px)}
