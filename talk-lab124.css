@@ -1,0 +1,15 @@
+/* 15.12.124 · sichtbare Trainingspfade, Reparaturpfade, große Klickziele */
+.lab-tracks{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 30px;padding:9px;border:1px solid rgba(236,211,195,.25);border-radius:20px;background:rgba(252,247,240,.08)}
+.lab-tracks a,.lab-tracks span{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:54px;flex:1 1 210px;padding:13px 18px;border-radius:13px;color:#f9f0e9;text-decoration:none;font-size:15px;font-weight:700;border:1px solid rgba(255,255,255,.13);transition:background .15s ease}
+.lab-tracks a:hover,.lab-tracks a:focus-visible{background:rgba(255,255,255,.14);outline-offset:2px}
+.lab-tracks .active{color:#4b352d;background:#fff5ec;border-color:#f3ceaf}
+.lab-tracks small{white-space:nowrap;font-size:12px;font-weight:500;opacity:.78}
+.tl124 .case-card .card-bottom{margin-top:auto}
+.tl124 .meter-title{gap:10px}.tl124 .meter-title .meter-person{min-width:0}
+.tl124 .scenario-observation{border-left:3px solid #bc7558;background:#fff1e5;color:#654b40;font-size:14px;line-height:1.5;padding:12px 14px;border-radius:10px}
+.tl124 .repair-banner{border:1px solid #e9c0ac;background:#fff0e7;color:#724337;border-radius:12px;padding:16px 17px;font-weight:650;line-height:1.5}
+.tl124 .reaction .why{white-space:normal}.tl124 .stage .result-actions{display:flex;flex-wrap:wrap;gap:12px}
+.tl124 .history-note,.tl124 .nonverbal{font-style:italic}
+.tl124 .result-safety{background:#fff1e5;border:1px solid #d8a489;color:#653b2f;border-radius:12px;padding:14px;margin:18px 0}
+.tl124 .scenario-observation strong{display:block;margin-bottom:4px}
+@media(max-width:700px){.lab-tracks{margin:12px 0 22px;gap:7px;padding:7px}.lab-tracks a,.lab-tracks span{flex:1 1 100%;min-height:42px;padding:10px 14px}.tl124 .top-actions .exit{font-size:12px}.tl124 .cards{grid-template-columns:1fr}}
