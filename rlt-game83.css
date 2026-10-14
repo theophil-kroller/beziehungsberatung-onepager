@@ -48,3 +48,8 @@ html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
 .em-couple{display:block}.em-couple .em-person{display:none}.em-dialogue{width:100%}.em-bubble{padding:14px 16px}.em-speech{margin-top:4px}
 
 .rlt118-feedback-signal{padding:12px;border:1px solid #557d87;border-radius:12px;background:#1b3a49;margin:12px 0}.rlt118-feedback-signal h3{color:#f0d3a6;font-size:13px;margin:0 0 7px}.rlt118-feedback-signal p{font-size:13px;line-height:1.55;margin:0;color:#e2f1ec}
+
+/* 15.12.119 – RLT Skills 2.0 Eingang; ohne Seitenüberlauf auf kleinen Bildschirmen */
+.rlt119-entry{background:#efcf9d;color:#17303c;border-color:#dab985;font-weight:850;display:inline-flex;align-items:center}
+.rlt119-entry:hover{background:#ffe1b8}
+@media(max-width:1150px){.em-top{flex-wrap:wrap}.em-stats{margin-left:0}}
