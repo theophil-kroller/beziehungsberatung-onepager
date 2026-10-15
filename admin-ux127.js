@@ -51,11 +51,16 @@
    makeCard({kicker:'LERNEN',title:'Academy-Freigaben',copy:'Trainingsmodule gezielt pro Teammitglied freischalten.',label:'Freigaben öffnen',action:()=>activate('settings','academy')}),
    makeCard({kicker:'BETRIEB',title:'Praxisregeln',copy:'Lifecycle, Zuordnungen und organisatorische Daten.',label:'Regeln öffnen',action:()=>activate('settings','practice')}),
    makeCard({kicker:'SYSTEM',title:'Software & Updates',copy:'Tatsächliche Versionsstände, Downloads und Veröffentlichungen.',label:'Versionen ansehen',action:()=>activate('settings','software')})
-  );overview.append(grid);panels.append(overview);
+  );overview.append(grid);
+  const bubbleToggle=document.createElement('section');bubbleToggle.className='bd127-bubbles-pref bd127-feature';
+  const toggleId='bd127AutoBubbles';bubbleToggle.innerHTML='<p class="bd127-overline">DASHBOARD · ANZEIGE</p><h3>Automatische Seifenblasen</h3><label class="bd127-checkrow" for="'+toggleId+'"><span>Seifenblasen beim Öffnen des Dashboards automatisch anzeigen<small>Die manuell startbare Seifenblasenpause bleibt verfügbar.</small></span><input type="checkbox" id="'+toggleId+'"></label>';
+  const toggle=bubbleToggle.querySelector('input');try{toggle.checked=localStorage.getItem('bd_dashboard_auto_bubbles_v1')!=='0'}catch(_){toggle.checked=true}
+  toggle.addEventListener('change',()=>{try{localStorage.setItem('bd_dashboard_auto_bubbles_v1',toggle.checked?'1':'0')}catch(_){}document.dispatchEvent(new Event('bd:dashboard-bubbles-setting'))});
+  overview.append(bubbleToggle);panels.append(overview);
   const academy=document.createElement('section');academy.id='bd127Academy';academy.className='bd127-special';
-  academy.innerHTML='<div class="bd127-feature"><p class="bd127-overline">OWNER · TEAMFREIGABEN</p><h3>Wer darf welche Trainings starten?</h3><p>Die Academy verwendet seit 15.12.126 eine ausdrückliche Modulfreigabe. Bestehende Freigaben bleiben erhalten. Neue Module starten für Practitioner erst nach Freigabe.</p><a class="bd127-primary-link" href="academy-access15-12-78.html">Academy-Freigaben verwalten ↗</a><p class="bd127-footnote">Der Owner muss angemeldet sein. Die Rechte werden im Cloud-Worker geprüft – ein Link allein gewährt keinen Zugriff.</p></div>';
+  academy.innerHTML='<div class="bd127-academy-header"><p class="bd127-overline">ACADEMY · TEAMZUGÄNGE</p><h3>Module individuell freigeben</h3><p>Teammitglied auswählen und einzelne Module anhaken. Jede Änderung wird sofort gespeichert. <a href="academy-access15-12-78.html">In eigener Ansicht öffnen ↗</a></p></div><iframe class="bd127-academy-frame" id="bd127AcademyFrame" title="Academy-Teamfreigaben" src="academy-access15-12-78.html?embed=1" loading="lazy" scrolling="no"></iframe>';
   const software=document.createElement('section');software.id='bd127Software';software.className='bd127-special';
-  software.innerHTML='<div class="bd127-feature"><p class="bd127-overline">SOFTWARESTAND</p><h3>Versionen & Veröffentlichungen</h3><p>Desktop-App, lokaler Vault und GitHub-Releases bleiben getrennte Update-Kanäle. Eine Prüfung ersetzt keine Herausgeber-Signatur.</p><div class="bd127-versions"><div><span>Website-Code</span><strong>15.12.127</strong></div><div><span>Desktop-App</span><strong id="bd127DesktopVersion">Wird geprüft …</strong></div><div><span>Vault-Code</span><strong id="bd127VaultVersion">Wird geprüft …</strong></div></div></div>';
+  software.innerHTML='<div class="bd127-feature" id="bd127SoftwareIntro"><p class="bd127-overline">SOFTWARESTAND</p><h3>Versionen & Veröffentlichungen</h3><p>Desktop-App, lokaler Vault und GitHub-Releases bleiben getrennte Update-Kanäle. Eine Prüfung ersetzt keine Herausgeber-Signatur.</p><div class="bd127-versions"><div><span>Website-Code</span><strong>15.12.127</strong></div><div><span>Desktop-App</span><strong id="bd127DesktopVersion">Wird geprüft …</strong></div><div><span>Vault-Code</span><strong id="bd127VaultVersion">Wird geprüft …</strong></div></div></div>';
   panels.append(academy,software);
   view.prepend(header,tabs,panels);
   const origGrid=$('.settings-grid',view);if(origGrid)origGrid.classList.add('bd127-settings-original');
@@ -81,6 +86,7 @@
     if(!panel.classList.contains('panel'))continue;
     const title=safe($('h2',panel)?.textContent).toLowerCase(),id=panel.id;
     let group='practice';
+    if(id==='b1440DesktopSettings'){panel.dataset.bd127Group=window.BDDesktop?.isDesktop?'devices':'archived';panel.hidden=!window.BDDesktop?.isDesktop;continue}
     if(id==='bd150TeamAccessPanel'||/praxis-team|team & zugänge/.test(title))group='team';
     else if(id==='browserCaptureSettings'||/mfa|2-faktor|sicherheit|zugangs/.test(id.toLowerCase())||/zweifaktor/.test(title))group='devices';
     else if(/roadmap|systemstand & nächste schritte/.test(title)){panel.dataset.bd127Group='archived';continue}
@@ -101,7 +107,7 @@
  }
  function consolidateUpdates(){
   const software=get('bd127Software'),vault=get('view-vault');if(!software||!vault)return;
-  const desktop=get('bdDesktopUpdates52');if(desktop&&desktop.parentNode!==software)software.append(desktop);
+  const desktop=get('bdDesktopUpdates52'),intro=get('bd127SoftwareIntro');if(desktop&&intro&&desktop.parentNode!==intro)intro.append(desktop);
   const dashboard=get('bdDesktopCockpit52');if(dashboard)dashboard.hidden=true;
   const shared=get('bdVault30Panel');
   if(shared){
@@ -111,7 +117,7 @@
     if(updater.parentElement===sections){
      const updateCard=document.createElement('section');updateCard.id='bd127VaultUpdateCard';updateCard.className='panel bd127-vault-updates';
      const heading=document.createElement('h3');heading.textContent='Vault-Code aktualisieren';
-     updateCard.append(heading,updater);software.append(updateCard);
+     updateCard.append(heading,updater);(get('bd127SoftwareIntro')||software).append(updateCard);
     }
     const eyebrow=$('.eyebrow',shared),h2=$('h2',shared),p=$('p.muted',shared);
     if(eyebrow)eyebrow.textContent='Methoden & Zusammenarbeit';
@@ -175,6 +181,7 @@
   const grid=$('#view-settings .settings-grid'),vault=get('view-vault');
   if(grid)new MutationObserver(()=>{categorize();activate('settings',state.settings)}).observe(grid,{childList:true});
   if(vault)new MutationObserver(()=>{consolidateUpdates();categorize();activate('vault',state.vault)}).observe(vault,{childList:true});
+  window.addEventListener('message',event=>{const frame=get('bd127AcademyFrame');if(!frame||event.origin!==location.origin||event.source!==frame.contentWindow||event.data?.type!=='bd:academy-frame-height')return;const h=Number(event.data.height);if(Number.isFinite(h)&&h>0&&h<20000)frame.style.height=(h+18)+'px'});
   document.addEventListener('bd:vault-status',e=>statusFrom(e.detail));
   document.addEventListener('bd:vault-unlocked',()=>refreshVault(true));
   document.addEventListener('click',e=>{

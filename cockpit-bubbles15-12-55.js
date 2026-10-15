@@ -3,6 +3,8 @@
  * Offline-only canvas effect. No cloud calls, no new permissions, no user data.
  */
 (()=>{'use strict';
+  const AUTO_PREF='bd_dashboard_auto_bubbles_v1';
+  const autoEnabled=()=>{try{return localStorage.getItem(AUTO_PREF)!=='0'}catch(_){return true}};
   const FREE_DURATION_SEC=7.2;
   const FORM_DURATION_SEC=14.4;
   const FORM_HOLD_SEC=7.0;
@@ -154,7 +156,7 @@
     ctx.restore();return true;
   }
   function begin(){
-    if(!visibleCockpit()||reducedTab())return;
+    if(!autoEnabled()||!visibleCockpit()||reducedTab())return;
     stop();
     if(reduceMotion())return;
     const view=document.getElementById('view-dashboard');
@@ -271,14 +273,14 @@
     lastStart=performance.now();
   }
   function check(){
-    const isVisible=visibleCockpit();
+    const isVisible=visibleCockpit()&&autoEnabled();
     if(!isVisible){if(wasVisible)stop();wasVisible=false;return;}
     if(!wasVisible){wasVisible=true;begin();}
   }
   function requestRestart(){
     // Allows clicking Dashboard again, including if it is already the active view.
     setTimeout(()=>{
-      if(!visibleCockpit())return;
+      if(!visibleCockpit()||!autoEnabled())return;
       if(performance.now()-lastStart<400)return; // avoid duplicate navigation events
       wasVisible=true;begin();
     },160);
@@ -294,6 +296,7 @@
       if(target)requestRestart();
     },{capture:true});
     window.addEventListener('hashchange',check);
+    document.addEventListener('bd:dashboard-bubbles-setting',()=>{if(!autoEnabled()){stop();wasVisible=false}else check()});
     document.addEventListener('bd:desktop-ready',check);
     document.addEventListener('visibilitychange',()=>{
       if(document.visibilityState==='hidden'){stop();wasVisible=false;}

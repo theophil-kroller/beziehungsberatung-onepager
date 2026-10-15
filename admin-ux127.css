@@ -46,3 +46,10 @@
 @media(max-width:950px){.bd127-card-grid{grid-template-columns:1fr 1fr}#view-settings .bd127-settings-original,#view-vault>.settings-grid{grid-template-columns:1fr}.bd127-versions{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){#view-settings .bd127-heading,#view-vault .bd127-heading{padding:21px 18px;border-radius:18px}.bd127-card-grid,.bd127-versions{grid-template-columns:1fr}.bd127-tabbar{gap:3px!important;padding:5px!important}.bd127-tab{padding:9px 10px;font-size:.8rem}#view-vault .bd127-status-head{flex-wrap:wrap}.bd127-status-action{margin-left:0;width:100%}.bd127-card,.bd127-feature{padding:20px}}
 @media(prefers-reduced-motion:reduce){.bd127-tab{transition:none}}
+
+/* 15.12.127.1 · Consolidated release surface, embedded Academy and dashboard preference */
+#view-settings #b1440DesktopSettings[data-bd127-group="archived"],#view-settings #b1440DesktopSettings[hidden]{display:none!important}
+#bd127SoftwareIntro>#bdDesktopUpdates52,#bd127SoftwareIntro>#bd127VaultUpdateCard{margin-top:20px;box-shadow:none;border:0;border-top:1px solid #eadfd6;border-radius:0;padding:20px 0 0;background:transparent}
+#bd127SoftwareIntro>#bdDesktopUpdates52>h2{font-size:1.25rem}
+.bd127-bubbles-pref{margin-top:16px}.bd127-checkrow{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;color:#3b302a;font-weight:650}.bd127-checkrow small{display:block;font-weight:400;color:#88776b;margin-top:5px}.bd127-checkrow input{width:22px;height:22px;accent-color:#b6664d;flex:none}.bd127-bubbles-pref h3{margin-bottom:16px}
+.bd127-academy-header{padding:17px 20px;border:1px solid var(--bd127-line);border-radius:18px;background:white;margin:0 0 12px}.bd127-academy-header h3{margin:6px 0;font-family:Georgia,serif;font-size:1.45rem}.bd127-academy-header p{margin:0;line-height:1.5}.bd127-academy-frame{display:block;width:100%;border:0;border-radius:18px;min-height:630px;background:white;overflow:hidden}
