@@ -59,9 +59,8 @@ function accountSlot(){
  const slot=document.createElement('div');slot.className='bd1541-slot';slot.dataset.key='account';
  const toggle=document.createElement('button');toggle.type='button';toggle.className='bd1541-item';toggle.setAttribute('aria-label','Konto');toggle.setAttribute('aria-expanded','false');toggle.innerHTML='<span class="bd1541-avatar">BD</span>';
  const fly=document.createElement('div');fly.className='bd1541-flyout';fly.innerHTML='<div class="bd1541-flyout-head">Konto</div>';
- const dash=document.createElement('a');dash.href='admin.html#settings';dash.innerHTML=`${svg('settings')}<span>Administration</span>`;
  const web=document.createElement('a');web.href='index.html';web.innerHTML=`${svg('dashboard')}<span>Zur Website</span>`;
- fly.append(dash,web);
+ fly.append(web);
  if(isMain){const out=document.createElement('button');out.type='button';out.innerHTML=`${svg('messages')}<span>Abmelden</span>`;out.onclick=()=>document.querySelector('#logoutBtn')?.click();fly.append(out);
    const id=document.querySelector('#adminIdentity');const update=()=>{const raw=(id?.textContent||'').trim();if(raw&&raw!=='—'){const v=raw.split('@')[0].split(/[ ._-]+/).filter(Boolean).map(x=>x[0]).join('').slice(0,2).toUpperCase();if(v)toggle.querySelector('.bd1541-avatar').textContent=v}};update();if(id)new MutationObserver(update).observe(id,{childList:true,subtree:true,characterData:true});
  }
@@ -118,7 +117,7 @@ function mount(){
  );
  rail.appendChild(nav);
  const bottom=document.createElement('div');bottom.className='bd1541-bottom';bottom.append(
-  navAction({key:'vault',label:'Secure Vault',icon:'vault',view:'vault'}),
+  navAction({key:'vault',label:'Dokumentation',icon:'vault',view:'vault'}),
   navAction({key:'settings',label:'Administration',icon:'settings',view:'settings'}),
   accountSlot()
  );rail.appendChild(bottom);document.body.prepend(rail);

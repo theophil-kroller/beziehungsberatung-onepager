@@ -30,6 +30,7 @@
     scene.stopped=true;
     if(scene.raf)cancelAnimationFrame(scene.raf);
     window.removeEventListener('resize',scene.resize);
+    scene.sizeObserver?.disconnect();
     // No dashboard click handlers to remove.
     scene.canvas.remove();
   }
@@ -172,15 +173,35 @@
       time:0,finaleScheduled:false,clickBubble:null};
     current=scene;
     scene.resize=()=>{
-      const width=Math.max(300,view.clientWidth);
+      // Match the actual rendered CSS size exactly: a mismatched canvas bitmap
+      // turns circles into elliptical smears during login/rail layout changes.
+      const width=Math.round(view.getBoundingClientRect().width);
+      if(!Number.isFinite(width)||width<120)return false;
       const height=Math.max(340,Math.min(850,window.innerHeight*.87));
       const dpr=clamp(window.devicePixelRatio||1,1,2);
+      if(width===scene.width&&height===scene.height&&dpr===scene.dpr)return true;
+      const oldWidth=scene.width,oldHeight=scene.height;
       scene.width=width;scene.height=height;scene.dpr=dpr;
+      canvas.style.width=width+'px';canvas.style.height=height+'px';
       canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
-      canvas.style.height=height+'px';
       ctx.setTransform(dpr,0,0,dpr,0,0);
+      if(oldWidth>0&&oldHeight>0){
+        for(const bubble of scene.bubbles){bubble.x*=width/oldWidth;bubble.y*=height/oldHeight;}
+        for(const pop of scene.pops){pop.x*=width/oldWidth;pop.y*=height/oldHeight;}
+      }
+      return true;
     };
-    scene.resize();window.addEventListener('resize',scene.resize,{passive:true});
+    if(!scene.resize()){
+      current=null;canvas.remove();wasVisible=false;
+      requestAnimationFrame(check);
+      return;
+    }
+    window.addEventListener('resize',scene.resize,{passive:true});
+    if(typeof ResizeObserver!=='undefined'){
+      scene.sizeObserver=new ResizeObserver(()=>{if(current===scene)scene.resize()});
+      scene.sizeObserver.observe(view);
+    }
+
     function burst(b,t,replace=false){
       if(b.dead||t<b.born)return false;
       const p=position(b,t,scene);

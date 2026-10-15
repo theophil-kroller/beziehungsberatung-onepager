@@ -38,6 +38,18 @@
   if(link)cta.href=link;else{cta.type='button';cta.addEventListener('click',action)}
   card.append(kickerEl,heading,desc,cta);return card;
  }
+ function openCockpitPreferences(){
+  const gear=document.querySelector('.b143514-quick-actions .b143514-icon-btn[aria-label="Cockpit anpassen"]');
+  if(gear){gear.click();return;}
+  const dialog=get('b143514CockpitDialog');if(dialog&&!dialog.open)dialog.showModal();
+ }
+ function dashboardEntry(){
+  const head=$('#view-dashboard .cockpit-attention .cockpit-section-head');
+  if(!head||get('bd128CockpitButton'))return;
+  const button=document.createElement('button');button.id='bd128CockpitButton';button.className='bd128-cockpit-button';button.type='button';
+  button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.4"/><path d="M12 2.8v2.1m0 14.2v2.1M2.8 12h2.1m14.2 0h2.1M5.5 5.5 7 7m10 10 1.5 1.5m0-13L17 7M7 17l-1.5 1.5"/></svg><span>Cockpit anpassen</span>';
+  button.addEventListener('click',openCockpitPreferences);head.append(button);
+ }
  function buildSettings(){
   const view=get('view-settings');if(!view||get('bd127SettingsHeader'))return;
   const header=document.createElement('header');header.id='bd127SettingsHeader';header.className='bd127-heading';
@@ -52,15 +64,17 @@
    makeCard({kicker:'BETRIEB',title:'Praxisregeln',copy:'Lifecycle, Zuordnungen und organisatorische Daten.',label:'Regeln öffnen',action:()=>activate('settings','practice')}),
    makeCard({kicker:'SYSTEM',title:'Software & Updates',copy:'Tatsächliche Versionsstände, Downloads und Veröffentlichungen.',label:'Versionen ansehen',action:()=>activate('settings','software')})
   );overview.append(grid);
-  const bubbleToggle=document.createElement('section');bubbleToggle.className='bd127-bubbles-pref bd127-feature';
-  const toggleId='bd127AutoBubbles';bubbleToggle.innerHTML='<p class="bd127-overline">DASHBOARD · ANZEIGE</p><h3>Automatische Seifenblasen</h3><label class="bd127-checkrow" for="'+toggleId+'"><span>Seifenblasen beim Öffnen des Dashboards automatisch anzeigen<small>Die manuell startbare Seifenblasenpause bleibt verfügbar.</small></span><input type="checkbox" id="'+toggleId+'"></label>';
-  const toggle=bubbleToggle.querySelector('input');try{toggle.checked=localStorage.getItem('bd_dashboard_auto_bubbles_v1')!=='0'}catch(_){toggle.checked=true}
-  toggle.addEventListener('change',()=>{try{localStorage.setItem('bd_dashboard_auto_bubbles_v1',toggle.checked?'1':'0')}catch(_){}document.dispatchEvent(new Event('bd:dashboard-bubbles-setting'))});
-  overview.append(bubbleToggle);panels.append(overview);
+  const customize=document.createElement('section');customize.className='bd127-feature bd128-cockpit-entry';
+  customize.innerHTML='<p class="bd127-overline">DASHBOARD · ANZEIGE</p><h3>Cockpit anpassen</h3><p>Wetter, Aufgaben, Kennzahlen und automatische Seifenblasen an einem Ort einstellen.</p><button type="button" class="bd127-primary-link" id="bd128OpenCockpit">Cockpit-Einstellungen öffnen →</button>';
+  customize.querySelector('button').addEventListener('click',()=>{
+   document.querySelector('.nav-item[data-view="dashboard"]')?.click();
+   setTimeout(()=>openCockpitPreferences(),70);
+  });
+  overview.append(customize);panels.append(overview);
   const academy=document.createElement('section');academy.id='bd127Academy';academy.className='bd127-special';
   academy.innerHTML='<div class="bd127-academy-header"><p class="bd127-overline">ACADEMY · TEAMZUGÄNGE</p><h3>Module individuell freigeben</h3><p>Teammitglied auswählen und einzelne Module anhaken. Jede Änderung wird sofort gespeichert. <a href="academy-access15-12-78.html">In eigener Ansicht öffnen ↗</a></p></div><iframe class="bd127-academy-frame" id="bd127AcademyFrame" title="Academy-Teamfreigaben" src="academy-access15-12-78.html?embed=1" loading="lazy" scrolling="no"></iframe>';
   const software=document.createElement('section');software.id='bd127Software';software.className='bd127-special';
-  software.innerHTML='<div class="bd127-feature" id="bd127SoftwareIntro"><p class="bd127-overline">SOFTWARESTAND</p><h3>Versionen & Veröffentlichungen</h3><p>Desktop-App, lokaler Vault und GitHub-Releases bleiben getrennte Update-Kanäle. Eine Prüfung ersetzt keine Herausgeber-Signatur.</p><div class="bd127-versions"><div><span>Website-Code</span><strong>15.12.127</strong></div><div><span>Desktop-App</span><strong id="bd127DesktopVersion">Wird geprüft …</strong></div><div><span>Vault-Code</span><strong id="bd127VaultVersion">Wird geprüft …</strong></div></div></div>';
+  software.innerHTML='<div class="bd127-feature" id="bd127SoftwareIntro"><p class="bd127-overline">SOFTWARESTAND</p><h3>Versionen & Veröffentlichungen</h3><p>Desktop-App, lokaler Vault und GitHub-Releases bleiben getrennte Update-Kanäle. Eine Prüfung ersetzt keine Herausgeber-Signatur.</p><div class="bd127-versions"><div><span>Website-Code</span><strong>15.12.128</strong></div><div><span>Desktop-App</span><strong id="bd127DesktopVersion">Wird geprüft …</strong></div><div><span>Vault-Code</span><strong id="bd127VaultVersion">Wird geprüft …</strong></div></div></div>';
   panels.append(academy,software);
   view.prepend(header,tabs,panels);
   const origGrid=$('.settings-grid',view);if(origGrid)origGrid.classList.add('bd127-settings-original');
@@ -68,7 +82,7 @@
  function buildVault(){
   const view=get('view-vault');if(!view||get('bd127VaultHeader'))return;
   const header=document.createElement('header');header.id='bd127VaultHeader';header.className='bd127-heading';
-  header.innerHTML='<p class="bd127-overline">LOKAL · VERSCHLÜSSELT</p><h2>Secure Practice Vault</h2><p>Dokumentieren, sichern und verwalten – auf diesem Computer.</p>';
+  header.innerHTML='<p class="bd127-overline">SECURE PRACTICE VAULT · LOKAL VERSCHLÜSSELT</p><h2>Dokumentation</h2><p>Deine Beratungsdokumentation sicher auf diesem Computer verwalten.</p>';
   const control=document.createElement('div');control.className='bd127-status-head';control.id='bd127VaultStatusHead';
   control.innerHTML=`<span id="bd127VaultIcon" class="bd127-status-icon">${svg('offline')}</span><div><strong id="bd127VaultHeadline">Verbindung wird geprüft</strong><small id="bd127VaultSub">Lokaler Dienst · 127.0.0.1</small></div><button type="button" class="bd127-status-action" id="bd127VaultAction">Status prüfen</button>`;
   header.append(control);
@@ -156,7 +170,7 @@
   if(get('bd127VaultSub'))get('bd127VaultSub').textContent=sub;
   if(get('bd127VaultAction'))get('bd127VaultAction').textContent=visual==='unlocked'?'Jetzt sperren':visual==='locked'?'Entsperren':'Status prüfen';
   const rail=document.querySelector('.bd1541-bottom .bd1541-slot[data-key="vault"] > .bd1541-item');
-  if(rail){rail.dataset.vaultStatus=visual;rail.innerHTML=svg(visual==='unlocked'?'open':visual==='locked'?'locked':'offline');rail.title='Secure Vault · '+label;rail.setAttribute('aria-label','Secure Vault · '+label);}
+  if(rail){rail.dataset.vaultStatus=visual;rail.innerHTML=svg(visual==='unlocked'?'open':visual==='locked'?'locked':'offline');rail.title='Dokumentation · '+label;rail.setAttribute('aria-label','Dokumentation · '+label);}
   const labelElm=get('vaultNavState');if(labelElm)labelElm.textContent=label.toLowerCase();
  }
  let lastPoll=0;
@@ -176,7 +190,7 @@
  }
  function mount(){
   if(get('bd127SettingsHeader'))return;
-  buildSettings();buildVault();
+  buildSettings();buildVault();dashboardEntry();
   categorize();consolidateUpdates();categorize();activate('settings','overview');activate('vault','overview');
   const grid=$('#view-settings .settings-grid'),vault=get('view-vault');
   if(grid)new MutationObserver(()=>{categorize();activate('settings',state.settings)}).observe(grid,{childList:true});
