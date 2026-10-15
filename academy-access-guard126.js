@@ -11,6 +11,15 @@ if(id==='mastery-dynamic'){
  if(skill==='safety'&&new URLSearchParams(location.search).get('academyModule')==='safemastery')id='safemastery';
 }
 const BASE=String(window.BD_BOOKING_CONFIG?.apiBaseUrl||'https://beziehungsdynamiken-booking.theophil-kroller.workers.dev').replace(/\/$/,'');
+function addAcademyNavigation(){
+ // Only decorate pages lacking a direct Academy route; no overlay over exercise controls.
+ if(document.querySelector('a[href^="academy-journey15-12-74.html"],a[href^="academy-world15-12-74.html"]'))return;
+ const header=document.querySelector('header');if(!header||document.getElementById('bd129-academy-back'))return;
+ const back=document.createElement('a');back.id='bd129-academy-back';back.href='academy-journey15-12-74.html';
+ back.textContent='← Academy';back.title='Zur Academy-Übersicht';
+ back.style.cssText='display:inline-flex;align-items:center;white-space:nowrap;flex:none;gap:6px;font:600 12px/1.3 system-ui,sans-serif;padding:9px 11px;border-radius:12px;border:1px solid currentColor;color:inherit;text-decoration:none;opacity:.82;background:transparent;';
+ header.insertBefore(back,header.firstChild);
+}
 function showLock(title,detail){
  const s=document.createElement('section');s.id='bd126-access-root';
  s.style.cssText='box-sizing:border-box;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 30% 0%,#343052 0%,#171829 70%);padding:24px;color:#f9eee8;font:16px/1.5 system-ui';
@@ -47,6 +56,7 @@ async function run(){
    });
   }
   document.getElementById('bd126-gate-hide')?.remove();
+  addAcademyNavigation();
  }catch(e){showLock('Training derzeit gesperrt','Die Freigabe konnte nicht verlässlich geprüft werden ('+String(e.message).slice(0,130)+'). Bitte erneut anmelden oder später versuchen. Vorhandene Lernstände bleiben bestehen.');}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
