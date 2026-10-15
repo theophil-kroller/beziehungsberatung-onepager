@@ -97,3 +97,6 @@
 
 /* 15.12.67 trainer uses its own fully responsive viewport */
 @media(max-width:650px){.bd166-trainer-head{min-height:49px;padding:5px 12px}.bd166-trainer-head strong{font-size:13px}.bd166-trainer-head button{min-width:39px;min-height:39px}}
+
+/* 15.12.129.1: context-aware exit from Capture, visible only when opened from Cockpit */
+.capture-cockpit-back{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border:1px solid #e8d8c9;border-radius:12px;background:#fffaf6;color:#5b4338;text-decoration:none;font-size:.88rem;font-weight:650;white-space:nowrap}.capture-cockpit-back[hidden]{display:none!important}.capture-cockpit-back:hover{background:#f3e7dc}@media(max-width:490px){.capture-cockpit-back{padding:8px;font-size:.8rem}}
