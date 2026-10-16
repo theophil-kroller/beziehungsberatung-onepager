@@ -298,7 +298,8 @@
   function processView(){
     const ids=workflowItem.dictationIds||[],hasTranscript=!!String(workflowItem.transcript||'').trim(),seconds=Number(workflowItem.transcriptionSeconds||0);
     const timing=seconds?(seconds<60?Math.round(seconds)+' Sek.':Math.floor(seconds/60)+' Min. '+Math.round(seconds%60)+' Sek.'):'—';
-    return `<section class="doc-work-card"><div class="doc-screen-head"><div><h3>${workflowItem.hasAudio?'Lokale Verarbeitung':'Quellen'}</h3><p>${workflowItem.hasAudio?'Whisper und lokale KI arbeiten automatisch. Du greifst nur ein, wenn etwas hängen bleibt.':'Die vorhandenen Quellen bleiben unverändert erhalten.'}</p></div>${hasTranscript?`<span class="doc-soft-status">✓ ${esc(timing)}</span>`:''}</div>${workflowItem.hasAudio?`<div class="doc-processing-box ${hasTranscript?'complete':''}"><div class="doc-processing-title"><span>🎙</span><div><strong>${hasTranscript?'Transkript fertig':'Whisper'}</strong><small id="docTranscribeState">${hasTranscript?'Automatisch gespeichert':ids.length?'Status wird lokal aktualisiert …':workflowItem.autoProcess?'Wird automatisch vorbereitet …':'Bereit'}</small></div></div><div id="docWhisperJobs" class="doc-whisper-jobs"></div><div class="doc-close-safe" id="docCloseSafe" ${ids.length&&!hasTranscript?'':'hidden'}><strong>Du kannst dieses Fenster schließen.</strong><span>Audio und Queue liegen sicher im lokalen Vault.</span><span class="doc-elapsed" id="docElapsed"></span></div>${!workflowItem.autoProcess&&!ids.length&&!hasTranscript?'<button class="btn secondary" id="docTranscribeAll" type="button">Transkription starten</button>':''}</div>`:'<div class="doc-safe-note"><strong>Keine Audioquelle.</strong><span>Die vorhandenen Notizen können direkt strukturiert werden.</span></div>'}<label class="doc-transcript-label" ${hasTranscript?'':'hidden'} id="docTranscriptWrap"><span>Transkript</span><textarea id="docTranscript" rows="12"></textarea><small id="docTranscriptSaveState">✓ automatisch gespeichert</small></label><div class="dialog-actions doc-action-bar"><button class="btn primary" id="docProcessNext" type="button" ${workflowItem.hasAudio&&!hasTranscript?'disabled':''}>Weiter&nbsp; →</button></div></section>`;
+    const failed=!!String(workflowItem.processingError||'').trim();
+    return `<section class="doc-work-card"><div class="doc-screen-head"><div><h3>${workflowItem.hasAudio?'Lokale Verarbeitung':'Quellen'}</h3><p>${workflowItem.hasAudio?'Whisper und lokale KI arbeiten automatisch. Du greifst nur ein, wenn etwas hängen bleibt.':'Die vorhandenen Quellen bleiben unverändert erhalten.'}</p></div>${hasTranscript?`<span class="doc-soft-status">✓ ${esc(timing)}</span>`:''}</div>${workflowItem.hasAudio?`<div class="doc-processing-box ${hasTranscript?'complete':''}"><div class="doc-processing-title"><span>🎙</span><div><strong>${hasTranscript?'Transkript fertig':'Whisper'}</strong><small id="docTranscribeState">${hasTranscript?'Automatisch gespeichert':ids.length?'Status wird lokal aktualisiert …':workflowItem.autoProcess?'Wird automatisch vorbereitet …':'Bereit'}</small></div></div><div id="docWhisperJobs" class="doc-whisper-jobs"></div><div class="doc-close-safe" id="docCloseSafe" ${ids.length&&!hasTranscript?'':'hidden'}><strong>Du kannst dieses Fenster schließen.</strong><span>Audio und Queue liegen sicher im lokalen Vault.</span><span class="doc-elapsed" id="docElapsed"></span></div>${!workflowItem.autoProcess&&!ids.length&&!hasTranscript?'<button class="btn secondary" id="docTranscribeAll" type="button">Transkription starten</button>':''}</div>`:'<div class="doc-safe-note"><strong>Keine Audioquelle.</strong><span>Die vorhandenen Notizen können direkt strukturiert werden.</span></div>'}<label class="doc-transcript-label" ${hasTranscript||failed?'':'hidden'} id="docTranscriptWrap"><span>Transkript</span><textarea id="docTranscript" rows="12"></textarea><small id="docTranscriptSaveState">✓ automatisch gespeichert</small></label>${workflowItem.hasAudio?`<div class="doc-manual-recovery"><button type="button" class="btn secondary" id="docManualFallback" ${failed?'':'hidden'}>Ohne Transkription manuell fortsetzen</button><p id="docRecoveryNote" ${failed?'':'hidden'}>Die Originalaufnahme bleibt im Vault erhalten. Du kannst eine eigene Notiz erfassen und später erneut transkribieren.</p></div>`:''}<div class="dialog-actions doc-action-bar"><button class="btn primary" id="docProcessNext" type="button" ${workflowItem.hasAudio&&!hasTranscript&&!failed?'disabled':''}>Weiter&nbsp; →</button></div></section>`;
   }
 
   function cleanDraftValue(value){const x=String(value??'').trim();return /^(leer|nicht dokumentiert|keine angabe|n\/a|—)$/i.test(x)?'':x}
@@ -376,20 +377,39 @@
     const running=rows.filter(x=>x.status==='transcribing').length,queued=rows.filter(x=>x.status==='queued').length,saved=rows.filter(x=>x.status==='saved').length,errors=rows.filter(x=>x.status==='error');
     const state=$('#docTranscribeState');if(state)state.textContent=errors.length?`${errors.length} Aufnahme(n) mit Fehler · Audio bleibt gespeichert`:running?`Whisper arbeitet · ${rows.length-running-queued-saved}/${rows.length} fertig`:queued?`${queued} Aufnahme(n) warten in der lokalen Queue`:saved?'Bereit zum erneuten Start':'Transkription abgeschlossen';
     const jobs=$('#docWhisperJobs');if(jobs){jobs.innerHTML=whisperJobMarkup(rows);bindWhisperControls()}
-    if(errors.length){const button=$('#docTranscribeAll');if(button){button.disabled=false;button.textContent='Fehlerhafte Transkription erneut versuchen'}}
+    if(errors.length){
+      workflowItem.processingError=errors.map(x=>String(x.error||'Whisper hat einen Fehler gemeldet.')).join(' · ');
+      const button=$('#docTranscribeAll');if(button){button.disabled=false;button.textContent='Fehlerhafte Transkription erneut versuchen'}
+      showManualRecovery();
+    }
     const complete=rows.length&&rows.every(x=>['draft','accepted'].includes(x.status));
     if(complete){const transcript=rows.map((x,i)=>`[Aufnahme ${i+1}]\n${x.editedTranscript||x.originalTranscript||''}`.trim()).join('\n\n'),elapsed=workflowItem.transcriptionStartedAt?Math.max(1,(Date.now()-new Date(workflowItem.transcriptionStartedAt).getTime())/1000):0;workflowItem=await mark(workflowItem,'processing',{transcript,processingError:'',transcriptionSeconds:elapsed});clearWorkflowTimers();showStep('process');return true}
     return false;
   }
   function startTranscriptionWatcher(){showCloseSafe();if(workflowTimer)clearInterval(workflowTimer);refreshTranscriptions();workflowTimer=setInterval(()=>{if($('#documentationWorkflowDialog')?.open)refreshTranscriptions().catch(()=>{})},2500)}
+  function showManualRecovery(){
+    const fallback=$('#docManualFallback'),note=$('#docRecoveryNote');
+    if(fallback)fallback.hidden=false;
+    if(note)note.hidden=false;
+    const next=$('#docProcessNext');if(next)next.disabled=false;
+  }
   function bindProcess(){
     const ta=$('#docTranscript');if(ta)ta.value=workflowItem.transcript||'';
     $('#docTranscribeAll')?.addEventListener('click',()=>workflowItem.dictationIds?.length?startTranscriptionWatcher():startAllTranscriptions());
+    $('#docManualFallback')?.addEventListener('click',()=>{clearWorkflowTimers();const wrap=$('#docTranscriptWrap');if(wrap)wrap.hidden=false;showManualRecovery();const btn=$('#docProcessNext');if(btn)btn.textContent='Manuell weiter →';ta?.focus();});
     let saveTimer=null;
     const saveTranscript=async()=>{if(!ta)return;workflowItem=await mark(workflowItem,workflowItem.status==='new'?'processing':workflowItem.status,{transcript:ta.value});const state=$('#docTranscriptSaveState');if(state)state.textContent='💾 gespeichert'};
     ta?.addEventListener('input',()=>{const state=$('#docTranscriptSaveState');if(state)state.textContent='💾 wird gespeichert …';clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveTranscript().catch(()=>{if(state)state.textContent='⚠ Speichern fehlgeschlagen'}),600)});
     $('#docProcessNext')?.addEventListener('click',async()=>{try{clearTimeout(saveTimer);if(ta)await saveTranscript();showStep('draft')}catch(e){alert(e.message)}});
-    if(workflowItem.dictationIds?.length&&!workflowItem.transcript)startTranscriptionWatcher();else if(workflowItem.autoProcess&&workflowItem.hasAudio&&!workflowItem.transcript)ensureAutomaticProcessing(workflowItem,workflowPayload).then(x=>{if(x){workflowItem=x;startTranscriptionWatcher()}}).catch(()=>{});
+    if(workflowItem.dictationIds?.length&&!workflowItem.transcript)startTranscriptionWatcher();
+    else if(workflowItem.autoProcess&&workflowItem.hasAudio&&!workflowItem.transcript&&!workflowItem.processingError)
+      ensureAutomaticProcessing(workflowItem,workflowPayload)
+        .then(x=>{if(x){workflowItem=x;startTranscriptionWatcher()}})
+        .catch(error=>{
+          workflowItem.processingError=String(error?.message||'Automatische Verarbeitung fehlgeschlagen');
+          const state=$('#docTranscribeState');if(state)state.textContent='⚠ '+workflowItem.processingError;
+          showManualRecovery();
+        });
   }
 
   function readDraftFromForm(){const get=k=>String(document.querySelector(`[data-draft="${k}"]`)?.value||'').trim();return{focus:get('focus'),dynamics:get('dynamics'),interventions:get('interventions').split(',').map(x=>x.trim()).filter(Boolean),response:get('response'),agreements:get('agreements'),nextFocus:get('nextFocus'),privatePrep:get('privatePrep'),uncertainties:get('uncertainties').split(/\n+/).map(x=>x.trim()).filter(Boolean)}}

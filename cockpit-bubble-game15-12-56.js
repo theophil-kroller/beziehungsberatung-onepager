@@ -576,6 +576,29 @@
   "answer": "Du musst niemandem nachlaufen."
  }
 ];
+ // Build 15.12.130: user-controlled static phrase catalogue; no cloud API, D1 or Vault dependency.
+ const PHRASE_PREF_KEY='bd130_bubble_phrase_selection_v1';
+ const allPhraseIds=()=>PHRASES.map((_,i)=>i);
+ const phraseIdsFromCode=code=>{
+   if(typeof code!=='string'||code.length>1500||!/^\s*\d+(\s*,\s*\d+)*\s*$/.test(code))return null;
+   const entries=code.split(',').map(x=>Number(x.trim())-1);
+   if(entries.some(id=>!Number.isSafeInteger(id)||id<0||id>=PHRASES.length))return null;
+   return new Set(entries);
+ };
+ let chosenPhraseIds=new Set(allPhraseIds());
+ try{
+   const stored=localStorage.getItem(PHRASE_PREF_KEY);
+   if(stored!==null){const read=phraseIdsFromCode(stored);if(read&&read.size)chosenPhraseIds=read;}
+ }catch{}
+ const enabledPhraseIds=()=>[...chosenPhraseIds].sort((a,b)=>a-b);
+ const phraseCode=ids=>[...ids].sort((a,b)=>a-b).map(id=>String(id+1)).join(',');
+ const pickPhrase=(avoid=-1)=>{
+   const pool=enabledPhraseIds();
+   if(!pool.length)return {id:0,phrase:PHRASES[0]};
+   const choices=pool.length>1?pool.filter(id=>id!==avoid):pool;
+   const id=choices[Math.floor(rand(0,choices.length))];
+   return {id,phrase:PHRASES[id]};
+ };
  const speedNames=n=>n<20?'Sehr ruhig':n<45?'Entspannt':n<70?'Lebendig':n<90?'Schnell':'Herausfordernd';
  // Zero disables the mode. First upgrade imports the previous checkbox preference.
  let saboteurLevel=0;
@@ -594,6 +617,7 @@
  const speedFactor=()=>.38+speedSetting*1.8/100;
 
  let dialog,canvas,ctx,scoreEl,clockEl,bestEl,wordLineEl,wordHintEl,speedInput,speedValue,saboteurSlider,saboteurValue,motionSwitch,phraseBox,scene=null,lastFocused=null;
+ let phraseMenu=null,phraseMenuOpen=false,phraseMenuTrigger=null;
  let audioCtx=null,soundButton=null,soundEnabled=true;
  // Separate background atmosphere: never carries personal records or auth tokens.
  // Explicit opening of the game is the user gesture that permits playback.
@@ -717,7 +741,69 @@
    const btn=document.getElementById('bdBubbleGameOpen');
    if(!btn||document.getElementById('bd1556GameDialog'))return;
    dialog=document.createElement('dialog');dialog.id='bd1556GameDialog';dialog.setAttribute('aria-labelledby','bd1556GameTitle');
-   dialog.innerHTML=`<div class="bd1556-shell"><div class="bd1556-top"><div><div class="bd1556-kicker">Eine kleine Auszeit</div><h2 id="bd1556GameTitle">Seifenblasen-Pause</h2></div><div class="bd1556-stats"><span class="bd1556-stat"><strong id="bd1556Score">0</strong><small>Punkte</small></span><span class="bd1556-stat"><strong id="bd1556Time">0:00</strong><small>Spielzeit</small></span><span class="bd1556-stat"><strong id="bd1556Best">0</strong><small>Rekord</small></span></div><button type="button" class="bd1556-close" aria-label="Seifenblasen-Pause schließen" title="Schließen">×</button></div><div class="bd1561-phrase" id="bd1561Phrase" role="status" aria-live="polite"><div class="bd1560-phrase-parts" id="bd1560PhraseParts"></div></div><div class="bd1556-field" id="bd1556Field" aria-label="Spielfeld: Blasen durch Klicken oder Tippen platzen lassen"><canvas id="bd1556Canvas" aria-hidden="true"></canvas><div class="bd1556-nozzle" aria-hidden="true"></div></div><div class="bd1556-bottom"><label class="bd1560-speed-label" for="bd1560Speed">Tempo <span id="bd1560SpeedValue">35 · Entspannt</span><input id="bd1560Speed" type="range" min="0" max="100" step="1" value="35" aria-label="Geschwindigkeit der Seifenblasen von 0 bis 100"><span class="bd1560-speed-ends"><small>0 · Ganz ruhig</small><small>100 · Schnell</small></span></label><div class="bd1558-controls"><label class="bd1562-enemy-level" for="bd1562EnemyLevel">Saboteure <output id="bd1562EnemyValue">0 · Aus</output><input type="range" id="bd1562EnemyLevel" min="0" max="5" step="1" value="0" aria-label="Anzahl der Saboteure gleichzeitig, 0 schaltet sie aus"></label><label class="bd1562-shake-choice" title="Kurzer Wackeleffekt beim Auflösen innerer Saboteure"><input type="checkbox" id="bd1562Shake" checked><span>Wackeln</span></label><div class="bd1560-music-controls"><button type="button" class="bd1560-music" aria-pressed="true">Musik an</button><label class="bd1560-music-choice">Hintergrund<select id="bd1560MusicTrack" aria-label="Musik im Hintergrund"><option value="light">First Light</option><option value="calm">Calm Track</option></select></label><label class="bd1560-music-level" title="Lautstärke Hintergrundmusik">Lautstärke<input type="range" min="0" max="25" step="1" value="10" id="bd1560MusicLevel" aria-label="Lautstärke der Hintergrundmusik (0 bis 25 Prozent)"></label></div><span class="bd1560-music-status" aria-live="polite"></span><button type="button" class="bd1558-sound" aria-pressed="true">Plopp-Ton an</button><button type="button" class="bd1556-restart">Neue Runde</button></div></div></div>`;
+   dialog.innerHTML=`<div class="bd1556-shell"><div class="bd1556-top"><div><div class="bd1556-kicker">Eine kleine Auszeit</div><h2 id="bd1556GameTitle">Seifenblasen-Pause</h2></div><div class="bd1556-stats"><span class="bd1556-stat"><strong id="bd1556Score">0</strong><small>Punkte</small></span><span class="bd1556-stat"><strong id="bd1556Time">0:00</strong><small>Spielzeit</small></span><span class="bd1556-stat"><strong id="bd1556Best">0</strong><small>Rekord</small></span></div><button type="button" class="bd130-phrase-trigger" aria-label="Sätze für die Seifenblasen auswählen" aria-expanded="false">Sätze auswählen</button><button type="button" class="bd1556-close" aria-label="Seifenblasen-Pause schließen" title="Schließen">×</button></div><div class="bd1561-phrase" id="bd1561Phrase" role="status" aria-live="polite"><div class="bd1560-phrase-parts" id="bd1560PhraseParts"></div></div><div class="bd1556-field" id="bd1556Field" aria-label="Spielfeld: Blasen durch Klicken oder Tippen platzen lassen"><canvas id="bd1556Canvas" aria-hidden="true"></canvas><div class="bd1556-nozzle" aria-hidden="true"></div></div><div class="bd1556-bottom"><label class="bd1560-speed-label" for="bd1560Speed">Tempo <span id="bd1560SpeedValue">35 · Entspannt</span><input id="bd1560Speed" type="range" min="0" max="100" step="1" value="35" aria-label="Geschwindigkeit der Seifenblasen von 0 bis 100"><span class="bd1560-speed-ends"><small>0 · Ganz ruhig</small><small>100 · Schnell</small></span></label><div class="bd1558-controls"><label class="bd1562-enemy-level" for="bd1562EnemyLevel">Saboteure <output id="bd1562EnemyValue">0 · Aus</output><input type="range" id="bd1562EnemyLevel" min="0" max="5" step="1" value="0" aria-label="Anzahl der Saboteure gleichzeitig, 0 schaltet sie aus"></label><label class="bd1562-shake-choice" title="Kurzer Wackeleffekt beim Auflösen innerer Saboteure"><input type="checkbox" id="bd1562Shake" checked><span>Wackeln</span></label><div class="bd1560-music-controls"><button type="button" class="bd1560-music" aria-pressed="true">Musik an</button><label class="bd1560-music-choice">Hintergrund<select id="bd1560MusicTrack" aria-label="Musik im Hintergrund"><option value="light">First Light</option><option value="calm">Calm Track</option></select></label><label class="bd1560-music-level" title="Lautstärke Hintergrundmusik">Lautstärke<input type="range" min="0" max="25" step="1" value="10" id="bd1560MusicLevel" aria-label="Lautstärke der Hintergrundmusik (0 bis 25 Prozent)"></label></div><span class="bd1560-music-status" aria-live="polite"></span><button type="button" class="bd1558-sound" aria-pressed="true">Plopp-Ton an</button><button type="button" class="bd1556-restart">Neue Runde</button></div></div></div>`;
+   // Menu is built separately so user-provided import codes are never interpolated as HTML.
+   const menu=document.createElement('section');
+   menu.className='bd130-phrase-settings';menu.hidden=true;
+   menu.setAttribute('role','dialog');menu.setAttribute('aria-labelledby','bd130PhraseTitle');
+   menu.innerHTML='<header><div><p class="bd130-label">SPIEL · INHALTE</p><h3 id="bd130PhraseTitle">Welche Sätze möchtest du sehen?</h3><p>Markiere die Sätze, die im Spiel erscheinen dürfen. Die Auswahl bleibt auf diesem Gerät gespeichert.</p></div><button type="button" class="bd130-settings-close" aria-label="Auswahl schließen">×</button></header><div class="bd130-phrase-toolbar"><button type="button" data-action="all">Alle auswählen</button><button type="button" data-action="reset">Standard wiederherstellen</button><strong class="bd130-selected-count" aria-live="polite"></strong></div><div class="bd130-phrase-list" role="group" aria-label="Verfügbare Sätze"></div><div class="bd130-transfer"><label for="bd130ShareCode">Auswahlcode für ein anderes Gerät</label><div><input id="bd130ShareCode" type="text" autocomplete="off" spellcheck="false" placeholder="z. B. 1,2,5,8"><button type="button" data-action="copy">Code kopieren</button><button type="button" data-action="import">Code übernehmen</button></div><small>Nur Satznummern, keine Klientendaten. Kopieren und auf einem anderen Gerät einfügen.</small></div><div class="bd130-phrase-footer"><span class="bd130-phrase-message" role="status" aria-live="polite"></span><button type="button" class="bd130-phrase-cancel">Abbrechen</button><button type="button" class="bd130-phrase-save">Auswahl speichern</button></div>';
+   dialog.querySelector('.bd1556-shell').appendChild(menu);
+   phraseMenu=menu;phraseMenuTrigger=dialog.querySelector('.bd130-phrase-trigger');
+   const phraseList=menu.querySelector('.bd130-phrase-list');
+   PHRASES.forEach((parts,id)=>{
+     const label=document.createElement('label');label.className='bd130-phrase-option';
+     const check=document.createElement('input');check.type='checkbox';check.value=String(id);
+     const caption=document.createElement('span');caption.textContent=parts.join(' ');
+     label.append(check,caption);phraseList.appendChild(label);
+   });
+   const draftIds=()=>new Set([...phraseList.querySelectorAll('input:checked')].map(x=>Number(x.value)));
+   const countEl=menu.querySelector('.bd130-selected-count');
+   const messageEl=menu.querySelector('.bd130-phrase-message');
+   const codeEl=menu.querySelector('#bd130ShareCode');
+   const updateSelectionSummary=()=>{const picked=draftIds();countEl.textContent=picked.size+' von '+PHRASES.length+' Sätzen';};
+   const showPhraseMenu=()=>{
+     phraseMenuOpen=true;menu.hidden=false;phraseMenuTrigger.setAttribute('aria-expanded','true');
+     phraseList.querySelectorAll('input').forEach(box=>{box.checked=chosenPhraseIds.has(Number(box.value));});
+     codeEl.value=phraseCode(chosenPhraseIds);messageEl.textContent='';updateSelectionSummary();
+     menu.querySelector('.bd130-settings-close').focus();
+   };
+   const closePhraseMenu=()=>{
+     phraseMenuOpen=false;menu.hidden=true;phraseMenuTrigger.setAttribute('aria-expanded','false');
+     phraseMenuTrigger.focus();
+   };
+   phraseMenuTrigger.addEventListener('click',showPhraseMenu);
+   menu.querySelector('.bd130-settings-close').addEventListener('click',closePhraseMenu);
+   menu.querySelector('.bd130-phrase-cancel').addEventListener('click',closePhraseMenu);
+   phraseList.addEventListener('change',()=>{updateSelectionSummary();messageEl.textContent='';});
+   menu.querySelector('[data-action="all"]').addEventListener('click',()=>{
+     phraseList.querySelectorAll('input').forEach(box=>{box.checked=true;});updateSelectionSummary();messageEl.textContent='';
+   });
+   menu.querySelector('[data-action="reset"]').addEventListener('click',()=>{
+     phraseList.querySelectorAll('input').forEach(box=>{box.checked=true;});updateSelectionSummary();messageEl.textContent='Standardauswahl markiert. Bitte speichern.';
+   });
+   menu.querySelector('[data-action="copy"]').addEventListener('click',async()=>{
+     codeEl.value=phraseCode(draftIds());
+     try{await navigator.clipboard.writeText(codeEl.value);messageEl.textContent='Auswahlcode kopiert.';}
+     catch{codeEl.focus();codeEl.select();messageEl.textContent='Code markieren und mit Strg/Cmd + C kopieren.';}
+   });
+   menu.querySelector('[data-action="import"]').addEventListener('click',()=>{
+     const imported=phraseIdsFromCode(codeEl.value);
+     if(!imported||!imported.size){messageEl.textContent='Ungültiger Code. Bitte Satznummern (z. B. 1,2,3) eingeben.';return;}
+     phraseList.querySelectorAll('input').forEach(box=>{box.checked=imported.has(Number(box.value));});
+     updateSelectionSummary();messageEl.textContent='Code übernommen. Zum Speichern auf „Auswahl speichern“ klicken.';
+   });
+   menu.querySelector('.bd130-phrase-save').addEventListener('click',()=>{
+     const picked=draftIds();
+     if(!picked.size){messageEl.textContent='Mindestens ein Satz muss ausgewählt bleiben.';return;}
+     try{localStorage.setItem(PHRASE_PREF_KEY,phraseCode(picked));}
+     catch{messageEl.textContent='Speichern im Browser nicht möglich. Bitte Browser-Einstellungen prüfen.';return;}
+     chosenPhraseIds=picked;
+     if(scene&&!chosenPhraseIds.has(scene.phraseId)){
+       const next=pickPhrase();scene.phraseId=next.id;scene.phrase=next.phrase;scene.partIndex=0;scene.pauseUntil=0;renderPhrase(scene);
+     }
+     closePhraseMenu();
+   });
+   menu.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();e.preventDefault();closePhraseMenu();}});
    document.body.appendChild(dialog);
    canvas=dialog.querySelector('canvas');ctx=canvas.getContext('2d',{alpha:true});
    scoreEl=dialog.querySelector('#bd1556Score');clockEl=dialog.querySelector('#bd1556Time');bestEl=dialog.querySelector('#bd1556Best');soundButton=dialog.querySelector('.bd1558-sound');audioUi();
@@ -754,7 +840,7 @@
    dialog.querySelector('.bd1556-close').addEventListener('click',()=>dialog.close());
    dialog.querySelector('.bd1556-restart').addEventListener('click',()=>{flushBest();enableAudio();newRound()});
    soundButton?.addEventListener('click',()=>{soundEnabled=!soundEnabled;try{localStorage.setItem('bd1558_bubble_sound',soundEnabled?'on':'off')}catch{};audioUi();if(soundEnabled)enableAudio();});
-   dialog.addEventListener('close',()=>{flushBest();stop();stopMusic();lastFocused?.focus?.();});
+   dialog.addEventListener('close',()=>{phraseMenuOpen=false;if(phraseMenu)phraseMenu.hidden=true;phraseMenuTrigger?.setAttribute('aria-expanded','false');flushBest();stop();stopMusic();lastFocused?.focus?.();});
    dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
    canvas.addEventListener('pointerdown',onPointer);
    const openGame=()=>{if(!dialog.open){lastFocused=btn;recordFetchFailed=false;recordUserId=null;recordPending=0;enableAudio();dialog.showModal();newRound();startMusic();syncBest();}};
@@ -863,8 +949,9 @@
  }
  function newRound(){
    stop();if(!ctx)return;
+   const first=pickPhrase();
    scene={dead:false,width:0,height:0,raf:0,bubbles:[],bursts:[],score:0,seconds:0,spawn:0,last:0,spawnTotal:0,nextSpecial:Math.floor(rand(15,23)),specialActive:false,nextEnemy:Math.floor(rand(8,15)),enemyCount:0,enemyTimer:rand(3,6),lastEnemyKind:'',lastEnemyThought:'',enemyResolve:null,pauseUntil:0,antiMessage:'',antiThought:'',antiUntil:0,
-     pops:0,nextWordPop:5,phrase:PHRASES[Math.floor(rand(0,PHRASES.length))],partIndex:0,lastPhraseIndex:-1};
+     pops:0,nextWordPop:5,phrase:first.phrase,phraseId:first.id,partIndex:0,lastPhraseIndex:-1};
    renderPhrase(scene);
    resize();
    // A lively starting group, already inside the playing field – no waiting at the nozzle.
@@ -1046,7 +1133,7 @@
    const s=scene;if(!s||s.dead||!dialog.open)return;
    if(!s.last)s.last=t;
    const dt=clamp((t-s.last)/1000,0,.06);s.last=t;
-   if(document.hidden){s.raf=requestAnimationFrame(frame);return;}
+   if(document.hidden||phraseMenuOpen){s.raf=requestAnimationFrame(frame);return;}
    const frozen=s.pauseUntil&&t<s.pauseUntil;
    const step=frozen?0:dt;
    s.seconds+=step;s.spawn+=step;
@@ -1067,8 +1154,7 @@
    if(s.antiThought&&t>=s.antiUntil){s.antiMessage='';s.antiThought='';renderPhrase(s)}
    if(s.partIndex===3&&s.pauseUntil&&t>s.pauseUntil+650){
      s.partIndex=0;s.pauseUntil=0;
-     let pick=Math.floor(rand(0,PHRASES.length));if(pick===s.lastPhraseIndex)pick=(pick+1)%PHRASES.length;
-     s.lastPhraseIndex=pick;s.phrase=PHRASES[pick];renderPhrase(s);
+     const next=pickPhrase(s.phraseId);s.lastPhraseIndex=s.phraseId;s.phraseId=next.id;s.phrase=next.phrase;renderPhrase(s);
    }
    // Slider adjusts both travel speed and the spawn rhythm; 0 remains gently animated.
    const factor=speedFactor();
@@ -1094,7 +1180,7 @@
    s.raf=requestAnimationFrame(frame);
  }
  function onPointer(e){
-   const s=scene;if(!s||s.dead||!dialog.open||performance.now()<s.pauseUntil)return;
+   const s=scene;if(!s||s.dead||!dialog.open||phraseMenuOpen||performance.now()<s.pauseUntil)return;
    if(e.pointerType==='mouse'&&e.button!==0)return;
    const r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;
    const x=(e.clientX-r.left)*s.width/r.width,y=(e.clientY-r.top)*s.height/r.height;
